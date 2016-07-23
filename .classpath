@@ -22,7 +22,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/sc13967/Google Drive/Eclipse/ij-1.50e.jar"/>
-	<classpathentry kind="lib" path="C:/Users/sc13967/Google Drive/Eclipse/commons-math3-3.6.1/commons-math3-3.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sc13967/Google Drive/Eclipse/_Third party/ij-1.50e.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sc13967/Google Drive/Eclipse/_Third party/commons-math3-3.6.1/commons-math3-3.6.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
