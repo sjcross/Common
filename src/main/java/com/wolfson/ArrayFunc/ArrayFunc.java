@@ -52,6 +52,22 @@ public class ArrayFunc
 		}
 		return un_ar;
 	}
+	
+	public static String[] uniqueVals (String[] col_vals) {
+		//Unique values from the input double array "col_vals"
+		ArrayList<String> un_al = new ArrayList<String>();
+		for (int i=0;i<col_vals.length;i++){
+			if (!un_al.contains(col_vals[i])) {
+				un_al.add(col_vals[i]);
+			}			
+		}
+
+		String[] un_ar = new String[un_al.size()];
+		for (int i=0;i<un_al.size();i++) {
+			un_ar[i] = (String) un_al.get(i);
+		}
+		return un_ar;
+	}
 
 	public static int[] uniqueRows(int[] col_vals) {
 		//Rows corresponding to unique values from the input int array "col_vals"
