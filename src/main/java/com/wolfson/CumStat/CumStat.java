@@ -107,6 +107,24 @@ public class CumStat {
 			}
 		}
 	}
+	
+	/**
+	 * Add multiple measurements to a single cumulative value.  Different from addMeasure, which adds a single value to each element of a cumulative array.
+	 */
+	public void addMeasures(double[] x_in) {
+		for (int i=0;i<x_in.length;i++) {
+			addMeasure(x_in[i]);
+		}
+	}
+	
+	/**
+	 * Add multiple measurements with weighting to a single cumulative value.  Different from addMeasure, which adds a single value to each element of a cumulative array.
+	 */
+	public void addMeasures(double[] x_in, double[] w) {
+		for (int i=0;i<x_in.length;i++) {
+			addMeasure(x_in[i], w[i]);
+		}
+	}
 
 	public double[] getMean() {
 		return x_mean;
