@@ -2,6 +2,7 @@ package com.wolfson.ArrayFunc;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ArrayFunc
 {
@@ -52,7 +53,7 @@ public class ArrayFunc
 		}
 		return un_ar;
 	}
-	
+
 	public static String[] uniqueVals (String[] col_vals) {
 		//Unique values from the input double array "col_vals"
 		ArrayList<String> un_al = new ArrayList<String>();
@@ -138,6 +139,25 @@ public class ArrayFunc
 		return arr_out;
 	}
 
+	/**
+	 *	Inserts values from iarr_in into larger array at positions corresponding to a separate, target location
+	 */
+	public static double[] padAlignArray(double[] arr_in, double[] tar_in, double[] tar_fix, double pad) {
+		double[] arr_out = new double[tar_fix.length];
+		Arrays.fill(arr_out, 0);
+		
+		for (int i=0;i<tar_in.length;i++) {
+			for (int j=0;j<tar_fix.length;j++) {
+				if (tar_in[i]==tar_fix[j]) {
+					arr_out[j] = arr_in[i];
+					break;
+				}
+			}
+		}
+		
+		return arr_out;
+	}
+
 	public static String[] concatenateArrays(String[] arr_1, String[] arr_2) {
 		String[] arr_out = new String[arr_1.length+arr_2.length];
 
@@ -188,7 +208,7 @@ public class ArrayFunc
 		}
 		return ar;
 	}
-	
+
 	public static int[] incrementedNumbers(int start, int end) {
 		int[] out = new int[end-start];
 		for(int i=0;i<out.length;i++) {
@@ -196,7 +216,7 @@ public class ArrayFunc
 		}
 		return out;
 	}
-	
+
 	public static double[] incrementedNumbers(double start, double end) {
 		double[] out = new double[(int) (end-start)];
 		for(int i=0;i<out.length;i++) {
