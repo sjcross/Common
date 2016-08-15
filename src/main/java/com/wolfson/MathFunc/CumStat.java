@@ -1,4 +1,4 @@
-package com.wolfson.CumStat;
+package com.wolfson.MathFunc;
 
 import java.util.Arrays;
 

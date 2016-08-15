@@ -1,4 +1,4 @@
-package com.wolfson.ArrayFunc;
+package com.wolfson.MathFunc;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
