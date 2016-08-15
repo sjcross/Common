@@ -177,6 +177,7 @@ public class ArrayFunc
 		for (int i=0;i<list.length;i++) {
 			if (list[i]==test) {
 				boo = true;
+				break; //Once we know it's there we can terminate
 			}
 		}
 
