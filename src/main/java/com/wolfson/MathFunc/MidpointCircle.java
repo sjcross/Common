@@ -5,7 +5,7 @@ package com.wolfson.MidpointCircle;
 
 import java.util.ArrayList;
 
-import com.wolfson.ArrayFunc.ArrayFunc;
+import com.wolfson.MathFunc.ArrayFunc;
 
 public class MidpointCircle {
 	int[] x_oct;
