@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MathFunc">
+    <output-path>$MY_LIBS$</output-path>
+    <root id="archive" name="MathFunc.jar">
+      <element id="module-output" name="MathFunc" />
+    </root>
+  </artifact>
+</component>
