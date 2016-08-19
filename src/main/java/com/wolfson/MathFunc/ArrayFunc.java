@@ -177,11 +177,25 @@ public class ArrayFunc
 		for (int i=0;i<list.length;i++) {
 			if (list[i]==test) {
 				boo = true;
+				break; //Once we know it's there we can terminate
 			}
 		}
 
 		return boo;
 	}
+
+    public static boolean contains(ArrayList<Integer> list, int test) {
+        Boolean boo = false;
+
+        for (int i=0;i<list.size();i++) {
+            if (list.get(i) == test) {
+                boo = true;
+                break; //Once we know it's there we can terminate
+            }
+        }
+
+        return boo;
+    }
 
 	public static int sum(int[] arr) {
 		int out = 0;

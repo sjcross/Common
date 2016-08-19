@@ -50,6 +50,26 @@ public class CumStat {
 		}
 	}
 
+	public void addSingleMeasure(int i, double x_in) {
+		if (!Double.isNaN(x_in)) {
+			n[i] ++;
+			x_sum[i] = x_sum[i] + x_in;
+			w_sum[i] = w_sum[i] + 1;
+			double x_mean_prev = x_mean[i];
+			x_mean[i] = x_mean[i] + (1/w_sum[i])*(x_in-x_mean[i]);
+			S[i] = S[i]+(x_in-x_mean_prev)*(x_in-x_mean[i]);
+			x_var[i] = S[i]/w_sum[i];
+
+			if (x_in < x_min[i]) {
+				x_min[i] = x_in;
+			}
+
+			if (x_in > x_max[i]) {
+				x_max[i] = x_in;
+			}
+		}
+	}
+
 	public void addMeasure(double x_in) { //Non-weighted value
 		if (!Double.isNaN(x_in)) {
 			n[0] ++;
