@@ -89,7 +89,7 @@ public class ArrayFunc
         return r_ar;
     }
 
-    public static double[][] uniqueVals(double[][] col_vals) {
+    public static double[][] uniqueRows(double[][] col_vals) {
         //This still doesn't seem to work right.  It gives true for locating a row in the ArrayList, even if there isn't one
         ArrayList<double[]>  un_al = new ArrayList<double[]>();
 
