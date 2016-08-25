@@ -1,11 +1,9 @@
-package com.wolfson.MathFunc;
+package com.wolfson.common.MathFunc;
 
 // Implementation of the midpoint circle algorithm
 // Described at https://en.wikipedia.org/wiki/Midpoint_circle_algorithm (accessed 12-07-2016)
 
 import java.util.ArrayList;
-
-import com.wolfson.MathFunc.ArrayFunc;
 
 public class MidpointCircle {
 	int[] x_oct;
