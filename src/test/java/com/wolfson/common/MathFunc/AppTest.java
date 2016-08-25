@@ -1,4 +1,4 @@
-package com.wolfson.MathFunc;
+package com.wolfson.common.MathFunc;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

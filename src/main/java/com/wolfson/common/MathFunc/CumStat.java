@@ -1,4 +1,4 @@
-package com.wolfson.MathFunc;
+package com.wolfson.common.MathFunc;
 
 import java.util.Arrays;
 
@@ -184,5 +184,10 @@ public class CumStat {
 
 	public double[] getMax() {
 		return x_max;
+	}
+
+	public double[] getWeight() {
+		return w_sum;
+
 	}
 }

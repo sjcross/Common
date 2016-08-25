@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="quickhull3d">
+    <CLASSES>
+      <root url="jar://$3RD_PARTY$/QuickHull3D/quickhull3d.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$3RD_PARTY$/QuickHull3D/quickhull3d.jar!/doc/quickhull3d" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$3RD_PARTY$/QuickHull3D/quickhull3d.jar!/" />
+    </SOURCES>
+  </library>
+</component>

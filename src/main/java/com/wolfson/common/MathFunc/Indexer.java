@@ -1,4 +1,4 @@
-package com.wolfson.MathFunc;
+package com.wolfson.common.MathFunc;
 
 /**
  * Multidimensional indexing
