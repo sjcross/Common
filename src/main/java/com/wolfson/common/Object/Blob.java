@@ -1,3 +1,6 @@
+//TODO: Add voxel-based surface area.
+//TODO: Add ability to fit 3D ellipsoid (partially completed already using BoneJ library)
+
 package com.wolfson.common.Object;
 
 import org.apache.commons.math3.geometry.euclidean.threed.*;
@@ -327,6 +330,10 @@ public class Blob{
 
         Point3d[] verts = hull.getVertices();
         int[][] faces = hull.getFaces();
+
+        //The volume of each polyhedron (coordinate origin to each vertex of the current face) is calculated as the one
+        //sixth the volume of a parallelepiped.  These are summed together.  As long as the face vertices are
+        //counted in the same manner the positive and negative volumes should cancel out.
 
         V = 0; //Keeping track of the object volume
         for (int i=0;i<faces.length;i++) {
