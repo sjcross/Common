@@ -59,6 +59,8 @@ public class Blob{
     double[][] LMaPC = new double[2][3]; //Longest major perpendicular chord
     double[][] LMiPC = new double[2][3]; //Longest minor perpendicular chord
     double[] e2d = new double[6]; //Coefficients of ellipse fitting equation
+    double cal_xy = 1; //Calibration in xy
+    double cal_z = 1; //Calibration in z
     boolean hull_cnd = false; //True when convex hull built
     boolean vol_cnd = false; //True when volume calculated
     boolean surf_cnd = false; //True when surface area calculated
@@ -147,6 +149,26 @@ public class Blob{
 
     }
 
+    public void setCalXY(double cal_xy) {
+        this.cal_xy = cal_xy;
+
+    }
+
+    public void setCalZ(double cal_z) {
+        this.cal_z = cal_z;
+
+    }
+
+    public double getCalXY() {
+        return cal_xy;
+
+    }
+
+    public double getCalZ() {
+        return cal_z;
+
+    }
+
     public double getHeight() {
         double[] z = getZ();
 
@@ -208,11 +230,11 @@ public class Blob{
     }
 
     public double getVoxelVolume() {
-        return x.size();
+        return x.size()*cal_xy*cal_xy*cal_z;
 
     }
 
-    public double getProjectedPixels() {
+    public double getProjectedArea() {
         double[] x = getX();
         double[] y = getY();
         double[][] coords = new double[x.length][2];
@@ -224,7 +246,7 @@ public class Blob{
 
         coords = uniqueRows(coords);
 
-        return coords.length;
+        return coords.length*cal_xy*cal_xy;
 
     }
 
@@ -873,7 +895,7 @@ public class Blob{
 
         } else if (type.equals(PROJ_AREA)) {
             if (hasVolume()) {
-                val = getProjectedPixels();
+                val = getProjectedArea();
             }
 
         } else if (type.equals(HEIGHT)) {
