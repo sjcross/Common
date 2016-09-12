@@ -26,6 +26,8 @@ import static org.doube.geometry.FitEllipsoid.inertia;
 public class Blob{
     public static final String OBJ_ID = "Object ID";
     public static final String VOX_VOL = "Voxel volume";
+    public static final String PROJ_AREA = "Projected area (2D)";
+    public static final String HEIGHT = "Height (z-axis range)";
     public static final String ELLIPSE_THETA = "Ellipse theta (rel. x-axis)";
     public static final String HULL_VOL = "Hull volume";
     public static final String HULL_SURF = "Hull surface area";
@@ -145,6 +147,18 @@ public class Blob{
 
     }
 
+    public double getHeight() {
+        double[] z = getZ();
+
+        double min_z = new Min().evaluate(z);
+        double max_z = new Max().evaluate(z);
+
+        double height = max_z - min_z;
+
+        return height;
+
+    }
+
     public double[] getExtents() {
         //Minimum and maximum values for all dimensions [x_min, y_min, z_min; x_max, y_max, z_max]
         double[] extents = new double[6];
@@ -195,6 +209,22 @@ public class Blob{
 
     public double getVoxelVolume() {
         return x.size();
+
+    }
+
+    public double getProjectedPixels() {
+        double[] x = getX();
+        double[] y = getY();
+        double[][] coords = new double[x.length][2];
+
+        for (int i=0;i<x.length;i++) {
+            coords[i][0] = x[i];
+            coords[i][1] = y[i];
+        }
+
+        coords = uniqueRows(coords);
+
+        return coords.length;
 
     }
 
@@ -841,9 +871,14 @@ public class Blob{
         } else if (type.equals(VOX_VOL)) {
                 val = getVoxelVolume();
 
-        } else if (type.equals(HULL_VOL)) {
+        } else if (type.equals(PROJ_AREA)) {
             if (hasVolume()) {
-                val = getHullVolume();
+                val = getProjectedPixels();
+            }
+
+        } else if (type.equals(HEIGHT)) {
+            if (hasVolume()) {
+                val = getHeight();
             }
 
         } else if (type.equals(HULL_SURF)) {
@@ -957,6 +992,12 @@ public class Blob{
             val = MAX_RANGE;
 
         } else if (type.equals(VOX_VOL)) {
+            val = MAX_RANGE;
+
+        } else if (type.equals(PROJ_AREA)) {
+            val = MAX_RANGE;
+
+        } else if (type.equals(HEIGHT)) {
             val = MAX_RANGE;
 
         } else if (type.equals(HULL_VOL)) {

@@ -100,11 +100,10 @@
       <file leaf-file-name="Blob.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="605">
-              <caret line="347" column="22" selection-start-line="347" selection-start-column="22" selection-end-line="347" selection-end-column="22" />
+            <state relative-caret-position="50">
+              <caret line="867" column="34" selection-start-line="867" selection-start-column="34" selection-end-line="867" selection-end-column="34" />
               <folding>
                 <element signature="docComment;class#Blob#0" expanded="false" />
-                <element signature="method#Blob#0;class#Blob#0" expanded="false" />
                 <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
                 <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
                 <element signature="method#getX#0;class#Blob#0" expanded="false" />
@@ -117,6 +116,7 @@
                 <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
                 <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
                 <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+                <element signature="method#getProjectedPixels#0;class#Blob#0" expanded="false" />
                 <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
@@ -126,10 +126,12 @@
                 <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
                 <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
                 <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+                <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+                <element signature="e#10366#10477#0" expanded="false" />
                 <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
                 <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
                 <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
-                <element signature="e#11174#11283#0" expanded="false" />
+                <element signature="e#11876#11985#0" expanded="false" />
                 <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
                 <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
@@ -140,18 +142,17 @@
                 <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
                 <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
-                <element signature="e#23248#23320#0" expanded="false" />
+                <element signature="e#23950#24022#0" expanded="false" />
                 <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
-                <element signature="e#23720#23792#0" expanded="false" />
+                <element signature="e#24422#24494#0" expanded="false" />
                 <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
-                <element signature="e#26750#26859#0" expanded="false" />
+                <element signature="e#27452#27561#0" expanded="false" />
                 <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
-                <element signature="e#27897#27943#0" expanded="false" />
+                <element signature="e#28599#28645#0" expanded="false" />
                 <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
-                <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
                 <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
               </folding>
             </state>
@@ -212,9 +213,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
+    <option name="x" value="54" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1874" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -242,7 +243,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -265,84 +267,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathFunc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -619,11 +546,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25518674" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -633,14 +561,13 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15938166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1648291" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25518674" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -661,7 +588,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1206,11 +1133,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="347" column="22" selection-start-line="347" selection-start-column="22" selection-end-line="347" selection-end-column="22" />
+        <state relative-caret-position="50">
+          <caret line="867" column="34" selection-start-line="867" selection-start-column="34" selection-end-line="867" selection-end-column="34" />
           <folding>
             <element signature="docComment;class#Blob#0" expanded="false" />
-            <element signature="method#Blob#0;class#Blob#0" expanded="false" />
             <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
             <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
             <element signature="method#getX#0;class#Blob#0" expanded="false" />
@@ -1223,6 +1149,7 @@
             <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
             <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
             <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#getProjectedPixels#0;class#Blob#0" expanded="false" />
             <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
             <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
             <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
@@ -1232,10 +1159,12 @@
             <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
             <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
             <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="e#10366#10477#0" expanded="false" />
             <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
             <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
             <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
-            <element signature="e#11174#11283#0" expanded="false" />
+            <element signature="e#11876#11985#0" expanded="false" />
             <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
             <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
             <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
@@ -1246,18 +1175,17 @@
             <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
             <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
             <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
-            <element signature="e#23248#23320#0" expanded="false" />
+            <element signature="e#23950#24022#0" expanded="false" />
             <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
-            <element signature="e#23720#23792#0" expanded="false" />
+            <element signature="e#24422#24494#0" expanded="false" />
             <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
             <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
             <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
             <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
-            <element signature="e#26750#26859#0" expanded="false" />
+            <element signature="e#27452#27561#0" expanded="false" />
             <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
-            <element signature="e#27897#27943#0" expanded="false" />
+            <element signature="e#28599#28645#0" expanded="false" />
             <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
-            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
             <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
           </folding>
         </state>
