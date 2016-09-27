@@ -99,8 +99,8 @@
       <file leaf-file-name="Blob.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state relative-caret-position="131">
+              <caret line="266" column="5" selection-start-line="266" selection-start-column="5" selection-end-line="266" selection-end-column="5" />
               <folding>
                 <element signature="docComment;class#Blob#0" expanded="false" />
                 <element signature="method#Blob#0;class#Blob#0" expanded="false" />
@@ -122,6 +122,7 @@
                 <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
                 <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
                 <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+                <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
                 <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
@@ -131,32 +132,31 @@
                 <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
                 <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
                 <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
-                <element signature="e#10953#11064#0" expanded="false" />
+                <element signature="e#11012#11123#0" expanded="false" />
                 <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
                 <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
                 <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
-                <element signature="e#12463#12572#0" expanded="false" />
+                <element signature="e#12522#12631#0" expanded="false" />
                 <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
                 <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
-                <element signature="e#15523#15533#0" expanded="true" />
+                <element signature="e#15582#15592#0" expanded="true" />
                 <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
                 <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
-                <element signature="e#24884#24956#0" expanded="false" />
+                <element signature="e#24943#25015#0" expanded="false" />
                 <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
-                <element signature="e#25356#25428#0" expanded="false" />
+                <element signature="e#25415#25487#0" expanded="false" />
                 <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
-                <element signature="e#28386#28495#0" expanded="false" />
+                <element signature="e#28445#28554#0" expanded="false" />
                 <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
                 <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
-                <element signature="e#29978#30024#0" expanded="false" />
+                <element signature="e#30037#30083#0" expanded="false" />
                 <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
-                <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
                 <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
               </folding>
             </state>
@@ -217,9 +217,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
+    <option name="x" value="54" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1874" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -550,12 +550,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="7" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25414938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25414938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -565,7 +565,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15884861" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16427784" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1129,8 +1129,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state relative-caret-position="131">
+          <caret line="266" column="5" selection-start-line="266" selection-start-column="5" selection-end-line="266" selection-end-column="5" />
           <folding>
             <element signature="docComment;class#Blob#0" expanded="false" />
             <element signature="method#Blob#0;class#Blob#0" expanded="false" />
@@ -1152,6 +1152,7 @@
             <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
             <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
             <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
             <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
             <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
             <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
@@ -1161,32 +1162,31 @@
             <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
             <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
             <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
-            <element signature="e#10953#11064#0" expanded="false" />
+            <element signature="e#11012#11123#0" expanded="false" />
             <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
             <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
             <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
-            <element signature="e#12463#12572#0" expanded="false" />
+            <element signature="e#12522#12631#0" expanded="false" />
             <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
             <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
             <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
-            <element signature="e#15523#15533#0" expanded="true" />
+            <element signature="e#15582#15592#0" expanded="true" />
             <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
             <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
             <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
             <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
-            <element signature="e#24884#24956#0" expanded="false" />
+            <element signature="e#24943#25015#0" expanded="false" />
             <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
-            <element signature="e#25356#25428#0" expanded="false" />
+            <element signature="e#25415#25487#0" expanded="false" />
             <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
             <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
             <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
             <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
-            <element signature="e#28386#28495#0" expanded="false" />
+            <element signature="e#28445#28554#0" expanded="false" />
             <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
             <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
-            <element signature="e#29978#30024#0" expanded="false" />
+            <element signature="e#30037#30083#0" expanded="false" />
             <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
-            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
             <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
           </folding>
         </state>

@@ -245,6 +245,11 @@ public class Blob{
 
     }
 
+    public int getNVoxels() {
+        return x.size();
+
+    }
+
     public double getProjectedArea() {
         double[] x = getX();
         double[] y = getY();
@@ -311,7 +316,7 @@ public class Blob{
 
     public boolean fitConvexHull() {
         boolean hasvol = hasVolume();
-        double vol = getVoxelVolume();
+        double vol = getNVoxels();
 
         if (hasvol & vol > 4) {
             //Adding coordinates to Point3d structure
