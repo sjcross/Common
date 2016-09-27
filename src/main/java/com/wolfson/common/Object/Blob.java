@@ -26,6 +26,8 @@ import static org.doube.geometry.FitEllipsoid.inertia;
 public class Blob{
     public static final String OBJ_ID = "Object ID";
     public static final String VOX_VOL = "Voxel volume";
+    public static final String PROJ_AREA = "Projected area (2D)";
+    public static final String HEIGHT = "Height (z-axis range)";
     public static final String ELLIPSE_THETA = "Ellipse theta (rel. x-axis)";
     public static final String HULL_VOL = "Hull volume";
     public static final String HULL_SURF = "Hull surface area";
@@ -57,6 +59,8 @@ public class Blob{
     double[][] LMaPC = new double[2][3]; //Longest major perpendicular chord
     double[][] LMiPC = new double[2][3]; //Longest minor perpendicular chord
     double[] e2d = new double[6]; //Coefficients of ellipse fitting equation
+    double cal_xy = 1; //Calibration in xy
+    double cal_z = 1; //Calibration in z
     boolean hull_cnd = false; //True when convex hull built
     boolean vol_cnd = false; //True when volume calculated
     boolean surf_cnd = false; //True when surface area calculated
@@ -65,6 +69,7 @@ public class Blob{
     boolean LMaPC_cnd = false; //True when longest major perpendicular chord calculated
     boolean LMiPC_cnd = false; //True when longest minor perpendicular chord calculated
     static int ang_unit = RADIANS; //Angular unit to use
+    double err_tol = 1E-5; //Error tolerance
 
     Point3d[] pts;
     QuickHull3D hull;
@@ -87,6 +92,16 @@ public class Blob{
         x.add(x_in);
         y.add(y_in);
         z.add(z_in);
+
+    }
+
+    public double getErrTol() {
+        return err_tol;
+
+    }
+
+    public void setErrTol(double err_tol) {
+        this.err_tol = err_tol;
 
     }
 
@@ -145,6 +160,38 @@ public class Blob{
 
     }
 
+    public void setCalXY(double cal_xy) {
+        this.cal_xy = cal_xy;
+
+    }
+
+    public void setCalZ(double cal_z) {
+        this.cal_z = cal_z;
+
+    }
+
+    public double getCalXY() {
+        return cal_xy;
+
+    }
+
+    public double getCalZ() {
+        return cal_z;
+
+    }
+
+    public double getHeight() {
+        double[] z = getZ();
+
+        double min_z = new Min().evaluate(z);
+        double max_z = new Max().evaluate(z);
+
+        double height = max_z - min_z;
+
+        return height;
+
+    }
+
     public double[] getExtents() {
         //Minimum and maximum values for all dimensions [x_min, y_min, z_min; x_max, y_max, z_max]
         double[] extents = new double[6];
@@ -194,7 +241,28 @@ public class Blob{
     }
 
     public double getVoxelVolume() {
+        return x.size()*cal_xy*cal_xy*cal_z;
+
+    }
+
+    public int getNVoxels() {
         return x.size();
+
+    }
+
+    public double getProjectedArea() {
+        double[] x = getX();
+        double[] y = getY();
+        double[][] coords = new double[x.length][2];
+
+        for (int i=0;i<x.length;i++) {
+            coords[i][0] = x[i];
+            coords[i][1] = y[i];
+        }
+
+        coords = uniqueRows(coords);
+
+        return coords.length*cal_xy*cal_xy;
 
     }
 
@@ -248,7 +316,7 @@ public class Blob{
 
     public boolean fitConvexHull() {
         boolean hasvol = hasVolume();
-        double vol = getVoxelVolume();
+        double vol = getNVoxels();
 
         if (hasvol & vol > 4) {
             //Adding coordinates to Point3d structure
@@ -451,14 +519,14 @@ public class Blob{
                 Vector3D vt1 = new Vector3D(verts[faces[j][0]].get(0), verts[faces[j][0]].get(1), verts[faces[j][0]].get(2));
                 Vector3D vt2 = new Vector3D(verts[faces[j][1]].get(0), verts[faces[j][1]].get(1), verts[faces[j][1]].get(2));
                 Vector3D vt3 = new Vector3D(verts[faces[j][2]].get(0), verts[faces[j][2]].get(1), verts[faces[j][2]].get(2));
-                Plane face = new Plane(vt1, vt2, vt3, 1E-5);
+                Plane face = new Plane(vt1, vt2, vt3, err_tol);
 
                 //Intersection of possible positions plane and face
                 Line inter = face.intersection(plane);
                 ArrayList<Vector3D> i_pts = new ArrayList<Vector3D>(); //Real intersection points
 
                 //Intersection points of plane and face edges
-                Line l1 = new Line(vt1, vt2, 1E-5);
+                Line l1 = new Line(vt1, vt2, err_tol);
                 Vector3D i1 = inter.intersection(l1);
                 if (i1 != null) { //It lies somewhere on the line
                     if (Vector3D.distance(i1, vt1) < Vector3D.distance(vt1, vt2) & Vector3D.distance(i1, vt2) < Vector3D.distance(vt1, vt2)) {
@@ -466,7 +534,7 @@ public class Blob{
                     }
                 }
 
-                Line l2 = new Line(vt1, vt3, 1E-5);
+                Line l2 = new Line(vt1, vt3, err_tol);
                 Vector3D i2 = inter.intersection(l2);
                 if (i2 != null) { //It lies somewhere on the line
                     if (Vector3D.distance(i2, vt1) < Vector3D.distance(vt1, vt3) & Vector3D.distance(i2, vt3) < Vector3D.distance(vt1, vt3)) {
@@ -474,7 +542,7 @@ public class Blob{
                     }
                 }
 
-                Line l3 = new Line(vt2, vt3, 1E-5);
+                Line l3 = new Line(vt2, vt3, err_tol);
                 Vector3D i3 = inter.intersection(l3);
                 if (i3 != null) { //It lies somewhere on the line
                     if (Vector3D.distance(i3, vt2) < Vector3D.distance(vt2, vt3) & Vector3D.distance(i3, vt3) < Vector3D.distance(vt2, vt3)) {
@@ -557,61 +625,63 @@ public class Blob{
             Vector3D v1 = new Vector3D(LC[0][0] - a[0], LC[0][1] - a[1], LC[0][2] - a[2]);
             Vector3D v2 = new Vector3D(LC[1][0] - a[0], LC[1][1] - a[1], LC[1][2] - a[2]);
             Vector3D v3 = new Vector3D(LMaPC[1][0] - LMaPC[0][0] + LC[0][0] - a[0], LMaPC[1][1] - LMaPC[0][1] + LC[0][1]  - a[1], LMaPC[1][2] - LMaPC[0][2] + LC[0][2] - a[2]);
-            Plane plane = new Plane(v1, v2, v3, 0);
+            
+            if (v1.distance1(v2) > err_tol & v1.distance1(v3) > err_tol & v2.distance1(v3) > err_tol) {
+                Plane plane = new Plane(v1, v2, v3, 0);
+                //Coordinates of the point on the longest chord closest to the test point (reset to correct origin)
+                double[] ori = {plane.getOrigin().getX() + a[0], plane.getOrigin().getY() + a[1], plane.getOrigin().getZ() + a[2]};
 
-            //Coordinates of the point on the longest chord closest to the test point (reset to correct origin)
-            double[] ori = {plane.getOrigin().getX() + a[0], plane.getOrigin().getY() + a[1], plane.getOrigin().getZ() + a[2]};
+                //A line passing from the test point, through the closest point on the plane
+                Vector3D lv1 = new Vector3D(a[0], a[1], a[2]);
+                Vector3D lv2 = new Vector3D(ori[0], ori[1], ori[2]);
 
-            //A line passing from the test point, through the closest point on the plane
-            Vector3D lv1 = new Vector3D(a[0], a[1], a[2]);
-            Vector3D lv2 = new Vector3D(ori[0], ori[1], ori[2]);
+                //Following condition prevents error if testing point on longest chord
+                if (!lv1.equals(lv2)) {
+                    Line testchord = new Line(lv1, lv2, 0);
 
-            //Following condition prevents error if testing point on longest chord
-            if (!lv1.equals(lv2)) {
-                Line testchord = new Line(lv1, lv2, 0);
+                    for (int j = 0; j < faces.length; j++) {
+                        //Plane encompassing the current face being tested
+                        Vector3D vt1 = new Vector3D(verts[faces[j][0]].get(0), verts[faces[j][0]].get(1), verts[faces[j][0]].get(2));
+                        Vector3D vt2 = new Vector3D(verts[faces[j][1]].get(0), verts[faces[j][1]].get(1), verts[faces[j][1]].get(2));
+                        Vector3D vt3 = new Vector3D(verts[faces[j][2]].get(0), verts[faces[j][2]].get(1), verts[faces[j][2]].get(2));
+                        Plane face = new Plane(vt1, vt2, vt3, err_tol);
 
-                for (int j = 0; j < faces.length; j++) {
-                    //Plane encompassing the current face being tested
-                    Vector3D vt1 = new Vector3D(verts[faces[j][0]].get(0), verts[faces[j][0]].get(1), verts[faces[j][0]].get(2));
-                    Vector3D vt2 = new Vector3D(verts[faces[j][1]].get(0), verts[faces[j][1]].get(1), verts[faces[j][1]].get(2));
-                    Vector3D vt3 = new Vector3D(verts[faces[j][2]].get(0), verts[faces[j][2]].get(1), verts[faces[j][2]].get(2));
-                    Plane face = new Plane(vt1, vt2, vt3, 1E-5);
+                        //Intersection of face plane and line from test point through origin
+                        Vector3D inter = face.intersection(testchord);
 
-                    //Intersection of face plane and line from test point through origin
-                    Vector3D inter = face.intersection(testchord);
-
-                    //Checking the line intersects the face
-                    if (inter != null) {
-                        boolean run_test = false;
-                        if (inter.distance(vt1) == 0 | inter.distance(vt2) == 0 | inter.distance(vt3) == 0 ) {
-                            run_test = true;
-
-                        } else {
-                            //Shifting coordinates of face vertices such that test point is at the origin
-                            Vector3D vts1 = new Vector3D(verts[faces[j][0]].get(0) - inter.getX(), verts[faces[j][0]].get(1) - inter.getY(), verts[faces[j][0]].get(2) - inter.getZ());
-                            Vector3D vts2 = new Vector3D(verts[faces[j][1]].get(0) - inter.getX(), verts[faces[j][1]].get(1) - inter.getY(), verts[faces[j][1]].get(2) - inter.getZ());
-                            Vector3D vts3 = new Vector3D(verts[faces[j][2]].get(0) - inter.getX(), verts[faces[j][2]].get(1) - inter.getY(), verts[faces[j][2]].get(2) - inter.getZ());
-
-                            //Vertex lies within the face if the sum of angles between vertices adds to 2*pi
-                            double theta1 = Vector3D.angle(vts1, vts2);
-                            double theta2 = Vector3D.angle(vts2, vts3);
-                            double theta3 = Vector3D.angle(vts3, vts1);
-
-                            if (Math.abs(theta1 + theta2 + theta3 - 2 * Math.PI) < 1E-5) {
+                        //Checking the line intersects the face
+                        if (inter != null) {
+                            boolean run_test = false;
+                            if (inter.distance(vt1) == 0 | inter.distance(vt2) == 0 | inter.distance(vt3) == 0) {
                                 run_test = true;
-                            }
-                        }
 
-                        if (run_test) {
-                            double pp = Vector3D.distance(lv1, inter);
-                            if (pp > len) {
-                                len = pp;
-                                LMiPC[0][0] = a[0];
-                                LMiPC[0][1] = a[1];
-                                LMiPC[0][2] = a[2];
-                                LMiPC[1][0] = inter.getX();
-                                LMiPC[1][1] = inter.getY();
-                                LMiPC[1][2] = inter.getZ();
+                            } else {
+                                //Shifting coordinates of face vertices such that test point is at the origin
+                                Vector3D vts1 = new Vector3D(verts[faces[j][0]].get(0) - inter.getX(), verts[faces[j][0]].get(1) - inter.getY(), verts[faces[j][0]].get(2) - inter.getZ());
+                                Vector3D vts2 = new Vector3D(verts[faces[j][1]].get(0) - inter.getX(), verts[faces[j][1]].get(1) - inter.getY(), verts[faces[j][1]].get(2) - inter.getZ());
+                                Vector3D vts3 = new Vector3D(verts[faces[j][2]].get(0) - inter.getX(), verts[faces[j][2]].get(1) - inter.getY(), verts[faces[j][2]].get(2) - inter.getZ());
+
+                                //Vertex lies within the face if the sum of angles between vertices adds to 2*pi
+                                double theta1 = Vector3D.angle(vts1, vts2);
+                                double theta2 = Vector3D.angle(vts2, vts3);
+                                double theta3 = Vector3D.angle(vts3, vts1);
+
+                                if (Math.abs(theta1 + theta2 + theta3 - 2 * Math.PI) < err_tol) {
+                                    run_test = true;
+                                }
+                            }
+
+                            if (run_test) {
+                                double pp = Vector3D.distance(lv1, inter);
+                                if (pp > len) {
+                                    len = pp;
+                                    LMiPC[0][0] = a[0];
+                                    LMiPC[0][1] = a[1];
+                                    LMiPC[0][2] = a[2];
+                                    LMiPC[1][0] = inter.getX();
+                                    LMiPC[1][1] = inter.getY();
+                                    LMiPC[1][2] = inter.getZ();
+                                }
                             }
                         }
                     }
@@ -797,6 +867,23 @@ public class Blob{
         return euler;
     }
 
+    public int getOverlap(Blob blob2) {
+        double[] x2 = blob2.getX();
+        double[] y2 = blob2.getY();
+        double[] z2 = blob2.getZ();
+        int ovl = 0;
+
+        for(int i = 0; i < this.x.size(); ++i) {
+            for(int j = 0; j < x2.length; ++j) {
+                if(x.get(i) == x2[j] & y.get(i) == y2[j] & z.get(i) == z2[j]) {
+                    ovl++;
+                }
+            }
+        }
+
+        return ovl;
+    }
+
     public void fitEllipsoid() {
         //Fitting an ellipsoid using method from BoneJ
 
@@ -841,9 +928,14 @@ public class Blob{
         } else if (type.equals(VOX_VOL)) {
                 val = getVoxelVolume();
 
-        } else if (type.equals(HULL_VOL)) {
+        } else if (type.equals(PROJ_AREA)) {
             if (hasVolume()) {
-                val = getHullVolume();
+                val = getProjectedArea();
+            }
+
+        } else if (type.equals(HEIGHT)) {
+            if (hasVolume()) {
+                val = getHeight();
             }
 
         } else if (type.equals(HULL_SURF)) {
@@ -957,6 +1049,12 @@ public class Blob{
             val = MAX_RANGE;
 
         } else if (type.equals(VOX_VOL)) {
+            val = MAX_RANGE;
+
+        } else if (type.equals(PROJ_AREA)) {
+            val = MAX_RANGE;
+
+        } else if (type.equals(HEIGHT)) {
             val = MAX_RANGE;
 
         } else if (type.equals(HULL_VOL)) {
