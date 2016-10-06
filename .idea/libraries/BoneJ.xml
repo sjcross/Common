@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="BoneJ">
+    <CLASSES>
+      <root url="file://$3RD_PARTY$/BoneJ" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$3RD_PARTY$/BoneJ" />
+    </SOURCES>
+    <jarDirectory url="file://$3RD_PARTY$/BoneJ" recursive="false" />
+    <jarDirectory url="file://$3RD_PARTY$/BoneJ" recursive="false" type="SOURCES" />
+  </library>
+</component>
