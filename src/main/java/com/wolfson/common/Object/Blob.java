@@ -12,7 +12,6 @@ import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.commons.math3.stat.descriptive.rank.Min;
 import org.doube.geometry.Ellipsoid;
 import org.doube.geometry.FitEllipse;
-import org.doube.geometry.FitEllipsoid;
 import quickhull3d.Point3d;
 import quickhull3d.QuickHull3D;
 import java.util.ArrayList;
@@ -814,7 +813,7 @@ public class Blob{
 
         if (ang_unit == DEGREES) {
             orien[0] = orien[0]*180/Math.PI;
-            orien[1] = orien[0]*180/Math.PI;
+            orien[1] = orien[1]*180/Math.PI;
         }
 
         return orien;
@@ -842,7 +841,7 @@ public class Blob{
 
         if (ang_unit == DEGREES) {
             orien[0] = orien[0]*180/Math.PI;
-            orien[1] = orien[0]*180/Math.PI;
+            orien[1] = orien[1]*180/Math.PI;
         }
 
         return orien;
@@ -870,7 +869,7 @@ public class Blob{
 
         if (ang_unit == DEGREES) {
             orien[0] = orien[0]*180/Math.PI;
-            orien[1] = orien[0]*180/Math.PI;
+            orien[1] = orien[1]*180/Math.PI;
         }
 
         return orien;
@@ -979,7 +978,7 @@ public class Blob{
 
         if (ang_unit == DEGREES) {
             orien[0] = orien[0]*180/Math.PI;
-            orien[1] = orien[0]*180/Math.PI;
+            orien[1] = orien[1]*180/Math.PI;
         }
 
         return orien;
