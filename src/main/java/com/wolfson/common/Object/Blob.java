@@ -1,5 +1,4 @@
 //TODO: Add voxel-based surface area.
-//TODO: Add ability to fit 3D ellipsoid (partially completed already using BoneJ library)
 
 package com.wolfson.common.Object;
 
@@ -47,10 +46,14 @@ public class Blob{
     public static final String EULER_ALPHA = "Euler angle alpha";
     public static final String EULER_BETA = "Euler angle beta";
     public static final String EULER_GAMMA = "Euler angle gamma";
+    public static final String ELLIPSOID_THETA = "Ellipsoid theta (rel. x-axis)";
+    public static final String ELLIPSOID_PHI = "Ellipsoid phi (rel. xy-plane)";
     public static final int MAX_RANGE = 0; //Use full intensity range
     public static final int ZERO_180 = 1; //Use range 0-180 (for orientations)
     public static final int DEGREES = 2; //Use degrees
     public static final int RADIANS = 3; //Use degrees
+    public static final int CENTROID = 0; //Fit hull around voxel centroids (hull volume < voxel volume)
+    public static final int CORNER = 1; //Fit hull around voxel corners (hull volume > voxel volume)
 
     int ID;
     double V;
@@ -59,13 +62,14 @@ public class Blob{
     double[][] LMaPC = new double[2][3]; //Longest major perpendicular chord
     double[][] LMiPC = new double[2][3]; //Longest minor perpendicular chord
     double[] e2d = new double[6]; //Coefficients of ellipse fitting equation
-    double cal_xy = 1; //Calibration in xy
-    double cal_z = 1; //Calibration in z
+    final double cal_xy; //Calibration in xy (fixed once declared in constructor)
+    final double cal_z; //Calibration in z (fixed once declared in constructor)
     boolean hull_cnd = false; //True when convex hull built
     boolean vol_cnd = false; //True when volume calculated
     boolean surf_cnd = false; //True when surface area calculated
     boolean LC_cnd = false; //True when longest chord calculated
     boolean ellipse_cnd = false; //True when an ellipse has been calculated
+    boolean ellipsoid_cnd = false; //True when an ellipsoid has been calculated
     boolean LMaPC_cnd = false; //True when longest major perpendicular chord calculated
     boolean LMiPC_cnd = false; //True when longest minor perpendicular chord calculated
     static int ang_unit = RADIANS; //Angular unit to use
@@ -73,13 +77,16 @@ public class Blob{
 
     Point3d[] pts;
     QuickHull3D hull;
+    Ellipsoid ell;
 
     ArrayList<Double> x = new ArrayList<Double>();
     ArrayList<Double> y = new ArrayList<Double>();
     ArrayList<Double> z = new ArrayList<Double>();
 
-    public Blob(int ID) {
+    public Blob(int ID, double cal_xy, double cal_z) {
         this.ID = ID;
+        this.cal_xy = cal_xy;
+        this.cal_z = cal_z;
 
     }
 
@@ -89,9 +96,9 @@ public class Blob{
     }
 
     public void addCoord(double x_in, double y_in, double z_in) {
-        x.add(x_in);
-        y.add(y_in);
-        z.add(z_in);
+        x.add(x_in*cal_xy);
+        y.add(y_in*cal_xy);
+        z.add(z_in*cal_z);
 
     }
 
@@ -160,16 +167,6 @@ public class Blob{
 
     }
 
-    public void setCalXY(double cal_xy) {
-        this.cal_xy = cal_xy;
-
-    }
-
-    public void setCalZ(double cal_z) {
-        this.cal_z = cal_z;
-
-    }
-
     public double getCalXY() {
         return cal_xy;
 
@@ -226,17 +223,17 @@ public class Blob{
     }
 
     public boolean hasArea() {
-            //True if all dimension (x,y) are > 0
+        //True if all dimension (x,y) are > 0
 
-            double[] extents = getExtents();
+        double[] extents = getExtents();
 
-            boolean hasarea = false;
+        boolean hasarea = false;
 
-            if (extents[1]-extents[0] > 0 & extents[3]-extents[2] > 0) {
-                hasarea = true;
-            }
+        if (extents[1]-extents[0] > 0 & extents[3]-extents[2] > 0) {
+            hasarea = true;
+        }
 
-            return hasarea;
+        return hasarea;
 
     }
 
@@ -315,21 +312,52 @@ public class Blob{
     }
 
     public boolean fitConvexHull() {
+        return fitConvexHull(CENTROID);
+
+    }
+
+    public boolean fitConvexHull(int fit_mode) {
         boolean hasvol = hasVolume();
         double vol = getNVoxels();
 
-        if (hasvol & vol > 4) {
-            //Adding coordinates to Point3d structure
-            pts = new Point3d[x.size()];
-            for (int i = 0; i < x.size(); i++) {
-                pts[i] = new Point3d(x.get(i), y.get(i), z.get(i));
+        if (fit_mode == CORNER) {
+            if (hasvol & vol >= 4) {
+                //Adding coordinates to Point3d structure
+                pts = new Point3d[x.size() * 8]; //Works on corners of each voxel
+                for (int i = 0; i < x.size(); i++) {
+                    pts[i * 8] = new Point3d(x.get(i) - 0.5 * cal_xy, y.get(i) - 0.5 * cal_xy, z.get(i) - 0.5 * cal_z);
+                    pts[i * 8 + 1] = new Point3d(x.get(i) + 0.5 * cal_xy, y.get(i) - 0.5 * cal_xy, z.get(i) - 0.5 * cal_z);
+                    pts[i * 8 + 2] = new Point3d(x.get(i) - 0.5 * cal_xy, y.get(i) + 0.5 * cal_xy, z.get(i) - 0.5 * cal_z);
+                    pts[i * 8 + 3] = new Point3d(x.get(i) + 0.5 * cal_xy, y.get(i) + 0.5 * cal_xy, z.get(i) - 0.5 * cal_z);
+                    pts[i * 8 + 4] = new Point3d(x.get(i) - 0.5 * cal_xy, y.get(i) - 0.5 * cal_xy, z.get(i) + 0.5 * cal_z);
+                    pts[i * 8 + 5] = new Point3d(x.get(i) + 0.5 * cal_xy, y.get(i) - 0.5 * cal_xy, z.get(i) + 0.5 * cal_z);
+                    pts[i * 8 + 6] = new Point3d(x.get(i) - 0.5 * cal_xy, y.get(i) + 0.5 * cal_xy, z.get(i) + 0.5 * cal_z);
+                    pts[i * 8 + 7] = new Point3d(x.get(i) + 0.5 * cal_xy, y.get(i) + 0.5 * cal_xy, z.get(i) + 0.5 * cal_z);
+
+                }
+
+                hull = new QuickHull3D();
+                hull.build(pts);
+                hull.triangulate(); //Converts all faces to triangles
+
+                hull_cnd = true;
             }
 
-            hull = new QuickHull3D();
-            hull.build(pts);
-            hull.triangulate(); //Converts all faces to triangles
+        } else if (fit_mode == CENTROID) {
+            if (hasvol & vol >= 4) {
+                //Adding coordinates to Point3d structure
+                pts = new Point3d[x.size()]; //Works on corners of each voxel
+                for (int i = 0; i < x.size(); i++) {
+                    pts[i] = new Point3d(x.get(i), y.get(i), z.get(i));
 
-            hull_cnd = true;
+                }
+
+                hull = new QuickHull3D();
+                hull.build(pts);
+                hull.triangulate(); //Converts all faces to triangles
+
+                hull_cnd = true;
+            }
         }
 
         return hasvol;
@@ -625,7 +653,7 @@ public class Blob{
             Vector3D v1 = new Vector3D(LC[0][0] - a[0], LC[0][1] - a[1], LC[0][2] - a[2]);
             Vector3D v2 = new Vector3D(LC[1][0] - a[0], LC[1][1] - a[1], LC[1][2] - a[2]);
             Vector3D v3 = new Vector3D(LMaPC[1][0] - LMaPC[0][0] + LC[0][0] - a[0], LMaPC[1][1] - LMaPC[0][1] + LC[0][1]  - a[1], LMaPC[1][2] - LMaPC[0][2] + LC[0][2] - a[2]);
-            
+
             if (v1.distance1(v2) > err_tol & v1.distance1(v3) > err_tol & v2.distance1(v3) > err_tol) {
                 Plane plane = new Plane(v1, v2, v3, 0);
                 //Coordinates of the point on the longest chord closest to the test point (reset to correct origin)
@@ -784,7 +812,7 @@ public class Blob{
 
         if (ang_unit == DEGREES) {
             orien[0] = orien[0]*180/Math.PI;
-            orien[1] = orien[0]*180/Math.PI;
+            orien[1] = orien[1]*180/Math.PI;
         }
 
         return orien;
@@ -812,7 +840,7 @@ public class Blob{
 
         if (ang_unit == DEGREES) {
             orien[0] = orien[0]*180/Math.PI;
-            orien[1] = orien[0]*180/Math.PI;
+            orien[1] = orien[1]*180/Math.PI;
         }
 
         return orien;
@@ -840,7 +868,7 @@ public class Blob{
 
         if (ang_unit == DEGREES) {
             orien[0] = orien[0]*180/Math.PI;
-            orien[1] = orien[0]*180/Math.PI;
+            orien[1] = orien[1]*180/Math.PI;
         }
 
         return orien;
@@ -887,8 +915,6 @@ public class Blob{
     public void fitEllipsoid() {
         //Fitting an ellipsoid using method from BoneJ
 
-        //Will look into this at a later date
-
         double[] x = getX();
         double[] y = getY();
         double[] z = getZ();
@@ -900,17 +926,61 @@ public class Blob{
             coords[i][2] = z[i];
         }
 
-        Ellipsoid ell = inertia(coords);
-        System.out.println("Volume: "+String.valueOf(ell.getVolume()));
-        double[] cent = ell.getCentre();
-        System.out.println("Centre: "+String.valueOf(cent[0])+", "+String.valueOf(cent[1])+", "+String.valueOf(cent[2]));
-        double[] rad = ell.getRadii();
-        System.out.println("Radii: "+String.valueOf(rad[0])+", "+String.valueOf(rad[1])+", "+String.valueOf(rad[2]));
+        ell = inertia(coords);
+
+        ellipsoid_cnd = true;
+
+    }
+
+    public double[] getEllipsoidCentre() {
+        if (!ellipsoid_cnd) {
+            fitEllipsoid();
+        }
+
+        return ell.getCentre();
+
+    }
+
+    public double[] getEllipsoidRadii() {
+        if (!ellipsoid_cnd) {
+            fitEllipsoid();
+        }
+
+        return ell.getRadii();
+
+    }
+
+    public double[][] getEllipsoidRotationMatrix() {
+        if (!ellipsoid_cnd) {
+            fitEllipsoid();
+        }
+
+        return ell.getRotation();
+
+    }
+
+    public double[] getEllipsoidOrientation() {
+        if (!ellipsoid_cnd) {
+            fitEllipsoid();
+        }
+
         double[][] rot = ell.getRotation();
-        System.out.println("Rotation matrix: "+String.valueOf(rot[0][0]*180/Math.PI)+", "+String.valueOf(rot[1][0]*180/Math.PI)+", "+String.valueOf(rot[2][0]*180/Math.PI)+String.valueOf(rot[0][1]*180/Math.PI)+", "+String.valueOf(rot[1][1]*180/Math.PI)+", "+String.valueOf(rot[2][1]*180/Math.PI)+String.valueOf(rot[0][2]*180/Math.PI)+", "+String.valueOf(rot[1][2]*180/Math.PI)+", "+String.valueOf(rot[2][2]*180/Math.PI));
+        double[] orien = new double[2];
 
+        orien[0] = -Math.atan(rot[1][0]/rot[0][0]); //Orientation relative to x axis
+        double xy = Math.sqrt(Math.pow(rot[0][0],2)+Math.pow(rot[1][0],2));
+        orien[1] = Math.atan(rot[2][0]/xy); //Orientation relative to xy plane
 
+        if (rot[0][0] <= 0) {
+            orien[1] = -orien[1];
+        }
 
+        if (ang_unit == DEGREES) {
+            orien[0] = orien[0]*180/Math.PI;
+            orien[1] = orien[1]*180/Math.PI;
+        }
+
+        return orien;
 
     }
 
@@ -926,7 +996,7 @@ public class Blob{
             val = getID();
 
         } else if (type.equals(VOX_VOL)) {
-                val = getVoxelVolume();
+            val = getVoxelVolume();
 
         } else if (type.equals(PROJ_AREA)) {
             if (hasVolume()) {
@@ -1037,6 +1107,14 @@ public class Blob{
                 val = getEllipseTheta();
             }
 
+        } else if (type.equals(ELLIPSOID_THETA)) {
+            double[] orien = getEllipsoidOrientation();
+            val = orien[0];
+
+        } else if (type.equals(ELLIPSOID_PHI)) {
+            double[] orien = getEllipsoidOrientation();
+            val = orien[1];
+
         }
 
         return val;
@@ -1114,9 +1192,16 @@ public class Blob{
         } else if (type.equals(ELLIPSE_THETA)) {
             val = ZERO_180;
 
+        } else if (type.equals(ELLIPSOID_THETA)) {
+            val = ZERO_180;
+
+        } else if (type.equals(ELLIPSOID_PHI)) {
+            val = ZERO_180;
+
         }
 
         return val;
 
     }
+
 }
