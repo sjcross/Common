@@ -100,10 +100,9 @@
       <file leaf-file-name="Blob.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="969" column="0" selection-start-line="969" selection-start-column="0" selection-end-line="969" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
-                <element signature="e#0#39399#0" expanded="true" />
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#Blob#0" expanded="false" />
                 <element signature="method#Blob#0;class#Blob#0" expanded="false" />
@@ -138,7 +137,7 @@
                 <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
                 <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
                 <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
-                <element signature="e#14662#14771#0" expanded="false" />
+                <element signature="e#14595#14704#0" expanded="false" />
                 <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
                 <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
@@ -149,14 +148,14 @@
                 <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
                 <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
-                <element signature="e#27071#27143#0" expanded="false" />
+                <element signature="e#27004#27076#0" expanded="false" />
                 <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
-                <element signature="e#27543#27615#0" expanded="false" />
+                <element signature="e#27476#27548#0" expanded="false" />
                 <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
-                <element signature="e#30573#30682#0" expanded="false" />
+                <element signature="e#30506#30615#0" expanded="false" />
                 <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
                 <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
@@ -560,12 +559,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="7" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25414938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25414938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -1128,10 +1127,9 @@
     <entry file="jar://$3RD_PARTY$/BoneJ/BoneJ_.zip!/org/doube/geometry/FitEllipsoid.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="969" column="0" selection-start-line="969" selection-start-column="0" selection-end-line="969" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39399#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Blob#0" expanded="false" />
             <element signature="method#Blob#0;class#Blob#0" expanded="false" />
@@ -1166,7 +1164,7 @@
             <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
             <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
             <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
-            <element signature="e#14662#14771#0" expanded="false" />
+            <element signature="e#14595#14704#0" expanded="false" />
             <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
             <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
             <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
@@ -1177,14 +1175,14 @@
             <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
             <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
             <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
-            <element signature="e#27071#27143#0" expanded="false" />
+            <element signature="e#27004#27076#0" expanded="false" />
             <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
-            <element signature="e#27543#27615#0" expanded="false" />
+            <element signature="e#27476#27548#0" expanded="false" />
             <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
             <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
             <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
             <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
-            <element signature="e#30573#30682#0" expanded="false" />
+            <element signature="e#30506#30615#0" expanded="false" />
             <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
             <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
             <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />

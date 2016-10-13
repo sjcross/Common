@@ -1,5 +1,4 @@
 //TODO: Add voxel-based surface area.
-//TODO: Fix ellipsoid phi calculation (ellipsoid theta appears OK)
 
 package com.wolfson.common.Object;
 
