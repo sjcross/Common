@@ -2,7 +2,7 @@ package com.wolfson.common.Object;
 
 import org.w3c.dom.Element;
 
-public class Spot {
+public class Spot extends Point{
     public static final String MAXI = "Maximum intensity";
     public static final String MINI = "Minimum intensity";
     public static final String MEANI = "Mean intensity";
@@ -13,9 +13,6 @@ public class Spot {
 
     public String name;
     public double ID;
-    public double x;
-    public double y;
-    public double z;
     public double t;
     public double frame;
     public double[] min_I;
@@ -42,6 +39,13 @@ public class Spot {
         med_I = new double[n_ch];
         total_I = new double[n_ch];
         std_I = new double[n_ch];
+    }
+
+    public Spot(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+
     }
 
     public void addTrackMateXML(Element e) {
