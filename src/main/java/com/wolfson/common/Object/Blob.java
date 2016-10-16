@@ -1403,4 +1403,22 @@ public class Blob{
 
     }
 
+    public int getOverlap(Blob blob2) {
+        double[] x2 = blob2.getX();
+        double[] y2 = blob2.getY();
+        double[] z2 = blob2.getZ();
+
+        int ovl = 0;
+        for (int i=0;i<x.size();i++) {
+            for (int j=0;j<x2.length;j++) {
+                if (x.get(i) == x2[j] & y.get(i) == y2[j] & z.get(i) == z2[j]) {
+                    ovl++;
+
+                }
+            }
+        }
+
+        return ovl;
+
+    }
 }
