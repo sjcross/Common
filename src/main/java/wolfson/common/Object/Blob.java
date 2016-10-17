@@ -1,6 +1,6 @@
 //TODO: Add voxel-based surface area.
 
-package com.wolfson.common.Object;
+package wolfson.common.Object;
 
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import org.apache.commons.math3.geometry.euclidean.threed.Line;
@@ -16,10 +16,12 @@ import org.doube.geometry.Ellipsoid;
 import org.doube.geometry.FitEllipse;
 import quickhull3d.Point3d;
 import quickhull3d.QuickHull3D;
+import wolfson.common.MathFunc.ArrayFunc;
+import wolfson.common.MathFunc.GeneralOps;
+
 import java.util.ArrayList;
 
-import static com.wolfson.common.MathFunc.ArrayFunc.uniqueRows;
-import static com.wolfson.common.MathFunc.GeneralOps.ppdist;
+import static wolfson.common.MathFunc.ArrayFunc.uniqueRows;
 import static org.doube.geometry.FitEllipsoid.inertia;
 
 /**
@@ -276,7 +278,7 @@ public class Blob{
             coords[i][1] = y[i];
         }
 
-        coords = uniqueRows(coords);
+        coords = ArrayFunc.uniqueRows(coords);
 
         return coords.length*cal_xy*cal_xy;
 
@@ -293,7 +295,7 @@ public class Blob{
             coords[i][1] = y[i];
         }
 
-        coords = uniqueRows(coords);
+        coords = ArrayFunc.uniqueRows(coords);
         e2d = FitEllipse.direct(coords);
 
         ellipse_cnd = true;
@@ -425,9 +427,9 @@ public class Blob{
             double[] b = {verts[faces[i][1]].get(0),verts[faces[i][1]].get(1),verts[faces[i][1]].get(2)};
             double[] c = {verts[faces[i][2]].get(0),verts[faces[i][2]].get(1),verts[faces[i][2]].get(2)};
 
-            double l1 = ppdist(a,b);
-            double l2 = ppdist(a,c);
-            double l3 = ppdist(b,c);
+            double l1 = GeneralOps.ppdist(a,b);
+            double l2 = GeneralOps.ppdist(a,c);
+            double l3 = GeneralOps.ppdist(b,c);
 
             double s = (l1+l2+l3)/2; //The semiperimeter of the polygon
 
@@ -509,7 +511,7 @@ public class Blob{
             for (int j=i+1;j<verts.length;j++) {
                 double[] a = {verts[i].get(0),verts[i].get(1),verts[i].get(2)};
                 double[] b = {verts[j].get(0),verts[j].get(1),verts[j].get(2)};
-                double pp = ppdist(a,b);
+                double pp = GeneralOps.ppdist(a,b);
 
                 if (pp > len) {
                     len = pp;
@@ -558,7 +560,7 @@ public class Blob{
             calculateLC();
         }
 
-        double pp = ppdist(new double[]{LC[0][0], LC[0][1], LC[0][2]},new double[]{LC[1][0], LC[1][1], LC[1][2]});
+        double pp = GeneralOps.ppdist(new double[]{LC[0][0], LC[0][1], LC[0][2]},new double[]{LC[1][0], LC[1][1], LC[1][2]});
 
         return pp;
     }
@@ -676,7 +678,7 @@ public class Blob{
             calculateLMaPC();
         }
 
-        double pp = ppdist(new double[]{LMaPC[0][0], LMaPC[0][1], LMaPC[0][2]},new double[]{LMaPC[1][0], LMaPC[1][1], LMaPC[1][2]});
+        double pp = GeneralOps.ppdist(new double[]{LMaPC[0][0], LMaPC[0][1], LMaPC[0][2]},new double[]{LMaPC[1][0], LMaPC[1][1], LMaPC[1][2]});
 
         return pp;
     }
@@ -788,7 +790,7 @@ public class Blob{
             calculateLMiPC();
         }
 
-        double pp = ppdist(new double[]{LMiPC[0][0], LMiPC[0][1], LMiPC[0][2]},new double[]{LMiPC[1][0], LMiPC[1][1], LMiPC[1][2]});
+        double pp = GeneralOps.ppdist(new double[]{LMiPC[0][0], LMiPC[0][1], LMiPC[0][2]},new double[]{LMiPC[1][0], LMiPC[1][1], LMiPC[1][2]});
 
         return pp;
     }
@@ -845,7 +847,7 @@ public class Blob{
         double x = LC[0][0]- LC[1][0];
         double y = LC[0][1]- LC[1][1];
         double z = LC[0][2]- LC[1][2];
-        double xy = ppdist(new double[]{LC[0][0], LC[0][1]},new double[]{LC[1][0], LC[1][1]});
+        double xy = GeneralOps.ppdist(new double[]{LC[0][0], LC[0][1]},new double[]{LC[1][0], LC[1][1]});
 
         double[] orien = new double[2]; //Theta and phi
         orien[0] = -Math.atan(y/x); //Orientation relative to x axis
@@ -873,7 +875,7 @@ public class Blob{
         double x = LMaPC[0][0]- LMaPC[1][0];
         double y = LMaPC[0][1]- LMaPC[1][1];
         double z = LMaPC[0][2]- LMaPC[1][2];
-        double xy = ppdist(new double[]{LMaPC[0][0], LMaPC[0][1]},new double[]{LMaPC[1][0], LMaPC[1][1]});
+        double xy = GeneralOps.ppdist(new double[]{LMaPC[0][0], LMaPC[0][1]},new double[]{LMaPC[1][0], LMaPC[1][1]});
 
         double[] orien = new double[2]; //Theta and phi
         orien[0] = -Math.atan(y/x); //Orientation relative to x axis
@@ -901,7 +903,7 @@ public class Blob{
         double x = LMiPC[0][0]- LMiPC[1][0];
         double y = LMiPC[0][1]- LMiPC[1][1];
         double z = LMiPC[0][2]- LMiPC[1][2];
-        double xy = ppdist(new double[]{LMiPC[0][0], LMiPC[0][1]},new double[]{LMiPC[1][0], LMiPC[1][1]});
+        double xy = GeneralOps.ppdist(new double[]{LMiPC[0][0], LMiPC[0][1]},new double[]{LMiPC[1][0], LMiPC[1][1]});
 
         double[] orien = new double[2]; //Theta and phi
         orien[0] = -Math.atan(y/x); //Orientation relative to x axis

@@ -1,4 +1,4 @@
-package com.wolfson.common.Object;
+package wolfson.common.Object;
 
 import org.w3c.dom.Element;
 

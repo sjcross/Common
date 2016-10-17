@@ -1,4 +1,4 @@
-package com.wolfson.common.Object;
+package wolfson.common.Object;
 
 /**
  * Created by sc13967 on 13/10/2016.
