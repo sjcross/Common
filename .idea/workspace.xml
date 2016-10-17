@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <list default="true" id="58a93d3a-53bf-43ec-b929-89bc18e9a84a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java" afterPath="$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java" />
+=======
+    <list default="true" id="bc550e0c-f208-4bc9-bb3d-6a0b503bcf78" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MidpointCircle.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MidpointCircle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" />
+>>>>>>> Stashed changes
 =======
     <list default="true" id="bc550e0c-f208-4bc9-bb3d-6a0b503bcf78" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java" />
@@ -33,6 +42,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
       <file leaf-file-name="ArrayFunc.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/ArrayFunc.java">
@@ -95,6 +105,16 @@
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#FileCrawler#0" expanded="false" />
 >>>>>>> Stashed changes
+=======
+      <file leaf-file-name="FileCrawler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#FileCrawler#0" expanded="false" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
@@ -103,6 +123,7 @@
       <file leaf-file-name="Folder.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             <state relative-caret-position="51">
               <caret line="38" column="81" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
@@ -186,6 +207,13 @@
                 <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
                 <element signature="method#getParent#0;class#Folder#0" expanded="false" />
 >>>>>>> Stashed changes
+=======
+            <state relative-caret-position="301">
+              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+              <folding>
+                <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
+                <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
@@ -248,7 +276,11 @@
     </navigator>
     <panes>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <pane id="PackagesPane" />
+=======
+      <pane id="Scope" />
+>>>>>>> Stashed changes
 =======
       <pane id="Scope" />
 >>>>>>> Stashed changes
@@ -267,10 +299,13 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
               <option name="myItemId" value="Common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
 =======
+=======
+>>>>>>> Stashed changes
               <option name="myItemId" value="Common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -322,6 +357,9 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
           </PATH>
           <PATH>
@@ -353,6 +391,9 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="System" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -400,8 +441,13 @@
         </subPane>
       </pane>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <pane id="Scratches" />
       <pane id="Scope" />
+=======
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+>>>>>>> Stashed changes
 =======
       <pane id="PackagesPane" />
       <pane id="Scratches" />
@@ -690,7 +736,11 @@
   </component>
   <component name="ToolWindowManager">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <frame x="54" y="-8" width="1874" height="1096" extended-state="7" />
+=======
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+>>>>>>> Stashed changes
 =======
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
 >>>>>>> Stashed changes
@@ -698,6 +748,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25414938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -713,6 +764,10 @@
 =======
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> Stashed changes
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -722,6 +777,9 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2497309" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -749,9 +807,13 @@
   </component>
   <component name="XDebuggerManager">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <breakpoint-manager>
       <option name="time" value="8" />
     </breakpoint-manager>
+=======
+    <breakpoint-manager />
+>>>>>>> Stashed changes
 =======
     <breakpoint-manager />
 >>>>>>> Stashed changes
@@ -762,6 +824,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/GeneralOps.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1029,10 +1092,14 @@
 =======
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
 >>>>>>> Stashed changes
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
           <folding>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             <element signature="method#uniqueVals#0;class#ArrayFunc#0" expanded="false" />
             <element signature="method#uniqueVals#1;class#ArrayFunc#0" expanded="false" />
@@ -1056,6 +1123,10 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#FileCrawler#0" expanded="false" />
 >>>>>>> Stashed changes
+=======
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#FileCrawler#0" expanded="false" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
@@ -1065,6 +1136,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             <element signature="method#uniqueVals#0;class#ArrayFunc#0" expanded="false" />
             <element signature="method#uniqueVals#1;class#ArrayFunc#0" expanded="false" />
@@ -1088,6 +1160,10 @@
             <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
             <element signature="method#getParent#0;class#Folder#0" expanded="false" />
 >>>>>>> Stashed changes
+=======
+            <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
+            <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
@@ -1095,6 +1171,7 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
           <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
         </state>
@@ -1143,10 +1220,14 @@
 =======
           <caret line="947" column="56" selection-start-line="947" selection-start-column="56" selection-end-line="947" selection-end-column="56" />
 >>>>>>> Stashed changes
+=======
+          <caret line="947" column="56" selection-start-line="947" selection-start-column="56" selection-end-line="947" selection-end-column="56" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/ArrayFunc.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1228,10 +1309,27 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#FileCrawler#0" expanded="false" />
 >>>>>>> Stashed changes
+=======
+    <entry file="file://$PROJECT_DIR$/src/test/java/wolfson/common/MathFunc/AppTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#FileCrawler#0" expanded="false" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     <entry file="jar://$3RD_PARTY$/commons-math3-3.6.1/commons-math3-3.6.1.jar!/org/apache/commons/math3/geometry/euclidean/threed/Vector3D.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1317,6 +1415,15 @@
             <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
             <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
             <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+          <folding>
+            <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
+            <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+>>>>>>> Stashed changes
 =======
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
       <provider selected="true" editor-type-id="text-editor">
