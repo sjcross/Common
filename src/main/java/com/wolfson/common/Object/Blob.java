@@ -51,6 +51,8 @@ public class Blob{
     public static final String EULER_GAMMA = "Euler angle gamma";
     public static final String ELLIPSOID_THETA = "Ellipsoid theta (rel. x-axis)";
     public static final String ELLIPSOID_PHI = "Ellipsoid phi (rel. xy-plane)";
+    public static final String DIST_TO_REF_CENT = "Centroid distance to reference";
+    public static final String DIST_TO_REF_EDGE = "Closest distance to reference";
     public static final String ELLIPSE_POINT_ANGLE = "Ellipse-to-reference angle (xy)";
     public static final String ELLIPSOID_POINT_ANGLE = "Ellipsoid-to-reference angle";
     public static final String LC_POINT_ANGLE = "Longest chord-to-reference angle";
@@ -240,7 +242,7 @@ public class Blob{
     }
 
     public boolean hasArea() {
-        //True if all dimension (x,y) are > 0
+        //True if all dimensions (x,y) are > 0
 
         double[] extents = getExtents();
 
@@ -304,23 +306,30 @@ public class Blob{
     }
 
     public double getEllipseTheta() {
-        if (!ellipse_cnd) {
-            fitEllipse();
-        }
+        double th;
 
-        double th = 0;
-        if (e2d[1]==0 & e2d[0]<e2d[2]) {
+        if (hasArea()) {
+            if (!ellipse_cnd) {
+                fitEllipse();
+            }
+
             th = 0;
+            if (e2d[1] == 0 & e2d[0] < e2d[2]) {
+                th = 0;
 
-        } else if (e2d[1]==0 & e2d[0]>e2d[2]) {
-            th = 90;
+            } else if (e2d[1] == 0 & e2d[0] > e2d[2]) {
+                th = 90;
 
-        } else if (e2d[1]!=0 & e2d[0]>0) {
-            th = Math.toDegrees(-Math.atan((e2d[2]-e2d[0]-Math.sqrt(Math.pow(e2d[0]-e2d[2],2)+Math.pow(e2d[1],2)))/e2d[1]));
+            } else if (e2d[1] != 0 & e2d[0] > 0) {
+                th = Math.toDegrees(-Math.atan((e2d[2] - e2d[0] - Math.sqrt(Math.pow(e2d[0] - e2d[2], 2) + Math.pow(e2d[1], 2))) / e2d[1]));
 
-        }  else {
-            double val = -Math.atan((e2d[2]-e2d[0]-Math.sqrt(Math.pow(e2d[0]-e2d[2],2)+Math.pow(e2d[1],2)))/e2d[1]) + Math.PI/2;
-            th = Math.toDegrees(((val+Math.PI/2)%Math.PI)-Math.PI/2);
+            } else {
+                double val = -Math.atan((e2d[2] - e2d[0] - Math.sqrt(Math.pow(e2d[0] - e2d[2], 2) + Math.pow(e2d[1], 2))) / e2d[1]) + Math.PI / 2;
+                th = Math.toDegrees(((val + Math.PI / 2) % Math.PI) - Math.PI / 2);
+
+            }
+        } else {
+            th = Double.NaN;
 
         }
 
@@ -523,6 +532,25 @@ public class Blob{
         }
 
         return LC;
+    }
+
+    public double[] getLCCentre() {
+        double[][] LC_ends = getLCCoords();
+        double[] LC_cent = new double[3];
+
+        double x_min  = Math.min(LC_ends[0][0],LC_ends[1][0]);
+        double x_max  = Math.max(LC_ends[0][0],LC_ends[1][0]);
+        double y_min  = Math.min(LC_ends[0][1],LC_ends[1][1]);
+        double y_max  = Math.max(LC_ends[0][1],LC_ends[1][1]);
+        double z_min  = Math.min(LC_ends[0][2],LC_ends[1][2]);
+        double z_max  = Math.max(LC_ends[0][2],LC_ends[1][2]);
+
+        LC_cent[0] = (x_max-x_min)/2+x_min;
+        LC_cent[1] = (y_max-y_min)/2+y_min;
+        LC_cent[2] = (z_max-z_min)/2+z_min;
+
+        return LC_cent;
+
     }
 
     public double getLCLength() {
@@ -1026,24 +1054,31 @@ public class Blob{
     }
 
     public double getEllipseAngleToPoint() {
-        if (!ellipse_cnd) {
-            fitEllipse();
-        }
+        double angle;
 
-        double theta = getEllipseTheta();
-        double[] e2d_dims = FitEllipse.varToDimensions(e2d);
+        if (hasArea()) {
+            double theta = getEllipseTheta();
+            double[] e2d_dims = FitEllipse.varToDimensions(e2d);
 
-        Vector2D v1 = new Vector2D(1,Math.tan(theta));
-        Vector2D v2 = new Vector2D(point.x - e2d_dims[0], point.y - e2d_dims[1]);
+            Vector2D v1 = new Vector2D(1, -Math.tan(theta*Math.PI/180));
+            Vector2D v2 = new Vector2D(point.x - e2d_dims[0], point.y - e2d_dims[1]);
 
-        double angle = Vector2D.angle(v1, v2);
+            angle = Vector2D.angle(v1, v2);
 
-        if (angle >= Math.PI / 2) {
-            angle = angle - Math.PI;
-        }
+            // Putting it into the range -90 to +90 degrees (or radian equivalent)
+            if (angle >= Math.PI / 2) {
+                angle = angle - Math.PI;
+            }
 
-        if (ang_unit == DEGREES) {
-            angle *= 180 / Math.PI;
+            if (ang_unit == DEGREES) {
+                angle *= 180 / Math.PI;
+            }
+
+            angle = Math.abs(angle);  // We are only interested in the deviation (i.e. absolute value)
+
+        } else {
+            angle = Double.NaN;
+
         }
 
         return angle;
@@ -1071,8 +1106,41 @@ public class Blob{
             angle *= 180 / Math.PI;
         }
 
+        angle = Math.abs(angle); // We are only interested in the deviation (i.e. absolute value)
+
         return angle;
 
+    }
+
+    public double getLCAngleToPoint() {
+        double angle;
+
+        if (hasVolume()) {
+            double theta = getLCOrientation()[0];
+            double[] LC_cent = getLCCentre();
+
+            Vector3D v1 = new Vector3D(LC[0][0]- LC[1][0],LC[0][1]- LC[1][1],LC[0][2]- LC[1][2]);
+            Vector3D v2 = new Vector3D(point.x - LC_cent[0], point.y - LC_cent[1], point.z - LC_cent[2]);
+
+            angle = Vector3D.angle(v1, v2);
+
+            // Putting it into the range -90 to +90 degrees (or radian equivalent)
+            if (angle >= Math.PI / 2) {
+                angle = angle - Math.PI;
+            }
+
+            if (ang_unit == DEGREES) {
+                angle *= 180 / Math.PI;
+            }
+
+            angle = Math.abs(angle);  // We are only interested in the deviation (i.e. absolute value)
+
+        } else {
+            angle = Double.NaN;
+
+        }
+
+        return angle;
     }
 
     /**
@@ -1206,6 +1274,16 @@ public class Blob{
             double[] orien = getEllipsoidOrientation();
             val = orien[1];
 
+        } else if (type.equals(DIST_TO_REF_CENT)) {
+            if (this.point != null) {
+                val = getCentroidDistanceToPoint();
+            }
+
+        }  else if (type.equals(DIST_TO_REF_EDGE)) {
+            if (this.point != null) {
+                val = getNearestDistanceToPoint();
+            }
+
         } else if (type.equals(ELLIPSE_POINT_ANGLE)) {
             if (this.point != null) {
                 val = getEllipseAngleToPoint();
@@ -1214,6 +1292,11 @@ public class Blob{
         } else if (type.equals(ELLIPSOID_POINT_ANGLE)) {
             if (this.point != null) {
                 val = getEllipsoidAngleToPoint();
+            }
+
+        } else if (type.equals(LC_POINT_ANGLE)) {
+            if (this.point != null) {
+                val = getLCAngleToPoint();
             }
 
         }
@@ -1299,10 +1382,19 @@ public class Blob{
         } else if (type.equals(ELLIPSOID_PHI)) {
             val = ZERO_180;
 
+        } else if (type.equals(DIST_TO_REF_CENT)) {
+            val = MAX_RANGE;
+
+        } else if (type.equals(DIST_TO_REF_EDGE)) {
+            val = MAX_RANGE;
+
         } else if (type.equals(ELLIPSE_POINT_ANGLE)) {
             val = ZERO_180;
 
         } else if (type.equals(ELLIPSOID_POINT_ANGLE)) {
+            val = ZERO_180;
+
+        } else if (type.equals(LC_POINT_ANGLE)) {
             val = ZERO_180;
 
         }
