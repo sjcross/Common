@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="Common" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <list default="true" id="58a93d3a-53bf-43ec-b929-89bc18e9a84a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java" afterPath="$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java" />
+=======
+    <list default="true" id="bc550e0c-f208-4bc9-bb3d-6a0b503bcf78" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MidpointCircle.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MidpointCircle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" />
+>>>>>>> Stashed changes
+=======
+    <list default="true" id="bc550e0c-f208-4bc9-bb3d-6a0b503bcf78" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MidpointCircle.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MidpointCircle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" />
+>>>>>>> Stashed changes
     </list>
-    <ignored path="Math.iws" />
+    <ignored path="Common.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,10 +38,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
-    <favorites_list name="Math" />
+    <favorites_list name="Common" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <file leaf-file-name="ArrayFunc.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/ArrayFunc.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -89,15 +104,36 @@
                 <element signature="method#Spot#1;class#Spot#0" expanded="false" />
                 <element signature="method#addTrackMateXML#0;class#Spot#0" expanded="false" />
                 <element signature="method#setNChannels#0;class#Spot#0" expanded="false" />
+=======
+      <file leaf-file-name="FileCrawler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#FileCrawler#0" expanded="false" />
+>>>>>>> Stashed changes
+=======
+      <file leaf-file-name="FileCrawler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#FileCrawler#0" expanded="false" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Blob.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java">
+      <file leaf-file-name="Folder.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <state relative-caret-position="51">
               <caret line="38" column="81" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
 =======
@@ -183,29 +219,26 @@
                 <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
                 <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
                 <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+=======
+            <state relative-caret-position="301">
+              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+              <folding>
+                <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
+                <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+>>>>>>> Stashed changes
+=======
+            <state relative-caret-position="301">
+              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+              <folding>
+                <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
+                <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Point.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Point.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -218,20 +251,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/MSD.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/MSD.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/Indexer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/MidpointCircle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/GeneralOps.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/CumStat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/ArrayFunc.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/Common/MathFunc/ArrayFunc.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/ArrayFunc.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/CumStat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Spot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Point.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java" />
       </list>
     </option>
   </component>
@@ -255,7 +276,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -273,13 +294,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
-=======
 <<<<<<< Updated upstream
-      <pane id="Scope" />
->>>>>>> DevelopMinor
+<<<<<<< Updated upstream
       <pane id="PackagesPane" />
 =======
+      <pane id="Scope" />
+>>>>>>> Stashed changes
+=======
+      <pane id="Scope" />
 >>>>>>> Stashed changes
       <pane id="ProjectPane">
         <subPane>
@@ -288,9 +310,23 @@
               <option name="myItemId" value="Common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+=======
+=======
+>>>>>>> Stashed changes
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -320,70 +356,16 @@
               <option name="myItemId" value="Common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -404,6 +386,56 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+<<<<<<< Updated upstream
+=======
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="System" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -430,10 +462,6 @@
               <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -445,49 +473,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <pane id="Scratches" />
 <<<<<<< HEAD
       <pane id="Scope" />
 =======
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+>>>>>>> Stashed changes
 =======
       <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
 >>>>>>> Stashed changes
->>>>>>> DevelopMinor
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$3RD_PARTY$/Java3D/1.5.2/lib/ext/vecmath.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.wolfson.MathFunc" />
-    </key>
-  </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.FileCrawler">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -652,7 +659,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Math" />
+      <module name="Common" />
       <envs />
       <method />
     </configuration>
@@ -732,6 +739,24 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="false" name="FileCrawler" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="wolfson.common.System.FileCrawler" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Common" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.FileCrawler" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -741,26 +766,30 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="58a93d3a-53bf-43ec-b929-89bc18e9a84a" name="Default" comment="" />
-      <created>1471259245559</created>
+      <changelist id="bc550e0c-f208-4bc9-bb3d-6a0b503bcf78" name="Default" comment="" />
+      <created>1476637263651</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1471259245559</updated>
+      <updated>1476637263651</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <frame x="54" y="-8" width="1874" height="1096" extended-state="7" />
 =======
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
-<<<<<<< Updated upstream
->>>>>>> DevelopMinor
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+>>>>>>> Stashed changes
+=======
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+>>>>>>> Stashed changes
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25414938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 =======
       <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25414938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -789,20 +818,30 @@
 <<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16427784" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
 =======
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15884861" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
 =======
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> Stashed changes
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.159375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2497309" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
->>>>>>> DevelopMinor
+=======
+>>>>>>> Stashed changes
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -823,9 +862,17 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <breakpoint-manager>
       <option name="time" value="8" />
     </breakpoint-manager>
+=======
+    <breakpoint-manager />
+>>>>>>> Stashed changes
+=======
+    <breakpoint-manager />
+>>>>>>> Stashed changes
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -834,63 +881,7 @@
   </component>
   <component name="editorHistoryManager">
 <<<<<<< Updated upstream
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/CumStat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/MidpointCircle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/Indexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/MSD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/ArrayFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3332">
-          <caret line="198" column="0" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#uniqueVals#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#uniqueVals#1;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#uniqueRows#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#correspondingRows#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#getSubArray#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#getMinIncrement#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#padArray#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="docComment;method#padAlignArray#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#padAlignArray#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#concatenateArrays#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#contains#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#contains#1;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#sum#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#max#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#arrayListToArray#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#incrementedNumbers#0;class#ArrayFunc#0" expanded="false" />
-            <element signature="method#incrementedNumbers#1;class#ArrayFunc#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
->>>>>>> Stashed changes
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/GeneralOps.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1150,17 +1141,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/MSD.java">
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+>>>>>>> Stashed changes
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/ArrayFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="24" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
+        <state relative-caret-position="425">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
           <folding>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <element signature="method#uniqueVals#0;class#ArrayFunc#0" expanded="false" />
             <element signature="method#uniqueVals#1;class#ArrayFunc#0" expanded="false" />
             <element signature="method#uniqueRows#0;class#ArrayFunc#0" expanded="false" />
@@ -1178,43 +1170,25 @@
             <element signature="method#arrayListToArray#0;class#ArrayFunc#0" expanded="false" />
             <element signature="method#incrementedNumbers#0;class#ArrayFunc#0" expanded="false" />
             <element signature="method#incrementedNumbers#1;class#ArrayFunc#0" expanded="false" />
+=======
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#FileCrawler#0" expanded="false" />
+>>>>>>> Stashed changes
+=======
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#FileCrawler#0" expanded="false" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/CumStat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/MidpointCircle.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/Indexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/MSD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/ArrayFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <element signature="method#uniqueVals#0;class#ArrayFunc#0" expanded="false" />
             <element signature="method#uniqueVals#1;class#ArrayFunc#0" expanded="false" />
             <element signature="method#uniqueRows#0;class#ArrayFunc#0" expanded="false" />
@@ -1232,13 +1206,23 @@
             <element signature="method#arrayListToArray#0;class#ArrayFunc#0" expanded="false" />
             <element signature="method#incrementedNumbers#0;class#ArrayFunc#0" expanded="false" />
             <element signature="method#incrementedNumbers#1;class#ArrayFunc#0" expanded="false" />
+=======
+            <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
+            <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+>>>>>>> Stashed changes
+=======
+            <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
+            <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/CumStat.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
           <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
         </state>
       </provider>
@@ -1276,29 +1260,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/GeneralOps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+=======
+          <caret line="947" column="56" selection-start-line="947" selection-start-column="56" selection-end-line="947" selection-end-column="56" />
+>>>>>>> Stashed changes
+=======
+          <caret line="947" column="56" selection-start-line="947" selection-start-column="56" selection-end-line="947" selection-end-column="56" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Spot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding>
-            <element signature="method#Spot#0;class#Spot#0" expanded="false" />
-            <element signature="method#addTrackMateXML#0;class#Spot#0" expanded="false" />
-            <element signature="method#setNChannels#0;class#Spot#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/ArrayFunc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1363,10 +1336,44 @@
             <element signature="method#Spot#1;class#Spot#0" expanded="false" />
             <element signature="method#addTrackMateXML#0;class#Spot#0" expanded="false" />
             <element signature="method#setNChannels#0;class#Spot#0" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/test/java/wolfson/common/MathFunc/AppTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#FileCrawler#0" expanded="false" />
+>>>>>>> Stashed changes
+=======
+    <entry file="file://$PROJECT_DIR$/src/test/java/wolfson/common/MathFunc/AppTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#FileCrawler#0" expanded="false" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <entry file="jar://$3RD_PARTY$/commons-math3-3.6.1/commons-math3-3.6.1.jar!/org/apache/commons/math3/geometry/euclidean/threed/Vector3D.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1472,98 +1479,27 @@
             <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
             <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
             <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+          <folding>
+            <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
+            <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+>>>>>>> Stashed changes
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+          <folding>
+            <element signature="method#getFolder#0;class#Folder#0" expanded="false" />
+            <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>Common</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>Common</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>quickhull3d</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
