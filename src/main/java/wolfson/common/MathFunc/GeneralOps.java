@@ -1,4 +1,4 @@
-package com.wolfson.common.MathFunc;
+package wolfson.common.MathFunc;
 
 /**
  * Created by sc13967 on 16/08/2016.

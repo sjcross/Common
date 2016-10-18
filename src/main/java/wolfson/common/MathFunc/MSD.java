@@ -1,4 +1,4 @@
-package com.wolfson.common.MathFunc;
+package wolfson.common.MathFunc;
 
 import java.util.ArrayList;
 
