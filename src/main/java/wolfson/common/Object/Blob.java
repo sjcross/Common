@@ -12,6 +12,7 @@ import org.apache.commons.math3.linear.LUDecomposition;
 import org.apache.commons.math3.stat.descriptive.moment.Mean;
 import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.commons.math3.stat.descriptive.rank.Min;
+import org.apache.commons.math3.util.DoubleArray;
 import org.doube.geometry.Ellipsoid;
 import org.doube.geometry.FitEllipse;
 import quickhull3d.Point3d;
@@ -66,8 +67,8 @@ public class Blob{
     public static final int CORNER = 1; //Fit hull around voxel corners (hull volume > voxel volume)
 
     int ID;
-    double V;
-    double SA;
+    double V = Double.NaN;
+    double SA = Double.NaN;
     double[][] LC = new double[2][3]; //Longest chord
     double[][] LMaPC = new double[2][3]; //Longest major perpendicular chord
     double[][] LMiPC = new double[2][3]; //Longest minor perpendicular chord
@@ -258,6 +259,16 @@ public class Blob{
 
     }
 
+    public boolean canFitHull() {
+        boolean can_fit = false;
+
+        if (hasVolume() & getNVoxels() > 4) {
+            can_fit = true;
+        }
+
+        return can_fit;
+    }
+
     public double getVoxelVolume() {
         return x.size()*cal_xy*cal_xy*cal_z;
 
@@ -284,7 +295,7 @@ public class Blob{
 
     }
 
-    public void fitEllipse() {
+    private void fitEllipse() {
         //Uses FitEllipse class from BoneJ
         double[] x = getX();
         double[] y = getY();
@@ -339,17 +350,17 @@ public class Blob{
 
     }
 
-    public boolean fitConvexHull() {
-        return fitConvexHull(CENTROID);
+    private void fitConvexHull() {
+        fitConvexHull(CENTROID);
 
     }
 
-    public boolean fitConvexHull(int fit_mode) {
+    private void fitConvexHull(int fit_mode) {
         boolean hasvol = hasVolume();
         double vol = getNVoxels();
 
         if (fit_mode == CORNER) {
-            if (hasvol & vol >= 4) {
+            if (canFitHull()) {
                 //Adding coordinates to Point3d structure
                 pts = new Point3d[x.size() * 8]; //Works on corners of each voxel
                 for (int i = 0; i < x.size(); i++) {
@@ -387,9 +398,6 @@ public class Blob{
                 hull_cnd = true;
             }
         }
-
-        return hasvol;
-
     }
 
     public Point3d[] getHullVertices() {
@@ -404,14 +412,16 @@ public class Blob{
     }
 
     public double getHullSurfaceArea() {
-        if (!surf_cnd) {
-            calculateHullSurfaceArea();
+        if (canFitHull()) {
+            if (!surf_cnd) {
+                calculateHullSurfaceArea();
+            }
         }
 
         return SA;
     }
 
-    public void calculateHullSurfaceArea() {
+    private void calculateHullSurfaceArea() {
         if (!hull_cnd) {
             fitConvexHull();
         }
@@ -422,81 +432,100 @@ public class Blob{
         //Using Heron's formula
         SA = 0;
 
-        for (int i=0;i<faces.length;i++) {
-            double[] a = {verts[faces[i][0]].get(0),verts[faces[i][0]].get(1),verts[faces[i][0]].get(2)};
-            double[] b = {verts[faces[i][1]].get(0),verts[faces[i][1]].get(1),verts[faces[i][1]].get(2)};
-            double[] c = {verts[faces[i][2]].get(0),verts[faces[i][2]].get(1),verts[faces[i][2]].get(2)};
+        for (int i = 0; i < faces.length; i++) {
+            double[] a = {verts[faces[i][0]].get(0), verts[faces[i][0]].get(1), verts[faces[i][0]].get(2)};
+            double[] b = {verts[faces[i][1]].get(0), verts[faces[i][1]].get(1), verts[faces[i][1]].get(2)};
+            double[] c = {verts[faces[i][2]].get(0), verts[faces[i][2]].get(1), verts[faces[i][2]].get(2)};
 
-            double l1 = GeneralOps.ppdist(a,b);
-            double l2 = GeneralOps.ppdist(a,c);
-            double l3 = GeneralOps.ppdist(b,c);
+            double l1 = GeneralOps.ppdist(a, b);
+            double l2 = GeneralOps.ppdist(a, c);
+            double l3 = GeneralOps.ppdist(b, c);
 
-            double s = (l1+l2+l3)/2; //The semiperimeter of the polygon
+            double s = (l1 + l2 + l3) / 2; //The semiperimeter of the polygon
 
-            SA += Math.sqrt(s*(s-l1)*(s-l2)*(s-l3));
+            SA += Math.sqrt(s * (s - l1) * (s - l2) * (s - l3));
         }
 
         surf_cnd = true;
     }
 
     public double getHullVolume() {
-        if (!vol_cnd) {
-            calculateHullVolume();
+        if (canFitHull()) {
+            if (!vol_cnd) {
+                calculateHullVolume();
+            }
         }
 
         return V;
     }
 
-    public void calculateHullVolume() {
+    private void calculateHullVolume() {
         if (!hull_cnd) {
             fitConvexHull();
         }
 
-        Point3d[] verts = hull.getVertices();
-        int[][] faces = hull.getFaces();
+        if (canFitHull()) {
+            Point3d[] verts = hull.getVertices();
+            int[][] faces = hull.getFaces();
 
-        //The volume of each polyhedron (coordinate origin to each vertex of the current face) is calculated as the one
-        //sixth the volume of a parallelepiped.  These are summed together.  As long as the face vertices are
-        //counted in the same manner the positive and negative volumes should cancel out.
+            //The volume of each polyhedron (coordinate origin to each vertex of the current face) is calculated as the one
+            //sixth the volume of a parallelepiped.  These are summed together.  As long as the face vertices are
+            //counted in the same manner the positive and negative volumes should cancel out.
 
-        V = 0; //Keeping track of the object volume
-        for (int i=0;i<faces.length;i++) {
-            double[] a = {verts[faces[i][0]].get(0),verts[faces[i][0]].get(1),verts[faces[i][0]].get(2)};
-            double[] b = {verts[faces[i][1]].get(0),verts[faces[i][1]].get(1),verts[faces[i][1]].get(2)};
-            double[] c = {verts[faces[i][2]].get(0),verts[faces[i][2]].get(1),verts[faces[i][2]].get(2)};
+            V = 0; //Keeping track of the object volume
+            for (int i = 0; i < faces.length; i++) {
+                double[] a = {verts[faces[i][0]].get(0), verts[faces[i][0]].get(1), verts[faces[i][0]].get(2)};
+                double[] b = {verts[faces[i][1]].get(0), verts[faces[i][1]].get(1), verts[faces[i][1]].get(2)};
+                double[] c = {verts[faces[i][2]].get(0), verts[faces[i][2]].get(1), verts[faces[i][2]].get(2)};
 
-            double[][] matrix_data = {{a[0],b[0],c[0]} , {a[1],b[1],c[1]} , {a[2],b[2],c[2]}};
-            RealMatrix rm = MatrixUtils.createRealMatrix(matrix_data);
-            LUDecomposition lud = new LUDecomposition(rm);
+                double[][] matrix_data = {{a[0], b[0], c[0]}, {a[1], b[1], c[1]}, {a[2], b[2], c[2]}};
+                RealMatrix rm = MatrixUtils.createRealMatrix(matrix_data);
+                LUDecomposition lud = new LUDecomposition(rm);
 
-            V += lud.getDeterminant();
+                V += lud.getDeterminant();
+            }
+
+            V /= 6;
+
+        } else {
+            V = Double.NaN;
+
         }
-
-        V /= 6;
         vol_cnd = true;
     }
 
     public double getSphericity() {
-        if (!vol_cnd) {
-            calculateHullVolume();
-        }
-        if (!surf_cnd) {
-            calculateHullSurfaceArea();
-        }
+        if (canFitHull()) {
+            if (!vol_cnd) {
+                calculateHullVolume();
+            }
+            if (!surf_cnd) {
+                calculateHullSurfaceArea();
+            }
 
-        double sph = Math.pow(Math.PI,(double) 1/3)*Math.pow(6*V,(double) 2/3)/SA;
+            double sph = Math.pow(Math.PI, (double) 1 / 3) * Math.pow(6 * V, (double) 2 / 3) / SA;
 
-        return sph;
+            return sph;
+
+        } else {
+            return Double.NaN;
+
+        }
     }
 
     public double getSolidity() {
-        double solidity = getVoxelVolume()/getHullVolume();
+        if (canFitHull()) {
+            double solidity = getVoxelVolume()/getHullVolume();
 
-        return solidity;
+            return solidity;
 
+        } else {
+            return Double.NaN;
+
+        }
     }
 
-    public void calculateLC() {
+    private void calculateLC() {
         //Reference for use as orientation descriptor: "Computer-Assisted Microscopy: The Measurement and Analysis of
         //Images", John C. Russ, Springer, 6 Dec 2012
 
@@ -507,11 +536,11 @@ public class Blob{
         Point3d[] verts = hull.getVertices();
 
         double len = 0;
-        for (int i=0;i<verts.length;i++) {
-            for (int j=i+1;j<verts.length;j++) {
-                double[] a = {verts[i].get(0),verts[i].get(1),verts[i].get(2)};
-                double[] b = {verts[j].get(0),verts[j].get(1),verts[j].get(2)};
-                double pp = GeneralOps.ppdist(a,b);
+        for (int i = 0; i < verts.length; i++) {
+            for (int j = i + 1; j < verts.length; j++) {
+                double[] a = {verts[i].get(0), verts[i].get(1), verts[i].get(2)};
+                double[] b = {verts[j].get(0), verts[j].get(1), verts[j].get(2)};
+                double pp = GeneralOps.ppdist(a, b);
 
                 if (pp > len) {
                     len = pp;
@@ -529,43 +558,56 @@ public class Blob{
     }
 
     public double[][] getLCCoords() {
-        if (!LC_cnd) {
-            calculateLC();
+        if (canFitHull()) {
+            if (!LC_cnd) {
+                calculateLC();
+            }
         }
 
         return LC;
     }
 
     public double[] getLCCentre() {
-        double[][] LC_ends = getLCCoords();
-        double[] LC_cent = new double[3];
+        if (canFitHull()) {
+            double[][] LC_ends = getLCCoords();
+            double[] LC_cent = new double[3];
 
-        double x_min  = Math.min(LC_ends[0][0],LC_ends[1][0]);
-        double x_max  = Math.max(LC_ends[0][0],LC_ends[1][0]);
-        double y_min  = Math.min(LC_ends[0][1],LC_ends[1][1]);
-        double y_max  = Math.max(LC_ends[0][1],LC_ends[1][1]);
-        double z_min  = Math.min(LC_ends[0][2],LC_ends[1][2]);
-        double z_max  = Math.max(LC_ends[0][2],LC_ends[1][2]);
+            double x_min = Math.min(LC_ends[0][0], LC_ends[1][0]);
+            double x_max = Math.max(LC_ends[0][0], LC_ends[1][0]);
+            double y_min = Math.min(LC_ends[0][1], LC_ends[1][1]);
+            double y_max = Math.max(LC_ends[0][1], LC_ends[1][1]);
+            double z_min = Math.min(LC_ends[0][2], LC_ends[1][2]);
+            double z_max = Math.max(LC_ends[0][2], LC_ends[1][2]);
 
-        LC_cent[0] = (x_max-x_min)/2+x_min;
-        LC_cent[1] = (y_max-y_min)/2+y_min;
-        LC_cent[2] = (z_max-z_min)/2+z_min;
+            LC_cent[0] = (x_max - x_min) / 2 + x_min;
+            LC_cent[1] = (y_max - y_min) / 2 + y_min;
+            LC_cent[2] = (z_max - z_min) / 2 + z_min;
 
-        return LC_cent;
+            return LC_cent;
 
+        } else {
+            return new double[]{Double.NaN,Double.NaN,Double.NaN};
+
+        }
     }
 
     public double getLCLength() {
-        if (!LC_cnd) {
-            calculateLC();
+        if (canFitHull()) {
+            if (!LC_cnd) {
+                calculateLC();
+            }
+
+            double pp = GeneralOps.ppdist(new double[]{LC[0][0], LC[0][1], LC[0][2]}, new double[]{LC[1][0], LC[1][1], LC[1][2]});
+
+            return pp;
+        } else {
+            return Double.NaN;
+
         }
 
-        double pp = GeneralOps.ppdist(new double[]{LC[0][0], LC[0][1], LC[0][2]},new double[]{LC[1][0], LC[1][1], LC[1][2]});
-
-        return pp;
     }
 
-    public void calculateLMaPC() {
+    private void calculateLMaPC() {
         if (!LC_cnd) {
             calculateLC();
         }
@@ -674,16 +716,22 @@ public class Blob{
     }
 
     public double getLMaPCLength() {
-        if (!LMaPC_cnd) {
-            calculateLMaPC();
+        if (canFitHull()) {
+            if (!LMaPC_cnd) {
+                calculateLMaPC();
+            }
+
+            double pp = GeneralOps.ppdist(new double[]{LMaPC[0][0], LMaPC[0][1], LMaPC[0][2]}, new double[]{LMaPC[1][0], LMaPC[1][1], LMaPC[1][2]});
+
+            return pp;
+
+        } else {
+            return Double.NaN;
+
         }
-
-        double pp = GeneralOps.ppdist(new double[]{LMaPC[0][0], LMaPC[0][1], LMaPC[0][2]},new double[]{LMaPC[1][0], LMaPC[1][1], LMaPC[1][2]});
-
-        return pp;
     }
 
-    public void calculateLMiPC() {
+    private void calculateLMiPC() {
         if (!LMaPC_cnd) {
             calculateLMaPC();
         }
@@ -778,24 +826,31 @@ public class Blob{
     }
 
     public double[][] getLMiPCCoords() {
-        if (!LMiPC_cnd) {
-            calculateLMiPC();
+        if (canFitHull()) {
+            if (!LMiPC_cnd) {
+                calculateLMiPC();
+            }
         }
 
         return LMiPC;
     }
 
     public double getLMiPCLength() {
-        if (!LMiPC_cnd) {
-            calculateLMiPC();
+        if (canFitHull()) {
+            if (!LMiPC_cnd) {
+                calculateLMiPC();
+            }
+
+            double pp = GeneralOps.ppdist(new double[]{LMiPC[0][0], LMiPC[0][1], LMiPC[0][2]}, new double[]{LMiPC[1][0], LMiPC[1][1], LMiPC[1][2]});
+
+            return pp;
+        } else {
+            return Double.NaN;
+
         }
-
-        double pp = GeneralOps.ppdist(new double[]{LMiPC[0][0], LMiPC[0][1], LMiPC[0][2]},new double[]{LMiPC[1][0], LMiPC[1][1], LMiPC[1][2]});
-
-        return pp;
     }
 
-    public boolean fixHandedness() {
+    private boolean fixHandedness() {
         boolean fixed = false; //True if handedness needed to be fixed
 
         Vector3D xnorm = new Vector3D(LC[0][0]- LC[1][0],LC[0][1]- LC[1][1],LC[0][2]- LC[1][2]).normalize();
@@ -814,111 +869,138 @@ public class Blob{
     }
 
     public double getEccentricity1() {
-        //Equation from http://www.cs.uu.nl/docs/vakken/ibv/reader/chapter8.pdf.
-        //Averaging LMaPC and LMiPC axes
-        double lc_dist = getLCLength();
-        double lmapc_dist = getLMaPCLength();
-        double lmipc_dist = getLMaPCLength();
-        double mean_lpc_dist = new Mean().evaluate(new double[]{lmapc_dist,lmipc_dist});
-        double eccentricity = lc_dist/mean_lpc_dist;
+        if (canFitHull()) {
+            //Equation from http://www.cs.uu.nl/docs/vakken/ibv/reader/chapter8.pdf.
+            //Averaging LMaPC and LMiPC axes
+            double lc_dist = getLCLength();
+            double lmapc_dist = getLMaPCLength();
+            double lmipc_dist = getLMaPCLength();
+            double mean_lpc_dist = new Mean().evaluate(new double[]{lmapc_dist,lmipc_dist});
+            double eccentricity = lc_dist/mean_lpc_dist;
 
-        return eccentricity;
+            return eccentricity;
+
+        } else {
+            return Double.NaN;
+
+        }
+
     }
 
     public double getEccentricity2() {
-        //Equation from http://www.cs.uu.nl/docs/vakken/ibv/reader/chapter8.pdf.
-        //Averaging LC and LMaPC axes
-        double lc_dist = getLCLength();
-        double lmapc_dist = getLMaPCLength();
-        double lmipc_dist = getLMaPCLength();
-        double mean_lc_dist = new Mean().evaluate(new double[]{lc_dist,lmapc_dist});
-        double eccentricity = mean_lc_dist/lmipc_dist;
+        if (canFitHull()) {
+            //Equation from http://www.cs.uu.nl/docs/vakken/ibv/reader/chapter8.pdf.
+            //Averaging LC and LMaPC axes
+            double lc_dist = getLCLength();
+            double lmapc_dist = getLMaPCLength();
+            double lmipc_dist = getLMaPCLength();
+            double mean_lc_dist = new Mean().evaluate(new double[]{lc_dist, lmapc_dist});
+            double eccentricity = mean_lc_dist / lmipc_dist;
 
-        return eccentricity;
+            return eccentricity;
+
+        } else {
+            return Double.NaN;
+
+        }
     }
 
     public double[] getLCOrientation() {
         //Orientation of the longest chord with respect to the x-axis
+        if (canFitHull()) {
+            if (!LC_cnd) {
+                calculateLC();
+            }
 
-        if (!LC_cnd) {
-            calculateLC();
+            double x = LC[0][0] - LC[1][0];
+            double y = LC[0][1] - LC[1][1];
+            double z = LC[0][2] - LC[1][2];
+            double xy = GeneralOps.ppdist(new double[]{LC[0][0], LC[0][1]}, new double[]{LC[1][0], LC[1][1]});
+
+            double[] orien = new double[2]; //Theta and phi
+            orien[0] = -Math.atan(y / x); //Orientation relative to x axis
+            orien[1] = Math.atan(z / xy); //Orientation relative to xy plane
+
+            if (x <= 0) {
+                orien[1] = -orien[1];
+            }
+
+            if (ang_unit == DEGREES) {
+                orien[0] *= 180 / Math.PI;
+                orien[1] *= 180 / Math.PI;
+            }
+
+            return orien;
+        } else {
+            return new double[]{Double.NaN,Double.NaN};
+
         }
-
-        double x = LC[0][0]- LC[1][0];
-        double y = LC[0][1]- LC[1][1];
-        double z = LC[0][2]- LC[1][2];
-        double xy = GeneralOps.ppdist(new double[]{LC[0][0], LC[0][1]},new double[]{LC[1][0], LC[1][1]});
-
-        double[] orien = new double[2]; //Theta and phi
-        orien[0] = -Math.atan(y/x); //Orientation relative to x axis
-        orien[1] = Math.atan(z/xy); //Orientation relative to xy plane
-
-        if (x <= 0) {
-            orien[1] = -orien[1];
-        }
-
-        if (ang_unit == DEGREES) {
-            orien[0] *= 180/Math.PI;
-            orien[1] *= 180/Math.PI;
-        }
-
-        return orien;
     }
 
     public double[] getLMaPCOrientation() {
         //Orientation of the longest major perpendicular chord with respect to the y-axis
+        if (canFitHull()) {
+            if (!LMaPC_cnd) {
+                calculateLMaPC();
+            }
 
-        if (!LMaPC_cnd) {
-            calculateLMaPC();
+            double x = LMaPC[0][0] - LMaPC[1][0];
+            double y = LMaPC[0][1] - LMaPC[1][1];
+            double z = LMaPC[0][2] - LMaPC[1][2];
+            double xy = GeneralOps.ppdist(new double[]{LMaPC[0][0], LMaPC[0][1]}, new double[]{LMaPC[1][0], LMaPC[1][1]});
+
+            double[] orien = new double[2]; //Theta and phi
+            orien[0] = -Math.atan(y / x); //Orientation relative to x axis
+            orien[1] = Math.atan(z / xy); //Orientation relative to xy plane
+
+            if (x <= 0) {
+                orien[1] = -orien[1];
+            }
+
+            if (ang_unit == DEGREES) {
+                orien[0] *= 180 / Math.PI;
+                orien[1] *= 180 / Math.PI;
+            }
+
+            return orien;
+
+        } else {
+            return new double[]{Double.NaN,Double.NaN};
+
         }
-
-        double x = LMaPC[0][0]- LMaPC[1][0];
-        double y = LMaPC[0][1]- LMaPC[1][1];
-        double z = LMaPC[0][2]- LMaPC[1][2];
-        double xy = GeneralOps.ppdist(new double[]{LMaPC[0][0], LMaPC[0][1]},new double[]{LMaPC[1][0], LMaPC[1][1]});
-
-        double[] orien = new double[2]; //Theta and phi
-        orien[0] = -Math.atan(y/x); //Orientation relative to x axis
-        orien[1] = Math.atan(z/xy); //Orientation relative to xy plane
-
-        if (x <= 0) {
-            orien[1] = -orien[1];
-        }
-
-        if (ang_unit == DEGREES) {
-            orien[0] *= 180/Math.PI;
-            orien[1] *= 180/Math.PI;
-        }
-
-        return orien;
     }
 
     public double[] getLMiPCOrientation() {
         //Orientation of the longest major perpendicular chord with respect to the y-axis
+        if (canFitHull()) {
+            if (!LMiPC_cnd) {
+                calculateLMiPC();
+            }
 
-        if (!LMiPC_cnd) {
-            calculateLMiPC();
+            double x = LMiPC[0][0]- LMiPC[1][0];
+            double y = LMiPC[0][1]- LMiPC[1][1];
+            double z = LMiPC[0][2]- LMiPC[1][2];
+            double xy = GeneralOps.ppdist(new double[]{LMiPC[0][0], LMiPC[0][1]},new double[]{LMiPC[1][0], LMiPC[1][1]});
+
+            double[] orien = new double[2]; //Theta and phi
+            orien[0] = -Math.atan(y/x); //Orientation relative to x axis
+            orien[1] = Math.atan(z/xy); //Orientation relative to xy plane
+
+            if (x <= 0) {
+                orien[1] = -orien[1];
+            }
+
+            if (ang_unit == DEGREES) {
+                orien[0] *= 180/Math.PI;
+                orien[1] *= 180/Math.PI;
+            }
+
+            return orien;
+
+        } else {
+            return new double[]{Double.NaN,Double.NaN};
+
         }
-
-        double x = LMiPC[0][0]- LMiPC[1][0];
-        double y = LMiPC[0][1]- LMiPC[1][1];
-        double z = LMiPC[0][2]- LMiPC[1][2];
-        double xy = GeneralOps.ppdist(new double[]{LMiPC[0][0], LMiPC[0][1]},new double[]{LMiPC[1][0], LMiPC[1][1]});
-
-        double[] orien = new double[2]; //Theta and phi
-        orien[0] = -Math.atan(y/x); //Orientation relative to x axis
-        orien[1] = Math.atan(z/xy); //Orientation relative to xy plane
-
-        if (x <= 0) {
-            orien[1] = -orien[1];
-        }
-
-        if (ang_unit == DEGREES) {
-            orien[0] *= 180/Math.PI;
-            orien[1] *= 180/Math.PI;
-        }
-
-        return orien;
     }
 
     public double[] getEulerAngles() {
@@ -926,6 +1008,7 @@ public class Blob{
         //Equations from https://en.wikipedia.org/wiki/Euler_angles (Accessed 2016-08-18)
         //These values haven't been checked to ensure they are correct
 
+        if (canFitHull()) {
         Vector3D xnorm = new Vector3D(LC[0][0]- LC[1][0],LC[0][1]- LC[1][1],LC[0][2]- LC[1][2]).normalize();
         Vector3D ynorm = new Vector3D(LMaPC[0][0]- LMaPC[1][0],LMaPC[0][1]- LMaPC[1][1],LMaPC[0][2]- LMaPC[1][2]).normalize();
         Vector3D znorm = new Vector3D(LMiPC[0][0]- LMiPC[1][0],LMiPC[0][1]- LMiPC[1][1],LMiPC[0][2]- LMiPC[1][2]).normalize();
@@ -940,6 +1023,11 @@ public class Blob{
         euler[2] = Math.acos(Y[2]/Math.sqrt(1-Math.pow(Z[2],2)));
 
         return euler;
+
+        } else {
+            return new double[]{Double.NaN,Double.NaN,Double.NaN};
+
+        }
     }
 
     public int getOverlap(Blob blob2) {
@@ -1117,7 +1205,7 @@ public class Blob{
     public double getLCAngleToPoint() {
         double angle;
 
-        if (hasVolume()) {
+        if (canFitHull()) {
             double theta = getLCOrientation()[0];
             double[] LC_cent = getLCCentre();
 
