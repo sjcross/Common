@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Common" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="63e037ba-8ad6-4ad9-921b-50bec349bcea" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/SpotCollection.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Point.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/Object/Point.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/Object/Blob.class" afterPath="$PROJECT_DIR$/target/classes/wolfson/common/Object/Blob.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/Object/Spot.class" afterPath="$PROJECT_DIR$/target/classes/wolfson/common/Object/Spot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Spot.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Spot.java" />
     </list>
     <ignored path="Common.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,11 +34,11 @@
     <favorites_list name="Common" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Folder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1527">
+            <state relative-caret-position="1530">
               <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
               <folding />
             </state>
@@ -37,27 +48,159 @@
       <file leaf-file-name="FileCrawler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="425">
               <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#273#281#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Blob.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="1406" column="0" selection-start-line="1406" selection-start-column="0" selection-end-line="1406" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Blob.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="332">
+              <caret line="1160" column="47" selection-start-line="1160" selection-start-column="47" selection-end-line="1160" selection-end-column="47" />
+              <folding>
+                <element signature="docComment;class#Blob#0" expanded="false" />
+                <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+                <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+                <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+                <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+                <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+                <element signature="method#getX#0;class#Blob#0" expanded="false" />
+                <element signature="method#getY#0;class#Blob#0" expanded="false" />
+                <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+                <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+                <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+                <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+                <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+                <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+                <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+                <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+                <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+                <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+                <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+                <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+                <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+                <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+                <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+                <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+                <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+                <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+                <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+                <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+                <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+                <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+                <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+                <element signature="e#15058#15169#0" expanded="false" />
+                <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+                <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+                <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
+                <element signature="e#16921#17030#0" expanded="false" />
+                <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLCCentre#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+                <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+                <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+                <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+                <element signature="e#30710#30782#0" expanded="false" />
+                <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+                <element signature="e#31303#31375#0" expanded="false" />
+                <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+                <element signature="e#34984#35093#0" expanded="false" />
+                <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+                <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+                <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+                <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+                <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+                <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+                <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+                <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Spot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Spot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="168" column="62" selection-start-line="168" selection-start-column="62" selection-end-line="168" selection-end-column="62" />
+              <folding>
+                <element signature="method#Spot#0;class#Spot#0" expanded="false" />
+                <element signature="method#Spot#1;class#Spot#0" expanded="false" />
+                <element signature="method#Spot#2;class#Spot#0" expanded="false" />
+                <element signature="method#getX#0;class#Spot#0" expanded="false" />
+                <element signature="method#getY#0;class#Spot#0" expanded="false" />
+                <element signature="method#getZ#0;class#Spot#0" expanded="false" />
+                <element signature="method#getSlice#0;class#Spot#0" expanded="false" />
+                <element signature="method#setX#0;class#Spot#0" expanded="false" />
+                <element signature="method#setY#0;class#Spot#0" expanded="false" />
+                <element signature="method#setZ#0;class#Spot#0" expanded="false" />
+                <element signature="method#setSlice#0;class#Spot#0" expanded="false" />
+                <element signature="method#getID#0;class#Spot#0" expanded="false" />
+                <element signature="method#getT#0;class#Spot#0" expanded="false" />
+                <element signature="method#getFrame#0;class#Spot#0" expanded="false" />
+                <element signature="method#getRadius#0;class#Spot#0" expanded="false" />
+                <element signature="method#setID#0;class#Spot#0" expanded="false" />
+                <element signature="method#setT#0;class#Spot#0" expanded="false" />
+                <element signature="method#setFrame#0;class#Spot#0" expanded="false" />
+                <element signature="method#setRadius#0;class#Spot#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpotCollection.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/SpotCollection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="672">
+              <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#SpotCollection#0" expanded="false" />
+                <element signature="e#252#258#0" expanded="true" />
+                <element signature="method#iterator#0;class#SpotCollection#0" expanded="false" />
+                <element signature="method#size#0;class#SpotCollection#0" expanded="false" />
+                <element signature="method#getByID#0;class#SpotCollection#0" expanded="false" />
+                <element signature="method#getByFrame#0;class#SpotCollection#0" expanded="false" />
+                <element signature="method#add#0;class#SpotCollection#0" expanded="false" />
+                <element signature="method#remove#0;class#SpotCollection#0" expanded="false" />
+                <element signature="method#deleteByID#0;class#SpotCollection#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,7 +214,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Point.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/PointCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Spot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/SpotCollection.java" />
       </list>
     </option>
   </component>
@@ -83,9 +230,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="54" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
-    <option name="width" value="1874" />
+    <option name="width" value="1936" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -113,9 +260,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -231,20 +378,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -519,6 +652,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="63e037ba-8ad6-4ad9-921b-50bec349bcea" name="Default" comment="" />
@@ -530,33 +666,33 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
-    <editor active="false" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2497309" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32883817" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17750533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -571,7 +707,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="9" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -581,7 +719,859 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1527">
+        <state relative-caret-position="1530">
+          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;class#Blob#0" expanded="false" />
+            <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+            <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+            <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+            <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#getX#0;class#Blob#0" expanded="false" />
+            <element signature="method#getY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+            <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+            <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="e#15058#15169#0" expanded="false" />
+            <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+            <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
+            <element signature="e#16921#17030#0" expanded="false" />
+            <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+            <element signature="e#30710#30782#0" expanded="false" />
+            <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+            <element signature="e#31303#31375#0" expanded="false" />
+            <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+            <element signature="e#34984#35093#0" expanded="false" />
+            <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Spot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="181" column="9" selection-start-line="181" selection-start-column="9" selection-end-line="181" selection-end-column="9" />
+          <folding>
+            <element signature="method#Spot#0;class#Spot#0" expanded="false" />
+            <element signature="method#Spot#1;class#Spot#0" expanded="false" />
+            <element signature="method#Spot#2;class#Spot#0" expanded="false" />
+            <element signature="method#getX#0;class#Spot#0" expanded="false" />
+            <element signature="method#getY#0;class#Spot#0" expanded="false" />
+            <element signature="method#getZ#0;class#Spot#0" expanded="false" />
+            <element signature="method#getSlice#0;class#Spot#0" expanded="false" />
+            <element signature="method#setX#0;class#Spot#0" expanded="false" />
+            <element signature="method#setY#0;class#Spot#0" expanded="false" />
+            <element signature="method#setZ#0;class#Spot#0" expanded="false" />
+            <element signature="method#setSlice#0;class#Spot#0" expanded="false" />
+            <element signature="method#getID#0;class#Spot#0" expanded="false" />
+            <element signature="method#getT#0;class#Spot#0" expanded="false" />
+            <element signature="method#getFrame#0;class#Spot#0" expanded="false" />
+            <element signature="method#getRadius#0;class#Spot#0" expanded="false" />
+            <element signature="method#setID#0;class#Spot#0" expanded="false" />
+            <element signature="method#setT#0;class#Spot#0" expanded="false" />
+            <element signature="method#setFrame#0;class#Spot#0" expanded="false" />
+            <element signature="method#setRadius#0;class#Spot#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/SpotCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#SpotCollection#0" expanded="false" />
+            <element signature="e#252#258#0" expanded="true" />
+            <element signature="method#iterator#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#size#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#getByID#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#getByFrame#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#add#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#remove#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#deleteByID#0;class#SpotCollection#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;class#Blob#0" expanded="false" />
+            <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+            <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+            <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+            <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#getX#0;class#Blob#0" expanded="false" />
+            <element signature="method#getY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+            <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+            <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="e#15058#15169#0" expanded="false" />
+            <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+            <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
+            <element signature="e#16921#17030#0" expanded="false" />
+            <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+            <element signature="e#30710#30782#0" expanded="false" />
+            <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+            <element signature="e#31303#31375#0" expanded="false" />
+            <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+            <element signature="e#34984#35093#0" expanded="false" />
+            <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Spot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#Spot#0;class#Spot#0" expanded="false" />
+            <element signature="method#Spot#1;class#Spot#0" expanded="false" />
+            <element signature="method#Spot#2;class#Spot#0" expanded="false" />
+            <element signature="method#getX#0;class#Spot#0" expanded="false" />
+            <element signature="method#getY#0;class#Spot#0" expanded="false" />
+            <element signature="method#getZ#0;class#Spot#0" expanded="false" />
+            <element signature="method#getSlice#0;class#Spot#0" expanded="false" />
+            <element signature="method#setX#0;class#Spot#0" expanded="false" />
+            <element signature="method#setY#0;class#Spot#0" expanded="false" />
+            <element signature="method#setZ#0;class#Spot#0" expanded="false" />
+            <element signature="method#setSlice#0;class#Spot#0" expanded="false" />
+            <element signature="method#getID#0;class#Spot#0" expanded="false" />
+            <element signature="method#getT#0;class#Spot#0" expanded="false" />
+            <element signature="method#getFrame#0;class#Spot#0" expanded="false" />
+            <element signature="method#getRadius#0;class#Spot#0" expanded="false" />
+            <element signature="method#setID#0;class#Spot#0" expanded="false" />
+            <element signature="method#setT#0;class#Spot#0" expanded="false" />
+            <element signature="method#setFrame#0;class#Spot#0" expanded="false" />
+            <element signature="method#setRadius#0;class#Spot#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/SpotCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#SpotCollection#0" expanded="false" />
+            <element signature="e#252#258#0" expanded="true" />
+            <element signature="method#iterator#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#size#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#getByID#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#getByFrame#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#add#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#remove#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#deleteByID#0;class#SpotCollection#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;class#Blob#0" expanded="false" />
+            <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+            <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+            <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+            <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#getX#0;class#Blob#0" expanded="false" />
+            <element signature="method#getY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+            <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+            <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="e#15058#15169#0" expanded="false" />
+            <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+            <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
+            <element signature="e#16921#17030#0" expanded="false" />
+            <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+            <element signature="e#30710#30782#0" expanded="false" />
+            <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+            <element signature="e#31303#31375#0" expanded="false" />
+            <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+            <element signature="e#34984#35093#0" expanded="false" />
+            <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Spot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding>
+            <element signature="method#Spot#0;class#Spot#0" expanded="false" />
+            <element signature="method#Spot#1;class#Spot#0" expanded="false" />
+            <element signature="method#Spot#2;class#Spot#0" expanded="false" />
+            <element signature="method#getX#0;class#Spot#0" expanded="false" />
+            <element signature="method#getY#0;class#Spot#0" expanded="false" />
+            <element signature="method#getZ#0;class#Spot#0" expanded="false" />
+            <element signature="method#getSlice#0;class#Spot#0" expanded="false" />
+            <element signature="method#setX#0;class#Spot#0" expanded="false" />
+            <element signature="method#setY#0;class#Spot#0" expanded="false" />
+            <element signature="method#setZ#0;class#Spot#0" expanded="false" />
+            <element signature="method#setSlice#0;class#Spot#0" expanded="false" />
+            <element signature="method#getID#0;class#Spot#0" expanded="false" />
+            <element signature="method#getT#0;class#Spot#0" expanded="false" />
+            <element signature="method#getFrame#0;class#Spot#0" expanded="false" />
+            <element signature="method#getRadius#0;class#Spot#0" expanded="false" />
+            <element signature="method#setID#0;class#Spot#0" expanded="false" />
+            <element signature="method#setT#0;class#Spot#0" expanded="false" />
+            <element signature="method#setFrame#0;class#Spot#0" expanded="false" />
+            <element signature="method#setRadius#0;class#Spot#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/SpotCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#SpotCollection#0" expanded="false" />
+            <element signature="e#252#258#0" expanded="true" />
+            <element signature="method#iterator#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#size#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#getByID#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#getByFrame#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#add#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#remove#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#deleteByID#0;class#SpotCollection#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Blob#0" expanded="false" />
+            <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+            <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+            <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+            <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#getX#0;class#Blob#0" expanded="false" />
+            <element signature="method#getY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+            <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+            <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="e#15058#15169#0" expanded="false" />
+            <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+            <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
+            <element signature="e#16921#17030#0" expanded="false" />
+            <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+            <element signature="e#30710#30782#0" expanded="false" />
+            <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+            <element signature="e#31303#31375#0" expanded="false" />
+            <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+            <element signature="e#34984#35093#0" expanded="false" />
+            <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Blob#0" expanded="false" />
+            <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+            <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+            <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+            <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#getX#0;class#Blob#0" expanded="false" />
+            <element signature="method#getY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+            <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+            <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="e#15058#15169#0" expanded="false" />
+            <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+            <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
+            <element signature="e#16921#17030#0" expanded="false" />
+            <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+            <element signature="e#30710#30782#0" expanded="false" />
+            <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+            <element signature="e#31303#31375#0" expanded="false" />
+            <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+            <element signature="e#34984#35093#0" expanded="false" />
+            <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Blob#0" expanded="false" />
+            <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+            <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+            <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+            <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#getX#0;class#Blob#0" expanded="false" />
+            <element signature="method#getY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+            <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+            <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="e#15058#15169#0" expanded="false" />
+            <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+            <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
+            <element signature="e#16921#17030#0" expanded="false" />
+            <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+            <element signature="e#30710#30782#0" expanded="false" />
+            <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+            <element signature="e#31303#31375#0" expanded="false" />
+            <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+            <element signature="e#34984#35093#0" expanded="false" />
+            <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Blob#0" expanded="false" />
+            <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+            <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+            <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+            <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#getX#0;class#Blob#0" expanded="false" />
+            <element signature="method#getY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+            <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+            <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="e#15058#15169#0" expanded="false" />
+            <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+            <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
+            <element signature="e#16921#17030#0" expanded="false" />
+            <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+            <element signature="e#30710#30782#0" expanded="false" />
+            <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+            <element signature="e#31303#31375#0" expanded="false" />
+            <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+            <element signature="e#34984#35093#0" expanded="false" />
+            <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
           <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
           <folding />
         </state>
@@ -591,26 +1581,148 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
+        <state relative-caret-position="425">
           <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/PointCollection.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Point.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Spot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="168" column="62" selection-start-line="168" selection-start-column="62" selection-end-line="168" selection-end-column="62" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#273#281#0" expanded="true" />
+            <element signature="method#Spot#0;class#Spot#0" expanded="false" />
+            <element signature="method#Spot#1;class#Spot#0" expanded="false" />
+            <element signature="method#Spot#2;class#Spot#0" expanded="false" />
+            <element signature="method#getX#0;class#Spot#0" expanded="false" />
+            <element signature="method#getY#0;class#Spot#0" expanded="false" />
+            <element signature="method#getZ#0;class#Spot#0" expanded="false" />
+            <element signature="method#getSlice#0;class#Spot#0" expanded="false" />
+            <element signature="method#setX#0;class#Spot#0" expanded="false" />
+            <element signature="method#setY#0;class#Spot#0" expanded="false" />
+            <element signature="method#setZ#0;class#Spot#0" expanded="false" />
+            <element signature="method#setSlice#0;class#Spot#0" expanded="false" />
+            <element signature="method#getID#0;class#Spot#0" expanded="false" />
+            <element signature="method#getT#0;class#Spot#0" expanded="false" />
+            <element signature="method#getFrame#0;class#Spot#0" expanded="false" />
+            <element signature="method#getRadius#0;class#Spot#0" expanded="false" />
+            <element signature="method#setID#0;class#Spot#0" expanded="false" />
+            <element signature="method#setT#0;class#Spot#0" expanded="false" />
+            <element signature="method#setFrame#0;class#Spot#0" expanded="false" />
+            <element signature="method#setRadius#0;class#Spot#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="1406" column="0" selection-start-line="1406" selection-start-column="0" selection-end-line="1406" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="332">
+          <caret line="1160" column="47" selection-start-line="1160" selection-start-column="47" selection-end-line="1160" selection-end-column="47" />
+          <folding>
+            <element signature="docComment;class#Blob#0" expanded="false" />
+            <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+            <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+            <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+            <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#getX#0;class#Blob#0" expanded="false" />
+            <element signature="method#getY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+            <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+            <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="e#15058#15169#0" expanded="false" />
+            <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+            <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLC#0;class#Blob#0" expanded="false" />
+            <element signature="e#16921#17030#0" expanded="false" />
+            <element signature="method#getLCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+            <element signature="e#30710#30782#0" expanded="false" />
+            <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+            <element signature="e#31303#31375#0" expanded="false" />
+            <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+            <element signature="e#34984#35093#0" expanded="false" />
+            <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/SpotCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#SpotCollection#0" expanded="false" />
+            <element signature="e#252#258#0" expanded="true" />
+            <element signature="method#iterator#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#size#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#getByID#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#getByFrame#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#add#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#remove#0;class#SpotCollection#0" expanded="false" />
+            <element signature="method#deleteByID#0;class#SpotCollection#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
