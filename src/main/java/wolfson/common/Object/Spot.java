@@ -2,7 +2,7 @@ package wolfson.common.Object;
 
 import org.w3c.dom.Element;
 
-public class Spot extends Point{
+public class Spot {
     public static final String MAXI = "Maximum intensity";
     public static final String MINI = "Minimum intensity";
     public static final String MEANI = "Mean intensity";
@@ -10,18 +10,29 @@ public class Spot extends Point{
     public static final String TOTALI = "Total intensity";
     public static final String STDI = "Intensity std. dev.";
     public static final String ESTDIA = "Estimated diameter";
+    public static final int X = 0;
+    public static final int Y = 1;
+    public static final int Z = 2;
+    public static final int ID_NUM = 3;
+    public static final int T = 4;
+    public static final int FRAME = 5;
+    public static final int SLICE = 6;
 
     public String name;
-    public double ID;
-    public double t;
-    public double frame;
+    double x;
+    double y;
+    double z;
+    int ID;
+    double t;
+    int frame;
+    int slice;
     public double[] min_I;
     public double[] max_I;
     public double[] mean_I;
     public double[] med_I;
     public double[] total_I;
     public double[] std_I;
-    public double radius;
+    double radius;
     public double est_dia;
     public double vis;
     public double quality;
@@ -48,14 +59,102 @@ public class Spot extends Point{
 
     }
 
+    public Spot(double x, double y, double z, double radius) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.radius = radius;
+
+    }
+
+    public double getX() {
+        return x;
+
+    }
+
+    public double getY() {
+        return y;
+
+    }
+
+    public double getZ() {
+        return z;
+
+    }
+
+    public int getSlice() {
+        return slice;
+
+    }
+
+    public void setX(double x) {
+        this.x = x;
+
+    }
+
+    public void setY(double y) {
+        this.y = y;
+
+    }
+
+    public void setZ(double z) {
+        this.z = z;
+
+    }
+
+    public void setSlice(int slice) {
+        this.slice = slice;
+
+    }
+
+    public int getID() {
+        return ID;
+
+    }
+
+    public double getT() {
+        return t;
+
+    }
+
+    public int getFrame() {
+        return frame;
+
+    }
+
+    public double getRadius() {
+        return radius;
+
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+
+    }
+
+    public void setT(double t) {
+        this.t = t;
+
+    }
+
+    public void setFrame(int frame) {
+        this.frame = frame;
+
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+
+    }
+
     public void addTrackMateXML(Element e) {
         name = e.getAttribute("name");
-        ID = Double.valueOf(e.getAttribute("ID"));
+        ID = Integer.valueOf(e.getAttribute("ID"));
         x = Double.valueOf(e.getAttribute("POSITION_X"));
         y = Double.valueOf(e.getAttribute("POSITION_Y"));
         z = Double.valueOf(e.getAttribute("POSITION_Z"));
         t = Double.valueOf(e.getAttribute("POSITION_T"));
-        frame = Double.valueOf(e.getAttribute("FRAME"));
+        frame = Integer.valueOf(e.getAttribute("FRAME"));
         min_I[0] = Double.valueOf(e.getAttribute("MIN_INTENSITY"));
         max_I[0] = Double.valueOf(e.getAttribute("MAX_INTENSITY"));
         mean_I[0] = Double.valueOf(e.getAttribute("MEAN_INTENSITY"));
@@ -87,4 +186,16 @@ public class Spot extends Point{
 
     }
 
+    public Object getVal(int type) {
+        if (type == X)              return x;
+        else if (type == Y)         return y;
+        else if (type == Z)         return z;
+        else if (type == ID_NUM)    return ID;
+        else if (type == SLICE)     return slice;
+        else if (type == FRAME)     return frame;
+        else if (type == T)         return t;
+
+        return null;
+
+    }
 }

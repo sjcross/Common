@@ -21,6 +21,7 @@ import wolfson.common.MathFunc.ArrayFunc;
 import wolfson.common.MathFunc.GeneralOps;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static wolfson.common.MathFunc.ArrayFunc.uniqueRows;
 import static org.doube.geometry.FitEllipsoid.inertia;
@@ -89,7 +90,7 @@ public class Blob{
     Point3d[] pts;
     QuickHull3D hull;
     Ellipsoid ell;
-    Point point = null;
+    Spot ref = null;
 
     ArrayList<Double> x = new ArrayList<Double>();
     ArrayList<Double> y = new ArrayList<Double>();
@@ -114,13 +115,29 @@ public class Blob{
 
     }
 
-    public void setReferencePoint(Point point) {
-        this.point = point;
+    public void setReferencePoint(Spot ref) {
+        this.ref = ref;
 
     }
 
-    public Point getReferencePoint() {
-        return point;
+    public void setClosestReferencePoint(SpotCollection refs) {
+        Iterator<Spot> iterator = refs.iterator();
+
+        double closest_dist = Double.POSITIVE_INFINITY;
+        while (iterator.hasNext()) {
+            Spot curr_spot = iterator.next();
+            double curr_dist = getNearestDistanceToPoint(curr_spot);
+
+            if (curr_dist < closest_dist) {
+                setReferencePoint(curr_spot);
+                closest_dist = curr_dist;
+
+            }
+        }
+    }
+
+    public Spot getReferencePoint() {
+        return ref;
 
     }
 
@@ -1120,20 +1137,30 @@ public class Blob{
     }
 
     public double getCentroidDistanceToPoint() {
+        return getCentroidDistanceToPoint(ref);
+
+    }
+
+    public double getCentroidDistanceToPoint(Spot point) {
         double x_cent = getXMean();
         double y_cent = getYMean();
         double z_cent = getZMean();
 
-        double dist = Math.sqrt(Math.pow(x_cent-point.x,2) + Math.pow(y_cent-point.y,2) + Math.pow(z_cent-point.z,2));
+        double dist = Math.sqrt(Math.pow(x_cent-point.getX(),2) + Math.pow(y_cent-point.getY(),2) + Math.pow(z_cent-point.getZ(),2))-point.getRadius();
 
         return dist;
 
     }
 
     public double getNearestDistanceToPoint() {
+        return getNearestDistanceToPoint(ref);
+
+    }
+
+    public double getNearestDistanceToPoint(Spot point) {
         double dist = Double.POSITIVE_INFINITY;
         for (int i=0;i<x.size();i++) {
-            double temp_dist = Math.sqrt(Math.pow(x.get(i) - point.x, 2) + Math.pow(y.get(i) - point.y, 2) + Math.pow(z.get(i) - point.z, 2));
+            double temp_dist = Math.sqrt(Math.pow(x.get(i) - point.getX(), 2) + Math.pow(y.get(i) - point.getY(), 2) + Math.pow(z.get(i) - point.getZ(), 2))-point.getRadius();
             if (temp_dist < dist) {
                 dist = temp_dist;
             }
@@ -1144,6 +1171,11 @@ public class Blob{
     }
 
     public double getEllipseAngleToPoint() {
+        return getEllipseAngleToPoint(ref);
+
+    }
+
+    public double getEllipseAngleToPoint(Spot point) {
         double angle;
 
         if (hasArea()) {
@@ -1151,7 +1183,7 @@ public class Blob{
             double[] e2d_dims = FitEllipse.varToDimensions(e2d);
 
             Vector2D v1 = new Vector2D(1, -Math.tan(theta*Math.PI/180));
-            Vector2D v2 = new Vector2D(point.x - e2d_dims[0], point.y - e2d_dims[1]);
+            Vector2D v2 = new Vector2D(point.getX() - e2d_dims[0], point.getY() - e2d_dims[1]);
 
             angle = Vector2D.angle(v1, v2);
 
@@ -1176,6 +1208,11 @@ public class Blob{
     }
 
     public double getEllipsoidAngleToPoint() {
+        return getEllipsoidAngleToPoint(ref);
+
+    }
+
+    public double getEllipsoidAngleToPoint(Spot point) {
         if (!ellipsoid_cnd) {
             fitEllipsoid();
         }
@@ -1184,7 +1221,7 @@ public class Blob{
         double[] cent = ell.getCentre();
         Vector3D v1 = new Vector3D(rot[0][0], rot[1][0], rot[2][0]);
 
-        Vector3D v2 = new Vector3D(point.x - cent[0], point.y - cent[1], point.z - cent[2]);
+        Vector3D v2 = new Vector3D(point.getX() - cent[0], point.getY() - cent[1], point.getZ() - cent[2]);
 
         double angle = Vector3D.angle(v1, v2);
 
@@ -1203,6 +1240,11 @@ public class Blob{
     }
 
     public double getLCAngleToPoint() {
+        return getLCAngleToPoint(ref);
+
+    }
+
+    public double getLCAngleToPoint(Spot point) {
         double angle;
 
         if (canFitHull()) {
@@ -1210,7 +1252,7 @@ public class Blob{
             double[] LC_cent = getLCCentre();
 
             Vector3D v1 = new Vector3D(LC[0][0]- LC[1][0],LC[0][1]- LC[1][1],LC[0][2]- LC[1][2]);
-            Vector3D v2 = new Vector3D(point.x - LC_cent[0], point.y - LC_cent[1], point.z - LC_cent[2]);
+            Vector3D v2 = new Vector3D(point.getX() - LC_cent[0], point.getY() - LC_cent[1], point.getZ() - LC_cent[2]);
 
             angle = Vector3D.angle(v1, v2);
 
@@ -1257,7 +1299,12 @@ public class Blob{
                 val = getHeight();
             }
 
-        } else if (type.equals(HULL_SURF)) {
+        } else if (type.equals(HULL_VOL)) {
+            if (hasVolume()) {
+                val = getHullVolume();
+            }
+
+        }  else if (type.equals(HULL_SURF)) {
             if (hasVolume()) {
                 val = getHullSurfaceArea();
             }
@@ -1365,27 +1412,27 @@ public class Blob{
             val = orien[1];
 
         } else if (type.equals(DIST_TO_REF_CENT)) {
-            if (this.point != null) {
+            if (this.ref != null) {
                 val = getCentroidDistanceToPoint();
             }
 
         }  else if (type.equals(DIST_TO_REF_EDGE)) {
-            if (this.point != null) {
+            if (this.ref != null) {
                 val = getNearestDistanceToPoint();
             }
 
         } else if (type.equals(ELLIPSE_POINT_ANGLE)) {
-            if (this.point != null) {
+            if (this.ref != null) {
                 val = getEllipseAngleToPoint();
             }
 
         } else if (type.equals(ELLIPSOID_POINT_ANGLE)) {
-            if (this.point != null) {
+            if (this.ref != null) {
                 val = getEllipsoidAngleToPoint();
             }
 
         } else if (type.equals(LC_POINT_ANGLE)) {
-            if (this.point != null) {
+            if (this.ref != null) {
                 val = getLCAngleToPoint();
             }
 
