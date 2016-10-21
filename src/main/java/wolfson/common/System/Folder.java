@@ -3,7 +3,6 @@ package wolfson.common.System;
 import java.io.File;
 
 /**
- * FileCrawler File
  * Created by Stephen on 16/10/2016.
  */
 public class Folder {
@@ -32,8 +31,6 @@ public class Folder {
                 }
             }
 
-            System.out.println(folder.getName()+" has "+n_files+" files and "+n_folders+" folders");
-
             //Creating arrays for files and folders
             files = new File[n_files];
             folders = new File[n_folders];
@@ -43,14 +40,9 @@ public class Folder {
                     folder_count++;
                 } else {
                     files[file_count] = file_list[i];
-                    System.out.println("    Files: "+files[file_count].getName());
                     file_count++;
                 }
             }
-
-        } else {
-            System.out.println(folder.getName()+" is empty");
-
         }
 
         //Resetting the counters
@@ -110,9 +102,80 @@ public class Folder {
         }
     }
 
-    public void printFiles() {
-        for (int i=0;i<files.length;i++) {
-            System.out.println("    Files: "+files[i].getName());
+    public File[] getFolders() {
+        return folders;
+
+    }
+
+    public File[] getFiles() {
+        return files;
+
+    }
+
+    public void printContents() {
+        String name = folder.getName();
+        Folder parent = this.parent;
+
+        while (parent != null) {
+            name = parent.getFolder().getName()+"/"+name;
+            parent = parent.getParent();
         }
+        System.out.println(name);
+
+        if (hasMoreFolders()) {
+            for (int i = 0; i < folders.length; i++) {
+                System.out.println("    Folders: " + folders[i].getName());
+
+            }
+        }
+
+        if (hasMoreFiles()) {
+            for (int i = 0; i < files.length; i++) {
+                System.out.println("    Files: " + files[i].getName());
+
+            }
+        }
+
+        System.out.println(" ");
+    }
+
+    public void printFiles() {
+        String name = folder.getName();
+        Folder parent = this.parent;
+
+        while (parent != null) {
+            name = parent.getFolder().getName()+"/"+name;
+            parent = parent.getParent();
+        }
+        System.out.println(name);
+
+        if (files != null) {
+            for (int i = 0; i < files.length; i++) {
+                System.out.println("    " + files[i].getName());
+
+            }
+        }
+
+        System.out.println(" ");
+    }
+
+    public void printFolders() {
+        String name = folder.getName();
+        Folder parent = this.parent;
+
+        while (parent != null) {
+            name = parent.getFolder().getName()+"/"+name;
+            parent = parent.getParent();
+        }
+        System.out.println(name);
+
+        if (folders != null) {
+            for (int i = 0; i < folders.length; i++) {
+                System.out.println("    " + folders[i].getName());
+
+            }
+        }
+
+        System.out.println(" ");
     }
 }
