@@ -1,8 +1,10 @@
+//TODO: Conditions for files to meet (e.g. filename contains) - conditions could be a separate class
+//TODO: Folder names to skip (don't read files in this folder) - conditions could be a separate class
+//TODO: Verbose option on System.out.println
+
 package wolfson.common.System;
 
-import javax.swing.*;
 import java.io.File;
-import java.util.ArrayList;
 
 /**
  * Created by Stephen on 16/10/2016.
@@ -69,9 +71,7 @@ public class FileCrawler {
             return getNextFileInFolder();
 
         } else {
-            System.out.println("Moving up");
-            boolean cnd = goToNextFolder();
-            while(cnd) {
+            while(goToNextFolder()) {
                 if (hasMoreFilesInFolder()) {
                     return getNextFileInFolder();
 
@@ -108,17 +108,17 @@ public class FileCrawler {
         Folder next_folder = folder.getNextFolder();
 
         if (next_folder != null) {
-            //folders.add(next_folder);
             folder = next_folder;
+            System.out.println(">>> "+folder.getFolder().getAbsolutePath());
 
         } else { //Reached deepest point, so go to current folder's parent
             folder = folder.getParent();
-
+            if (folder != null) System.out.println("<<< "+folder.getFolder().getAbsolutePath());
         }
 
-        boolean end = false;
+        boolean end = true;
         if (folder == null) {
-            end = true;
+            end = false;
 
         }
 
