@@ -1,10 +1,13 @@
-//TODO: Conditions for files to meet (e.g. filename contains) - conditions could be a separate class
 //TODO: Folder names to skip (don't read files in this folder) - conditions could be a separate class
 //TODO: Verbose option on System.out.println
 
 package wolfson.common.System;
 
+import wolfson.common.FileConditions.FileCondition;
+
 import java.io.File;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Created by Stephen on 16/10/2016.
@@ -12,6 +15,8 @@ import java.io.File;
 public class FileCrawler {
     private Folder root_folder = null; //Root folder
     private Folder folder = null; //Current folder
+    private HashSet<FileCondition> file_conditions = new HashSet<FileCondition>(); //List of file conditions
+    private HashSet<FileCondition> folder_conditions = new HashSet<FileCondition>(); //List of folder conditions
 
     public FileCrawler(File root) {
         folder = new Folder(root,null);
@@ -25,7 +30,7 @@ public class FileCrawler {
     }
 
     public File getCurrentFolderAsFile() {
-        return folder.getFolder();
+        return folder.getFolderAsFile();
 
     }
 
@@ -61,24 +66,41 @@ public class FileCrawler {
 
     }
 
+    public File getNextValidFileInFolder() {
+        File file = folder.getNextFile();
+
+        // While the current file doesn't match the conditions, but isn't null go to the next file
+        while ((!testFileConditions(file)) & (file != null)) {
+            file = folder.getNextFile();
+
+        }
+
+        return file;
+    }
+
     public File getNextFileInFolder() {
         return folder.getNextFile();
 
     }
 
     public File getNextFileInStructure() {
-        if (hasMoreFilesInFolder()) {
-            return getNextFileInFolder();
+        // First, attempt to return the next file in the current folder
+        File next_file = getNextValidFileInFolder();
+        if (next_file != null) {
+            return next_file;
 
-        } else {
-            while(goToNextFolder()) {
-                if (hasMoreFilesInFolder()) {
-                    return getNextFileInFolder();
+        }
 
-                }
+        // Now, test the files in the remaining folder
+        while(goToNextValidFolder()) {
+            next_file = getNextValidFileInFolder();
+            if (next_file != null) {
+                return next_file;
+
             }
         }
 
+        // Failing this, there are no files left, so return null
         return null;
 
     }
@@ -100,6 +122,22 @@ public class FileCrawler {
 
     }
 
+    public boolean goToNextValidFolder() {
+        boolean hasmore = goToNextFolder();
+
+        while (hasmore) {
+            if (testFolderConditions(folder.getFolderAsFile())) {
+                return hasmore;
+            }
+
+            hasmore = goToNextFolder();
+
+        }
+
+        return false;
+
+    }
+
     /**
      * Sets the current folder as the next folder in the structure.
      * @return true if there was a next folder and false if the end of the structure has been reached
@@ -109,20 +147,71 @@ public class FileCrawler {
 
         if (next_folder != null) {
             folder = next_folder;
-            System.out.println(">>> "+folder.getFolder().getAbsolutePath());
+            System.out.println(">>> "+folder.getFolderAsFile().getAbsolutePath());
 
         } else { //Reached deepest point, so go to current folder's parent
             folder = folder.getParent();
-            if (folder != null) System.out.println("<<< "+folder.getFolder().getAbsolutePath());
+            if (folder != null) System.out.println("<<< "+folder.getFolderAsFile().getAbsolutePath());
         }
 
-        boolean end = true;
+        // Returns a condition stating if there are more folders to go
+        boolean hasmore = true;
         if (folder == null) {
-            end = false;
+            hasmore = false;
 
         }
 
-        return end;
+        return hasmore;
+
+    }
+
+    public void addFileCondition(FileCondition file_condition) {
+        file_conditions.add(file_condition);
+
+    }
+
+    public void addFolderCondition(FileCondition folder_condition) {
+        folder_conditions.add(folder_condition);
+
+    }
+
+    /**
+     * Runs through any specified file conditions and returns true if all are met
+     * @return
+     */
+    public boolean testFileConditions(File test_file) {
+        boolean cnd = true;
+
+        if (file_conditions != null) {
+            Iterator<FileCondition> iterator = file_conditions.iterator();
+            while(iterator.hasNext()) {
+                //If any condition fails, the output is false
+                if (!iterator.next().test(test_file)) cnd = false;
+
+            }
+        }
+
+        return cnd;
+
+    }
+
+    /**
+     * Runs through any specified folder conditions and returns true if all are met
+     * @return
+     */
+    public boolean testFolderConditions(File test_folder) {
+        boolean cnd = true;
+
+        if (folder_conditions != null) {
+            Iterator<FileCondition> iterator = folder_conditions.iterator();
+            while (iterator.hasNext()) {
+                //If any condition fails, the output is false
+                if (!iterator.next().test(test_folder)) cnd = false;
+
+            }
+        }
+
+        return cnd;
 
     }
 }

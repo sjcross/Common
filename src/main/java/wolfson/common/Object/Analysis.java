@@ -1,3 +1,5 @@
+//TODO: This could be an interface, rather than abstract.  See which works better when I start putting it together
+
 package wolfson.common.Object;
 
 /**

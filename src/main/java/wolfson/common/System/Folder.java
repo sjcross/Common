@@ -51,7 +51,7 @@ public class Folder {
 
     }
 
-    public File getFolder() {
+    public File getFolderAsFile() {
         return folder;
 
     }
@@ -117,7 +117,7 @@ public class Folder {
         Folder parent = this.parent;
 
         while (parent != null) {
-            name = parent.getFolder().getName()+"/"+name;
+            name = parent.getFolderAsFile().getName()+"/"+name;
             parent = parent.getParent();
         }
         System.out.println(name);
@@ -144,7 +144,7 @@ public class Folder {
         Folder parent = this.parent;
 
         while (parent != null) {
-            name = parent.getFolder().getName()+"/"+name;
+            name = parent.getFolderAsFile().getName()+"/"+name;
             parent = parent.getParent();
         }
         System.out.println(name);
@@ -164,7 +164,7 @@ public class Folder {
         Folder parent = this.parent;
 
         while (parent != null) {
-            name = parent.getFolder().getName()+"/"+name;
+            name = parent.getFolderAsFile().getName()+"/"+name;
             parent = parent.getParent();
         }
         System.out.println(name);
