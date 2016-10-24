@@ -13,8 +13,8 @@ import java.util.Iterator;
  * Created by Stephen on 16/10/2016.
  */
 public class FileCrawler {
-    private Folder root_folder = null; //Root folder
-    private Folder folder = null; //Current folder
+    Folder root_folder = null; //Root folder
+    Folder folder = null; //Current folder
     private HashSet<FileCondition> file_conditions = new HashSet<FileCondition>(); //List of file conditions
     private HashSet<FileCondition> folder_conditions = new HashSet<FileCondition>(); //List of folder conditions
 

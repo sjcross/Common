@@ -2,6 +2,8 @@
 
 package wolfson.common.Object;
 
+import java.io.File;
+
 /**
  * Created by sc13967 on 21/10/2016.
  *
@@ -9,5 +11,7 @@ package wolfson.common.Object;
  *
  */
 public abstract class Analysis {
+    public void execute(File file) {
 
+    }
 }
