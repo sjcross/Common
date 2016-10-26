@@ -6,10 +6,10 @@ import java.io.File;
  * Checks the input file against a list of acceptable extensions
  * Created by sc13967 on 24/10/2016.
  */
-public class ExtensionMatches implements FileCondition {
+public class ExtensionMatchesString implements FileCondition {
     private String[] exts;
 
-    public ExtensionMatches(String[] exts) {
+    public ExtensionMatchesString(String[] exts) {
         this.exts = exts;
 
     }

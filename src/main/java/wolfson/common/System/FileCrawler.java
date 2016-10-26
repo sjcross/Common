@@ -1,4 +1,3 @@
-//TODO: Folder names to skip (don't read files in this folder) - conditions could be a separate class
 //TODO: Verbose option on System.out.println
 
 package wolfson.common.System;

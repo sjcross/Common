@@ -9,9 +9,17 @@ import java.util.regex.Pattern;
  */
 public class NameContainsPattern implements FileCondition {
     private Pattern pattern;
+    private int mode;
 
     public NameContainsPattern(Pattern pattern) {
         this.pattern = pattern;
+        this.mode = FileCondition.PARTIAL;
+
+    }
+
+    public NameContainsPattern(Pattern pattern, int mode) {
+        this.pattern = pattern;
+        this.mode = mode;
 
     }
 
@@ -22,8 +30,13 @@ public class NameContainsPattern implements FileCondition {
             String name = file.getName();
 
             Matcher matcher = pattern.matcher(name);
-            if (matcher.find()) cnd = true;
+            if (mode == FileCondition.COMPLETE) {
+                if (matcher.matches()) cnd = true;
 
+            } else if (mode == FileCondition.PARTIAL) {
+                if (matcher.find()) cnd = true;
+
+            }
         }
 
         return cnd;
