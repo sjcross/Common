@@ -1,5 +1,3 @@
-//TODO: Could generalise this to regular expressions, so the form of the expression is specified and this has to match a relevant part of it
-
 package wolfson.common.FileConditions;
 
 import java.io.File;
@@ -10,9 +8,17 @@ import java.io.File;
  */
 public class NameContains implements FileCondition {
     private String test_str;
+    private int mode;
 
     public NameContains(String test_str) {
         this.test_str = test_str;
+        this.mode = FileCondition.PARTIAL;
+
+    }
+
+    public NameContains(String test_str, int mode) {
+        this.test_str = test_str;
+        this.mode = mode;
 
     }
 
@@ -22,7 +28,13 @@ public class NameContains implements FileCondition {
         if (file != null) {
             String name = file.getName();
 
-            if (name.contains(test_str)) cnd = true;
+            if (mode == FileCondition.COMPLETE) {
+                if (name.contains(test_str)) cnd = true;
+
+            } else if (mode == FileCondition.PARTIAL) {
+                if (name.contains(test_str)) cnd = true;
+
+            }
 
         }
 
