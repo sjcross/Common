@@ -9,6 +9,6 @@ import java.io.File;
  *
  */
 public interface Analysis {
-    Results execute(File file);
+    HCResultCollection execute(File file);
 
 }
