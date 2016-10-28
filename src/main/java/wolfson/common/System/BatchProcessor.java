@@ -34,33 +34,37 @@ public class BatchProcessor extends FileCrawler {
 
         folder = root_folder;
         File next = getNextFileInStructure();
-        String prev_folder = folder.getFolderAsFile().getParent();
+        File prev_folder = folder.getFolderAsFile();
 
         while (next != null) {
-            if (!folder.getFolderAsFile().getParent().equals(prev_folder) & save_mode == PERFOLDER) {
-                exporter.export(results); // Performing the specified export tasks
+            // Checking if the new file is in a different folder
+            if (folder.getFolderAsFile() != prev_folder & save_mode == PERFOLDER) {
+                exporter.export(results, prev_folder); // Performing the specified export tasks
                 results = new HCResultCollection(); // Resetting the collection
             }
 
-            HCResultCollection curr_results = analysis.execute(next); // Running the analysis
+            // Running the analysis
+            HCResultCollection curr_results = analysis.execute(next);
 
             // Saving the current results
             if (save_mode == PERFILE) {
-                exporter.export(curr_results); // Performing the specified export tasks
+                exporter.export(curr_results, folder.getFolderAsFile()); // Performing the specified export tasks
 
             } else {
                 results.addAll(curr_results);
 
             }
 
-            prev_folder = folder.getFolderAsFile().getParent();
-
+            prev_folder = folder.getFolderAsFile();
             next = getNextFileInStructure();
 
         }
 
-        if (save_mode != PERFILE) {
-            exporter.export(results); // Performing the specified export tasks
+        if (save_mode == PERFOLDER) {
+            exporter.export(results, prev_folder); // Performing the specified export tasks
+
+        } else if (save_mode == PERSTRUCTURE) {
+            exporter.export(results, root_folder.getFolderAsFile()); // Performing the specified export tasks
 
         }
 

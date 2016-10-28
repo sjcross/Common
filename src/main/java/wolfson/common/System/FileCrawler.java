@@ -150,7 +150,7 @@ public class FileCrawler {
 
         } else { //Reached deepest point, so go to current folder's parent
             folder = folder.getParent();
-            if (folder != null) System.out.println("<<< "+folder.getFolderAsFile().getAbsolutePath());
+//            if (folder != null) System.out.println("<<< "+folder.getFolderAsFile().getAbsolutePath());
         }
 
         // Returns a condition stating if there are more folders to go
