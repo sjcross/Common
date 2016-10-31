@@ -6,6 +6,8 @@ import java.util.Arrays;
 
 public class CumStat {
 
+	public static final int IGNOREZEROS = 0;
+
 	double[] x_mean;
 	double[] x_var;
 	double[] n;
@@ -66,6 +68,33 @@ public class CumStat {
 
 			if (x_in > x_max[i]) {
 				x_max[i] = x_in;
+			}
+		}
+	}
+
+	public void addMeasure(double[] x_in, double[] w, int opt) {
+		for (int i=0;i<x_mean.length;i++) {
+			if (opt == IGNOREZEROS & x_in[i] == 0) {
+				x_in[i] = Double.NaN;
+			}
+			if (!Double.isNaN(x_in[i])) {
+				if (w[i] != 0) {
+					n[i] ++;
+					x_sum[i] = x_sum[i] + x_in[i];
+					w_sum[i] = w_sum[i] + w[i];
+					double x_mean_prev = x_mean[i];
+					x_mean[i] = x_mean[i] + (w[i]/w_sum[i])*(x_in[i]-x_mean[i]);
+					S[i] = S[i]+w[i]*(x_in[i]-x_mean_prev)*(x_in[i]-x_mean[i]);
+					x_var[i] = S[i]/w_sum[i];
+
+					if (x_in[i] < x_min[i]) {
+						x_min[i] = x_in[i];
+					}
+
+					if (x_in[i] > x_max[i]) {
+						x_max[i] = x_in[i];
+					}
+				}
 			}
 		}
 	}

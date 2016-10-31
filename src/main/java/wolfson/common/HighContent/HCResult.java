@@ -1,4 +1,4 @@
-package wolfson.common.Object;
+package wolfson.common.HighContent;
 
 import java.io.File;
 

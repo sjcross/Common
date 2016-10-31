@@ -12,7 +12,7 @@ public class NameContainsString implements FileCondition {
 
     public NameContainsString(String test_str) {
         this.test_str = test_str;
-        this.mode = FileCondition.PARTIAL;
+        this.mode = FileCondition.INC_PARTIAL;
 
     }
 
@@ -28,11 +28,17 @@ public class NameContainsString implements FileCondition {
         if (file != null) {
             String name = file.getName();
 
-            if (mode == FileCondition.COMPLETE) {
+            if (mode == FileCondition.INC_COMPLETE) {
                 if (name.equals(test_str)) cnd = true;
 
-            } else if (mode == FileCondition.PARTIAL) {
+            } else if (mode == FileCondition.INC_PARTIAL) {
                 if (name.contains(test_str)) cnd = true;
+
+            } else if (mode == FileCondition.EXC_COMPLETE) {
+                if (!name.equals(test_str)) cnd = true;
+
+            } else if (mode == FileCondition.EXC_PARTIAL) {
+                if (!name.contains(test_str)) cnd = true;
 
             }
 

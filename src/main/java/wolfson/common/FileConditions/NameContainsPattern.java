@@ -1,7 +1,5 @@
 package wolfson.common.FileConditions;
 
-import wolfson.common.Object.HCResultCollection;
-
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,7 +13,7 @@ public class NameContainsPattern implements FileCondition {
 
     public NameContainsPattern(Pattern pattern) {
         this.pattern = pattern;
-        this.mode = FileCondition.PARTIAL;
+        this.mode = FileCondition.INC_PARTIAL;
 
     }
 
@@ -28,18 +26,21 @@ public class NameContainsPattern implements FileCondition {
     public boolean test(File file) {
         boolean cnd = false;
 
-        HCResultCollection rcc = new HCResultCollection();
-
-
         if (file != null) {
             String name = file.getName();
 
             Matcher matcher = pattern.matcher(name);
-            if (mode == FileCondition.COMPLETE) {
+            if (mode == FileCondition.INC_COMPLETE) {
                 if (matcher.matches()) cnd = true;
 
-            } else if (mode == FileCondition.PARTIAL) {
+            } else if (mode == FileCondition.INC_PARTIAL) {
                 if (matcher.find()) cnd = true;
+
+            } else if (mode == FileCondition.EXC_COMPLETE) {
+                if (!matcher.matches()) cnd = true;
+
+            } else if (mode == FileCondition.EXC_PARTIAL) {
+                if (!matcher.find()) cnd = true;
 
             }
         }

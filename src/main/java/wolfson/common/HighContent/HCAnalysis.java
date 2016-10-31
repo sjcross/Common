@@ -1,4 +1,4 @@
-package wolfson.common.Object;
+package wolfson.common.HighContent;
 
 import java.io.File;
 
@@ -8,7 +8,8 @@ import java.io.File;
  * Interface Analysis-type class, which will be extended by particular analyses
  *
  */
-public interface Analysis {
+public interface HCAnalysis {
     HCResultCollection execute(File file);
+    HCExporter getExporter();
 
 }
