@@ -1,4 +1,3 @@
-//TODO: Folder names to skip (don't read files in this folder) - conditions could be a separate class
 //TODO: Verbose option on System.out.println
 
 package wolfson.common.System;
@@ -13,14 +12,29 @@ import java.util.Iterator;
  * Created by Stephen on 16/10/2016.
  */
 public class FileCrawler {
-    private Folder root_folder = null; //Root folder
-    private Folder folder = null; //Current folder
+    Folder root_folder = null; //Root folder
+    Folder folder = null; //Current folder
     private HashSet<FileCondition> file_conditions = new HashSet<FileCondition>(); //List of file conditions
     private HashSet<FileCondition> folder_conditions = new HashSet<FileCondition>(); //List of folder conditions
+
+    public FileCrawler() {
+
+    }
 
     public FileCrawler(File root) {
         folder = new Folder(root,null);
         root_folder = folder;
+
+    }
+
+    public void setRootFolder(File root) {
+        folder = new Folder(root,null);
+        root_folder = folder;
+
+    }
+
+    public File getRootFolder() {
+        return root_folder.getFolderAsFile();
 
     }
 
@@ -151,7 +165,7 @@ public class FileCrawler {
 
         } else { //Reached deepest point, so go to current folder's parent
             folder = folder.getParent();
-            if (folder != null) System.out.println("<<< "+folder.getFolderAsFile().getAbsolutePath());
+//            if (folder != null) System.out.println("<<< "+folder.getFolderAsFile().getAbsolutePath());
         }
 
         // Returns a condition stating if there are more folders to go
