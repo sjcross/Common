@@ -1,6 +1,7 @@
 package wolfson.common.HighContent;
 
 import java.io.File;
+import java.text.DecimalFormat;
 
 /**
  * High-content result structure as an abstract class, which is extended on an experiment-by experiment basis
@@ -144,17 +145,17 @@ public abstract class HCResult {
     }
 
     public void printParameters() {
+        DecimalFormat time_df = new DecimalFormat("00");
+
         System.out.println("    Primary channel: "+file1.getName());
 
+        System.out.println("        Date: "+getDay()+"/"+getMonth()+"/"+getYear());
+        System.out.println("        Time: "+time_df.format(getHour())+":"+time_df.format(getMin())+":"+time_df.format(getSec()));
         System.out.println("        Well: "+getWell());
         System.out.println("        Field: "+getField());
         System.out.println("        Timepoint: "+getTimepoint());
         System.out.println("        Z-position: "+getZ());
         System.out.println("        Channel: "+getChannel());
-        System.out.println("        Year: "+getYear());
-        System.out.println("        Month: "+getMonth());
-        System.out.println("        Day: "+getDay());
-        System.out.println("        Time: "+getHour()+":"+getMin()+":"+getSec());
         System.out.println("        Magnification: "+getMag());
         System.out.println("        Cell type: "+getCelltype());
         System.out.println("        Comment: "+getComment());

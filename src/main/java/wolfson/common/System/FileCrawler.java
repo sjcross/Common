@@ -17,9 +17,24 @@ public class FileCrawler {
     private HashSet<FileCondition> file_conditions = new HashSet<FileCondition>(); //List of file conditions
     private HashSet<FileCondition> folder_conditions = new HashSet<FileCondition>(); //List of folder conditions
 
+    public FileCrawler() {
+
+    }
+
     public FileCrawler(File root) {
         folder = new Folder(root,null);
         root_folder = folder;
+
+    }
+
+    public void setRootFolder(File root) {
+        folder = new Folder(root,null);
+        root_folder = folder;
+
+    }
+
+    public File getRootFolder() {
+        return root_folder.getFolderAsFile();
 
     }
 

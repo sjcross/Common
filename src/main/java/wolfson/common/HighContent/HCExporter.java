@@ -5,16 +5,92 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.io.File;
+import java.text.DecimalFormat;
 
 /**
  * Created by sc13967 on 27/10/2016.
  */
 public abstract class HCExporter {
-    public void export(HCResultCollection HC_result_collection) {
+    public File target_folder = null;
+    public String root_name = "";
+    public String output_ext = "";
+
+    public String getRootName() {
+        return root_name;
+    }
+
+    public void setRootName(String root_name) {
+        this.root_name = root_name;
+    }
+
+    public File getTargetFolder() {
+        return target_folder;
 
     }
 
-    public void export(HCResultCollection HC_result_collection, File file){
+    public void setTargetFolder(File target_folder) {
+        this.target_folder = target_folder;
+
+    }
+
+    public void export(HCResultCollection results) {
+        // If a root filename and target folder has been manually set, use this.  Otherwise, print an error stating no
+        // name and/or folder was given
+        if (!root_name.equals("") & target_folder != null) {
+            export(results, target_folder, root_name);
+
+        } else if (target_folder == null & !root_name.equals("")) {
+            System.out.println("No target folder specified.  Results not saved");
+
+        } else if (root_name.equals("") & target_folder != null) {
+            System.out.println("No root filename specified.  Results not saved");
+
+        } else {
+            System.out.println("No root filename and target folder specified.  Results not saved");
+
+        }
+    }
+
+    public void export(HCResultCollection results, String root_name) {
+        // If a target folder has been manually set, use this.  Otherwise, print an error stating no target was given
+        if (target_folder != null) {
+            export(results, target_folder, root_name);
+
+        } else {
+            System.out.println("No target folder specified.  Results not saved");
+
+        }
+    }
+
+    public void export(HCResultCollection results, File target_folder) {
+        // If a root filename has been manually set, use this.  Otherwise, print an error stating no name was given
+        if (!root_name.equals("")) {
+            export(results, target_folder, root_name);
+
+        } else {
+            System.out.println("No root filename specified.  Results not saved");
+
+        }
+    }
+
+    public void export(HCResultCollection results, File target_folder, String root_name){
+        // Checking an overriding target folder hasn't already been specified
+        if (this.target_folder != null) {
+            target_folder = this.target_folder;
+
+        }
+
+        // Checking an overriding root filename hasn't already been specified
+        if (!this.root_name.equals("")) {
+            root_name = this.root_name;
+
+        }
+
+        runExportJob(results,target_folder, root_name);
+
+    }
+
+    public void runExportJob(HCResultCollection results, File target_folder, String root_name) {
 
     }
 
@@ -57,58 +133,76 @@ public abstract class HCExporter {
         collection.setAttributeNode(comment);
 
 
-        Attr year = doc.createAttribute("YEAR");
-        if (res.getYear() != 0) {
-            year.appendChild(doc.createTextNode(String.valueOf(res.getYear())));
+        Attr date = doc.createAttribute("DATE");
+        if (res.getYear() != 0 & res.getMonth() != 0 & res.getDay() != 0) {
+            date.appendChild(doc.createTextNode(String.valueOf(res.getDay())+"/"+String.valueOf(res.getMonth())+"/"+String.valueOf(res.getYear())));
         } else {
-            year.appendChild(doc.createTextNode("NA"));
+            date.appendChild(doc.createTextNode("NA"));
         }
-        collection.setAttributeNode(year);
+        collection.setAttributeNode(date);
 
 
-        Attr month = doc.createAttribute("MONTH");
-        if (res.getMonth() != 0) {
-            month.appendChild(doc.createTextNode(String.valueOf(res.getMonth())));
+//        Attr year = doc.createAttribute("YEAR");
+//        if (res.getYear() != 0) {
+//            year.appendChild(doc.createTextNode(String.valueOf(res.getYear())));
+//        } else {
+//            year.appendChild(doc.createTextNode("NA"));
+//        }
+//        collection.setAttributeNode(year);
+//
+//
+//        Attr month = doc.createAttribute("MONTH");
+//        if (res.getMonth() != 0) {
+//            month.appendChild(doc.createTextNode(String.valueOf(res.getMonth())));
+//        } else {
+//            month.appendChild(doc.createTextNode("NA"));
+//        }
+//        collection.setAttributeNode(month);
+//
+//
+//        Attr day = doc.createAttribute("DAY");
+//        if (res.getDay() != 0) {
+//            day.appendChild(doc.createTextNode(String.valueOf(res.getDay())));
+//        } else {
+//            day.appendChild(doc.createTextNode("NA"));
+//        }
+//        collection.setAttributeNode(day);
+
+        DecimalFormat time_df = new DecimalFormat("00");
+        Attr time = doc.createAttribute("TIME");
+        if (res.getHour() != 0 & res.getMin() != 0 & res.getSec() != 0) {
+            time.appendChild(doc.createTextNode(String.valueOf(time_df.format(res.getHour()))+":"+String.valueOf(time_df.format(res.getMin()))+":"+String.valueOf(time_df.format(res.getSec()))));
         } else {
-            month.appendChild(doc.createTextNode("NA"));
+            time.appendChild(doc.createTextNode("NA"));
         }
-        collection.setAttributeNode(month);
+        collection.setAttributeNode(time);
 
 
-        Attr day = doc.createAttribute("DAY");
-        if (res.getDay() != 0) {
-            day.appendChild(doc.createTextNode(String.valueOf(res.getDay())));
-        } else {
-            day.appendChild(doc.createTextNode("NA"));
-        }
-        collection.setAttributeNode(day);
-
-
-        Attr hour = doc.createAttribute("HOUR");
-        if (res.getHour() != 0) {
-            hour.appendChild(doc.createTextNode(String.valueOf(res.getHour())));
-        } else {
-            hour.appendChild(doc.createTextNode("NA"));
-        }
-        collection.setAttributeNode(hour);
-
-
-        Attr min = doc.createAttribute("MINUTE");
-        if (res.getMin() != 0) {
-            min.appendChild(doc.createTextNode(String.valueOf(res.getMin())));
-        } else {
-            min.appendChild(doc.createTextNode("NA"));
-        }
-        collection.setAttributeNode(min);
-
-
-        Attr sec = doc.createAttribute("SECOND");
-        if (res.getSec() != 0) {
-            sec.appendChild(doc.createTextNode(String.valueOf(res.getSec())));
-        } else {
-            sec.appendChild(doc.createTextNode("NA"));
-        }
-        collection.setAttributeNode(sec);
+//        Attr hour = doc.createAttribute("HOUR");
+//        if (res.getHour() != 0) {
+//            hour.appendChild(doc.createTextNode(String.valueOf(res.getHour())));
+//        } else {
+//            hour.appendChild(doc.createTextNode("NA"));
+//        }
+//        collection.setAttributeNode(hour);
+//
+//
+//        Attr min = doc.createAttribute("MINUTE");
+//        if (res.getMin() != 0) {
+//            min.appendChild(doc.createTextNode(String.valueOf(res.getMin())));
+//        } else {
+//            min.appendChild(doc.createTextNode("NA"));
+//        }
+//        collection.setAttributeNode(min);
+//
+//
+//        Attr sec = doc.createAttribute("SECOND");
+//        if (res.getSec() != 0) {
+//            sec.appendChild(doc.createTextNode(String.valueOf(res.getSec())));
+//        } else {
+//            sec.appendChild(doc.createTextNode("NA"));
+//        }
+//        collection.setAttributeNode(sec);
 
         return collection;
 
@@ -141,4 +235,11 @@ public abstract class HCExporter {
 
     }
 
+    public String getOutputExt() {
+        return output_ext;
+    }
+
+    public void setOutputExt(String output_ext) {
+        this.output_ext = output_ext;
+    }
 }

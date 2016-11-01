@@ -17,12 +17,16 @@ public class BatchProcessor extends FileCrawler {
     public final static int PERFOLDER = 1; // Save a new results file for each analysed folder
     public final static int PERSTRUCTURE = 2; // Save a new results file for each analysed structure (i.e. just once)
 
-    private ArrayList<HCExporter> HCExporters = null;
+    private ArrayList<HCExporter> HCExporters = new ArrayList<HCExporter>();
     private HCAnalysis analysis = null;
     private int save_mode = PERSTRUCTURE; // Default save mode is once for the entire structure
 
     public BatchProcessor(File root_folder) {
         super(root_folder);
+
+    }
+
+    public BatchProcessor() {
 
     }
 
@@ -43,10 +47,13 @@ public class BatchProcessor extends FileCrawler {
         if (analysis != null) {
             while (next != null) {
                 // Checking if the new file is in a different folder
-                if (HCExporters != null & folder.getFolderAsFile() != prev_folder & save_mode == PERFOLDER) {
+                if (HCExporters.size() != 0 & folder.getFolderAsFile() != prev_folder & save_mode == PERFOLDER) {
                     Iterator<HCExporter> iterator = HCExporters.iterator();
+
+                    // Folder-level export.  Passes the previous folder and it's name
                     while (iterator.hasNext()) {
-                        iterator.next().export(results, prev_folder); // Performing the specified export tasks
+                        iterator.next().export(results, prev_folder, prev_folder.getName());
+
                     }
 
                     results = new HCResultCollection<HCResult>(); // Resetting the collection
@@ -56,10 +63,13 @@ public class BatchProcessor extends FileCrawler {
                 HCResultCollection<HCResult> curr_results = analysis.execute(next);
 
                 // Saving the current results
-                if (HCExporters != null & save_mode == PERFILE) {
+                if (HCExporters.size() != 0 & save_mode == PERFILE) {
                     Iterator<HCExporter> iterator = HCExporters.iterator();
+
+                    //File-level export.  Passes the current folder and the current file's name
                     while (iterator.hasNext()) {
-                        iterator.next().export(curr_results, folder.getFolderAsFile()); // Performing the specified export tasks
+                        iterator.next().export(curr_results, folder.getFolderAsFile(), next.getName());
+
                     }
                 }
 
@@ -71,16 +81,22 @@ public class BatchProcessor extends FileCrawler {
 
             }
 
-            if (HCExporters != null & save_mode == PERFOLDER) {
+            if (HCExporters.size() != 0 & save_mode == PERFOLDER) {
                 Iterator<HCExporter> iterator = HCExporters.iterator();
+
+                // Folder-level export.  Passes the previous folder and it's name
                 while (iterator.hasNext()) {
-                    iterator.next().export(results, prev_folder); // Performing the specified export tasks
+                    iterator.next().export(results, prev_folder, prev_folder.getName());
+
                 }
 
-            } else if (HCExporters != null & save_mode == PERSTRUCTURE) {
+            } else if (HCExporters.size() != 0 & save_mode == PERSTRUCTURE) {
                 Iterator<HCExporter> iterator = HCExporters.iterator();
+
+                // Structure-level export.  Passes the root folder and it's name
                 while (iterator.hasNext()) {
-                    iterator.next().export(results, root_folder.getFolderAsFile()); // Performing the specified export tasks
+                    iterator.next().export(results, root_folder.getFolderAsFile(), root_folder.getFolderAsFile().getName());
+
                 }
             }
         }
