@@ -19,6 +19,7 @@ public class GUIElements {
         text.setEditable(false);
         text.setBorder(null);
         JComboBox<String> list = new JComboBox<String>(list_in);
+        text.setPreferredSize(list.getPreferredSize());
 
         c.gridx = 1;
         panel.add(list,c);
@@ -100,6 +101,28 @@ public class GUIElements {
 
         c.gridx = 0;
         panel.add(text,c);
+
+        return panel;
+    }
+
+    public static JPanel ButtonAndField(String text_in, int w) {
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5,5,5,5);
+        c.anchor = GridBagConstraints.NORTHEAST;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 1;
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        JButton button = new JButton(text_in);
+
+        JTextField edit = new JTextField("1",w);
+        edit.setPreferredSize(button.getPreferredSize());
+
+        c.gridx = 1;
+        panel.add(edit,c);
+        c.gridx = 0;
+        panel.add(button,c);
 
         return panel;
     }

@@ -36,16 +36,22 @@ public class BatchProcessor extends FileCrawler {
     }
 
     public HCResultCollection<HCResult> runAnalysisOnStructure() {
+        int num_valid_files = getNumberOfValidFilesInStructure();
+        resetIterator();
+
         Folder temp_folder = folder; // Keeping track of where we were
 
         HCResultCollection<HCResult> results = new HCResultCollection<HCResult>();
 
         folder = root_folder;
-        File next = getNextFileInStructure();
+        File next = getNextValidFileInStructure();
         File prev_folder = folder.getFolderAsFile();
+
+        int iter = 1;
 
         if (analysis != null) {
             while (next != null) {
+                System.out.print("\rProcessing file: "+next.getName()+" (file "+iter+" of "+num_valid_files+")");
                 // Checking if the new file is in a different folder
                 if (HCExporters.size() != 0 & folder.getFolderAsFile() != prev_folder & save_mode == PERFOLDER) {
                     Iterator<HCExporter> iterator = HCExporters.iterator();
@@ -77,7 +83,9 @@ public class BatchProcessor extends FileCrawler {
                 results.addAll(curr_results);
 
                 prev_folder = folder.getFolderAsFile();
-                next = getNextFileInStructure();
+                next = getNextValidFileInStructure();
+
+                iter++;
 
             }
 
@@ -99,6 +107,7 @@ public class BatchProcessor extends FileCrawler {
 
                 }
             }
+
         }
 
         folder = temp_folder;

@@ -179,4 +179,33 @@ public class Folder {
         System.out.println(" ");
     }
 
+    public int getNumberOfFiles() {
+        return n_files;
+
+    }
+
+    public int getNumberOfFolders() {
+        return n_folders;
+
+    }
+
+    public int getCurrentFileNumber() {
+        return file_count;
+
+    }
+
+    public int getCurrentFolderNumber() {
+        return folder_count;
+
+    }
+
+    public void resetCurrentFileNumber() {
+        file_count = 0;
+
+    }
+
+    public void resetCurrentFolderNumber() {
+        folder_count = 0;
+
+    }
 }

@@ -97,7 +97,7 @@ public class FileCrawler {
 
     }
 
-    public File getNextFileInStructure() {
+    public File getNextValidFileInStructure() {
         // First, attempt to return the next file in the current folder
         File next_file = getNextValidFileInFolder();
         if (next_file != null) {
@@ -116,6 +116,26 @@ public class FileCrawler {
 
         // Failing this, there are no files left, so return null
         return null;
+
+    }
+
+    public int getNumberOfValidFilesInStructure() {
+        Folder folder_temp = folder;
+        folder = root_folder;
+
+        int count = 0;
+
+        // First, attempt to return the next file in the current folder
+
+        File next_file = getNextValidFileInStructure();
+        while (next_file != null) {
+            count++;
+            next_file = getNextValidFileInStructure();
+        }
+
+        folder = folder_temp;
+
+        return count;
 
     }
 
@@ -161,7 +181,7 @@ public class FileCrawler {
 
         if (next_folder != null) {
             folder = next_folder;
-            System.out.println(">>> "+folder.getFolderAsFile().getAbsolutePath());
+//            System.out.println(">>> "+folder.getFolderAsFile().getAbsolutePath());
 
         } else { //Reached deepest point, so go to current folder's parent
             folder = folder.getParent();
@@ -227,5 +247,20 @@ public class FileCrawler {
 
         return cnd;
 
+    }
+
+    public void resetIterator() {
+        folder = root_folder;
+        Folder next_folder = folder.getNextFolder();
+
+        if (next_folder != null) {
+            folder = next_folder;
+
+        } else { //Reached deepest point, so go to current folder's parent
+            folder.resetCurrentFileNumber();
+            folder.resetCurrentFolderNumber();
+            folder = folder.getParent();
+
+        }
     }
 }
