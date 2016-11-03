@@ -110,6 +110,8 @@ public class BatchProcessor extends FileCrawler {
 
         }
 
+        System.out.println("");
+
         folder = temp_folder;
 
         return results;
