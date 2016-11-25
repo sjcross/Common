@@ -8,19 +8,7 @@ import java.util.Set;
 /**
  * Created by sc13967 on 20/10/2016.
  */
-public class SpotCollection {
-    Set<Spot> spots = new HashSet<Spot>();
-
-    public Iterator<Spot> iterator() {
-        return spots.iterator();
-
-    }
-
-    public int size() {
-        return spots.size();
-
-    }
-
+public class SpotCollection extends HashSet<Spot> {
     public SpotCollection getByID(double ID) {
         Iterator<Spot> iterator = iterator();
 
@@ -42,7 +30,7 @@ public class SpotCollection {
 
         SpotCollection to_return = new SpotCollection();
 
-        while(iterator.hasNext()) {
+        while(iterator().hasNext()) {
             Spot next = iterator.next();
             if (next.getFrame() == frame) {
                 to_return.add(next);
@@ -50,16 +38,6 @@ public class SpotCollection {
         }
 
         return to_return;
-
-    }
-
-    public void add(Spot ref) {
-        spots.add(ref);
-
-    }
-
-    public void remove(Spot ref) {
-        spots.remove(ref);
 
     }
 
@@ -122,6 +100,5 @@ public class SpotCollection {
             remove(iterator.next());
 
         }
-
     }
 }
