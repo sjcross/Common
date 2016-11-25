@@ -35,13 +35,13 @@ public class BatchProcessor extends FileCrawler {
 
     }
 
-    public HCResultCollection<HCResult> runAnalysisOnStructure() {
+    public HCResultCollection<String,HCResult> runAnalysisOnStructure() {
         int num_valid_files = getNumberOfValidFilesInStructure();
         resetIterator();
 
         Folder temp_folder = folder; // Keeping track of where we were
 
-        HCResultCollection<HCResult> results = new HCResultCollection<HCResult>();
+        HCResultCollection<String,HCResult> results = new HCResultCollection<String,HCResult>();
 
         folder = root_folder;
         File next = getNextValidFileInStructure();
@@ -62,11 +62,11 @@ public class BatchProcessor extends FileCrawler {
 
                     }
 
-                    results = new HCResultCollection<HCResult>(); // Resetting the collection
+                    results = new HCResultCollection<String,HCResult>(); // Resetting the collection
                 }
 
                 // Running the analysis
-                HCResultCollection<HCResult> curr_results = analysis.execute(next);
+                HCResultCollection<String,HCResult> curr_results = analysis.execute(next);
 
                 // Saving the current results
                 if (HCExporters.size() != 0 & save_mode == PERFILE) {
@@ -80,7 +80,7 @@ public class BatchProcessor extends FileCrawler {
                 }
 
                 // Appending new results to main results file
-                results.addAll(curr_results);
+                results.putAll(curr_results);
 
                 prev_folder = folder.getFolderAsFile();
                 next = getNextValidFileInStructure();
@@ -103,6 +103,7 @@ public class BatchProcessor extends FileCrawler {
 
                 // Structure-level export.  Passes the root folder and it's name
                 while (iterator.hasNext()) {
+                    System.out.println("");
                     iterator.next().export(results, root_folder.getFolderAsFile(), root_folder.getFolderAsFile().getName());
 
                 }
