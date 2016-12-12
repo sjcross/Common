@@ -51,7 +51,8 @@ public class BatchProcessor extends FileCrawler {
 
         if (analysis != null) {
             while (next != null) {
-                System.out.print("\rProcessing file: "+next.getName()+" (file "+iter+" of "+num_valid_files+")");
+//                System.out.print("\rProcessing file: "+next.getName()+" (file "+iter+" of "+num_valid_files+")");
+                System.out.println("Processing file: "+next.getName()+" (file "+iter+" of "+num_valid_files+")");
                 // Checking if the new file is in a different folder
                 if (HCExporters.size() != 0 & folder.getFolderAsFile() != prev_folder & save_mode == PERFOLDER) {
                     Iterator<HCExporter> iterator = HCExporters.iterator();
@@ -103,15 +104,12 @@ public class BatchProcessor extends FileCrawler {
 
                 // Structure-level export.  Passes the root folder and it's name
                 while (iterator.hasNext()) {
-                    System.out.println("");
                     iterator.next().export(results, root_folder.getFolderAsFile(), root_folder.getFolderAsFile().getName());
 
                 }
             }
 
         }
-
-        System.out.println("");
 
         folder = temp_folder;
 
