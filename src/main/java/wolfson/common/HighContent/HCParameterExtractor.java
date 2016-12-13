@@ -18,6 +18,11 @@ public class HCParameterExtractor {
         Pattern fi_pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
         Matcher fi_matcher = fi_pattern.matcher(str);
 
+        int loc = str.lastIndexOf(".");
+        if (loc >= 0) {
+            result.setExt(str.substring(loc + 1));
+        }
+
         if (fi_matcher.find()) {
             result.setWell(Integer.parseInt(fi_matcher.group(1)));
             result.setField(Integer.parseInt(fi_matcher.group(2)));
@@ -28,10 +33,7 @@ public class HCParameterExtractor {
         }
     }
 
-    public String generateCVFile(int W, int F, int T, int Z, int C) {
-        //TODO - THIS!
 
-    }
 
     public void extractCVFolder(String str) {
         Pattern fo_pattern = Pattern.compile("(\\d{4})(\\d{2})(\\d{2})T(\\d{2})(\\d{2})(\\d{2})_([^_]+?)_([^_\\\\]++)_?([.[^\\\\]]++)?");
