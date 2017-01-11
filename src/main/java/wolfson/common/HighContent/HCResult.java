@@ -23,6 +23,15 @@ public abstract class HCResult {
     String mag;
     String comment;
     File file1;
+    String ext;
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String ext) {
+        this.ext = ext;
+    }
 
     public File getFile1() {
         return file1;
