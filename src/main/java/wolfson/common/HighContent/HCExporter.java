@@ -97,15 +97,6 @@ public abstract class HCExporter {
     public static Element summariseCollection(Document doc, HCResult res) {
         Element collection = doc.createElement("COLLECTION");
 
-        Attr filepath = doc.createAttribute("FILEPATH");
-        if (res.getFile1() != null) {
-            filepath.appendChild(doc.createTextNode(res.getFile1().getAbsolutePath()));
-        } else {
-            filepath.appendChild(doc.createTextNode("NA"));
-        }
-        collection.setAttributeNode(filepath);
-
-
         Attr cell_type = doc.createAttribute("CELL_TYPE");
         if (res.getCelltype() != null) {
             cell_type.appendChild(doc.createTextNode(res.getCelltype()));
@@ -210,6 +201,14 @@ public abstract class HCExporter {
 
     public static Element summariseExperiment(Document doc, HCResult res) {
         Element experiment = doc.createElement("EXPERIMENT");
+
+        Attr filepath = doc.createAttribute("FILEPATH");
+        if (res.getFile1() != null) {
+            filepath.appendChild(doc.createTextNode(res.getFile1().getAbsolutePath()));
+        } else {
+            filepath.appendChild(doc.createTextNode("NA"));
+        }
+        experiment.setAttributeNode(filepath);
 
         Attr well = doc.createAttribute("WELL");
         well.appendChild(doc.createTextNode(String.valueOf(res.getWell())));
