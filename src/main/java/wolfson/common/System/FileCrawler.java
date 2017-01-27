@@ -16,6 +16,7 @@ public class FileCrawler {
     Folder folder = null; //Current folder
     private HashSet<FileCondition> file_conditions = new HashSet<FileCondition>(); //List of file conditions
     private HashSet<FileCondition> folder_conditions = new HashSet<FileCondition>(); //List of folder conditions
+    private boolean includeSubFolders = true;
 
     public FileCrawler() {
 
@@ -105,12 +106,14 @@ public class FileCrawler {
 
         }
 
-        // Now, test the files in the remaining folder
-        while(goToNextValidFolder()) {
-            next_file = getNextValidFileInFolder();
-            if (next_file != null) {
-                return next_file;
+        // Now, try moving to the next folder
+        if (includeSubFolders) {
+            while (goToNextValidFolder()) {
+                next_file = getNextValidFileInFolder();
+                if (next_file != null) {
+                    return next_file;
 
+                }
             }
         }
 
@@ -262,5 +265,13 @@ public class FileCrawler {
             folder = folder.getParent();
 
         }
+    }
+
+    public void setIncludeSubFolders(boolean includeSubFolders) {
+        this.includeSubFolders = includeSubFolders;
+    }
+
+    public boolean getIncludeSubFolders() {
+        return includeSubFolders;
     }
 }

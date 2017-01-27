@@ -51,8 +51,8 @@ public class BatchProcessor extends FileCrawler {
 
         if (analysis != null) {
             while (next != null) {
-//                System.out.print("\rProcessing file: "+next.getName()+" (file "+iter+" of "+num_valid_files+")");
                 System.out.println("Processing file: "+next.getName()+" (file "+iter+" of "+num_valid_files+")");
+
                 // Checking if the new file is in a different folder
                 if (HCExporters.size() != 0 & folder.getFolderAsFile() != prev_folder & save_mode == PERFOLDER) {
                     Iterator<HCExporter> iterator = HCExporters.iterator();

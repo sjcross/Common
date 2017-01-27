@@ -1,5 +1,7 @@
 package wolfson.common.FileConditions;
 
+import org.apache.commons.io.FilenameUtils;
+
 import java.io.File;
 
 /**
@@ -18,11 +20,10 @@ public class ExtensionMatchesString implements FileCondition {
         boolean cnd = false;
 
         if (file != null) {
-            String name = file.getName();
-            int loc = name.lastIndexOf(".");
+            String extension = FilenameUtils.getExtension(file.getName());
 
             for (int i = 0; i < exts.length; i++) {
-                if (loc >= 0 & name.substring(loc + 1).contains(exts[i])) cnd = true;
+                if (extension.matches(exts[i])) cnd = true;
 
             }
         }
