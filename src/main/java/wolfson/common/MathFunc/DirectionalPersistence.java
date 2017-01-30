@@ -31,11 +31,14 @@ public class DirectionalPersistence {
                     Vector3D v1 = new Vector3D((x[i] - x[i + 1]), (y[i] - y[i + 1]), (z[i] - z[i + 1]));
                     Vector3D v2 = new Vector3D((x[i + df] - x[i + 1 + df]), (y[i + df] - y[i + 1 + df]), (z[i + df] - z[i + 1 + df]));
 
-                    cosTheta.addSingleMeasure(df,Math.cos(Vector3D.angle(v1,v2)));
+                    if (v1.getNorm() != 0 & v2.getNorm() != 0) {
+                        cosTheta.addSingleMeasure(df, Math.cos(Vector3D.angle(v1, v2)));
+                    }
                 }
             }
         }
     }
+
 
     // GETTERS AND SETTERS
 

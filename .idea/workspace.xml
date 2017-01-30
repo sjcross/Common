@@ -7,7 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58a93d3a-53bf-43ec-b929-89bc18e9a84a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java" />
     </list>
     <ignored path="Math.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,9 +86,8 @@
             <state relative-caret-position="867">
               <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#FileCrawler#0" expanded="false" />
-                <element signature="e#430#445#0" expanded="true" />
-                <element signature="e#541#556#0" expanded="true" />
                 <element signature="method#FileCrawler#0;class#FileCrawler#0" expanded="false" />
                 <element signature="method#FileCrawler#1;class#FileCrawler#0" expanded="false" />
                 <element signature="method#setRootFolder#0;class#FileCrawler#0" expanded="false" />
@@ -114,33 +113,120 @@
                 <element signature="docComment;method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
                 <element signature="method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
                 <element signature="method#resetIterator#0;class#FileCrawler#0" expanded="false" />
+                <element signature="e#6835#6836#0" expanded="false" />
+                <element signature="e#6893#6894#0" expanded="false" />
+                <element signature="e#6938#6939#0" expanded="false" />
+                <element signature="e#6978#6979#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CumStat.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CumStat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2326">
-              <caret line="195" column="0" lean-forward="true" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+            <state relative-caret-position="230">
+              <caret line="151" column="27" lean-forward="false" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DirectionalPersistence.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DirectionalPersistence.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#DirectionalPersistence#0" expanded="false" />
-                <element signature="e#322#323#0" expanded="false" />
-                <element signature="e#362#363#0" expanded="false" />
-                <element signature="e#408#409#0" expanded="false" />
-                <element signature="e#451#452#0" expanded="false" />
+                <element signature="method#getCosTheta#0;class#DirectionalPersistence#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Blob.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="593">
+              <caret line="586" column="0" lean-forward="false" selection-start-line="586" selection-start-column="0" selection-end-line="586" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#Blob#0" expanded="false" />
+                <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+                <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+                <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+                <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#setClosestReferencePoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+                <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+                <element signature="method#getX#0;class#Blob#0" expanded="false" />
+                <element signature="method#getY#0;class#Blob#0" expanded="false" />
+                <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+                <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+                <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+                <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+                <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+                <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+                <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+                <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+                <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+                <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+                <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+                <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+                <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+                <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+                <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+                <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+                <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+                <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+                <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+                <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+                <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+                <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+                <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+                <element signature="e#15058#15169#0" expanded="false" />
+                <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+                <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+                <element signature="e#16921#17030#0" expanded="false" />
+                <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+                <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+                <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+                <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+                <element signature="e#30710#30782#0" expanded="false" />
+                <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+                <element signature="e#31303#31375#0" expanded="false" />
+                <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+                <element signature="e#34984#35093#0" expanded="false" />
+                <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+                <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+                <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+                <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getNearestDistanceToPoint#1;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+                <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+                <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+                <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+                <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+                <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -152,7 +238,6 @@
             <state relative-caret-position="221">
               <caret line="33" column="1" lean-forward="false" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="docComment;class#ExtensionMatchesString#0" expanded="false" />
                 <element signature="method#ExtensionMatchesString#0;class#ExtensionMatchesString#0" expanded="false" />
                 <element signature="method#test#0;class#ExtensionMatchesString#0" expanded="false" />
@@ -171,18 +256,6 @@
                 <element signature="method#HCFilenameGenerator#0;class#HCFilenameGenerator#0" expanded="false" />
                 <element signature="method#HCFilenameGenerator#1;class#HCFilenameGenerator#0" expanded="false" />
                 <element signature="method#generateCVFile#0;class#HCFilenameGenerator#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HCResultCollection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCResultCollection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="docComment;class#HCResultCollection#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -208,8 +281,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/MSD.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/Indexer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/MidpointCircle.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/GeneralOps.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/CumStat.java" />
@@ -259,6 +330,8 @@
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ExtensionMatchesString.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java" />
       </list>
     </option>
   </component>
@@ -270,9 +343,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="54" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
-    <option name="width" value="1874" />
+    <option name="width" value="1936" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -293,9 +366,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -387,6 +457,10 @@
               <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -418,8 +492,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -611,37 +714,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25414938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16576965" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16204691" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25414938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -698,13 +801,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Blob.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/CumStat.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameMatchesPattern.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MSD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/ExporterCollection.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/SpotCollection.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -821,13 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3791">
-          <caret line="669" column="0" lean-forward="false" selection-start-line="669" selection-start-column="0" selection-end-line="669" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCExporter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3247">
@@ -851,21 +940,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#DirectionalPersistence#0" expanded="false" />
-            <element signature="e#322#323#0" expanded="false" />
-            <element signature="e#362#363#0" expanded="false" />
-            <element signature="e#408#409#0" expanded="false" />
-            <element signature="e#451#452#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -879,7 +953,6 @@
         <state relative-caret-position="221">
           <caret line="33" column="1" lean-forward="false" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;class#ExtensionMatchesString#0" expanded="false" />
             <element signature="method#ExtensionMatchesString#0;class#ExtensionMatchesString#0" expanded="false" />
             <element signature="method#test#0;class#ExtensionMatchesString#0" expanded="false" />
@@ -892,9 +965,8 @@
         <state relative-caret-position="867">
           <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#FileCrawler#0" expanded="false" />
-            <element signature="e#430#445#0" expanded="true" />
-            <element signature="e#541#556#0" expanded="true" />
             <element signature="method#FileCrawler#0;class#FileCrawler#0" expanded="false" />
             <element signature="method#FileCrawler#1;class#FileCrawler#0" expanded="false" />
             <element signature="method#setRootFolder#0;class#FileCrawler#0" expanded="false" />
@@ -920,15 +992,133 @@
             <element signature="docComment;method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
             <element signature="method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
             <element signature="method#resetIterator#0;class#FileCrawler#0" expanded="false" />
+            <element signature="e#6835#6836#0" expanded="false" />
+            <element signature="e#6893#6894#0" expanded="false" />
+            <element signature="e#6938#6939#0" expanded="false" />
+            <element signature="e#6978#6979#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2326">
-          <caret line="195" column="0" lean-forward="true" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+        <state relative-caret-position="230">
+          <caret line="151" column="27" lean-forward="false" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MSD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="method#MSD#0;class#MSD#0" expanded="false" />
+            <element signature="method#MSD#1;class#MSD#0" expanded="false" />
+            <element signature="method#getLinearFit#0;class#MSD#0" expanded="false" />
+            <element signature="method#getLinearFit#1;class#MSD#0" expanded="false" />
+            <element signature="method#getMSDValues#0;class#MSD#0" expanded="false" />
+            <element signature="method#getXValues#0;class#MSD#0" expanded="false" />
+            <element signature="method#getYFitValues#0;class#MSD#0" expanded="false" />
+            <element signature="method#getYFitValues#1;class#MSD#0" expanded="false" />
+            <element signature="method#getNumber#0;class#MSD#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="586" column="0" lean-forward="false" selection-start-line="586" selection-start-column="0" selection-end-line="586" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Blob#0" expanded="false" />
+            <element signature="method#Blob#0;class#Blob#0" expanded="false" />
+            <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
+            <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
+            <element signature="method#setReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#setClosestReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="method#getX#0;class#Blob#0" expanded="false" />
+            <element signature="method#getY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getXMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getYMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getZMean#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalXY#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCalZ#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHeight#0;class#Blob#0" expanded="false" />
+            <element signature="method#getExtents#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#hasArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#canFitHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#getVoxelVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNVoxels#0;class#Blob#0" expanded="false" />
+            <element signature="method#getProjectedArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipse#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseFit#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseTheta#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitConvexHull#1;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVertices#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullFaces#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullSurfaceArea#0;class#Blob#0" expanded="false" />
+            <element signature="method#getHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateHullVolume#0;class#Blob#0" expanded="false" />
+            <element signature="e#15058#15169#0" expanded="false" />
+            <element signature="method#getSphericity#0;class#Blob#0" expanded="false" />
+            <element signature="method#getSolidity#0;class#Blob#0" expanded="false" />
+            <element signature="e#16921#17030#0" expanded="false" />
+            <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCCoords#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCLength#0;class#Blob#0" expanded="false" />
+            <element signature="method#fixHandedness#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEccentricity1#0;class#Blob#0" expanded="false" />
+            <element signature="e#30710#30782#0" expanded="false" />
+            <element signature="method#getEccentricity2#0;class#Blob#0" expanded="false" />
+            <element signature="e#31303#31375#0" expanded="false" />
+            <element signature="method#getLCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMaPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLMiPCOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEulerAngles#0;class#Blob#0" expanded="false" />
+            <element signature="e#34984#35093#0" expanded="false" />
+            <element signature="method#getOverlap#0;class#Blob#0" expanded="false" />
+            <element signature="method#fitEllipsoid#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidCentre#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRadii#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidRotationMatrix#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidOrientation#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getCentroidDistanceToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getNearestDistanceToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getNearestDistanceToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipseAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getEllipsoidAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#0;class#Blob#0" expanded="false" />
+            <element signature="method#getLCAngleToPoint#1;class#Blob#0" expanded="false" />
+            <element signature="docComment;method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getGenericValue#0;class#Blob#0" expanded="false" />
+            <element signature="method#getRangeType#0;class#Blob#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;class#DirectionalPersistence#0" expanded="false" />
+            <element signature="method#getCosTheta#0;class#DirectionalPersistence#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
