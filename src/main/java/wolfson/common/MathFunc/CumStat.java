@@ -30,7 +30,7 @@ public class CumStat {
         Arrays.fill(x_max, Double.NEGATIVE_INFINITY);
     }
 
-    public void addMeasure(double[] x_in) { //Non-weighted vector
+    public synchronized void addMeasure(double[] x_in) { //Non-weighted vector
         for (int i=0;i<x_in.length;i++) {
             if (!Double.isNaN(x_in[i])) {
                 n[i] ++;
@@ -52,7 +52,7 @@ public class CumStat {
         }
     }
 
-    public void addMeasure(double[] x_in, int opt) {
+    public synchronized void addMeasure(double[] x_in, int opt) {
         for (int i=0;i<x_mean.length;i++) {
             if (opt == IGNOREZEROS & x_in[i] == 0) {
                 x_in[i] = Double.NaN;
@@ -61,7 +61,7 @@ public class CumStat {
         addMeasure(x_in);
     }
 
-    public void addSingleMeasure(int i, double x_in) {
+    public synchronized void addSingleMeasure(int i, double x_in) {
         if (!Double.isNaN(x_in)) {
             n[i] ++;
             x_sum[i] = x_sum[i] + x_in;
@@ -81,7 +81,7 @@ public class CumStat {
         }
     }
 
-    public void addMeasure(double[] x_in, double[] w, int opt) {
+    public synchronized void addMeasure(double[] x_in, double[] w, int opt) {
         for (int i=0;i<x_mean.length;i++) {
             if (opt == IGNOREZEROS & x_in[i] == 0) {
                 x_in[i] = Double.NaN;
@@ -90,7 +90,7 @@ public class CumStat {
         addMeasure(x_in,w);
     }
 
-    public void addMeasure(double x_in) { //Non-weighted value
+    public synchronized void addMeasure(double x_in) { //Non-weighted value
         if (!Double.isNaN(x_in)) {
             n[0] ++;
             x_sum[0] = x_sum[0] + x_in;
@@ -110,7 +110,7 @@ public class CumStat {
         }
     }
 
-    public void addMeasure(double[] x_in, double[] w) {//Weighted vector
+    public synchronized void addMeasure(double[] x_in, double[] w) {//Weighted vector
         for (int i=0;i<x_mean.length;i++) {
             if (!Double.isNaN(x_in[i])) {
                 if (w[i] != 0) {
@@ -134,7 +134,7 @@ public class CumStat {
         }
     }
 
-    public void addMeasure(double x_in, double w) {//Weighted value
+    public synchronized void addMeasure(double x_in, double w) {//Weighted value
         if (!Double.isNaN(x_in)) {
             if (w != 0) {
                 n[0] ++;
@@ -159,7 +159,7 @@ public class CumStat {
     /**
      * Add multiple measurements to a single cumulative value.  Different from addMeasure, which adds a single value to each element of a cumulative array.
      */
-    public void addMeasures(double[] x_in) {
+    public synchronized void addMeasures(double[] x_in) {
         for (int i=0;i<x_in.length;i++) {
             addMeasure(x_in[i]);
         }
@@ -168,25 +168,25 @@ public class CumStat {
     /**
      * Add multiple measurements with weighting to a single cumulative value.  Different from addMeasure, which adds a single value to each element of a cumulative array.
      */
-    public void addMeasures(double[] x_in, double[] w) {
+    public synchronized void addMeasures(double[] x_in, double[] w) {
         for (int i=0;i<x_in.length;i++) {
             addMeasure(x_in[i], w[i]);
         }
     }
 
-    public double[] getMean() {
+    public synchronized double[] getMean() {
         return x_mean;
     }
 
-    public double[] getSum() {
+    public synchronized double[] getSum() {
         return x_sum;
     }
 
-    public double[] getVar() {
+    public synchronized double[] getVar() {
         return x_var;
     }
 
-    public double[] getStd() {
+    public synchronized double[] getStd() {
         double[] x_std = new double[x_var.length];
         for (int i=0;i<x_var.length;i++) {
             x_std[i] = Math.sqrt(x_var[i]);
@@ -194,19 +194,19 @@ public class CumStat {
         return x_std;
     }
 
-    public double[] getN() {
+    public synchronized double[] getN() {
         return n;
     }
 
-    public double[] getMin() {
+    public synchronized double[] getMin() {
         return x_min;
     }
 
-    public double[] getMax() {
+    public synchronized double[] getMax() {
         return x_max;
     }
 
-    public double[] getWeight() {
+    public synchronized double[] getWeight() {
         return w_sum;
 
     }
