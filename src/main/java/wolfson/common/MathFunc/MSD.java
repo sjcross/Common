@@ -25,22 +25,8 @@ public class MSD
         double[] arr_x = getXValues(inc_t);
         double[] arr_y = getMSDValues(inc_t);
 
-        arr_y[0] = 0; //There should be no values with zero time-gap, so this would otherwise be NaN
+        return getLinearFit(arr_x,arr_y,dur);
 
-        if (arr_x.length < dur) {
-            dur = arr_x.length;
-        }
-
-        double[][] data = new double[dur][2];
-        for (int j=0;j<dur;j++) {
-            data[j][0] = arr_x[j];
-            data[j][1] = arr_y[j];
-        }
-
-        SimpleRegression sr = new SimpleRegression();
-        sr.addData(data);
-        double[] out = new double[]{sr.getSlope(),sr.getIntercept(),dur};
-        return out;
     }
 
     public double[] getLinearFit(double[] arr_x, double[] arr_y, int dur) {
@@ -58,8 +44,8 @@ public class MSD
 
         SimpleRegression sr = new SimpleRegression();
         sr.addData(data);
-        double[] out = new double[]{sr.getSlope(),sr.getIntercept(),dur};
-        return out;
+        return new double[]{sr.getSlope(),sr.getIntercept(),dur};
+
     }
 
     public double[] getMSDValues(double inc_t) {
