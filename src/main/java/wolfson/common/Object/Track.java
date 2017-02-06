@@ -180,4 +180,8 @@ public class Track {
 
         return dir_persist;
     }
+
+    public double getDuration() {
+        return f[f.length-1];
+    }
 }
