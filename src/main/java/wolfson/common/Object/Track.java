@@ -106,7 +106,7 @@ public class Track {
             double dy = y[i] - y[i - 1];
             double dz = z[i] - z[i - 1];
 
-            steps[i] = Math.sqrt(dx * dx + dy * dy + dz * dz);
+            steps[i-1] = Math.sqrt(dx * dx + dy * dy + dz * dz);
         }
 
         return steps;
