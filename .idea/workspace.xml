@@ -7,7 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58a93d3a-53bf-43ec-b929-89bc18e9a84a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/CumStat.class" afterPath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/CumStat.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/MSD.class" afterPath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/MSD.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Math.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,6 +36,7 @@
             <state relative-caret-position="51">
               <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#BatchProcessor#0" expanded="false" />
                 <element signature="method#BatchProcessor#0;class#BatchProcessor#0" expanded="false" />
                 <element signature="method#BatchProcessor#1;class#BatchProcessor#0" expanded="false" />
@@ -45,36 +48,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HCResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-              <folding>
-                <element signature="docComment;class#HCResult#0" expanded="false" />
-                <element signature="method#printParameters#0;class#HCResult#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HCExporter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCExporter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3247">
               <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HCParameterExtractor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCParameterExtractor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
               <folding>
-                <element signature="docComment;class#HCParameterExtractor#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#394#395#0" expanded="false" />
+                <element signature="e#426#427#0" expanded="false" />
+                <element signature="e#475#476#0" expanded="false" />
+                <element signature="e#517#518#0" expanded="false" />
+                <element signature="e#8140#8141#0" expanded="false" />
+                <element signature="e#8173#8174#0" expanded="false" />
+                <element signature="e#8224#8225#0" expanded="false" />
+                <element signature="e#8268#8269#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -125,21 +113,84 @@
       <file leaf-file-name="CumStat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
+            <state relative-caret-position="2567">
               <caret line="151" column="27" lean-forward="false" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
-              <folding />
+              <folding>
+                <element signature="e#5627#5628#0" expanded="false" />
+                <element signature="e#5656#5657#0" expanded="false" />
+                <element signature="e#5701#5702#0" expanded="false" />
+                <element signature="e#5729#5730#0" expanded="false" />
+                <element signature="e#5774#5775#0" expanded="false" />
+                <element signature="e#5802#5803#0" expanded="false" />
+                <element signature="e#6066#6067#0" expanded="false" />
+                <element signature="e#6090#6091#0" expanded="false" />
+                <element signature="e#6135#6136#0" expanded="false" />
+                <element signature="e#6163#6164#0" expanded="false" />
+                <element signature="e#6208#6209#0" expanded="false" />
+                <element signature="e#6236#6237#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DirectionalPersistence.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DirectionalPersistence.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="578">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="42" selection-end-column="5" />
               <folding>
                 <element signature="docComment;class#DirectionalPersistence#0" expanded="false" />
-                <element signature="method#getCosTheta#0;class#DirectionalPersistence#0" expanded="false" />
+                <element signature="e#322#323#0" expanded="true" />
+                <element signature="e#362#363#0" expanded="true" />
+                <element signature="e#408#409#0" expanded="true" />
+                <element signature="e#451#452#0" expanded="true" />
+                <marker date="1486204319344" expanded="false" signature="1330:1363" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Track.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#Track#0" expanded="false" />
+                <element signature="method#Track#0;class#Track#0" expanded="false" />
+                <element signature="method#Track#1;class#Track#0" expanded="false" />
+                <element signature="method#getDirectionalPersistence#0;class#Track#0" expanded="false" />
+                <element signature="method#getMSD#0;class#Track#0" expanded="false" />
+                <element signature="method#getInstantaneousVelocity#0;class#Track#0" expanded="false" />
+                <element signature="method#getStepSizes#0;class#Track#0" expanded="false" />
+                <element signature="method#getEuclideanDistance#0;class#Track#0" expanded="false" />
+                <element signature="method#getTotalPathLength#0;class#Track#0" expanded="false" />
+                <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
+                <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
+                <element signature="method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
+                <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
+                <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
+                <element signature="docComment;method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
+                <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MSD.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MSD.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding>
+                <element signature="method#MSD#0;class#MSD#0" expanded="false" />
+                <element signature="method#MSD#1;class#MSD#0" expanded="false" />
+                <marker date="1486204319396" expanded="false" signature="1290:2405" ph="{...}" />
+                <marker date="1486204319396" expanded="false" signature="1515:1523" ph="&lt;~&gt;" />
+                <marker date="1486204319396" expanded="false" signature="2452:2696" ph="{...}" />
+                <marker date="1486204319396" expanded="true" signature="2755:3037" ph="{...}" />
+                <marker date="1486204319396" expanded="true" signature="3114:3359" ph="{...}" />
+                <marker date="1486204319396" expanded="false" signature="3393:3910" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -148,10 +199,14 @@
       <file leaf-file-name="Blob.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="593">
+            <state relative-caret-position="3247">
               <caret line="586" column="0" lean-forward="false" selection-start-line="586" selection-start-column="0" selection-end-line="586" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#Blob#0" expanded="false" />
+                <element signature="e#5203#5211#0" expanded="false" />
+                <element signature="e#5254#5262#0" expanded="false" />
+                <element signature="e#5305#5313#0" expanded="false" />
                 <element signature="method#Blob#0;class#Blob#0" expanded="false" />
                 <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
                 <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
@@ -160,6 +215,8 @@
                 <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
                 <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
                 <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+                <element signature="e#6503#6504#0" expanded="false" />
+                <element signature="e#6528#6529#0" expanded="false" />
                 <element signature="method#getX#0;class#Blob#0" expanded="false" />
                 <element signature="method#getY#0;class#Blob#0" expanded="false" />
                 <element signature="method#getZ#0;class#Blob#0" expanded="false" />
@@ -193,6 +250,7 @@
                 <element signature="e#16921#17030#0" expanded="false" />
                 <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
                 <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+                <element signature="e#21038#21048#0" expanded="false" />
                 <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
                 <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
                 <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
@@ -235,27 +293,13 @@
       <file leaf-file-name="ExtensionMatchesString.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ExtensionMatchesString.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="187">
               <caret line="33" column="1" lean-forward="false" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#ExtensionMatchesString#0" expanded="false" />
                 <element signature="method#ExtensionMatchesString#0;class#ExtensionMatchesString#0" expanded="false" />
                 <element signature="method#test#0;class#ExtensionMatchesString#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HCFilenameGenerator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCFilenameGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="13" column="53" lean-forward="false" selection-start-line="13" selection-start-column="53" selection-end-line="13" selection-end-column="53" />
-              <folding>
-                <element signature="docComment;class#HCFilenameGenerator#0" expanded="false" />
-                <element signature="method#HCFilenameGenerator#0;class#HCFilenameGenerator#0" expanded="false" />
-                <element signature="method#HCFilenameGenerator#1;class#HCFilenameGenerator#0" expanded="false" />
-                <element signature="method#generateCVFile#0;class#HCFilenameGenerator#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -281,9 +325,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/MidpointCircle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/GeneralOps.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/CumStat.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wolfson/MathFunc/ArrayFunc.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wolfson/Common/MathFunc/ArrayFunc.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/ArrayFunc.java" />
@@ -332,6 +373,9 @@
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MSD.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/LinearFit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java" />
       </list>
     </option>
   </component>
@@ -343,9 +387,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
+    <option name="x" value="54" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1874" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -366,6 +410,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -388,140 +433,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="System" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathFunc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -714,37 +628,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25414938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2535497" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16204691" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16899893" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -769,8 +685,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/Indexer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/MSD.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/ArrayFunc.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/CumStat.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/MidpointCircle.java" />
@@ -877,9 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#HCResultCollection#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -887,10 +798,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-          <folding>
-            <element signature="docComment;class#HCResult#0" expanded="false" />
-            <element signature="method#printParameters#0;class#HCResult#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -898,9 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-          <folding>
-            <element signature="docComment;class#HCParameterExtractor#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -908,12 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="13" column="53" lean-forward="false" selection-start-line="13" selection-start-column="53" selection-end-line="13" selection-end-column="53" />
-          <folding>
-            <element signature="docComment;class#HCFilenameGenerator#0" expanded="false" />
-            <element signature="method#HCFilenameGenerator#0;class#HCFilenameGenerator#0" expanded="false" />
-            <element signature="method#HCFilenameGenerator#1;class#HCFilenameGenerator#0" expanded="false" />
-            <element signature="method#generateCVFile#0;class#HCFilenameGenerator#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -921,7 +819,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3247">
           <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#394#395#0" expanded="false" />
+            <element signature="e#426#427#0" expanded="false" />
+            <element signature="e#475#476#0" expanded="false" />
+            <element signature="e#517#518#0" expanded="false" />
+            <element signature="e#8140#8141#0" expanded="false" />
+            <element signature="e#8173#8174#0" expanded="false" />
+            <element signature="e#8224#8225#0" expanded="false" />
+            <element signature="e#8268#8269#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -930,6 +838,7 @@
         <state relative-caret-position="51">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#BatchProcessor#0" expanded="false" />
             <element signature="method#BatchProcessor#0;class#BatchProcessor#0" expanded="false" />
             <element signature="method#BatchProcessor#1;class#BatchProcessor#0" expanded="false" />
@@ -950,9 +859,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ExtensionMatchesString.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="187">
           <caret line="33" column="1" lean-forward="false" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#ExtensionMatchesString#0" expanded="false" />
             <element signature="method#ExtensionMatchesString#0;class#ExtensionMatchesString#0" expanded="false" />
             <element signature="method#test#0;class#ExtensionMatchesString#0" expanded="false" />
@@ -1002,36 +912,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
+        <state relative-caret-position="2567">
           <caret line="151" column="27" lean-forward="false" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MSD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="method#MSD#0;class#MSD#0" expanded="false" />
-            <element signature="method#MSD#1;class#MSD#0" expanded="false" />
-            <element signature="method#getLinearFit#0;class#MSD#0" expanded="false" />
-            <element signature="method#getLinearFit#1;class#MSD#0" expanded="false" />
-            <element signature="method#getMSDValues#0;class#MSD#0" expanded="false" />
-            <element signature="method#getXValues#0;class#MSD#0" expanded="false" />
-            <element signature="method#getYFitValues#0;class#MSD#0" expanded="false" />
-            <element signature="method#getYFitValues#1;class#MSD#0" expanded="false" />
-            <element signature="method#getNumber#0;class#MSD#0" expanded="false" />
+            <element signature="e#5627#5628#0" expanded="false" />
+            <element signature="e#5656#5657#0" expanded="false" />
+            <element signature="e#5701#5702#0" expanded="false" />
+            <element signature="e#5729#5730#0" expanded="false" />
+            <element signature="e#5774#5775#0" expanded="false" />
+            <element signature="e#5802#5803#0" expanded="false" />
+            <element signature="e#6066#6067#0" expanded="false" />
+            <element signature="e#6090#6091#0" expanded="false" />
+            <element signature="e#6135#6136#0" expanded="false" />
+            <element signature="e#6163#6164#0" expanded="false" />
+            <element signature="e#6208#6209#0" expanded="false" />
+            <element signature="e#6236#6237#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
+        <state relative-caret-position="3247">
           <caret line="586" column="0" lean-forward="false" selection-start-line="586" selection-start-column="0" selection-end-line="586" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#Blob#0" expanded="false" />
+            <element signature="e#5203#5211#0" expanded="false" />
+            <element signature="e#5254#5262#0" expanded="false" />
+            <element signature="e#5305#5313#0" expanded="false" />
             <element signature="method#Blob#0;class#Blob#0" expanded="false" />
             <element signature="method#setAngleMode#0;class#Blob#0" expanded="false" />
             <element signature="method#addCoord#0;class#Blob#0" expanded="false" />
@@ -1040,6 +949,8 @@
             <element signature="method#getReferencePoint#0;class#Blob#0" expanded="false" />
             <element signature="method#getErrTol#0;class#Blob#0" expanded="false" />
             <element signature="method#setErrTol#0;class#Blob#0" expanded="false" />
+            <element signature="e#6503#6504#0" expanded="false" />
+            <element signature="e#6528#6529#0" expanded="false" />
             <element signature="method#getX#0;class#Blob#0" expanded="false" />
             <element signature="method#getY#0;class#Blob#0" expanded="false" />
             <element signature="method#getZ#0;class#Blob#0" expanded="false" />
@@ -1073,6 +984,7 @@
             <element signature="e#16921#17030#0" expanded="false" />
             <element signature="method#getLCLength#0;class#Blob#0" expanded="false" />
             <element signature="method#calculateLMaPC#0;class#Blob#0" expanded="false" />
+            <element signature="e#21038#21048#0" expanded="false" />
             <element signature="method#getLMaPCCoords#0;class#Blob#0" expanded="false" />
             <element signature="method#getLMaPCLength#0;class#Blob#0" expanded="false" />
             <element signature="method#calculateLMiPC#0;class#Blob#0" expanded="false" />
@@ -1113,11 +1025,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="578">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="42" selection-end-column="5" />
           <folding>
             <element signature="docComment;class#DirectionalPersistence#0" expanded="false" />
-            <element signature="method#getCosTheta#0;class#DirectionalPersistence#0" expanded="false" />
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <marker date="1486204319344" expanded="false" signature="1330:1363" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/LinearFit.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MSD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="method#MSD#0;class#MSD#0" expanded="false" />
+            <element signature="method#MSD#1;class#MSD#0" expanded="false" />
+            <marker date="1486204319396" expanded="false" signature="1290:2405" ph="{...}" />
+            <marker date="1486204319396" expanded="false" signature="1515:1523" ph="&lt;~&gt;" />
+            <marker date="1486204319396" expanded="false" signature="2452:2696" ph="{...}" />
+            <marker date="1486204319396" expanded="true" signature="2755:3037" ph="{...}" />
+            <marker date="1486204319396" expanded="true" signature="3114:3359" ph="{...}" />
+            <marker date="1486204319396" expanded="false" signature="3393:3910" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Track#0" expanded="false" />
+            <element signature="method#Track#0;class#Track#0" expanded="false" />
+            <element signature="method#Track#1;class#Track#0" expanded="false" />
+            <element signature="method#getDirectionalPersistence#0;class#Track#0" expanded="false" />
+            <element signature="method#getMSD#0;class#Track#0" expanded="false" />
+            <element signature="method#getInstantaneousVelocity#0;class#Track#0" expanded="false" />
+            <element signature="method#getStepSizes#0;class#Track#0" expanded="false" />
+            <element signature="method#getEuclideanDistance#0;class#Track#0" expanded="false" />
+            <element signature="method#getTotalPathLength#0;class#Track#0" expanded="false" />
+            <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
+            <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
+            <element signature="method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
+            <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
+            <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
+            <element signature="docComment;method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
+            <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
           </folding>
         </state>
       </provider>
