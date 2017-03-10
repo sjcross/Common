@@ -5,6 +5,7 @@ package wolfson.common.System;
 import wolfson.common.FileConditions.FileCondition;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -98,6 +99,22 @@ public class FileCrawler {
 
     }
 
+    public ArrayList<File> getAllValidFilesInFolder() {
+        // Resetting to the start of the current folder
+        folder.resetCurrentFileNumber();
+        ArrayList<File> files = new ArrayList<File>();
+
+        // Adding all valid files to the ArrayList
+        File file = getNextValidFileInFolder();
+
+        while (file != null) {
+            files.add(file);
+            file = getNextValidFileInFolder();
+        }
+
+        return files;
+    }
+
     public File getNextValidFileInStructure() {
         // First, attempt to return the next file in the current folder
         File next_file = getNextValidFileInFolder();
@@ -180,22 +197,28 @@ public class FileCrawler {
      * @return true if there was a next folder and false if the end of the structure has been reached
      */
     public boolean goToNextFolder() {
-        Folder next_folder = folder.getNextFolder();
-
-        if (next_folder != null) {
-            folder = next_folder;
-//            System.out.println(">>> "+folder.getFolderAsFile().getAbsolutePath());
-
-        } else { //Reached deepest point, so go to current folder's parent
-            folder = folder.getParent();
-//            if (folder != null) System.out.println("<<< "+folder.getFolderAsFile().getAbsolutePath());
-        }
-
         // Returns a condition stating if there are more folders to go
         boolean hasmore = true;
-        if (folder == null) {
-            hasmore = false;
 
+        boolean foundNext = false;
+
+        while (!foundNext) {
+            Folder next_folder = folder.getNextFolder();
+
+            if (next_folder != null) {
+                folder = next_folder;
+                foundNext = true;
+//            System.out.println(">>> "+folder.getFolderAsFile().getAbsolutePath());
+
+            } else { //Reached deepest point, so go to current folder's parent
+                folder = folder.getParent();
+//            if (folder != null) System.out.println("<<< "+folder.getFolderAsFile().getAbsolutePath());
+            }
+
+            if (folder == null) {
+                hasmore = false;
+                foundNext = true;
+            }
         }
 
         return hasmore;

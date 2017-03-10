@@ -24,7 +24,7 @@ public class HCParameterExtractor {
         }
 
         if (fi_matcher.find()) {
-            result.setWell(Integer.parseInt(fi_matcher.group(1)));
+            result.setWell(fi_matcher.group(1));
             result.setField(Integer.parseInt(fi_matcher.group(2)));
             result.setTimepoint(Integer.parseInt(fi_matcher.group(3)));
             result.setZ(Integer.parseInt(fi_matcher.group(4)));
@@ -32,8 +32,6 @@ public class HCParameterExtractor {
 
         }
     }
-
-
 
     public void extractCVFolder(String str) {
         Pattern fo_pattern = Pattern.compile("(\\d{4})(\\d{2})(\\d{2})T(\\d{2})(\\d{2})(\\d{2})_([^_]+?)_([^_\\\\]++)_?([.[^\\\\]]++)?");
@@ -51,6 +49,29 @@ public class HCParameterExtractor {
             result.setComment(fo_matcher.group(9));
 
         }
+    }
+
+    public void extractIncuCyteFile(String str) {
+        Pattern fi_pattern = Pattern.compile("([^_]+)_([A-Z]\\d+?)_(\\d+?)_(\\d{4})y(\\d{2})m(\\d{2})d_(\\d{2})h(\\d{2})m");
+        Matcher fi_matcher = fi_pattern.matcher(str);
+
+        int loc = str.lastIndexOf(".");
+        if (loc >= 0) {
+            result.setExt("ext "+str.substring(loc + 1));
+        }
+
+        if (fi_matcher.find()) {
+            result.setComment(fi_matcher.group(1));
+            result.setWell(fi_matcher.group(2));
+            result.setField(Integer.parseInt(fi_matcher.group(3)));
+            result.setYear(Integer.parseInt(fi_matcher.group(4)));
+            result.setMonth(Integer.parseInt(fi_matcher.group(5)));
+            result.setDay(Integer.parseInt(fi_matcher.group(6)));
+            result.setHour(Integer.parseInt(fi_matcher.group(7)));
+            result.setMin(Integer.parseInt(fi_matcher.group(8)));
+
+        }
+
     }
 
 }

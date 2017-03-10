@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
  * Created by sc13967 on 25/10/2016.
  */
 public abstract class HCResult {
-    int well;
+    String well; // String because it can be a coordinate (e.g. A2)
     int field;
     int timepoint;
     int z;
@@ -65,11 +65,11 @@ public abstract class HCResult {
         this.sec = sec;
     }
 
-    public int getWell() {
+    public String getWell() {
         return well;
     }
 
-    public void setWell(int well) {
+    public void setWell(String well) {
         this.well = well;
     }
 
