@@ -159,6 +159,26 @@ public class FileCrawler {
 
     }
 
+    public int getNumberOfValidFoldersInStructure() {
+        Folder folder_temp = folder;
+        folder = root_folder;
+
+        int count = 0;
+
+        // First, attempt to return the next file in the current folder
+
+        boolean validFolder = goToNextValidFolder();
+        while (validFolder) {
+            count++;
+            validFolder = goToNextValidFolder();
+        }
+
+        folder = folder_temp;
+
+        return count;
+
+    }
+
     /**
      * Depth of the folder relative to the root folder.  The root folder has a depth of 0
      * @return depth of the current folder
@@ -181,7 +201,7 @@ public class FileCrawler {
 
         while (hasmore) {
             if (testFolderConditions(folder.getFolderAsFile())) {
-                return hasmore;
+                return true;
             }
 
             hasmore = goToNextFolder();
@@ -272,6 +292,11 @@ public class FileCrawler {
         }
 
         return cnd;
+
+    }
+
+    public boolean testCurrentFolderIsValid() {
+        return testFolderConditions(folder.getFolderAsFile());
 
     }
 
