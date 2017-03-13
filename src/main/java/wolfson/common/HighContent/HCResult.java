@@ -7,23 +7,27 @@ import java.text.DecimalFormat;
  * High-content result structure as an abstract class, which is extended on an experiment-by experiment basis
  * Created by sc13967 on 25/10/2016.
  */
-public abstract class HCResult {
-    int well;
-    int field;
-    int timepoint;
-    int z;
-    int channel;
-    int year;
-    int month;
-    int day;
-    int hour;
-    int min;
-    int sec;
+public class HCResult {
+    String well; // String because it can be a coordinate (e.g. A2)
+    int field = -1;
+    int timepoint = -1;
+    int z = -1;
+    int channel = -1;
+    int year = -1;
+    int month = -1;
+    int day = -1;
+    int hour = -1;
+    int min = -1;
+    int sec = -1;
     String celltype;
     String mag;
     String comment;
     File file1;
     String ext;
+
+    public HCResult() {
+
+    }
 
     public String getExt() {
         return ext;
@@ -65,11 +69,11 @@ public abstract class HCResult {
         this.sec = sec;
     }
 
-    public int getWell() {
+    public String getWell() {
         return well;
     }
 
-    public void setWell(int well) {
+    public void setWell(String well) {
         this.well = well;
     }
 
