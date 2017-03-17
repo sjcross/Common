@@ -296,8 +296,12 @@ public class FileCrawler {
     }
 
     public boolean testCurrentFolderIsValid() {
-        return testFolderConditions(folder.getFolderAsFile());
+        if (folder == null) {
+            return false;
+        } else {
+            return testFolderConditions(folder.getFolderAsFile());
 
+        }
     }
 
     public void resetIterator() {

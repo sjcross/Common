@@ -8,16 +8,28 @@ import java.util.regex.Pattern;
  * Created by sc13967 on 24/10/2016.
  */
 public class NameContainsPattern implements FileCondition {
-    private Pattern pattern;
+    private Pattern[] pattern;
     private int mode;
 
     public NameContainsPattern(Pattern pattern) {
-        this.pattern = pattern;
+        this.pattern = new Pattern[]{pattern};
         this.mode = FileCondition.INC_PARTIAL;
 
     }
 
     public NameContainsPattern(Pattern pattern, int mode) {
+        this.pattern = new Pattern[]{pattern};
+        this.mode = mode;
+
+    }
+
+    public NameContainsPattern(Pattern[] pattern) {
+        this.pattern = pattern;
+        this.mode = FileCondition.INC_PARTIAL;
+
+    }
+
+    public NameContainsPattern(Pattern[] pattern, int mode) {
         this.pattern = pattern;
         this.mode = mode;
 
@@ -29,19 +41,22 @@ public class NameContainsPattern implements FileCondition {
         if (file != null) {
             String name = file.getName();
 
-            Matcher matcher = pattern.matcher(name);
-            if (mode == FileCondition.INC_COMPLETE) {
-                if (matcher.matches()) cnd = true;
+            for (int i = 0; i < pattern.length; i++) {
+                Matcher matcher = pattern[i].matcher(name);
 
-            } else if (mode == FileCondition.INC_PARTIAL) {
-                if (matcher.find()) cnd = true;
+                if (mode == FileCondition.INC_COMPLETE) {
+                    if (matcher.matches()) cnd = true;
 
-            } else if (mode == FileCondition.EXC_COMPLETE) {
-                if (!matcher.matches()) cnd = true;
+                } else if (mode == FileCondition.INC_PARTIAL) {
+                    if (matcher.find()) cnd = true;
 
-            } else if (mode == FileCondition.EXC_PARTIAL) {
-                if (!matcher.find()) cnd = true;
+                } else if (mode == FileCondition.EXC_COMPLETE) {
+                    if (!matcher.matches()) cnd = true;
 
+                } else if (mode == FileCondition.EXC_PARTIAL) {
+                    if (!matcher.find()) cnd = true;
+
+                }
             }
         }
 

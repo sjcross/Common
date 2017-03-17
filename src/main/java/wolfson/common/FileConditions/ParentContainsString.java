@@ -7,17 +7,29 @@ import java.io.File;
  * Created by sc13967 on 24/10/2016.
  */
 public class ParentContainsString implements FileCondition {
-    private String test_str;
+    private String[] testStr;
     private int mode;
 
-    public ParentContainsString(String test_str) {
-        this.test_str = test_str;
+    public ParentContainsString(String testStr) {
+        this.testStr = new String[]{testStr};
         this.mode = FileCondition.INC_PARTIAL;
 
     }
 
-    public ParentContainsString(String test_str, int mode) {
-        this.test_str = test_str;
+    public ParentContainsString(String testStr, int mode) {
+        this.testStr = new String[]{testStr};
+        this.mode = mode;
+
+    }
+
+    public ParentContainsString(String[] testStr) {
+        this.testStr = testStr;
+        this.mode = FileCondition.INC_PARTIAL;
+
+    }
+
+    public ParentContainsString(String[] testStr, int mode) {
+        this.testStr = testStr;
         this.mode = mode;
 
     }
@@ -28,20 +40,21 @@ public class ParentContainsString implements FileCondition {
         if (file != null) {
             String name = file.getParent();
 
-            if (mode == FileCondition.INC_COMPLETE) {
-                if (name.equals(test_str)) cnd = true;
+            for (int i = 0; i < testStr.length; i++) {
+                if (mode == FileCondition.INC_COMPLETE) {
+                    if (name.equals(testStr[i])) cnd = true;
 
-            } else if (mode == FileCondition.INC_PARTIAL) {
-                if (name.contains(test_str)) cnd = true;
+                } else if (mode == FileCondition.INC_PARTIAL) {
+                    if (name.contains(testStr[i])) cnd = true;
 
-            } else if (mode == FileCondition.EXC_COMPLETE) {
-                if (!name.equals(test_str)) cnd = true;
+                } else if (mode == FileCondition.EXC_COMPLETE) {
+                    if (!name.equals(testStr[i])) cnd = true;
 
-            } else if (mode == FileCondition.EXC_PARTIAL) {
-                if (!name.contains(test_str)) cnd = true;
+                } else if (mode == FileCondition.EXC_PARTIAL) {
+                    if (!name.contains(testStr[i])) cnd = true;
 
+                }
             }
-
         }
 
         return cnd;

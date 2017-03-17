@@ -180,4 +180,45 @@ public class Track {
 
         return dir_persist;
     }
+
+    public int getDuration() {
+        return f[f.length-1]-f[0];
+
+    }
+
+
+    // GETTERS AND SETTERS
+
+
+    public double[] getX() {
+        return x;
+    }
+
+    public void setX(double[] x) {
+        this.x = x;
+    }
+
+    public double[] getY() {
+        return y;
+    }
+
+    public void setY(double[] y) {
+        this.y = y;
+    }
+
+    public double[] getZ() {
+        return z;
+    }
+
+    public void setZ(double[] z) {
+        this.z = z;
+    }
+
+    public int[] getF() {
+        return f;
+    }
+
+    public void setF(int[] f) {
+        this.f = f;
+    }
 }
