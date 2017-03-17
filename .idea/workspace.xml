@@ -7,7 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58a93d3a-53bf-43ec-b929-89bc18e9a84a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/Common/Common.jar" afterPath="$PROJECT_DIR$/classes/artifacts/Common/Common.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/NameContainsPattern.class" afterPath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/NameContainsPattern.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/NameContainsString.class" afterPath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/NameContainsString.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/ParentContainsString.class" afterPath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/ParentContainsString.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/Object/Track.class" afterPath="$PROJECT_DIR$/target/classes/wolfson/common/Object/Track.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/System/FileCrawler.class" afterPath="$PROJECT_DIR$/target/classes/wolfson/common/System/FileCrawler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsString.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsString.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ParentContainsString.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ParentContainsString.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" />
     </list>
     <ignored path="Math.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,6 +46,7 @@
             <state relative-caret-position="323">
               <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#BatchProcessor#0" expanded="false" />
                 <element signature="method#BatchProcessor#0;class#BatchProcessor#0" expanded="false" />
                 <element signature="method#BatchProcessor#1;class#BatchProcessor#0" expanded="false" />
@@ -51,6 +64,7 @@
             <state relative-caret-position="1207">
               <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#HCParameterExtractor#0" expanded="false" />
               </folding>
             </state>
@@ -60,9 +74,19 @@
       <file leaf-file-name="HCExporter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCExporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="3825">
               <caret line="234" column="30" lean-forward="false" selection-start-line="234" selection-start-column="30" selection-end-line="234" selection-end-column="30" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#385#386#0" expanded="false" />
+                <element signature="e#417#418#0" expanded="false" />
+                <element signature="e#466#467#0" expanded="false" />
+                <element signature="e#508#509#0" expanded="false" />
+                <element signature="e#11621#11622#0" expanded="false" />
+                <element signature="e#11654#11655#0" expanded="false" />
+                <element signature="e#11705#11706#0" expanded="false" />
+                <element signature="e#11749#11750#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,8 +104,8 @@
       <file leaf-file-name="FileCrawler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+            <state relative-caret-position="213">
+              <caret line="256" column="0" lean-forward="false" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#FileCrawler#0" expanded="false" />
                 <element signature="method#FileCrawler#0;class#FileCrawler#0" expanded="false" />
@@ -102,30 +126,52 @@
                 <element signature="method#getNumberOfValidFoldersInStructure#0;class#FileCrawler#0" expanded="false" />
                 <element signature="docComment;method#getCurrentDepth#0;class#FileCrawler#0" expanded="false" />
                 <element signature="method#getCurrentDepth#0;class#FileCrawler#0" expanded="false" />
-                <element signature="method#goToNextValidFolder#0;class#FileCrawler#0" expanded="false" />
                 <element signature="docComment;method#goToNextFolder#0;class#FileCrawler#0" expanded="false" />
                 <element signature="method#goToNextFolder#0;class#FileCrawler#0" expanded="false" />
                 <element signature="method#addFileCondition#0;class#FileCrawler#0" expanded="false" />
                 <element signature="method#addFolderCondition#0;class#FileCrawler#0" expanded="false" />
                 <element signature="docComment;method#testFileConditions#0;class#FileCrawler#0" expanded="false" />
-                <element signature="method#testFileConditions#0;class#FileCrawler#0" expanded="false" />
                 <element signature="docComment;method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
                 <element signature="method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
-                <element signature="method#testCurrentFolderIsValid#0;class#FileCrawler#0" expanded="false" />
                 <element signature="method#resetIterator#0;class#FileCrawler#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NameContainsPattern.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java">
+      <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="461">
+              <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
               <folding>
-                <element signature="docComment;class#NameContainsPattern#0" expanded="false" />
+                <element signature="docComment;class#Track#0" expanded="false" />
+                <element signature="method#Track#0;class#Track#0" expanded="false" />
+                <element signature="method#Track#1;class#Track#0" expanded="false" />
+                <element signature="method#getMSD#0;class#Track#0" expanded="false" />
+                <element signature="method#getInstantaneousVelocity#0;class#Track#0" expanded="false" />
+                <element signature="method#getStepSizes#0;class#Track#0" expanded="false" />
+                <element signature="method#getEuclideanDistance#0;class#Track#0" expanded="false" />
+                <element signature="method#getTotalPathLength#0;class#Track#0" expanded="false" />
+                <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
+                <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
+                <element signature="method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
+                <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
+                <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
+                <element signature="docComment;method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
+                <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
+                <element signature="method#getDuration#0;class#Track#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,8 +179,8 @@
       <file leaf-file-name="Folder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+            <state relative-caret-position="816">
+              <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#Folder#0" expanded="false" />
                 <element signature="method#Folder#0;class#Folder#0" expanded="false" />
@@ -153,43 +199,8 @@
                 <element signature="method#getNumberOfFolders#0;class#Folder#0" expanded="false" />
                 <element signature="method#getCurrentFileNumber#0;class#Folder#0" expanded="false" />
                 <element signature="method#getCurrentFolderNumber#0;class#Folder#0" expanded="false" />
+                <element signature="method#resetCurrentFileNumber#0;class#Folder#0" expanded="false" />
                 <element signature="method#resetCurrentFolderNumber#0;class#Folder#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CumStat.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2567">
-              <caret line="151" column="27" lean-forward="false" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding>
-                <element signature="docComment;class#Track#0" expanded="false" />
-                <element signature="method#Track#0;class#Track#0" expanded="false" />
-                <element signature="method#Track#1;class#Track#0" expanded="false" />
-                <element signature="method#getMSD#0;class#Track#0" expanded="false" />
-                <element signature="method#getInstantaneousVelocity#0;class#Track#0" expanded="false" />
-                <element signature="method#getStepSizes#0;class#Track#0" expanded="false" />
-                <element signature="method#getEuclideanDistance#0;class#Track#0" expanded="false" />
-                <element signature="method#getTotalPathLength#0;class#Track#0" expanded="false" />
-                <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
-                <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-                <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-                <element signature="docComment;method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -241,9 +252,6 @@
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/SpotCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/System/ExporterCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/FileCondition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ParentContainsString.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsString.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/HCResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/HCResultCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/System/Exporter.java" />
@@ -264,13 +272,16 @@
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MSD.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/LinearFit.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ExtensionMatchesString.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCParameterExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/System/BatchProcessor2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCExporter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsString.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ParentContainsString.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -305,8 +316,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -368,10 +379,6 @@
               <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="System" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -429,73 +436,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MathFunc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HighContent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="FileConditions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -672,18 +619,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="false" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25833333" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17324094" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18017058" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -696,7 +644,6 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25726143" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -713,7 +660,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="16" />
+      <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -773,27 +720,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FolderIterator.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/FileCondition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="66" lean-forward="false" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ParentContainsString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="57" lean-forward="false" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/GUIElements.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -823,13 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ExtensionMatchesString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -841,31 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2567">
           <caret line="151" column="27" lean-forward="false" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#Track#0" expanded="false" />
-            <element signature="method#Track#0;class#Track#0" expanded="false" />
-            <element signature="method#Track#1;class#Track#0" expanded="false" />
-            <element signature="method#getMSD#0;class#Track#0" expanded="false" />
-            <element signature="method#getInstantaneousVelocity#0;class#Track#0" expanded="false" />
-            <element signature="method#getStepSizes#0;class#Track#0" expanded="false" />
-            <element signature="method#getEuclideanDistance#0;class#Track#0" expanded="false" />
-            <element signature="method#getTotalPathLength#0;class#Track#0" expanded="false" />
-            <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
-            <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-            <element signature="method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-            <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-            <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-            <element signature="docComment;method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
-            <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -876,46 +770,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="30" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#Folder#0" expanded="false" />
-            <element signature="method#Folder#0;class#Folder#0" expanded="false" />
-            <element signature="method#getFolderAsFile#0;class#Folder#0" expanded="false" />
-            <element signature="method#getParent#0;class#Folder#0" expanded="false" />
-            <element signature="method#hasMoreFiles#0;class#Folder#0" expanded="false" />
-            <element signature="method#getNextFile#0;class#Folder#0" expanded="false" />
-            <element signature="method#hasMoreFolders#0;class#Folder#0" expanded="false" />
-            <element signature="method#getNextFolder#0;class#Folder#0" expanded="false" />
-            <element signature="method#getFolders#0;class#Folder#0" expanded="false" />
-            <element signature="method#getFiles#0;class#Folder#0" expanded="false" />
-            <element signature="method#printContents#0;class#Folder#0" expanded="false" />
-            <element signature="method#printFiles#0;class#Folder#0" expanded="false" />
-            <element signature="method#printFolders#0;class#Folder#0" expanded="false" />
-            <element signature="method#getNumberOfFiles#0;class#Folder#0" expanded="false" />
-            <element signature="method#getNumberOfFolders#0;class#Folder#0" expanded="false" />
-            <element signature="method#getCurrentFileNumber#0;class#Folder#0" expanded="false" />
-            <element signature="method#getCurrentFolderNumber#0;class#Folder#0" expanded="false" />
-            <element signature="method#resetCurrentFolderNumber#0;class#Folder#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/BatchProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#BatchProcessor#0" expanded="false" />
             <element signature="method#BatchProcessor#0;class#BatchProcessor#0" expanded="false" />
             <element signature="method#BatchProcessor#1;class#BatchProcessor#0" expanded="false" />
@@ -946,8 +806,63 @@
         <state relative-caret-position="1207">
           <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#HCParameterExtractor#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCExporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3825">
+          <caret line="234" column="30" lean-forward="false" selection-start-line="234" selection-start-column="30" selection-end-line="234" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#385#386#0" expanded="false" />
+            <element signature="e#417#418#0" expanded="false" />
+            <element signature="e#466#467#0" expanded="false" />
+            <element signature="e#508#509#0" expanded="false" />
+            <element signature="e#11621#11622#0" expanded="false" />
+            <element signature="e#11654#11655#0" expanded="false" />
+            <element signature="e#11705#11706#0" expanded="false" />
+            <element signature="e#11749#11750#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/FileCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="66" lean-forward="false" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ParentContainsString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" column="46" lean-forward="true" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ExtensionMatchesString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -959,18 +874,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="234" column="30" lean-forward="false" selection-start-line="234" selection-start-column="30" selection-end-line="234" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+        <state relative-caret-position="213">
+          <caret line="256" column="0" lean-forward="false" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#FileCrawler#0" expanded="false" />
             <element signature="method#FileCrawler#0;class#FileCrawler#0" expanded="false" />
@@ -991,28 +898,76 @@
             <element signature="method#getNumberOfValidFoldersInStructure#0;class#FileCrawler#0" expanded="false" />
             <element signature="docComment;method#getCurrentDepth#0;class#FileCrawler#0" expanded="false" />
             <element signature="method#getCurrentDepth#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#goToNextValidFolder#0;class#FileCrawler#0" expanded="false" />
             <element signature="docComment;method#goToNextFolder#0;class#FileCrawler#0" expanded="false" />
             <element signature="method#goToNextFolder#0;class#FileCrawler#0" expanded="false" />
             <element signature="method#addFileCondition#0;class#FileCrawler#0" expanded="false" />
             <element signature="method#addFolderCondition#0;class#FileCrawler#0" expanded="false" />
             <element signature="docComment;method#testFileConditions#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#testFileConditions#0;class#FileCrawler#0" expanded="false" />
             <element signature="docComment;method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
             <element signature="method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#testCurrentFolderIsValid#0;class#FileCrawler#0" expanded="false" />
             <element signature="method#resetIterator#0;class#FileCrawler#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="816">
+          <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#NameContainsPattern#0" expanded="false" />
+            <element signature="docComment;class#Folder#0" expanded="false" />
+            <element signature="method#Folder#0;class#Folder#0" expanded="false" />
+            <element signature="method#getFolderAsFile#0;class#Folder#0" expanded="false" />
+            <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+            <element signature="method#hasMoreFiles#0;class#Folder#0" expanded="false" />
+            <element signature="method#getNextFile#0;class#Folder#0" expanded="false" />
+            <element signature="method#hasMoreFolders#0;class#Folder#0" expanded="false" />
+            <element signature="method#getNextFolder#0;class#Folder#0" expanded="false" />
+            <element signature="method#getFolders#0;class#Folder#0" expanded="false" />
+            <element signature="method#getFiles#0;class#Folder#0" expanded="false" />
+            <element signature="method#printContents#0;class#Folder#0" expanded="false" />
+            <element signature="method#printFiles#0;class#Folder#0" expanded="false" />
+            <element signature="method#printFolders#0;class#Folder#0" expanded="false" />
+            <element signature="method#getNumberOfFiles#0;class#Folder#0" expanded="false" />
+            <element signature="method#getNumberOfFolders#0;class#Folder#0" expanded="false" />
+            <element signature="method#getCurrentFileNumber#0;class#Folder#0" expanded="false" />
+            <element signature="method#getCurrentFolderNumber#0;class#Folder#0" expanded="false" />
+            <element signature="method#resetCurrentFileNumber#0;class#Folder#0" expanded="false" />
+            <element signature="method#resetCurrentFolderNumber#0;class#Folder#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;class#Track#0" expanded="false" />
+            <element signature="method#Track#0;class#Track#0" expanded="false" />
+            <element signature="method#Track#1;class#Track#0" expanded="false" />
+            <element signature="method#getMSD#0;class#Track#0" expanded="false" />
+            <element signature="method#getInstantaneousVelocity#0;class#Track#0" expanded="false" />
+            <element signature="method#getStepSizes#0;class#Track#0" expanded="false" />
+            <element signature="method#getEuclideanDistance#0;class#Track#0" expanded="false" />
+            <element signature="method#getTotalPathLength#0;class#Track#0" expanded="false" />
+            <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
+            <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
+            <element signature="method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
+            <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
+            <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
+            <element signature="docComment;method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
+            <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
+            <element signature="method#getDuration#0;class#Track#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,7 +982,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
