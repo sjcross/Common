@@ -95,7 +95,12 @@ public class HCExporter {
     }
 
     public static Element summariseCollection(Document doc, HCResult res) {
-        Element collection = doc.createElement("COLLECTION");
+        return summariseCollection(doc, res, "COLLECTION");
+
+    }
+
+    public static Element summariseCollection(Document doc, HCResult res, String name) {
+        Element collection = doc.createElement(name);
 
         Attr cell_type = doc.createAttribute("CELL_TYPE");
         if (res.getCelltype() != null) {
@@ -200,7 +205,12 @@ public class HCExporter {
     }
 
     public static Element summariseAll(Document doc, HCResult res) {
-        Element collection = doc.createElement("COLLECTION");
+        return summariseAll(doc, res, "COLLECTION");
+
+    }
+
+    public static Element summariseAll(Document doc, HCResult res, String name) {
+        Element collection = doc.createElement(name);
 
         if (res.getFile1() != null) {
             Attr filepath = doc.createAttribute("FILEPATH");
@@ -281,7 +291,12 @@ public class HCExporter {
     }
 
     public static Element summariseExperiment(Document doc, HCResult res) {
-        Element experiment = doc.createElement("EXPERIMENT");
+        return summariseExperiment(doc, res, "EXPERIMENT");
+
+    }
+
+    public static Element summariseExperiment(Document doc, HCResult res, String name) {
+        Element experiment = doc.createElement(name);
 
         Attr filepath = doc.createAttribute("FILEPATH");
         if (res.getFile1() != null) {

@@ -71,7 +71,7 @@ public class HCFilenameGenerator {
         Matcher matcher = null;
 
         if (mode == CELLVOYAGER) {
-            Pattern pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
+            Pattern pattern = Pattern.compile(HCPatterns.getCellVoyagerFilenamePattern());
             matcher = pattern.matcher(template);
             matcher.find();
         }
@@ -93,5 +93,10 @@ public class HCFilenameGenerator {
                 "."+ext;
 
         return output;
+    }
+
+    static public String generateIncuCyteShortFile(String comment, String W, int F, String ext) {
+        return comment+"_"+W+"_"+F+"."+ext;
+
     }
 }

@@ -9,13 +9,14 @@ import java.util.regex.Pattern;
 public class HCParameterExtractor {
     private HCResult result;
 
+
     public HCParameterExtractor(HCResult result) {
         this.result = result;
 
     }
 
     public void extractCVFile(String str) {
-        Pattern fi_pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
+        Pattern fi_pattern = Pattern.compile(HCPatterns.getCellVoyagerFilenamePattern());
         Matcher fi_matcher = fi_pattern.matcher(str);
 
         int loc = str.lastIndexOf(".");
@@ -34,7 +35,7 @@ public class HCParameterExtractor {
     }
 
     public void extractCVFolder(String str) {
-        Pattern fo_pattern = Pattern.compile("(\\d{4})(\\d{2})(\\d{2})T(\\d{2})(\\d{2})(\\d{2})_([^_]+?)_([^_\\\\]++)_?([.[^\\\\]]++)?");
+        Pattern fo_pattern = Pattern.compile(HCPatterns.getCellVoyagerFolderPattern());
         Matcher fo_matcher = fo_pattern.matcher(str);
 
         if (fo_matcher.find()) {
@@ -51,13 +52,30 @@ public class HCParameterExtractor {
         }
     }
 
-    public void extractIncuCyteFile(String str) {
-        Pattern fi_pattern = Pattern.compile("([^_]+)_([A-Z]\\d+?)_(\\d+?)_(\\d{4})y(\\d{2})m(\\d{2})d_(\\d{2})h(\\d{2})m");
+    public void extractIncuCyteShortFile(String str) {
+        Pattern fi_pattern = Pattern.compile(HCPatterns.getIncuCyteShortFilenamePattern());
         Matcher fi_matcher = fi_pattern.matcher(str);
 
         int loc = str.lastIndexOf(".");
         if (loc >= 0) {
-            result.setExt("ext "+str.substring(loc + 1));
+            result.setExt(str.substring(loc + 1));
+        }
+
+        if (fi_matcher.find()) {
+            result.setComment(fi_matcher.group(1));
+            result.setWell(fi_matcher.group(2));
+            result.setField(Integer.parseInt(fi_matcher.group(3)));
+
+        }
+    }
+
+    public void extractIncuCyteLongFile(String str) {
+        Pattern fi_pattern = Pattern.compile(HCPatterns.getIncuCyteLongFilenamePattern());
+        Matcher fi_matcher = fi_pattern.matcher(str);
+
+        int loc = str.lastIndexOf(".");
+        if (loc >= 0) {
+            result.setExt(str.substring(loc + 1));
         }
 
         if (fi_matcher.find()) {
@@ -71,7 +89,14 @@ public class HCParameterExtractor {
             result.setMin(Integer.parseInt(fi_matcher.group(8)));
 
         }
-
     }
 
+    /**
+     * Compatibility method for old version of Common
+     * @param str
+     */
+    public void extractIncuCyteFile(String str) {
+        extractIncuCyteLongFile(str);
+
+    }
 }
