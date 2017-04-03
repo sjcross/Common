@@ -3,23 +3,27 @@ package wolfson.common.MathFunc;
 import java.util.Arrays;
 
 // THIS CLASS IS BASED ON THE INCREMENTAL CALCULATION OF WEIGHTED MEAN AND VARIANCE FROM http://www-uxsup.csx.cam.ac.uk/~fanf2/hermes/doc/antiforgery/stats.pdf (Accessed 30-06-2016)
+// It gives the population standard deviation (normalised by N rather than N-1 as you get with the sample standard deviation)
 
 public class CumStat {
-
     public static final int IGNOREZEROS = 0;
+    public static final int POPULATION = 1;
+    public static final int SAMPLE = 2;
 
-    double[] x_mean;
-    double[] x_var;
-    double[] n;
-    double[] w_sum;
-    double[] S;
-    double[] x_sum;
-    double[] x_min;
-    double[] x_max;
+    private double[] x_mean;
+    private double[] x_var_pop; // Population variance
+    private double[] x_var_samp; // Sample variance
+    private double[] n;
+    private double[] w_sum;
+    private double[] S;
+    private double[] x_sum;
+    private double[] x_min;
+    private double[] x_max;
 
     public CumStat(int len) {
         x_mean = new double[len];
-        x_var = new double[len];
+        x_var_pop = new double[len];
+        x_var_samp = new double[len];
         n = new double[len];
         w_sum = new double[len];
         S = new double[len];
@@ -39,7 +43,8 @@ public class CumStat {
                 double x_mean_prev = x_mean[i];
                 x_mean[i] = x_mean[i] + (1/w_sum[i])*(x_in[i]-x_mean[i]);
                 S[i] = S[i]+(x_in[i]-x_mean_prev)*(x_in[i]-x_mean[i]);
-                x_var[i] = S[i]/w_sum[i];
+                x_var_pop[i] = S[i]/w_sum[i];
+                x_var_samp[i] = S[i]/(w_sum[i]-1);
 
                 if (x_in[i] < x_min[i]) {
                     x_min[i] = x_in[i];
@@ -69,7 +74,8 @@ public class CumStat {
             double x_mean_prev = x_mean[i];
             x_mean[i] = x_mean[i] + (1/w_sum[i])*(x_in-x_mean[i]);
             S[i] = S[i]+(x_in-x_mean_prev)*(x_in-x_mean[i]);
-            x_var[i] = S[i]/w_sum[i];
+            x_var_pop[i] = S[i]/w_sum[i];
+            x_var_samp[i] = S[i]/(w_sum[i]-1);
 
             if (x_in < x_min[i]) {
                 x_min[i] = x_in;
@@ -98,7 +104,8 @@ public class CumStat {
             double x_mean_prev = x_mean[0];
             x_mean[0] = x_mean[0] + (1/w_sum[0])*(x_in-x_mean[0]);
             S[0] = S[0]+(x_in-x_mean_prev)*(x_in-x_mean[0]);
-            x_var[0] = S[0]/w_sum[0];
+            x_var_pop[0] = S[0]/w_sum[0];
+            x_var_samp[0] = S[0]/(w_sum[0]-1);
 
             if (x_in < x_min[0]) {
                 x_min[0] = x_in;
@@ -120,7 +127,8 @@ public class CumStat {
                     double x_mean_prev = x_mean[i];
                     x_mean[i] = x_mean[i] + (w[i]/w_sum[i])*(x_in[i]-x_mean[i]);
                     S[i] = S[i]+w[i]*(x_in[i]-x_mean_prev)*(x_in[i]-x_mean[i]);
-                    x_var[i] = S[i]/w_sum[i];
+                    x_var_pop[i] = S[i]/w_sum[i];
+                    x_var_samp[i] = S[i]/(w_sum[i]-1);
 
                     if (x_in[i] < x_min[i]) {
                         x_min[i] = x_in[i];
@@ -143,7 +151,8 @@ public class CumStat {
                 double x_mean_prev = x_mean[0];
                 x_mean[0] = x_mean[0] + (w/w_sum[0])*(x_in-x_mean[0]);
                 S[0] = S[0]+w*(x_in-x_mean_prev)*(x_in-x_mean[0]);
-                x_var[0] = S[0]/w_sum[0];
+                x_var_pop[0] = S[0]/w_sum[0];
+                x_var_samp[0] = S[0]/(w_sum[0]-1);
 
                 if (x_in < x_min[0]) {
                     x_min[0] = x_in;
@@ -182,16 +191,68 @@ public class CumStat {
         return x_sum;
     }
 
+    /**
+     * Returns the sample variance
+     * @return
+     */
     public synchronized double[] getVar() {
-        return x_var;
+        return x_var_samp;
     }
 
+    /**
+     * Returns the variance specified by the argument
+     * @param mode
+     * @return
+     */
+    public synchronized double[] getVar(int mode) {
+        if (mode == SAMPLE) {
+            return x_var_samp;
+
+        } else if (mode == POPULATION) {
+            return x_var_pop;
+
+        }
+
+        return new double[]{0};
+
+    }
+
+    /**
+     * Returns the sample standard deviation.
+      * @return
+     */
     public synchronized double[] getStd() {
-        double[] x_std = new double[x_var.length];
-        for (int i=0;i<x_var.length;i++) {
-            x_std[i] = Math.sqrt(x_var[i]);
+        double[] x_std = new double[x_var_samp.length];
+        for (int i = 0; i< x_var_samp.length; i++) {
+            x_std[i] = Math.sqrt(x_var_samp[i]);
         }
         return x_std;
+    }
+
+    /**
+     * Returns the standard deviation specified by the argument.
+     * @param mode
+     * @return
+     */
+    public synchronized double[] getStd(int mode) {
+        if (mode == SAMPLE) {
+            double[] x_std = new double[x_var_samp.length];
+            for (int i = 0; i< x_var_samp.length; i++) {
+                x_std[i] = Math.sqrt(x_var_samp[i]);
+            }
+            return x_std;
+
+        } else if (mode == POPULATION) {
+            double[] x_std = new double[x_var_pop.length];
+            for (int i = 0; i< x_var_pop.length; i++) {
+                x_std[i] = Math.sqrt(x_var_pop[i]);
+            }
+            return x_std;
+
+        }
+
+        return new double[]{0};
+
     }
 
     public synchronized double[] getN() {
