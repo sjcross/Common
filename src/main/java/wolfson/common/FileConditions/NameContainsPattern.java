@@ -1,5 +1,7 @@
 package wolfson.common.FileConditions;
 
+import org.apache.commons.io.FilenameUtils;
+
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -39,7 +41,7 @@ public class NameContainsPattern implements FileCondition {
         boolean cnd = false;
 
         if (file != null) {
-            String name = file.getName();
+            String name = FilenameUtils.removeExtension(file.getName());
 
             for (int i = 0; i < pattern.length; i++) {
                 Matcher matcher = pattern[i].matcher(name);
