@@ -7,16 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58a93d3a-53bf-43ec-b929-89bc18e9a84a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/wolfson/common/FileConditions/ExtensionMatchesStringTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/wolfson/common/FileConditions/NameContainsPatternTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/wolfson/common/MathFunc/AppTest.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common.iml" afterPath="$PROJECT_DIR$/Common.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java" afterPath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java" />
     </list>
     <ignored path="Math.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,10 +32,9 @@
       <file leaf-file-name="ExtensionMatchesStringTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wolfson/common/FileConditions/ExtensionMatchesStringTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="669">
+            <state relative-caret-position="630">
               <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="42" selection-end-column="92" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="docComment;class#ExtensionMatchesStringTest#0" expanded="false" />
               </folding>
             </state>
@@ -53,9 +44,10 @@
       <file leaf-file-name="NameContainsPattern.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="798">
+              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#NameContainsPattern#0" expanded="false" />
               </folding>
             </state>
@@ -66,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/wolfson/common/FileConditions/NameContainsPatternTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="417">
-              <caret line="165" column="0" lean-forward="true" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+              <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#NameContainsPatternTest#0" expanded="false" />
                 <element signature="method#testTestSingleIncPartial#0;class#NameContainsPatternTest#0" expanded="false" />
@@ -82,9 +74,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCPatterns.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
-              <caret line="6" column="90" lean-forward="true" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="90" />
+              <caret line="6" column="90" lean-forward="false" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="90" />
               <folding>
                 <element signature="docComment;class#HCPatterns#0" expanded="false" />
+                <element signature="e#683#684#0" expanded="false" />
+                <element signature="e#734#735#0" expanded="false" />
+                <element signature="e#795#796#0" expanded="false" />
+                <element signature="e#846#847#0" expanded="false" />
+                <element signature="e#906#907#0" expanded="false" />
+                <element signature="e#955#956#0" expanded="false" />
+                <element signature="e#1013#1014#0" expanded="false" />
+                <element signature="e#1060#1061#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -215,7 +215,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -357,7 +357,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -728,59 +728,38 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="71" y="-9" width="1858" height="1098" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25702393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19836956" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25726143" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1951087" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25726143" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.195629" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -929,41 +908,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#Track#0" expanded="false" />
-            <element signature="method#Track#0;class#Track#0" expanded="false" />
-            <element signature="method#Track#1;class#Track#0" expanded="false" />
-            <element signature="method#getMSD#0;class#Track#0" expanded="false" />
-            <element signature="method#getInstantaneousVelocity#0;class#Track#0" expanded="false" />
-            <element signature="method#getStepSizes#0;class#Track#0" expanded="false" />
-            <element signature="method#getEuclideanDistance#0;class#Track#0" expanded="false" />
-            <element signature="method#getTotalPathLength#0;class#Track#0" expanded="false" />
-            <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
-            <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-            <element signature="method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-            <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-            <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-            <element signature="docComment;method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
-            <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
-            <element signature="method#getDuration#0;class#Track#0" expanded="false" />
-            <element signature="e#5194#5195#0" expanded="false" />
-            <element signature="e#5218#5219#0" expanded="false" />
-            <element signature="e#5254#5255#0" expanded="false" />
-            <element signature="e#5280#5281#0" expanded="false" />
-            <element signature="e#5310#5311#0" expanded="false" />
-            <element signature="e#5334#5335#0" expanded="false" />
-            <element signature="e#5370#5371#0" expanded="false" />
-            <element signature="e#5396#5397#0" expanded="false" />
-            <element signature="e#5426#5427#0" expanded="false" />
-            <element signature="e#5450#5451#0" expanded="false" />
-            <element signature="e#5486#5487#0" expanded="false" />
-            <element signature="e#5512#5513#0" expanded="false" />
-            <element signature="e#5539#5540#0" expanded="false" />
-            <element signature="e#5563#5564#0" expanded="false" />
-            <element signature="e#5596#5597#0" expanded="false" />
-            <element signature="e#5622#5623#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -971,35 +915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1302">
           <caret line="212" column="5" lean-forward="false" selection-start-line="212" selection-start-column="5" selection-end-line="212" selection-end-column="5" />
-          <folding>
-            <element signature="docComment;class#FileCrawler#0" expanded="false" />
-            <element signature="method#FileCrawler#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#FileCrawler#1;class#FileCrawler#0" expanded="false" />
-            <element signature="method#setRootFolder#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#getRootFolder#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#getCurrentFolderAsFolder#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#getCurrentFolderAsFile#0;class#FileCrawler#0" expanded="false" />
-            <element signature="docComment;method#scanFolders#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#scanFolders#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#hasMoreFilesInFolder#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#hasMoreFoldersInFolder#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#getNextValidFileInFolder#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#getNextFileInFolder#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#getAllValidFilesInFolder#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#getNextValidFileInStructure#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#getNumberOfValidFilesInStructure#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#getNumberOfValidFoldersInStructure#0;class#FileCrawler#0" expanded="false" />
-            <element signature="docComment;method#getCurrentDepth#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#getCurrentDepth#0;class#FileCrawler#0" expanded="false" />
-            <element signature="docComment;method#goToNextFolder#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#goToNextFolder#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#addFileCondition#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#addFolderCondition#0;class#FileCrawler#0" expanded="false" />
-            <element signature="docComment;method#testFileConditions#0;class#FileCrawler#0" expanded="false" />
-            <element signature="docComment;method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
-            <element signature="method#resetIterator#0;class#FileCrawler#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,14 +966,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1092">
           <caret line="69" column="44" lean-forward="false" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="44" />
-          <folding>
-            <element signature="docComment;class#BatchProcessor#0" expanded="false" />
-            <element signature="method#BatchProcessor#0;class#BatchProcessor#0" expanded="false" />
-            <element signature="method#BatchProcessor#1;class#BatchProcessor#0" expanded="false" />
-            <element signature="method#setSaveMode#0;class#BatchProcessor#0" expanded="false" />
-            <element signature="method#setAnalysis#0;class#BatchProcessor#0" expanded="false" />
-            <element signature="method#addExporter#0;class#BatchProcessor#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1080,7 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="44" lean-forward="true" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1096,7 +1002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1110,10 +1015,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wolfson/common/FileConditions/ExtensionMatchesStringTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
+        <state relative-caret-position="630">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="42" selection-end-column="92" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;class#ExtensionMatchesStringTest#0" expanded="false" />
           </folding>
         </state>
@@ -1121,9 +1025,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="798">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#NameContainsPattern#0" expanded="false" />
           </folding>
         </state>
@@ -1132,9 +1037,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCPatterns.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
-          <caret line="6" column="90" lean-forward="true" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="90" />
+          <caret line="6" column="90" lean-forward="false" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="90" />
           <folding>
             <element signature="docComment;class#HCPatterns#0" expanded="false" />
+            <element signature="e#683#684#0" expanded="false" />
+            <element signature="e#734#735#0" expanded="false" />
+            <element signature="e#795#796#0" expanded="false" />
+            <element signature="e#846#847#0" expanded="false" />
+            <element signature="e#906#907#0" expanded="false" />
+            <element signature="e#955#956#0" expanded="false" />
+            <element signature="e#1013#1014#0" expanded="false" />
+            <element signature="e#1060#1061#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1142,7 +1055,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/wolfson/common/FileConditions/NameContainsPatternTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="417">
-          <caret line="165" column="0" lean-forward="true" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+          <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#NameContainsPatternTest#0" expanded="false" />
             <element signature="method#testTestSingleIncPartial#0;class#NameContainsPatternTest#0" expanded="false" />
