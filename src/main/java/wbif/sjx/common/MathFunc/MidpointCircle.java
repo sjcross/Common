@@ -1,4 +1,4 @@
-package wolfson.common.MathFunc;
+package wbif.sjx.common.MathFunc;
 
 // Implementation of the midpoint circle algorithm
 // Described at https://en.wikipedia.org/wiki/Midpoint_circle_algorithm (accessed 12-07-2016)

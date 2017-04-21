@@ -1,4 +1,4 @@
-package wolfson.common.Analysis;
+package wbif.sjx.common.Analysis;
 
 /**
  * Created by steph on 15/04/2017.
