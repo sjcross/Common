@@ -7,99 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58a93d3a-53bf-43ec-b929-89bc18e9a84a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_quickhull3d_quickhull3d_1_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__gov_nist_math_jama_1_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_imagej_ij1_patcher_0_12_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_imagej_ij_1_50i.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bonej_boneJ_legacy_plugins_1_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bonej_bonej_legacy_util_1_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_16_1_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_2_3_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_2_3_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_scijava_j3dcore_1_6_0_scijava_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_scijava_j3dutils_1_6_0_scijava_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_scijava_vecmath_1_6_0_scijava_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_3D_Viewer_4_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_AnalyzeSkeleton__3_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_LocalThickness__4_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Skeletonize3D__2_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_VIB__3_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_VIB_lib_2_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_fiji_lib_2_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_pal_optimization_2_0_0.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/BoneJ.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/quickhull3d.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/ExtensionMatchesString.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/FileCondition.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/NameContainsPattern.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/NameContainsString.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/FileConditions/ParentContainsString.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/HighContent/HCAnalysis.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/HighContent/HCExporter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/HighContent/HCFilenameGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/HighContent/HCParameterExtractor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/HighContent/HCPatterns.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/HighContent/HCResult.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/HighContent/HCResultCollection.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/ArrayFunc.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/CumStat.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/DirectionalPersistence.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/GeneralOps.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/Indexer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/MSD.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/MathFunc/MidpointCircle.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/Object/Blob.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/Object/Spot.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/Object/SpotCollection.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/Object/Track.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/System/BatchProcessor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/System/FileCrawler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/System/Folder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wolfson/common/System/GUIElements.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/wolfson/common/FileConditions/ExtensionMatchesStringTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/wolfson/common/FileConditions/NameContainsPatternTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/wolfson/common/MathFunc/AppTest.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Analysis/DirectionalPersistenceCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/DirectionalPersistenceCalculator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Analysis/DirectionalityRatioCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/DirectionalityRatioCalculator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Analysis/EuclideanDistanceCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EuclideanDistanceCalculator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Analysis/InstantaneousVelocityCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Analysis/MSDCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Analysis/StepSizeCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/StepSizeCalculator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Analysis/TotalPathLengthCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TotalPathLengthCalculator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ExtensionMatchesString.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/ExtensionMatchesString.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/FileCondition.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/FileCondition.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsPattern.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsString.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsString.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/ParentContainsString.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/ParentContainsString.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCAnalysis.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCAnalysis.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCExporter.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCExporter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCFilenameGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCFilenameGenerator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCParameterExtractor.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCParameterExtractor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCPatterns.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCPatterns.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCResult.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCResultCollection.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCResultCollection.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/ArrayFunc.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/ArrayFunc.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/CumStat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/DirectionalPersistence.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/DirectionalPersistence.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/GeneralOps.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GeneralOps.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/Indexer.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/Indexer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MSD.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/MSD.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/MidpointCircle.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/MidpointCircle.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Blob.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Blob.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Spot.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Spot.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/SpotCollection.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/SpotCollection.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/Object/Track.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/System/BatchProcessor.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/BatchProcessor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/System/FileCrawler.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/FileCrawler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/System/Folder.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/Folder.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wolfson/common/System/GUIElements.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/GUIElements.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/wolfson/common/FileConditions/ExtensionMatchesStringTest.java" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/ExtensionMatchesStringTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/wolfson/common/FileConditions/NameContainsPatternTest.java" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsPatternTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Common-1.1.8-DEV.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common.iml" afterPath="$PROJECT_DIR$/Common.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-wbif.sjx.common.FileConditions.ExtensionMatchesStringTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-wbif.sjx.common.FileConditions.ExtensionMatchesStringTest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-wbif.sjx.common.FileConditions.NameContainsPatternTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-wbif.sjx.common.FileConditions.NameContainsPatternTest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/wbif.sjx.common.FileConditions.ExtensionMatchesStringTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/wbif.sjx.common.FileConditions.ExtensionMatchesStringTest.txt" />
     </list>
     <ignored path="Math.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -123,9 +37,38 @@
       <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="1700">
+              <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+              <folding>
+                <element signature="e#2397#2398#0" expanded="false" />
+                <element signature="e#2421#2422#0" expanded="false" />
+                <element signature="e#2457#2458#0" expanded="false" />
+                <element signature="e#2483#2484#0" expanded="false" />
+                <element signature="e#2513#2514#0" expanded="false" />
+                <element signature="e#2537#2538#0" expanded="false" />
+                <element signature="e#2573#2574#0" expanded="false" />
+                <element signature="e#2599#2600#0" expanded="false" />
+                <element signature="e#2629#2630#0" expanded="false" />
+                <element signature="e#2653#2654#0" expanded="false" />
+                <element signature="e#2689#2690#0" expanded="false" />
+                <element signature="e#2715#2716#0" expanded="false" />
+                <element signature="e#2742#2743#0" expanded="false" />
+                <element signature="e#2766#2767#0" expanded="false" />
+                <element signature="e#2799#2800#0" expanded="false" />
+                <element signature="e#2825#2826#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpotCollection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/SpotCollection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,7 +78,20 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-              <folding />
+              <folding>
+                <element signature="e#6293#6294#0" expanded="false" />
+                <element signature="e#6322#6323#0" expanded="false" />
+                <element signature="e#6367#6368#0" expanded="false" />
+                <element signature="e#6395#6396#0" expanded="false" />
+                <element signature="e#6506#6507#0" expanded="false" />
+                <element signature="e#6539#6540#0" expanded="false" />
+                <element signature="e#7950#7951#0" expanded="false" />
+                <element signature="e#7974#7975#0" expanded="false" />
+                <element signature="e#8019#8020#0" expanded="false" />
+                <element signature="e#8047#8048#0" expanded="false" />
+                <element signature="e#8092#8093#0" expanded="false" />
+                <element signature="e#8120#8121#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,8 +99,18 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+            <state relative-caret-position="442">
+              <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Spot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Spot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2482">
+              <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,7 +121,14 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-              <folding />
+              <folding>
+                <element signature="e#5120#5128#0" expanded="false" />
+                <element signature="e#5171#5179#0" expanded="false" />
+                <element signature="e#5222#5230#0" expanded="false" />
+                <element signature="e#6420#6421#0" expanded="false" />
+                <element signature="e#6445#6446#0" expanded="false" />
+                <element signature="e#20955#20965#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -165,7 +138,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="9" column="79" lean-forward="false" selection-start-line="9" selection-start-column="79" selection-end-line="9" selection-end-column="79" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -195,16 +170,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
               <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StepSizeCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/StepSizeCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="72" lean-forward="false" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -326,9 +291,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -398,6 +360,10 @@
               <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="System" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -429,8 +395,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -718,7 +713,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -726,10 +720,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2707469" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2707469" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2353914" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24366042" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -767,7 +761,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$3RD_PARTY$/BoneJ/BoneJ_.zip!/org/doube/geometry/FitEllipsoid.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Point.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/Object/Spot.java" />
     <entry file="jar://$3RD_PARTY$/commons-math3-3.6.1/commons-math3-3.6.1.jar!/org/apache/commons/math3/geometry/euclidean/threed/Vector3D.class" />
@@ -775,13 +768,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wolfson/common/MathFunc/CumStat.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameMatchesPattern.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/System/ExporterCollection.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/SpotCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="37" column="9" lean-forward="false" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/ArrayFunc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -972,7 +958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="72" lean-forward="false" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1004,7 +989,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="79" lean-forward="false" selection-start-line="9" selection-start-column="79" selection-end-line="9" selection-end-column="79" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,15 +999,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#6293#6294#0" expanded="false" />
+            <element signature="e#6322#6323#0" expanded="false" />
+            <element signature="e#6367#6368#0" expanded="false" />
+            <element signature="e#6395#6396#0" expanded="false" />
+            <element signature="e#6506#6507#0" expanded="false" />
+            <element signature="e#6539#6540#0" expanded="false" />
+            <element signature="e#7950#7951#0" expanded="false" />
+            <element signature="e#7974#7975#0" expanded="false" />
+            <element signature="e#8019#8020#0" expanded="false" />
+            <element signature="e#8047#8048#0" expanded="false" />
+            <element signature="e#8092#8093#0" expanded="false" />
+            <element signature="e#8120#8121#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1049,14 +1041,64 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+          <folding>
+            <element signature="e#5120#5128#0" expanded="false" />
+            <element signature="e#5171#5179#0" expanded="false" />
+            <element signature="e#5222#5230#0" expanded="false" />
+            <element signature="e#6420#6421#0" expanded="false" />
+            <element signature="e#6445#6446#0" expanded="false" />
+            <element signature="e#20955#20965#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/SpotCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Spot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2482">
+          <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding>
+            <element signature="e#2397#2398#0" expanded="false" />
+            <element signature="e#2421#2422#0" expanded="false" />
+            <element signature="e#2457#2458#0" expanded="false" />
+            <element signature="e#2483#2484#0" expanded="false" />
+            <element signature="e#2513#2514#0" expanded="false" />
+            <element signature="e#2537#2538#0" expanded="false" />
+            <element signature="e#2573#2574#0" expanded="false" />
+            <element signature="e#2599#2600#0" expanded="false" />
+            <element signature="e#2629#2630#0" expanded="false" />
+            <element signature="e#2653#2654#0" expanded="false" />
+            <element signature="e#2689#2690#0" expanded="false" />
+            <element signature="e#2715#2716#0" expanded="false" />
+            <element signature="e#2742#2743#0" expanded="false" />
+            <element signature="e#2766#2767#0" expanded="false" />
+            <element signature="e#2799#2800#0" expanded="false" />
+            <element signature="e#2825#2826#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+        <state relative-caret-position="442">
+          <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
           <folding />
         </state>
       </provider>
