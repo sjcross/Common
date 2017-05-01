@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 /**
  * Created by steph on 12/04/2017.
  */
-public class NameContainsPatternTest {
+public class NameContainsExtractorTest {
     @Test
     public void testTestSingleIncPartial() {
         // Initialising pattern to match and class to be tested

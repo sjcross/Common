@@ -1,9 +1,10 @@
-package wbif.sjx.common.HighContent;
+package wbif.sjx.common.HighContent.Object;
 
 /**
  * Created by sc13967 on 23/03/2017.
  */
-public class HCPatterns {
+@Deprecated
+public class Patterns {
     private final static String incuCyteShortFilenamePattern = "(.+)_([A-Z]\\d+?)_(\\d++)";
     private final static String incuCyteLongFilenamePattern = "(.+)_([A-Z]\\d+?)_(\\d++)_(\\d{4})y(\\d{2})m(\\d{2})d_(\\d{2})h(\\d{2})m";
     private final static String cellVoyagerFilenamePattern = "W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)";
