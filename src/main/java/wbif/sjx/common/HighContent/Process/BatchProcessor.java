@@ -1,4 +1,5 @@
 // TODO: Could have a HashMap for parameters
+// TODO: PERFILE saving can probably be removed.  Talk to users if this is used.
 
 package wbif.sjx.common.HighContent.Process;
 

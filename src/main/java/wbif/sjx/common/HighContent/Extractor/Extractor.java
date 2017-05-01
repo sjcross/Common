@@ -8,6 +8,6 @@ import wbif.sjx.common.HighContent.Object.Result;
 public interface Extractor {
     String getName();
     String getPattern();
-    void extract(Result result, String str);
+    boolean extract(Result result, String str);
 
 }

@@ -22,7 +22,7 @@ public class CellVoyagerFilenameExtractor implements Extractor {
 
     }
 
-    public void extract(Result result, String str) {
+    public boolean extract(Result result, String str) {
         Pattern fi_pattern = Pattern.compile(pattern);
         Matcher fi_matcher = fi_pattern.matcher(str);
 
@@ -37,6 +37,11 @@ public class CellVoyagerFilenameExtractor implements Extractor {
             result.setTimepoint(Integer.parseInt(fi_matcher.group(3)));
             result.setZ(Integer.parseInt(fi_matcher.group(4)));
             result.setChannel(Integer.parseInt(fi_matcher.group(5)));
+
+            return true;
+
+        } else {
+            return false;
 
         }
     }

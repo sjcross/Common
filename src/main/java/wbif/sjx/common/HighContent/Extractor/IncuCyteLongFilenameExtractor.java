@@ -22,7 +22,7 @@ public class IncuCyteLongFilenameExtractor implements Extractor {
 
     }
 
-    public void extract(Result result, String str) {
+    public boolean extract(Result result, String str) {
         Pattern fi_pattern = Pattern.compile(pattern);
         Matcher fi_matcher = fi_pattern.matcher(str);
 
@@ -40,6 +40,11 @@ public class IncuCyteLongFilenameExtractor implements Extractor {
             result.setDay(Integer.parseInt(fi_matcher.group(6)));
             result.setHour(Integer.parseInt(fi_matcher.group(7)));
             result.setMin(Integer.parseInt(fi_matcher.group(8)));
+
+            return true;
+
+        } else {
+            return false;
 
         }
     }

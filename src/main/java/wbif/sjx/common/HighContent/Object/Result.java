@@ -32,7 +32,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public String getExt() {
-        return (String) get(EXTENSION);
+        return get(EXTENSION) == null ? null : (String) get(EXTENSION);
     }
 
     public void setExt(String ext) {
@@ -40,7 +40,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public File getFile() {
-        return (File) get(FILE);
+        return get(FILE) == null ? null : (File) get(FILE);
     }
 
     public void setFile(File file) {
@@ -48,7 +48,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public int getHour() {
-        return (Integer) get(HOUR);
+        return get(HOUR) == null ? -1 : (Integer) get(HOUR);
     }
 
     public void setHour(int hour) {
@@ -56,7 +56,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public int getMin() {
-        return (Integer) get(MINUTE);
+        return get(MINUTE) == null ? -1 : (Integer) get(MINUTE);
     }
 
     public void setMin(int min) {
@@ -64,7 +64,8 @@ public class Result extends HashMap<String,Object> {
     }
 
     public int getSec() {
-        return (Integer) get(SECOND);
+        return get(SECOND) == null ? -1 : (Integer) get(SECOND);
+
     }
 
     public void setSec(int sec) {
@@ -72,7 +73,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public String getWell() {
-        return (String) get(WELL);
+        return get(WELL) == null ? null : (String) get(WELL);
     }
 
     public void setWell(String well) {
@@ -80,7 +81,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public int getField() {
-        return (Integer) get(FIELD);
+        return get(FIELD) == null ? -1 : (Integer) get(FIELD);
     }
 
     public void setField(int field) {
@@ -88,7 +89,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public int getTimepoint() {
-        return (Integer) get(TIMEPOINT);
+        return get(TIMEPOINT) == null ? -1 : (Integer) get(TIMEPOINT);
     }
 
     public void setTimepoint(int timepoint) {
@@ -96,7 +97,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public int getZ() {
-        return (Integer) get(ZPOSITION);
+        return get(ZPOSITION) == null ? -1 : (Integer) get(ZPOSITION);
     }
 
     public void setZ(int z) {
@@ -104,7 +105,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public int getChannel() {
-        return (Integer) get(CHANNEL);
+        return get(CHANNEL) == null ? -1 : (Integer) get(CHANNEL);
     }
 
     public void setChannel(int channel) {
@@ -112,7 +113,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public String getCelltype() {
-        return (String) get(CELLTYPE);
+        return get(CELLTYPE) == null ? null : (String) get(CELLTYPE);
     }
 
     public void setCelltype(String celltype) {
@@ -120,7 +121,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public String getMag() {
-        return (String) get(MAGNIFICATION);
+        return get(MAGNIFICATION) == null ? null : (String) get(MAGNIFICATION);
     }
 
     public void setMag(String mag) {
@@ -128,7 +129,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public int getYear() {
-        return (Integer) get(YEAR);
+        return get(YEAR) == null ? -1 : (Integer) get(YEAR);
     }
 
     public void setYear(int year) {
@@ -136,7 +137,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public int getMonth() {
-        return (Integer) get(MONTH);
+        return get(MONTH) == null ? -1 : (Integer) get(MONTH);
     }
 
     public void setMonth(int month) {
@@ -144,7 +145,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public int getDay() {
-        return (Integer) get(DAY);
+        return get(DAY) == null ? -1 : (Integer) get(DAY);
     }
 
     public void setDay(int day) {
@@ -152,7 +153,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public String getComment() {
-        return (String) get(COMMENT);
+        return get(COMMENT) == null ? null : (String) get(COMMENT);
     }
 
     public void setComment(String comment) {
@@ -160,7 +161,7 @@ public class Result extends HashMap<String,Object> {
     }
 
     public String getAsString(String property) {
-        return String.valueOf(get(property));
+        return get(property) == null ? null : String.valueOf(get(property));
     }
 
     public void printParameters() {

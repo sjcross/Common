@@ -22,7 +22,7 @@ public class IncuCyteShortFilenameExtractor implements Extractor {
 
     }
 
-    public void extract(Result result, String str) {
+    public boolean extract(Result result, String str) {
         Pattern fi_pattern = Pattern.compile(pattern);
         Matcher fi_matcher = fi_pattern.matcher(str);
 
@@ -35,6 +35,11 @@ public class IncuCyteShortFilenameExtractor implements Extractor {
             result.setComment(fi_matcher.group(1));
             result.setWell(fi_matcher.group(2));
             result.setField(Integer.parseInt(fi_matcher.group(3)));
+
+            return true;
+
+        } else {
+            return false;
 
         }
     }

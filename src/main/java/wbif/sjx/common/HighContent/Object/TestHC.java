@@ -47,6 +47,7 @@ public class TestHC {
         staticFields.add(Result.FIELD);
 
         ImageStackLoader imageStackLoader = new ImageStackLoader(extractor);
+        imageStackLoader.setOrderField(Result.ZPOSITION);
 
         for (File file:validFiles) {
             // Loading channel 1 images
@@ -64,7 +65,7 @@ public class TestHC {
             bp.addImage("C2",ipl2);
 
             // Running primary object identification
-
+            ipl1.getImage().show();
 
 
         }

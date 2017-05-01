@@ -43,30 +43,32 @@ public class ImageStackLoader {
         for (File file:files) {
             Result result = new Result();
             result.setFile(file);
-            extractor.extract(result,file.getName());
-
-            // Checking if fixed fields are the same as for the template
-            boolean addResult = true;
-            for (String field:staticFields) {
-                if (!result.getAsString(field).equals(referenceResult.getAsString(field))) {
-                    addResult = false;
+            if (extractor.extract(result,file.getName())) {
+                // Checking if fixed fields are the same as for the template
+                boolean addResult = true;
+                for (String field:staticFields) {
+                    if (!result.getAsString(field).equals(referenceResult.getAsString(field))) {
+                        addResult = false;
+                    }
                 }
-            }
 
-            // Checking if fields with a specific value (not necessarily same a template) have that value
-            for (String key:setFields.keySet()) {
-                if (!result.getAsString(key).equals(setFields.get(key))) {
-                    addResult = false;
+                // Checking if fields with a specific value (not necessarily same a template) have that value
+                for (String key:setFields.keySet()) {
+                    if (!result.getAsString(key).equals(setFields.get(key))) {
+                        addResult = false;
+                    }
                 }
-            }
 
-            // If the previous conditions were met the result is added to the ArrayList
-            if (addResult) {
-                results.add(result);
+                // If the previous conditions were met the result is added to the ArrayList
+                if (addResult) {
+                    results.add(result);
+                }
             }
         }
 
         // Before importing images they need to be ordered based on the orderField parameter
+        StackComparator stackComparator = new StackComparator();
+        if (orderField != null) stackComparator.setField(orderField);
         results.sort(new StackComparator());
 
         // Loading the images and storing them as an ImagePlus
