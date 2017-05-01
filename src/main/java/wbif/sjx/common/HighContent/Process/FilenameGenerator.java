@@ -1,4 +1,6 @@
-package wbif.sjx.common.HighContent;
+package wbif.sjx.common.HighContent.Process;
+
+import wbif.sjx.common.HighContent.Object.Patterns;
 
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
@@ -7,7 +9,7 @@ import java.util.regex.Pattern;
 /**
  * Created by sc13967 on 13/12/2016.
  */
-public class HCFilenameGenerator {
+public class FilenameGenerator {
     public static final int CELLVOYAGER = 0;
 
     private int mode = CELLVOYAGER;
@@ -63,15 +65,15 @@ public class HCFilenameGenerator {
         Cn = cn;
     }
 
-    public HCFilenameGenerator() {
+    public FilenameGenerator() {
 
     }
 
-    public HCFilenameGenerator(String template, int mode) {
+    public FilenameGenerator(String template, int mode) {
         Matcher matcher = null;
 
         if (mode == CELLVOYAGER) {
-            Pattern pattern = Pattern.compile(HCPatterns.getCellVoyagerFilenamePattern());
+            Pattern pattern = Pattern.compile(Patterns.getCellVoyagerFilenamePattern());
             matcher = pattern.matcher(template);
             matcher.find();
         }

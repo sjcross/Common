@@ -1,166 +1,172 @@
-package wbif.sjx.common.HighContent;
+package wbif.sjx.common.HighContent.Object;
 
 import java.io.File;
 import java.text.DecimalFormat;
+import java.util.HashMap;
 
 /**
  * High-content result structure as an abstract class, which is extended on an experiment-by experiment basis
  * Created by sc13967 on 25/10/2016.
  */
-public class HCResult {
-    String well; // String because it can be a coordinate (e.g. A2)
-    int field = -1;
-    int timepoint = -1;
-    int z = -1;
-    int channel = -1;
-    int year = -1;
-    int month = -1;
-    int day = -1;
-    int hour = -1;
-    int min = -1;
-    int sec = -1;
-    String celltype;
-    String mag;
-    String comment;
-    File file1;
-    String ext;
+public class Result extends HashMap<String,Object> {
+    public static final String WELL = "Well";
+    public static final String FIELD = "Field";
+    public static final String TIMEPOINT = "Timepoint";
+    public static final String ZPOSITION = "Z-position";
+    public static final String CHANNEL = "Channel";
+    public static final String YEAR = "Year";
+    public static final String MONTH = "Month";
+    public static final String DAY = "Day";
+    public static final String HOUR = "Hour";
+    public static final String MINUTE = "Minute";
+    public static final String SECOND = "Second";
+    public static final String CELLTYPE = "Cell type";
+    public static final String MAGNIFICATION = "Magnification";
+    public static final String COMMENT = "Comment";
+    public static final String FILE = "File";
+    public static final String EXTENSION = "Extension";
 
-    public HCResult() {
+
+    public Result() {
 
     }
 
     public String getExt() {
-        return ext;
+        return (String) get(EXTENSION);
     }
 
     public void setExt(String ext) {
-        this.ext = ext;
+        put(EXTENSION,ext);
     }
 
-    public File getFile1() {
-        return file1;
+    public File getFile() {
+        return (File) get(FILE);
     }
 
-    public void setFile1(File file1) {
-        this.file1 = file1;
+    public void setFile(File file) {
+        put(FILE,file);
     }
 
     public int getHour() {
-        return hour;
+        return (Integer) get(HOUR);
     }
 
     public void setHour(int hour) {
-        this.hour = hour;
+        put(HOUR,hour);
     }
 
     public int getMin() {
-        return min;
+        return (Integer) get(MINUTE);
     }
 
     public void setMin(int min) {
-        this.min = min;
+        put(MINUTE,min);
     }
 
     public int getSec() {
-        return sec;
+        return (Integer) get(SECOND);
     }
 
     public void setSec(int sec) {
-        this.sec = sec;
+        put(SECOND,sec);
     }
 
     public String getWell() {
-        return well;
+        return (String) get(WELL);
     }
 
     public void setWell(String well) {
-        this.well = well;
+        put(WELL,well);
     }
 
     public int getField() {
-        return field;
+        return (Integer) get(FIELD);
     }
 
     public void setField(int field) {
-        this.field = field;
+        put(FIELD,field);
     }
 
     public int getTimepoint() {
-        return timepoint;
+        return (Integer) get(TIMEPOINT);
     }
 
     public void setTimepoint(int timepoint) {
-        this.timepoint = timepoint;
+        put(TIMEPOINT,timepoint);
     }
 
     public int getZ() {
-        return z;
+        return (Integer) get(ZPOSITION);
     }
 
     public void setZ(int z) {
-        this.z = z;
+        put(ZPOSITION,z);
     }
 
     public int getChannel() {
-        return channel;
+        return (Integer) get(CHANNEL);
     }
 
     public void setChannel(int channel) {
-        this.channel = channel;
+        put(CHANNEL,channel);
     }
 
     public String getCelltype() {
-        return celltype;
+        return (String) get(CELLTYPE);
     }
 
     public void setCelltype(String celltype) {
-        this.celltype = celltype;
+        put(CELLTYPE,celltype);
     }
 
     public String getMag() {
-        return mag;
+        return (String) get(MAGNIFICATION);
     }
 
     public void setMag(String mag) {
-        this.mag = mag;
+        put(MAGNIFICATION,mag);
     }
 
     public int getYear() {
-        return year;
+        return (Integer) get(YEAR);
     }
 
     public void setYear(int year) {
-        this.year = year;
+        put(YEAR,year);
     }
 
     public int getMonth() {
-        return month;
+        return (Integer) get(MONTH);
     }
 
     public void setMonth(int month) {
-        this.month = month;
+        put(MONTH,month);
     }
 
     public int getDay() {
-        return day;
+        return (Integer) get(DAY);
     }
 
     public void setDay(int day) {
-        this.day = day;
+        put(DAY,day);
     }
 
     public String getComment() {
-        return comment;
+        return (String) get(COMMENT);
     }
 
     public void setComment(String comment) {
-        this.comment = comment;
+        put(COMMENT,comment);
+    }
+
+    public String getAsString(String property) {
+        return String.valueOf(get(property));
     }
 
     public void printParameters() {
         DecimalFormat time_df = new DecimalFormat("00");
 
-        System.out.println("    Primary channel: "+file1.getName());
+        System.out.println("    Primary channel: "+ getFile().getName());
 
         System.out.println("        Date: "+getDay()+"/"+getMonth()+"/"+getYear());
         System.out.println("        Time: "+time_df.format(getHour())+":"+time_df.format(getMin())+":"+time_df.format(getSec()));

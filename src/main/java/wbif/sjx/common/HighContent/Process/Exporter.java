@@ -1,8 +1,10 @@
-package wbif.sjx.common.HighContent;
+package wbif.sjx.common.HighContent.Process;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import wbif.sjx.common.HighContent.Object.Result;
+import wbif.sjx.common.HighContent.Object.ResultCollection;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -10,7 +12,7 @@ import java.text.DecimalFormat;
 /**
  * Created by sc13967 on 27/10/2016.
  */
-public class HCExporter {
+public class Exporter {
     public File target_folder = null;
     public String root_name = "";
     public String output_ext = "";
@@ -33,7 +35,7 @@ public class HCExporter {
 
     }
 
-    public void export(HCResultCollection results) {
+    public void export(ResultCollection results) {
         // If a root filename and target folder has been manually set, use this.  Otherwise, print an error stating no
         // name and/or folder was given
         if (!root_name.equals("") & target_folder != null) {
@@ -51,7 +53,7 @@ public class HCExporter {
         }
     }
 
-    public void export(HCResultCollection results, String root_name) {
+    public void export(ResultCollection results, String root_name) {
         // If a target folder has been manually set, use this.  Otherwise, print an error stating no target was given
         if (target_folder != null) {
             export(results, target_folder, root_name);
@@ -62,7 +64,7 @@ public class HCExporter {
         }
     }
 
-    public void export(HCResultCollection results, File target_folder) {
+    public void export(ResultCollection results, File target_folder) {
         // If a root filename has been manually set, use this.  Otherwise, print an error stating no name was given
         if (!root_name.equals("")) {
             export(results, target_folder, root_name);
@@ -73,7 +75,7 @@ public class HCExporter {
         }
     }
 
-    public void export(HCResultCollection results, File target_folder, String root_name){
+    public void export(ResultCollection results, File target_folder, String root_name){
         // Checking an overriding target folder hasn't already been specified
         if (this.target_folder != null) {
             target_folder = this.target_folder;
@@ -90,16 +92,16 @@ public class HCExporter {
 
     }
 
-    public void runExportJob(HCResultCollection results, File target_folder, String root_name) {
+    public void runExportJob(ResultCollection results, File target_folder, String root_name) {
 
     }
 
-    public static Element summariseCollection(Document doc, HCResult res) {
+    public static Element summariseCollection(Document doc, Result res) {
         return summariseCollection(doc, res, "COLLECTION");
 
     }
 
-    public static Element summariseCollection(Document doc, HCResult res, String name) {
+    public static Element summariseCollection(Document doc, Result res, String name) {
         Element collection = doc.createElement(name);
 
         Attr cell_type = doc.createAttribute("CELL_TYPE");
@@ -204,17 +206,17 @@ public class HCExporter {
 
     }
 
-    public static Element summariseAll(Document doc, HCResult res) {
+    public static Element summariseAll(Document doc, Result res) {
         return summariseAll(doc, res, "COLLECTION");
 
     }
 
-    public static Element summariseAll(Document doc, HCResult res, String name) {
+    public static Element summariseAll(Document doc, Result res, String name) {
         Element collection = doc.createElement(name);
 
-        if (res.getFile1() != null) {
+        if (res.getFile() != null) {
             Attr filepath = doc.createAttribute("FILEPATH");
-            filepath.appendChild(doc.createTextNode(res.getFile1().getAbsolutePath()));
+            filepath.appendChild(doc.createTextNode(res.getFile().getAbsolutePath()));
             collection.setAttributeNode(filepath);
         }
 
@@ -290,17 +292,17 @@ public class HCExporter {
 
     }
 
-    public static Element summariseExperiment(Document doc, HCResult res) {
+    public static Element summariseExperiment(Document doc, Result res) {
         return summariseExperiment(doc, res, "EXPERIMENT");
 
     }
 
-    public static Element summariseExperiment(Document doc, HCResult res, String name) {
+    public static Element summariseExperiment(Document doc, Result res, String name) {
         Element experiment = doc.createElement(name);
 
         Attr filepath = doc.createAttribute("FILEPATH");
-        if (res.getFile1() != null) {
-            filepath.appendChild(doc.createTextNode(res.getFile1().getAbsolutePath()));
+        if (res.getFile() != null) {
+            filepath.appendChild(doc.createTextNode(res.getFile().getAbsolutePath()));
         } else {
             filepath.appendChild(doc.createTextNode("NA"));
         }
