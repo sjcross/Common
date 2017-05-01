@@ -7,78 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58a93d3a-53bf-43ec-b929-89bc18e9a84a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/CellVoyagerFilenameExtractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/CellVoyagerFoldernameExtractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/Extractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/IncuCyteLongFilenameExtractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/IncuCyteShortFilenameExtractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/HCObject.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Image.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/ResultCollection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/TestHC.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Workspace.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Analysis.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/ImageStackLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/ParameterExtractor.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCAnalysis.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCParameterExtractor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCResultCollection.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Common-1.1.9.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Analysis/DirectionalPersistenceCalculator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Analysis/DirectionalityRatioCalculator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Analysis/EuclideanDistanceCalculator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Analysis/InstantaneousVelocityCalculator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Analysis/MSDCalculator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Analysis/StepSizeCalculator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Analysis/TotalPathLengthCalculator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/FileConditions/ExtensionMatchesString.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/FileConditions/FileCondition.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/FileConditions/NameContainsPattern.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/FileConditions/NameContainsString.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/FileConditions/ParentContainsString.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/HCAnalysis.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/HCExporter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/HCFilenameGenerator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/HCParameterExtractor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/HCPatterns.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/HCResult.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/HCResultCollection.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/ArrayFunc.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/CumStat.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/DirectionalPersistence.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/GeneralOps.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/Indexer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/MSD.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/MidpointCircle.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Object/Blob.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Object/Spot.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Object/SpotCollection.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Object/Track.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/System/BatchProcessor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/System/FileCrawler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/System/Folder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/System/GUIElements.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-wbif.sjx.common.FileConditions.NameContainsPatternTest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/surefire-reports/wbif.sjx.common.FileConditions.NameContainsPatternTest.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/wbif/sjx/common/FileConditions/ExtensionMatchesStringTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/wbif/sjx/common/FileConditions/NameContainsPatternTest.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/StackComparator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/TestHC.class" afterPath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/TestHC.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Process/ImageStackLoader.class" afterPath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Process/ImageStackLoader.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common.iml" afterPath="$PROJECT_DIR$/Common.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/BatchProcessor.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/BatchProcessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-wbif.sjx.common.FileConditions.ExtensionMatchesStringTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-wbif.sjx.common.FileConditions.ExtensionMatchesStringTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/wbif.sjx.common.FileConditions.ExtensionMatchesStringTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/wbif.sjx.common.FileConditions.ExtensionMatchesStringTest.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCExporter.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Exporter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCFilenameGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/FilenameGenerator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCPatterns.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Patterns.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCResult.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Result.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsPatternTest.java" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsExtractorTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/TestHC.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/TestHC.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Workspace.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Workspace.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/ImageStackLoader.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/ImageStackLoader.java" />
     </list>
     <ignored path="Math.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,6 +25,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Common$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1493633856821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -99,46 +37,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Analysis.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Analysis.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FilenameGenerator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/FilenameGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Extractor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/Extractor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ImageStackLoader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/ImageStackLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+            <state relative-caret-position="17">
+              <caret line="32" column="20" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="20" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#958#966#0" expanded="true" />
+                <element signature="docComment;class#ImageStackLoader#0" expanded="false" />
+                <element signature="method#ImageStackLoader#0;class#ImageStackLoader#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -147,8 +53,8 @@
       <file leaf-file-name="TestHC.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/TestHC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="33" column="65" lean-forward="true" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
+            <state relative-caret-position="125">
+              <caret line="45" column="67" lean-forward="true" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#TestHC#0" expanded="false" />
@@ -157,79 +63,98 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Workspace.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Workspace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#Workspace#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileCrawler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/FileCrawler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#FileCrawler#0" expanded="false" />
+                <element signature="method#FileCrawler#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#FileCrawler#1;class#FileCrawler#0" expanded="false" />
+                <element signature="method#setRootFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#getRootFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#getCurrentFolderAsFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#getCurrentFolderAsFile#0;class#FileCrawler#0" expanded="false" />
+                <element signature="docComment;method#scanFolders#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#scanFolders#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#hasMoreFilesInFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#hasMoreFoldersInFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#getNextValidFileInFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#getNextFileInFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#getAllValidFilesInFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#getNextValidFileInStructure#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#getNumberOfValidFilesInStructure#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#getNumberOfValidFoldersInStructure#0;class#FileCrawler#0" expanded="false" />
+                <element signature="docComment;method#getCurrentDepth#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#getCurrentDepth#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#goToNextValidFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="docComment;method#goToNextFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#goToNextFolder#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#addFileCondition#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#addFolderCondition#0;class#FileCrawler#0" expanded="false" />
+                <element signature="docComment;method#testFileConditions#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#testFileConditions#0;class#FileCrawler#0" expanded="false" />
+                <element signature="docComment;method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#testCurrentFolderIsValid#0;class#FileCrawler#0" expanded="false" />
+                <element signature="method#resetIterator#0;class#FileCrawler#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Folder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/Folder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#Folder#0" expanded="false" />
+                <element signature="method#Folder#0;class#Folder#0" expanded="false" />
+                <element signature="method#getFolderAsFile#0;class#Folder#0" expanded="false" />
+                <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+                <element signature="method#hasMoreFiles#0;class#Folder#0" expanded="false" />
+                <element signature="method#getNextFile#0;class#Folder#0" expanded="false" />
+                <element signature="method#hasMoreFolders#0;class#Folder#0" expanded="false" />
+                <element signature="method#getNextFolder#0;class#Folder#0" expanded="false" />
+                <element signature="method#getFolders#0;class#Folder#0" expanded="false" />
+                <element signature="method#getFiles#0;class#Folder#0" expanded="false" />
+                <element signature="method#printContents#0;class#Folder#0" expanded="false" />
+                <element signature="method#printFiles#0;class#Folder#0" expanded="false" />
+                <element signature="method#printFolders#0;class#Folder#0" expanded="false" />
+                <element signature="method#getNumberOfFiles#0;class#Folder#0" expanded="false" />
+                <element signature="method#getNumberOfFolders#0;class#Folder#0" expanded="false" />
+                <element signature="method#getCurrentFileNumber#0;class#Folder#0" expanded="false" />
+                <element signature="method#getCurrentFolderNumber#0;class#Folder#0" expanded="false" />
+                <element signature="method#resetCurrentFileNumber#0;class#Folder#0" expanded="false" />
+                <element signature="method#resetCurrentFolderNumber#0;class#Folder#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Result.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Result.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="30">
               <caret line="54" column="23" lean-forward="false" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1208#1209#0" expanded="true" />
-                <element signature="e#1254#1255#0" expanded="true" />
-                <element signature="e#1292#1293#0" expanded="true" />
-                <element signature="e#1326#1327#0" expanded="true" />
-                <element signature="e#1355#1356#0" expanded="true" />
-                <element signature="e#1394#1395#0" expanded="true" />
-                <element signature="e#1432#1433#0" expanded="true" />
-                <element signature="e#1462#1463#0" expanded="true" />
-                <element signature="e#1490#1491#0" expanded="true" />
-                <element signature="e#1532#1533#0" expanded="true" />
                 <element signature="e#1569#1570#0" expanded="true" />
                 <element signature="e#1599#1600#0" expanded="true" />
-                <element signature="e#1626#1627#0" expanded="true" />
-                <element signature="e#1670#1671#0" expanded="true" />
-                <element signature="e#1705#1706#0" expanded="true" />
-                <element signature="e#1736#1737#0" expanded="true" />
-                <element signature="e#1763#1764#0" expanded="true" />
-                <element signature="e#1807#1808#0" expanded="true" />
-                <element signature="e#1842#1843#0" expanded="true" />
-                <element signature="e#1873#1874#0" expanded="true" />
-                <element signature="e#1904#1905#0" expanded="true" />
-                <element signature="e#1945#1946#0" expanded="true" />
-                <element signature="e#1985#1986#0" expanded="true" />
-                <element signature="e#2015#2016#0" expanded="true" />
-                <element signature="e#2044#2045#0" expanded="true" />
-                <element signature="e#2087#2088#0" expanded="true" />
-                <element signature="e#2126#2127#0" expanded="true" />
-                <element signature="e#2158#2159#0" expanded="true" />
-                <element signature="e#2191#2192#0" expanded="true" />
-                <element signature="e#2238#2239#0" expanded="true" />
-                <element signature="e#2285#2286#0" expanded="true" />
-                <element signature="e#2325#2326#0" expanded="true" />
-                <element signature="e#2350#2351#0" expanded="true" />
-                <element signature="e#2397#2398#0" expanded="true" />
-                <element signature="e#2428#2429#0" expanded="true" />
-                <element signature="e#2460#2461#0" expanded="true" />
-                <element signature="e#2491#2492#0" expanded="true" />
-                <element signature="e#2536#2537#0" expanded="true" />
-                <element signature="e#2579#2580#0" expanded="true" />
-                <element signature="e#2615#2616#0" expanded="true" />
-                <element signature="e#2650#2651#0" expanded="true" />
-                <element signature="e#2695#2696#0" expanded="true" />
-                <element signature="e#2743#2744#0" expanded="true" />
-                <element signature="e#2781#2782#0" expanded="true" />
-                <element signature="e#2811#2812#0" expanded="true" />
-                <element signature="e#2861#2862#0" expanded="true" />
-                <element signature="e#2899#2900#0" expanded="true" />
-                <element signature="e#2937#2938#0" expanded="true" />
-                <element signature="e#2965#2966#0" expanded="true" />
-                <element signature="e#3007#3008#0" expanded="true" />
-                <element signature="e#3044#3045#0" expanded="true" />
-                <element signature="e#3074#3075#0" expanded="true" />
-                <element signature="e#3103#3104#0" expanded="true" />
-                <element signature="e#3146#3147#0" expanded="true" />
-                <element signature="e#3185#3186#0" expanded="true" />
-                <element signature="e#3217#3218#0" expanded="true" />
-                <element signature="e#3244#3245#0" expanded="true" />
-                <element signature="e#3285#3286#0" expanded="true" />
-                <element signature="e#3320#3321#0" expanded="true" />
-                <element signature="e#3348#3349#0" expanded="true" />
-                <element signature="e#3382#3383#0" expanded="true" />
-                <element signature="e#3426#3427#0" expanded="true" />
-                <element signature="e#3472#3473#0" expanded="true" />
-                <element signature="e#3508#3509#0" expanded="true" />
-                <element signature="e#3558#3559#0" expanded="true" />
-                <element signature="e#3610#3611#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -276,10 +201,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCExporter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/HighContent/HCPatterns.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/CumStat.java" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/test/java/wolfson/common/FileConditions/ExtensionMatchesStringTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wolfson/common/FileConditions/NameContainsPattern.java" />
         <option value="$PROJECT_DIR$/src/test/java/wolfson/common/FileConditions/NameContainsPatternTest.java" />
@@ -309,7 +230,6 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/HCFilenameGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/HCPatterns.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/HCWorkspace.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Workspace.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/FilenamePattern/Pattern.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/FilenamePattern/IncuCyteShortFilenamePattern.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/FilenamePattern/IncuCyteLongFilenamePattern.java" />
@@ -323,9 +243,14 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/ParameterExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Object.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/HCObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/ImageStackLoader.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Result.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/Extractor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/FileCrawler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/PropertyMatcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/HCComparator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/StackComparator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/ImageStackLoader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Workspace.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/TestHC.java" />
       </list>
     </option>
@@ -361,6 +286,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
@@ -388,12 +314,34 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="System" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -527,11 +475,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../BatchCellMeasure" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Groovy Projects/MeasurePlateletFormation" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -908,12 +855,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2699896" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2458655" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24862184" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -927,6 +874,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -944,14 +892,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/wolfson/common/MathFunc/LinearFit.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/DirectionalPersistence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="42" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4019">
@@ -978,20 +918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/Folder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/FileCrawler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1302">
-          <caret line="212" column="5" lean-forward="false" selection-start-line="212" selection-start-column="5" selection-end-line="212" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1070,7 +996,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1078,7 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="45" lean-forward="false" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1086,7 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="72" lean-forward="false" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1094,9 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="79" lean-forward="false" selection-start-line="9" selection-start-column="79" selection-end-line="9" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1104,20 +1024,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding>
-            <element signature="e#6293#6294#0" expanded="false" />
-            <element signature="e#6322#6323#0" expanded="false" />
-            <element signature="e#6367#6368#0" expanded="false" />
-            <element signature="e#6395#6396#0" expanded="false" />
-            <element signature="e#6506#6507#0" expanded="false" />
-            <element signature="e#6539#6540#0" expanded="false" />
-            <element signature="e#7950#7951#0" expanded="false" />
-            <element signature="e#7974#7975#0" expanded="false" />
-            <element signature="e#8019#8020#0" expanded="false" />
-            <element signature="e#8047#8048#0" expanded="false" />
-            <element signature="e#8092#8093#0" expanded="false" />
-            <element signature="e#8120#8121#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1128,10 +1034,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-          <folding>
-            <element signature="e#6420#6421#0" expanded="false" />
-            <element signature="e#6445#6446#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1139,9 +1041,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1149,7 +1048,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2482">
           <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1157,25 +1055,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
           <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2397#2398#0" expanded="false" />
-            <element signature="e#2421#2422#0" expanded="false" />
-            <element signature="e#2457#2458#0" expanded="false" />
-            <element signature="e#2483#2484#0" expanded="false" />
-            <element signature="e#2513#2514#0" expanded="false" />
-            <element signature="e#2537#2538#0" expanded="false" />
-            <element signature="e#2573#2574#0" expanded="false" />
-            <element signature="e#2599#2600#0" expanded="false" />
-            <element signature="e#2629#2630#0" expanded="false" />
-            <element signature="e#2653#2654#0" expanded="false" />
-            <element signature="e#2689#2690#0" expanded="false" />
-            <element signature="e#2715#2716#0" expanded="false" />
-            <element signature="e#2742#2743#0" expanded="false" />
-            <element signature="e#2766#2767#0" expanded="false" />
-            <element signature="e#2799#2800#0" expanded="false" />
-            <element signature="e#2825#2826#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1187,21 +1066,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCObjectProjector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/HCObjectProjector.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Image.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="docComment;class#Image#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1210,29 +1079,6 @@
         <state relative-caret-position="119">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Workspace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#Workspace#0" expanded="false" />
-            <element signature="e#236#263#0" expanded="false" />
-            <element signature="e#333#359#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Analysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1252,17 +1098,9 @@
         <state relative-caret-position="34">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#IncuCyteShortFilenameExtractor#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/FilenameGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1282,7 +1120,7 @@
         <state relative-caret-position="312">
           <caret line="28" column="32" lean-forward="true" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#CellVoyagerFoldernameExtractor#0" expanded="false" />
           </folding>
         </state>
@@ -1294,83 +1132,7 @@
           <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#HCObject#0" expanded="false" />
-            <element signature="e#582#592#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Result.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="54" column="23" lean-forward="false" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1208#1209#0" expanded="true" />
-            <element signature="e#1254#1255#0" expanded="true" />
-            <element signature="e#1292#1293#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1355#1356#0" expanded="true" />
-            <element signature="e#1394#1395#0" expanded="true" />
-            <element signature="e#1432#1433#0" expanded="true" />
-            <element signature="e#1462#1463#0" expanded="true" />
-            <element signature="e#1490#1491#0" expanded="true" />
-            <element signature="e#1532#1533#0" expanded="true" />
-            <element signature="e#1569#1570#0" expanded="true" />
-            <element signature="e#1599#1600#0" expanded="true" />
-            <element signature="e#1626#1627#0" expanded="true" />
-            <element signature="e#1670#1671#0" expanded="true" />
-            <element signature="e#1705#1706#0" expanded="true" />
-            <element signature="e#1736#1737#0" expanded="true" />
-            <element signature="e#1763#1764#0" expanded="true" />
-            <element signature="e#1807#1808#0" expanded="true" />
-            <element signature="e#1842#1843#0" expanded="true" />
-            <element signature="e#1873#1874#0" expanded="true" />
-            <element signature="e#1904#1905#0" expanded="true" />
-            <element signature="e#1945#1946#0" expanded="true" />
-            <element signature="e#1985#1986#0" expanded="true" />
-            <element signature="e#2015#2016#0" expanded="true" />
-            <element signature="e#2044#2045#0" expanded="true" />
-            <element signature="e#2087#2088#0" expanded="true" />
-            <element signature="e#2126#2127#0" expanded="true" />
-            <element signature="e#2158#2159#0" expanded="true" />
-            <element signature="e#2191#2192#0" expanded="true" />
-            <element signature="e#2238#2239#0" expanded="true" />
-            <element signature="e#2285#2286#0" expanded="true" />
-            <element signature="e#2325#2326#0" expanded="true" />
-            <element signature="e#2350#2351#0" expanded="true" />
-            <element signature="e#2397#2398#0" expanded="true" />
-            <element signature="e#2428#2429#0" expanded="true" />
-            <element signature="e#2460#2461#0" expanded="true" />
-            <element signature="e#2491#2492#0" expanded="true" />
-            <element signature="e#2536#2537#0" expanded="true" />
-            <element signature="e#2579#2580#0" expanded="true" />
-            <element signature="e#2615#2616#0" expanded="true" />
-            <element signature="e#2650#2651#0" expanded="true" />
-            <element signature="e#2695#2696#0" expanded="true" />
-            <element signature="e#2743#2744#0" expanded="true" />
-            <element signature="e#2781#2782#0" expanded="true" />
-            <element signature="e#2811#2812#0" expanded="true" />
-            <element signature="e#2861#2862#0" expanded="true" />
-            <element signature="e#2899#2900#0" expanded="true" />
-            <element signature="e#2937#2938#0" expanded="true" />
-            <element signature="e#2965#2966#0" expanded="true" />
-            <element signature="e#3007#3008#0" expanded="true" />
-            <element signature="e#3044#3045#0" expanded="true" />
-            <element signature="e#3074#3075#0" expanded="true" />
-            <element signature="e#3103#3104#0" expanded="true" />
-            <element signature="e#3146#3147#0" expanded="true" />
-            <element signature="e#3185#3186#0" expanded="true" />
-            <element signature="e#3217#3218#0" expanded="true" />
-            <element signature="e#3244#3245#0" expanded="true" />
-            <element signature="e#3285#3286#0" expanded="true" />
-            <element signature="e#3320#3321#0" expanded="true" />
-            <element signature="e#3348#3349#0" expanded="true" />
-            <element signature="e#3382#3383#0" expanded="true" />
-            <element signature="e#3426#3427#0" expanded="true" />
-            <element signature="e#3472#3473#0" expanded="true" />
-            <element signature="e#3508#3509#0" expanded="true" />
-            <element signature="e#3558#3559#0" expanded="true" />
-            <element signature="e#3610#3611#0" expanded="true" />
+            <element signature="e#582#592#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1383,8 +1145,8 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#ParameterExtractor#0" expanded="false" />
             <element signature="docComment;method#ParameterExtractor#0;class#ParameterExtractor#0" expanded="false" />
-            <element signature="e#1935#1936#0" expanded="true" />
-            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#1935#1936#0" expanded="false" />
+            <element signature="e#2007#2008#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1397,14 +1159,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/Extractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Patterns.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1413,21 +1167,154 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/ImageStackLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/FileCrawler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+        <state relative-caret-position="612">
+          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#FileCrawler#0" expanded="false" />
+            <element signature="method#FileCrawler#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#FileCrawler#1;class#FileCrawler#0" expanded="false" />
+            <element signature="method#setRootFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#getRootFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#getCurrentFolderAsFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#getCurrentFolderAsFile#0;class#FileCrawler#0" expanded="false" />
+            <element signature="docComment;method#scanFolders#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#scanFolders#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#hasMoreFilesInFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#hasMoreFoldersInFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#getNextValidFileInFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#getNextFileInFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#getAllValidFilesInFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#getNextValidFileInStructure#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#getNumberOfValidFilesInStructure#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#getNumberOfValidFoldersInStructure#0;class#FileCrawler#0" expanded="false" />
+            <element signature="docComment;method#getCurrentDepth#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#getCurrentDepth#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#goToNextValidFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="docComment;method#goToNextFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#goToNextFolder#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#addFileCondition#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#addFolderCondition#0;class#FileCrawler#0" expanded="false" />
+            <element signature="docComment;method#testFileConditions#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#testFileConditions#0;class#FileCrawler#0" expanded="false" />
+            <element signature="docComment;method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#testFolderConditions#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#testCurrentFolderIsValid#0;class#FileCrawler#0" expanded="false" />
+            <element signature="method#resetIterator#0;class#FileCrawler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Folder#0" expanded="false" />
+            <element signature="method#Folder#0;class#Folder#0" expanded="false" />
+            <element signature="method#getFolderAsFile#0;class#Folder#0" expanded="false" />
+            <element signature="method#getParent#0;class#Folder#0" expanded="false" />
+            <element signature="method#hasMoreFiles#0;class#Folder#0" expanded="false" />
+            <element signature="method#getNextFile#0;class#Folder#0" expanded="false" />
+            <element signature="method#hasMoreFolders#0;class#Folder#0" expanded="false" />
+            <element signature="method#getNextFolder#0;class#Folder#0" expanded="false" />
+            <element signature="method#getFolders#0;class#Folder#0" expanded="false" />
+            <element signature="method#getFiles#0;class#Folder#0" expanded="false" />
+            <element signature="method#printContents#0;class#Folder#0" expanded="false" />
+            <element signature="method#printFiles#0;class#Folder#0" expanded="false" />
+            <element signature="method#printFolders#0;class#Folder#0" expanded="false" />
+            <element signature="method#getNumberOfFiles#0;class#Folder#0" expanded="false" />
+            <element signature="method#getNumberOfFolders#0;class#Folder#0" expanded="false" />
+            <element signature="method#getCurrentFileNumber#0;class#Folder#0" expanded="false" />
+            <element signature="method#getCurrentFolderNumber#0;class#Folder#0" expanded="false" />
+            <element signature="method#resetCurrentFileNumber#0;class#Folder#0" expanded="false" />
+            <element signature="method#resetCurrentFolderNumber#0;class#Folder#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/Extractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Extractor/PropertyMatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="873">
+          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="54" column="23" lean-forward="false" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#958#966#0" expanded="true" />
+            <element signature="e#1569#1570#0" expanded="true" />
+            <element signature="e#1599#1600#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Analysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/FilenameGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#FilenameGenerator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/StackComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/ImageStackLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="32" column="20" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <element signature="docComment;class#ImageStackLoader#0" expanded="false" />
+            <element signature="method#ImageStackLoader#0;class#ImageStackLoader#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Workspace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Workspace#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/TestHC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="33" column="65" lean-forward="true" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
+        <state relative-caret-position="125">
+          <caret line="45" column="67" lean-forward="true" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#TestHC#0" expanded="false" />
