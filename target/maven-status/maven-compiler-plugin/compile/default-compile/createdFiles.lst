@@ -1,4 +1,5 @@
 wbif\sjx\common\HighContent\Object\Image.class
+wbif\sjx\common\HighContent\Object\ParameterCollection.class
 wbif\sjx\common\HighContent\Extractor\CellVoyagerFoldernameExtractor.class
 wbif\sjx\common\Analysis\DirectionalityRatioCalculator.class
 wbif\sjx\common\FileConditions\NameContainsPattern.class
@@ -8,6 +9,7 @@ wbif\sjx\common\HighContent\Object\HCObject.class
 wbif\sjx\common\HighContent\Process\Analysis.class
 wbif\sjx\common\HighContent\Process\Exporter.class
 wbif\sjx\common\System\FileCrawler.class
+wbif\sjx\common\HighContent\Process\PrimaryObjectIdentification.class
 wbif\sjx\common\FileConditions\ParentContainsString.class
 wbif\sjx\common\FileConditions\NameContainsString.class
 wbif\sjx\common\HighContent\Extractor\Extractor.class
@@ -25,6 +27,7 @@ wbif\sjx\common\HighContent\Extractor\IncuCyteShortFilenameExtractor.class
 wbif\sjx\common\HighContent\Process\ImageStackLoader.class
 wbif\sjx\common\MathFunc\DirectionalPersistence.class
 wbif\sjx\common\Object\SpotCollection.class
+wbif\sjx\common\HighContent\Process\BatchProcessor.class
 wbif\sjx\common\MathFunc\ArrayFunc.class
 wbif\sjx\common\Analysis\MSDCalculator.class
 wbif\sjx\common\HighContent\Process\FilenameGenerator.class
@@ -33,12 +36,12 @@ wbif\sjx\common\HighContent\Object\Result.class
 wbif\sjx\common\MathFunc\CumStat.class
 wbif\sjx\common\HighContent\Extractor\IncuCyteLongFilenameExtractor.class
 wbif\sjx\common\HighContent\Object\Patterns.class
-wbif\sjx\common\System\BatchProcessor.class
+wbif\sjx\common\HighContent\Object\Parameter.class
 wbif\sjx\common\HighContent\Process\ParameterExtractor.class
-wbif\sjx\common\HighContent\Object\Workspace.class
 wbif\sjx\common\MathFunc\MidpointCircle.class
 wbif\sjx\common\Object\Blob.class
 wbif\sjx\common\Object\Spot.class
 wbif\sjx\common\FileConditions\FileCondition.class
 wbif\sjx\common\System\GUIElements.class
 wbif\sjx\common\Analysis\EuclideanDistanceCalculator.class
+wbif\sjx\common\HighContent\Process\StackComparator.class

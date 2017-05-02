@@ -22,8 +22,6 @@ public class BatchProcessor extends FileCrawler {
     public final static int PERFOLDER = 1; // Save a new results file for each analysed folder
     public final static int PERSTRUCTURE = 2; // Save a new results file for each analysed structure (i.e. just once)
 
-    private HashMap<String, ArrayList<HCObject>> objects = new HashMap<>();
-    private HashMap<String, Image> images = new HashMap<>();
     private ArrayList<Exporter> exporters = new ArrayList<>();
     private Analysis analysis = null;
     private int save_mode = PERSTRUCTURE; // Default save mode is once for the entire structure
@@ -117,22 +115,6 @@ public class BatchProcessor extends FileCrawler {
 
     }
 
-    public void addObject(String name, ArrayList<HCObject> object) {
-        objects.put(name, object);
-    }
-
-    public void removeObject(String name) {
-        objects.remove(name);
-    }
-
-    public void addImage(String name, Image image) {
-        images.put(name, image);
-    }
-
-    public void removeImage(String name) {
-        images.remove(name);
-    }
-
 
     // GETTERS AND SETTERS
 
@@ -144,22 +126,6 @@ public class BatchProcessor extends FileCrawler {
     public void setAnalysis(Analysis analysis) {
         this.analysis = analysis;
 
-    }
-
-    public HashMap<String, ArrayList<HCObject>> getObjects() {
-        return objects;
-    }
-
-    public void setObjects(HashMap<String, ArrayList<HCObject>> objects) {
-        this.objects = objects;
-    }
-
-    public HashMap<String, Image> getImages() {
-        return images;
-    }
-
-    public void setImages(HashMap<String, Image> images) {
-        this.images = images;
     }
 
 }
