@@ -8,7 +8,6 @@ import inra.ijpb.binary.conncomp.FloodFillComponentsLabeling3D;
 import inra.ijpb.segment.Threshold;
 import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.MathFunc.ArrayFunc;
-import wbif.sjx.common.Object.Blob;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +16,7 @@ import java.util.LinkedHashMap;
 /**
  * Created by sc13967 on 02/05/2017.
  */
-public class PrimaryObjectIdentification implements Module {
+public class IdentifyPrimaryObjects implements Module {
     public static final String INPUT_IMAGE = "Input image";
     public static final String OUTPUT_OBJECT = "Output object";
     public static final String MEDIAN_FILTER_RADIUS = "Median filter radius";
@@ -28,6 +27,7 @@ public class PrimaryObjectIdentification implements Module {
         HashMap<String, Object> parameters = getParameters(workspace);
 
         ImageName targetImageName = (ImageName) parameters.get(INPUT_IMAGE);
+        HCObjectName outputObjectName = (HCObjectName) parameters.get(OUTPUT_OBJECT);
         double medFiltR = (double) parameters.get(MEDIAN_FILTER_RADIUS);
         double thrMult = (double) parameters.get(THRESHOLD_MULTIPLIER);
 
@@ -45,6 +45,7 @@ public class PrimaryObjectIdentification implements Module {
         // Need to get coordinates and convert to a HCObject
         ArrayList<Integer> IDs = new ArrayList<>();
         ArrayList<HCObject> objects = new ArrayList<>(); //Local ArrayList of objects
+        workspace.addObject(outputObjectName,objects);
 
         ImageProcessor ipr = ipl.getProcessor();
 
@@ -62,12 +63,16 @@ public class PrimaryObjectIdentification implements Module {
                     if (ID != 0) { //Corresponds to an object
                         if (ArrayFunc.contains(IDs,ID)) { //Already has an assigned "blob" object
                             int tempInd = IDs.indexOf(ID);
-                            objects.get(tempInd).addCoord(x,y,z);
+                            objects.get(tempInd).addCoordinate(HCObject.X,x);
+                            objects.get(tempInd).addCoordinate(HCObject.Y,y);
+                            objects.get(tempInd).addCoordinate(HCObject.Z,z);
 
                         } else { //First instance of detection
                             IDs.add(ind,ID);
                             objects.add(ind, new HCObject());
-                            objects.get(ind).addCoord(x,y,z);
+                            objects.get(ind).addCoordinate(HCObject.X,x);
+                            objects.get(ind).addCoordinate(HCObject.Y,y);
+                            objects.get(ind).addCoordinate(HCObject.Z,z);
 
                             ind++;
 

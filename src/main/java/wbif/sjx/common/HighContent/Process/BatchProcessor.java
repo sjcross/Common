@@ -3,10 +3,7 @@
 
 package wbif.sjx.common.HighContent.Process;
 
-import wbif.sjx.common.HighContent.Object.HCObject;
-import wbif.sjx.common.HighContent.Object.Image;
-import wbif.sjx.common.HighContent.Object.Result;
-import wbif.sjx.common.HighContent.Object.ResultCollection;
+import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.System.FileCrawler;
 import wbif.sjx.common.System.Folder;
 
@@ -41,7 +38,7 @@ public class BatchProcessor extends FileCrawler {
 
     // PUBLIC METHODS
 
-    public ResultCollection<String,Result> runAnalysisOnStructure() {
+    public ResultCollection<String,Result> runAnalysisOnStructure(Workspace workspace) {
         int num_valid_files = getNumberOfValidFilesInStructure();
         resetIterator();
 
@@ -70,7 +67,8 @@ public class BatchProcessor extends FileCrawler {
                 }
 
                 // Running the analysis
-                ResultCollection<String,Result> curr_results = analysis.execute(next);
+                workspace.setActiveFile(next);
+                ResultCollection<String,Result> curr_results = analysis.execute(workspace);
 
                 // Saving the current results
                 if (exporters.size() != 0 & save_mode == PERFILE) {

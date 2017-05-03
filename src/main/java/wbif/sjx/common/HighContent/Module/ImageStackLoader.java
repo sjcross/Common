@@ -1,36 +1,45 @@
-package wbif.sjx.common.HighContent.Process;
+package wbif.sjx.common.HighContent.Module;
 
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
+import ij.gui.OvalRoi;
 import ij.io.Opener;
 import wbif.sjx.common.HighContent.Extractor.Extractor;
-import wbif.sjx.common.HighContent.Object.Result;
+import wbif.sjx.common.HighContent.Object.*;
+import wbif.sjx.common.HighContent.Process.StackComparator;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by steph on 30/04/2017.
  */
-public class ImageStackLoader {
-    private Extractor extractor = null;
-    private String orderField = null;
+public class ImageStackLoader implements Module{
+    public static final String EXTRACTOR = "Extractor";
+    public static final String ORDER_FIELD = "Order field";
+    public static final String STATIC_FIELDS = "Static fields";
+    public static final String OUTPUT_IMAGE = "Output image";
+    public static final String SET_FIELDS = "Set fields";
 
 
-    // CONSTRUCTORS
+    @Override
+    public void execute(Workspace workspace) {
+        // Getting parameters
+        LinkedHashMap<String,Object> parameters = getParameters(workspace);
+        Extractor extractor = (Extractor) parameters.get(EXTRACTOR);
+        String orderField = (String) parameters.get(ORDER_FIELD);
+        ArrayList<String> staticFields = (ArrayList<String>) parameters.get(STATIC_FIELDS);
+        HashMap<String,String> setFields = (HashMap<String, String>) parameters.get(SET_FIELDS);
+        ImageName outputImage = (ImageName) parameters.get(OUTPUT_IMAGE);
 
-    public ImageStackLoader(Extractor extractor) {
-        this.extractor = extractor;
+        // Getting files
+        File referenceFile = workspace.getActiveFile();
+        File[] files = referenceFile.getParentFile().listFiles();
 
-    }
-
-
-    // PUBLIC METHODS
-
-    public ImagePlus extract(File referenceFile, ArrayList<File> files, ArrayList<String> staticFields, HashMap<String,String> setFields) {
         // Creating a Result object holding parameters about the reference file
         Result referenceResult = new Result();
         referenceResult.setFile(referenceFile);
@@ -89,26 +98,21 @@ public class ImageStackLoader {
 
         ipl.setPosition(1);
 
-        return ipl;
-
+        workspace.addImage(outputImage,new Image(ipl));
     }
 
+    @Override
+    public LinkedHashMap<String, Object> initialiseParameters() {
+        LinkedHashMap<String, Object> parameters = new LinkedHashMap<>();
 
-    // GETTERS AND SETTERS
+        // Setting the input image stack name
+        parameters.put("Image stack loading module",new ModuleTitle("Image stack loader"));
+        parameters.put(EXTRACTOR,null);
+        parameters.put(ORDER_FIELD,"");
+        parameters.put(STATIC_FIELDS,new ArrayList<String>());
+        parameters.put(OUTPUT_IMAGE,new ImageName("StackImage"));
+        parameters.put(SET_FIELDS,new HashMap<String,String>());
 
-    public Extractor getExtractor() {
-        return extractor;
-    }
-
-    public void setExtractor(Extractor extractor) {
-        this.extractor = extractor;
-    }
-
-    public String getOrderField() {
-        return orderField;
-    }
-
-    public void setOrderField(String orderField) {
-        this.orderField = orderField;
+        return parameters;
     }
 }

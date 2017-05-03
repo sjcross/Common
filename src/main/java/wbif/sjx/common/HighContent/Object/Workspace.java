@@ -1,5 +1,8 @@
 package wbif.sjx.common.HighContent.Object;
 
+import wbif.sjx.common.HighContent.Module.ModuleCollection;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,6 +13,8 @@ public class Workspace {
     private HashMap<HCObjectName, ArrayList<HCObject>> objects = new HashMap<>();
     private HashMap<ImageName, Image> images = new HashMap<>();
     private ParameterCollection parameters = new ParameterCollection();
+    private ModuleCollection modules = new ModuleCollection();
+    private File activeFile = null;
 
 
     // PUBLIC METHODS
@@ -55,5 +60,21 @@ public class Workspace {
 
     public void setParameters(ParameterCollection parameters) {
         this.parameters = parameters;
+    }
+
+    public ModuleCollection getModules() {
+        return modules;
+    }
+
+    public void setModules(ModuleCollection modules) {
+        this.modules = modules;
+    }
+
+    public File getActiveFile() {
+        return activeFile;
+    }
+
+    public void setActiveFile(File activeFile) {
+        this.activeFile = activeFile;
     }
 }

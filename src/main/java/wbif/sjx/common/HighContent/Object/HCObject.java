@@ -14,7 +14,7 @@ public class HCObject {
     public static final int Z = 3;
     public static final int T = 4;
 
-    private HashMap<Integer, double[]> coordinates = new HashMap<Integer, double[]>();
+    private HashMap<Integer, ArrayList<Double>> coordinates = new HashMap<>();
     private HCObject parent = null;
     private ArrayList<HCObject> children = new ArrayList<HCObject>();
 
@@ -25,9 +25,9 @@ public class HCObject {
      * Projects xy coordinates into a single plane.  Duplicates of xy coordinates at different heights are removed.
      * @return HashMap containing x and y coordinates as double[].  Integer key corresponds to dimension (X=0, Y=1)
      */
-    public HashMap<Integer, double[]> getZProjectedCoordinates() {
-        double[] x = coordinates.get(X);
-        double[] y = coordinates.get(Y);
+    public HashMap<Integer, ArrayList<Double>> getZProjectedCoordinates() {
+        ArrayList<Double> x = coordinates.get(X);
+        ArrayList<Double> y = coordinates.get(Y);
 
         // All coordinate pairs will be stored in a HashMap, which will prevent coordinate duplication.  The keys will
         // correspond to the 2D index, for which we need to know the maximum x coordinate
@@ -40,25 +40,28 @@ public class HCObject {
 
         // Running through all coordinates, adding them to the HashMap
         HashMap<Double, Integer> projCoords = new HashMap<Double, Integer>();
-        for (int i=0;i<x.length;i++) {
-            Double key = y[i]*maxX + x[i];
+        for (int i=0;i<x.size();i++) {
+            Double key = y.get(i)*maxX + x.get(i);
             projCoords.put(key,i);
         }
 
         // Creating arrays to store the projected x and y coordinates
-        double[] xOut = new double[projCoords.size()];
-        double[] yOut = new double[projCoords.size()];
+        ArrayList<Double> xOut = new ArrayList<>(projCoords.size());
+        ArrayList<Double> yOut = new ArrayList<>(projCoords.size());
 
         int iter = 0;
         for (Double key:projCoords.keySet()) {
             int i = projCoords.get(key);
-            xOut[iter] = x[i];
-            yOut[iter] = y[i];
+
+            xOut.set(iter,x.get(i));
+            yOut.set(iter,y.get(i));
+
+            iter++;
         }
 
         // Adding the projected coordinates to the output HashMap.  The HashMap structure is the same as the standard
         // coordinate array model
-        HashMap<Integer,double[]> projCoordsOut = new HashMap<Integer, double[]>();
+        HashMap<Integer,ArrayList<Double>> projCoordsOut = new HashMap<>();
         projCoordsOut.put(X,xOut);
         projCoordsOut.put(Y,yOut);
 
@@ -66,24 +69,41 @@ public class HCObject {
 
     }
 
-
-    // GETTERS AND SETTERS
-
-    public void setSingleCoordinate(double[] coordinate, int dim) {
-        coordinates.put(dim, coordinate);
+    public void addCoordinate(int dim, double coordinate) {
+        coordinates.computeIfAbsent(dim, k -> new ArrayList<>());
+        coordinates.get(dim).add(coordinate);
 
     }
 
-    public double[] getSingleCoordinate(int dim) {
+    public void removeCoordinate(int dim, double coordinate) {
+        coordinates.get(dim).remove(coordinate);
+
+    }
+
+    @Override
+    public String toString() {
+        return  "HCObject with "+coordinates.size()+" dimensions and "+coordinates.values().iterator().next().size()+
+                " coordinate points";
+
+    }
+
+    // GETTERS AND SETTERS
+
+    public void setCoordinate(ArrayList<Double> coordinateList, int dim) {
+        coordinates.put(dim, coordinateList);
+
+    }
+
+    public ArrayList<Double> getCoordinate(int dim) {
         return coordinates.get(dim);
 
     }
 
-    public HashMap<Integer, double[]> getCoordinates() {
+    public HashMap<Integer, ArrayList<Double>> getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(HashMap<Integer, double[]> coordinates) {
+    public void setCoordinates(HashMap<Integer, ArrayList<Double>> coordinates) {
         this.coordinates = coordinates;
     }
 
