@@ -10,8 +10,6 @@ import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.MathFunc.ArrayFunc;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 /**
  * Created by sc13967 on 02/05/2017.
@@ -44,13 +42,15 @@ public class IdentifyPrimaryObjects implements Module {
         // Need to get coordinates and convert to a HCObject
         ArrayList<Integer> IDs = new ArrayList<>();
         ArrayList<HCObject> objects = new ArrayList<>(); //Local ArrayList of objects
-        workspace.addObject(outputObjectName,objects);
+        workspace.addObjects(outputObjectName,objects);
 
         ImageProcessor ipr = ipl.getProcessor();
 
         int h = ipl.getHeight();
         int w = ipl.getWidth();
         int d = ipl.getNSlices();
+
+        int objID = 0;
 
         int ind = 0;
         for (int z=0;z<d;z++) {
@@ -68,7 +68,7 @@ public class IdentifyPrimaryObjects implements Module {
 
                         } else { //First instance of detection
                             IDs.add(ind,ID);
-                            objects.add(ind, new HCObject());
+                            objects.add(ind, new HCObject(objID++));
                             objects.get(ind).addCoordinate(HCObject.X,x);
                             objects.get(ind).addCoordinate(HCObject.Y,y);
                             objects.get(ind).addCoordinate(HCObject.Z,z);
@@ -80,7 +80,6 @@ public class IdentifyPrimaryObjects implements Module {
                 }
             }
         }
-
     }
 
     @Override

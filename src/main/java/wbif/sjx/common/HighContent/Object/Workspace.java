@@ -19,7 +19,7 @@ public class Workspace {
 
     // PUBLIC METHODS
 
-    public void addObject(HCObjectName name, ArrayList<HCObject> object) {
+    public void addObjects(HCObjectName name, ArrayList<HCObject> object) {
         objects.put(name, object);
     }
 
