@@ -1,5 +1,6 @@
 package wbif.sjx.common.HighContent.Module;
 
+import wbif.sjx.common.HighContent.Object.ParameterCollection;
 import wbif.sjx.common.HighContent.Object.Workspace;
 
 import java.util.LinkedHashMap;
@@ -14,12 +15,6 @@ public interface Module {
      * Get a HashMap of the parameters this class requires
      * @return
      */
-    LinkedHashMap<String,Object> initialiseParameters();
+    void initialiseParameters(ParameterCollection parameters);
 
-
-    // DEFAULT METHODS
-
-    default LinkedHashMap<String,Object> getParameters(Workspace workspace) {
-        return workspace.getParameters().get(this.hashCode());
-    }
 }

@@ -23,13 +23,12 @@ public class IdentifyPrimaryObjects implements Module {
     public static final String THRESHOLD_MULTIPLIER = "Threshold multiplier";
 
     public void execute(Workspace workspace) {
-        // Getting parameters for this particular class instance from workspace
-        HashMap<String, Object> parameters = getParameters(workspace);
+        ParameterCollection parameters = workspace.getParameters();
 
-        ImageName targetImageName = (ImageName) parameters.get(INPUT_IMAGE);
-        HCObjectName outputObjectName = (HCObjectName) parameters.get(OUTPUT_OBJECT);
-        double medFiltR = (double) parameters.get(MEDIAN_FILTER_RADIUS);
-        double thrMult = (double) parameters.get(THRESHOLD_MULTIPLIER);
+        ImageName targetImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE);
+        HCObjectName outputObjectName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECT);
+        double medFiltR = (double) parameters.getParameter(this,MEDIAN_FILTER_RADIUS);
+        double thrMult = (double) parameters.getParameter(this,THRESHOLD_MULTIPLIER);
 
         // Getting image stack
         ImagePlus ipl = workspace.getImages().get(targetImageName).getImage();
@@ -84,17 +83,14 @@ public class IdentifyPrimaryObjects implements Module {
 
     }
 
-    public LinkedHashMap<String,Object> initialiseParameters() {
-        LinkedHashMap<String, Object> parameters = new LinkedHashMap<>();
-
+    @Override
+    public void initialiseParameters(ParameterCollection parameters) {
         // Setting the input image stack name
-        parameters.put("Primary object identification module",new ModuleTitle("Primary object identification"));
-        parameters.put(INPUT_IMAGE,new ImageName(""));
-        parameters.put(OUTPUT_OBJECT,new HCObjectName(""));
-        parameters.put(MEDIAN_FILTER_RADIUS,2d);
-        parameters.put(THRESHOLD_MULTIPLIER,1d);
-
-        return parameters;
+        parameters.addParameter(this,"Primary object identification module",new ModuleTitle("Primary object identification"),true);
+        parameters.addParameter(this,INPUT_IMAGE,new ImageName(""),false);
+        parameters.addParameter(this,OUTPUT_OBJECT,new HCObjectName(""),false);
+        parameters.addParameter(this,MEDIAN_FILTER_RADIUS,2d,true);
+        parameters.addParameter(this,THRESHOLD_MULTIPLIER,1d,true);
 
     }
 }

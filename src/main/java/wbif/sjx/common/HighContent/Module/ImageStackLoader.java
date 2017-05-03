@@ -5,6 +5,7 @@ import ij.ImagePlus;
 import ij.ImageStack;
 import ij.gui.OvalRoi;
 import ij.io.Opener;
+import wbif.sjx.common.HighContent.Extractor.CellVoyagerFilenameExtractor;
 import wbif.sjx.common.HighContent.Extractor.Extractor;
 import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.HighContent.Process.StackComparator;
@@ -25,16 +26,15 @@ public class ImageStackLoader implements Module{
     public static final String OUTPUT_IMAGE = "Output image";
     public static final String SET_FIELDS = "Set fields";
 
-
     @Override
     public void execute(Workspace workspace) {
         // Getting parameters
-        LinkedHashMap<String,Object> parameters = getParameters(workspace);
-        Extractor extractor = (Extractor) parameters.get(EXTRACTOR);
-        String orderField = (String) parameters.get(ORDER_FIELD);
-        ArrayList<String> staticFields = (ArrayList<String>) parameters.get(STATIC_FIELDS);
-        HashMap<String,String> setFields = (HashMap<String, String>) parameters.get(SET_FIELDS);
-        ImageName outputImage = (ImageName) parameters.get(OUTPUT_IMAGE);
+        ParameterCollection parameters = workspace.getParameters();
+        Extractor extractor = (Extractor) parameters.getParameter(this,EXTRACTOR);
+        String orderField = (String) parameters.getParameter(this,ORDER_FIELD);
+        ArrayList<String> staticFields = (ArrayList<String>) parameters.getParameter(this,STATIC_FIELDS);
+        HashMap<String,String> setFields = (HashMap<String, String>) parameters.getParameter(this,SET_FIELDS);
+        ImageName outputImage = (ImageName) parameters.getParameter(this,OUTPUT_IMAGE);
 
         // Getting files
         File referenceFile = workspace.getActiveFile();
@@ -102,17 +102,14 @@ public class ImageStackLoader implements Module{
     }
 
     @Override
-    public LinkedHashMap<String, Object> initialiseParameters() {
-        LinkedHashMap<String, Object> parameters = new LinkedHashMap<>();
-
+    public void initialiseParameters(ParameterCollection parameters) {
         // Setting the input image stack name
-        parameters.put("Image stack loading module",new ModuleTitle("Image stack loader"));
-        parameters.put(EXTRACTOR,null);
-        parameters.put(ORDER_FIELD,"");
-        parameters.put(STATIC_FIELDS,new ArrayList<String>());
-        parameters.put(OUTPUT_IMAGE,new ImageName("StackImage"));
-        parameters.put(SET_FIELDS,new HashMap<String,String>());
+        parameters.addParameter(this,"Image stack loading module",new ModuleTitle("Image stack loader"),false);
+        parameters.addParameter(this,EXTRACTOR,null,false);
+        parameters.addParameter(this,ORDER_FIELD,"",false);
+        parameters.addParameter(this,STATIC_FIELDS,new ArrayList<String>(),false);
+        parameters.addParameter(this,OUTPUT_IMAGE,new ImageName("StackImage"),false);
+        parameters.addParameter(this,SET_FIELDS,new HashMap<String,String>(),false);
 
-        return parameters;
     }
 }
