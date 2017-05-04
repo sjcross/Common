@@ -1,6 +1,7 @@
 package wbif.sjx.common.HighContent.Module;
 
 import wbif.sjx.common.HighContent.Object.ImageName;
+import wbif.sjx.common.HighContent.Object.Parameter;
 import wbif.sjx.common.HighContent.Object.ParameterCollection;
 import wbif.sjx.common.HighContent.Object.Workspace;
 
@@ -12,7 +13,7 @@ public class ShowImage implements Module {
 
     @Override
     public void execute(Workspace workspace) {
-        ImageName imageName = (ImageName) workspace.getParameters().getParameter(this,DISPLAY_IMAGE);
+        ImageName imageName = (ImageName) workspace.getParameters().getParameter(this,DISPLAY_IMAGE).getValue();
 
         workspace.getImages().get(imageName).getImage().show();
 
@@ -20,7 +21,7 @@ public class ShowImage implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(this,DISPLAY_IMAGE,"Im1",false);
+        parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,DISPLAY_IMAGE,null,false));
 
     }
 }

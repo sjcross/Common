@@ -1,9 +1,9 @@
+// TODO: Module to show object outlines on an image (returns the image itself)
+
 package wbif.sjx.common.HighContent.Module;
 
 import wbif.sjx.common.HighContent.Object.ParameterCollection;
 import wbif.sjx.common.HighContent.Object.Workspace;
-
-import java.util.LinkedHashMap;
 
 /**
  * Created by sc13967 on 02/05/2017.

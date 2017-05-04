@@ -1,6 +1,7 @@
 package wbif.sjx.common.HighContent.Module;
 
 import wbif.sjx.common.HighContent.Object.*;
+import wbif.sjx.common.HighContent.Object.ParameterCollection;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,15 +17,13 @@ public class ProjectObjects implements Module {
     @Override
     public void execute(Workspace workspace) {
         ParameterCollection parameters = workspace.getParameters();
-        HCObjectName inputObjectsName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS);
-        HCObjectName outputObjectsName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS);
+        HCObjectName inputObjectsName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
+        HCObjectName outputObjectsName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
 
-        ArrayList<HCObject> inputObjects = workspace.getObjects().get(inputObjectsName);
-        ArrayList<HCObject> outputObjects = new ArrayList<>();
+        HashMap<Integer,HCObject> inputObjects = workspace.getObjects().get(inputObjectsName);
+        HashMap<Integer,HCObject> outputObjects = new HashMap<>();
 
-        int objID = 1;
-
-        for (HCObject inputObject:inputObjects) {
+        for (HCObject inputObject:inputObjects.values()) {
             ArrayList<Integer> x = inputObject.getCoordinates().get(HCObject.X);
             ArrayList<Integer> y = inputObject.getCoordinates().get(HCObject.Y);
 
@@ -45,7 +44,7 @@ public class ProjectObjects implements Module {
             }
 
             // Creating the new HCObject and assigning the parent-child relationship
-            HCObject outputObject = new HCObject(objID++);
+            HCObject outputObject = new HCObject(inputObject.getID());
             outputObject.setParent(inputObject);
             inputObject.addChild(outputObject);
 
@@ -56,7 +55,7 @@ public class ProjectObjects implements Module {
                 outputObject.addCoordinate(HCObject.Y,y.get(i));
             }
 
-            outputObjects.add(outputObject);
+            outputObjects.put(outputObject.getID(),outputObject);
 
         }
 
@@ -66,8 +65,8 @@ public class ProjectObjects implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(this,INPUT_OBJECTS,"Obj1",false);
-        parameters.addParameter(this,OUTPUT_OBJECTS,"Obj2",false);
+        parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,INPUT_OBJECTS,null,false));
+        parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,OUTPUT_OBJECTS,null,false));
 
     }
 }

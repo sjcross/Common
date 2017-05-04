@@ -3,13 +3,13 @@ package wbif.sjx.common.HighContent.Module;
 import fiji.threshold.Auto_Threshold;
 import ij.ImagePlus;
 import ij.plugin.Filters3D;
-import ij.process.ImageProcessor;
 import inra.ijpb.binary.conncomp.FloodFillComponentsLabeling3D;
 import inra.ijpb.segment.Threshold;
 import wbif.sjx.common.HighContent.Object.*;
-import wbif.sjx.common.MathFunc.ArrayFunc;
+import wbif.sjx.common.HighContent.Object.ParameterCollection;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by sc13967 on 02/05/2017.
@@ -23,10 +23,10 @@ public class IdentifyPrimaryObjects implements Module {
     public void execute(Workspace workspace) {
         ParameterCollection parameters = workspace.getParameters();
 
-        ImageName targetImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE);
-        HCObjectName outputObjectName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECT);
-        double medFiltR = (double) parameters.getParameter(this,MEDIAN_FILTER_RADIUS);
-        double thrMult = (double) parameters.getParameter(this,THRESHOLD_MULTIPLIER);
+        ImageName targetImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
+        HCObjectName outputObjectName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECT).getValue();
+        double medFiltR = (double) parameters.getParameter(this,MEDIAN_FILTER_RADIUS).getValue();
+        double thrMult = (double) parameters.getParameter(this,THRESHOLD_MULTIPLIER).getValue();
 
         // Getting image stack
         ImagePlus ipl = workspace.getImages().get(targetImageName).getImage();
@@ -39,57 +39,20 @@ public class IdentifyPrimaryObjects implements Module {
         FloodFillComponentsLabeling3D ffcl3D = new FloodFillComponentsLabeling3D();
         ipl.setStack(ffcl3D.computeLabels(ipl.getImageStack()));
 
-        // Need to get coordinates and convert to a HCObject
-        ArrayList<Integer> IDs = new ArrayList<>();
-        ArrayList<HCObject> objects = new ArrayList<>(); //Local ArrayList of objects
+        // Converting image to objects
+        HashMap<Integer,HCObject> objects = new ObjectImageConverter().convertImageToObjects(new Image(ipl));
         workspace.addObjects(outputObjectName,objects);
 
-        ImageProcessor ipr = ipl.getProcessor();
-
-        int h = ipl.getHeight();
-        int w = ipl.getWidth();
-        int d = ipl.getNSlices();
-
-        int objID = 0;
-
-        int ind = 0;
-        for (int z=0;z<d;z++) {
-            ipl.setSlice(z+1);
-            for (int x=0;x<w;x++) {
-                for (int y=0;y<h;y++) {
-                    int ID = ipr.getPixel(x,y); //Pixel value
-
-                    if (ID != 0) { //Corresponds to an object
-                        if (ArrayFunc.contains(IDs,ID)) { //Already has an assigned "blob" object
-                            int tempInd = IDs.indexOf(ID);
-                            objects.get(tempInd).addCoordinate(HCObject.X,x);
-                            objects.get(tempInd).addCoordinate(HCObject.Y,y);
-                            objects.get(tempInd).addCoordinate(HCObject.Z,z);
-
-                        } else { //First instance of detection
-                            IDs.add(ind,ID);
-                            objects.add(ind, new HCObject(objID++));
-                            objects.get(ind).addCoordinate(HCObject.X,x);
-                            objects.get(ind).addCoordinate(HCObject.Y,y);
-                            objects.get(ind).addCoordinate(HCObject.Z,z);
-
-                            ind++;
-
-                        }
-                    }
-                }
-            }
-        }
     }
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
         // Setting the input image stack name
-        parameters.addParameter(this,"Primary object identification module",new ModuleTitle("Primary object identification"),true);
-        parameters.addParameter(this,INPUT_IMAGE,new ImageName(""),false);
-        parameters.addParameter(this,OUTPUT_OBJECT,new HCObjectName(""),false);
-        parameters.addParameter(this,MEDIAN_FILTER_RADIUS,2d,true);
-        parameters.addParameter(this,THRESHOLD_MULTIPLIER,1d,true);
+        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,"Primary object identification","Primary object identification",true));
+        parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,INPUT_IMAGE,null,false));
+        parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,OUTPUT_OBJECT,null,false));
+        parameters.addParameter(new Parameter(this,Parameter.NUMBER,MEDIAN_FILTER_RADIUS,2d,true));
+        parameters.addParameter(new Parameter(this,Parameter.NUMBER,THRESHOLD_MULTIPLIER,1d,true));
 
     }
 }

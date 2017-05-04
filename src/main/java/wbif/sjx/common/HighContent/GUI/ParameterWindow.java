@@ -1,11 +1,9 @@
 package wbif.sjx.common.HighContent.GUI;
 
 import ij.gui.GenericDialog;
-import wbif.sjx.common.HighContent.Object.ModuleTitle;
 import wbif.sjx.common.HighContent.Object.Parameter;
 import wbif.sjx.common.HighContent.Object.ParameterCollection;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -19,15 +17,18 @@ public class ParameterWindow {
         for (int key:parameters.getParameters().keySet()) {
             for (Map.Entry<String,Parameter> entry:parameters.getParameters().get(key).entrySet()) {
                 if (entry.getValue().isVisible()) {
-                    if (entry.getValue().getValue() instanceof ModuleTitle) {
+                    if (entry.getValue().getType() == Parameter.MODULE_TITLE) {
                         if (gd.getComponentCount() != 0) gd.addMessage(" ");
                         gd.addMessage(entry.getKey());
 
-                    } else if (entry.getValue().getValue() instanceof Integer || entry.getValue().getValue() instanceof Double) {
+                    } else if (entry.getValue().getType() == Parameter.NUMBER) {
                         gd.addNumericField(entry.getKey(), (double) entry.getValue().getValue(), 1);
 
-                    } else if (entry.getValue().getValue() instanceof String) {
+                    } else if (entry.getValue().getType() == Parameter.STRING) {
                         gd.addStringField(entry.getKey(), String.valueOf(entry.getValue()));
+
+                    } else if (entry.getValue().getType() == Parameter.CHOICE) {
+                        gd.addChoice(entry.getKey(),(String[]) entry.getValue().getValueRange(), (String) entry.getValue().getValue());
 
                     }
                 }
@@ -42,11 +43,14 @@ public class ParameterWindow {
             for (int key : parameters.getParameters().keySet()) {
                 for (Map.Entry<String, Parameter> entry : parameters.getParameters().get(key).entrySet()) {
                     if (entry.getValue().isVisible()) {
-                        if (entry.getValue().getValue() instanceof Integer || entry.getValue().getValue() instanceof Double) {
+                        if (entry.getValue().getType() == Parameter.NUMBER) {
                             parameters.getParameters().get(key).get(entry.getKey()).setValue(gd.getNextNumber());
 
-                        } else if (entry.getValue().getValue() instanceof String) {
+                        } else if (entry.getValue().getType() == Parameter.STRING) {
                             parameters.getParameters().get(key).get(entry.getKey()).setValue(gd.getNextString());
+
+                        } else if (entry.getValue().getType() == Parameter.CHOICE) {
+                            parameters.getParameters().get(key).get(entry.getKey()).setValue(gd.getNextChoice());
 
                         }
                     }

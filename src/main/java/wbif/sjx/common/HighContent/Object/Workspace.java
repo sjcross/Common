@@ -3,14 +3,13 @@ package wbif.sjx.common.HighContent.Object;
 import wbif.sjx.common.HighContent.Module.ModuleCollection;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by sc13967 on 02/05/2017.
  */
 public class Workspace {
-    private HashMap<HCObjectName, ArrayList<HCObject>> objects = new HashMap<>();
+    private HashMap<HCObjectName, HashMap<Integer,HCObject>> objects = new HashMap<>();
     private HashMap<ImageName, Image> images = new HashMap<>();
     private ParameterCollection parameters = new ParameterCollection();
     private ModuleCollection modules = new ModuleCollection();
@@ -19,7 +18,7 @@ public class Workspace {
 
     // PUBLIC METHODS
 
-    public void addObjects(HCObjectName name, ArrayList<HCObject> object) {
+    public void addObjects(HCObjectName name, HashMap<Integer,HCObject> object) {
         objects.put(name, object);
     }
 
@@ -38,11 +37,11 @@ public class Workspace {
 
     // GETTERS AND SETTERS
 
-    public HashMap<HCObjectName, ArrayList<HCObject>> getObjects() {
+    public HashMap<HCObjectName, HashMap<Integer,HCObject>> getObjects() {
         return objects;
     }
 
-    public void setObjects(HashMap<HCObjectName, ArrayList<HCObject>> objects) {
+    public void setObjects(HashMap<HCObjectName, HashMap<Integer,HCObject>> objects) {
         this.objects = objects;
     }
 

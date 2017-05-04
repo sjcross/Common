@@ -11,19 +11,14 @@ public class ParameterCollection {
 
     // PUBLIC METHODS
 
-    public void addParameter(Object module, String name, Object value, boolean visible) {
-        parameters.computeIfAbsent(module.hashCode(),k -> new LinkedHashMap<>());
-        parameters.get(module.hashCode()).put(name,new Parameter(module,name,value,visible));
+    public void addParameter(Parameter parameter) {
+        parameters.computeIfAbsent(parameter.getModule().hashCode(),k -> new LinkedHashMap<>());
+        parameters.get(parameter.getModule().hashCode()).put(parameter.getName(),parameter);
 
     }
 
-    public void addParameter(Object module, String name, Object value) {
-        addParameter(module, name, value, true);
-
-    }
-
-    public Object getParameter(Object module, String name) {
-        return parameters.get(module.hashCode()).get(name).getValue();
+    public Parameter getParameter(Object module, String name) {
+        return parameters.get(module.hashCode()).get(name);
 
     }
 
