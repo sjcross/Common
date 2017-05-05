@@ -16,6 +16,7 @@ import java.util.HashMap;
  * Created by steph on 30/04/2017.
  */
 public class ImageStackLoader implements Module{
+    public static final String MODULE_TITLE = "Module title";
     public static final String EXTRACTOR = "Extractor";
     public static final String ORDER_FIELD = "Order field";
     public static final String STATIC_FIELDS = "Static fields";
@@ -23,9 +24,8 @@ public class ImageStackLoader implements Module{
     public static final String SET_FIELDS = "Set fields";
 
     @Override
-    public void execute(Workspace workspace) {
+    public void execute(Workspace workspace, ParameterCollection parameters) {
         // Getting parameters
-        ParameterCollection parameters = workspace.getParameters();
         Extractor extractor = (Extractor) parameters.getParameter(this,EXTRACTOR).getValue();
         String orderField = (String) parameters.getParameter(this,ORDER_FIELD).getValue();
         ArrayList<String> staticFields = (ArrayList<String>) parameters.getParameter(this,STATIC_FIELDS).getValue();
@@ -33,20 +33,20 @@ public class ImageStackLoader implements Module{
         ImageName outputImage = (ImageName) parameters.getParameter(this,OUTPUT_IMAGE).getValue();
 
         // Getting files
-        File referenceFile = workspace.getActiveFile();
+        File referenceFile = workspace.getCurrentFile();
         File[] files = referenceFile.getParentFile().listFiles();
 
         // Creating a Result object holding parameters about the reference file
-        Result referenceResult = new Result();
+        Metadata referenceResult = new Metadata();
         referenceResult.setFile(referenceFile);
         extractor.extract(referenceResult,referenceFile.getName());
 
         // Creating a structure to store only Result objects containing file parameters matching those specified
-        ArrayList<Result> results = new ArrayList<>();
+        ArrayList<Metadata> results = new ArrayList<>();
 
         // Running through all provided files, extracting parameters
         for (File file:files) {
-            Result result = new Result();
+            Metadata result = new Metadata();
             result.setFile(file);
             if (extractor.extract(result,file.getName())) {
                 // Checking if fixed fields are the same as for the template
@@ -82,7 +82,7 @@ public class ImageStackLoader implements Module{
         ImagePlus ipl = IJ.createHyperStack("STACK_"+referenceFile.getName(),refIpl.getWidth(),refIpl.getHeight(),1,results.size(),1,refIpl.getBitDepth());
 
         int iter = 1;
-        for (Result res:results) {
+        for (Metadata res:results) {
             ipl.setPosition(iter);
 
             ImagePlus singleIpl = opener.openImage(res.getFile().getAbsolutePath());
@@ -100,7 +100,7 @@ public class ImageStackLoader implements Module{
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
         // Setting the input image stack name
-        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,"Image stack loader","Image stack loader",false));
+        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Image stack loader",false));
         parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,OUTPUT_IMAGE,null,false));
         parameters.addParameter(new Parameter(this,Parameter.OBJECT,EXTRACTOR,null,false));
         parameters.addParameter(new Parameter(this,Parameter.STRING,ORDER_FIELD,"",false));

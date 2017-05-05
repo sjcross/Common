@@ -9,8 +9,9 @@ public class Parameter {
     public final static int OBJECT_NAME = 3;
     public final static int NUMBER = 4;
     public final static int STRING = 5;
-    public final static int CHOICE = 6;
-    public final static int OBJECT = 7;
+    public final static int CHOICE_ARRAY = 6;
+    public final static int CHOICE_MAP = 7;
+    public final static int OBJECT = 8;
 
     Object module;
     String name;

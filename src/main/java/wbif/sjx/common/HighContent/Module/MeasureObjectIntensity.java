@@ -11,15 +11,13 @@ import java.util.HashMap;
  * Created by sc13967 on 05/05/2017.
  */
 public class MeasureObjectIntensity implements Module {
+    public static final String MODULE_TITLE = "Module title";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String INPUT_IMAGE = "Input image";
 
 
     @Override
-    public void execute(Workspace workspace) {
-        // Getting parameters
-        ParameterCollection parameters = workspace.getParameters();
-
+    public void execute(Workspace workspace, ParameterCollection parameters) {
         // Getting input objects
         HCObjectName objectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
         HashMap<Integer,HCObject> objects = workspace.getObjects().get(objectName);
@@ -71,16 +69,11 @@ public class MeasureObjectIntensity implements Module {
 
         }
 
-        for (HCObject object:objects.values()) {
-            System.out.println(object.toString());
-            for (Measurement measurement:object.getMeasurements().values()) {
-                System.out.println("    "+measurement.getName()+" = "+measurement.getValue());
-            }
-        }
     }
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
+        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Measure object intensity",true));
         parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,INPUT_OBJECTS,null,false));
         parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,INPUT_IMAGE,null,false));
 

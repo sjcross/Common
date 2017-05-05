@@ -8,7 +8,7 @@ import java.util.HashMap;
  * High-content result structure as an abstract class, which is extended on an experiment-by experiment basis
  * Created by sc13967 on 25/10/2016.
  */
-public class Result extends HashMap<String,Object> {
+public class Metadata extends HashMap<String,Object> {
     public static final String WELL = "Well";
     public static final String FIELD = "Field";
     public static final String TIMEPOINT = "Timepoint";
@@ -20,16 +20,21 @@ public class Result extends HashMap<String,Object> {
     public static final String HOUR = "Hour";
     public static final String MINUTE = "Minute";
     public static final String SECOND = "Second";
-    public static final String CELLTYPE = "Cell type";
+    public static final String CELLTYPE = "CellType";
     public static final String MAGNIFICATION = "Magnification";
     public static final String COMMENT = "Comment";
     public static final String FILE = "File";
     public static final String EXTENSION = "Extension";
 
 
-    public Result() {
+    // CONSTRUCTOR
+
+    public Metadata() {
 
     }
+
+
+    // GETTERS AND SETTERS
 
     public String getExt() {
         return get(EXTENSION) == null ? null : (String) get(EXTENSION);
@@ -161,7 +166,8 @@ public class Result extends HashMap<String,Object> {
     }
 
     public String getAsString(String property) {
-        return get(property) == null ? null : String.valueOf(get(property));
+        // If the property is null return null.  Otherwise check if it's a File; if it is, return the name, otherwise return the string value
+        return get(property) == null ? null : get(property) instanceof File ? ((File) get(property)).getName() : String.valueOf(get(property));
     }
 
     public void printParameters() {

@@ -13,6 +13,7 @@ import java.util.HashMap;
  * Created by sc13967 on 04/05/2017.
  */
 public class ObjectImageConverter implements Module {
+    public static final String MODULE_TITLE = "Module title";
     public static final String TEMPLATE_IMAGE = "Template image";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String INPUT_IMAGE = "Input image";
@@ -114,8 +115,7 @@ public class ObjectImageConverter implements Module {
     }
 
     @Override
-    public void execute(Workspace workspace) {
-        ParameterCollection parameters = workspace.getParameters();
+    public void execute(Workspace workspace, ParameterCollection parameters) {
         int conversionMode = (int) parameters.getParameter(this,CONVERSION_MODE).getValue();
 
         if (conversionMode == IMAGE_TO_OBJECTS) {
@@ -145,6 +145,7 @@ public class ObjectImageConverter implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
+        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Object-image converter",true));
         parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,TEMPLATE_IMAGE,null,false));
         parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,INPUT_OBJECTS,null,false));
         parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,INPUT_IMAGE,null,false));

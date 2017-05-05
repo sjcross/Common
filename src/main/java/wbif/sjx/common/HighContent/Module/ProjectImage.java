@@ -7,14 +7,12 @@ import wbif.sjx.common.HighContent.Object.ParameterCollection;
  * Created by sc13967 on 04/05/2017.
  */
 public class ProjectImage implements Module {
+    public static final String MODULE_TITLE = "Module title";
     public static final String INPUT_IMAGE = "Input image";
     public static final String OUTPUT_IMAGE = "Output image";
 
     @Override
-    public void execute(Workspace workspace) {
-        // Getting relevant parameters
-        ParameterCollection parameters = workspace.getParameters();
-
+    public void execute(Workspace workspace,ParameterCollection parameters) {
         // Loading image into workspace
         ImageName inputImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
         Image inputImage = workspace.getImages().get(inputImageName);
@@ -32,6 +30,7 @@ public class ProjectImage implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
+        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Image projector",true));
         parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,INPUT_IMAGE,null,false));
         parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,OUTPUT_IMAGE,null,false));
 

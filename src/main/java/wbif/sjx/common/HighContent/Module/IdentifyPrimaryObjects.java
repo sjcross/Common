@@ -14,14 +14,13 @@ import java.util.HashMap;
  * Created by sc13967 on 02/05/2017.
  */
 public class IdentifyPrimaryObjects implements Module {
+    public static final String MODULE_TITLE = "Module title";
     public static final String INPUT_IMAGE = "Input image";
     public static final String OUTPUT_OBJECT = "Output object";
     public static final String MEDIAN_FILTER_RADIUS = "Median filter radius";
     public static final String THRESHOLD_MULTIPLIER = "Threshold multiplier";
 
-    public void execute(Workspace workspace) {
-        ParameterCollection parameters = workspace.getParameters();
-
+    public void execute(Workspace workspace, ParameterCollection parameters) {
         ImageName targetImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
         HCObjectName outputObjectName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECT).getValue();
         double medFiltR = (double) parameters.getParameter(this,MEDIAN_FILTER_RADIUS).getValue();
@@ -47,7 +46,7 @@ public class IdentifyPrimaryObjects implements Module {
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
         // Setting the input image stack name
-        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,"Primary object identification","Primary object identification",true));
+        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Primary object identification",true));
         parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,INPUT_IMAGE,null,false));
         parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,OUTPUT_OBJECT,null,false));
         parameters.addParameter(new Parameter(this,Parameter.NUMBER,MEDIAN_FILTER_RADIUS,2d,true));

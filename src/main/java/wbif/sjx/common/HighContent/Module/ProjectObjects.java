@@ -10,13 +10,13 @@ import java.util.HashMap;
  * Projects xy coordinates into a single plane.  Duplicates of xy coordinates at different heights are removed.
  */
 public class ProjectObjects implements Module {
+    public static final String MODULE_TITLE = "Module title";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String OUTPUT_OBJECTS = "Output objects";
 
 
     @Override
-    public void execute(Workspace workspace) {
-        ParameterCollection parameters = workspace.getParameters();
+    public void execute(Workspace workspace,ParameterCollection parameters) {
         HCObjectName inputObjectsName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
         HCObjectName outputObjectsName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
 
@@ -65,6 +65,7 @@ public class ProjectObjects implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
+        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Object projector",true));
         parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,INPUT_OBJECTS,null,false));
         parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,OUTPUT_OBJECTS,null,false));
 

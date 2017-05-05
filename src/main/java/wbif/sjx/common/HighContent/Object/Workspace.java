@@ -1,7 +1,5 @@
 package wbif.sjx.common.HighContent.Object;
 
-import wbif.sjx.common.HighContent.Module.ModuleCollection;
-
 import java.io.File;
 import java.util.HashMap;
 
@@ -11,10 +9,16 @@ import java.util.HashMap;
 public class Workspace {
     private HashMap<HCObjectName, HashMap<Integer,HCObject>> objects = new HashMap<>();
     private HashMap<ImageName, Image> images = new HashMap<>();
-    private ParameterCollection parameters = new ParameterCollection();
-    private ModuleCollection modules = new ModuleCollection();
-    private File activeFile = null;
+    private Metadata metadata = new Metadata();
+    private File currentFile = null;
 
+
+    // CONSTRUCTOR
+
+    public Workspace(File currentFile) {
+        this.currentFile = currentFile;
+
+    }
 
     // PUBLIC METHODS
 
@@ -32,6 +36,10 @@ public class Workspace {
 
     public void removeImage(String name) {
         images.remove(name);
+    }
+
+    public void clearAllImages() {
+        images = null;
     }
 
 
@@ -53,27 +61,20 @@ public class Workspace {
         this.images = images;
     }
 
-    public ParameterCollection getParameters() {
-        return parameters;
+    public File getCurrentFile() {
+        return currentFile;
     }
 
-    public void setParameters(ParameterCollection parameters) {
-        this.parameters = parameters;
+    public void setCurrentFile(File currentFile) {
+        this.currentFile = currentFile;
     }
 
-    public ModuleCollection getModules() {
-        return modules;
+    public Metadata getMetadata() {
+        return metadata;
     }
 
-    public void setModules(ModuleCollection modules) {
-        this.modules = modules;
+    public void setMetadata(Metadata metadata) {
+        this.metadata = metadata;
     }
 
-    public File getActiveFile() {
-        return activeFile;
-    }
-
-    public void setActiveFile(File activeFile) {
-        this.activeFile = activeFile;
-    }
 }

@@ -16,6 +16,7 @@ import java.util.HashMap;
  * Created by sc13967 on 03/05/2017.
  */
 public class IdentifySecondaryObjects implements Module {
+    public static final String MODULE_TITLE = "Module title";
     public static final String INPUT_IMAGE = "Input image";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String OUTPUT_OBJECTS = "Output objects";
@@ -24,9 +25,8 @@ public class IdentifySecondaryObjects implements Module {
 
 
     @Override
-    public void execute(Workspace workspace) {
+    public void execute(Workspace workspace, ParameterCollection parameters) {
         // Getting relevant parameters
-        ParameterCollection parameters = workspace.getParameters();
         double medFiltR = (double) parameters.getParameter(this,MEDIAN_FILTER_RADIUS).getValue();
         String thrMeth = (String) parameters.getParameter(this,THRESHOLD_METHOD).getValue();
 
@@ -73,13 +73,13 @@ public class IdentifySecondaryObjects implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,"Secondary object identification module","Secondary object identification",true));
+        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Secondary object identification",true));
         parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,INPUT_IMAGE,null,false));
         parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,INPUT_OBJECTS,null,false));
         parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,OUTPUT_OBJECTS,null,false));
         parameters.addParameter(new Parameter(this,Parameter.NUMBER,MEDIAN_FILTER_RADIUS,2d,true));
         String[] thresholdMethods = new String[]{"Otsu","Huang","Li"};
-        parameters.addParameter(new Parameter(this,Parameter.CHOICE,THRESHOLD_METHOD,thresholdMethods[0],thresholdMethods,true));
+        parameters.addParameter(new Parameter(this,Parameter.CHOICE_ARRAY,THRESHOLD_METHOD,thresholdMethods[0],thresholdMethods,true));
 
     }
 }

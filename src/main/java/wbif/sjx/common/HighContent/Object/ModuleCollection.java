@@ -1,4 +1,6 @@
-package wbif.sjx.common.HighContent.Module;
+package wbif.sjx.common.HighContent.Object;
+
+import wbif.sjx.common.HighContent.Module.Module;
 
 import java.util.ArrayList;
 

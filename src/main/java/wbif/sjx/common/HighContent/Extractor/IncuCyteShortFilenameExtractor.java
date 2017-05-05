@@ -1,6 +1,6 @@
 package wbif.sjx.common.HighContent.Extractor;
 
-import wbif.sjx.common.HighContent.Object.Result;
+import wbif.sjx.common.HighContent.Object.Metadata;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,7 +22,7 @@ public class IncuCyteShortFilenameExtractor implements Extractor {
 
     }
 
-    public boolean extract(Result result, String str) {
+    public boolean extract(Metadata result, String str) {
         Pattern fi_pattern = Pattern.compile(pattern);
         Matcher fi_matcher = fi_pattern.matcher(str);
 

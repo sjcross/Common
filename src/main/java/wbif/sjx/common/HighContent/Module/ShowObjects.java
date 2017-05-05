@@ -11,22 +11,22 @@ import java.util.HashMap;
  * Created by sc13967 on 03/05/2017.
  */
 public class ShowObjects implements Module {
+    public static final String MODULE_TITLE = "Module title";
     public final static String INPUT_OBJECTS = "Input objects";
     public final static String TEMPLATE_IMAGE = "Template image";
 
     @Override
-    public void execute(Workspace workspace) {
+    public void execute(Workspace workspace,ParameterCollection parameters) {
         // Loading objects
-        ParameterCollection parameterCollection = workspace.getParameters();
-        HCObjectName inputObjectName = (HCObjectName) parameterCollection.getParameter(this,INPUT_OBJECTS).getValue();
+        HCObjectName inputObjectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
         HashMap<Integer,HCObject> inputObjects = workspace.getObjects().get(inputObjectName);
 
         Image templateImage;
-        if (parameterCollection.getParameter(this,TEMPLATE_IMAGE) == null) {
+        if (parameters.getParameter(this,TEMPLATE_IMAGE) == null) {
             templateImage = null;
 
         } else {
-            ImageName templateImageName = (ImageName) parameterCollection.getParameter(this,TEMPLATE_IMAGE).getValue();
+            ImageName templateImageName = (ImageName) parameters.getParameter(this,TEMPLATE_IMAGE).getValue();
             templateImage = workspace.getImages().get(templateImageName);
 
         }
@@ -47,6 +47,7 @@ public class ShowObjects implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
+        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Show objects",true));
         parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,INPUT_OBJECTS,null,false));
         parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,TEMPLATE_IMAGE,null,false));
 

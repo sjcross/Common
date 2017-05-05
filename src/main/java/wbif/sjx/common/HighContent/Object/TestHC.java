@@ -19,24 +19,7 @@ public class TestHC {
     public static void main(String[] args) {
         new ImageJ();
 
-        // Creating Workspace to store parameters, images and objects
-        Workspace workspace = new Workspace();
-
-        Analysis analysis = new TestAnalysis();
-        analysis.initialise(workspace);
-
-        BatchProcessor bp = setupBatchProcessor();
-        bp.setAnalysis(analysis);
-
-        bp.runAnalysisOnStructure(workspace);
-
-        System.out.println("Done!");
-
-    }
-
-    static private BatchProcessor setupBatchProcessor() {
         // Getting root folder
-        //String root = "E:\\Stephen\\Google Drive\\People\\P\\Melanie Panagi\\2016-10-05 Cell Voyager\\20160908T142009_10x_KO1_sparse\\";
         String root = "C:\\Users\\sc13967\\Google Drive\\People\\P\\Melanie Panagi\\2016-10-05 Cell Voyager\\20160908T142009_10x_KO1_sparse\\";
 
         // Creating BatchProcessor, which will run through the file structure and pull out files to analyse
@@ -51,7 +34,14 @@ public class TestHC {
         bp.addFileCondition(new NameContainsString("C1", FileCondition.INC_PARTIAL)); //It's the nuclei channel (other matching files will be loaded in the main execution)
         bp.addFolderCondition(new NameContainsString("Image", FileCondition.INC_COMPLETE)); //It's in the Image folder
 
-        return bp;
+        // Creating Workspace to store parameters, images and objects
+        Analysis analysis = new TestAnalysis();
+        analysis.initialise();
+
+        // Executing the analysis
+        bp.runAnalysisOnStructure(analysis);
+
+        System.out.println("Done!");
 
     }
 }

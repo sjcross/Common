@@ -1,20 +1,20 @@
 package wbif.sjx.common.HighContent.Process;
 
-import wbif.sjx.common.HighContent.Object.Result;
+import wbif.sjx.common.HighContent.Object.Metadata;
 
 import java.util.Comparator;
 
 /**
  * Created by steph on 01/05/2017.
  */
-public class StackComparator implements Comparator<Result> {
-    private String field = Result.ZPOSITION;
+public class StackComparator implements Comparator<Metadata> {
+    private String field = Metadata.ZPOSITION;
 
 
     // PUBLIC METHODS
 
     @Override
-    public int compare(Result result1, Result result2) {
+    public int compare(Metadata result1, Metadata result2) {
         double z1 = Double.parseDouble(result1.getAsString(field));
         double z2 = Double.parseDouble(result2.getAsString(field));
 
