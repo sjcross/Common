@@ -7,20 +7,20 @@ import ij.plugin.ZProjector;
  * Created by steph on 30/04/2017.
  */
 public class Image {
-    private ImagePlus image;
+    private ImagePlus imagePlus;
 
 
     // CONSTRUCTORS
 
-    public Image (ImagePlus image) {
-        this.image = image;
+    public Image (ImagePlus imagePlus) {
+        this.imagePlus = imagePlus;
     }
 
 
     // PUBLIC METHODS
 
     public Image projectImageInZ() {
-        ZProjector z_projector = new ZProjector(image);
+        ZProjector z_projector = new ZProjector(imagePlus);
         z_projector.setMethod(ZProjector.MAX_METHOD);
         z_projector.doProjection();
         ImagePlus iplOut = z_projector.getProjection();
@@ -32,11 +32,11 @@ public class Image {
 
     // GETTERS AND SETTERS
 
-    public ImagePlus getImage() {
-        return image;
+    public ImagePlus getImagePlus() {
+        return imagePlus;
     }
 
-    public void setImage(ImagePlus image) {
-        this.image = image;
+    public void setImagePlus(ImagePlus imagePlus) {
+        this.imagePlus = imagePlus;
     }
 }

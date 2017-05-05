@@ -5,8 +5,6 @@ import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.HighContent.Object.ParameterCollection;
 import wbif.sjx.common.Object.RandomLUT;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -35,15 +33,15 @@ public class ShowObjects implements Module {
 
         // Converting objects to an image
         Image image = new ObjectImageConverter().convertObjectsToImage(inputObjects,templateImage);
-        image.getImage().setTitle(inputObjectName.getName());
+        image.getImagePlus().setTitle(inputObjectName.getName());
 
         // Creating a random colour LUT and assigning it to the image (maximising intensity range to 0-255)
         LUT randomLUT = new RandomLUT().getLUT();
-        image.getImage().setLut(randomLUT);
-        image.getImage().getProcessor().setMinAndMax(0,255);
+        image.getImagePlus().setLut(randomLUT);
+        image.getImagePlus().getProcessor().setMinAndMax(0,255);
 
         // Showing the image
-        image.getImage().show();
+        image.getImagePlus().show();
 
     }
 

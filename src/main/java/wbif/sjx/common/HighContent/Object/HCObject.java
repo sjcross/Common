@@ -20,6 +20,7 @@ public class HCObject {
     private HashMap<Integer, ArrayList<Integer>> coordinates = new HashMap<>();
     private HCObject parent = null;
     private ArrayList<HCObject> children = new ArrayList<HCObject>();
+    private HashMap<String,Measurement> measurements = new HashMap<>();
 
 
     // CONSTRUCTORS
@@ -58,6 +59,16 @@ public class HCObject {
         }
 
         return dimSize;
+    }
+
+    public void addMeasurement(String name, Measurement measurement) {
+        measurements.put(name,measurement);
+
+    }
+
+    public Measurement getMeasurement(String name) {
+        return measurements.get(name);
+
     }
 
     @Override
@@ -119,4 +130,9 @@ public class HCObject {
     public void removeChild(HCObject child) {
         children.remove(child);
     }
+
+    public HashMap<String, Measurement> getMeasurements() {
+        return measurements;
+    }
+
 }

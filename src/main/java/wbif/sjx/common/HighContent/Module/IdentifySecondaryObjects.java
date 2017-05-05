@@ -33,7 +33,7 @@ public class IdentifySecondaryObjects implements Module {
         // Loading images and objects into workspace
         ImageName inputImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
         Image inputImage2 = workspace.getImages().get(inputImageName);
-        ImagePlus image2 = inputImage2.getImage();
+        ImagePlus image2 = inputImage2.getImagePlus();
 
         HCObjectName inputObjectsName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
         HashMap<Integer,HCObject> objects1 = workspace.getObjects().get(inputObjectsName);
@@ -42,7 +42,7 @@ public class IdentifySecondaryObjects implements Module {
         HCObjectName outputObjectsName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
 
         // Getting nuclei objects as image
-        ImagePlus image1 = new ObjectImageConverter().convertObjectsToImage(objects1,inputImage2).getImage();
+        ImagePlus image1 = new ObjectImageConverter().convertObjectsToImage(objects1,inputImage2).getImagePlus();
 
         // Segmenting cell image
         // Filtering cell image

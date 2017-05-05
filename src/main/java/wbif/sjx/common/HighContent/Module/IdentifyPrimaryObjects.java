@@ -8,7 +8,6 @@ import inra.ijpb.segment.Threshold;
 import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.HighContent.Object.ParameterCollection;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -29,7 +28,7 @@ public class IdentifyPrimaryObjects implements Module {
         double thrMult = (double) parameters.getParameter(this,THRESHOLD_MULTIPLIER).getValue();
 
         // Getting image stack
-        ImagePlus ipl = workspace.getImages().get(targetImageName).getImage();
+        ImagePlus ipl = workspace.getImages().get(targetImageName).getImagePlus();
 
         // Applying smoothing filter and threshold
         ipl.setStack(Filters3D.filter(ipl.getImageStack(), Filters3D.MEDIAN, (float) medFiltR, (float) medFiltR, (float) medFiltR));

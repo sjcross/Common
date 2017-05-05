@@ -51,7 +51,7 @@ public class ObjectImageConverter implements Module {
                     dimSize[HCObject.Y][1] + 1, dimSize[HCObject.C][1] + 1, dimSize[HCObject.Z][1] + 1, dimSize[HCObject.T][1] + 1, 16);
 
         } else {
-            ImagePlus templateIpl = templateImage.getImage();
+            ImagePlus templateIpl = templateImage.getImagePlus();
             ipl = IJ.createHyperStack("Objects",templateIpl.getWidth(),templateIpl.getHeight(),
                     templateIpl.getNChannels(),templateIpl.getNSlices(),templateIpl.getNFrames(),16);
         }
@@ -80,7 +80,7 @@ public class ObjectImageConverter implements Module {
 
     public HashMap<Integer,HCObject> convertImageToObjects(Image image) {
         // Converting to ImagePlus for this operation
-        ImagePlus ipl = image.getImage();
+        ImagePlus ipl = image.getImagePlus();
 
         // Need to get coordinates and convert to a HCObject
         HashMap<Integer,HCObject> objects = new HashMap<>(); //Local ArrayList of objects

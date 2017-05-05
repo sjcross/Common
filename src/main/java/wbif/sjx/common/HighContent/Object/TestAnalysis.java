@@ -61,61 +61,67 @@ public class TestAnalysis implements Analysis {
         parameters.addParameter(new Parameter(objIdent1,Parameter.OBJECT_NAME,IdentifyPrimaryObjects.OUTPUT_OBJECT,NucleiObjs3D,false));
         modules.add(objIdent1);
 
-        // Creating Z-projected nuclei
-        ProjectObjects projectObjects = new ProjectObjects();
-        parameters.addParameter(new Parameter(projectObjects,Parameter.OBJECT_NAME,ProjectObjects.INPUT_OBJECTS,NucleiObjs3D,false));
-        parameters.addParameter(new Parameter(projectObjects,Parameter.OBJECT_NAME,ProjectObjects.OUTPUT_OBJECTS,NucleiObjs2D,false));
-        modules.add(projectObjects);
+//        // Creating Z-projected nuclei
+//        ProjectObjects projectObjects = new ProjectObjects();
+//        parameters.addParameter(new Parameter(projectObjects,Parameter.OBJECT_NAME,ProjectObjects.INPUT_OBJECTS,NucleiObjs3D,false));
+//        parameters.addParameter(new Parameter(projectObjects,Parameter.OBJECT_NAME,ProjectObjects.OUTPUT_OBJECTS,NucleiObjs2D,false));
+//        modules.add(projectObjects);
+//
+//        // Displaying the first channel
+//        ShowImage showImage1 = new ShowImage();
+//        parameters.addParameter(new Parameter(showImage1,Parameter.IMAGE_NAME,ShowImage.DISPLAY_IMAGE,NucleiImage3D,false));
+//        modules.add(showImage1);
+//
+//        // Displaying the first channel
+//        ShowImage showImage2 = new ShowImage();
+//        parameters.addParameter(new Parameter(showImage2,Parameter.IMAGE_NAME,ShowImage.DISPLAY_IMAGE,CellImage3D,false));
+//        modules.add(showImage2);
+//
+//        // Displaying 3D nuclei
+//        ShowObjects showNucleiObjects3D = new ShowObjects();
+//        parameters.addParameter(new Parameter(showNucleiObjects3D,Parameter.OBJECT_NAME,ShowObjects.INPUT_OBJECTS,NucleiObjs3D,false));
+//        modules.add(showNucleiObjects3D);
+//
+//        // Displaying 2D nuclei
+//        ShowObjects showNucleiObjects2D = new ShowObjects();
+//        parameters.addParameter(new Parameter(showNucleiObjects2D,Parameter.OBJECT_NAME,ShowObjects.INPUT_OBJECTS,NucleiObjs2D,false));
+//        modules.add(showNucleiObjects2D);
+//
+//        // Z-projecting nuclei image
+//        ProjectImage projectNucleiImage = new ProjectImage();
+//        parameters.addParameter(new Parameter(projectNucleiImage,Parameter.IMAGE_NAME,ProjectImage.INPUT_IMAGE,NucleiImage3D,false));
+//        parameters.addParameter(new Parameter(projectNucleiImage,Parameter.IMAGE_NAME,ProjectImage.OUTPUT_IMAGE,NucleiImage2D,false));
+//        modules.add(projectNucleiImage);
+//
+//        // Z-projecting cell image
+//        ProjectImage projectImage2 = new ProjectImage();
+//        parameters.addParameter(new Parameter(projectImage2,Parameter.IMAGE_NAME,ProjectImage.INPUT_IMAGE,CellImage3D,false));
+//        parameters.addParameter(new Parameter(projectImage2,Parameter.IMAGE_NAME,ProjectImage.OUTPUT_IMAGE,CellImage2D,false));
+//        modules.add(projectImage2);
+//
+//        // Displaying projected nuclei image
+//        ShowImage showImage3 = new ShowImage();
+//        parameters.addParameter(new Parameter(showImage3,Parameter.IMAGE_NAME,ShowImage.DISPLAY_IMAGE,NucleiImage2D,false));
+//        modules.add(showImage3);
+//
+//        // Secondary object identification
+//        IdentifySecondaryObjects objIdent2 = new IdentifySecondaryObjects();
+//        objIdent2.initialiseParameters(parameters);
+//        parameters.addParameter(new Parameter(objIdent2,Parameter.IMAGE_NAME,IdentifySecondaryObjects.INPUT_IMAGE,CellImage2D,false));
+//        parameters.addParameter(new Parameter(objIdent2,Parameter.OBJECT_NAME,IdentifySecondaryObjects.INPUT_OBJECTS,NucleiObjs2D,false));
+//        parameters.addParameter(new Parameter(objIdent2,Parameter.OBJECT_NAME,IdentifySecondaryObjects.OUTPUT_OBJECTS,CellObjs2D,false));
+//        modules.add(objIdent2);
+//
+//        // Displaying secondary objects
+//        ShowObjects showObjectsCells2D = new ShowObjects();
+//        parameters.addParameter(new Parameter(showObjectsCells2D,Parameter.OBJECT_NAME,ShowObjects.INPUT_OBJECTS,CellObjs2D,false));
+//        modules.add(showObjectsCells2D);
 
-        // Displaying the first channel
-        ShowImage showImage1 = new ShowImage();
-        parameters.addParameter(new Parameter(showImage1,Parameter.IMAGE_NAME,ShowImage.DISPLAY_IMAGE,NucleiImage3D,false));
-        modules.add(showImage1);
-
-        // Displaying the first channel
-        ShowImage showImage2 = new ShowImage();
-        parameters.addParameter(new Parameter(showImage2,Parameter.IMAGE_NAME,ShowImage.DISPLAY_IMAGE,CellImage3D,false));
-        modules.add(showImage2);
-
-        // Displaying 3D nuclei
-        ShowObjects showNucleiObjects3D = new ShowObjects();
-        parameters.addParameter(new Parameter(showNucleiObjects3D,Parameter.OBJECT_NAME,ShowObjects.INPUT_OBJECTS,NucleiObjs3D,false));
-        modules.add(showNucleiObjects3D);
-
-        // Displaying 2D nuclei
-        ShowObjects showNucleiObjects2D = new ShowObjects();
-        parameters.addParameter(new Parameter(showNucleiObjects2D,Parameter.OBJECT_NAME,ShowObjects.INPUT_OBJECTS,NucleiObjs2D,false));
-        modules.add(showNucleiObjects2D);
-
-        // Z-projecting nuclei image
-        ProjectImage projectNucleiImage = new ProjectImage();
-        parameters.addParameter(new Parameter(projectNucleiImage,Parameter.IMAGE_NAME,ProjectImage.INPUT_IMAGE,NucleiImage3D,false));
-        parameters.addParameter(new Parameter(projectNucleiImage,Parameter.IMAGE_NAME,ProjectImage.OUTPUT_IMAGE,NucleiImage2D,false));
-        modules.add(projectNucleiImage);
-
-        // Z-projecting cell image
-        ProjectImage projectImage2 = new ProjectImage();
-        parameters.addParameter(new Parameter(projectImage2,Parameter.IMAGE_NAME,ProjectImage.INPUT_IMAGE,CellImage3D,false));
-        parameters.addParameter(new Parameter(projectImage2,Parameter.IMAGE_NAME,ProjectImage.OUTPUT_IMAGE,CellImage2D,false));
-        modules.add(projectImage2);
-
-        // Displaying projected nuclei image
-        ShowImage showImage3 = new ShowImage();
-        parameters.addParameter(new Parameter(showImage3,Parameter.IMAGE_NAME,ShowImage.DISPLAY_IMAGE,NucleiImage2D,false));
-        modules.add(showImage3);
-
-        // Secondary object identification
-        IdentifySecondaryObjects objIdent2 = new IdentifySecondaryObjects();
-        objIdent2.initialiseParameters(parameters);
-        parameters.addParameter(new Parameter(objIdent2,Parameter.IMAGE_NAME,IdentifySecondaryObjects.INPUT_IMAGE,CellImage2D,false));
-        parameters.addParameter(new Parameter(objIdent2,Parameter.OBJECT_NAME,IdentifySecondaryObjects.INPUT_OBJECTS,NucleiObjs2D,false));
-        parameters.addParameter(new Parameter(objIdent2,Parameter.OBJECT_NAME,IdentifySecondaryObjects.OUTPUT_OBJECTS,CellObjs2D,false));
-        modules.add(objIdent2);
-
-        // Displaying secondary objects
-        ShowObjects showObjectsCells2D = new ShowObjects();
-        parameters.addParameter(new Parameter(showObjectsCells2D,Parameter.OBJECT_NAME,ShowObjects.INPUT_OBJECTS,CellObjs2D,false));
-        modules.add(showObjectsCells2D);
+        // Measuring nuclear intensity in cell channel
+        MeasureObjectIntensity measureObjectIntensity = new MeasureObjectIntensity();
+        parameters.addParameter(new Parameter(measureObjectIntensity,Parameter.OBJECT_NAME,MeasureObjectIntensity.INPUT_OBJECTS,NucleiObjs3D,false));
+        parameters.addParameter(new Parameter(measureObjectIntensity,Parameter.IMAGE_NAME,MeasureObjectIntensity.INPUT_IMAGE,CellImage3D,false));
+        modules.add(measureObjectIntensity);
 
         // Displaying settings for parameters
         new ParameterWindow().updateParameters(parameters);

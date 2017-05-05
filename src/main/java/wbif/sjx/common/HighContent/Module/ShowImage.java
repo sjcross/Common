@@ -15,7 +15,7 @@ public class ShowImage implements Module {
     public void execute(Workspace workspace) {
         ImageName imageName = (ImageName) workspace.getParameters().getParameter(this,DISPLAY_IMAGE).getValue();
 
-        workspace.getImages().get(imageName).getImage().show();
+        workspace.getImages().get(imageName).getImagePlus().show();
 
     }
 
