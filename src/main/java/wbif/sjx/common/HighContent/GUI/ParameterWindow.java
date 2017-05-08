@@ -40,6 +40,9 @@ public class ParameterWindow {
                         for (String k:map.keySet()) {
                             gd.addStringField(k,map.get(k),1);
                         }
+                    } else if (entry.getValue().getType() == Parameter.BOOLEAN) {
+                        gd.addCheckbox(entry.getKey(), (boolean) entry.getValue().getValue());
+
                     }
                 }
             }
@@ -71,6 +74,10 @@ public class ParameterWindow {
                             }
 
                             parameters.getParameters().get(key).get(entry.getKey()).setValue(map);
+
+                        } else if (entry.getValue().getType() == Parameter.BOOLEAN) {
+                            parameters.getParameters().get(key).get(entry.getKey()).setValue(gd.getNextBoolean());
+
                         }
                     }
                 }

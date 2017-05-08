@@ -27,7 +27,7 @@ public class ObjectLinker implements Module {
     }
 
     @Override
-    public void execute(Workspace workspace, ParameterCollection parameters) {
+    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
         HCObjectName objectName1 = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS1).getValue();
         HCObjectName objectName2 = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS2).getValue();
 

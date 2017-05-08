@@ -17,7 +17,7 @@ public class MeasureObjectIntensity implements Module {
 
 
     @Override
-    public void execute(Workspace workspace, ParameterCollection parameters) {
+    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
         // Getting input objects
         HCObjectName objectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
         HashMap<Integer,HCObject> objects = workspace.getObjects().get(objectName);

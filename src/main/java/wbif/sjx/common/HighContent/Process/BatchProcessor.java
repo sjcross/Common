@@ -34,6 +34,7 @@ public class BatchProcessor extends FileCrawler {
     public static final int XLSX_EXPORT = 1;
 
     private int exportMode = XML_EXPORT;
+    private boolean verbose = false;
 
 
     // CONSTRUCTORS
@@ -54,7 +55,6 @@ public class BatchProcessor extends FileCrawler {
         int num_valid_files = getNumberOfValidFilesInStructure();
         resetIterator();
 
-
         WorkspaceCollection workspaces = new WorkspaceCollection();
 
         folder = rootFolder;
@@ -68,7 +68,7 @@ public class BatchProcessor extends FileCrawler {
 
                 // Running the analysis
                 Workspace workspace = new Workspace(next);
-                analysis.execute(workspace);
+                analysis.execute(workspace,verbose);
 
                 // Clearing images from the workspace to prevent memory leak
                 workspace.clearAllImages();
@@ -77,6 +77,9 @@ public class BatchProcessor extends FileCrawler {
                 workspaces.add(workspace);
 
                 next = getNextValidFileInStructure();
+
+                // Adding a blank line to the output
+                if (verbose) System.out.println(" ");
 
             }
         }
@@ -105,10 +108,7 @@ public class BatchProcessor extends FileCrawler {
 
         try {
             // Initialising the document
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = null;
-            docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.newDocument();
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
             Element root = doc.createElement("ROOT");
             doc.appendChild(root);
 
@@ -186,8 +186,8 @@ public class BatchProcessor extends FileCrawler {
 
     }
 
-    // GETTERS AND SETTERS
 
+    // GETTERS AND SETTERS
 
     public int getExportMode() {
         return exportMode;
@@ -195,5 +195,13 @@ public class BatchProcessor extends FileCrawler {
 
     public void setExportMode(int exportMode) {
         this.exportMode = exportMode;
+    }
+
+    public boolean isVerbose() {
+        return verbose;
+    }
+
+    public void setVerbose(boolean verbose) {
+        this.verbose = verbose;
     }
 }

@@ -13,7 +13,7 @@ public class ShowImage implements Module {
     public final static String DISPLAY_IMAGE = "Display image";
 
     @Override
-    public void execute(Workspace workspace,ParameterCollection parameters) {
+    public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
         ImageName imageName = (ImageName) parameters.getParameter(this,DISPLAY_IMAGE).getValue();
 
         workspace.getImages().get(imageName).getImagePlus().show();

@@ -24,7 +24,7 @@ public class ImageStackLoader implements Module{
     public static final String SET_FIELDS = "Set fields";
 
     @Override
-    public void execute(Workspace workspace, ParameterCollection parameters) {
+    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
         // Getting parameters
         Extractor extractor = (Extractor) parameters.getParameter(this,EXTRACTOR).getValue();
         String orderField = (String) parameters.getParameter(this,ORDER_FIELD).getValue();

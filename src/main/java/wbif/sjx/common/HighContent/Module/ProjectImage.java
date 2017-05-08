@@ -12,7 +12,7 @@ public class ProjectImage implements Module {
     public static final String OUTPUT_IMAGE = "Output image";
 
     @Override
-    public void execute(Workspace workspace,ParameterCollection parameters) {
+    public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
         // Loading image into workspace
         ImageName inputImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
         Image inputImage = workspace.getImages().get(inputImageName);

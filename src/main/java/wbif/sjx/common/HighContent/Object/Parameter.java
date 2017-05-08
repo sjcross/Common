@@ -4,13 +4,52 @@ package wbif.sjx.common.HighContent.Object;
  * Created by sc13967 on 03/05/2017.
  */
 public class Parameter {
+    /**
+     * Class only used for module titles.  These are displayed by ParameterWindow, but don't have anything to set
+     */
     public final static int MODULE_TITLE = 0;
-    public final static int IMAGE_NAME = 2;
-    public final static int OBJECT_NAME = 3;
-    public final static int NUMBER = 4;
-    public final static int STRING = 5;
-    public final static int CHOICE_ARRAY = 6;
-    public final static int CHOICE_MAP = 7;
+
+    /**
+     * Name of Image class objects.  Used to connect images to be analysed between classes
+     */
+    public final static int IMAGE_NAME = 1;
+
+    /**
+     * Name of HCObject class objects.  Used to connect HCObjects to be analysed between classes
+     */
+    public final static int OBJECT_NAME = 2;
+
+    /**
+     * Single number variable.  These can be set in ParameterWindow by numeric fields
+     */
+    public final static int NUMBER = 3;
+
+    /**
+     * Single string variable.  These can be set in ParameterWindow by string fields
+     */
+    public final static int STRING = 4;
+
+    /**
+     * String array containing choices (e.g. names of thresholding methods).  These are displayed as drop-down choice
+     * menus in ParameterWindow
+     */
+    public final static int CHOICE_ARRAY = 5;
+
+    /**
+     * HashMap containing numeric values to be set in ParameterWindow.  ParameterWindow iterates through each of these
+     * and displays it in its own numeric field
+     */
+    public final static int CHOICE_MAP = 6;
+
+    /**
+     * Boolean class parameter.  These are displayed by ParameterWindow as checkboxes.
+     */
+    public final static int BOOLEAN = 7;
+
+    /**
+     * Miscellaneous object class parameter.  These can be anything not fitting the other categories.  These can't be
+     * set using ParameterWindow.
+     */
     public final static int OBJECT = 8;
 
     Object module;

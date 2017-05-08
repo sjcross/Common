@@ -16,7 +16,7 @@ public class ProjectObjects implements Module {
 
 
     @Override
-    public void execute(Workspace workspace,ParameterCollection parameters) {
+    public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
         HCObjectName inputObjectsName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
         HCObjectName outputObjectsName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
 

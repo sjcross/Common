@@ -115,7 +115,7 @@ public class ObjectImageConverter implements Module {
     }
 
     @Override
-    public void execute(Workspace workspace, ParameterCollection parameters) {
+    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
         int conversionMode = (int) parameters.getParameter(this,CONVERSION_MODE).getValue();
 
         if (conversionMode == IMAGE_TO_OBJECTS) {

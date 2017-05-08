@@ -16,7 +16,7 @@ public class ShowObjects implements Module {
     public final static String TEMPLATE_IMAGE = "Template image";
 
     @Override
-    public void execute(Workspace workspace,ParameterCollection parameters) {
+    public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
         // Loading objects
         HCObjectName inputObjectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
         HashMap<Integer,HCObject> inputObjects = workspace.getObjects().get(inputObjectName);
@@ -37,7 +37,7 @@ public class ShowObjects implements Module {
 
         // Creating a random colour LUT and assigning it to the image (maximising intensity range to 0-255)
         LUT randomLUT = new RandomLUT().getLUT();
-        image.getImagePlus().setLut(randomLUT);
+        image.getImagePlus().getProcessor().setLut(randomLUT);
         image.getImagePlus().getProcessor().setMinAndMax(0,255);
 
         // Showing the image

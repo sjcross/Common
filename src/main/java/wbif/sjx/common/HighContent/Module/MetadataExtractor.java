@@ -15,7 +15,7 @@ public class MetadataExtractor implements Module {
     public static final String FOLDERNAME_EXTRACTOR = "Foldername extractor";
 
     @Override
-    public void execute(Workspace workspace, ParameterCollection parameters) {
+    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
         // Getting current result
         Metadata metadata = workspace.getMetadata();
 
