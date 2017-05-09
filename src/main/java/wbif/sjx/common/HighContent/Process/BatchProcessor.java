@@ -1,5 +1,4 @@
-// TODO: Could have a HashMap for parameters
-// TODO: PERFILE saving can probably be removed.  Talk to users if this is used.
+// TODO: Add methods for XLSX and JSON data export
 
 package wbif.sjx.common.HighContent.Process;
 
@@ -32,6 +31,7 @@ import java.util.HashMap;
 public class BatchProcessor extends FileCrawler {
     public static final int XML_EXPORT = 0;
     public static final int XLSX_EXPORT = 1;
+    public static final int JSON_EXPORT = 2;
 
     private int exportMode = XML_EXPORT;
     private boolean verbose = false;
@@ -98,6 +98,9 @@ public class BatchProcessor extends FileCrawler {
 
         } else if (exportMode == XLSX_EXPORT) {
             exportXLSX(workspaces);
+
+        } else if (exportMode == JSON_EXPORT) {
+            exportJSON(workspaces);
 
         }
     }
@@ -183,6 +186,12 @@ public class BatchProcessor extends FileCrawler {
     }
 
     private void exportXLSX(WorkspaceCollection workspaces) {
+        System.out.println("[WARN] No XLSX export currently implemented.  File not saved.");
+
+    }
+
+    private void exportJSON(WorkspaceCollection workspaces) {
+        System.out.println("[WARN] No JSON export currently implemented.  File not saved.");
 
     }
 

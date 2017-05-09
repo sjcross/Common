@@ -15,7 +15,6 @@ import java.io.IOException;
  * Created by sc13967 on 08/05/2017.
  */
 public class BioformatsImageLoader implements Module {
-    public static final String MODULE_TITLE = "Module title";
     public static final String OUTPUT_IMAGE = "Output image";
     public static final String SHOW_IMAGE = "Show loaded image";
 

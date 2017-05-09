@@ -21,6 +21,7 @@ public class HCObject {
     private HCObject parent = null;
     private ArrayList<HCObject> children = new ArrayList<HCObject>();
     private HashMap<String,Measurement> measurements = new HashMap<>();
+    private HashMap<Integer, Double> calibration = new HashMap<>();
 
 
     // CONSTRUCTORS
@@ -68,6 +69,16 @@ public class HCObject {
 
     public Measurement getMeasurement(String name) {
         return measurements.get(name);
+
+    }
+
+    public void addCalibration(Integer dim, double cal) {
+        calibration.put(dim,cal);
+
+    }
+
+    public double getCalibration(Integer dim) {
+        return calibration.get(dim);
 
     }
 
@@ -135,4 +146,15 @@ public class HCObject {
         return measurements;
     }
 
+    public void setMeasurements(HashMap<String, Measurement> measurements) {
+        this.measurements = measurements;
+    }
+
+    public HashMap<Integer, Double> getCalibration() {
+        return calibration;
+    }
+
+    public void setCalibration(HashMap<Integer, Double> calibration) {
+        this.calibration = calibration;
+    }
 }

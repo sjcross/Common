@@ -8,7 +8,6 @@ import java.util.HashMap;
  * Created by sc13967 on 04/05/2017.
  */
 public class ObjectLinker implements Module {
-    public static final String MODULE_TITLE = "Module title";
     public final static String INPUT_OBJECTS1 = "Input objects 1";
     public final static String INPUT_OBJECTS2 = "Input objects 2";
 

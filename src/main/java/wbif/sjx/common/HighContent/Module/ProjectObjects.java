@@ -10,7 +10,6 @@ import java.util.HashMap;
  * Projects xy coordinates into a single plane.  Duplicates of xy coordinates at different heights are removed.
  */
 public class ProjectObjects implements Module {
-    public static final String MODULE_TITLE = "Module title";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String OUTPUT_OBJECTS = "Output objects";
 

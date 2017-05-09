@@ -6,6 +6,7 @@ wbif\sjx\common\Analysis\DirectionalityRatioCalculator.class
 wbif\sjx\common\FileConditions\NameContainsPattern.class
 wbif\sjx\common\MathFunc\GeneralOps.class
 wbif\sjx\common\Analysis\DirectionalPersistenceCalculator.class
+wbif\sjx\common\HighContent\Module\MeasureObjectTexture.class
 wbif\sjx\common\HighContent\Process\Analysis.class
 wbif\sjx\common\FileConditions\ParentContainsString.class
 wbif\sjx\common\FileConditions\NameContainsString.class
@@ -17,6 +18,7 @@ wbif\sjx\common\HighContent\Extractor\IncuCyteShortFilenameExtractor.class
 wbif\sjx\common\MathFunc\DirectionalPersistence.class
 wbif\sjx\common\HighContent\Module\MeasureObjectIntensity.class
 wbif\sjx\common\HighContent\Object\HCObjectName.class
+wbif\sjx\common\Analysis\TextureCalculator.class
 wbif\sjx\common\HighContent\Process\BatchProcessor.class
 wbif\sjx\common\MathFunc\ArrayFunc.class
 wbif\sjx\common\Analysis\MSDCalculator.class

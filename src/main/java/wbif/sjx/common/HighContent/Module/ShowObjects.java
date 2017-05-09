@@ -11,7 +11,6 @@ import java.util.HashMap;
  * Created by sc13967 on 03/05/2017.
  */
 public class ShowObjects implements Module {
-    public static final String MODULE_TITLE = "Module title";
     public final static String INPUT_OBJECTS = "Input objects";
     public final static String TEMPLATE_IMAGE = "Template image";
 

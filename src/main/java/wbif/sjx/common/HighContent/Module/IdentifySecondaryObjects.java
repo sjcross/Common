@@ -16,7 +16,6 @@ import java.util.HashMap;
  * Created by sc13967 on 03/05/2017.
  */
 public class IdentifySecondaryObjects implements Module {
-    public static final String MODULE_TITLE = "Module title";
     public static final String INPUT_IMAGE = "Input image";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String OUTPUT_OBJECTS = "Output objects";
@@ -34,12 +33,10 @@ public class IdentifySecondaryObjects implements Module {
 
         // Loading images and objects into workspace
         ImageName inputImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
-        if (verbose) System.out.println("       Loading image ("+inputImageName.getName()+") into workspace");
         Image inputImage2 = workspace.getImages().get(inputImageName);
         ImagePlus image2 = inputImage2.getImagePlus();
 
         HCObjectName inputObjectsName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
-        if (verbose) System.out.println("       Loading objects ("+inputObjectsName.getName()+") into workspace");
         HashMap<Integer,HCObject> objects1 = workspace.getObjects().get(inputObjectsName);
 
         // Initialising the output objects ArrayList

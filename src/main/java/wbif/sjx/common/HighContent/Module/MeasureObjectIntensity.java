@@ -11,7 +11,6 @@ import java.util.HashMap;
  * Created by sc13967 on 05/05/2017.
  */
 public class MeasureObjectIntensity implements Module {
-    public static final String MODULE_TITLE = "Module title";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String INPUT_IMAGE = "Input image";
 

@@ -3,8 +3,8 @@ package wbif.sjx.common.HighContent.Module;
 import fiji.plugin.trackmate.*;
 import fiji.plugin.trackmate.detection.DetectorKeys;
 import fiji.plugin.trackmate.detection.LogDetectorFactory;
-import ij.IJ;
 import ij.ImagePlus;
+import ij.measure.Calibration;
 import wbif.sjx.common.HighContent.Object.*;
 
 import java.util.HashMap;
@@ -27,7 +27,8 @@ public class TrackMateSpotDetection implements Module {
         if (verbose) System.out.println("       Loading image ("+targetImageName.getName()+") into workspace");
         ImagePlus ipl = workspace.getImages().get(targetImageName).getImagePlus();
 
-        ipl.setCalibration(null);
+        // Getting image calibration
+        Calibration calibration = ipl.getCalibration();
 
         // Getting parameters
         double blobRadius = (double) parameters.getParameter(this,BLOB_RADIUS).getValue();
@@ -51,10 +52,6 @@ public class TrackMateSpotDetection implements Module {
 
         TrackMate trackmate = new TrackMate(model,settings);
 
-        if (!trackmate.checkInput()) {
-            IJ.log(trackmate.getErrorMessage());
-        }
-
         // Running TrackMate spot detection
         if (verbose) System.out.println("       Executing TrackMate spot detection");
         trackmate.execDetection();
@@ -67,13 +64,18 @@ public class TrackMateSpotDetection implements Module {
         for (Spot spot:spots.iterable(false)) {
             HCObject object = new HCObject(spot.ID());
 
-            object.addCoordinate(HCObject.X,(int) spot.getDoublePosition(0));
-            object.addCoordinate(HCObject.Y,(int) spot.getDoublePosition(1));
-            object.addCoordinate(HCObject.Z,(int) spot.getDoublePosition(2));
+            object.addCoordinate(HCObject.X,(int) calibration.getRawX(spot.getDoublePosition(0)));
+            object.addCoordinate(HCObject.Y,(int) calibration.getRawY(spot.getDoublePosition(1)));
+            object.addCoordinate(HCObject.Z,(int) (spot.getDoublePosition(2)/calibration.getZ(1)));
 
-            Measurement radiusMeasurement = new Measurement("RADIUS", spot.getFeature(Spot.RADIUS));
+            Measurement radiusMeasurement = new Measurement("RADIUS", calibration.getRawX(spot.getFeature(Spot.RADIUS)));
             radiusMeasurement.setSource(this);
             object.addMeasurement(radiusMeasurement.getName(),radiusMeasurement);
+
+            // Adding calibration values to the HCObject
+            object.addCalibration(HCObject.X,calibration.getX(1));
+            object.addCalibration(HCObject.Y,calibration.getY(1));
+            object.addCalibration(HCObject.Z,calibration.getZ(1));
 
             objects.put(object.getID(),object);
 
@@ -89,10 +91,12 @@ public class TrackMateSpotDetection implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
+        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"TrackMate spot detection",true));
         parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,INPUT_IMAGE,"Im1",false));
         parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,OUTPUT_OBJECTS,"Obj1",false));
-        parameters.addParameter(new Parameter(this,Parameter.NUMBER,BLOB_RADIUS,1d,true));
-        parameters.addParameter(new Parameter(this,Parameter.NUMBER,THRESHOLD,20000d,true));
+        parameters.addParameter(new Parameter(this,Parameter.NUMBER,BLOB_RADIUS,0.1d,true));
+        parameters.addParameter(new Parameter(this,Parameter.NUMBER,THRESHOLD,10000d,true));
 
     }
+
 }

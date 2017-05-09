@@ -13,7 +13,6 @@ import java.util.HashMap;
  * Created by sc13967 on 04/05/2017.
  */
 public class ObjectImageConverter implements Module {
-    public static final String MODULE_TITLE = "Module title";
     public static final String TEMPLATE_IMAGE = "Template image";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String INPUT_IMAGE = "Input image";

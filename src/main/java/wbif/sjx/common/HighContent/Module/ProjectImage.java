@@ -7,7 +7,6 @@ import wbif.sjx.common.HighContent.Object.ParameterCollection;
  * Created by sc13967 on 04/05/2017.
  */
 public class ProjectImage implements Module {
-    public static final String MODULE_TITLE = "Module title";
     public static final String INPUT_IMAGE = "Input image";
     public static final String OUTPUT_IMAGE = "Output image";
 

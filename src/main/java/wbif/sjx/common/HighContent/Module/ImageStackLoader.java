@@ -16,7 +16,6 @@ import java.util.HashMap;
  * Created by steph on 30/04/2017.
  */
 public class ImageStackLoader implements Module{
-    public static final String MODULE_TITLE = "Module title";
     public static final String EXTRACTOR = "Extractor";
     public static final String ORDER_FIELD = "Order field";
     public static final String STATIC_FIELDS = "Static fields";

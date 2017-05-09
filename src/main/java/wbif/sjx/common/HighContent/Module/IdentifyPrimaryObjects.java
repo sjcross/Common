@@ -14,7 +14,6 @@ import java.util.HashMap;
  * Created by sc13967 on 02/05/2017.
  */
 public class IdentifyPrimaryObjects implements Module {
-    public static final String MODULE_TITLE = "Module title";
     public static final String INPUT_IMAGE = "Input image";
     public static final String OUTPUT_OBJECT = "Output object";
     public static final String MEDIAN_FILTER_RADIUS = "Median filter radius";
@@ -23,13 +22,13 @@ public class IdentifyPrimaryObjects implements Module {
     public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
         if (verbose) System.out.println("    Running primary object identification");
 
-        ImageName targetImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
-        HCObjectName outputObjectName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECT).getValue();
+        // Getting parameters
         double medFiltR = (double) parameters.getParameter(this,MEDIAN_FILTER_RADIUS).getValue();
         double thrMult = (double) parameters.getParameter(this,THRESHOLD_MULTIPLIER).getValue();
+        HCObjectName outputObjectName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECT).getValue();
 
         // Getting image stack
-        if (verbose) System.out.println("       Loading image ("+targetImageName.getName()+") into workspace");
+        ImageName targetImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
         ImagePlus ipl = workspace.getImages().get(targetImageName).getImagePlus();
 
         // Applying smoothing filter
