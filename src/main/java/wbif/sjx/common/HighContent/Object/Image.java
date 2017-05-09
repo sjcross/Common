@@ -3,12 +3,14 @@ package wbif.sjx.common.HighContent.Object;
 import ij.ImagePlus;
 import ij.plugin.ZProjector;
 
+import java.util.HashMap;
+
 /**
  * Created by steph on 30/04/2017.
  */
 public class Image {
     private ImagePlus imagePlus;
-
+    private HashMap<String,Measurement> measurements = new HashMap<>();
 
     // CONSTRUCTORS
 
@@ -29,6 +31,16 @@ public class Image {
 
     }
 
+    public void addMeasurement(String name, Measurement measurement) {
+        measurements.put(name,measurement);
+
+    }
+
+    public Measurement getMeasurement(String name) {
+        return measurements.get(name);
+
+    }
+
 
     // GETTERS AND SETTERS
 
@@ -39,4 +51,13 @@ public class Image {
     public void setImagePlus(ImagePlus imagePlus) {
         this.imagePlus = imagePlus;
     }
+
+    public HashMap<String, Measurement> getMeasurements() {
+        return measurements;
+    }
+
+    public void setMeasurements(HashMap<String, Measurement> measurements) {
+        this.measurements = measurements;
+    }
+
 }
