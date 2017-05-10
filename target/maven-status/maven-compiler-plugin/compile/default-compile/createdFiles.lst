@@ -11,6 +11,7 @@ wbif\sjx\common\HighContent\Process\Analysis.class
 wbif\sjx\common\FileConditions\ParentContainsString.class
 wbif\sjx\common\FileConditions\NameContainsString.class
 wbif\sjx\common\HighContent\Module\ShowImage.class
+wbif\sjx\common\HighContent\Module\MeasureImageTexture.class
 wbif\sjx\common\MathFunc\Indexer.class
 wbif\sjx\common\HighContent\Module\IdentifyPrimaryObjects.class
 wbif\sjx\common\HighContent\GUI\ParameterWindow.class

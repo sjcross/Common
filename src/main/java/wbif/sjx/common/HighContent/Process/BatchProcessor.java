@@ -129,6 +129,30 @@ public class BatchProcessor extends FileCrawler {
 
                 }
 
+                // Creating new elements for each image in the current workspace with at least one measurement
+                for (ImageName imageName:workspace.getImages().keySet()) {
+                    Image image = workspace.getImages().get(imageName);
+
+                    if (image.getMeasurements() != null) {
+                        Element imageElement = doc.createElement("IMAGE");
+
+                        Attr nameAttr = doc.createAttribute("NAME");
+                        nameAttr.appendChild(doc.createTextNode(String.valueOf(imageName.getName())));
+                        imageElement.setAttributeNode(nameAttr);
+
+                        for (Measurement measurement : image.getMeasurements().values()) {
+                            String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
+                            Attr measAttr = doc.createAttribute(attrName);
+                            String attrValue = df.format(measurement.getValue());
+                            measAttr.appendChild(doc.createTextNode(attrValue));
+                            imageElement.setAttributeNode(measAttr);
+                        }
+
+                        setElement.appendChild(imageElement);
+
+                    }
+                }
+
                 // Creating new elements for each object in the current workspace
                 for (HCObjectName objectNames:workspace.getObjects().keySet()) {
                     for (HCObject object:workspace.getObjects().get(objectNames).values()) {

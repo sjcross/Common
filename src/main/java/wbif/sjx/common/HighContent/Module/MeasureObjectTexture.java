@@ -16,7 +16,7 @@ public class MeasureObjectTexture implements Module {
 
     @Override
     public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
-        if (verbose) System.out.println("   Running texture analysis");
+        if (verbose) System.out.println("   Running object texture analysis");
 
         // Getting input image
         ImageName inputImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
