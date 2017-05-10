@@ -50,9 +50,14 @@ public class MeasureImageTexture implements Module {
         if (verbose) System.out.println("        Contrast = "+contrastMeasurement.getValue());
 
         Measurement correlationMeasurement = new Measurement("Correlation",textureCalculator.getCorrelation());
-        contrastMeasurement.setSource(this);
+        correlationMeasurement.setSource(this);
         inputImage.addMeasurement(correlationMeasurement.getName(),correlationMeasurement);
         if (verbose) System.out.println("        Correlation = "+correlationMeasurement.getValue());
+
+        Measurement entropyMeasurement = new Measurement("Entropy",textureCalculator.getEntropy());
+        entropyMeasurement.setSource(this);
+        inputImage.addMeasurement(entropyMeasurement.getName(),entropyMeasurement);
+        if (verbose) System.out.println("        Entropy = "+entropyMeasurement.getValue());
 
     }
 

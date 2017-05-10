@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Created by sc13967 on 09/05/2017.
+ * Texture measures, largely from  Robert M. Haralick, K. Shanmugam, and Its'hak Dinstein, "Textural Features for Image
+ * Classification", IEEE Transactions on Systems, Man, and Cybernetics, 1973, SMC-3 (6): 610–621
  */
 public class TextureCalculator {
     private HashMap<Integer,Double> matrix = new HashMap<>();
@@ -38,52 +39,30 @@ public class TextureCalculator {
         // Initialising new HashMap (acting as a sparse matrix) to store the co-occurance matrix
         matrix = new HashMap<>();
 
-//        // Indexer to get index for addressing HashMap
-//        nLevels = (int) Math.pow(2,image.getBitDepth());
-//        Indexer indexer = new Indexer(nLevels,nLevels);
-//
-//        // Running through all specified positions,
-//        for (int[] pos:positions) {
-//            // Getting current pixel value
-//            image.setPosition(1,pos[2],1);
-//            int v1 = image.getProcessor().getPixel(pos[0],pos[1]);
-//
-//            // Getting tested pixel value
-//            image.setPosition(1,pos[2]+zOffs,1);
-//            int v2 = image.getProcessor().getPixel(pos[0]+xOffs,pos[1]+yOffs);
-//
-//            // Storing in the HashMap
-//            int index1 = indexer.getIndex(new int[]{v1, v2});
-//            matrix.computeIfAbsent(index1,k -> matrix.put(index1,0d));
-//            matrix.put(index1,matrix.get(index1)+1);
-//
-//        }
-//
-//      // Applying normalisation
-//        int nPixels = positions.size();
-//        matrix.replaceAll((k,v) -> v/nPixels);
-        nLevels = 4;
+        // Indexer to get index for addressing HashMap
+        nLevels = (int) Math.pow(2,image.getBitDepth());
         Indexer indexer = new Indexer(nLevels,nLevels);
 
-        matrix.put(indexer.getIndex(new int[]{0,0}),0.1818);
-        matrix.put(indexer.getIndex(new int[]{0,1}),0.0727);
-        matrix.put(indexer.getIndex(new int[]{0,2}),0.1091);
-        matrix.put(indexer.getIndex(new int[]{0,3}),0d);
+        // Running through all specified positions,
+        for (int[] pos:positions) {
+            // Getting current pixel value
+            image.setPosition(1,pos[2],1);
+            int v1 = image.getProcessor().getPixel(pos[0],pos[1]);
 
-        matrix.put(indexer.getIndex(new int[]{1,0}),0.1636);
-        matrix.put(indexer.getIndex(new int[]{1,1}),0.0727);
-        matrix.put(indexer.getIndex(new int[]{1,2}),0.0364);
-        matrix.put(indexer.getIndex(new int[]{1,3}),0.0182);
+            // Getting tested pixel value
+            image.setPosition(1,pos[2]+zOffs,1);
+            int v2 = image.getProcessor().getPixel(pos[0]+xOffs,pos[1]+yOffs);
 
-        matrix.put(indexer.getIndex(new int[]{2,0}),0.1091);
-        matrix.put(indexer.getIndex(new int[]{2,1}),0.0909);
-        matrix.put(indexer.getIndex(new int[]{2,2}),0.0545);
-        matrix.put(indexer.getIndex(new int[]{2,3}),0d);
+            // Storing in the HashMap
+            int index1 = indexer.getIndex(new int[]{v1, v2});
+            matrix.computeIfAbsent(index1,k -> matrix.put(index1,0d));
+            matrix.put(index1,matrix.get(index1)+1);
 
-        matrix.put(indexer.getIndex(new int[]{3,0}),0.0545);
-        matrix.put(indexer.getIndex(new int[]{3,1}),0.0364);
-        matrix.put(indexer.getIndex(new int[]{3,2}),0d);
-        matrix.put(indexer.getIndex(new int[]{3,3}),0d);
+        }
+
+      // Applying normalisation
+        int nPixels = positions.size();
+        matrix.replaceAll((k,v) -> v/nPixels);
 
     }
 
@@ -159,10 +138,7 @@ public class TextureCalculator {
     public double getCorrelation() {
         double correlation = 0;
 
-//        double[] sumx = new double[nLevels];
-//        double[] sumy = new double[nLevels];
-
-//         Getting partial probability density functions
+        // Getting partial probability density functions
         CumStat px = new CumStat(1);
         CumStat py = new CumStat(1);
 
@@ -170,11 +146,8 @@ public class TextureCalculator {
         for (Integer index:matrix.keySet()) {
             int[] pos = indexer.getCoord(index);
 
-            px.addMeasure((1+pos[0])*matrix.get(index));
-            py.addMeasure((1+pos[1])*matrix.get(index));
-
-//            sumx[pos[0]] = sumx[pos[0]] + matrix.get(index);
-//            sumy[pos[1]] = sumy[pos[1]] + matrix.get(index);
+            px.addMeasure(pos[0],matrix.get(index));
+            py.addMeasure(pos[1],matrix.get(index));
 
         }
 
@@ -182,29 +155,12 @@ public class TextureCalculator {
         double xMean = px.getMean()[0];
         double yMean = py.getMean()[0];
 
-        double xStd = px.getStd(CumStat.SAMPLE)[0];
-        double yStd = py.getStd(CumStat.SAMPLE)[0];
-//
-//        double xMean = 0;
-//        double yMean = 0;
-//
-//        double xStd = 0;
-//        double yStd = 0;
-
-//        for (int i=0;i<sumx.length;i++) {
-//            xMean = xMean + i*sumx[i];
-//            yMean = yMean + i*sumx[i];
-//
-//            xStd = xStd + (i-xMean)*(i-xMean)*
-//
-//        }
-
-        System.out.println(xMean+"_"+xStd+"_"+yMean+"_"+yStd);
+        double xStd = px.getStd(CumStat.POPULATION)[0];
+        double yStd = py.getStd(CumStat.POPULATION)[0];
 
         // Calculating the correlation
         for (Integer index:matrix.keySet()) {
             int[] pos = indexer.getCoord(index);
-
             correlation = correlation + (pos[0]-xMean)*(pos[1]-yMean)*matrix.get(index);
 
         }
@@ -212,6 +168,21 @@ public class TextureCalculator {
         correlation = correlation/(xStd*yStd);
 
         return correlation;
+
+    }
+
+    /**
+     * Calculates the entropy from the co-occurance matrix
+     * @return
+     */
+    public double getEntropy() {
+        double entropy = 0;
+
+        for (double val:matrix.values()) {
+            entropy = entropy + val*Math.log(val);
+        }
+
+        return -entropy;
 
     }
 
