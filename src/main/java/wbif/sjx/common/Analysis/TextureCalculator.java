@@ -1,6 +1,7 @@
 package wbif.sjx.common.Analysis;
 
 import ij.ImagePlus;
+import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.Indexer;
 
 import java.util.ArrayList;
@@ -11,7 +12,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by sc13967 on 09/05/2017.
  */
 public class TextureCalculator {
-    private HashMap<Integer,AtomicInteger> matrix = new HashMap<>();
+    private HashMap<Integer,Double> matrix = new HashMap<>();
+    private int nLevels = 0;
     private int xOffs = 1;
     private int yOffs = 0;
     private int zOffs = 0;
@@ -34,26 +36,55 @@ public class TextureCalculator {
         this.zOffs = zOffs;
 
         // Initialising new HashMap (acting as a sparse matrix) to store the co-occurance matrix
-        HashMap<Integer,AtomicInteger> matrix = new HashMap<>();
+        matrix = new HashMap<>();
 
-        // Indexer to get index for addressing HashMap
-        Indexer indexer = new Indexer(256,256);
+//        // Indexer to get index for addressing HashMap
+//        nLevels = (int) Math.pow(2,image.getBitDepth());
+//        Indexer indexer = new Indexer(nLevels,nLevels);
+//
+//        // Running through all specified positions,
+//        for (int[] pos:positions) {
+//            // Getting current pixel value
+//            image.setPosition(1,pos[2],1);
+//            int v1 = image.getProcessor().getPixel(pos[0],pos[1]);
+//
+//            // Getting tested pixel value
+//            image.setPosition(1,pos[2]+zOffs,1);
+//            int v2 = image.getProcessor().getPixel(pos[0]+xOffs,pos[1]+yOffs);
+//
+//            // Storing in the HashMap
+//            int index1 = indexer.getIndex(new int[]{v1, v2});
+//            matrix.computeIfAbsent(index1,k -> matrix.put(index1,0d));
+//            matrix.put(index1,matrix.get(index1)+1);
+//
+//        }
+//
+//      // Applying normalisation
+//        int nPixels = positions.size();
+//        matrix.replaceAll((k,v) -> v/nPixels);
+        nLevels = 4;
+        Indexer indexer = new Indexer(nLevels,nLevels);
 
-        // Running through all specified positions,
-        for (int[] pos:positions) {
-            // Getting current pixel value
-            image.setPosition(1,pos[2],1);
-            int v1 = image.getProcessor().getPixel(pos[0],pos[1]);
+        matrix.put(indexer.getIndex(new int[]{0,0}),0.1818);
+        matrix.put(indexer.getIndex(new int[]{0,1}),0.0727);
+        matrix.put(indexer.getIndex(new int[]{0,2}),0.1091);
+        matrix.put(indexer.getIndex(new int[]{0,3}),0d);
 
-            // Getting tested pixel value
-            image.setPosition(1,pos[2]+zOffs,1);
-            int v2 = image.getProcessor().getPixel(pos[0]+xOffs,pos[1]+yOffs);
+        matrix.put(indexer.getIndex(new int[]{1,0}),0.1636);
+        matrix.put(indexer.getIndex(new int[]{1,1}),0.0727);
+        matrix.put(indexer.getIndex(new int[]{1,2}),0.0364);
+        matrix.put(indexer.getIndex(new int[]{1,3}),0.0182);
 
-            // Storing in the HashMap
-            int index = indexer.getIndex(new int[]{v1,v2});
-            matrix.get(index).getAndIncrement();
+        matrix.put(indexer.getIndex(new int[]{2,0}),0.1091);
+        matrix.put(indexer.getIndex(new int[]{2,1}),0.0909);
+        matrix.put(indexer.getIndex(new int[]{2,2}),0.0545);
+        matrix.put(indexer.getIndex(new int[]{2,3}),0d);
 
-        }
+        matrix.put(indexer.getIndex(new int[]{3,0}),0.0545);
+        matrix.put(indexer.getIndex(new int[]{3,1}),0.0364);
+        matrix.put(indexer.getIndex(new int[]{3,2}),0d);
+        matrix.put(indexer.getIndex(new int[]{3,3}),0d);
+
     }
 
     /**
@@ -64,52 +95,123 @@ public class TextureCalculator {
      * @param zOffs
      */
     public void calculate(ImagePlus image, int xOffs, int yOffs, int zOffs) {
-        // Setting the local values of xOffs and yOffs
-        this.xOffs = xOffs;
-        this.yOffs = yOffs;
-        this.zOffs = zOffs;
+        // Creating an ArrayList of all pixel coordinates in the image.  These are the coordinates to be tested.  This
+        // isn't the most efficient way to do it, but it retains compatibility with the general method used to
+        // calculate for small regions
+        int height = image.getHeight();
+        int width = image.getWidth();
+        int nSlices = image.getNSlices();
 
-        // Initialising new HashMap (acting as a sparse matrix) to store the co-occurance matrix
-        HashMap<Integer, AtomicInteger> matrix = new HashMap<>();
+        ArrayList<int[]> positions = new ArrayList<>(height*width*nSlices);
 
-        // Indexer to get index for addressing HashMap
-        Indexer indexer = new Indexer(256, 256);
-
-        // Running through all specified positions,
+        int iter = 0;
         for (int z = 0; z < image.getNSlices(); z++) {
             for (int y = 0; y < image.getHeight(); y++) {
                 for (int x = 0; x < image.getWidth(); x++) {
-
-                    // Getting current pixel value
-                    image.setPosition(1, z, 1);
-                    int v1 = image.getProcessor().getPixel(x, y);
-
-                    // Getting tested pixel value
-                    image.setPosition(1, z + zOffs, 1);
-                    int v2 = image.getProcessor().getPixel(x + xOffs, y + yOffs);
-
-                    // Storing in the HashMap
-                    int index = indexer.getIndex(new int[]{v1, v2});
-                    matrix.get(index).getAndIncrement();
-
+                    positions.add(iter++,new int[]{x,y,z});
                 }
             }
         }
+
+        calculate(image,xOffs,yOffs,zOffs,positions);
+
     }
 
     /**
-     * Calculates the angular second moment
+     * Calculates the angular second moment from the co-occurance matrix
      * @return
      */
-    public int getASM() {
-        int ASM = 0;
+    public double getASM() {
+        double ASM = 0;
 
-        for (AtomicInteger val:matrix.values()) {
-            ASM =+ val.get()*val.get();
+        for (double val:matrix.values()) {
+            ASM = ASM + val*val;
 
         }
 
         return ASM;
+
+    }
+
+    /**
+     * Calculates the contrast from the co-occurance matrix
+     * @return
+     */
+    public double getContrast() {
+        double contrast = 0;
+
+        Indexer indexer = new Indexer(nLevels,nLevels);
+        for (Integer index:matrix.keySet()) {
+            int[] pos = indexer.getCoord(index);
+
+            contrast = contrast + (pos[1]-pos[0])*(pos[1]-pos[0])*matrix.get(index);
+
+        }
+
+        return contrast;
+
+    }
+
+    /**
+     * Calculates the correlation from the co-occurance matrix
+     * @return
+     */
+    public double getCorrelation() {
+        double correlation = 0;
+
+//        double[] sumx = new double[nLevels];
+//        double[] sumy = new double[nLevels];
+
+//         Getting partial probability density functions
+        CumStat px = new CumStat(1);
+        CumStat py = new CumStat(1);
+
+        Indexer indexer = new Indexer(nLevels,nLevels);
+        for (Integer index:matrix.keySet()) {
+            int[] pos = indexer.getCoord(index);
+
+            px.addMeasure((1+pos[0])*matrix.get(index));
+            py.addMeasure((1+pos[1])*matrix.get(index));
+
+//            sumx[pos[0]] = sumx[pos[0]] + matrix.get(index);
+//            sumy[pos[1]] = sumy[pos[1]] + matrix.get(index);
+
+        }
+
+        // Calculating the mean and standard deviations for the partial probability density functions
+        double xMean = px.getMean()[0];
+        double yMean = py.getMean()[0];
+
+        double xStd = px.getStd(CumStat.SAMPLE)[0];
+        double yStd = py.getStd(CumStat.SAMPLE)[0];
+//
+//        double xMean = 0;
+//        double yMean = 0;
+//
+//        double xStd = 0;
+//        double yStd = 0;
+
+//        for (int i=0;i<sumx.length;i++) {
+//            xMean = xMean + i*sumx[i];
+//            yMean = yMean + i*sumx[i];
+//
+//            xStd = xStd + (i-xMean)*(i-xMean)*
+//
+//        }
+
+        System.out.println(xMean+"_"+xStd+"_"+yMean+"_"+yStd);
+
+        // Calculating the correlation
+        for (Integer index:matrix.keySet()) {
+            int[] pos = indexer.getCoord(index);
+
+            correlation = correlation + (pos[0]-xMean)*(pos[1]-yMean)*matrix.get(index);
+
+        }
+
+        correlation = correlation/(xStd*yStd);
+
+        return correlation;
 
     }
 

@@ -42,7 +42,17 @@ public class MeasureImageTexture implements Module {
         Measurement ASMMeasurement = new Measurement("ASM",textureCalculator.getASM());
         ASMMeasurement.setSource(this);
         inputImage.addMeasurement(ASMMeasurement.getName(),ASMMeasurement);
-        if (verbose) System.out.append("        ASM = "+ASMMeasurement.getValue());
+        if (verbose) System.out.println("        ASM = "+ASMMeasurement.getValue());
+
+        Measurement contrastMeasurement = new Measurement("Contrast",textureCalculator.getContrast());
+        contrastMeasurement.setSource(this);
+        inputImage.addMeasurement(contrastMeasurement.getName(),contrastMeasurement);
+        if (verbose) System.out.println("        Contrast = "+contrastMeasurement.getValue());
+
+        Measurement correlationMeasurement = new Measurement("Correlation",textureCalculator.getCorrelation());
+        contrastMeasurement.setSource(this);
+        inputImage.addMeasurement(correlationMeasurement.getName(),correlationMeasurement);
+        if (verbose) System.out.println("        Correlation = "+correlationMeasurement.getValue());
 
     }
 
