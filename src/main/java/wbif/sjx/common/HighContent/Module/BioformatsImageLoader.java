@@ -65,9 +65,9 @@ public class BioformatsImageLoader implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Image stack loader",false));
-        parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,OUTPUT_IMAGE,"Im1",false));
-        parameters.addParameter(new Parameter(this,Parameter.BOOLEAN,SHOW_IMAGE,false,false));
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Image stack loader",false));
+        parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,"Im1",false));
+        parameters.addParameter(new Parameter(this,SHOW_IMAGE,Parameter.BOOLEAN,false,false));
 
     }
 }

@@ -52,9 +52,9 @@ public class Parameter {
      */
     public final static int OBJECT = 8;
 
-    Object module;
-    String name;
-    int type;
+    final Object module;
+    final String name;
+    final int type;
     Object valueRange;
     Object value;
     boolean visible;
@@ -62,7 +62,7 @@ public class Parameter {
 
     // CONSTRUCTORS
 
-    public Parameter(Object module, int type, String name, Object value, Object defaultValue, boolean visible) {
+    public Parameter(Object module, String name, int type, Object value, Object defaultValue, boolean visible) {
         this.module = module;
         this.type = type;
         this.name = name;
@@ -72,7 +72,7 @@ public class Parameter {
 
     }
 
-    public Parameter(Object module, int type, String name, Object value, boolean visible) {
+    public Parameter(Object module, String name, int type, Object value, boolean visible) {
         this.module = module;
         this.type = type;
         this.name = name;
@@ -89,24 +89,12 @@ public class Parameter {
         return module;
     }
 
-    public void setModule(Object module) {
-        this.module = module;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getType() {
         return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
     }
 
     public Object getValueRange() {
@@ -132,4 +120,5 @@ public class Parameter {
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
+
 }

@@ -36,6 +36,7 @@ wbif\sjx\common\HighContent\Module\ProjectImage.class
 wbif\sjx\common\MathFunc\MidpointCircle.class
 wbif\sjx\common\Object\Blob.class
 wbif\sjx\common\FileConditions\FileCondition.class
+wbif\sjx\common\HighContent\Module\ImageJImageLoader.class
 wbif\sjx\common\HighContent\Module\ProjectObjects.class
 wbif\sjx\common\HighContent\Module\TrackMateSpotDetection.class
 wbif\sjx\common\HighContent\Process\StackComparator.class
@@ -46,6 +47,7 @@ wbif\sjx\common\HighContent\Module\ObjectImageConverter.class
 wbif\sjx\common\HighContent\Module\Module.class
 wbif\sjx\common\HighContent\Extractor\Extractor.class
 wbif\sjx\common\System\Folder.class
+wbif\sjx\common\HighContent\Module\MeasureObjectCentroid.class
 wbif\sjx\common\MathFunc\MSD.class
 wbif\sjx\common\Analysis\TotalPathLengthCalculator.class
 wbif\sjx\common\HighContent\Object\ModuleCollection.class
@@ -63,6 +65,8 @@ wbif\sjx\common\HighContent\Module\ObjectLinker.class
 wbif\sjx\common\HighContent\Module\ShowObjects.class
 wbif\sjx\common\HighContent\Module\ChannelExtractor.class
 wbif\sjx\common\Object\RandomLUT.class
+wbif\sjx\common\HighContent\Module\GetLocalObjectRegion.class
 wbif\sjx\common\Object\Spot.class
 wbif\sjx\common\System\GUIElements.class
 wbif\sjx\common\Analysis\EuclideanDistanceCalculator.class
+wbif\sjx\common\HighContent\Object\MeasurementNames.class

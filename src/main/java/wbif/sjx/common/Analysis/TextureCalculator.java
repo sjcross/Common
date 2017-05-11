@@ -36,6 +36,11 @@ public class TextureCalculator {
         this.yOffs = yOffs;
         this.zOffs = zOffs;
 
+        // Getting image size
+        int height = image.getHeight();
+        int width = image.getWidth();
+        int nSlices = image.getNSlices();
+
         // Initialising new HashMap (acting as a sparse matrix) to store the co-occurance matrix
         matrix = new HashMap<>();
 
@@ -45,19 +50,21 @@ public class TextureCalculator {
 
         // Running through all specified positions,
         for (int[] pos:positions) {
-            // Getting current pixel value
-            image.setPosition(1,pos[2],1);
-            int v1 = image.getProcessor().getPixel(pos[0],pos[1]);
+            if (pos[0]>0 & pos[0]<width & pos[1]>0 & pos[1]<height & pos[2]>0 & pos[2]<nSlices) {
+                // Getting current pixel value
+                image.setPosition(1, pos[2], 1);
+                int v1 = image.getProcessor().getPixel(pos[0], pos[1]);
 
-            // Getting tested pixel value
-            image.setPosition(1,pos[2]+zOffs,1);
-            int v2 = image.getProcessor().getPixel(pos[0]+xOffs,pos[1]+yOffs);
+                // Getting tested pixel value
+                image.setPosition(1, pos[2] + zOffs, 1);
+                int v2 = image.getProcessor().getPixel(pos[0] + xOffs, pos[1] + yOffs);
 
-            // Storing in the HashMap
-            int index1 = indexer.getIndex(new int[]{v1, v2});
-            matrix.computeIfAbsent(index1,k -> matrix.put(index1,0d));
-            matrix.put(index1,matrix.get(index1)+1);
+                // Storing in the HashMap
+                int index1 = indexer.getIndex(new int[]{v1, v2});
+                matrix.computeIfAbsent(index1, k -> matrix.put(index1, 0d));
+                matrix.put(index1, matrix.get(index1) + 1);
 
+            }
         }
 
       // Applying normalisation

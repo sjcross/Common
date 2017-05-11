@@ -39,9 +39,9 @@ public class ObjectLinker implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Object linker",true));
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,INPUT_OBJECTS1,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,INPUT_OBJECTS2,null,false));
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object linker",true));
+        parameters.addParameter(new Parameter(this,INPUT_OBJECTS1,Parameter.OBJECT_NAME,null,false));
+        parameters.addParameter(new Parameter(this,INPUT_OBJECTS2,Parameter.OBJECT_NAME,null,false));
 
     }
 }

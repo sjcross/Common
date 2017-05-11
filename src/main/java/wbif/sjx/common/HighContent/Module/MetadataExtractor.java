@@ -34,8 +34,8 @@ public class MetadataExtractor implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT,FILENAME_EXTRACTOR,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT,FOLDERNAME_EXTRACTOR,null,false));
+        parameters.addParameter(new Parameter(this,FILENAME_EXTRACTOR,Parameter.OBJECT,null,false));
+        parameters.addParameter(new Parameter(this,FOLDERNAME_EXTRACTOR,Parameter.OBJECT,null,false));
 
     }
 }

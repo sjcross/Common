@@ -99,12 +99,12 @@ public class ImageStackLoader implements Module{
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
         // Setting the input image stack name
-        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Image stack loader",false));
-        parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,OUTPUT_IMAGE,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT,EXTRACTOR,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.STRING,ORDER_FIELD,"",false));
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT,STATIC_FIELDS,new ArrayList<String>(),false));
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT,SET_FIELDS,new HashMap<String,String>(),false));
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Image stack loader",false));
+        parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new Parameter(this,EXTRACTOR,Parameter.OBJECT,null,false));
+        parameters.addParameter(new Parameter(this,ORDER_FIELD,Parameter.STRING,"",false));
+        parameters.addParameter(new Parameter(this,STATIC_FIELDS,Parameter.OBJECT,new ArrayList<String>(),false));
+        parameters.addParameter(new Parameter(this,SET_FIELDS,Parameter.OBJECT,new HashMap<String,String>(),false));
 
     }
 }

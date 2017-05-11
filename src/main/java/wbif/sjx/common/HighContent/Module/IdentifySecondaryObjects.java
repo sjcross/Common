@@ -22,6 +22,7 @@ public class IdentifySecondaryObjects implements Module {
     public static final String MEDIAN_FILTER_RADIUS = "Median filter radius";
     public static final String THRESHOLD_METHOD = "Threshold method";
 
+    private static String[] thresholdMethods = new String[]{"Otsu","Huang","Li"};
 
     @Override
     public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
@@ -82,13 +83,12 @@ public class IdentifySecondaryObjects implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Secondary object identification",true));
-        parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,INPUT_IMAGE,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,INPUT_OBJECTS,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,OUTPUT_OBJECTS,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.NUMBER,MEDIAN_FILTER_RADIUS,2d,true));
-        String[] thresholdMethods = new String[]{"Otsu","Huang","Li"};
-        parameters.addParameter(new Parameter(this,Parameter.CHOICE_ARRAY,THRESHOLD_METHOD,thresholdMethods[0],thresholdMethods,true));
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Secondary object identification",true));
+        parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
+        parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
+        parameters.addParameter(new Parameter(this,MEDIAN_FILTER_RADIUS,Parameter.NUMBER,2d,true));
+        parameters.addParameter(new Parameter(this,THRESHOLD_METHOD,Parameter.CHOICE_ARRAY,thresholdMethods[0],thresholdMethods,true));
 
     }
 }

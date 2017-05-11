@@ -7,7 +7,7 @@ import wbif.sjx.common.HighContent.Object.*;
 /**
  * Created by Stephen on 10/05/2017.
  */
-public class ImageJLoader implements Module {
+public class ImageJImageLoader implements Module {
     public static final String OUTPUT_IMAGE = "Output image";
 
     @Override
@@ -26,7 +26,7 @@ public class ImageJLoader implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,OUTPUT_IMAGE,"Im1",false));
+        parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,"Im1",false));
 
     }
 }

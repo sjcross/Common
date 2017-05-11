@@ -58,11 +58,11 @@ public class ObjectImageConverter implements Module {
 
         // Labelling pixels in image
         for (HCObject object:objects.values()) {
-            ArrayList<Integer> x = object.getCoordinate(HCObject.X);
-            ArrayList<Integer> y = object.getCoordinate(HCObject.Y);
-            ArrayList<Integer> z = object.getCoordinate(HCObject.Z);
-            ArrayList<Integer> c = object.getCoordinate(HCObject.C);
-            ArrayList<Integer> t = object.getCoordinate(HCObject.T);
+            ArrayList<Integer> x = object.getCoordinates(HCObject.X);
+            ArrayList<Integer> y = object.getCoordinates(HCObject.Y);
+            ArrayList<Integer> z = object.getCoordinates(HCObject.Z);
+            ArrayList<Integer> c = object.getCoordinates(HCObject.C);
+            ArrayList<Integer> t = object.getCoordinates(HCObject.T);
 
             for (int i=0;i<x.size();i++) {
                 int cPos = c==null ? 0 : c.get(i);
@@ -144,13 +144,13 @@ public class ObjectImageConverter implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Object-image converter",true));
-        parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,TEMPLATE_IMAGE,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,INPUT_OBJECTS,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,INPUT_IMAGE,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.OBJECT_NAME,OUTPUT_OBJECTS,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,OUTPUT_IMAGE,null,false));
-        parameters.addParameter(new Parameter(this,Parameter.NUMBER,CONVERSION_MODE,0,false));
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object-image converter",true));
+        parameters.addParameter(new Parameter(this,TEMPLATE_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
+        parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
+        parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new Parameter(this,CONVERSION_MODE,Parameter.NUMBER,0,false));
 
     }
 }

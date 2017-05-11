@@ -21,8 +21,8 @@ public class ShowImage implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,Parameter.MODULE_TITLE,MODULE_TITLE,"Show images",true));
-        parameters.addParameter(new Parameter(this,Parameter.IMAGE_NAME,DISPLAY_IMAGE,null,false));
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Show images",true));
+        parameters.addParameter(new Parameter(this,DISPLAY_IMAGE,Parameter.IMAGE_NAME,null,false));
 
     }
 }

@@ -21,6 +21,10 @@ public class HCObject {
     private HCObject parent = null;
     private ArrayList<HCObject> children = new ArrayList<HCObject>();
     private HashMap<String,Measurement> measurements = new HashMap<>();
+
+    /**
+     * Calibration for each dimension.  Stored as physical distance per pixel
+     */
     private HashMap<Integer, Double> calibration = new HashMap<>();
 
 
@@ -82,6 +86,19 @@ public class HCObject {
 
     }
 
+    public int[] getCoordinatesAsArray(Integer dim) {
+        int[] coords = new int[coordinates.get(dim).size()];
+
+        int iter = 0;
+        for (int coord:coordinates.get(dim)) {
+            coords[iter++] = coord;
+
+        }
+
+        return coords;
+
+    }
+
     @Override
     public String toString() {
         return  "HCObject with "+coordinates.size()+" dimensions and "+coordinates.values().iterator().next().size()+
@@ -100,12 +117,12 @@ public class HCObject {
         this.ID = ID;
     }
 
-    public void setCoordinate(ArrayList<Integer> coordinateList, int dim) {
+    public void setCoordinates(ArrayList<Integer> coordinateList, int dim) {
         coordinates.put(dim, coordinateList);
 
     }
 
-    public ArrayList<Integer> getCoordinate(int dim) {
+    public ArrayList<Integer> getCoordinates(int dim) {
         return coordinates.get(dim);
 
     }

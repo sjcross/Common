@@ -22,6 +22,16 @@ public class ParameterCollection {
 
     }
 
+    public void updateValue(Object module, String name, Object value) {
+        parameters.get(module.hashCode()).get(name).setValue(value);
+
+    }
+
+    public void updateVisible(Object module, String name, boolean visible) {
+        parameters.get(module.hashCode()).get(name).setVisible(visible);
+
+    }
+
 
     // GETTERS AND SETTERS
 
@@ -32,4 +42,5 @@ public class ParameterCollection {
     public void setParameters(LinkedHashMap<Integer, LinkedHashMap<String, Parameter>> parameters) {
         this.parameters = parameters;
     }
+
 }
