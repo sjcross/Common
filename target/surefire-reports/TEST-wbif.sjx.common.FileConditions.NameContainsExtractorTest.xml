@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="wbif.sjx.common.FileConditions.NameContainsExtractorTest" time="0.067" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="wbif.sjx.common.FileConditions.NameContainsExtractorTest" time="0.002" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2017.1"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -22,7 +22,7 @@
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_51\jre\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="visualvm.id" value="806683790179434"/>
+    <property name="visualvm.id" value="893406347273816"/>
     <property name="java.io.tmpdir" value="C:\Users\sc13967\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -64,8 +64,8 @@
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
   <testcase classname="wbif.sjx.common.FileConditions.NameContainsExtractorTest" name="testTestMultiIncPartial" time="0"/>
-  <testcase classname="wbif.sjx.common.FileConditions.NameContainsExtractorTest" name="testTestSingleIncComplete" time="0"/>
-  <testcase classname="wbif.sjx.common.FileConditions.NameContainsExtractorTest" name="testTestSingleExcComplete" time="0.059"/>
-  <testcase classname="wbif.sjx.common.FileConditions.NameContainsExtractorTest" name="testTestSingleExcPartial" time="0.004"/>
-  <testcase classname="wbif.sjx.common.FileConditions.NameContainsExtractorTest" name="testTestSingleIncPartial" time="0.004"/>
+  <testcase classname="wbif.sjx.common.FileConditions.NameContainsExtractorTest" name="testTestSingleIncComplete" time="0.001"/>
+  <testcase classname="wbif.sjx.common.FileConditions.NameContainsExtractorTest" name="testTestSingleExcComplete" time="0"/>
+  <testcase classname="wbif.sjx.common.FileConditions.NameContainsExtractorTest" name="testTestSingleExcPartial" time="0"/>
+  <testcase classname="wbif.sjx.common.FileConditions.NameContainsExtractorTest" name="testTestSingleIncPartial" time="0.001"/>
 </testsuite>

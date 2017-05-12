@@ -1,5 +1,7 @@
 package wbif.sjx.common.HighContent.Object;
 
+import java.util.HashMap;
+
 /**
  * Created by sc13967 on 03/05/2017.
  */
@@ -20,37 +22,42 @@ public class Parameter {
     public final static int OBJECT_NAME = 2;
 
     /**
-     * Single number variable.  These can be set in ParameterWindow by numeric fields
+     * Single integer variable.  These can be set in ParameterWindow by numeric fields
      */
-    public final static int NUMBER = 3;
+    public final static int INTEGER = 3;
+
+    /**
+     * Single double variable.  These can be set in ParameterWindow by numeric fields
+     */
+    public final static int DOUBLE = 4;
 
     /**
      * Single string variable.  These can be set in ParameterWindow by string fields
      */
-    public final static int STRING = 4;
+    public final static int STRING = 5;
 
     /**
      * String array containing choices (e.g. names of thresholding methods).  These are displayed as drop-down choice
      * menus in ParameterWindow
      */
-    public final static int CHOICE_ARRAY = 5;
+    public final static int CHOICE_ARRAY = 6;
 
     /**
      * HashMap containing numeric values to be set in ParameterWindow.  ParameterWindow iterates through each of these
      * and displays it in its own numeric field
      */
-    public final static int CHOICE_MAP = 6;
+    public final static int CHOICE_MAP = 7;
 
     /**
      * Boolean class parameter.  These are displayed by ParameterWindow as checkboxes.
      */
-    public final static int BOOLEAN = 7;
+    public final static int BOOLEAN = 8;
 
     /**
      * Miscellaneous object class parameter.  These can be anything not fitting the other categories.  These can't be
      * set using ParameterWindow.
      */
-    public final static int OBJECT = 8;
+    public final static int OBJECT = 9;
 
     final Object module;
     final String name;
@@ -105,9 +112,14 @@ public class Parameter {
         this.valueRange = valueRange;
     }
 
-    public Object getValue() {
-        return value;
+    public <T> T getValue() {
+        return (T) value;
+
     }
+
+//    public Object getValue() {
+//        return value;
+//    }
 
     public void setValue(Object value) {
         this.value = value;
@@ -121,4 +133,55 @@ public class Parameter {
         this.visible = visible;
     }
 
+    @Override
+    public String toString() {
+        if (type == MODULE_TITLE) {
+            return (String) value;
+
+        } else if (type == IMAGE_NAME) {
+            System.out.println("Value: "+value);
+            System.out.println("Value.toString(): "+value.toString());
+            return value.toString();
+
+        } else if (type == OBJECT_NAME) {
+            return value.toString();
+
+        } else if (type == INTEGER) {
+            return String.valueOf(value);
+
+        } else if (type == DOUBLE) {
+            return String.valueOf(value);
+
+        } else if (type == STRING) {
+            return (String) value;
+
+        } else if (type == CHOICE_ARRAY) {
+            return (String) value;
+
+        } else if (type == CHOICE_MAP) {
+            HashMap<String,Double> vals = (HashMap<String, Double>) value;
+
+            StringBuilder stringBuilder = new StringBuilder();
+            for (String key:vals.keySet()) {
+                stringBuilder.append("(");
+                stringBuilder.append(key);
+                stringBuilder.append("/");
+                stringBuilder.append(vals.get(key));
+                stringBuilder.append(")");
+
+            }
+
+            return stringBuilder.toString();
+
+        } else if (type == BOOLEAN) {
+            return String.valueOf(value);
+
+        } else if (type == OBJECT) {
+            return value.getClass().getName();
+
+        }
+
+        return "";
+
+    }
 }

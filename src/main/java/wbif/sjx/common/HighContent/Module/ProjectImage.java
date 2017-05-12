@@ -13,11 +13,11 @@ public class ProjectImage implements Module {
     @Override
     public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
         // Loading image into workspace
-        ImageName inputImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
+        ImageName inputImageName = parameters.getValue(this,INPUT_IMAGE);
         Image inputImage = workspace.getImages().get(inputImageName);
 
         // Getting output image name
-        ImageName outputImageName = (ImageName) parameters.getParameter(this,OUTPUT_IMAGE).getValue();
+        ImageName outputImageName = parameters.getValue(this,OUTPUT_IMAGE);
 
         // Create max projection image
         Image outputImage = inputImage.projectImageInZ();
@@ -29,7 +29,7 @@ public class ProjectImage implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Image projector",true));
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Image projector",false));
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
         parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
 

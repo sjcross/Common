@@ -3,6 +3,7 @@ C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Sy
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\FileConditions\ExtensionMatchesString.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\MathFunc\MSD.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Object\Image.java
+C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\MeasureImageIntensity.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Analysis\TotalPathLengthCalculator.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Extractor\IncuCyteShortFilenameExtractor.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\MetadataExtractor.java
@@ -16,6 +17,7 @@ C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Hi
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Object\HCObjectName.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Extractor\CellVoyagerFoldernameExtractor.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Extractor\CellVoyagerFilenameExtractor.java
+C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Object\HCObjectSet.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\FileConditions\ParentContainsString.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\MathFunc\CumStat.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\MathFunc\ArrayFunc.java
@@ -23,6 +25,7 @@ C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Ob
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Object\Workspace.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\MeasureObjectIntensity.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\MathFunc\DirectionalPersistence.java
+C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Process\Exporter.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\MeasureObjectCentroid.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Object\Spot.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\System\Folder.java
@@ -35,6 +38,7 @@ C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Hi
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\ProjectImage.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Object\Metadata.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\MathFunc\GeneralOps.java
+C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Analysis\IntensityCalculator.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Object\HCObject.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Object\SpotCollection.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\Module.java

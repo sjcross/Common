@@ -10,6 +10,8 @@ import loci.plugins.in.ImporterOptions;
 import wbif.sjx.common.HighContent.Object.*;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 /**
  * Created by sc13967 on 08/05/2017.
@@ -23,21 +25,35 @@ public class BioformatsImageLoader implements Module {
         if (verbose) System.out.println("    Running Bioformats image loader");
 
         // Getting image name
-        ImageName outputImageName = (ImageName) parameters.getParameter(this,OUTPUT_IMAGE).getValue();
+        ImageName outputImageName = parameters.getValue(this,OUTPUT_IMAGE);
 
-        // Running Bioformats importer
+        // Running Bio-formats importer
         if (verbose) System.out.println("       Loading image");
         ImagePlus[] ipls = null;
         try {
+            // Bio-ormats writes lots of unwanted information to System.out.  This diverts it to a fake PrintStream
+            PrintStream realStream = System.out;
+            PrintStream fakeStream = new PrintStream(new OutputStream() {
+                @Override
+                public void write(int b) throws IOException {
+
+                }
+            });
+            System.setOut(fakeStream);
+
             ImporterOptions opts = new ImporterOptions();
 
             opts.setLocation(ImporterOptions.LOCATION_LOCAL);
             opts.setId(workspace.getCurrentFile().getAbsolutePath());
 
+            // Running Bio-formats
             ImportProcess process = new ImportProcess(opts);
             process.execute();
             ImagePlusReader reader = new ImagePlusReader(process);
             ipls = reader.openImagePlus();
+
+            // Restoring the real PrintStream
+            System.setOut(realStream);
 
         } catch (IOException | FormatException e) {
             e.printStackTrace();
@@ -49,7 +65,7 @@ public class BioformatsImageLoader implements Module {
             workspace.addImage(outputImageName, new Image(ipls[0]));
 
             // (If selected) displaying the loaded image
-            boolean showImage = (boolean) parameters.getParameter(this,SHOW_IMAGE).getValue();
+            boolean showImage = parameters.getValue(this,SHOW_IMAGE);
             if (showImage) {
                 if (verbose) System.out.println("       Displaying loaded image");
                 ipls[0].show();

@@ -5,7 +5,6 @@ import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.HighContent.Object.ParameterCollection;
 import wbif.sjx.common.Object.RandomLUT;
 
-import java.util.HashMap;
 
 /**
  * Created by sc13967 on 03/05/2017.
@@ -18,7 +17,7 @@ public class ShowObjects implements Module {
     public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
         // Loading objects
         HCObjectName inputObjectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
-        HashMap<Integer,HCObject> inputObjects = workspace.getObjects().get(inputObjectName);
+        HCObjectSet inputObjects = workspace.getObjects().get(inputObjectName);
 
         Image templateImage;
         if (parameters.getParameter(this,TEMPLATE_IMAGE) == null) {
@@ -46,7 +45,7 @@ public class ShowObjects implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Show objects",true));
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Show objects",false));
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
         parameters.addParameter(new Parameter(this,TEMPLATE_IMAGE,Parameter.IMAGE_NAME,null,false));
 

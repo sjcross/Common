@@ -1,12 +1,12 @@
 package wbif.sjx.common.Analysis;
 
 import ij.ImagePlus;
+import ij.process.ImageConverter;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.Indexer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Texture measures, largely from  Robert M. Haralick, K. Shanmugam, and Its'hak Dinstein, "Textural Features for Image
@@ -14,7 +14,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class TextureCalculator {
     private HashMap<Integer,Double> matrix = new HashMap<>();
-    private int nLevels = 0;
     private int xOffs = 1;
     private int yOffs = 0;
     private int zOffs = 0;
@@ -31,6 +30,16 @@ public class TextureCalculator {
      * @param positions ArrayList containing x,y,z positions of pixels in region of interest
      */
     public void calculate(ImagePlus image, int xOffs, int yOffs, int zOffs, ArrayList<int[]> positions) {
+        if (image.getBitDepth() != 8) {
+            // The analysis requires discrete pixels values.  Therefore, 32-bit images are converted to 8-bit
+            CumStat cs = IntensityCalculator.calculate(image);
+            double min = cs.getMin()[0];
+            double max = cs.getMax()[0];
+
+            image.getProcessor().setMinAndMax(min, max);
+            new ImageConverter(image).convertToGray8();
+        }
+
         // Setting the local values of xOffs and yOffs
         this.xOffs = xOffs;
         this.yOffs = yOffs;
@@ -45,12 +54,11 @@ public class TextureCalculator {
         matrix = new HashMap<>();
 
         // Indexer to get index for addressing HashMap
-        nLevels = (int) Math.pow(2,image.getBitDepth());
-        Indexer indexer = new Indexer(nLevels,nLevels);
+        Indexer indexer = new Indexer(256,256);
 
         // Running through all specified positions,
         for (int[] pos:positions) {
-            if (pos[0]>0 & pos[0]<width & pos[1]>0 & pos[1]<height & pos[2]>0 & pos[2]<nSlices) {
+            if (pos[0]>=0 & pos[0]<width & pos[1]>=0 & pos[1]<height & pos[2]>=0 & pos[2]<nSlices) {
                 // Getting current pixel value
                 image.setPosition(1, pos[2], 1);
                 int v1 = image.getProcessor().getPixel(pos[0], pos[1]);
@@ -95,6 +103,7 @@ public class TextureCalculator {
             for (int y = 0; y < image.getHeight(); y++) {
                 for (int x = 0; x < image.getWidth(); x++) {
                     positions.add(iter++,new int[]{x,y,z});
+
                 }
             }
         }
@@ -126,7 +135,7 @@ public class TextureCalculator {
     public double getContrast() {
         double contrast = 0;
 
-        Indexer indexer = new Indexer(nLevels,nLevels);
+        Indexer indexer = new Indexer(256,256);
         for (Integer index:matrix.keySet()) {
             int[] pos = indexer.getCoord(index);
 
@@ -149,7 +158,7 @@ public class TextureCalculator {
         CumStat px = new CumStat(1);
         CumStat py = new CumStat(1);
 
-        Indexer indexer = new Indexer(nLevels,nLevels);
+        Indexer indexer = new Indexer(256,256);
         for (Integer index:matrix.keySet()) {
             int[] pos = indexer.getCoord(index);
 

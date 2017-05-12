@@ -2,7 +2,6 @@ package wbif.sjx.common.HighContent.Module;
 
 import wbif.sjx.common.HighContent.Object.*;
 
-import java.util.HashMap;
 
 /**
  * Created by sc13967 on 04/05/2017.
@@ -11,7 +10,7 @@ public class ObjectLinker implements Module {
     public final static String INPUT_OBJECTS1 = "Input objects 1";
     public final static String INPUT_OBJECTS2 = "Input objects 2";
 
-    public void linkMatchingIDs(HashMap<Integer,HCObject> objects1, HashMap<Integer,HCObject> objects2) {
+    public void linkMatchingIDs(HCObjectSet objects1, HCObjectSet objects2) {
         for (HCObject object1:objects1.values()) {
             int ID = object1.getID();
 
@@ -27,11 +26,11 @@ public class ObjectLinker implements Module {
 
     @Override
     public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
-        HCObjectName objectName1 = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS1).getValue();
-        HCObjectName objectName2 = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS2).getValue();
+        HCObjectName objectName1 = parameters.getValue(this,INPUT_OBJECTS1);
+        HCObjectName objectName2 = parameters.getValue(this,INPUT_OBJECTS2);
 
-        HashMap<Integer,HCObject> objects1 = workspace.getObjects().get(objectName1);
-        HashMap<Integer,HCObject> objects2 = workspace.getObjects().get(objectName2);
+        HCObjectSet objects1 = workspace.getObjects().get(objectName1);
+        HCObjectSet objects2 = workspace.getObjects().get(objectName2);
 
         linkMatchingIDs(objects1,objects2);
 

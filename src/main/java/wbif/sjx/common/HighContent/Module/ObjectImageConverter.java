@@ -2,12 +2,12 @@ package wbif.sjx.common.HighContent.Module;
 
 import ij.IJ;
 import ij.ImagePlus;
+import ij.measure.Calibration;
 import ij.process.ImageProcessor;
 import wbif.sjx.common.HighContent.Object.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 
 /**
  * Created by sc13967 on 04/05/2017.
@@ -23,7 +23,48 @@ public class ObjectImageConverter implements Module {
     public static final int IMAGE_TO_OBJECTS = 0;
     public static final int OBJECTS_TO_IMAGE = 1;
 
-    public Image convertObjectsToImage(HashMap<Integer,HCObject> objects, Image templateImage) {
+    @Override
+    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
+        int conversionMode = (int) parameters.getParameter(this,CONVERSION_MODE).getValue();
+
+        if (conversionMode == IMAGE_TO_OBJECTS) {
+            ImageName imageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
+            HCObjectName objectName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
+
+            Image image = workspace.getImages().get(imageName);
+
+            HCObjectSet objects = convertImageToObjects(image);
+
+            workspace.addObjects(objectName,objects);
+
+        } else if (conversionMode == OBJECTS_TO_IMAGE) {
+            HCObjectName objectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
+            ImageName templateImageName = (ImageName) parameters.getParameter(this,TEMPLATE_IMAGE).getValue();
+            ImageName outputImageName = (ImageName) parameters.getParameter(this,OUTPUT_IMAGE).getValue();
+
+            HCObjectSet objects = workspace.getObjects().get(objectName);
+            Image templateImage = workspace.getImages().get(templateImageName);
+
+            Image image = convertObjectsToImage(objects,templateImage);
+
+            workspace.addImage(outputImageName,image);
+
+        }
+    }
+
+    @Override
+    public void initialiseParameters(ParameterCollection parameters) {
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object-image converter",true));
+        parameters.addParameter(new Parameter(this,TEMPLATE_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
+        parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
+        parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new Parameter(this,CONVERSION_MODE,Parameter.INTEGER,0,false));
+
+    }
+
+    public Image convertObjectsToImage(HCObjectSet objects, Image templateImage) {
         ImagePlus ipl;
 
         if (templateImage == null) {
@@ -78,12 +119,12 @@ public class ObjectImageConverter implements Module {
 
     }
 
-    public HashMap<Integer,HCObject> convertImageToObjects(Image image) {
+    public HCObjectSet convertImageToObjects(Image image) {
         // Converting to ImagePlus for this operation
         ImagePlus ipl = image.getImagePlus();
 
         // Need to get coordinates and convert to a HCObject
-        HashMap<Integer,HCObject> objects = new HashMap<>(); //Local ArrayList of objects
+        HCObjectSet objects = new HCObjectSet(); //Local ArrayList of objects
 
         ImageProcessor ipr = ipl.getProcessor();
 
@@ -109,48 +150,18 @@ public class ObjectImageConverter implements Module {
             }
         }
 
+        // Adding distance calibration to each object
+        Calibration calibration = ipl.getCalibration();
+        for (HCObject object:objects.values()) {
+            object.addCalibration(HCObject.X,calibration.getX(1));
+            object.addCalibration(HCObject.Y,calibration.getY(1));
+            object.addCalibration(HCObject.Z,calibration.getZ(1));
+            object.setCalibratedUnits(calibration.getUnits());
+
+        }
+
         return objects;
 
     }
 
-    @Override
-    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
-        int conversionMode = (int) parameters.getParameter(this,CONVERSION_MODE).getValue();
-
-        if (conversionMode == IMAGE_TO_OBJECTS) {
-            ImageName imageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
-            HCObjectName objectName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
-
-            Image image = workspace.getImages().get(imageName);
-
-            HashMap<Integer,HCObject> objects = convertImageToObjects(image);
-
-            workspace.addObjects(objectName,objects);
-
-        } else if (conversionMode == OBJECTS_TO_IMAGE) {
-            HCObjectName objectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
-            ImageName templateImageName = (ImageName) parameters.getParameter(this,TEMPLATE_IMAGE).getValue();
-            ImageName outputImageName = (ImageName) parameters.getParameter(this,OUTPUT_IMAGE).getValue();
-
-            HashMap<Integer,HCObject> objects = workspace.getObjects().get(objectName);
-            Image templateImage = workspace.getImages().get(templateImageName);
-
-            Image image = convertObjectsToImage(objects,templateImage);
-
-            workspace.addImage(outputImageName,image);
-
-        }
-    }
-
-    @Override
-    public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object-image converter",true));
-        parameters.addParameter(new Parameter(this,TEMPLATE_IMAGE,Parameter.IMAGE_NAME,null,false));
-        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
-        parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
-        parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
-        parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
-        parameters.addParameter(new Parameter(this,CONVERSION_MODE,Parameter.NUMBER,0,false));
-
-    }
 }

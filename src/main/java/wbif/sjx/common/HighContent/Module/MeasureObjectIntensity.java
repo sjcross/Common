@@ -5,7 +5,6 @@ import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by sc13967 on 05/05/2017.
@@ -19,7 +18,7 @@ public class MeasureObjectIntensity implements Module {
     public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
         // Getting input objects
         HCObjectName objectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
-        HashMap<Integer,HCObject> objects = workspace.getObjects().get(objectName);
+        HCObjectSet objects = workspace.getObjects().get(objectName);
 
         // Getting input image
         ImageName imageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();

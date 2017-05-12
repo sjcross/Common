@@ -21,6 +21,7 @@ public class HCObject {
     private HCObject parent = null;
     private ArrayList<HCObject> children = new ArrayList<HCObject>();
     private HashMap<String,Measurement> measurements = new HashMap<>();
+    private String calibratedUnits = "px";
 
     /**
      * Calibration for each dimension.  Stored as physical distance per pixel
@@ -82,6 +83,9 @@ public class HCObject {
     }
 
     public double getCalibration(Integer dim) {
+        // If no calibration has been set, return 1
+        if (coordinates.get(dim) == null) return 1;
+
         return calibration.get(dim);
 
     }
@@ -174,4 +178,13 @@ public class HCObject {
     public void setCalibration(HashMap<Integer, Double> calibration) {
         this.calibration = calibration;
     }
+
+    public String getCalibratedUnits() {
+        return calibratedUnits;
+    }
+
+    public void setCalibratedUnits(String calibratedUnits) {
+        this.calibratedUnits = calibratedUnits;
+    }
+
 }

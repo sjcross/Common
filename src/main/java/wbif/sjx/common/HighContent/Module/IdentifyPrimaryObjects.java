@@ -8,7 +8,6 @@ import inra.ijpb.segment.Threshold;
 import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.HighContent.Object.ParameterCollection;
 
-import java.util.HashMap;
 
 /**
  * Created by sc13967 on 02/05/2017.
@@ -23,12 +22,12 @@ public class IdentifyPrimaryObjects implements Module {
         if (verbose) System.out.println("    Running primary object identification");
 
         // Getting parameters
-        double medFiltR = (double) parameters.getParameter(this,MEDIAN_FILTER_RADIUS).getValue();
-        double thrMult = (double) parameters.getParameter(this,THRESHOLD_MULTIPLIER).getValue();
-        HCObjectName outputObjectName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECT).getValue();
+        double medFiltR = parameters.getValue(this,MEDIAN_FILTER_RADIUS);
+        double thrMult = parameters.getValue(this,THRESHOLD_MULTIPLIER);
+        HCObjectName outputObjectName = parameters.getValue(this,OUTPUT_OBJECT);
 
         // Getting image stack
-        ImageName targetImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
+        ImageName targetImageName = parameters.getValue(this,INPUT_IMAGE);
         ImagePlus ipl = workspace.getImages().get(targetImageName).getImagePlus();
 
         // Applying smoothing filter
@@ -48,7 +47,7 @@ public class IdentifyPrimaryObjects implements Module {
 
         // Converting image to objects
         if (verbose) System.out.println("       Converting image to objects");
-        HashMap<Integer,HCObject> objects = new ObjectImageConverter().convertImageToObjects(new Image(ipl));
+        HCObjectSet objects = new ObjectImageConverter().convertImageToObjects(new Image(ipl));
 
         // Adding objects to workspace
         if (verbose) System.out.println("       Adding objects ("+outputObjectName.getName()+") to workspace");
@@ -62,8 +61,8 @@ public class IdentifyPrimaryObjects implements Module {
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Primary object identification",true));
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
         parameters.addParameter(new Parameter(this,OUTPUT_OBJECT,Parameter.OBJECT_NAME,null,false));
-        parameters.addParameter(new Parameter(this,MEDIAN_FILTER_RADIUS,Parameter.NUMBER,2d,true));
-        parameters.addParameter(new Parameter(this,THRESHOLD_MULTIPLIER,Parameter.NUMBER,1d,true));
+        parameters.addParameter(new Parameter(this,MEDIAN_FILTER_RADIUS,Parameter.DOUBLE,2.0,true));
+        parameters.addParameter(new Parameter(this,THRESHOLD_MULTIPLIER,Parameter.DOUBLE,1.0,true));
 
     }
 }

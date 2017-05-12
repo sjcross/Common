@@ -5,7 +5,6 @@ import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 
 /**
  * Created by sc13967 on 11/05/2017.
@@ -26,11 +25,11 @@ public class MeasureObjectCentroid implements Module {
         if (verbose) System.out.println("   Measuring object centroids");
 
         // Getting current objects
-        HCObjectName inputObjectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
-        HashMap<Integer, HCObject> inputObjects = workspace.getObjects().get(inputObjectName);
+        HCObjectName inputObjectName = parameters.getValue(this,INPUT_OBJECTS);
+        HCObjectSet inputObjects = workspace.getObjects().get(inputObjectName);
 
         // Getting which centroid measures to calculate
-        String choice = (String) parameters.getParameter(this,CENTROID_METHOD).getValue();
+        String choice = parameters.getValue(this,CENTROID_METHOD);
         boolean useMean = choice.equals(MEAN) | choice.equals(ALL);
         boolean useMedian = choice.equals(MEDIAN) | choice.equals(ALL);
         if (verbose) System.out.println("       Calculating centroid as "+choice);

@@ -7,7 +7,7 @@ import java.util.HashMap;
  * Created by sc13967 on 02/05/2017.
  */
 public class Workspace {
-    private HashMap<HCObjectName, HashMap<Integer,HCObject>> objects = new HashMap<>();
+    private HashMap<HCObjectName, HCObjectSet> objects = new HashMap<>();
     private HashMap<ImageName, Image> images = new HashMap<>();
     private Metadata metadata = new Metadata();
     private File currentFile = null;
@@ -22,7 +22,7 @@ public class Workspace {
 
     // PUBLIC METHODS
 
-    public void addObjects(HCObjectName name, HashMap<Integer,HCObject> object) {
+    public void addObjects(HCObjectName name, HCObjectSet object) {
         objects.put(name, object);
     }
 
@@ -45,11 +45,11 @@ public class Workspace {
 
     // GETTERS AND SETTERS
 
-    public HashMap<HCObjectName, HashMap<Integer,HCObject>> getObjects() {
+    public HashMap<HCObjectName, HCObjectSet> getObjects() {
         return objects;
     }
 
-    public void setObjects(HashMap<HCObjectName, HashMap<Integer,HCObject>> objects) {
+    public void setObjects(HashMap<HCObjectName, HCObjectSet> objects) {
         this.objects = objects;
     }
 

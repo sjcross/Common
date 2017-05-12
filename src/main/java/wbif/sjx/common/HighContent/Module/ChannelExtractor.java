@@ -18,13 +18,13 @@ public class ChannelExtractor implements Module {
         if (verbose) System.out.println("   Running channel extractor");
 
         // Loading input image
-        ImageName inputImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
+        ImageName inputImageName = parameters.getValue(this,INPUT_IMAGE);
         if (verbose) System.out.println("       Loading image ("+inputImageName.getName()+") into workspace");
         ImagePlus ipl = workspace.getImages().get(inputImageName).getImagePlus();
 
         // Getting parameters
-        ImageName outputImageName = (ImageName) parameters.getParameter(this,OUTPUT_IMAGE).getValue();
-        int channel = (int) parameters.getParameter(this,CHANNEL_TO_EXTRACT).getValue();
+        ImageName outputImageName = parameters.getValue(this,OUTPUT_IMAGE);
+        int channel = parameters.getValue(this,CHANNEL_TO_EXTRACT);
 
         // Getting selected channel
         if (verbose) System.out.println("       Extracting channel "+channel);
@@ -35,7 +35,7 @@ public class ChannelExtractor implements Module {
         workspace.addImage(outputImageName,new Image(outputChannelImagePlus));
 
         // (If selected) displaying the loaded image
-        boolean showImage = (boolean) parameters.getParameter(this,SHOW_IMAGE).getValue();
+        boolean showImage = parameters.getValue(this,SHOW_IMAGE);
         if (showImage) {
             if (verbose) System.out.println("       Displaying extracted image");
             outputChannelImagePlus.show();
@@ -46,7 +46,7 @@ public class ChannelExtractor implements Module {
     public void initialiseParameters(ParameterCollection parameters) {
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,"Im1",false));
         parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,"Im2",false));
-        parameters.addParameter(new Parameter(this,CHANNEL_TO_EXTRACT,Parameter.NUMBER,1,false));
+        parameters.addParameter(new Parameter(this,CHANNEL_TO_EXTRACT,Parameter.INTEGER,1,false));
         parameters.addParameter(new Parameter(this,SHOW_IMAGE,Parameter.BOOLEAN,false,false));
 
     }

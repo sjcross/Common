@@ -19,8 +19,8 @@ public class ProjectObjects implements Module {
         HCObjectName inputObjectsName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
         HCObjectName outputObjectsName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
 
-        HashMap<Integer,HCObject> inputObjects = workspace.getObjects().get(inputObjectsName);
-        HashMap<Integer,HCObject> outputObjects = new HashMap<>();
+        HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
+        HCObjectSet outputObjects = new HCObjectSet();
 
         for (HCObject inputObject:inputObjects.values()) {
             ArrayList<Integer> x = inputObject.getCoordinates().get(HCObject.X);
@@ -36,7 +36,7 @@ public class ProjectObjects implements Module {
             }
 
             // Running through all coordinates, adding them to the HashMap
-            HashMap<Double, Integer> projCoords = new HashMap<Double, Integer>();
+            HashMap<Double, Integer> projCoords = new HashMap<>();
             for (int i = 0; i < x.size(); i++) {
                 Double key = y.get(i) * maxX + x.get(i);
                 projCoords.put(key, i);
@@ -54,6 +54,12 @@ public class ProjectObjects implements Module {
                 outputObject.addCoordinate(HCObject.Y,y.get(i));
             }
 
+            // Inheriting calibration from parent
+            outputObject.addCalibration(HCObject.X,outputObject.getParent().getCalibration(HCObject.X));
+            outputObject.addCalibration(HCObject.Y,outputObject.getParent().getCalibration(HCObject.Y));
+            outputObject.setCalibratedUnits(outputObject.getParent().getCalibratedUnits());
+
+            // Adding current object to object set
             outputObjects.put(outputObject.getID(),outputObject);
 
         }
@@ -64,7 +70,7 @@ public class ProjectObjects implements Module {
 
     @Override
     public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object projector",true));
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object projector",false));
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
         parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
 

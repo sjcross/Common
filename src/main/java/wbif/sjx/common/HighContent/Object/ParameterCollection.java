@@ -22,6 +22,16 @@ public class ParameterCollection {
 
     }
 
+    public <T> T getValue(Object module, String name) {
+        return (T) parameters.get(module.hashCode()).get(name).getValue();
+
+    }
+
+    public boolean isVisible(Object module, String name) {
+        return parameters.get(module.hashCode()).get(name).isVisible();
+
+    }
+
     public void updateValue(Object module, String name, Object value) {
         parameters.get(module.hashCode()).get(name).setValue(value);
 

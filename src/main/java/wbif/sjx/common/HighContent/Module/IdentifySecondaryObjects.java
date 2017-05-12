@@ -10,7 +10,6 @@ import inra.ijpb.segment.Threshold;
 import inra.ijpb.watershed.Watershed;
 import wbif.sjx.common.HighContent.Object.*;
 
-import java.util.HashMap;
 
 /**
  * Created by sc13967 on 03/05/2017.
@@ -38,7 +37,7 @@ public class IdentifySecondaryObjects implements Module {
         ImagePlus image2 = inputImage2.getImagePlus();
 
         HCObjectName inputObjectsName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
-        HashMap<Integer,HCObject> objects1 = workspace.getObjects().get(inputObjectsName);
+        HCObjectSet objects1 = workspace.getObjects().get(inputObjectsName);
 
         // Initialising the output objects ArrayList
         HCObjectName outputObjectsName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
@@ -69,7 +68,7 @@ public class IdentifySecondaryObjects implements Module {
 
         // Converting the labelled cell image to objects
         if (verbose) System.out.println("       Converting image to objects");
-        HashMap<Integer,HCObject> objects2 = new ObjectImageConverter().convertImageToObjects(new Image(im2));
+        HCObjectSet objects2 = new ObjectImageConverter().convertImageToObjects(new Image(im2));
 
         // Watershed will give one cell per nucleus and these should already have the same labelling number.
         if (verbose) System.out.println("       Linking primary and secondary objects by ID number");
@@ -87,7 +86,7 @@ public class IdentifySecondaryObjects implements Module {
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
         parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
-        parameters.addParameter(new Parameter(this,MEDIAN_FILTER_RADIUS,Parameter.NUMBER,2d,true));
+        parameters.addParameter(new Parameter(this,MEDIAN_FILTER_RADIUS,Parameter.DOUBLE,2.0,true));
         parameters.addParameter(new Parameter(this,THRESHOLD_METHOD,Parameter.CHOICE_ARRAY,thresholdMethods[0],thresholdMethods,true));
 
     }

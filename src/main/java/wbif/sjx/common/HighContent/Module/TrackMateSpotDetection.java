@@ -7,7 +7,10 @@ import ij.ImagePlus;
 import ij.measure.Calibration;
 import wbif.sjx.common.HighContent.Object.*;
 
-import java.util.HashMap;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+
 
 /**
  * Created by sc13967 on 08/05/2017.
@@ -58,7 +61,7 @@ public class TrackMateSpotDetection implements Module {
 
         // Getting objects and adding them to the output objects
         if (verbose) System.out.println("       Processing detected objects");
-        HashMap<Integer,HCObject> objects = new HashMap<>();
+        HCObjectSet objects = new HCObjectSet();
 
         SpotCollection spots = model.getSpots();
         for (Spot spot:spots.iterable(false)) {
@@ -76,6 +79,7 @@ public class TrackMateSpotDetection implements Module {
             object.addCalibration(HCObject.X,calibration.getX(1));
             object.addCalibration(HCObject.Y,calibration.getY(1));
             object.addCalibration(HCObject.Z,calibration.getZ(1));
+            object.setCalibratedUnits(calibration.getUnits());
 
             objects.put(object.getID(),object);
 
@@ -94,8 +98,8 @@ public class TrackMateSpotDetection implements Module {
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"TrackMate spot detection",true));
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,"Im1",false));
         parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,"Obj1",false));
-        parameters.addParameter(new Parameter(this,BLOB_RADIUS,Parameter.NUMBER,0.1d,true));
-        parameters.addParameter(new Parameter(this,THRESHOLD,Parameter.NUMBER,10000d,true));
+        parameters.addParameter(new Parameter(this,BLOB_RADIUS,Parameter.DOUBLE,0.1,true));
+        parameters.addParameter(new Parameter(this,THRESHOLD,Parameter.DOUBLE,10000.0,true));
 
     }
 
