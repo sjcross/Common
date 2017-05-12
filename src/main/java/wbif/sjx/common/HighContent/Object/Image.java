@@ -4,13 +4,14 @@ import ij.ImagePlus;
 import ij.plugin.ZProjector;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by steph on 30/04/2017.
  */
 public class Image {
     private ImagePlus imagePlus;
-    private HashMap<String,Measurement> measurements = new HashMap<>();
+    private LinkedHashMap<String,Measurement> measurements = new LinkedHashMap<>();
 
     // CONSTRUCTORS
 
@@ -56,7 +57,7 @@ public class Image {
         return measurements;
     }
 
-    public void setMeasurements(HashMap<String, Measurement> measurements) {
+    public void setMeasurements(LinkedHashMap<String, Measurement> measurements) {
         this.measurements = measurements;
     }
 

@@ -11,11 +11,12 @@ public class Workspace {
     private HashMap<ImageName, Image> images = new HashMap<>();
     private Metadata metadata = new Metadata();
     private File currentFile = null;
-
+    private int ID;
 
     // CONSTRUCTOR
 
-    public Workspace(File currentFile) {
+    public Workspace(int ID, File currentFile) {
+        this.ID = ID;
         this.currentFile = currentFile;
 
     }
@@ -77,4 +78,7 @@ public class Workspace {
         this.metadata = metadata;
     }
 
+    public int getID() {
+        return ID;
+    }
 }

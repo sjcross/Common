@@ -239,10 +239,11 @@ public class Exporter {
         Cell moduleHeaderCell = parameterHeader.createCell(paramCol++);
         moduleHeaderCell.setCellValue("MODULE");
 
-        Cell moduleHashHeaderCell = parameterHeader.createCell(paramCol);
-        moduleHashHeaderCell.setCellValue("MODULE_HASH");
+//        Cell moduleHashHeaderCell = parameterHeader.createCell(paramCol);
+//        moduleHashHeaderCell.setCellValue("MODULE_HASH");
 
         // Adding a new parameter to each row
+        int currentHash = 0;
         for (Integer key:parameters.getParameters().keySet()) {
             LinkedHashMap<String,Parameter> currentParameters = parameters.getParameters().get(key);
 
@@ -259,19 +260,27 @@ public class Exporter {
                 Cell moduleValueCell = row.createCell(paramCol++);
                 moduleValueCell.setCellValue(currParam.getModule().getClass().getName());
 
-                Cell moduleHashValueCell = row.createCell(paramCol);
-                moduleHashValueCell.setCellValue(currParam.getModule().hashCode());
+//                Cell moduleHashValueCell = row.createCell(paramCol);
+//                moduleHashValueCell.setCellValue(currParam.getModule().hashCode());
+
+                // Adding a blank line between parameters from different modules
+                if (currentHash != currParam.getModule().hashCode()) {
+                    currentHash = currParam.getModule().hashCode();
+                    paramRow++;
+                }
 
             }
+
         }
 
         // Creating a new sheet for each image.  Each analysed file will have its own row.
-        Workspace workspace = workspaces.get(0);
+        Workspace exampleWorkspace = workspaces.get(0);
         HashMap<ImageName,XSSFSheet> imageSheets = new HashMap<>();
         HashMap<ImageName,Integer> imageRows = new HashMap<>();
 
-        for (ImageName imageName:workspace.getImages().keySet()) {
-            Image image = workspace.getImages().get(imageName);
+        // Using the first workspace in the WorkspaceCollection to initialise column headers
+        for (ImageName imageName:exampleWorkspace.getImages().keySet()) {
+            Image image = exampleWorkspace.getImages().get(imageName);
 
             // Creating relevant sheet prefixed with "IM"
             imageSheets.put(imageName,workbook.createSheet("IM_"+imageName.getName()));
@@ -279,13 +288,93 @@ public class Exporter {
             // Adding headers to each column
             int col = 0;
 
-            ////////// NEED TO ADD WORKSPACE ID TELLING US WHICH REGION THIS IMAGE WAS FROM //////////
-
             imageRows.put(imageName,1);
             Row imageHeaderRow = imageSheets.get(imageName).createRow(0);
+
+            // Creating a cell holding the path to the analysed file
+            Cell IDHeaderCell = imageHeaderRow.createCell(col++);
+            IDHeaderCell.setCellValue("ANALYSIS_ID");
+
             for (Measurement measurement:image.getMeasurements().values()) {
-                Cell measNameHeaderCell = imageHeaderRow.createCell(col++);
-                measNameHeaderCell.setCellValue(measurement.getName());
+                Cell measHeaderCell = imageHeaderRow.createCell(col++);
+                String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
+                measHeaderCell.setCellValue(measurementName);
+            }
+        }
+
+        // Running through each Workspace, adding rows
+        for (Workspace workspace:workspaces) {
+            for (ImageName imageName:workspace.getImages().keySet()) {
+                Image image = exampleWorkspace.getImages().get(imageName);
+
+                // Adding the measurements from this image
+                int col = 0;
+
+                Row imageValueRow = imageSheets.get(imageName).createRow(imageRows.get(imageName));
+                imageRows.compute(imageName,(k,v) -> v = v + 1);
+
+                // Creating a cell holding the path to the analysed file
+                Cell IDValueCell = imageValueRow.createCell(col++);
+                IDValueCell.setCellValue(workspace.getID());
+
+                for (Measurement measurement:image.getMeasurements().values()) {
+                    Cell measValueCell = imageValueRow.createCell(col++);
+                    measValueCell.setCellValue(measurement.getValue());
+                }
+            }
+        }
+
+        // Creating a new sheet for each image.  Each analysed file will have its own row.
+        HashMap<HCObjectName,XSSFSheet> objectSheets = new HashMap<>();
+        HashMap<HCObjectName,Integer> objectRows = new HashMap<>();
+
+        // Using the first workspace in the WorkspaceCollection to initialise column headers
+        for (HCObjectName objectName:exampleWorkspace.getObjects().keySet()) {
+            HashMap<Integer,HCObject> objects = exampleWorkspace.getObjects().get(objectName);
+
+            // Creating relevant sheet prefixed with "IM"
+            objectSheets.put(objectName,workbook.createSheet("OBJ_"+objectName.getName()));
+
+            // Adding headers to each column
+            int col = 0;
+
+            objectRows.put(objectName,1);
+            Row objectHeaderRow = objectSheets.get(objectName).createRow(0);
+
+            // Creating a cell holding the path to the analysed file
+            Cell IDHeaderCell = objectHeaderRow.createCell(col++);
+            IDHeaderCell.setCellValue("ANALYSIS_ID");
+
+            HCObject object = objects.values().iterator().next();
+            for (Measurement measurement:object.getMeasurements().values()) {
+                Cell measHeaderCell = objectHeaderRow.createCell(col++);
+                String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
+                measHeaderCell.setCellValue(measurementName);
+            }
+        }
+
+        // Running through each Workspace, adding rows
+        for (Workspace workspace:workspaces) {
+            for (HCObjectName objectName:exampleWorkspace.getObjects().keySet()) {
+                HashMap<Integer,HCObject> objects = exampleWorkspace.getObjects().get(objectName);
+
+                for (HCObject object:objects.values()) {
+                    // Adding the measurements from this image
+                    int col = 0;
+
+                    Row objectValueRow = objectSheets.get(objectName).createRow(objectRows.get(objectName));
+                    objectRows.compute(objectName, (k, v) -> v = v + 1);
+                    System.out.println(objectRows.get(objectName));
+
+                    // Creating a cell holding the path to the analysed file
+                    Cell IDValueCell = objectValueRow.createCell(col++);
+                    IDValueCell.setCellValue(workspace.getID());
+
+                    for (Measurement measurement : object.getMeasurements().values()) {
+                        Cell measValueCell = objectValueRow.createCell(col++);
+                        measValueCell.setCellValue(measurement.getValue());
+                    }
+                }
             }
         }
 
