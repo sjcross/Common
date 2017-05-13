@@ -43,11 +43,15 @@ public class ChannelExtractor implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,"Im1",false));
         parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,"Im2",false));
         parameters.addParameter(new Parameter(this,CHANNEL_TO_EXTRACT,Parameter.INTEGER,1,false));
         parameters.addParameter(new Parameter(this,SHOW_IMAGE,Parameter.BOOLEAN,false,false));
+
+        return parameters;
 
     }
 }

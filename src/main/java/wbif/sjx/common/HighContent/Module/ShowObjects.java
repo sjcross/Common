@@ -16,7 +16,7 @@ public class ShowObjects implements Module {
     @Override
     public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
         // Loading objects
-        HCObjectName inputObjectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
+        HCObjectName inputObjectName = parameters.getValue(this,INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectName);
 
         Image templateImage;
@@ -24,7 +24,7 @@ public class ShowObjects implements Module {
             templateImage = null;
 
         } else {
-            ImageName templateImageName = (ImageName) parameters.getParameter(this,TEMPLATE_IMAGE).getValue();
+            ImageName templateImageName = parameters.getValue(this,TEMPLATE_IMAGE);
             templateImage = workspace.getImages().get(templateImageName);
 
         }
@@ -44,10 +44,14 @@ public class ShowObjects implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Show objects",false));
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
         parameters.addParameter(new Parameter(this,TEMPLATE_IMAGE,Parameter.IMAGE_NAME,null,false));
+
+        return parameters;
 
     }
 }

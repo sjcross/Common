@@ -13,16 +13,20 @@ public class ShowImage implements Module {
 
     @Override
     public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
-        ImageName imageName = (ImageName) parameters.getParameter(this,DISPLAY_IMAGE).getValue();
+        ImageName imageName = parameters.getValue(this,DISPLAY_IMAGE);
 
         workspace.getImages().get(imageName).getImagePlus().show();
 
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Show images",false));
         parameters.addParameter(new Parameter(this,DISPLAY_IMAGE,Parameter.IMAGE_NAME,null,false));
+
+        return parameters;
 
     }
 }

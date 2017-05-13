@@ -43,19 +43,19 @@ public class MeasureObjectCentroid implements Module {
             if (useMean) {
                 if (x != null) {
                     double xMean = calculateCentroid(x,MEAN);
-                    Measurement measurement = new Measurement(MeasurementNames.X_CENTROID_MEAN.name(),xMean);
+                    Measurement measurement = new Measurement(Measurement.X_CENTROID_MEAN,xMean);
                     measurement.setSource(this);
                     object.addMeasurement(measurement.getName(),measurement);
                 }
                 if (y!= null) {
                     double yMean = calculateCentroid(y,MEAN);
-                    Measurement measurement = new Measurement(MeasurementNames.Y_CENTROID_MEAN.name(),yMean);
+                    Measurement measurement = new Measurement(Measurement.Y_CENTROID_MEAN,yMean);
                     measurement.setSource(this);
                     object.addMeasurement(measurement.getName(),measurement);
                 }
                 if (z!= null) {
                     double zMean = calculateCentroid(z,MEAN);
-                    Measurement measurement = new Measurement(MeasurementNames.Z_CENTROID_MEAN.name(),zMean);
+                    Measurement measurement = new Measurement(Measurement.Z_CENTROID_MEAN,zMean);
                     measurement.setSource(this);
                     object.addMeasurement(measurement.getName(),measurement);
                 }
@@ -64,19 +64,19 @@ public class MeasureObjectCentroid implements Module {
             if (useMedian) {
                 if (x != null) {
                     double xMedian = calculateCentroid(x,MEDIAN);
-                    Measurement measurement = new Measurement(MeasurementNames.X_CENTROID_MEDIAN.name(),xMedian);
+                    Measurement measurement = new Measurement(Measurement.X_CENTROID_MEDIAN,xMedian);
                     measurement.setSource(this);
                     object.addMeasurement(measurement.getName(),measurement);
                 }
                 if (y!= null) {
                     double yMedian = calculateCentroid(y,MEDIAN);
-                    Measurement measurement = new Measurement(MeasurementNames.Y_CENTROID_MEDIAN.name(),yMedian);
+                    Measurement measurement = new Measurement(Measurement.Y_CENTROID_MEDIAN,yMedian);
                     measurement.setSource(this);
                     object.addMeasurement(measurement.getName(),measurement);
                 }
                 if (z!= null) {
                     double zMedian = calculateCentroid(z,MEDIAN);
-                    Measurement measurement = new Measurement(MeasurementNames.Z_CENTROID_MEDIAN.name(),zMedian);
+                    Measurement measurement = new Measurement(Measurement.Z_CENTROID_MEDIAN,zMedian);
                     measurement.setSource(this);
                     object.addMeasurement(measurement.getName(),measurement);
                 }
@@ -85,9 +85,13 @@ public class MeasureObjectCentroid implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.IMAGE_NAME,"Im1",true));
         parameters.addParameter(new Parameter(this,CENTROID_METHOD,Parameter.CHOICE_ARRAY,methodChoices[0],true));
+
+        return parameters;
 
     }
 

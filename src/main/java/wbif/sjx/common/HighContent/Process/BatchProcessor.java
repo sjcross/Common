@@ -67,7 +67,7 @@ public class BatchProcessor extends FileCrawler {
                 analysis.execute(workspace,verbose);
 
                 // Clearing images from the workspace to prevent memory leak
-                workspace.clearAllImages();
+                workspace.clearAllImages(true);
 
                 next = getNextValidFileInStructure();
 

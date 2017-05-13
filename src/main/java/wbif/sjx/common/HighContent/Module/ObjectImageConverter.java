@@ -25,11 +25,11 @@ public class ObjectImageConverter implements Module {
 
     @Override
     public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
-        int conversionMode = (int) parameters.getParameter(this,CONVERSION_MODE).getValue();
+        int conversionMode = parameters.getValue(this,CONVERSION_MODE);
 
         if (conversionMode == IMAGE_TO_OBJECTS) {
-            ImageName imageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
-            HCObjectName objectName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
+            ImageName imageName = parameters.getValue(this,INPUT_IMAGE);
+            HCObjectName objectName = parameters.getValue(this,OUTPUT_OBJECTS);
 
             Image image = workspace.getImages().get(imageName);
 
@@ -38,9 +38,9 @@ public class ObjectImageConverter implements Module {
             workspace.addObjects(objectName,objects);
 
         } else if (conversionMode == OBJECTS_TO_IMAGE) {
-            HCObjectName objectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
-            ImageName templateImageName = (ImageName) parameters.getParameter(this,TEMPLATE_IMAGE).getValue();
-            ImageName outputImageName = (ImageName) parameters.getParameter(this,OUTPUT_IMAGE).getValue();
+            HCObjectName objectName = parameters.getValue(this,INPUT_OBJECTS);
+            ImageName templateImageName = parameters.getValue(this,TEMPLATE_IMAGE);
+            ImageName outputImageName = parameters.getValue(this,OUTPUT_IMAGE);
 
             HCObjectSet objects = workspace.getObjects().get(objectName);
             Image templateImage = workspace.getImages().get(templateImageName);
@@ -53,7 +53,9 @@ public class ObjectImageConverter implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object-image converter",true));
         parameters.addParameter(new Parameter(this,TEMPLATE_IMAGE,Parameter.IMAGE_NAME,null,false));
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
@@ -61,6 +63,8 @@ public class ObjectImageConverter implements Module {
         parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
         parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
         parameters.addParameter(new Parameter(this,CONVERSION_MODE,Parameter.INTEGER,0,false));
+
+        return parameters;
 
     }
 

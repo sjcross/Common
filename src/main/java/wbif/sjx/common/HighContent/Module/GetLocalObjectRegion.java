@@ -39,11 +39,15 @@ public class GetLocalObjectRegion implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,"Obj1",false));
         parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,"Obj2",false));
         parameters.addParameter(new Parameter(this,LOCAL_RADIUS,Parameter.DOUBLE,10.0,true));
         parameters.addParameter(new Parameter(this,CALIBRATED_RADIUS,Parameter.BOOLEAN,false,false));
+
+        return parameters;
 
     }
 

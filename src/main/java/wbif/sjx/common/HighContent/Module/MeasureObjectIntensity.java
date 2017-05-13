@@ -17,11 +17,11 @@ public class MeasureObjectIntensity implements Module {
     @Override
     public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
         // Getting input objects
-        HCObjectName objectName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
+        HCObjectName objectName = parameters.getValue(this,INPUT_OBJECTS);
         HCObjectSet objects = workspace.getObjects().get(objectName);
 
         // Getting input image
-        ImageName imageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
+        ImageName imageName = parameters.getValue(this,INPUT_IMAGE);
         Image image = workspace.getImages().get(imageName);
         ImagePlus ipl = image.getImagePlus();
 
@@ -70,10 +70,14 @@ public class MeasureObjectIntensity implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Measure object intensity",true));
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
+        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Measure object intensity",false));
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
+
+        return parameters;
 
     }
 }

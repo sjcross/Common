@@ -25,14 +25,14 @@ public class ImageStackLoader implements Module{
     @Override
     public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
         // Getting parameters
-        Extractor extractor = (Extractor) parameters.getParameter(this,EXTRACTOR).getValue();
-        String orderField = (String) parameters.getParameter(this,ORDER_FIELD).getValue();
-        ArrayList<String> staticFields = (ArrayList<String>) parameters.getParameter(this,STATIC_FIELDS).getValue();
-        HashMap<String,String> setFields = (HashMap<String, String>) parameters.getParameter(this,SET_FIELDS).getValue();
-        ImageName outputImage = (ImageName) parameters.getParameter(this,OUTPUT_IMAGE).getValue();
+        Extractor extractor = parameters.getValue(this,EXTRACTOR);
+        String orderField = parameters.getValue(this,ORDER_FIELD);
+        ArrayList<String> staticFields = parameters.getValue(this,STATIC_FIELDS);
+        HashMap<String,String> setFields = parameters.getValue(this,SET_FIELDS);
+        ImageName outputImage = parameters.getValue(this,OUTPUT_IMAGE);
 
         // Getting files
-        File referenceFile = workspace.getCurrentFile();
+        File referenceFile = workspace.getMetadata().getFile();
         File[] files = referenceFile.getParentFile().listFiles();
 
         // Creating a Result object holding parameters about the reference file
@@ -97,7 +97,9 @@ public class ImageStackLoader implements Module{
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         // Setting the input image stack name
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Image stack loader",false));
         parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
@@ -105,6 +107,8 @@ public class ImageStackLoader implements Module{
         parameters.addParameter(new Parameter(this,ORDER_FIELD,Parameter.STRING,"",false));
         parameters.addParameter(new Parameter(this,STATIC_FIELDS,Parameter.OBJECT,new ArrayList<String>(),false));
         parameters.addParameter(new Parameter(this,SET_FIELDS,Parameter.OBJECT,new HashMap<String,String>(),false));
+
+        return parameters;
 
     }
 }

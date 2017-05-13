@@ -20,22 +20,26 @@ public class MetadataExtractor implements Module {
         Metadata metadata = workspace.getMetadata();
 
         // Getting filename extractor
-        Extractor filenameExtractor = (Extractor) parameters.getParameter(this,FILENAME_EXTRACTOR).getValue();
+        Extractor filenameExtractor = parameters.getValue(this,FILENAME_EXTRACTOR);
 
         // Getting foldername extractor
-        Extractor foldernameExtractor = (Extractor) parameters.getParameter(this,FOLDERNAME_EXTRACTOR).getValue();
+        Extractor foldernameExtractor = parameters.getValue(this,FOLDERNAME_EXTRACTOR);
 
         // Preparing Result object
-        metadata.setFile(workspace.getCurrentFile());
+        metadata.setFile(workspace.getMetadata().getFile());
         foldernameExtractor.extract(metadata,metadata.getFile().getParent());
         filenameExtractor.extract(metadata,metadata.getFile().getName());
 
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,FILENAME_EXTRACTOR,Parameter.OBJECT,null,false));
         parameters.addParameter(new Parameter(this,FOLDERNAME_EXTRACTOR,Parameter.OBJECT,null,false));
+
+        return parameters;
 
     }
 }

@@ -28,19 +28,19 @@ public class IdentifySecondaryObjects implements Module {
         if (verbose) System.out.println("    Running secondary object identification");
 
         // Getting relevant parameters
-        double medFiltR = (double) parameters.getParameter(this,MEDIAN_FILTER_RADIUS).getValue();
-        String thrMeth = (String) parameters.getParameter(this,THRESHOLD_METHOD).getValue();
+        double medFiltR = parameters.getValue(this,MEDIAN_FILTER_RADIUS);
+        String thrMeth = parameters.getValue(this,THRESHOLD_METHOD);
 
         // Loading images and objects into workspace
-        ImageName inputImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
+        ImageName inputImageName = parameters.getValue(this,INPUT_IMAGE);
         Image inputImage2 = workspace.getImages().get(inputImageName);
         ImagePlus image2 = inputImage2.getImagePlus();
 
-        HCObjectName inputObjectsName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
+        HCObjectName inputObjectsName = parameters.getValue(this,INPUT_OBJECTS);
         HCObjectSet objects1 = workspace.getObjects().get(inputObjectsName);
 
         // Initialising the output objects ArrayList
-        HCObjectName outputObjectsName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
+        HCObjectName outputObjectsName = parameters.getValue(this,OUTPUT_OBJECTS);
 
         // Getting nuclei objects as image
         if (verbose) System.out.println("       Converting objects to image");
@@ -81,13 +81,17 @@ public class IdentifySecondaryObjects implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Secondary object identification",true));
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
         parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
         parameters.addParameter(new Parameter(this,MEDIAN_FILTER_RADIUS,Parameter.DOUBLE,2.0,true));
         parameters.addParameter(new Parameter(this,THRESHOLD_METHOD,Parameter.CHOICE_ARRAY,thresholdMethods[0],thresholdMethods,true));
+
+        return parameters;
 
     }
 }

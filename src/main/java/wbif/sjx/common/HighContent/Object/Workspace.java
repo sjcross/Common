@@ -10,14 +10,13 @@ public class Workspace {
     private HashMap<HCObjectName, HCObjectSet> objects = new HashMap<>();
     private HashMap<ImageName, Image> images = new HashMap<>();
     private Metadata metadata = new Metadata();
-    private File currentFile = null;
     private int ID;
 
     // CONSTRUCTOR
 
     public Workspace(int ID, File currentFile) {
         this.ID = ID;
-        this.currentFile = currentFile;
+        metadata.put(Metadata.FILE,currentFile);
 
     }
 
@@ -39,8 +38,21 @@ public class Workspace {
         images.remove(name);
     }
 
-    public void clearAllImages() {
-        images = null;
+    /**
+     * Used to reduce memory of the workspace (particularly for batch processing).
+     * @param retainMeasurements Delete image data, but leave measurements
+     */
+    public void clearAllImages(boolean retainMeasurements) {
+        if (retainMeasurements) {
+            // Sets the ImagePlus to null, but leaves measurements
+            for (Image image:images.values()) {
+                image.setImagePlus(null);
+            }
+
+        } else {
+            // Removes all the data
+            images = null;
+        }
     }
 
 
@@ -60,14 +72,6 @@ public class Workspace {
 
     public void setImages(HashMap<ImageName, Image> images) {
         this.images = images;
-    }
-
-    public File getCurrentFile() {
-        return currentFile;
-    }
-
-    public void setCurrentFile(File currentFile) {
-        this.currentFile = currentFile;
     }
 
     public Metadata getMetadata() {

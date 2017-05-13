@@ -1,6 +1,8 @@
 package wbif.sjx.common.HighContent.Module;
 
+import ij.IJ;
 import ij.ImagePlus;
+import ij.Prefs;
 import wbif.sjx.common.Analysis.TextureCalculator;
 import wbif.sjx.common.HighContent.Object.*;
 
@@ -93,7 +95,9 @@ public class MeasureObjectTexture implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object texture measurement",true));
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,"Im1",false));
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,"Obj1",false));
@@ -102,6 +106,8 @@ public class MeasureObjectTexture implements Module {
         parameters.addParameter(new Parameter(this,X_OFFSET,Parameter.INTEGER,1,true));
         parameters.addParameter(new Parameter(this,Y_OFFSET,Parameter.INTEGER,0,true));
         parameters.addParameter(new Parameter(this,Z_OFFSET,Parameter.INTEGER,0,true));
+
+        return parameters;
 
     }
 }

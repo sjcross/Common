@@ -60,12 +60,16 @@ public class MeasureImageTexture implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Image texture measurement",true));
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,"Im1",false));
         parameters.addParameter(new Parameter(this,X_OFFSET,Parameter.INTEGER,1,true));
         parameters.addParameter(new Parameter(this,Y_OFFSET,Parameter.INTEGER,0,true));
         parameters.addParameter(new Parameter(this,Z_OFFSET,Parameter.INTEGER,0,true));
+
+        return parameters;
 
     }
 }

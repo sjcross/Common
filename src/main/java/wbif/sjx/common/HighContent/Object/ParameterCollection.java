@@ -1,5 +1,7 @@
 package wbif.sjx.common.HighContent.Object;
 
+import wbif.sjx.common.HighContent.Module.Module;
+
 import java.util.LinkedHashMap;
 
 /**
@@ -39,6 +41,12 @@ public class ParameterCollection {
 
     public void updateVisible(Object module, String name, boolean visible) {
         parameters.get(module.hashCode()).get(name).setVisible(visible);
+
+    }
+
+    public void initialiseModule(Module module) {
+        ParameterCollection moduleParameters = module.initialiseParameters();
+        parameters.putAll(moduleParameters.getParameters());
 
     }
 

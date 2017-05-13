@@ -15,7 +15,7 @@ public class ImageJImageLoader implements Module {
         if (verbose) System.out.println("   Loading image from ImageJ");
 
         // Getting image
-        ImageName outputImageName = (ImageName) parameters.getParameter(this,OUTPUT_IMAGE).getValue();
+        ImageName outputImageName = parameters.getValue(this,OUTPUT_IMAGE);
         ImagePlus imagePlus = IJ.getImage();
 
         // Adding image to workspace
@@ -25,8 +25,12 @@ public class ImageJImageLoader implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,"Im1",false));
+
+        return parameters;
 
     }
 }

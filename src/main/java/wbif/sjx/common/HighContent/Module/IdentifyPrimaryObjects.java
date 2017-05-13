@@ -56,13 +56,17 @@ public class IdentifyPrimaryObjects implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         // Setting the input image stack name
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Primary object identification",true));
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
         parameters.addParameter(new Parameter(this,OUTPUT_OBJECT,Parameter.OBJECT_NAME,null,false));
         parameters.addParameter(new Parameter(this,MEDIAN_FILTER_RADIUS,Parameter.DOUBLE,2.0,true));
         parameters.addParameter(new Parameter(this,THRESHOLD_MULTIPLIER,Parameter.DOUBLE,1.0,true));
+
+        return parameters;
 
     }
 }

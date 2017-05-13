@@ -2,8 +2,8 @@
 // TODO: Module to show object outlines on an image (returns the image itself)
 // TODO: Module to save images and to save objects (could roll this into ShowImage and ShowObjects)
 // TODO: Module to plot histograms of measurements (e.g. mean intensity for objects)
-// TODO: Module to measure intensity texture (can call other Common library class, which does the calculation)
-// TODO: Module to measure mean object position (centroid, etc.)
+// TODO: Module to calculate size metrics of objects (can used Blob class)
+// TODO: Module to calulate radial intensity distribution of objects
 
 package wbif.sjx.common.HighContent.Module;
 
@@ -25,7 +25,7 @@ public interface Module {
      * Get a HashMap of the parameters this class requires
      * @return
      */
-    void initialiseParameters(ParameterCollection parameters);
+    ParameterCollection initialiseParameters();
 
 
     // DEFAULT METHODS

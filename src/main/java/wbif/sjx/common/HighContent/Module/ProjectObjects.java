@@ -16,8 +16,8 @@ public class ProjectObjects implements Module {
 
     @Override
     public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
-        HCObjectName inputObjectsName = (HCObjectName) parameters.getParameter(this,INPUT_OBJECTS).getValue();
-        HCObjectName outputObjectsName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
+        HCObjectName inputObjectsName = parameters.getValue(this,INPUT_OBJECTS);
+        HCObjectName outputObjectsName = parameters.getValue(this,OUTPUT_OBJECTS);
 
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
         HCObjectSet outputObjects = new HCObjectSet();
@@ -69,10 +69,14 @@ public class ProjectObjects implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object projector",false));
         parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
         parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
+
+        return parameters;
 
     }
 }

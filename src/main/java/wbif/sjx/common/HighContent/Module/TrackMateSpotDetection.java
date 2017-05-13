@@ -26,7 +26,7 @@ public class TrackMateSpotDetection implements Module {
         if (verbose) System.out.println("   Running TrackMate spot detection");
 
         // Loading input image
-        ImageName targetImageName = (ImageName) parameters.getParameter(this,INPUT_IMAGE).getValue();
+        ImageName targetImageName = parameters.getValue(this,INPUT_IMAGE);
         if (verbose) System.out.println("       Loading image ("+targetImageName.getName()+") into workspace");
         ImagePlus ipl = workspace.getImages().get(targetImageName).getImagePlus();
 
@@ -34,9 +34,9 @@ public class TrackMateSpotDetection implements Module {
         Calibration calibration = ipl.getCalibration();
 
         // Getting parameters
-        double blobRadius = (double) parameters.getParameter(this,BLOB_RADIUS).getValue();
-        double threshold = (double) parameters.getParameter(this,THRESHOLD).getValue();
-        HCObjectName outputObjectsName = (HCObjectName) parameters.getParameter(this,OUTPUT_OBJECTS).getValue();
+        double blobRadius = parameters.getValue(this,BLOB_RADIUS);
+        double threshold = parameters.getValue(this,THRESHOLD);
+        HCObjectName outputObjectsName = parameters.getValue(this,OUTPUT_OBJECTS);
 
         // Initialising TrackMate spot detection
         if (verbose) System.out.println("       Initialising TrackMate");
@@ -71,7 +71,7 @@ public class TrackMateSpotDetection implements Module {
             object.addCoordinate(HCObject.Y,(int) calibration.getRawY(spot.getDoublePosition(1)));
             object.addCoordinate(HCObject.Z,(int) (spot.getDoublePosition(2)/calibration.getZ(1)));
 
-            Measurement radiusMeasurement = new Measurement(MeasurementNames.RADIUS.name(),calibration.getRawX(spot.getFeature(Spot.RADIUS)));
+            Measurement radiusMeasurement = new Measurement(Measurement.RADIUS,calibration.getRawX(spot.getFeature(Spot.RADIUS)));
             radiusMeasurement.setSource(this);
             object.addMeasurement(radiusMeasurement.getName(),radiusMeasurement);
 
@@ -94,12 +94,16 @@ public class TrackMateSpotDetection implements Module {
     }
 
     @Override
-    public void initialiseParameters(ParameterCollection parameters) {
+    public ParameterCollection initialiseParameters() {
+        ParameterCollection parameters = new ParameterCollection();
+
         parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"TrackMate spot detection",true));
         parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,"Im1",false));
         parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,"Obj1",false));
         parameters.addParameter(new Parameter(this,BLOB_RADIUS,Parameter.DOUBLE,0.1,true));
         parameters.addParameter(new Parameter(this,THRESHOLD,Parameter.DOUBLE,10000.0,true));
+
+        return parameters;
 
     }
 
