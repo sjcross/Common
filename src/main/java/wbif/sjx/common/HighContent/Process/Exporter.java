@@ -237,10 +237,9 @@ public class Exporter {
 
             if (verbose) System.out.println("Saved "+ outPath);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 

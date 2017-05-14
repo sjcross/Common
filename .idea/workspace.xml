@@ -10,35 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58a93d3a-53bf-43ec-b929-89bc18e9a84a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/MeasurementNames.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Analysis/IntensityCalculator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Analysis/MSDCalculator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Analysis/TotalPathLengthCalculator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/FileConditions/FileCondition.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/FileConditions/NameContainsPattern.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/FileConditions/NameContainsString.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Extractor/Extractor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Module/Module.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Module/ShowObjects.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/HCObject.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/HCObjectName.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/HCObjectSet.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/Image.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/ImageName.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/Measurement.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/Metadata.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/Parameter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/ParameterCollection.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/Workspace.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Object/WorkspaceCollection.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/HighContent/Process/StackComparator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/CumStat.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/Indexer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/MSD.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/MathFunc/MidpointCircle.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Object/Spot.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/Object/SpotCollection.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/wbif/sjx/common/System/Folder.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common.iml" afterPath="$PROJECT_DIR$/Common.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/BioformatsImageLoader.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/BioformatsImageLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ChannelExtractor.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ChannelExtractor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/GetLocalObjectRegion.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/GetLocalObjectRegion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/IdentifyPrimaryObjects.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/IdentifyPrimaryObjects.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/IdentifySecondaryObjects.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/IdentifySecondaryObjects.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ImageJImageLoader.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ImageJImageLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ImageStackLoader.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ImageStackLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureImageIntensity.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureImageIntensity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureImageTexture.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureImageTexture.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureObjectCentroid.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureObjectCentroid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureObjectIntensity.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureObjectIntensity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureObjectTexture.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureObjectTexture.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MetadataExtractor.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MetadataExtractor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/Module.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/Module.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ObjectImageConverter.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ObjectImageConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ObjectLinker.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ObjectLinker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ProjectImage.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ProjectImage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ProjectObjects.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ProjectObjects.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ShowImage.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ShowImage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ShowObjects.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/ShowObjects.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/TrackMateSpotDetection.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/TrackMateSpotDetection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Measurement.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Measurement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Metadata.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Metadata.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/ParameterCollection.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/ParameterCollection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Workspace.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Workspace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/BatchProcessor.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/BatchProcessor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Exporter.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Exporter.java" />
     </list>
     <ignored path="Math.iws" />
@@ -66,9 +66,10 @@
       <file leaf-file-name="BioformatsImageLoader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/BioformatsImageLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
+            <state relative-caret-position="884">
               <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#BioformatsImageLoader#0" expanded="false" />
               </folding>
             </state>
@@ -80,7 +81,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
               <caret line="26" column="80" lean-forward="false" selection-start-line="26" selection-start-column="80" selection-end-line="26" selection-end-column="80" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,7 +91,7 @@
       <file leaf-file-name="Parameter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Parameter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="459">
               <caret line="47" column="7" lean-forward="false" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
               <folding>
                 <element signature="docComment;class#Parameter#0" expanded="false" />
@@ -104,8 +107,24 @@
                 <element signature="docComment;field#OBJECT#0;class#Parameter#0" expanded="false" />
                 <element signature="method#Parameter#0;class#Parameter#0" expanded="false" />
                 <element signature="method#Parameter#1;class#Parameter#0" expanded="false" />
+                <element signature="e#2645#2646#0" expanded="false" />
+                <element signature="e#2674#2675#0" expanded="false" />
+                <element signature="e#2705#2706#0" expanded="false" />
+                <element signature="e#2732#2733#0" expanded="false" />
+                <element signature="e#2760#2761#0" expanded="false" />
+                <element signature="e#2787#2788#0" expanded="false" />
+                <element signature="e#2824#2825#0" expanded="false" />
+                <element signature="e#2857#2858#0" expanded="false" />
+                <element signature="e#2909#2910#0" expanded="false" />
+                <element signature="e#2953#2954#0" expanded="false" />
                 <element signature="method#getValue#0;class#Parameter#0" expanded="false" />
                 <element signature="e#3020#3052#0" expanded="false" />
+                <element signature="e#3125#3126#0" expanded="false" />
+                <element signature="e#3159#3160#0" expanded="false" />
+                <element signature="e#3193#3194#0" expanded="false" />
+                <element signature="e#3223#3224#0" expanded="false" />
+                <element signature="e#3270#3271#0" expanded="false" />
+                <element signature="e#3308#3309#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -116,7 +135,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
               <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#286#287#0" expanded="false" />
+                <element signature="e#313#314#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,24 +146,11 @@
       <file leaf-file-name="Analysis.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Analysis.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="289">
               <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#Analysis#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Module.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/Module.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="21" column="61" lean-forward="false" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
-              <folding>
-                <element signature="docComment;class#Module#0" expanded="false" />
-                <element signature="docComment;method#initialiseParameters#0;class#Module#0" expanded="false" />
-                <element signature="method#execute#1;class#Module#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -150,16 +159,32 @@
       <file leaf-file-name="Exporter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Exporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3074">
-              <caret line="464" column="17" lean-forward="false" selection-start-line="464" selection-start-column="17" selection-end-line="464" selection-end-column="17" />
+            <state relative-caret-position="234">
+              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#Exporter#0" expanded="false" />
                 <element signature="method#Exporter#0;class#Exporter#0" expanded="false" />
                 <element signature="method#exportResults#0;class#Exporter#0" expanded="false" />
                 <element signature="method#exportResults#1;class#Exporter#0" expanded="false" />
                 <element signature="method#exportXML#0;class#Exporter#0" expanded="false" />
+                <element signature="method#exportXLSX#0;class#Exporter#0" expanded="false" />
+                <element signature="method#prepareParametersXLSX#0;class#Exporter#0" expanded="false" />
+                <element signature="method#prepareMetadataXLSX#0;class#Exporter#0" expanded="false" />
+                <element signature="e#13124#13236#0" expanded="false" />
+                <element signature="method#prepareImagesXLSX#0;class#Exporter#0" expanded="false" />
+                <element signature="method#prepareObjectsXLSX#0;class#Exporter#0" expanded="false" />
                 <element signature="method#exportJSON#0;class#Exporter#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="63" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -170,10 +195,33 @@
             <state relative-caret-position="442">
               <caret line="44" column="59" lean-forward="false" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#Workspace#0" expanded="false" />
                 <element signature="method#Workspace#0;class#Workspace#0" expanded="false" />
+                <element signature="e#607#608#0" expanded="false" />
+                <element signature="e#648#649#0" expanded="false" />
+                <element signature="e#693#694#0" expanded="false" />
+                <element signature="e#729#730#0" expanded="false" />
+                <element signature="e#786#787#0" expanded="false" />
+                <element signature="e#825#826#0" expanded="false" />
+                <element signature="e#869#870#0" expanded="false" />
+                <element signature="e#904#905#0" expanded="false" />
                 <element signature="docComment;method#clearAllImages#0;class#Workspace#0" expanded="false" />
                 <element signature="method#clearAllImages#0;class#Workspace#0" expanded="false" />
+                <element signature="e#1533#1534#0" expanded="false" />
+                <element signature="e#1563#1564#0" expanded="false" />
+                <element signature="e#1637#1638#0" expanded="false" />
+                <element signature="e#1675#1676#0" expanded="false" />
+                <element signature="e#1727#1728#0" expanded="false" />
+                <element signature="e#1756#1757#0" expanded="false" />
+                <element signature="e#1819#1820#0" expanded="false" />
+                <element signature="e#1855#1856#0" expanded="false" />
+                <element signature="e#1892#1893#0" expanded="false" />
+                <element signature="e#1923#1924#0" expanded="false" />
+                <element signature="e#1973#1974#0" expanded="false" />
+                <element signature="e#2013#2014#0" expanded="false" />
+                <element signature="e#2039#2040#0" expanded="false" />
+                <element signature="e#2064#2065#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -182,11 +230,18 @@
       <file leaf-file-name="Image.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Image.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
+            <state relative-caret-position="799">
               <caret line="59" column="38" lean-forward="false" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
               <folding>
-                <element signature="e#1347#1348#0" expanded="true" />
-                <element signature="e#1395#1396#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#397#398#0" expanded="false" />
+                <element signature="e#439#440#0" expanded="false" />
+                <element signature="e#1040#1041#0" expanded="false" />
+                <element signature="e#1072#1073#0" expanded="false" />
+                <element signature="e#1125#1126#0" expanded="false" />
+                <element signature="e#1167#1168#0" expanded="false" />
+                <element signature="e#1228#1229#0" expanded="false" />
+                <element signature="e#1263#1264#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -195,9 +250,15 @@
       <file leaf-file-name="BatchProcessor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/BatchProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="527">
               <caret line="53" column="50" lean-forward="false" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2434#2435#0" expanded="false" />
+                <element signature="e#2464#2465#0" expanded="false" />
+                <element signature="e#2511#2512#0" expanded="false" />
+                <element signature="e#2549#2550#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -337,8 +398,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -569,7 +630,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -930,34 +991,33 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-9" width="1864" height="1098" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25454545" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2513369" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2513369" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26342282" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2673378" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972437" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25454545" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -1091,25 +1151,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="43" column="27" lean-forward="false" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
-          <folding>
-            <element signature="method#getCorrelation#0;class#TextureCalculator#0" expanded="false" />
-            <element signature="docComment;method#getEntropy#0;class#TextureCalculator#0" expanded="false" />
-            <element signature="method#getEntropy#0;class#TextureCalculator#0" expanded="false" />
-            <element signature="e#6239#6240#0" expanded="false" />
-            <element signature="e#6267#6268#0" expanded="false" />
-            <element signature="e#6296#6297#0" expanded="false" />
-            <element signature="e#6324#6325#0" expanded="false" />
-            <element signature="e#6353#6354#0" expanded="false" />
-            <element signature="e#6381#6382#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="63" column="21" lean-forward="false" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1186,14 +1227,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/MeasurementNames.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/MeasurementNames.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Measurement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -1321,14 +1355,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureObjectRadialIntensity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MeasureObjectRadialIntensity.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/MetadataExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="565">
@@ -1413,6 +1440,8 @@
         <state relative-caret-position="221">
           <caret line="21" column="61" lean-forward="false" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
           <folding>
+            <element signature="e#0#1148#0" expanded="false" />
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#Module#0" expanded="false" />
             <element signature="docComment;method#initialiseParameters#0;class#Module#0" expanded="false" />
             <element signature="method#execute#1;class#Module#0" expanded="false" />
@@ -1422,7 +1451,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Parameter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="459">
           <caret line="47" column="7" lean-forward="false" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
           <folding>
             <element signature="docComment;class#Parameter#0" expanded="false" />
@@ -1438,8 +1467,24 @@
             <element signature="docComment;field#OBJECT#0;class#Parameter#0" expanded="false" />
             <element signature="method#Parameter#0;class#Parameter#0" expanded="false" />
             <element signature="method#Parameter#1;class#Parameter#0" expanded="false" />
+            <element signature="e#2645#2646#0" expanded="false" />
+            <element signature="e#2674#2675#0" expanded="false" />
+            <element signature="e#2705#2706#0" expanded="false" />
+            <element signature="e#2732#2733#0" expanded="false" />
+            <element signature="e#2760#2761#0" expanded="false" />
+            <element signature="e#2787#2788#0" expanded="false" />
+            <element signature="e#2824#2825#0" expanded="false" />
+            <element signature="e#2857#2858#0" expanded="false" />
+            <element signature="e#2909#2910#0" expanded="false" />
+            <element signature="e#2953#2954#0" expanded="false" />
             <element signature="method#getValue#0;class#Parameter#0" expanded="false" />
             <element signature="e#3020#3052#0" expanded="false" />
+            <element signature="e#3125#3126#0" expanded="false" />
+            <element signature="e#3159#3160#0" expanded="false" />
+            <element signature="e#3193#3194#0" expanded="false" />
+            <element signature="e#3223#3224#0" expanded="false" />
+            <element signature="e#3270#3271#0" expanded="false" />
+            <element signature="e#3308#3309#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1448,15 +1493,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#286#287#0" expanded="false" />
+            <element signature="e#313#314#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Module/BioformatsImageLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
+        <state relative-caret-position="884">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#BioformatsImageLoader#0" expanded="false" />
           </folding>
         </state>
@@ -1466,15 +1515,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="26" column="80" lean-forward="false" selection-start-line="26" selection-start-column="80" selection-end-line="26" selection-end-column="80" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Analysis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="289">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#Analysis#0" expanded="false" />
           </folding>
         </state>
@@ -1482,11 +1534,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Object/Image.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
+        <state relative-caret-position="799">
           <caret line="59" column="38" lean-forward="false" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
           <folding>
-            <element signature="e#1347#1348#0" expanded="true" />
-            <element signature="e#1395#1396#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#397#398#0" expanded="false" />
+            <element signature="e#439#440#0" expanded="false" />
+            <element signature="e#1040#1041#0" expanded="false" />
+            <element signature="e#1072#1073#0" expanded="false" />
+            <element signature="e#1125#1126#0" expanded="false" />
+            <element signature="e#1167#1168#0" expanded="false" />
+            <element signature="e#1228#1229#0" expanded="false" />
+            <element signature="e#1263#1264#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1496,32 +1555,75 @@
         <state relative-caret-position="442">
           <caret line="44" column="59" lean-forward="false" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#Workspace#0" expanded="false" />
             <element signature="method#Workspace#0;class#Workspace#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#693#694#0" expanded="false" />
+            <element signature="e#729#730#0" expanded="false" />
+            <element signature="e#786#787#0" expanded="false" />
+            <element signature="e#825#826#0" expanded="false" />
+            <element signature="e#869#870#0" expanded="false" />
+            <element signature="e#904#905#0" expanded="false" />
             <element signature="docComment;method#clearAllImages#0;class#Workspace#0" expanded="false" />
             <element signature="method#clearAllImages#0;class#Workspace#0" expanded="false" />
+            <element signature="e#1533#1534#0" expanded="false" />
+            <element signature="e#1563#1564#0" expanded="false" />
+            <element signature="e#1637#1638#0" expanded="false" />
+            <element signature="e#1675#1676#0" expanded="false" />
+            <element signature="e#1727#1728#0" expanded="false" />
+            <element signature="e#1756#1757#0" expanded="false" />
+            <element signature="e#1819#1820#0" expanded="false" />
+            <element signature="e#1855#1856#0" expanded="false" />
+            <element signature="e#1892#1893#0" expanded="false" />
+            <element signature="e#1923#1924#0" expanded="false" />
+            <element signature="e#1973#1974#0" expanded="false" />
+            <element signature="e#2013#2014#0" expanded="false" />
+            <element signature="e#2039#2040#0" expanded="false" />
+            <element signature="e#2064#2065#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/BatchProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="527">
           <caret line="53" column="50" lean-forward="false" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2434#2435#0" expanded="false" />
+            <element signature="e#2464#2465#0" expanded="false" />
+            <element signature="e#2511#2512#0" expanded="false" />
+            <element signature="e#2549#2550#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="63" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/HighContent/Process/Exporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3074">
-          <caret line="464" column="17" lean-forward="false" selection-start-line="464" selection-start-column="17" selection-end-line="464" selection-end-column="17" />
+        <state relative-caret-position="234">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Exporter#0" expanded="false" />
             <element signature="method#Exporter#0;class#Exporter#0" expanded="false" />
             <element signature="method#exportResults#0;class#Exporter#0" expanded="false" />
             <element signature="method#exportResults#1;class#Exporter#0" expanded="false" />
             <element signature="method#exportXML#0;class#Exporter#0" expanded="false" />
+            <element signature="method#exportXLSX#0;class#Exporter#0" expanded="false" />
+            <element signature="method#prepareParametersXLSX#0;class#Exporter#0" expanded="false" />
+            <element signature="method#prepareMetadataXLSX#0;class#Exporter#0" expanded="false" />
+            <element signature="e#13124#13236#0" expanded="false" />
+            <element signature="method#prepareImagesXLSX#0;class#Exporter#0" expanded="false" />
+            <element signature="method#prepareObjectsXLSX#0;class#Exporter#0" expanded="false" />
             <element signature="method#exportJSON#0;class#Exporter#0" expanded="false" />
           </folding>
         </state>
