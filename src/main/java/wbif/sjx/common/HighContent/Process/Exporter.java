@@ -1,342 +1,485 @@
 package wbif.sjx.common.HighContent.Process;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import wbif.sjx.common.HighContent.Object.Result;
-import wbif.sjx.common.HighContent.Object.ResultCollection;
+import wbif.sjx.common.HighContent.Object.*;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
- * Created by sc13967 on 27/10/2016.
+ * Created by sc13967 on 12/05/2017.
  */
 public class Exporter {
-    public File target_folder = null;
-    public String root_name = "";
-    public String output_ext = "";
+    public static final int XML_EXPORT = 0;
+    public static final int XLSX_EXPORT = 1;
+    public static final int JSON_EXPORT = 2;
 
-    public String getRootName() {
-        return root_name;
-    }
+    private int exportMode = XLSX_EXPORT;
+    private File rootFolder;
+    private boolean verbose = false;
 
-    public void setRootName(String root_name) {
-        this.root_name = root_name;
-    }
 
-    public File getTargetFolder() {
-        return target_folder;
+    // CONSTRUCTOR
 
-    }
-
-    public void setTargetFolder(File target_folder) {
-        this.target_folder = target_folder;
+    public Exporter(File rootFolder, int exportMode) {
+        this.rootFolder = rootFolder;
+        this.exportMode = exportMode;
 
     }
 
-    public void export(ResultCollection results) {
-        // If a root filename and target folder has been manually set, use this.  Otherwise, print an error stating no
-        // name and/or folder was given
-        if (!root_name.equals("") & target_folder != null) {
-            export(results, target_folder, root_name);
 
-        } else if (target_folder == null & !root_name.equals("")) {
-            System.out.println("No target folder specified.  Results not saved");
+    // PUBLIC METHODS
 
-        } else if (root_name.equals("") & target_folder != null) {
-            System.out.println("No root filename specified.  Results not saved");
+    public void exportResults(WorkspaceCollection workspaces) {
+        exportResults(workspaces,null);
 
-        } else {
-            System.out.println("No root filename and target folder specified.  Results not saved");
-
-        }
     }
 
-    public void export(ResultCollection results, String root_name) {
-        // If a target folder has been manually set, use this.  Otherwise, print an error stating no target was given
-        if (target_folder != null) {
-            export(results, target_folder, root_name);
+    public void exportResults(WorkspaceCollection workspaces, ParameterCollection parameters) {
+        if (exportMode == XML_EXPORT) {
+            exportXML(workspaces,parameters);
 
-        } else {
-            System.out.println("No target folder specified.  Results not saved");
+        } else if (exportMode == XLSX_EXPORT) {
+            exportXLSX(workspaces,parameters);
+
+        } else if (exportMode == JSON_EXPORT) {
+            exportJSON(workspaces,parameters);
 
         }
     }
 
-    public void export(ResultCollection results, File target_folder) {
-        // If a root filename has been manually set, use this.  Otherwise, print an error stating no name was given
-        if (!root_name.equals("")) {
-            export(results, target_folder, root_name);
+    private void exportXML(WorkspaceCollection workspaces, ParameterCollection parameters) {
+        // Initialising DecimalFormat
+        DecimalFormat df = new DecimalFormat("0.000E0");
 
-        } else {
-            System.out.println("No root filename specified.  Results not saved");
+        try {
+            // Initialising the document
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+            Element root = doc.createElement("ROOT");
+            doc.appendChild(root);
+
+            // Running through all parameters, adding them if present
+            if (parameters != null) {
+                Element parametersElement =  doc.createElement("PARAMETERS");
+
+                // Running through each paramter set (one for each module
+                for (Integer key:parameters.getParameters().keySet()) {
+                    HashMap<String,Parameter> moduleParameters = parameters.getParameters().get(key);
+
+                    boolean first = true;
+                    Element moduleElement =  doc.createElement("MODULE");
+                    for (Parameter currParam:moduleParameters.values()) {
+                        // For the first parameter in a module, adding the name
+                        if (first) {
+                            Attr nameAttr = doc.createAttribute("NAME");
+                            nameAttr.appendChild(doc.createTextNode(currParam.getModule().getClass().getName()));
+                            moduleElement.setAttributeNode(nameAttr);
+
+                            Attr hashAttr = doc.createAttribute("HASH");
+                            hashAttr.appendChild(doc.createTextNode(String.valueOf(currParam.getModule().hashCode())));
+                            moduleElement.setAttributeNode(hashAttr);
+
+                            first = false;
+                        }
+
+                        // Adding the name and value of the current parameter
+                        Element parameterElement =  doc.createElement("PARAMETER");
+
+                        Attr nameAttr = doc.createAttribute("NAME");
+                        nameAttr.appendChild(doc.createTextNode(currParam.getName()));
+                        parameterElement.setAttributeNode(nameAttr);
+
+                        Attr valueAttr = doc.createAttribute("VALUE");
+                        valueAttr.appendChild(doc.createTextNode(currParam.getValue().toString()));
+                        parameterElement.setAttributeNode(valueAttr);
+
+                        moduleElement.appendChild(parameterElement);
+
+                    }
+
+                    // Adding current module to parameters
+                    parametersElement.appendChild(moduleElement);
+
+                }
+
+                // Adding parameters to main file
+                root.appendChild(parametersElement);
+
+            }
+
+            // Running through each workspace (each corresponds to a file) adding file information
+            for (Workspace workspace:workspaces) {
+                Element setElement =  doc.createElement("SET");
+
+                // Adding metadata from the workspace
+                Metadata metadata = workspace.getMetadata();
+                for (String key:metadata.keySet()) {
+                    String attrName = key.toUpperCase();
+                    Attr attr = doc.createAttribute(attrName);
+                    attr.appendChild(doc.createTextNode(metadata.getAsString(key)));
+                    setElement.setAttributeNode(attr);
+
+                }
+
+                // Creating new elements for each image in the current workspace with at least one measurement
+                for (ImageName imageName:workspace.getImages().keySet()) {
+                    Image image = workspace.getImages().get(imageName);
+
+                    if (image.getMeasurements() != null) {
+                        Element imageElement = doc.createElement("IMAGE");
+
+                        Attr nameAttr = doc.createAttribute("NAME");
+                        nameAttr.appendChild(doc.createTextNode(String.valueOf(imageName.getName())));
+                        imageElement.setAttributeNode(nameAttr);
+
+                        for (Measurement measurement : image.getMeasurements().values()) {
+                            String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
+                            Attr measAttr = doc.createAttribute(attrName);
+                            String attrValue = df.format(measurement.getValue());
+                            measAttr.appendChild(doc.createTextNode(attrValue));
+                            imageElement.setAttributeNode(measAttr);
+                        }
+
+                        setElement.appendChild(imageElement);
+
+                    }
+                }
+
+                // Creating new elements for each object in the current workspace
+                for (HCObjectName objectNames:workspace.getObjects().keySet()) {
+                    for (HCObject object:workspace.getObjects().get(objectNames).values()) {
+                        Element objectElement =  doc.createElement("OBJECT");
+
+                        // Setting the ID number
+                        Attr idAttr = doc.createAttribute("ID");
+                        idAttr.appendChild(doc.createTextNode(String.valueOf(object.getID())));
+                        objectElement.setAttributeNode(idAttr);
+
+                        Attr nameAttr = doc.createAttribute("NAME");
+                        nameAttr.appendChild(doc.createTextNode(String.valueOf(objectNames.getName())));
+                        objectElement.setAttributeNode(nameAttr);
+
+                        for (Measurement measurement:object.getMeasurements().values()) {
+                            String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
+                            Attr measAttr = doc.createAttribute(attrName);
+                            String attrValue = df.format(measurement.getValue());
+                            measAttr.appendChild(doc.createTextNode(attrValue));
+                            objectElement.setAttributeNode(measAttr);
+                        }
+
+                        setElement.appendChild(objectElement);
+
+                    }
+                }
+
+                root.appendChild(setElement);
+
+            }
+
+            // Preparing the filepath and filename
+            String outPath = rootFolder+"\\"+"output.xml";
+
+            // write the content into xml file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(outPath);
+
+            transformer.transform(source, result);
+
+            if (verbose) System.out.println("Saved "+ outPath);
+
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void exportXLSX(WorkspaceCollection workspaces, ParameterCollection parameters) {
+        // Initialising the workbook
+        XSSFWorkbook workbook = new XSSFWorkbook();
+
+        // Adding relevant sheets
+        prepareParametersXLSX(workbook,parameters);
+        prepareMetadataXLSX(workbook,workspaces);
+        prepareImagesXLSX(workbook,workspaces);
+        prepareObjectsXLSX(workbook,workspaces);
+
+        // Writing the workbook to file
+        try {
+            String outPath = rootFolder+"\\"+"output.xlsx";
+            FileOutputStream outputStream = new FileOutputStream(outPath);
+            workbook.write(outputStream);
+            workbook.close();
+
+            if (verbose) System.out.println("Saved "+ outPath);
+
+        } catch (IOException e) {
+            e.printStackTrace();
 
         }
     }
 
-    public void export(ResultCollection results, File target_folder, String root_name){
-        // Checking an overriding target folder hasn't already been specified
-        if (this.target_folder != null) {
-            target_folder = this.target_folder;
+    private void prepareParametersXLSX(XSSFWorkbook workbook, ParameterCollection parameters) {
+        if (parameters != null) {
+            // Creating a sheet for parameters
+            XSSFSheet paramSheet = workbook.createSheet("Parameters");
 
+            // Adding a header row for the parameter titles
+            int paramRow = 0;
+            int paramCol = 0;
+            Row parameterHeader = paramSheet.createRow(paramRow++);
+
+            Cell nameHeaderCell = parameterHeader.createCell(paramCol++);
+            nameHeaderCell.setCellValue("PARAMETER");
+
+            Cell valueHeaderCell = parameterHeader.createCell(paramCol++);
+            valueHeaderCell.setCellValue("VALUE");
+
+            Cell moduleHeaderCell = parameterHeader.createCell(paramCol);
+            moduleHeaderCell.setCellValue("MODULE");
+
+            // Adding a new parameter to each row
+            int currentHash = 0;
+            for (Integer key : parameters.getParameters().keySet()) {
+                LinkedHashMap<String, Parameter> currentParameters = parameters.getParameters().get(key);
+
+                for (Parameter currParam : currentParameters.values()) {
+                    // Adding a blank line between parameters from different modules
+                    if (currentHash != currParam.getModule().hashCode()) {
+                        currentHash = currParam.getModule().hashCode();
+                        paramRow++;
+                    }
+
+                    paramCol = 0;
+                    Row row = paramSheet.createRow(paramRow++);
+
+                    Cell nameValueCell = row.createCell(paramCol++);
+                    nameValueCell.setCellValue(currParam.getName());
+
+                    Cell valueValueCell = row.createCell(paramCol++);
+                    valueValueCell.setCellValue(currParam.getValue().toString());
+
+                    Cell moduleValueCell = row.createCell(paramCol);
+                    moduleValueCell.setCellValue(currParam.getModule().getClass().getName());
+
+                }
+            }
         }
+    }
 
-        // Checking an overriding root filename hasn't already been specified
-        if (!this.root_name.equals("")) {
-            root_name = this.root_name;
+    private void prepareMetadataXLSX(XSSFWorkbook workbook, WorkspaceCollection workspaces) {
+        // Basing column names on the first workspace in the WorkspaceCollection
+        Workspace exampleWorkspace = workspaces.get(0);
 
+        if (exampleWorkspace != null) {
+            Metadata exampleMetadata = exampleWorkspace.getMetadata();
+
+            if (exampleMetadata.size() != 0) {
+                // Adding header rows for the metadata sheet.
+                XSSFSheet metaSheet = workbook.createSheet("Metadata");
+
+                // Creating the header row
+                int metaRow = 0;
+                int metaCol = 0;
+                Row metaHeaderRow = metaSheet.createRow(metaRow++);
+
+                // Setting the analysis ID.  This is the same value on each sheet
+                Cell IDHeaderCell = metaHeaderRow.createCell(metaCol++);
+                IDHeaderCell.setCellValue("ANALYSIS_ID");
+
+                // Running through all the metadata values, adding them as new columns
+                for (String name : exampleMetadata.keySet()) {
+                    Cell metaHeaderCell = metaHeaderRow.createCell(metaCol++);
+                    metaHeaderCell.setCellValue(name);
+
+                }
+
+                // Running through each workspace, adding the relevant values.  Metadata is stored as a LinkedHashMap, so values
+                // should always come off in the same order for the same analysis
+                for (Workspace workspace : workspaces) {
+                    Metadata metadata = workspace.getMetadata();
+
+                    metaCol = 0;
+                    Row metaValueRow = metaSheet.createRow(metaRow++);
+
+                    // Setting the analysis ID.  This is the same value on each sheet
+                    Cell metaValueCell = metaValueRow.createCell(metaCol++);
+                    metaValueCell.setCellValue(workspace.getID());
+
+                    // Running through all the metadata values, adding them as new columns
+                    for (String name : metadata.keySet()) {
+                        metaValueCell = metaValueRow.createCell(metaCol++);
+                        metaValueCell.setCellValue(metadata.getAsString(name));
+
+                    }
+                }
+            }
         }
+    }
 
-        runExportJob(results,target_folder, root_name);
+    private void prepareImagesXLSX(XSSFWorkbook workbook, WorkspaceCollection workspaces) {
+        // Basing column names on the first workspace in the WorkspaceCollection
+        Workspace exampleWorkspace = workspaces.get(0);
+
+        if (exampleWorkspace.getImages() != null) {
+            // Creating a new sheet for each image.  Each analysed file will have its own row.
+            HashMap<ImageName, XSSFSheet> imageSheets = new HashMap<>();
+            HashMap<ImageName, Integer> imageRows = new HashMap<>();
+
+            // Using the first workspace in the WorkspaceCollection to initialise column headers
+            for (ImageName imageName : exampleWorkspace.getImages().keySet()) {
+                Image image = exampleWorkspace.getImages().get(imageName);
+
+                if (image.getMeasurements().size() != 0) {
+                    // Creating relevant sheet prefixed with "IM"
+                    imageSheets.put(imageName, workbook.createSheet("IM_" + imageName.getName()));
+
+                    // Adding headers to each column
+                    int col = 0;
+
+                    imageRows.put(imageName, 1);
+                    Row imageHeaderRow = imageSheets.get(imageName).createRow(0);
+
+                    // Creating a cell holding the path to the analysed file
+                    Cell IDHeaderCell = imageHeaderRow.createCell(col++);
+                    IDHeaderCell.setCellValue("ANALYSIS_ID");
+
+                    for (Measurement measurement : image.getMeasurements().values()) {
+                        Cell measHeaderCell = imageHeaderRow.createCell(col++);
+                        String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
+                        measHeaderCell.setCellValue(measurementName);
+                    }
+                }
+            }
+
+            // Running through each Workspace, adding rows
+            for (Workspace workspace : workspaces) {
+                for (ImageName imageName : workspace.getImages().keySet()) {
+                    Image image = exampleWorkspace.getImages().get(imageName);
+
+                    if (image.getMeasurements().size() != 0) {
+                        // Adding the measurements from this image
+                        int col = 0;
+
+                        Row imageValueRow = imageSheets.get(imageName).createRow(imageRows.get(imageName));
+                        imageRows.compute(imageName, (k, v) -> v = v + 1);
+
+                        // Creating a cell holding the path to the analysed file
+                        Cell IDValueCell = imageValueRow.createCell(col++);
+                        IDValueCell.setCellValue(workspace.getID());
+
+                        for (Measurement measurement : image.getMeasurements().values()) {
+                            Cell measValueCell = imageValueRow.createCell(col++);
+                            measValueCell.setCellValue(measurement.getValue());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void prepareObjectsXLSX(XSSFWorkbook workbook,WorkspaceCollection workspaces) {
+        // Basing column names on the first workspace in the WorkspaceCollection
+        Workspace exampleWorkspace = workspaces.get(0);
+
+        if (exampleWorkspace != null) {
+            // Creating a new sheet for each object.  Each analysed file will have its own set of rows (one for each object)
+            HashMap<HCObjectName, XSSFSheet> objectSheets = new HashMap<>();
+            HashMap<HCObjectName, Integer> objectRows = new HashMap<>();
+
+            // Using the first workspace in the WorkspaceCollection to initialise column headers
+            for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
+                HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
+
+                if (objects.values().iterator().next().getMeasurements().size() != 0) {
+                    // Creating relevant sheet prefixed with "IM"
+                    objectSheets.put(objectName, workbook.createSheet("OBJ_" + objectName.getName()));
+
+                    // Adding headers to each column
+                    int col = 0;
+
+                    objectRows.put(objectName, 1);
+                    Row objectHeaderRow = objectSheets.get(objectName).createRow(0);
+
+                    // Creating a cell holding the path to the analysed file
+                    Cell IDHeaderCell = objectHeaderRow.createCell(col++);
+                    IDHeaderCell.setCellValue("ANALYSIS_ID");
+
+                    HCObject object = objects.values().iterator().next();
+                    for (Measurement measurement : object.getMeasurements().values()) {
+                        Cell measHeaderCell = objectHeaderRow.createCell(col++);
+                        String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
+                        measHeaderCell.setCellValue(measurementName);
+                    }
+                }
+            }
+
+            // Running through each Workspace, adding rows
+            for (Workspace workspace : workspaces) {
+                for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
+                    HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
+
+                    if (objects.values().iterator().next().getMeasurements().size() != 0) {
+                        for (HCObject object : objects.values()) {
+                            // Adding the measurements from this image
+                            int col = 0;
+
+                            Row objectValueRow = objectSheets.get(objectName).createRow(objectRows.get(objectName));
+                            objectRows.compute(objectName, (k, v) -> v = v + 1);
+
+                            // Creating a cell holding the path to the analysed file
+                            Cell IDValueCell = objectValueRow.createCell(col++);
+                            IDValueCell.setCellValue(workspace.getID());
+
+                            for (Measurement measurement : object.getMeasurements().values()) {
+                                Cell measValueCell = objectValueRow.createCell(col++);
+                                measValueCell.setCellValue(measurement.getValue());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void exportJSON(WorkspaceCollection workspaces, ParameterCollection parameters) {
+        System.out.println("[WARN] No JSON export currently implemented.  File not saved.");
 
     }
 
-    public void runExportJob(ResultCollection results, File target_folder, String root_name) {
 
+    // GETTERS AND SETTERS
+
+    public boolean isVerbose() {
+        return verbose;
     }
 
-    public static Element summariseCollection(Document doc, Result res) {
-        return summariseCollection(doc, res, "COLLECTION");
-
+    public void setVerbose(boolean verbose) {
+        this.verbose = verbose;
     }
 
-    public static Element summariseCollection(Document doc, Result res, String name) {
-        Element collection = doc.createElement(name);
-
-        Attr cell_type = doc.createAttribute("CELL_TYPE");
-        if (res.getCelltype() != null) {
-            cell_type.appendChild(doc.createTextNode(res.getCelltype()));
-        } else {
-            cell_type.appendChild(doc.createTextNode("NA"));
-        }
-        collection.setAttributeNode(cell_type);
-
-
-        Attr magnification = doc.createAttribute("MAG");
-        if (res.getMag() != null) {
-            magnification.appendChild(doc.createTextNode(res.getMag()));
-        } else {
-            magnification.appendChild(doc.createTextNode("NA"));
-        }
-        collection.setAttributeNode(magnification);
-
-
-        Attr comment = doc.createAttribute("COMMENT");
-        if (res.getComment() != null) {
-            comment.appendChild(doc.createTextNode(res.getComment()));
-        } else {
-            comment.appendChild(doc.createTextNode("NA"));
-        }
-        collection.setAttributeNode(comment);
-
-
-        Attr date = doc.createAttribute("DATE");
-        if (res.getYear() != 0 & res.getMonth() != 0 & res.getDay() != 0) {
-            date.appendChild(doc.createTextNode(String.valueOf(res.getDay())+"/"+String.valueOf(res.getMonth())+"/"+String.valueOf(res.getYear())));
-        } else {
-            date.appendChild(doc.createTextNode("NA"));
-        }
-        collection.setAttributeNode(date);
-
-
-//        Attr year = doc.createAttribute("YEAR");
-//        if (res.getYear() != 0) {
-//            year.appendChild(doc.createTextNode(String.valueOf(res.getYear())));
-//        } else {
-//            year.appendChild(doc.createTextNode("NA"));
-//        }
-//        collection.setAttributeNode(year);
-//
-//
-//        Attr month = doc.createAttribute("MONTH");
-//        if (res.getMonth() != 0) {
-//            month.appendChild(doc.createTextNode(String.valueOf(res.getMonth())));
-//        } else {
-//            month.appendChild(doc.createTextNode("NA"));
-//        }
-//        collection.setAttributeNode(month);
-//
-//
-//        Attr day = doc.createAttribute("DAY");
-//        if (res.getDay() != 0) {
-//            day.appendChild(doc.createTextNode(String.valueOf(res.getDay())));
-//        } else {
-//            day.appendChild(doc.createTextNode("NA"));
-//        }
-//        collection.setAttributeNode(day);
-
-        DecimalFormat time_df = new DecimalFormat("00");
-        Attr time = doc.createAttribute("TIME");
-        if (res.getHour() != 0 & res.getMin() != 0 & res.getSec() != 0) {
-            time.appendChild(doc.createTextNode(String.valueOf(time_df.format(res.getHour()))+":"+String.valueOf(time_df.format(res.getMin()))+":"+String.valueOf(time_df.format(res.getSec()))));
-        } else {
-            time.appendChild(doc.createTextNode("NA"));
-        }
-        collection.setAttributeNode(time);
-
-
-//        Attr hour = doc.createAttribute("HOUR");
-//        if (res.getHour() != 0) {
-//            hour.appendChild(doc.createTextNode(String.valueOf(res.getHour())));
-//        } else {
-//            hour.appendChild(doc.createTextNode("NA"));
-//        }
-//        collection.setAttributeNode(hour);
-//
-//
-//        Attr min = doc.createAttribute("MINUTE");
-//        if (res.getMin() != 0) {
-//            min.appendChild(doc.createTextNode(String.valueOf(res.getMin())));
-//        } else {
-//            min.appendChild(doc.createTextNode("NA"));
-//        }
-//        collection.setAttributeNode(min);
-//
-//
-//        Attr sec = doc.createAttribute("SECOND");
-//        if (res.getSec() != 0) {
-//            sec.appendChild(doc.createTextNode(String.valueOf(res.getSec())));
-//        } else {
-//            sec.appendChild(doc.createTextNode("NA"));
-//        }
-//        collection.setAttributeNode(sec);
-
-        return collection;
-
-    }
-
-    public static Element summariseAll(Document doc, Result res) {
-        return summariseAll(doc, res, "COLLECTION");
-
-    }
-
-    public static Element summariseAll(Document doc, Result res, String name) {
-        Element collection = doc.createElement(name);
-
-        if (res.getFile() != null) {
-            Attr filepath = doc.createAttribute("FILEPATH");
-            filepath.appendChild(doc.createTextNode(res.getFile().getAbsolutePath()));
-            collection.setAttributeNode(filepath);
-        }
-
-        if (res.getWell() != null) {
-            Attr well = doc.createAttribute("WELL");
-            well.appendChild(doc.createTextNode(String.valueOf(res.getWell())));
-            collection.setAttributeNode(well);
-        }
-
-        if (res.getField() != -1) {
-            Attr field = doc.createAttribute("FIELD");
-            field.appendChild(doc.createTextNode(String.valueOf(res.getField())));
-            collection.setAttributeNode(field);
-        }
-
-        if (res.getTimepoint() != -1) {
-            Attr timepoint = doc.createAttribute("TIMEPOINT");
-            timepoint.appendChild(doc.createTextNode(String.valueOf(res.getTimepoint())));
-            collection.setAttributeNode(timepoint);
-        }
-
-        if (res.getZ() != -1) {
-            Attr z_pos = doc.createAttribute("Z_POS");
-            z_pos.appendChild(doc.createTextNode(String.valueOf(res.getZ())));
-            collection.setAttributeNode(z_pos);
-        }
-
-        if (res.getChannel() != -1) {
-            Attr channel = doc.createAttribute("CHANNEL");
-            channel.appendChild(doc.createTextNode(String.valueOf(res.getChannel())));
-            collection.setAttributeNode(channel);
-        }
-
-        if (res.getCelltype() != null) {
-            Attr cell_type = doc.createAttribute("CELL_TYPE");
-            cell_type.appendChild(doc.createTextNode(res.getCelltype()));
-            collection.setAttributeNode(cell_type);
-        }
-
-        if (res.getMag() != null) {
-            Attr magnification = doc.createAttribute("MAG");
-            magnification.appendChild(doc.createTextNode(res.getMag()));
-            collection.setAttributeNode(magnification);
-        }
-
-        if (res.getComment() != null) {
-            Attr comment = doc.createAttribute("COMMENT");
-            comment.appendChild(doc.createTextNode(res.getComment()));
-            collection.setAttributeNode(comment);
-        }
-
-        if (res.getYear() != -1 & res.getMonth() != -1 & res.getDay() != -1) {
-            Attr date = doc.createAttribute("DATE");
-            date.appendChild(doc.createTextNode(String.valueOf(res.getDay())+"/"+String.valueOf(res.getMonth())+"/"+String.valueOf(res.getYear())));
-            collection.setAttributeNode(date);
-        }
-
-        if (res.getHour() != -1 & res.getMin() != -1 & res.getSec() != -1) {
-            DecimalFormat time_df = new DecimalFormat("00");
-            Attr time = doc.createAttribute("TIME");
-
-            time.appendChild(doc.createTextNode(String.valueOf(time_df.format(res.getHour()))+":"+String.valueOf(time_df.format(res.getMin()))+":"+String.valueOf(time_df.format(res.getSec()))));
-            collection.setAttributeNode(time);
-        } else if (res.getHour() != -1 & res.getMin() != -1 & res.getSec() == -1) {
-            DecimalFormat time_df = new DecimalFormat("00");
-            Attr time = doc.createAttribute("TIME");
-
-            time.appendChild(doc.createTextNode(String.valueOf(time_df.format(res.getHour()))+":"+String.valueOf(time_df.format(res.getMin()))));
-            collection.setAttributeNode(time);
-        }
-
-        return collection;
-
-    }
-
-    public static Element summariseExperiment(Document doc, Result res) {
-        return summariseExperiment(doc, res, "EXPERIMENT");
-
-    }
-
-    public static Element summariseExperiment(Document doc, Result res, String name) {
-        Element experiment = doc.createElement(name);
-
-        Attr filepath = doc.createAttribute("FILEPATH");
-        if (res.getFile() != null) {
-            filepath.appendChild(doc.createTextNode(res.getFile().getAbsolutePath()));
-        } else {
-            filepath.appendChild(doc.createTextNode("NA"));
-        }
-        experiment.setAttributeNode(filepath);
-
-        Attr well = doc.createAttribute("WELL");
-        well.appendChild(doc.createTextNode(String.valueOf(res.getWell())));
-        experiment.setAttributeNode(well);
-
-        Attr field = doc.createAttribute("FIELD");
-        field.appendChild(doc.createTextNode(String.valueOf(res.getField())));
-        experiment.setAttributeNode(field);
-
-        Attr timepoint = doc.createAttribute("TIMEPOINT");
-        timepoint.appendChild(doc.createTextNode(String.valueOf(res.getTimepoint())));
-        experiment.setAttributeNode(timepoint);
-
-        Attr z_pos = doc.createAttribute("Z_POS");
-        z_pos.appendChild(doc.createTextNode(String.valueOf(res.getZ())));
-        experiment.setAttributeNode(z_pos);
-
-        Attr channel = doc.createAttribute("CHANNEL");
-        channel.appendChild(doc.createTextNode(String.valueOf(res.getChannel())));
-        experiment.setAttributeNode(channel);
-
-        return experiment;
-
-    }
-
-    public String getOutputExt() {
-        return output_ext;
-    }
-
-    public void setOutputExt(String output_ext) {
-        this.output_ext = output_ext;
-    }
 }

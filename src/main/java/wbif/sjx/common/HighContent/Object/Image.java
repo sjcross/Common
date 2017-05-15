@@ -1,28 +1,64 @@
 package wbif.sjx.common.HighContent.Object;
 
 import ij.ImagePlus;
+import ij.plugin.ZProjector;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by steph on 30/04/2017.
  */
 public class Image {
-    private ImagePlus image;
-
+    private ImagePlus imagePlus;
+    private LinkedHashMap<String,Measurement> measurements = new LinkedHashMap<>();
 
     // CONSTRUCTORS
 
-    public Image (ImagePlus image) {
-        this.image = image;
+    public Image (ImagePlus imagePlus) {
+        this.imagePlus = imagePlus;
+    }
+
+
+    // PUBLIC METHODS
+
+    public Image projectImageInZ() {
+        ZProjector z_projector = new ZProjector(imagePlus);
+        z_projector.setMethod(ZProjector.MAX_METHOD);
+        z_projector.doProjection();
+        ImagePlus iplOut = z_projector.getProjection();
+
+        return new Image(iplOut);
+
+    }
+
+    public void addMeasurement(String name, Measurement measurement) {
+        measurements.put(name,measurement);
+
+    }
+
+    public Measurement getMeasurement(String name) {
+        return measurements.get(name);
+
     }
 
 
     // GETTERS AND SETTERS
 
-    public ImagePlus getImage() {
-        return image;
+    public ImagePlus getImagePlus() {
+        return imagePlus;
     }
 
-    public void setImage(ImagePlus image) {
-        this.image = image;
+    public void setImagePlus(ImagePlus imagePlus) {
+        this.imagePlus = imagePlus;
     }
+
+    public HashMap<String, Measurement> getMeasurements() {
+        return measurements;
+    }
+
+    public void setMeasurements(LinkedHashMap<String, Measurement> measurements) {
+        this.measurements = measurements;
+    }
+
 }
