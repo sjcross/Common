@@ -1,7 +1,7 @@
 package wbif.sjx.common.HighContent.Module;
 
 import wbif.sjx.common.HighContent.Object.*;
-import wbif.sjx.common.HighContent.Object.ParameterCollection;
+import wbif.sjx.common.HighContent.Object.HCParameterCollection;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,15 +9,15 @@ import java.util.HashMap;
 /**
  * Projects xy coordinates into a single plane.  Duplicates of xy coordinates at different heights are removed.
  */
-public class ProjectObjects implements Module {
+public class ProjectObjects extends HCModule {
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String OUTPUT_OBJECTS = "Output objects";
 
 
     @Override
-    public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
-        HCObjectName inputObjectsName = parameters.getValue(this,INPUT_OBJECTS);
-        HCObjectName outputObjectsName = parameters.getValue(this,OUTPUT_OBJECTS);
+    public void execute(HCWorkspace workspace, boolean verbose) {
+        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
+        HCObjectName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
 
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
         HCObjectSet outputObjects = new HCObjectSet();
@@ -69,14 +69,19 @@ public class ProjectObjects implements Module {
     }
 
     @Override
-    public ParameterCollection initialiseParameters() {
-        ParameterCollection parameters = new ParameterCollection();
+    public HCParameterCollection initialiseParameters() {
+        HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object projector",false));
-        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
-        parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
+        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object projector",false));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
+        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null,false));
 
         return parameters;
 
+    }
+
+    @Override
+    public HCParameterCollection getActiveParameters() {
+        return parameters;
     }
 }

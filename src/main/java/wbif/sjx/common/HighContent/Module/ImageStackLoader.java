@@ -5,7 +5,7 @@ import ij.ImagePlus;
 import ij.io.Opener;
 import wbif.sjx.common.HighContent.Extractor.Extractor;
 import wbif.sjx.common.HighContent.Object.*;
-import wbif.sjx.common.HighContent.Object.ParameterCollection;
+import wbif.sjx.common.HighContent.Object.HCParameterCollection;
 import wbif.sjx.common.HighContent.Process.StackComparator;
 
 import java.io.File;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 /**
  * Created by steph on 30/04/2017.
  */
-public class ImageStackLoader implements Module{
+public class ImageStackLoader extends HCModule {
     public static final String EXTRACTOR = "Extractor";
     public static final String ORDER_FIELD = "Order field";
     public static final String STATIC_FIELDS = "Static fields";
@@ -23,29 +23,29 @@ public class ImageStackLoader implements Module{
     public static final String SET_FIELDS = "Set fields";
 
     @Override
-    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
+    public void execute(HCWorkspace workspace, boolean verbose) {
         // Getting parameters
-        Extractor extractor = parameters.getValue(this,EXTRACTOR);
-        String orderField = parameters.getValue(this,ORDER_FIELD);
-        ArrayList<String> staticFields = parameters.getValue(this,STATIC_FIELDS);
-        HashMap<String,String> setFields = parameters.getValue(this,SET_FIELDS);
-        ImageName outputImage = parameters.getValue(this,OUTPUT_IMAGE);
+        Extractor extractor = parameters.getValue(EXTRACTOR);
+        String orderField = parameters.getValue(ORDER_FIELD);
+        ArrayList<String> staticFields = parameters.getValue(STATIC_FIELDS);
+        HashMap<String,String> setFields = parameters.getValue(SET_FIELDS);
+        HCImageName outputImage = parameters.getValue(OUTPUT_IMAGE);
 
         // Getting files
         File referenceFile = workspace.getMetadata().getFile();
         File[] files = referenceFile.getParentFile().listFiles();
 
         // Creating a Result object holding parameters about the reference file
-        Metadata referenceResult = new Metadata();
+        HCMetadata referenceResult = new HCMetadata();
         referenceResult.setFile(referenceFile);
         extractor.extract(referenceResult,referenceFile.getName());
 
         // Creating a structure to store only Result objects containing file parameters matching those specified
-        ArrayList<Metadata> results = new ArrayList<>();
+        ArrayList<HCMetadata> results = new ArrayList<>();
 
         // Running through all provided files, extracting parameters
         for (File file:files) {
-            Metadata result = new Metadata();
+            HCMetadata result = new HCMetadata();
             result.setFile(file);
             if (extractor.extract(result,file.getName())) {
                 // Checking if fixed fields are the same as for the template
@@ -81,7 +81,7 @@ public class ImageStackLoader implements Module{
         ImagePlus ipl = IJ.createHyperStack("STACK_"+referenceFile.getName(),refIpl.getWidth(),refIpl.getHeight(),1,results.size(),1,refIpl.getBitDepth());
 
         int iter = 1;
-        for (Metadata res:results) {
+        for (HCMetadata res:results) {
             ipl.setPosition(iter);
 
             ImagePlus singleIpl = opener.openImage(res.getFile().getAbsolutePath());
@@ -93,22 +93,27 @@ public class ImageStackLoader implements Module{
 
         ipl.setPosition(1);
 
-        workspace.addImage(outputImage,new Image(ipl));
+        workspace.addImage(outputImage,new HCImage(ipl));
     }
 
     @Override
-    public ParameterCollection initialiseParameters() {
-        ParameterCollection parameters = new ParameterCollection();
+    public HCParameterCollection initialiseParameters() {
+        HCParameterCollection parameters = new HCParameterCollection();
 
         // Setting the input image stack name
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Image stack loader",false));
-        parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
-        parameters.addParameter(new Parameter(this,EXTRACTOR,Parameter.OBJECT,null,false));
-        parameters.addParameter(new Parameter(this,ORDER_FIELD,Parameter.STRING,"",false));
-        parameters.addParameter(new Parameter(this,STATIC_FIELDS,Parameter.OBJECT,new ArrayList<String>(),false));
-        parameters.addParameter(new Parameter(this,SET_FIELDS,Parameter.OBJECT,new HashMap<String,String>(),false));
+        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Image stack loader",false));
+        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null,false));
+        parameters.addParameter(new HCParameter(this,EXTRACTOR, HCParameter.OBJECT,null,false));
+        parameters.addParameter(new HCParameter(this,ORDER_FIELD, HCParameter.STRING,"",false));
+        parameters.addParameter(new HCParameter(this,STATIC_FIELDS, HCParameter.OBJECT,new ArrayList<String>(),false));
+        parameters.addParameter(new HCParameter(this,SET_FIELDS, HCParameter.OBJECT,new HashMap<String,String>(),false));
 
         return parameters;
 
+    }
+
+    @Override
+    public HCParameterCollection getActiveParameters() {
+        return parameters;
     }
 }

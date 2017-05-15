@@ -1,7 +1,6 @@
 package wbif.sjx.common.HighContent.Object;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -20,7 +19,8 @@ public class HCObject {
     private HashMap<Integer, ArrayList<Integer>> coordinates = new HashMap<>();
     private HCObject parent = null;
     private ArrayList<HCObject> children = new ArrayList<HCObject>();
-    private HashMap<String,Measurement> measurements = new HashMap<>();
+    private HashMap<String,HCSingleMeasurement> singleMeasurements = new HashMap<>();
+    private HashMap<String,HCMultiMeasurement> multiMeasurements = new HashMap<>();
     private String calibratedUnits = "px";
 
     /**
@@ -67,13 +67,34 @@ public class HCObject {
         return dimSize;
     }
 
-    public void addMeasurement(String name, Measurement measurement) {
-        measurements.put(name,measurement);
+    public void addSingleMeasurement(String name, HCSingleMeasurement singleMeasurement) {
+        singleMeasurements.put(name,singleMeasurement);
 
     }
 
-    public Measurement getMeasurement(String name) {
-        return measurements.get(name);
+    public HCSingleMeasurement getSingleMeasurement(String name) {
+        return singleMeasurements.get(name);
+
+    }
+
+    public void addMultiMeasurement(String name, HCMultiMeasurement multiMeasurement) {
+        multiMeasurements.put(name,multiMeasurement);
+
+    }
+
+    public HCMultiMeasurement getMultiMeasurement(String name) {
+        return multiMeasurements.get(name);
+
+    }
+
+    public void setMultiMeasurementPoint(String name, int[] coordinate, double value) {
+        multiMeasurements.computeIfAbsent(name,k -> new HCMultiMeasurement(name));
+        multiMeasurements.get(name).addValue(coordinate,value);
+
+    }
+
+    public double getMultiMeasurementPoint(String name, int[] coordinate) {
+        return multiMeasurements.get(name).getValue(coordinate);
 
     }
 
@@ -133,10 +154,12 @@ public class HCObject {
 
     public HashMap<Integer, ArrayList<Integer>> getCoordinates() {
         return coordinates;
+
     }
 
     public void setCoordinates(HashMap<Integer, ArrayList<Integer>> coordinates) {
         this.coordinates = coordinates;
+
     }
 
     public HCObject getParent() {
@@ -163,12 +186,21 @@ public class HCObject {
         children.remove(child);
     }
 
-    public HashMap<String, Measurement> getMeasurements() {
-        return measurements;
+    public HashMap<String, HCSingleMeasurement> getSingleMeasurements() {
+        return singleMeasurements;
     }
 
-    public void setMeasurements(HashMap<String, Measurement> measurements) {
-        this.measurements = measurements;
+    public void setSingleMeasurements(HashMap<String, HCSingleMeasurement> singleMeasurements) {
+        this.singleMeasurements = singleMeasurements;
+
+    }
+
+    public HashMap<String, HCMultiMeasurement> getMultiMeasurements() {
+        return multiMeasurements;
+    }
+
+    public void setMultiMeasurements(HashMap<String, HCMultiMeasurement> multiMeasurements) {
+        this.multiMeasurements = multiMeasurements;
     }
 
     public HashMap<Integer, Double> getCalibration() {

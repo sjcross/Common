@@ -6,17 +6,17 @@ import java.util.HashMap;
 /**
  * Created by sc13967 on 02/05/2017.
  */
-public class Workspace {
+public class HCWorkspace {
     private HashMap<HCObjectName, HCObjectSet> objects = new HashMap<>();
-    private HashMap<ImageName, Image> images = new HashMap<>();
-    private Metadata metadata = new Metadata();
+    private HashMap<HCImageName, HCImage> images = new HashMap<>();
+    private HCMetadata metadata = new HCMetadata();
     private int ID;
 
     // CONSTRUCTOR
 
-    public Workspace(int ID, File currentFile) {
+    public HCWorkspace(int ID, File currentFile) {
         this.ID = ID;
-        metadata.put(Metadata.FILE,currentFile);
+        metadata.put(HCMetadata.FILE,currentFile);
 
     }
 
@@ -30,7 +30,7 @@ public class Workspace {
         objects.remove(name);
     }
 
-    public void addImage(ImageName name, Image image) {
+    public void addImage(HCImageName name, HCImage image) {
         images.put(name, image);
     }
 
@@ -45,7 +45,7 @@ public class Workspace {
     public void clearAllImages(boolean retainMeasurements) {
         if (retainMeasurements) {
             // Sets the ImagePlus to null, but leaves measurements
-            for (Image image:images.values()) {
+            for (HCImage image:images.values()) {
                 image.setImagePlus(null);
             }
 
@@ -66,19 +66,19 @@ public class Workspace {
         this.objects = objects;
     }
 
-    public HashMap<ImageName, Image> getImages() {
+    public HashMap<HCImageName, HCImage> getImages() {
         return images;
     }
 
-    public void setImages(HashMap<ImageName, Image> images) {
+    public void setImages(HashMap<HCImageName, HCImage> images) {
         this.images = images;
     }
 
-    public Metadata getMetadata() {
+    public HCMetadata getMetadata() {
         return metadata;
     }
 
-    public void setMetadata(Metadata metadata) {
+    public void setMetadata(HCMetadata metadata) {
         this.metadata = metadata;
     }
 

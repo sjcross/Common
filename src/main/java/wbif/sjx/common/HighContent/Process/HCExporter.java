@@ -7,6 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import wbif.sjx.common.HighContent.Module.HCModule;
 import wbif.sjx.common.HighContent.Object.*;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,7 +19,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -28,7 +28,7 @@ import java.util.LinkedHashMap;
 /**
  * Created by sc13967 on 12/05/2017.
  */
-public class Exporter {
+public class HCExporter {
     public static final int XML_EXPORT = 0;
     public static final int XLSX_EXPORT = 1;
     public static final int JSON_EXPORT = 2;
@@ -40,7 +40,7 @@ public class Exporter {
 
     // CONSTRUCTOR
 
-    public Exporter(File rootFolder, int exportMode) {
+    public HCExporter(File rootFolder, int exportMode) {
         this.rootFolder = rootFolder;
         this.exportMode = exportMode;
 
@@ -49,25 +49,25 @@ public class Exporter {
 
     // PUBLIC METHODS
 
-    public void exportResults(WorkspaceCollection workspaces) {
+    public void exportResults(HCWorkspaceCollection workspaces) {
         exportResults(workspaces,null);
 
     }
 
-    public void exportResults(WorkspaceCollection workspaces, ParameterCollection parameters) {
+    public void exportResults(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
         if (exportMode == XML_EXPORT) {
-            exportXML(workspaces,parameters);
+            exportXML(workspaces,modules);
 
         } else if (exportMode == XLSX_EXPORT) {
-            exportXLSX(workspaces,parameters);
+            exportXLSX(workspaces,modules);
 
         } else if (exportMode == JSON_EXPORT) {
-            exportJSON(workspaces,parameters);
+            exportJSON(workspaces,modules);
 
         }
     }
 
-    private void exportXML(WorkspaceCollection workspaces, ParameterCollection parameters) {
+    private void exportXML(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
         // Initialising DecimalFormat
         DecimalFormat df = new DecimalFormat("0.000E0");
 
@@ -77,61 +77,57 @@ public class Exporter {
             Element root = doc.createElement("ROOT");
             doc.appendChild(root);
 
-            // Running through all parameters, adding them if present
-            if (parameters != null) {
-                Element parametersElement =  doc.createElement("PARAMETERS");
+            Element parametersElement =  doc.createElement("PARAMETERS");
 
-                // Running through each paramter set (one for each module
-                for (Integer key:parameters.getParameters().keySet()) {
-                    HashMap<String,Parameter> moduleParameters = parameters.getParameters().get(key);
+            // Running through each parameter set (one for each module
+            for (HCModule module:modules) {
+                LinkedHashMap<String,HCParameter> parameters = module.getActiveParameters().getParameters();
 
-                    boolean first = true;
-                    Element moduleElement =  doc.createElement("MODULE");
-                    for (Parameter currParam:moduleParameters.values()) {
-                        // For the first parameter in a module, adding the name
-                        if (first) {
-                            Attr nameAttr = doc.createAttribute("NAME");
-                            nameAttr.appendChild(doc.createTextNode(currParam.getModule().getClass().getName()));
-                            moduleElement.setAttributeNode(nameAttr);
-
-                            Attr hashAttr = doc.createAttribute("HASH");
-                            hashAttr.appendChild(doc.createTextNode(String.valueOf(currParam.getModule().hashCode())));
-                            moduleElement.setAttributeNode(hashAttr);
-
-                            first = false;
-                        }
-
-                        // Adding the name and value of the current parameter
-                        Element parameterElement =  doc.createElement("PARAMETER");
-
+                boolean first = true;
+                Element moduleElement =  doc.createElement("MODULE");
+                for (HCParameter currParam:parameters.values()) {
+                    // For the first parameter in a module, adding the name
+                    if (first) {
                         Attr nameAttr = doc.createAttribute("NAME");
-                        nameAttr.appendChild(doc.createTextNode(currParam.getName()));
-                        parameterElement.setAttributeNode(nameAttr);
+                        nameAttr.appendChild(doc.createTextNode(currParam.getModule().getClass().getName()));
+                        moduleElement.setAttributeNode(nameAttr);
 
-                        Attr valueAttr = doc.createAttribute("VALUE");
-                        valueAttr.appendChild(doc.createTextNode(currParam.getValue().toString()));
-                        parameterElement.setAttributeNode(valueAttr);
+                        Attr hashAttr = doc.createAttribute("HASH");
+                        hashAttr.appendChild(doc.createTextNode(String.valueOf(currParam.getModule().hashCode())));
+                        moduleElement.setAttributeNode(hashAttr);
 
-                        moduleElement.appendChild(parameterElement);
-
+                        first = false;
                     }
 
-                    // Adding current module to parameters
-                    parametersElement.appendChild(moduleElement);
+                    // Adding the name and value of the current parameter
+                    Element parameterElement =  doc.createElement("PARAMETER");
+
+                    Attr nameAttr = doc.createAttribute("NAME");
+                    nameAttr.appendChild(doc.createTextNode(currParam.getName()));
+                    parameterElement.setAttributeNode(nameAttr);
+
+                    Attr valueAttr = doc.createAttribute("VALUE");
+                    valueAttr.appendChild(doc.createTextNode(currParam.getValue().toString()));
+                    parameterElement.setAttributeNode(valueAttr);
+
+                    moduleElement.appendChild(parameterElement);
 
                 }
 
-                // Adding parameters to main file
-                root.appendChild(parametersElement);
+                // Adding current module to parameters
+                parametersElement.appendChild(moduleElement);
 
             }
 
+            // Adding parameters to main file
+            root.appendChild(parametersElement);
+
             // Running through each workspace (each corresponds to a file) adding file information
-            for (Workspace workspace:workspaces) {
+            for (HCWorkspace workspace:workspaces) {
                 Element setElement =  doc.createElement("SET");
 
                 // Adding metadata from the workspace
-                Metadata metadata = workspace.getMetadata();
+                HCMetadata metadata = workspace.getMetadata();
                 for (String key:metadata.keySet()) {
                     String attrName = key.toUpperCase();
                     Attr attr = doc.createAttribute(attrName);
@@ -141,8 +137,8 @@ public class Exporter {
                 }
 
                 // Creating new elements for each image in the current workspace with at least one measurement
-                for (ImageName imageName:workspace.getImages().keySet()) {
-                    Image image = workspace.getImages().get(imageName);
+                for (HCImageName imageName:workspace.getImages().keySet()) {
+                    HCImage image = workspace.getImages().get(imageName);
 
                     if (image.getMeasurements() != null) {
                         Element imageElement = doc.createElement("IMAGE");
@@ -151,7 +147,7 @@ public class Exporter {
                         nameAttr.appendChild(doc.createTextNode(String.valueOf(imageName.getName())));
                         imageElement.setAttributeNode(nameAttr);
 
-                        for (Measurement measurement : image.getMeasurements().values()) {
+                        for (HCSingleMeasurement measurement : image.getMeasurements().values()) {
                             String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                             Attr measAttr = doc.createAttribute(attrName);
                             String attrValue = df.format(measurement.getValue());
@@ -178,7 +174,7 @@ public class Exporter {
                         nameAttr.appendChild(doc.createTextNode(String.valueOf(objectNames.getName())));
                         objectElement.setAttributeNode(nameAttr);
 
-                        for (Measurement measurement:object.getMeasurements().values()) {
+                        for (HCSingleMeasurement measurement:object.getSingleMeasurements().values()) {
                             String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                             Attr measAttr = doc.createAttribute(attrName);
                             String attrValue = df.format(measurement.getValue());
@@ -218,12 +214,12 @@ public class Exporter {
         }
     }
 
-    private void exportXLSX(WorkspaceCollection workspaces, ParameterCollection parameters) {
+    private void exportXLSX(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
         // Initialising the workbook
         XSSFWorkbook workbook = new XSSFWorkbook();
 
         // Adding relevant sheets
-        prepareParametersXLSX(workbook,parameters);
+        prepareParametersXLSX(workbook,modules);
         prepareMetadataXLSX(workbook,workspaces);
         prepareImagesXLSX(workbook,workspaces);
         prepareObjectsXLSX(workbook,workspaces);
@@ -243,60 +239,54 @@ public class Exporter {
         }
     }
 
-    private void prepareParametersXLSX(XSSFWorkbook workbook, ParameterCollection parameters) {
-        if (parameters != null) {
-            // Creating a sheet for parameters
-            XSSFSheet paramSheet = workbook.createSheet("Parameters");
+    private void prepareParametersXLSX(XSSFWorkbook workbook, HCModuleCollection modules) {
+        // Creating a sheet for parameters
+        XSSFSheet paramSheet = workbook.createSheet("Parameters");
 
-            // Adding a header row for the parameter titles
-            int paramRow = 0;
-            int paramCol = 0;
-            Row parameterHeader = paramSheet.createRow(paramRow++);
+        // Adding a header row for the parameter titles
+        int paramRow = 0;
+        int paramCol = 0;
+        Row parameterHeader = paramSheet.createRow(paramRow++);
 
-            Cell nameHeaderCell = parameterHeader.createCell(paramCol++);
-            nameHeaderCell.setCellValue("PARAMETER");
+        Cell nameHeaderCell = parameterHeader.createCell(paramCol++);
+        nameHeaderCell.setCellValue("PARAMETER");
 
-            Cell valueHeaderCell = parameterHeader.createCell(paramCol++);
-            valueHeaderCell.setCellValue("VALUE");
+        Cell valueHeaderCell = parameterHeader.createCell(paramCol++);
+        valueHeaderCell.setCellValue("VALUE");
 
-            Cell moduleHeaderCell = parameterHeader.createCell(paramCol);
-            moduleHeaderCell.setCellValue("MODULE");
+        Cell moduleHeaderCell = parameterHeader.createCell(paramCol);
+        moduleHeaderCell.setCellValue("MODULE");
 
-            // Adding a new parameter to each row
-            int currentHash = 0;
-            for (Integer key : parameters.getParameters().keySet()) {
-                LinkedHashMap<String, Parameter> currentParameters = parameters.getParameters().get(key);
+        // Adding a new parameter to each row
+        for (HCModule module:modules) {
+            LinkedHashMap<String,HCParameter> parameters = module.getActiveParameters().getParameters();
 
-                for (Parameter currParam : currentParameters.values()) {
-                    // Adding a blank line between parameters from different modules
-                    if (currentHash != currParam.getModule().hashCode()) {
-                        currentHash = currParam.getModule().hashCode();
-                        paramRow++;
-                    }
+            paramRow++;
 
-                    paramCol = 0;
-                    Row row = paramSheet.createRow(paramRow++);
+            for (HCParameter currParam : parameters.values()) {
+                paramCol = 0;
+                Row row = paramSheet.createRow(paramRow++);
 
-                    Cell nameValueCell = row.createCell(paramCol++);
-                    nameValueCell.setCellValue(currParam.getName());
+                Cell nameValueCell = row.createCell(paramCol++);
+                nameValueCell.setCellValue(currParam.getName());
 
-                    Cell valueValueCell = row.createCell(paramCol++);
-                    valueValueCell.setCellValue(currParam.getValue().toString());
+                Cell valueValueCell = row.createCell(paramCol++);
+                valueValueCell.setCellValue(currParam.getValue().toString());
 
-                    Cell moduleValueCell = row.createCell(paramCol);
-                    moduleValueCell.setCellValue(currParam.getModule().getClass().getName());
+                Cell moduleValueCell = row.createCell(paramCol);
+                moduleValueCell.setCellValue(currParam.getModule().getClass().getName());
 
-                }
             }
+
         }
     }
 
-    private void prepareMetadataXLSX(XSSFWorkbook workbook, WorkspaceCollection workspaces) {
+    private void prepareMetadataXLSX(XSSFWorkbook workbook, HCWorkspaceCollection workspaces) {
         // Basing column names on the first workspace in the WorkspaceCollection
-        Workspace exampleWorkspace = workspaces.get(0);
+        HCWorkspace exampleWorkspace = workspaces.get(0);
 
         if (exampleWorkspace != null) {
-            Metadata exampleMetadata = exampleWorkspace.getMetadata();
+            HCMetadata exampleMetadata = exampleWorkspace.getMetadata();
 
             if (exampleMetadata.size() != 0) {
                 // Adding header rows for the metadata sheet.
@@ -320,8 +310,8 @@ public class Exporter {
 
                 // Running through each workspace, adding the relevant values.  Metadata is stored as a LinkedHashMap, so values
                 // should always come off in the same order for the same analysis
-                for (Workspace workspace : workspaces) {
-                    Metadata metadata = workspace.getMetadata();
+                for (HCWorkspace workspace : workspaces) {
+                    HCMetadata metadata = workspace.getMetadata();
 
                     metaCol = 0;
                     Row metaValueRow = metaSheet.createRow(metaRow++);
@@ -341,18 +331,18 @@ public class Exporter {
         }
     }
 
-    private void prepareImagesXLSX(XSSFWorkbook workbook, WorkspaceCollection workspaces) {
+    private void prepareImagesXLSX(XSSFWorkbook workbook, HCWorkspaceCollection workspaces) {
         // Basing column names on the first workspace in the WorkspaceCollection
-        Workspace exampleWorkspace = workspaces.get(0);
+        HCWorkspace exampleWorkspace = workspaces.get(0);
 
         if (exampleWorkspace.getImages() != null) {
             // Creating a new sheet for each image.  Each analysed file will have its own row.
-            HashMap<ImageName, XSSFSheet> imageSheets = new HashMap<>();
-            HashMap<ImageName, Integer> imageRows = new HashMap<>();
+            HashMap<HCImageName, XSSFSheet> imageSheets = new HashMap<>();
+            HashMap<HCImageName, Integer> imageRows = new HashMap<>();
 
             // Using the first workspace in the WorkspaceCollection to initialise column headers
-            for (ImageName imageName : exampleWorkspace.getImages().keySet()) {
-                Image image = exampleWorkspace.getImages().get(imageName);
+            for (HCImageName imageName : exampleWorkspace.getImages().keySet()) {
+                HCImage image = exampleWorkspace.getImages().get(imageName);
 
                 if (image.getMeasurements().size() != 0) {
                     // Creating relevant sheet prefixed with "IM"
@@ -368,7 +358,7 @@ public class Exporter {
                     Cell IDHeaderCell = imageHeaderRow.createCell(col++);
                     IDHeaderCell.setCellValue("ANALYSIS_ID");
 
-                    for (Measurement measurement : image.getMeasurements().values()) {
+                    for (HCSingleMeasurement measurement : image.getMeasurements().values()) {
                         Cell measHeaderCell = imageHeaderRow.createCell(col++);
                         String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
@@ -377,9 +367,9 @@ public class Exporter {
             }
 
             // Running through each Workspace, adding rows
-            for (Workspace workspace : workspaces) {
-                for (ImageName imageName : workspace.getImages().keySet()) {
-                    Image image = exampleWorkspace.getImages().get(imageName);
+            for (HCWorkspace workspace : workspaces) {
+                for (HCImageName imageName : workspace.getImages().keySet()) {
+                    HCImage image = exampleWorkspace.getImages().get(imageName);
 
                     if (image.getMeasurements().size() != 0) {
                         // Adding the measurements from this image
@@ -392,7 +382,7 @@ public class Exporter {
                         Cell IDValueCell = imageValueRow.createCell(col++);
                         IDValueCell.setCellValue(workspace.getID());
 
-                        for (Measurement measurement : image.getMeasurements().values()) {
+                        for (HCSingleMeasurement measurement : image.getMeasurements().values()) {
                             Cell measValueCell = imageValueRow.createCell(col++);
                             measValueCell.setCellValue(measurement.getValue());
                         }
@@ -402,9 +392,9 @@ public class Exporter {
         }
     }
 
-    private void prepareObjectsXLSX(XSSFWorkbook workbook,WorkspaceCollection workspaces) {
+    private void prepareObjectsXLSX(XSSFWorkbook workbook,HCWorkspaceCollection workspaces) {
         // Basing column names on the first workspace in the WorkspaceCollection
-        Workspace exampleWorkspace = workspaces.get(0);
+        HCWorkspace exampleWorkspace = workspaces.get(0);
 
         if (exampleWorkspace != null) {
             // Creating a new sheet for each object.  Each analysed file will have its own set of rows (one for each object)
@@ -415,7 +405,7 @@ public class Exporter {
             for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
                 HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
 
-                if (objects.values().iterator().next().getMeasurements().size() != 0) {
+                if (objects.values().iterator().next().getSingleMeasurements().size() != 0) {
                     // Creating relevant sheet prefixed with "IM"
                     objectSheets.put(objectName, workbook.createSheet("OBJ_" + objectName.getName()));
 
@@ -430,7 +420,7 @@ public class Exporter {
                     IDHeaderCell.setCellValue("ANALYSIS_ID");
 
                     HCObject object = objects.values().iterator().next();
-                    for (Measurement measurement : object.getMeasurements().values()) {
+                    for (HCSingleMeasurement measurement : object.getSingleMeasurements().values()) {
                         Cell measHeaderCell = objectHeaderRow.createCell(col++);
                         String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
@@ -439,11 +429,11 @@ public class Exporter {
             }
 
             // Running through each Workspace, adding rows
-            for (Workspace workspace : workspaces) {
+            for (HCWorkspace workspace : workspaces) {
                 for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
                     HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
 
-                    if (objects.values().iterator().next().getMeasurements().size() != 0) {
+                    if (objects.values().iterator().next().getSingleMeasurements().size() != 0) {
                         for (HCObject object : objects.values()) {
                             // Adding the measurements from this image
                             int col = 0;
@@ -455,7 +445,7 @@ public class Exporter {
                             Cell IDValueCell = objectValueRow.createCell(col++);
                             IDValueCell.setCellValue(workspace.getID());
 
-                            for (Measurement measurement : object.getMeasurements().values()) {
+                            for (HCSingleMeasurement measurement : object.getSingleMeasurements().values()) {
                                 Cell measValueCell = objectValueRow.createCell(col++);
                                 measValueCell.setCellValue(measurement.getValue());
                             }
@@ -466,7 +456,7 @@ public class Exporter {
         }
     }
 
-    private void exportJSON(WorkspaceCollection workspaces, ParameterCollection parameters) {
+    private void exportJSON(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
         System.out.println("[WARN] No JSON export currently implemented.  File not saved.");
 
     }

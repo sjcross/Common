@@ -6,50 +6,11 @@ import wbif.sjx.common.HighContent.Object.*;
 /**
  * Returns a spherical object around a point object.  This is useful for calculating local object features.
  */
-public class GetLocalObjectRegion implements Module {
+public class GetLocalObjectRegion extends HCModule {
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String OUTPUT_OBJECTS = "Output objects";
     public static final String LOCAL_RADIUS = "Local radius";
     public static final String CALIBRATED_RADIUS = "Calibrated radius";
-
-    @Override
-    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
-        if (verbose) System.out.println("   Calculating local volume around object centroids");
-
-        // Getting input objects
-        HCObjectName inputObjectsName = parameters.getValue(this,INPUT_OBJECTS);
-        HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
-
-        // Getting output objects name
-        HCObjectName outputObjectsName = parameters.getValue(this,OUTPUT_OBJECTS);
-
-        // Getting parameters
-        boolean calibrated = parameters.getValue(this,CALIBRATED_RADIUS);
-        double radius = parameters.getValue(this,LOCAL_RADIUS);
-        if (verbose & calibrated) System.out.println("       Using local radius of "+radius+" px");
-        if (verbose & !calibrated) System.out.println("       Using local radius of "+radius+" ");
-
-        // Getting local region
-        HCObjectSet outputObjects = getLocalRegions(inputObjects, radius, calibrated);
-
-        // Adding output objects to workspace
-        workspace.addObjects(outputObjectsName,outputObjects);
-        if (verbose) System.out.println("       Adding objects ("+outputObjectsName+") to workspace");
-
-    }
-
-    @Override
-    public ParameterCollection initialiseParameters() {
-        ParameterCollection parameters = new ParameterCollection();
-
-        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,"Obj1",false));
-        parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,"Obj2",false));
-        parameters.addParameter(new Parameter(this,LOCAL_RADIUS,Parameter.DOUBLE,10.0,true));
-        parameters.addParameter(new Parameter(this,CALIBRATED_RADIUS,Parameter.BOOLEAN,false,false));
-
-        return parameters;
-
-    }
 
     public static HCObjectSet getLocalRegions(HCObjectSet inputObjects, double radius, boolean calibrated) {
         // Creating store for output objects
@@ -113,5 +74,50 @@ public class GetLocalObjectRegion implements Module {
         return outputObjects;
 
     }
+
+    @Override
+    public void execute(HCWorkspace workspace, boolean verbose) {
+        if (verbose) System.out.println("   Calculating local volume around object centroids");
+
+        // Getting input objects
+        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
+        HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
+
+        // Getting output objects name
+        HCObjectName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
+
+        // Getting parameters
+        boolean calibrated = parameters.getValue(CALIBRATED_RADIUS);
+        double radius = parameters.getValue(LOCAL_RADIUS);
+        if (verbose & calibrated) System.out.println("       Using local radius of "+radius+" px");
+        if (verbose & !calibrated) System.out.println("       Using local radius of "+radius+" ");
+
+        // Getting local region
+        HCObjectSet outputObjects = getLocalRegions(inputObjects, radius, calibrated);
+
+        // Adding output objects to workspace
+        workspace.addObjects(outputObjectsName,outputObjects);
+        if (verbose) System.out.println("       Adding objects ("+outputObjectsName+") to workspace");
+
+    }
+
+    @Override
+    public HCParameterCollection initialiseParameters() {
+        HCParameterCollection parameters = new HCParameterCollection();
+
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,"Obj1",false));
+        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,"Obj2",false));
+        parameters.addParameter(new HCParameter(this,LOCAL_RADIUS, HCParameter.DOUBLE,10.0,true));
+        parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false,false));
+
+        return parameters;
+
+    }
+
+    @Override
+    public HCParameterCollection getActiveParameters() {
+        return parameters;
+    }
+
 
 }
