@@ -2,6 +2,9 @@ package wbif.sjx.common.HighContent.Module;
 
 import wbif.sjx.common.HighContent.Object.*;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 
 /**
  * Returns a spherical object around a point object.  This is useful for calculating local object features.
@@ -67,8 +70,10 @@ public class GetLocalObjectRegion extends HCModule {
             }
 
             // Copying additional dimensions from inputObject
-            outputObject.setCoordinates(HCObject.C,inputObject.getCoordinates(HCObject.C));
-            outputObject.setCoordinates(HCObject.T,inputObject.getCoordinates(HCObject.T));
+            HashMap<Integer,Integer> positions = inputObject.getPositions();
+            for (Entry<Integer,Integer> entry:positions.entrySet()) {
+                outputObject.setPosition(entry.getKey(),entry.getValue());
+            }
 
             // Adding object to HashMap
             outputObjects.put(outputObject.getID(),outputObject);

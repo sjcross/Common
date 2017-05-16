@@ -87,10 +87,10 @@ public class RunTrackMate extends HCModule {
         // Converting tracks to local track model
         int ID = 1;
 
-        // Initialising measurement store for radius
-        HCMultiMeasurement radiusMeasure = new HCMultiMeasurement(HCMultiMeasurement.RADIUS);
-        radiusMeasure.setSource(this);
-        radiusMeasure.setPositionUnit("FRAME");
+//        // Initialising measurement store for radius
+//        HCMultiMeasurement radiusMeasure = new HCMultiMeasurement(HCMultiMeasurement.RADIUS);
+//        radiusMeasure.setSource(this);
+//        radiusMeasure.setPositionUnit("FRAME");
 
         TrackModel trackModel = model.getTrackModel();
         Set<Integer> trackIDs = trackModel.trackIDs(false);
@@ -112,8 +112,8 @@ public class RunTrackMate extends HCModule {
                 object.addCoordinate(HCObject.Z,z);
                 object.addCoordinate(HCObject.T,t);
 
-                // Adding radius measurement using the same coordinate system as HCObject (XYCZT)
-                radiusMeasure.addValue(t,calibration.getRawX(spot.getFeature(Spot.RADIUS)));
+//                // Adding radius measurement using the same coordinate system as HCObject (XYCZT)
+//                radiusMeasure.addValue(t,calibration.getRawX(spot.getFeature(Spot.RADIUS)));
 
                 // Adding calibration values to the HCObject (physical distance per pixel)
                 object.addCalibration(HCObject.X,calibration.getX(1));
@@ -125,7 +125,7 @@ public class RunTrackMate extends HCModule {
 
             }
 
-            object.addMultiMeasurement(radiusMeasure.getName(),radiusMeasure);
+//            object.addMultiMeasurement(radiusMeasure.getName(),radiusMeasure);
 
             objects.put(object.getID(),object);
 

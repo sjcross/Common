@@ -150,24 +150,24 @@ public class HCExporter {
 
                         }
 
-                        for (HCMultiMeasurement measurement:object.getMultiMeasurements().values()) {
-                            Element multiMeasElement = doc.createElement("MULTI_MEAS");
-
-                            String name = measurement.getName().toUpperCase().replaceAll(" ", "_");
-                            multiMeasElement.setAttribute("NAME",name);
-
-                            for (Double position:measurement.getValues().keySet()) {
-                                Element measElement = doc.createElement("MEAS");
-
-                                measElement.setAttribute("POS",String.valueOf(position));
-
-                                measElement.setAttribute("VALUE",String.valueOf(measurement.getValue(position)));
-
-                                // Adding the measurement as a child of that multi measurement
-                                multiMeasElement.appendChild(measElement);
-
-                            }
-                        }
+//                        for (HCMultiMeasurement measurement:object.getMultiMeasurements().values()) {
+//                            Element multiMeasElement = doc.createElement("MULTI_MEAS");
+//
+//                            String name = measurement.getName().toUpperCase().replaceAll(" ", "_");
+//                            multiMeasElement.setAttribute("NAME",name);
+//
+//                            for (Double position:measurement.getValues().keySet()) {
+//                                Element measElement = doc.createElement("MEAS");
+//
+//                                measElement.setAttribute("POS",String.valueOf(position));
+//
+//                                measElement.setAttribute("VALUE",String.valueOf(measurement.getValue(position)));
+//
+//                                // Adding the measurement as a child of that multi measurement
+//                                multiMeasElement.appendChild(measElement);
+//
+//                            }
+//                        }
 
                         setElement.appendChild(objectElement);
 

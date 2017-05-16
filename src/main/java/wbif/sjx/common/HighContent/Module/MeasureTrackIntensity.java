@@ -64,36 +64,36 @@ public class MeasureTrackIntensity extends HCModule {
 
             }
 
-            // Calculating mean, std, min and max intensity and adding to the relevant object parent (we don't want to
-            // add the measurements to the expanded objects)
-            HCMultiMeasurement meanIntensity = new HCMultiMeasurement(inputImageName.getName()+"_MEAN");
-            meanIntensity.setSource(this);
-            object.getParent().addMultiMeasurement(meanIntensity.getName(),meanIntensity);
-
-            HCMultiMeasurement stdIntensity = new HCMultiMeasurement(inputImageName.getName()+"_STD");
-            stdIntensity.setSource(this);
-            object.getParent().addMultiMeasurement(stdIntensity.getName(),stdIntensity);
-
-            HCMultiMeasurement minIntensity = new HCMultiMeasurement(inputImageName.getName()+"_MIN");
-            minIntensity.setSource(this);
-            object.getParent().addMultiMeasurement(minIntensity.getName(),minIntensity);
-
-            HCMultiMeasurement maxIntensity = new HCMultiMeasurement(inputImageName.getName()+"_MAX");
-            maxIntensity.setSource(this);
-            object.getParent().addMultiMeasurement(maxIntensity.getName(),maxIntensity);
-
-            double[] mean = cs.getMean();
-            double[] std = cs.getStd(CumStat.SAMPLE);
-            double[] min = cs.getMin();
-            double[] max = cs.getMax();
-
-            for (int i=0;i<mean.length;i++) {
-                meanIntensity.addValue(t.get(i),mean[i]);
-                stdIntensity.addValue(t.get(i),std[i]);
-                minIntensity.addValue(t.get(i),min[i]);
-                maxIntensity.addValue(t.get(i),max[i]);
-
-            }
+//            // Calculating mean, std, min and max intensity and adding to the relevant object parent (we don't want to
+//            // add the measurements to the expanded objects)
+//            HCMultiMeasurement meanIntensity = new HCMultiMeasurement(inputImageName.getName()+"_MEAN");
+//            meanIntensity.setSource(this);
+//            object.getParent().addMultiMeasurement(meanIntensity.getName(),meanIntensity);
+//
+//            HCMultiMeasurement stdIntensity = new HCMultiMeasurement(inputImageName.getName()+"_STD");
+//            stdIntensity.setSource(this);
+//            object.getParent().addMultiMeasurement(stdIntensity.getName(),stdIntensity);
+//
+//            HCMultiMeasurement minIntensity = new HCMultiMeasurement(inputImageName.getName()+"_MIN");
+//            minIntensity.setSource(this);
+//            object.getParent().addMultiMeasurement(minIntensity.getName(),minIntensity);
+//
+//            HCMultiMeasurement maxIntensity = new HCMultiMeasurement(inputImageName.getName()+"_MAX");
+//            maxIntensity.setSource(this);
+//            object.getParent().addMultiMeasurement(maxIntensity.getName(),maxIntensity);
+//
+//            double[] mean = cs.getMean();
+//            double[] std = cs.getStd(CumStat.SAMPLE);
+//            double[] min = cs.getMin();
+//            double[] max = cs.getMax();
+//
+//            for (int i=0;i<mean.length;i++) {
+//                meanIntensity.addValue(t.get(i),mean[i]);
+//                stdIntensity.addValue(t.get(i),std[i]);
+//                minIntensity.addValue(t.get(i),min[i]);
+//                maxIntensity.addValue(t.get(i),max[i]);
+//
+//            }
         }
     }
 

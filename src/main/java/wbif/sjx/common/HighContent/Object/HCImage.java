@@ -12,7 +12,7 @@ import java.util.LinkedHashMap;
 public class HCImage {
     private ImagePlus imagePlus;
     private LinkedHashMap<String,HCMeasurement> singleMeasurements = new LinkedHashMap<>();
-    private LinkedHashMap<String,HCMultiMeasurement> multiMeasurements = new LinkedHashMap<>();
+//    private LinkedHashMap<String,HCMultiMeasurement> multiMeasurements = new LinkedHashMap<>();
 
 
     // CONSTRUCTORS

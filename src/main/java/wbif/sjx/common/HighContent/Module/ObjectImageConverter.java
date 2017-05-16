@@ -29,9 +29,10 @@ public class ObjectImageConverter extends HCModule {
 
         if (templateImage == null) {
             // Getting range of object pixels
-            int[][] coordinateRange = new int[3][2];
+            int[][] coordinateRange = new int[5][2];
 
             for (HCObject object : objects.values()) {
+                // Getting range of XYZ
                 int[][] currCoordinateRange = object.getCoordinateRange();
                 for (int dim = 0; dim < coordinateRange.length; dim++) {
                     if (currCoordinateRange[dim][0] < coordinateRange[dim][0]) {
@@ -40,6 +41,19 @@ public class ObjectImageConverter extends HCModule {
 
                     if (currCoordinateRange[dim][1] > coordinateRange[dim][1]) {
                         coordinateRange[dim][1] = currCoordinateRange[dim][1];
+                    }
+                }
+
+                // Getting range of additional dimensions
+                for (int dim:object.getPositions().keySet()) {
+                    int currValue = object.getPosition(dim);
+
+                    if (currValue < coordinateRange[dim][0]) {
+                        coordinateRange[dim][0] = currValue;
+                    }
+
+                    if (currValue > coordinateRange[dim][1]) {
+                        coordinateRange[dim][1] = currValue;
                     }
                 }
             }
@@ -57,12 +71,16 @@ public class ObjectImageConverter extends HCModule {
 
         // Labelling pixels in image
         for (HCObject object:objects.values()) {
-            ArrayList<int[]> coords = object.getCoordinates();
+            ArrayList<Integer> x = object.getCoordinates(HCObject.X);
+            ArrayList<Integer> y = object.getCoordinates(HCObject.Y);
+            ArrayList<Integer> z = object.getCoordinates(HCObject.Z);
+            Integer c = object.getCoordinates(HCObject.C);
+            Integer t = object.getCoordinates(HCObject.T);
 
-            for (int i=0;i<coords.size();i++) {
-                int cPos = c==null ? 0 : c.get(i);
+            for (int i=0;i<x.size();i++) {
                 int zPos = z==null ? 0 : z.get(i);
-                int tPos = t==null ? 0 : t.get(i);
+                int cPos = c==null ? -1 : c;
+                int tPos = t==null ? -1 : t;
 
                 ipl.setPosition(cPos+1,zPos+1,tPos+1);
                 ipl.getProcessor().set(x.get(i),y.get(i),object.getID());
