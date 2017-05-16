@@ -25,22 +25,22 @@ public class MeasureImageIntensity extends HCModule {
         CumStat cs = IntensityCalculator.calculate(inputImagePlus);
 
         // Adding measurements to image
-        HCSingleMeasurement meanIntensity = new HCSingleMeasurement(HCSingleMeasurement.MEAN_INTENSITY,cs.getMean()[0]);
+        HCMeasurement meanIntensity = new HCMeasurement(HCMeasurement.MEAN_INTENSITY,cs.getMean()[0]);
         meanIntensity.setSource(this);
         inputImage.addMeasurement(meanIntensity.getName(),meanIntensity);
         if (verbose) System.out.println("       Mean intensity = "+meanIntensity.getValue());
 
-        HCSingleMeasurement stdIntensity = new HCSingleMeasurement(HCSingleMeasurement.STD_INTENSITY,cs.getStd(CumStat.SAMPLE)[0]);
+        HCMeasurement stdIntensity = new HCMeasurement(HCMeasurement.STD_INTENSITY,cs.getStd(CumStat.SAMPLE)[0]);
         stdIntensity.setSource(this);
         inputImage.addMeasurement(stdIntensity.getName(),stdIntensity);
         if (verbose) System.out.println("       Std intensity (sample) = "+stdIntensity.getValue());
 
-        HCSingleMeasurement minIntensity = new HCSingleMeasurement(HCSingleMeasurement.MIN_INTENSITY,cs.getMin()[0]);
+        HCMeasurement minIntensity = new HCMeasurement(HCMeasurement.MIN_INTENSITY,cs.getMin()[0]);
         minIntensity.setSource(this);
         inputImage.addMeasurement(minIntensity.getName(),minIntensity);
         if (verbose) System.out.println("       Min intensity = "+minIntensity.getValue());
 
-        HCSingleMeasurement maxIntensity = new HCSingleMeasurement(HCSingleMeasurement.MAX_INTENSITY,cs.getMax()[0]);
+        HCMeasurement maxIntensity = new HCMeasurement(HCMeasurement.MAX_INTENSITY,cs.getMax()[0]);
         maxIntensity.setSource(this);
         inputImage.addMeasurement(maxIntensity.getName(),maxIntensity);
         if (verbose) System.out.println("       Max intensity = "+maxIntensity.getValue());

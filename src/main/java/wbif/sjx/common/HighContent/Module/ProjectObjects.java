@@ -5,6 +5,7 @@ import wbif.sjx.common.HighContent.Object.HCParameterCollection;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Projects xy coordinates into a single plane.  Duplicates of xy coordinates at different heights are removed.
@@ -52,6 +53,12 @@ public class ProjectObjects extends HCModule {
                 int i = projCoords.get(key);
                 outputObject.addCoordinate(HCObject.X,x.get(i));
                 outputObject.addCoordinate(HCObject.Y,y.get(i));
+            }
+
+            // Copying additional dimensions from inputObject
+            HashMap<Integer,Integer> positions = inputObject.getPositions();
+            for (Map.Entry<Integer,Integer> entry:positions.entrySet()) {
+                outputObject.setPosition(entry.getKey(),entry.getValue());
             }
 
             // Inheriting calibration from parent

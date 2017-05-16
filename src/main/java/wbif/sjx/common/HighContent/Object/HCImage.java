@@ -11,8 +11,8 @@ import java.util.LinkedHashMap;
  */
 public class HCImage {
     private ImagePlus imagePlus;
-    private LinkedHashMap<String,HCSingleMeasurement> singleMeasurements = new LinkedHashMap<>();
-    private LinkedHashMap<String,HCMultiMeasurement> multiMeasurements = new LinkedHashMap<>();
+    private LinkedHashMap<String,HCMeasurement> singleMeasurements = new LinkedHashMap<>();
+//    private LinkedHashMap<String,HCMultiMeasurement> multiMeasurements = new LinkedHashMap<>();
 
 
     // CONSTRUCTORS
@@ -34,12 +34,12 @@ public class HCImage {
 
     }
 
-    public void addMeasurement(String name, HCSingleMeasurement measurement) {
+    public void addMeasurement(String name, HCMeasurement measurement) {
         singleMeasurements.put(name,measurement);
 
     }
 
-    public HCSingleMeasurement getMeasurement(String name) {
+    public HCMeasurement getMeasurement(String name) {
         return singleMeasurements.get(name);
 
     }
@@ -55,11 +55,11 @@ public class HCImage {
         this.imagePlus = imagePlus;
     }
 
-    public HashMap<String, HCSingleMeasurement> getSingleMeasurements() {
+    public HashMap<String, HCMeasurement> getSingleMeasurements() {
         return singleMeasurements;
     }
 
-    public void setSingleMeasurements(LinkedHashMap<String, HCSingleMeasurement> singleMeasurements) {
+    public void setSingleMeasurements(LinkedHashMap<String, HCMeasurement> singleMeasurements) {
         this.singleMeasurements = singleMeasurements;
     }
 

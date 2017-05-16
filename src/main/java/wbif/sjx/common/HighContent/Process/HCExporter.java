@@ -109,7 +109,7 @@ public class HCExporter {
                         nameAttr.appendChild(doc.createTextNode(String.valueOf(imageName.getName())));
                         imageElement.setAttributeNode(nameAttr);
 
-                        for (HCSingleMeasurement measurement : image.getSingleMeasurements().values()) {
+                        for (HCMeasurement measurement : image.getSingleMeasurements().values()) {
                             String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                             Attr measAttr = doc.createAttribute(attrName);
                             String attrValue = df.format(measurement.getValue());
@@ -132,11 +132,24 @@ public class HCExporter {
                         idAttr.appendChild(doc.createTextNode(String.valueOf(object.getID())));
                         objectElement.setAttributeNode(idAttr);
 
+                        // Setting the group ID number
+                        Attr groupidAttr = doc.createAttribute("GROUP_ID");
+                        groupidAttr.appendChild(doc.createTextNode(String.valueOf(object.getGroupID())));
+                        objectElement.setAttributeNode(groupidAttr);
+
                         Attr nameAttr = doc.createAttribute("NAME");
                         nameAttr.appendChild(doc.createTextNode(String.valueOf(objectNames.getName())));
                         objectElement.setAttributeNode(nameAttr);
 
-                        for (HCSingleMeasurement measurement:object.getSingleMeasurements().values()) {
+                        for (int dim:object.getPositions().keySet()) {
+                            String dimName = dim==3 ? "CHANNEL" : dim == 4 ? "TIME" : "DIM_"+dim;
+                            Attr positionAttr = doc.createAttribute(dimName);
+                            positionAttr.appendChild(doc.createTextNode(String.valueOf(dim)));
+                            objectElement.setAttributeNode(positionAttr);
+
+                        }
+
+                        for (HCMeasurement measurement:object.getMeasurements().values()) {
                             Element measElement = doc.createElement("MEAS");
 
                             String name = measurement.getName().toUpperCase().replaceAll(" ", "_");
@@ -148,25 +161,6 @@ public class HCExporter {
                             // Adding the measurement as a child of that object
                             objectElement.appendChild(measElement);
 
-                        }
-
-                        for (HCMultiMeasurement measurement:object.getMultiMeasurements().values()) {
-                            Element multiMeasElement = doc.createElement("MULTI_MEAS");
-
-                            String name = measurement.getName().toUpperCase().replaceAll(" ", "_");
-                            multiMeasElement.setAttribute("NAME",name);
-
-                            for (Double position:measurement.getValues().keySet()) {
-                                Element measElement = doc.createElement("MEAS");
-
-                                measElement.setAttribute("POS",String.valueOf(position));
-
-                                measElement.setAttribute("VALUE",String.valueOf(measurement.getValue(position)));
-
-                                // Adding the measurement as a child of that multi measurement
-                                multiMeasElement.appendChild(measElement);
-
-                            }
                         }
 
                         setElement.appendChild(objectElement);
@@ -395,7 +389,7 @@ public class HCExporter {
                     Cell IDHeaderCell = imageHeaderRow.createCell(col++);
                     IDHeaderCell.setCellValue("ANALYSIS_ID");
 
-                    for (HCSingleMeasurement measurement : image.getSingleMeasurements().values()) {
+                    for (HCMeasurement measurement : image.getSingleMeasurements().values()) {
                         Cell measHeaderCell = imageHeaderRow.createCell(col++);
                         String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
@@ -419,7 +413,7 @@ public class HCExporter {
                         Cell IDValueCell = imageValueRow.createCell(col++);
                         IDValueCell.setCellValue(workspace.getID());
 
-                        for (HCSingleMeasurement measurement : image.getSingleMeasurements().values()) {
+                        for (HCMeasurement measurement : image.getSingleMeasurements().values()) {
                             Cell measValueCell = imageValueRow.createCell(col++);
                             measValueCell.setCellValue(measurement.getValue());
                         }
@@ -442,7 +436,7 @@ public class HCExporter {
             for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
                 HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
 
-                if (objects.values().iterator().next().getSingleMeasurements().size() != 0) {
+                if (objects.values().iterator().next().getMeasurements().size() != 0) {
                     // Creating relevant sheet prefixed with "IM"
                     objectSheets.put(objectName, workbook.createSheet("OBJ_" + objectName.getName()));
 
@@ -456,11 +450,28 @@ public class HCExporter {
                     Cell IDHeaderCell = objectHeaderRow.createCell(col++);
                     IDHeaderCell.setCellValue("ANALYSIS_ID");
 
+                    Cell objectIDHeaderCell = objectHeaderRow.createCell(col++);
+                    objectIDHeaderCell.setCellValue("OBJECT_ID");
+
+                    Cell groupIDHeaderCell = objectHeaderRow.createCell(col++);
+                    groupIDHeaderCell.setCellValue("GROUP_ID");
+
                     HCObject object = objects.values().iterator().next();
-                    for (HCSingleMeasurement measurement : object.getSingleMeasurements().values()) {
+
+                    // Adding single-valued position headers
+                    for (int dim:object.getPositions().keySet()) {
+                        Cell positionsHeaderCell = objectHeaderRow.createCell(col++);
+                        String dimName = dim==3 ? "CHANNEL" : dim == 4 ? "TIME" : "DIM_"+dim;
+                        positionsHeaderCell.setCellValue(dimName);
+
+                    }
+
+                    // Adding measurement headers
+                    for (HCMeasurement measurement : object.getMeasurements().values()) {
                         Cell measHeaderCell = objectHeaderRow.createCell(col++);
                         String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
+
                     }
                 }
             }
@@ -470,7 +481,7 @@ public class HCExporter {
                 for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
                     HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
 
-                    if (objects.values().iterator().next().getSingleMeasurements().size() != 0) {
+                    if (objects.values().iterator().next().getMeasurements().size() != 0) {
                         for (HCObject object : objects.values()) {
                             // Adding the measurements from this image
                             int col = 0;
@@ -482,7 +493,19 @@ public class HCExporter {
                             Cell IDValueCell = objectValueRow.createCell(col++);
                             IDValueCell.setCellValue(workspace.getID());
 
-                            for (HCSingleMeasurement measurement : object.getSingleMeasurements().values()) {
+                            Cell objectIDValueCell = objectValueRow.createCell(col++);
+                            objectIDValueCell.setCellValue(object.getID());
+
+                            Cell groupIDValueCell = objectValueRow.createCell(col++);
+                            groupIDValueCell.setCellValue(object.getGroupID());
+
+                            for (int dim:object.getPositions().keySet()) {
+                                Cell positionsValueCell = objectValueRow.createCell(col++);
+                                positionsValueCell.setCellValue(object.getPosition(dim));
+
+                            }
+
+                            for (HCMeasurement measurement : object.getMeasurements().values()) {
                                 Cell measValueCell = objectValueRow.createCell(col++);
                                 measValueCell.setCellValue(measurement.getValue());
                             }
