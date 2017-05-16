@@ -109,7 +109,7 @@ public class HCExporter {
                         nameAttr.appendChild(doc.createTextNode(String.valueOf(imageName.getName())));
                         imageElement.setAttributeNode(nameAttr);
 
-                        for (HCSingleMeasurement measurement : image.getSingleMeasurements().values()) {
+                        for (HCMeasurement measurement : image.getSingleMeasurements().values()) {
                             String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                             Attr measAttr = doc.createAttribute(attrName);
                             String attrValue = df.format(measurement.getValue());
@@ -136,7 +136,7 @@ public class HCExporter {
                         nameAttr.appendChild(doc.createTextNode(String.valueOf(objectNames.getName())));
                         objectElement.setAttributeNode(nameAttr);
 
-                        for (HCSingleMeasurement measurement:object.getSingleMeasurements().values()) {
+                        for (HCMeasurement measurement:object.getMeasurements().values()) {
                             Element measElement = doc.createElement("MEAS");
 
                             String name = measurement.getName().toUpperCase().replaceAll(" ", "_");
@@ -395,7 +395,7 @@ public class HCExporter {
                     Cell IDHeaderCell = imageHeaderRow.createCell(col++);
                     IDHeaderCell.setCellValue("ANALYSIS_ID");
 
-                    for (HCSingleMeasurement measurement : image.getSingleMeasurements().values()) {
+                    for (HCMeasurement measurement : image.getSingleMeasurements().values()) {
                         Cell measHeaderCell = imageHeaderRow.createCell(col++);
                         String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
@@ -419,7 +419,7 @@ public class HCExporter {
                         Cell IDValueCell = imageValueRow.createCell(col++);
                         IDValueCell.setCellValue(workspace.getID());
 
-                        for (HCSingleMeasurement measurement : image.getSingleMeasurements().values()) {
+                        for (HCMeasurement measurement : image.getSingleMeasurements().values()) {
                             Cell measValueCell = imageValueRow.createCell(col++);
                             measValueCell.setCellValue(measurement.getValue());
                         }
@@ -442,7 +442,7 @@ public class HCExporter {
             for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
                 HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
 
-                if (objects.values().iterator().next().getSingleMeasurements().size() != 0) {
+                if (objects.values().iterator().next().getMeasurements().size() != 0) {
                     // Creating relevant sheet prefixed with "IM"
                     objectSheets.put(objectName, workbook.createSheet("OBJ_" + objectName.getName()));
 
@@ -457,7 +457,7 @@ public class HCExporter {
                     IDHeaderCell.setCellValue("ANALYSIS_ID");
 
                     HCObject object = objects.values().iterator().next();
-                    for (HCSingleMeasurement measurement : object.getSingleMeasurements().values()) {
+                    for (HCMeasurement measurement : object.getMeasurements().values()) {
                         Cell measHeaderCell = objectHeaderRow.createCell(col++);
                         String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
@@ -470,7 +470,7 @@ public class HCExporter {
                 for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
                     HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
 
-                    if (objects.values().iterator().next().getSingleMeasurements().size() != 0) {
+                    if (objects.values().iterator().next().getMeasurements().size() != 0) {
                         for (HCObject object : objects.values()) {
                             // Adding the measurements from this image
                             int col = 0;
@@ -482,7 +482,7 @@ public class HCExporter {
                             Cell IDValueCell = objectValueRow.createCell(col++);
                             IDValueCell.setCellValue(workspace.getID());
 
-                            for (HCSingleMeasurement measurement : object.getSingleMeasurements().values()) {
+                            for (HCMeasurement measurement : object.getMeasurements().values()) {
                                 Cell measValueCell = objectValueRow.createCell(col++);
                                 measValueCell.setCellValue(measurement.getValue());
                             }

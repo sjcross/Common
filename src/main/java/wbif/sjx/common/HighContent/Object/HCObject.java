@@ -1,33 +1,43 @@
 package wbif.sjx.common.HighContent.Object;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 
 /**
  * Created by steph on 30/04/2017.
  */
 public class HCObject {
-    // Coordinate dimensions 0-4 are reserved for X,Y,C,Z,T
     public static final int X = 0;
     public static final int Y = 1;
-    public static final int C = 2;
-    public static final int Z = 3;
+    public static final int Z = 2;
+    public static final int C = 3;
     public static final int T = 4;
 
+    /**
+     * Unique instance ID for this object
+     */
     private int ID = 0;
-    private HashMap<Integer, ArrayList<Integer>> coordinates = new HashMap<>();
+
+    /**
+     * 3D coordinates of this instance of the object.
+     */
+    private ArrayList<int[]>coordinates = new ArrayList<>();
+
+    /**
+     * HashMap containing extra dimensions specifying the location of this instance
+     */
+    private HashMap<Integer,Integer> extraDimensions = new HashMap<>();
     private HCObject parent = null;
     private ArrayList<HCObject> children = new ArrayList<HCObject>();
-    private LinkedHashMap<String,HCSingleMeasurement> singleMeasurements = new LinkedHashMap<>();
-    private LinkedHashMap<String,HCMultiMeasurement> multiMeasurements = new LinkedHashMap<>();
+    private LinkedHashMap<String,HCMeasurement> measurements = new LinkedHashMap<>();
     private String calibratedUnits = "px";
 
     /**
      * Calibration for each dimension.  Stored as physical distance per pixel
      */
-    private HashMap<Integer, Double> calibration = new HashMap<>();
+    private HashMap<Integer,Double> calibration = new HashMap<>();
 
 
     // CONSTRUCTORS
@@ -40,62 +50,43 @@ public class HCObject {
 
     // PUBLIC METHODS
 
-    public void addCoordinate(int dim, int coordinate) {
-        coordinates.computeIfAbsent(dim, k -> new ArrayList<>());
-        coordinates.get(dim).add(coordinate);
-
-    }
-
-    public void removeCoordinate(int dim, double coordinate) {
-        coordinates.get(dim).remove(coordinate);
-
-    }
-
     public int[][] getCoordinateRange() {
-        int nDims = Collections.max(coordinates.keySet())+1;
-        nDims = nDims <= 5 ? 5 : nDims;
+        int[][] dimSize = new int[5+extraDimensions.size()][2];
 
-        int[][] dimSize = new int[nDims][2];
-
-        for (int dim:coordinates.keySet()) {
-            if (coordinates.get(dim) != null) {
-                ArrayList<Integer> vals = coordinates.get(dim);
-                dimSize[dim][0] = Collections.min(vals);
-                dimSize[dim][1] = Collections.max(vals);
+        for (int i=0;i<coordinates.size();i++) {
+            if (coordinates.get(i)[0] < dimSize[0][0]) {
+                dimSize[0][0] = coordinates.get(i)[0];
+            } else if (coordinates.get(i)[0] > dimSize[0][1]) {
+                dimSize[0][1] = coordinates.get(i)[0];
+            } else if (coordinates.get(i)[1] < dimSize[1][0]) {
+                dimSize[1][0] = coordinates.get(i)[1];
+            } else if (coordinates.get(i)[1] > dimSize[1][1]) {
+                dimSize[1][1] = coordinates.get(i)[1];
+            } else if (coordinates.get(i)[2] < dimSize[2][0]) {
+                dimSize[2][0] = coordinates.get(i)[2];
+            } else if (coordinates.get(i)[2] > dimSize[2][1]) {
+                dimSize[2][1] = coordinates.get(i)[2];
             }
         }
 
+        // Adding the extra dimensions.  These are single valued, so the min and max is the same thing
+        for (int i=0;i<extraDimensions.size();i++) {
+            dimSize[3+i][0] = extraDimensions.get(i);
+            dimSize[3+i][1] = extraDimensions.get(i);
+
+        }
+
         return dimSize;
-    }
-
-    public void addSingleMeasurement(String name, HCSingleMeasurement singleMeasurement) {
-        singleMeasurements.put(name,singleMeasurement);
 
     }
 
-    public HCSingleMeasurement getSingleMeasurement(String name) {
-        return singleMeasurements.get(name);
+    public void addMeasurement(String name, HCMeasurement measurement) {
+        measurements.put(name,measurement);
 
     }
 
-    public void addMultiMeasurement(String name, HCMultiMeasurement multiMeasurement) {
-        multiMeasurements.put(name,multiMeasurement);
-
-    }
-
-    public HCMultiMeasurement getMultiMeasurement(String name) {
-        return multiMeasurements.get(name);
-
-    }
-
-    public void setMultiMeasurementPoint(String name, double coordinate, double value) {
-        multiMeasurements.computeIfAbsent(name,k -> new HCMultiMeasurement(name));
-        multiMeasurements.get(name).addValue(coordinate,value);
-
-    }
-
-    public double getMultiMeasurementPoint(String name, double coordinate) {
-        return multiMeasurements.get(name).getValue(coordinate);
+    public HCMeasurement getMeasurement(String name) {
+        return measurements.get(name);
 
     }
 
@@ -112,23 +103,9 @@ public class HCObject {
 
     }
 
-    public int[] getCoordinatesAsArray(Integer dim) {
-        int[] coords = new int[coordinates.get(dim).size()];
-
-        int iter = 0;
-        for (int coord:coordinates.get(dim)) {
-            coords[iter++] = coord;
-
-        }
-
-        return coords;
-
-    }
-
     @Override
     public String toString() {
-        return  "HCObject with "+coordinates.size()+" dimensions and "+coordinates.values().iterator().next().size()+
-                " coordinate points";
+        return  "HCObject with "+coordinates.size()+" coordinate points";
 
     }
 
@@ -143,23 +120,23 @@ public class HCObject {
         this.ID = ID;
     }
 
-    public void setCoordinates(int dim, ArrayList<Integer> coordinateList) {
-        coordinates.put(dim, coordinateList);
+    public void setCoordinates(ArrayList<int[]> coordinates) {
+        this.coordinates = coordinates;
 
     }
 
-    public ArrayList<Integer> getCoordinates(int dim) {
-        return coordinates.get(dim);
-
-    }
-
-    public HashMap<Integer, ArrayList<Integer>> getCoordinates() {
+    public ArrayList<int[]> getCoordinates() {
         return coordinates;
 
     }
 
-    public void setCoordinates(HashMap<Integer, ArrayList<Integer>> coordinates) {
-        this.coordinates = coordinates;
+    public int getExtraDimension(int dim) {
+        return extraDimensions.get(dim) == null ? -1 : extraDimensions.get(dim);
+
+    }
+
+    public void setExtraDimensions(int dim, int value) {
+        extraDimensions.put(dim,value);
 
     }
 
@@ -187,21 +164,13 @@ public class HCObject {
         children.remove(child);
     }
 
-    public LinkedHashMap<String, HCSingleMeasurement> getSingleMeasurements() {
-        return singleMeasurements;
+    public LinkedHashMap<String, HCMeasurement> getMeasurements() {
+        return measurements;
     }
 
-    public void setSingleMeasurements(LinkedHashMap<String, HCSingleMeasurement> singleMeasurements) {
-        this.singleMeasurements = singleMeasurements;
+    public void setMeasurements(LinkedHashMap<String, HCMeasurement> measurements) {
+        this.measurements = measurements;
 
-    }
-
-    public LinkedHashMap<String, HCMultiMeasurement> getMultiMeasurements() {
-        return multiMeasurements;
-    }
-
-    public void setMultiMeasurements(LinkedHashMap<String, HCMultiMeasurement> multiMeasurements) {
-        this.multiMeasurements = multiMeasurements;
     }
 
     public HashMap<Integer, Double> getCalibration() {

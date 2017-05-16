@@ -29,27 +29,25 @@ public class ObjectImageConverter extends HCModule {
 
         if (templateImage == null) {
             // Getting range of object pixels
-            int nDims = Collections.max(objects.values().iterator().next().getCoordinates().keySet()) + 1;
-            nDims = nDims <= 5 ? 5 : nDims;
-
-            int[][] dimSize = new int[nDims][2];
+            int[][] coordinateRange = new int[3][2];
 
             for (HCObject object : objects.values()) {
-                int[][] currDimSize = object.getCoordinateRange();
-                for (int dim = 0; dim < dimSize.length; dim++) {
-                    if (currDimSize[dim][0] < dimSize[dim][0]) {
-                        dimSize[dim][0] = currDimSize[dim][0];
+                int[][] currCoordinateRange = object.getCoordinateRange();
+                for (int dim = 0; dim < coordinateRange.length; dim++) {
+                    if (currCoordinateRange[dim][0] < coordinateRange[dim][0]) {
+                        coordinateRange[dim][0] = currCoordinateRange[dim][0];
                     }
 
-                    if (currDimSize[dim][1] > dimSize[dim][1]) {
-                        dimSize[dim][1] = currDimSize[dim][1];
+                    if (currCoordinateRange[dim][1] > coordinateRange[dim][1]) {
+                        coordinateRange[dim][1] = currCoordinateRange[dim][1];
                     }
                 }
             }
 
             // Creating a new image
-            ipl = IJ.createHyperStack("Objects", dimSize[HCObject.X][1] + 1,
-                    dimSize[HCObject.Y][1] + 1, dimSize[HCObject.C][1] + 1, dimSize[HCObject.Z][1] + 1, dimSize[HCObject.T][1] + 1, 16);
+            ipl = IJ.createHyperStack("Objects", coordinateRange[HCObject.X][1] + 1,
+                    coordinateRange[HCObject.Y][1] + 1, coordinateRange[HCObject.C][1] + 1,
+                    coordinateRange[HCObject.Z][1] + 1, coordinateRange[HCObject.T][1] + 1, 16);
 
         } else {
             ImagePlus templateIpl = templateImage.getImagePlus();
@@ -59,13 +57,9 @@ public class ObjectImageConverter extends HCModule {
 
         // Labelling pixels in image
         for (HCObject object:objects.values()) {
-            ArrayList<Integer> x = object.getCoordinates(HCObject.X);
-            ArrayList<Integer> y = object.getCoordinates(HCObject.Y);
-            ArrayList<Integer> z = object.getCoordinates(HCObject.Z);
-            ArrayList<Integer> c = object.getCoordinates(HCObject.C);
-            ArrayList<Integer> t = object.getCoordinates(HCObject.T);
+            ArrayList<int[]> coords = object.getCoordinates();
 
-            for (int i=0;i<x.size();i++) {
+            for (int i=0;i<coords.size();i++) {
                 int cPos = c==null ? 0 : c.get(i);
                 int zPos = z==null ? 0 : z.get(i);
                 int tPos = t==null ? 0 : t.get(i);

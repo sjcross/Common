@@ -67,42 +67,42 @@ public class MeasureObjectCentroid extends HCModule {
             if (useMean) {
                 if (x != null) {
                     double xMean = calculateCentroid(x,MEAN);
-                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.X_CENTROID_MEAN,xMean);
+                    HCMeasurement measurement = new HCMeasurement(HCMeasurement.X_CENTROID_MEAN,xMean);
                     measurement.setSource(this);
-                    object.addSingleMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement.getName(),measurement);
                 }
                 if (y!= null) {
                     double yMean = calculateCentroid(y,MEAN);
-                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.Y_CENTROID_MEAN,yMean);
+                    HCMeasurement measurement = new HCMeasurement(HCMeasurement.Y_CENTROID_MEAN,yMean);
                     measurement.setSource(this);
-                    object.addSingleMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement.getName(),measurement);
                 }
                 if (z!= null) {
                     double zMean = calculateCentroid(z,MEAN);
-                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.Z_CENTROID_MEAN,zMean);
+                    HCMeasurement measurement = new HCMeasurement(HCMeasurement.Z_CENTROID_MEAN,zMean);
                     measurement.setSource(this);
-                    object.addSingleMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement.getName(),measurement);
                 }
             }
 
             if (useMedian) {
                 if (x != null) {
                     double xMedian = calculateCentroid(x,MEDIAN);
-                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.X_CENTROID_MEDIAN,xMedian);
+                    HCMeasurement measurement = new HCMeasurement(HCMeasurement.X_CENTROID_MEDIAN,xMedian);
                     measurement.setSource(this);
-                    object.addSingleMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement.getName(),measurement);
                 }
                 if (y!= null) {
                     double yMedian = calculateCentroid(y,MEDIAN);
-                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.Y_CENTROID_MEDIAN,yMedian);
+                    HCMeasurement measurement = new HCMeasurement(HCMeasurement.Y_CENTROID_MEDIAN,yMedian);
                     measurement.setSource(this);
-                    object.addSingleMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement.getName(),measurement);
                 }
                 if (z!= null) {
                     double zMedian = calculateCentroid(z,MEDIAN);
-                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.Z_CENTROID_MEDIAN,zMedian);
+                    HCMeasurement measurement = new HCMeasurement(HCMeasurement.Z_CENTROID_MEDIAN,zMedian);
                     measurement.setSource(this);
-                    object.addSingleMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement.getName(),measurement);
                 }
             }
         }

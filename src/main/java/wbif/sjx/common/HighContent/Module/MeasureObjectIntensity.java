@@ -49,21 +49,21 @@ public class MeasureObjectIntensity extends HCModule {
             }
 
             // Calculating mean, std, min and max intensity
-            HCSingleMeasurement meanIntensity = new HCSingleMeasurement(imageName.getName()+"_MEAN", cs.getMean()[0]);
+            HCMeasurement meanIntensity = new HCMeasurement(imageName.getName()+"_MEAN", cs.getMean()[0]);
             meanIntensity.setSource(this);
-            object.addSingleMeasurement(meanIntensity.getName(),meanIntensity);
+            object.addMeasurement(meanIntensity.getName(),meanIntensity);
 
-            HCSingleMeasurement stdIntensity = new HCSingleMeasurement(imageName.getName()+"_STD", cs.getStd(CumStat.SAMPLE)[0]);
+            HCMeasurement stdIntensity = new HCMeasurement(imageName.getName()+"_STD", cs.getStd(CumStat.SAMPLE)[0]);
             stdIntensity.setSource(this);
-            object.addSingleMeasurement(stdIntensity.getName(),stdIntensity);
+            object.addMeasurement(stdIntensity.getName(),stdIntensity);
 
-            HCSingleMeasurement minIntensity = new HCSingleMeasurement(imageName.getName()+"_MIN", cs.getMin()[0]);
+            HCMeasurement minIntensity = new HCMeasurement(imageName.getName()+"_MIN", cs.getMin()[0]);
             minIntensity.setSource(this);
-            object.addSingleMeasurement(minIntensity.getName(),minIntensity);
+            object.addMeasurement(minIntensity.getName(),minIntensity);
 
-            HCSingleMeasurement maxIntensity = new HCSingleMeasurement(imageName.getName()+"_MAX", cs.getMax()[0]);
+            HCMeasurement maxIntensity = new HCMeasurement(imageName.getName()+"_MAX", cs.getMax()[0]);
             maxIntensity.setSource(this);
-            object.addSingleMeasurement(maxIntensity.getName(),maxIntensity);
+            object.addMeasurement(maxIntensity.getName(),maxIntensity);
 
         }
     }

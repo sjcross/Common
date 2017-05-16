@@ -77,36 +77,36 @@ public class MeasureObjectTexture extends HCModule {
             textureCalculator.calculate(inputImagePlus,xOffs,yOffs,zOffs,coords);
 
             // Acquiring measurements
-            HCSingleMeasurement ASMMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_ASM",textureCalculator.getASM());
+            HCMeasurement ASMMeasurement = new HCMeasurement(inputImageName.getName()+"_ASM",textureCalculator.getASM());
             ASMMeasurement.setSource(this);
             if (centroidMeasurement) {
-                object.getParent().addSingleMeasurement(ASMMeasurement.getName(), ASMMeasurement);
+                object.getParent().addMeasurement(ASMMeasurement.getName(), ASMMeasurement);
             } else {
-                object.addSingleMeasurement(ASMMeasurement.getName(),ASMMeasurement);
+                object.addMeasurement(ASMMeasurement.getName(),ASMMeasurement);
             }
 
-            HCSingleMeasurement contrastMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_CONTRAST",textureCalculator.getContrast());
+            HCMeasurement contrastMeasurement = new HCMeasurement(inputImageName.getName()+"_CONTRAST",textureCalculator.getContrast());
             contrastMeasurement.setSource(this);
             if (centroidMeasurement) {
-                object.getParent().addSingleMeasurement(contrastMeasurement.getName(), contrastMeasurement);
+                object.getParent().addMeasurement(contrastMeasurement.getName(), contrastMeasurement);
             } else {
-                object.addSingleMeasurement(contrastMeasurement.getName(),contrastMeasurement);
+                object.addMeasurement(contrastMeasurement.getName(),contrastMeasurement);
             }
 
-            HCSingleMeasurement correlationMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_CORRELATION",textureCalculator.getCorrelation());
+            HCMeasurement correlationMeasurement = new HCMeasurement(inputImageName.getName()+"_CORRELATION",textureCalculator.getCorrelation());
             correlationMeasurement.setSource(this);
             if (centroidMeasurement) {
-                object.getParent().addSingleMeasurement(correlationMeasurement.getName(), correlationMeasurement);
+                object.getParent().addMeasurement(correlationMeasurement.getName(), correlationMeasurement);
             } else {
-                object.addSingleMeasurement(correlationMeasurement.getName(),correlationMeasurement);
+                object.addMeasurement(correlationMeasurement.getName(),correlationMeasurement);
             }
 
-            HCSingleMeasurement entropyMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_ENTROPY",textureCalculator.getEntropy());
+            HCMeasurement entropyMeasurement = new HCMeasurement(inputImageName.getName()+"_ENTROPY",textureCalculator.getEntropy());
             entropyMeasurement.setSource(this);
             if (centroidMeasurement) {
-                object.getParent().addSingleMeasurement(entropyMeasurement.getName(), entropyMeasurement);
+                object.getParent().addMeasurement(entropyMeasurement.getName(), entropyMeasurement);
             } else {
-                object.addSingleMeasurement(entropyMeasurement.getName(),entropyMeasurement);
+                object.addMeasurement(entropyMeasurement.getName(),entropyMeasurement);
             }
 
         }

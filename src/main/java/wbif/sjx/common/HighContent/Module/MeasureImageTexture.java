@@ -37,22 +37,22 @@ public class MeasureImageTexture extends HCModule {
         textureCalculator.calculate(inputImagePlus,xOffs,yOffs,zOffs);
 
         // Acquiring measurements
-        HCSingleMeasurement ASMMeasurement = new HCSingleMeasurement("ASM",textureCalculator.getASM());
+        HCMeasurement ASMMeasurement = new HCMeasurement("ASM",textureCalculator.getASM());
         ASMMeasurement.setSource(this);
         inputImage.addMeasurement(ASMMeasurement.getName(),ASMMeasurement);
         if (verbose) System.out.println("        ASM = "+ASMMeasurement.getValue());
 
-        HCSingleMeasurement contrastMeasurement = new HCSingleMeasurement("CONTRAST",textureCalculator.getContrast());
+        HCMeasurement contrastMeasurement = new HCMeasurement("CONTRAST",textureCalculator.getContrast());
         contrastMeasurement.setSource(this);
         inputImage.addMeasurement(contrastMeasurement.getName(),contrastMeasurement);
         if (verbose) System.out.println("        Contrast = "+contrastMeasurement.getValue());
 
-        HCSingleMeasurement correlationMeasurement = new HCSingleMeasurement("CORRELATION",textureCalculator.getCorrelation());
+        HCMeasurement correlationMeasurement = new HCMeasurement("CORRELATION",textureCalculator.getCorrelation());
         correlationMeasurement.setSource(this);
         inputImage.addMeasurement(correlationMeasurement.getName(),correlationMeasurement);
         if (verbose) System.out.println("        Correlation = "+correlationMeasurement.getValue());
 
-        HCSingleMeasurement entropyMeasurement = new HCSingleMeasurement("ENTROPY",textureCalculator.getEntropy());
+        HCMeasurement entropyMeasurement = new HCMeasurement("ENTROPY",textureCalculator.getEntropy());
         entropyMeasurement.setSource(this);
         inputImage.addMeasurement(entropyMeasurement.getName(),entropyMeasurement);
         if (verbose) System.out.println("        Entropy = "+entropyMeasurement.getValue());

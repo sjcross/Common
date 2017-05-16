@@ -3,7 +3,7 @@ package wbif.sjx.common.HighContent.Object;
 /**
  * Measurement that holds a single value for an object
  */
-public class HCSingleMeasurement {
+public class HCMeasurement {
     // Spatial measures
     public static final String RADIUS = "Radius";
     public static final String X_CENTROID_MEAN = "X-Centroid Mean";
@@ -26,7 +26,7 @@ public class HCSingleMeasurement {
 
     // CONSTRUCTOR
 
-    public HCSingleMeasurement(String name, double value) {
+    public HCMeasurement(String name, double value) {
         this.name = name;
         this.value = value;
 
