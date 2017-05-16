@@ -1,6 +1,6 @@
 package wbif.sjx.common.HighContent.Extractor;
 
-import wbif.sjx.common.HighContent.Object.Result;
+import wbif.sjx.common.HighContent.Object.HCMetadata;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,7 +22,7 @@ public class CellVoyagerFilenameExtractor implements Extractor {
 
     }
 
-    public void extract(Result result, String str) {
+    public boolean extract(HCMetadata result, String str) {
         Pattern fi_pattern = Pattern.compile(pattern);
         Matcher fi_matcher = fi_pattern.matcher(str);
 
@@ -37,6 +37,11 @@ public class CellVoyagerFilenameExtractor implements Extractor {
             result.setTimepoint(Integer.parseInt(fi_matcher.group(3)));
             result.setZ(Integer.parseInt(fi_matcher.group(4)));
             result.setChannel(Integer.parseInt(fi_matcher.group(5)));
+
+            return true;
+
+        } else {
+            return false;
 
         }
     }

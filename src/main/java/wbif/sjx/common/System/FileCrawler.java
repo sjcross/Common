@@ -13,10 +13,10 @@ import java.util.Iterator;
  * Created by Stephen on 16/10/2016.
  */
 public class FileCrawler {
-    Folder root_folder = null; //Root folder
-    Folder folder = null; //Current folder
-    private HashSet<FileCondition> file_conditions = new HashSet<FileCondition>(); //List of file conditions
-    private HashSet<FileCondition> folder_conditions = new HashSet<FileCondition>(); //List of folder conditions
+    public Folder rootFolder = null; //Root folder
+    public Folder folder = null; //Current folder
+    private HashSet<FileCondition> fileConditions = new HashSet<FileCondition>(); //List of file conditions
+    private HashSet<FileCondition> folderConditions = new HashSet<FileCondition>(); //List of folder conditions
     private boolean includeSubFolders = true;
 
     public FileCrawler() {
@@ -25,18 +25,22 @@ public class FileCrawler {
 
     public FileCrawler(File root) {
         folder = new Folder(root,null);
-        root_folder = folder;
+        rootFolder = folder;
 
     }
 
     public void setRootFolder(File root) {
         folder = new Folder(root,null);
-        root_folder = folder;
+        rootFolder = folder;
 
     }
 
-    public File getRootFolder() {
-        return root_folder.getFolderAsFile();
+    public Folder getRootFolderAsFolder() {
+        return rootFolder;
+    }
+
+    public File getRootFolderAsFile() {
+        return rootFolder.getFolderAsFile();
 
     }
 
@@ -141,7 +145,7 @@ public class FileCrawler {
 
     public int getNumberOfValidFilesInStructure() {
         Folder folder_temp = folder;
-        folder = root_folder;
+        folder = rootFolder;
 
         int count = 0;
 
@@ -161,7 +165,7 @@ public class FileCrawler {
 
     public int getNumberOfValidFoldersInStructure() {
         Folder folder_temp = folder;
-        folder = root_folder;
+        folder = rootFolder;
 
         int count = 0;
 
@@ -246,12 +250,12 @@ public class FileCrawler {
     }
 
     public void addFileCondition(FileCondition file_condition) {
-        file_conditions.add(file_condition);
+        fileConditions.add(file_condition);
 
     }
 
     public void addFolderCondition(FileCondition folder_condition) {
-        folder_conditions.add(folder_condition);
+        folderConditions.add(folder_condition);
 
     }
 
@@ -262,8 +266,8 @@ public class FileCrawler {
     public boolean testFileConditions(File test_file) {
         boolean cnd = true;
 
-        if (file_conditions != null) {
-            Iterator<FileCondition> iterator = file_conditions.iterator();
+        if (fileConditions != null) {
+            Iterator<FileCondition> iterator = fileConditions.iterator();
             while(iterator.hasNext()) {
                 //If any condition fails, the output is false
                 if (!iterator.next().test(test_file)) cnd = false;
@@ -282,8 +286,8 @@ public class FileCrawler {
     public boolean testFolderConditions(File test_folder) {
         boolean cnd = true;
 
-        if (folder_conditions != null) {
-            Iterator<FileCondition> iterator = folder_conditions.iterator();
+        if (folderConditions != null) {
+            Iterator<FileCondition> iterator = folderConditions.iterator();
             while (iterator.hasNext()) {
                 //If any condition fails, the output is false
                 if (!iterator.next().test(test_folder)) cnd = false;
@@ -305,7 +309,7 @@ public class FileCrawler {
     }
 
     public void resetIterator() {
-        folder = root_folder;
+        folder = rootFolder;
         Folder next_folder = folder.getNextFolder();
 
         if (next_folder != null) {

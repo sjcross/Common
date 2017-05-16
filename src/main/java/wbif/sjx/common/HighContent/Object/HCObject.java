@@ -1,6 +1,7 @@
 package wbif.sjx.common.HighContent.Object;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -14,77 +15,151 @@ public class HCObject {
     public static final int Z = 3;
     public static final int T = 4;
 
-    private HashMap<Integer, double[]> coordinates = new HashMap<Integer, double[]>();
+    private int ID = 0;
+    private HashMap<Integer, ArrayList<Integer>> coordinates = new HashMap<>();
     private HCObject parent = null;
     private ArrayList<HCObject> children = new ArrayList<HCObject>();
+    private HashMap<String,HCSingleMeasurement> singleMeasurements = new HashMap<>();
+    private HashMap<String,HCMultiMeasurement> multiMeasurements = new HashMap<>();
+    private String calibratedUnits = "px";
+
+    /**
+     * Calibration for each dimension.  Stored as physical distance per pixel
+     */
+    private HashMap<Integer, Double> calibration = new HashMap<>();
+
+
+    // CONSTRUCTORS
+
+    public HCObject(int ID) {
+        this.ID = ID;
+
+    }
 
 
     // PUBLIC METHODS
 
-    /**
-     * Projects xy coordinates into a single plane.  Duplicates of xy coordinates at different heights are removed.
-     * @return HashMap containing x and y coordinates as double[].  Integer key corresponds to dimension (X=0, Y=1)
-     */
-    public HashMap<Integer, double[]> getZProjectedCoordinates() {
-        double[] x = coordinates.get(X);
-        double[] y = coordinates.get(Y);
+    public void addCoordinate(int dim, int coordinate) {
+        coordinates.computeIfAbsent(dim, k -> new ArrayList<>());
+        coordinates.get(dim).add(coordinate);
 
-        // All coordinate pairs will be stored in a HashMap, which will prevent coordinate duplication.  The keys will
-        // correspond to the 2D index, for which we need to know the maximum x coordinate
-        double maxX = Double.MIN_VALUE;
-        for (double currX:x) {
-            if (currX > maxX) {
-                maxX =currX;
+    }
+
+    public void removeCoordinate(int dim, double coordinate) {
+        coordinates.get(dim).remove(coordinate);
+
+    }
+
+    public int[][] getCoordinateRange() {
+        int nDims = Collections.max(coordinates.keySet())+1;
+        nDims = nDims <= 5 ? 5 : nDims;
+
+        int[][] dimSize = new int[nDims][2];
+
+        for (int dim:coordinates.keySet()) {
+            if (coordinates.get(dim) != null) {
+                ArrayList<Integer> vals = coordinates.get(dim);
+                dimSize[dim][0] = Collections.min(vals);
+                dimSize[dim][1] = Collections.max(vals);
             }
         }
 
-        // Running through all coordinates, adding them to the HashMap
-        HashMap<Double, Integer> projCoords = new HashMap<Double, Integer>();
-        for (int i=0;i<x.length;i++) {
-            Double key = y[i]*maxX + x[i];
-            projCoords.put(key,i);
-        }
+        return dimSize;
+    }
 
-        // Creating arrays to store the projected x and y coordinates
-        double[] xOut = new double[projCoords.size()];
-        double[] yOut = new double[projCoords.size()];
+    public void addSingleMeasurement(String name, HCSingleMeasurement singleMeasurement) {
+        singleMeasurements.put(name,singleMeasurement);
+
+    }
+
+    public HCSingleMeasurement getSingleMeasurement(String name) {
+        return singleMeasurements.get(name);
+
+    }
+
+    public void addMultiMeasurement(String name, HCMultiMeasurement multiMeasurement) {
+        multiMeasurements.put(name,multiMeasurement);
+
+    }
+
+    public HCMultiMeasurement getMultiMeasurement(String name) {
+        return multiMeasurements.get(name);
+
+    }
+
+    public void setMultiMeasurementPoint(String name, int[] coordinate, double value) {
+        multiMeasurements.computeIfAbsent(name,k -> new HCMultiMeasurement(name));
+        multiMeasurements.get(name).addValue(coordinate,value);
+
+    }
+
+    public double getMultiMeasurementPoint(String name, int[] coordinate) {
+        return multiMeasurements.get(name).getValue(coordinate);
+
+    }
+
+    public void addCalibration(Integer dim, double cal) {
+        calibration.put(dim,cal);
+
+    }
+
+    public double getCalibration(Integer dim) {
+        // If no calibration has been set, return 1
+        if (coordinates.get(dim) == null) return 1;
+
+        return calibration.get(dim);
+
+    }
+
+    public int[] getCoordinatesAsArray(Integer dim) {
+        int[] coords = new int[coordinates.get(dim).size()];
 
         int iter = 0;
-        for (Double key:projCoords.keySet()) {
-            int i = projCoords.get(key);
-            xOut[iter] = x[i];
-            yOut[iter] = y[i];
+        for (int coord:coordinates.get(dim)) {
+            coords[iter++] = coord;
+
         }
 
-        // Adding the projected coordinates to the output HashMap.  The HashMap structure is the same as the standard
-        // coordinate array model
-        HashMap<Integer,double[]> projCoordsOut = new HashMap<Integer, double[]>();
-        projCoordsOut.put(X,xOut);
-        projCoordsOut.put(Y,yOut);
+        return coords;
 
-        return projCoordsOut;
+    }
+
+    @Override
+    public String toString() {
+        return  "HCObject with "+coordinates.size()+" dimensions and "+coordinates.values().iterator().next().size()+
+                " coordinate points";
 
     }
 
 
     // GETTERS AND SETTERS
 
-    public void setSingleCoordinate(double[] coordinate, int dim) {
-        coordinates.put(dim, coordinate);
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setCoordinates(ArrayList<Integer> coordinateList, int dim) {
+        coordinates.put(dim, coordinateList);
 
     }
 
-    public double[] getSingleCoordinate(int dim) {
+    public ArrayList<Integer> getCoordinates(int dim) {
         return coordinates.get(dim);
 
     }
 
-    public HashMap<Integer, double[]> getCoordinates() {
+    public HashMap<Integer, ArrayList<Integer>> getCoordinates() {
         return coordinates;
+
     }
 
-    public void setCoordinates(HashMap<Integer, double[]> coordinates) {
+    public void setCoordinates(HashMap<Integer, ArrayList<Integer>> coordinates) {
         this.coordinates = coordinates;
+
     }
 
     public HCObject getParent() {
@@ -110,4 +185,38 @@ public class HCObject {
     public void removeChild(HCObject child) {
         children.remove(child);
     }
+
+    public HashMap<String, HCSingleMeasurement> getSingleMeasurements() {
+        return singleMeasurements;
+    }
+
+    public void setSingleMeasurements(HashMap<String, HCSingleMeasurement> singleMeasurements) {
+        this.singleMeasurements = singleMeasurements;
+
+    }
+
+    public HashMap<String, HCMultiMeasurement> getMultiMeasurements() {
+        return multiMeasurements;
+    }
+
+    public void setMultiMeasurements(HashMap<String, HCMultiMeasurement> multiMeasurements) {
+        this.multiMeasurements = multiMeasurements;
+    }
+
+    public HashMap<Integer, Double> getCalibration() {
+        return calibration;
+    }
+
+    public void setCalibration(HashMap<Integer, Double> calibration) {
+        this.calibration = calibration;
+    }
+
+    public String getCalibratedUnits() {
+        return calibratedUnits;
+    }
+
+    public void setCalibratedUnits(String calibratedUnits) {
+        this.calibratedUnits = calibratedUnits;
+    }
+
 }

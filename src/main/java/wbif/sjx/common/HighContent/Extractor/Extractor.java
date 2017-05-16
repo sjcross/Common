@@ -1,6 +1,6 @@
 package wbif.sjx.common.HighContent.Extractor;
 
-import wbif.sjx.common.HighContent.Object.Result;
+import wbif.sjx.common.HighContent.Object.HCMetadata;
 
 /**
  * Created by steph on 30/04/2017.
@@ -8,6 +8,6 @@ import wbif.sjx.common.HighContent.Object.Result;
 public interface Extractor {
     String getName();
     String getPattern();
-    void extract(Result result, String str);
+    boolean extract(HCMetadata result, String str);
 
 }

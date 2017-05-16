@@ -1,6 +1,6 @@
 package wbif.sjx.common.HighContent.Extractor;
 
-import wbif.sjx.common.HighContent.Object.Result;
+import wbif.sjx.common.HighContent.Object.HCMetadata;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,7 +22,7 @@ public class IncuCyteLongFilenameExtractor implements Extractor {
 
     }
 
-    public void extract(Result result, String str) {
+    public boolean extract(HCMetadata result, String str) {
         Pattern fi_pattern = Pattern.compile(pattern);
         Matcher fi_matcher = fi_pattern.matcher(str);
 
@@ -40,6 +40,11 @@ public class IncuCyteLongFilenameExtractor implements Extractor {
             result.setDay(Integer.parseInt(fi_matcher.group(6)));
             result.setHour(Integer.parseInt(fi_matcher.group(7)));
             result.setMin(Integer.parseInt(fi_matcher.group(8)));
+
+            return true;
+
+        } else {
+            return false;
 
         }
     }
