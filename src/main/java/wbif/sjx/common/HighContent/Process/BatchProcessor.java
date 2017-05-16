@@ -59,7 +59,7 @@ public class BatchProcessor extends FileCrawler {
         }
 
         // Saving the results
-        exporter.exportResults(workspaces,analysis.getModules());
+        exporter.exportResults(workspaces,analysis);
 
         return workspaces;
 

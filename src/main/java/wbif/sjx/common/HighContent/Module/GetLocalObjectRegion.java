@@ -66,6 +66,10 @@ public class GetLocalObjectRegion extends HCModule {
                 }
             }
 
+            // Copying additional dimensions from inputObject
+            outputObject.setCoordinates(HCObject.C,inputObject.getCoordinates(HCObject.C));
+            outputObject.setCoordinates(HCObject.T,inputObject.getCoordinates(HCObject.T));
+
             // Adding object to HashMap
             outputObjects.put(outputObject.getID(),outputObject);
 

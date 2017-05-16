@@ -8,6 +8,7 @@ wbif\sjx\common\FileConditions\NameContainsPattern.class
 wbif\sjx\common\MathFunc\GeneralOps.class
 wbif\sjx\common\Analysis\DirectionalPersistenceCalculator.class
 wbif\sjx\common\HighContent\Module\MeasureObjectTexture.class
+wbif\sjx\common\HighContent\Module\MeasureTrackIntensity.class
 wbif\sjx\common\Object\SpotIntensity.class
 wbif\sjx\common\FileConditions\ParentContainsString.class
 wbif\sjx\common\FileConditions\NameContainsString.class

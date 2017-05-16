@@ -1,6 +1,7 @@
 package wbif.sjx.common.HighContent.Process;
 
 import wbif.sjx.common.HighContent.Module.HCModule;
+import wbif.sjx.common.HighContent.Object.HCImageName;
 import wbif.sjx.common.HighContent.Object.HCModuleCollection;
 import wbif.sjx.common.HighContent.Object.HCWorkspace;
 

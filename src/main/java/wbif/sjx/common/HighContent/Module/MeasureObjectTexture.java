@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class MeasureObjectTexture extends HCModule {
     public static final String INPUT_IMAGE = "Input image";
     public static final String INPUT_OBJECTS = "Input objects";
+    public static final String POINT_MEASUREMENT = "Measurements based on centroid point";
     public static final String MEASUREMENT_RADIUS = "Measurement radius";
     public static final String CALIBRATED_RADIUS = "Calibrated radius";
     public static final String X_OFFSET = "X-offset";
@@ -24,13 +25,6 @@ public class MeasureObjectTexture extends HCModule {
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Running object texture analysis");
 
-        // Getting parameters
-        int xOffs = parameters.getValue(X_OFFSET);
-        int yOffs = parameters.getValue(Y_OFFSET);
-        int zOffs = parameters.getValue(Z_OFFSET);
-        double radius = parameters.getValue(MEASUREMENT_RADIUS);
-        boolean calibrated = parameters.getValue(CALIBRATED_RADIUS);
-
         // Getting input image
         HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
         HCImage inputImage = workspace.getImages().get(inputImageName);
@@ -40,8 +34,21 @@ public class MeasureObjectTexture extends HCModule {
         HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
 
-        // Getting local object region
-        HCObjectSet inputObjectsRegion = GetLocalObjectRegion.getLocalRegions(inputObjects,radius,calibrated);
+        // Getting parameters
+        int xOffs = parameters.getValue(X_OFFSET);
+        int yOffs = parameters.getValue(Y_OFFSET);
+        int zOffs = parameters.getValue(Z_OFFSET);
+        boolean centroidMeasurement = parameters.getValue(POINT_MEASUREMENT);
+
+        // If a centroid region is being used calculate the local region and reassign that to inputObjects reference
+        if (centroidMeasurement) {
+            double radius = parameters.getValue(MEASUREMENT_RADIUS);
+            boolean calibrated = parameters.getValue(CALIBRATED_RADIUS);
+
+            // Getting local object region
+            inputObjects = GetLocalObjectRegion.getLocalRegions(inputObjects, radius, calibrated);
+
+        }
 
         // Running texture measurement
         if (verbose) System.out.println("       Calculating co-occurance matrix");
@@ -51,10 +58,10 @@ public class MeasureObjectTexture extends HCModule {
 
         TextureCalculator textureCalculator = new TextureCalculator();
 
-        int nObjects = inputObjectsRegion.size();
+        int nObjects = inputObjects.size();
         int iter = 1;
         if (verbose) System.out.println("        Initialising measurements");
-        for (HCObject object:inputObjectsRegion.values()) {
+        for (HCObject object:inputObjects.values()) {
             if (verbose) System.out.print("\r            Processing object "+(iter++)+" of "+nObjects);
             ArrayList<int[]> coords = new ArrayList<>();
 
@@ -72,19 +79,35 @@ public class MeasureObjectTexture extends HCModule {
             // Acquiring measurements
             HCSingleMeasurement ASMMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_ASM",textureCalculator.getASM());
             ASMMeasurement.setSource(this);
-            object.getParent().addSingleMeasurement(ASMMeasurement.getName(),ASMMeasurement);
+            if (centroidMeasurement) {
+                object.getParent().addSingleMeasurement(ASMMeasurement.getName(), ASMMeasurement);
+            } else {
+                object.addSingleMeasurement(ASMMeasurement.getName(),ASMMeasurement);
+            }
 
             HCSingleMeasurement contrastMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_CONTRAST",textureCalculator.getContrast());
             contrastMeasurement.setSource(this);
-            object.getParent().addSingleMeasurement(contrastMeasurement.getName(),contrastMeasurement);
+            if (centroidMeasurement) {
+                object.getParent().addSingleMeasurement(contrastMeasurement.getName(), contrastMeasurement);
+            } else {
+                object.addSingleMeasurement(contrastMeasurement.getName(),contrastMeasurement);
+            }
 
             HCSingleMeasurement correlationMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_CORRELATION",textureCalculator.getCorrelation());
             correlationMeasurement.setSource(this);
-            object.getParent().addSingleMeasurement(correlationMeasurement.getName(),correlationMeasurement);
+            if (centroidMeasurement) {
+                object.getParent().addSingleMeasurement(correlationMeasurement.getName(), correlationMeasurement);
+            } else {
+                object.addSingleMeasurement(correlationMeasurement.getName(),correlationMeasurement);
+            }
 
             HCSingleMeasurement entropyMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_ENTROPY",textureCalculator.getEntropy());
             entropyMeasurement.setSource(this);
-            object.getParent().addSingleMeasurement(entropyMeasurement.getName(),entropyMeasurement);
+            if (centroidMeasurement) {
+                object.getParent().addSingleMeasurement(entropyMeasurement.getName(), entropyMeasurement);
+            } else {
+                object.addSingleMeasurement(entropyMeasurement.getName(),entropyMeasurement);
+            }
 
         }
 
@@ -99,6 +122,7 @@ public class MeasureObjectTexture extends HCModule {
         parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object texture measurement",true));
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,"Im1",false));
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,"Obj1",false));
+        parameters.addParameter(new HCParameter(this,POINT_MEASUREMENT,HCParameter.BOOLEAN,false,true));
         parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false,true));
         parameters.addParameter(new HCParameter(this,MEASUREMENT_RADIUS, HCParameter.DOUBLE,10.0,true));
         parameters.addParameter(new HCParameter(this,X_OFFSET, HCParameter.INTEGER,1,true));
@@ -111,6 +135,21 @@ public class MeasureObjectTexture extends HCModule {
 
     @Override
     public HCParameterCollection getActiveParameters() {
-        return parameters;
+        HCParameterCollection returnedParameters = new HCParameterCollection();
+        returnedParameters.addParameter(parameters.getParameter(MODULE_TITLE));
+        returnedParameters.addParameter(parameters.getParameter(INPUT_IMAGE));
+        returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
+        returnedParameters.addParameter(parameters.getParameter(POINT_MEASUREMENT));
+
+        if (parameters.getValue(POINT_MEASUREMENT)) {
+            returnedParameters.addParameter(parameters.getParameter(CALIBRATED_RADIUS));
+            returnedParameters.addParameter(parameters.getParameter(MEASUREMENT_RADIUS));
+        }
+
+        returnedParameters.addParameter(parameters.getParameter(X_OFFSET));
+        returnedParameters.addParameter(parameters.getParameter(Y_OFFSET));
+        returnedParameters.addParameter(parameters.getParameter(Z_OFFSET));
+
+        return returnedParameters;
     }
 }

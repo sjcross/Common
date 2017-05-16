@@ -66,7 +66,6 @@ public class MeasureObjectIntensity extends HCModule {
             object.addSingleMeasurement(maxIntensity.getName(),maxIntensity);
 
         }
-
     }
 
     @Override
@@ -83,6 +82,12 @@ public class MeasureObjectIntensity extends HCModule {
 
     @Override
     public HCParameterCollection getActiveParameters() {
-        return parameters;
+        HCParameterCollection returnedParameters = new HCParameterCollection();
+        returnedParameters.addParameter(parameters.getParameter(MODULE_TITLE));
+        returnedParameters.addParameter(parameters.getParameter(INPUT_IMAGE));
+        returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
+
+        return returnedParameters;
+
     }
 }

@@ -90,6 +90,7 @@ public class RunTrackMate extends HCModule {
         // Initialising measurement store for radius
         HCMultiMeasurement radiusMeasure = new HCMultiMeasurement(HCMultiMeasurement.RADIUS);
         radiusMeasure.setSource(this);
+        radiusMeasure.setPositionUnit("FRAME");
 
         TrackModel trackModel = model.getTrackModel();
         Set<Integer> trackIDs = trackModel.trackIDs(false);
@@ -101,23 +102,25 @@ public class RunTrackMate extends HCModule {
 
             // Getting x,y,f and 2-channel spot intensities from TrackMate results
             for (Spot spot:spots) {
-                System.out.println(trackID+"_"+spot.ID());
                 int x = (int) calibration.getRawX(spot.getDoublePosition(0));
                 int y = (int) calibration.getRawY(spot.getDoublePosition(1));
                 int z = (int) (spot.getDoublePosition(2)/calibration.getZ(1));
                 int t = (int) Math.round(spot.getFeature(Spot.FRAME));
+
                 object.addCoordinate(HCObject.X,x);
                 object.addCoordinate(HCObject.Y,y);
                 object.addCoordinate(HCObject.Z,z);
                 object.addCoordinate(HCObject.T,t);
 
-                // Adding radius measurement
-                radiusMeasure.addValue(new int[]{x,y,z,t},calibration.getRawX(spot.getFeature(Spot.RADIUS)));
+                // Adding radius measurement using the same coordinate system as HCObject (XYCZT)
+                radiusMeasure.addValue(t,calibration.getRawX(spot.getFeature(Spot.RADIUS)));
 
                 // Adding calibration values to the HCObject (physical distance per pixel)
                 object.addCalibration(HCObject.X,calibration.getX(1));
                 object.addCalibration(HCObject.Y,calibration.getY(1));
                 object.addCalibration(HCObject.Z,calibration.getZ(1));
+                object.addCalibration(HCObject.C,1);
+                object.addCalibration(HCObject.T,1);
                 object.setCalibratedUnits(calibration.getUnits());
 
             }
@@ -144,7 +147,7 @@ public class RunTrackMate extends HCModule {
         parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS,HCParameter.OUTPUT_OBJECTS,null,false));
 
         parameters.addParameter(new HCParameter(this,DO_SUBPIXEL_LOCALIZATION,HCParameter.BOOLEAN,true,true));
-        parameters.addParameter(new HCParameter(this,RADIUS,HCParameter.DOUBLE,2.0,true));
+        parameters.addParameter(new HCParameter(this,RADIUS,HCParameter.DOUBLE,0.5,true));
         parameters.addParameter(new HCParameter(this,THRESHOLD,HCParameter.DOUBLE,5000.0,true));
         parameters.addParameter(new HCParameter(this,DO_MEDIAN_FILTERING,HCParameter.BOOLEAN,false,true));
 

@@ -22,8 +22,17 @@ public class HCMultiMeasurement {
     public static final String STD_INTENSITY = "Stdev intensity";
 
     private String name;
-    private HashMap<int[],Double> values;
-    private Object source;
+    private Object source = null;
+
+    /**
+     * Measurements are stored in a HashMap with the key being any position (e.g. time or radius)
+     */
+    private HashMap<Double,Double> values = new HashMap<>();
+
+    /**
+     * Unit of the position (e.g. for measurements stored as a function of radius this may be "nm")
+     */
+    private String positionUnit = "";
 
 
     // CONSTRUCTOR
@@ -36,12 +45,12 @@ public class HCMultiMeasurement {
 
     // PUBLIC METHODS
 
-    public void addValue(int[] coordinate, double value) {
+    public void addValue(double coordinate, double value) {
         values.put(coordinate,value);
 
     }
 
-    public double getValue(int[] coordinate) {
+    public double getValue(double coordinate) {
         return values.get(coordinate);
 
     }
@@ -57,11 +66,11 @@ public class HCMultiMeasurement {
         this.name = name;
     }
 
-    public HashMap<int[],Double> getValues() {
+    public HashMap<Double,Double> getValues() {
         return values;
     }
 
-    public void setValues(HashMap<int[],Double> value) {
+    public void setValues(HashMap<Double,Double> value) {
         this.values = value;
     }
 
@@ -71,5 +80,13 @@ public class HCMultiMeasurement {
 
     public void setSource(Object source) {
         this.source = source;
+    }
+
+    public String getPositionUnit() {
+        return positionUnit;
+    }
+
+    public void setPositionUnit(String positionUnit) {
+        this.positionUnit = positionUnit;
     }
 }

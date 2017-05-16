@@ -3,6 +3,7 @@ package wbif.sjx.common.HighContent.Object;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by steph on 30/04/2017.
@@ -19,8 +20,8 @@ public class HCObject {
     private HashMap<Integer, ArrayList<Integer>> coordinates = new HashMap<>();
     private HCObject parent = null;
     private ArrayList<HCObject> children = new ArrayList<HCObject>();
-    private HashMap<String,HCSingleMeasurement> singleMeasurements = new HashMap<>();
-    private HashMap<String,HCMultiMeasurement> multiMeasurements = new HashMap<>();
+    private LinkedHashMap<String,HCSingleMeasurement> singleMeasurements = new LinkedHashMap<>();
+    private LinkedHashMap<String,HCMultiMeasurement> multiMeasurements = new LinkedHashMap<>();
     private String calibratedUnits = "px";
 
     /**
@@ -87,13 +88,13 @@ public class HCObject {
 
     }
 
-    public void setMultiMeasurementPoint(String name, int[] coordinate, double value) {
+    public void setMultiMeasurementPoint(String name, double coordinate, double value) {
         multiMeasurements.computeIfAbsent(name,k -> new HCMultiMeasurement(name));
         multiMeasurements.get(name).addValue(coordinate,value);
 
     }
 
-    public double getMultiMeasurementPoint(String name, int[] coordinate) {
+    public double getMultiMeasurementPoint(String name, double coordinate) {
         return multiMeasurements.get(name).getValue(coordinate);
 
     }
@@ -142,7 +143,7 @@ public class HCObject {
         this.ID = ID;
     }
 
-    public void setCoordinates(ArrayList<Integer> coordinateList, int dim) {
+    public void setCoordinates(int dim, ArrayList<Integer> coordinateList) {
         coordinates.put(dim, coordinateList);
 
     }
@@ -186,20 +187,20 @@ public class HCObject {
         children.remove(child);
     }
 
-    public HashMap<String, HCSingleMeasurement> getSingleMeasurements() {
+    public LinkedHashMap<String, HCSingleMeasurement> getSingleMeasurements() {
         return singleMeasurements;
     }
 
-    public void setSingleMeasurements(HashMap<String, HCSingleMeasurement> singleMeasurements) {
+    public void setSingleMeasurements(LinkedHashMap<String, HCSingleMeasurement> singleMeasurements) {
         this.singleMeasurements = singleMeasurements;
 
     }
 
-    public HashMap<String, HCMultiMeasurement> getMultiMeasurements() {
+    public LinkedHashMap<String, HCMultiMeasurement> getMultiMeasurements() {
         return multiMeasurements;
     }
 
-    public void setMultiMeasurements(HashMap<String, HCMultiMeasurement> multiMeasurements) {
+    public void setMultiMeasurements(LinkedHashMap<String, HCMultiMeasurement> multiMeasurements) {
         this.multiMeasurements = multiMeasurements;
     }
 

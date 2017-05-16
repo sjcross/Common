@@ -54,22 +54,25 @@ public class HCExporter {
 
     }
 
-    public void exportResults(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
+    public void exportResults(HCWorkspaceCollection workspaces, HCAnalysis analysis) {
         if (exportMode == XML_EXPORT) {
-            exportXML(workspaces,modules);
+            exportXML(workspaces,analysis);
 
         } else if (exportMode == XLSX_EXPORT) {
-            exportXLSX(workspaces,modules);
+            exportXLSX(workspaces,analysis);
 
         } else if (exportMode == JSON_EXPORT) {
-            exportJSON(workspaces,modules);
+            exportJSON(workspaces,analysis);
 
         }
     }
 
-    private void exportXML(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
+    private void exportXML(HCWorkspaceCollection workspaces, HCAnalysis analysis) {
         // Initialising DecimalFormat
         DecimalFormat df = new DecimalFormat("0.000E0");
+
+        // Getting modules
+        HCModuleCollection modules = analysis.getModules();
 
         try {
             // Initialising the document
@@ -77,49 +80,8 @@ public class HCExporter {
             Element root = doc.createElement("ROOT");
             doc.appendChild(root);
 
-            Element parametersElement =  doc.createElement("PARAMETERS");
-
-            // Running through each parameter set (one for each module
-            for (HCModule module:modules) {
-                LinkedHashMap<String,HCParameter> parameters = module.getActiveParameters().getParameters();
-
-                boolean first = true;
-                Element moduleElement =  doc.createElement("MODULE");
-                for (HCParameter currParam:parameters.values()) {
-                    // For the first parameter in a module, adding the name
-                    if (first) {
-                        Attr nameAttr = doc.createAttribute("NAME");
-                        nameAttr.appendChild(doc.createTextNode(currParam.getModule().getClass().getName()));
-                        moduleElement.setAttributeNode(nameAttr);
-
-                        Attr hashAttr = doc.createAttribute("HASH");
-                        hashAttr.appendChild(doc.createTextNode(String.valueOf(currParam.getModule().hashCode())));
-                        moduleElement.setAttributeNode(hashAttr);
-
-                        first = false;
-                    }
-
-                    // Adding the name and value of the current parameter
-                    Element parameterElement =  doc.createElement("PARAMETER");
-
-                    Attr nameAttr = doc.createAttribute("NAME");
-                    nameAttr.appendChild(doc.createTextNode(currParam.getName()));
-                    parameterElement.setAttributeNode(nameAttr);
-
-                    Attr valueAttr = doc.createAttribute("VALUE");
-                    valueAttr.appendChild(doc.createTextNode(currParam.getValue().toString()));
-                    parameterElement.setAttributeNode(valueAttr);
-
-                    moduleElement.appendChild(parameterElement);
-
-                }
-
-                // Adding current module to parameters
-                parametersElement.appendChild(moduleElement);
-
-            }
-
-            // Adding parameters to main file
+            // Getting paramters as Element and adding to the main file
+            Element parametersElement = prepareParametersXML(doc,modules);
             root.appendChild(parametersElement);
 
             // Running through each workspace (each corresponds to a file) adding file information
@@ -140,14 +102,14 @@ public class HCExporter {
                 for (HCImageName imageName:workspace.getImages().keySet()) {
                     HCImage image = workspace.getImages().get(imageName);
 
-                    if (image.getMeasurements() != null) {
+                    if (image.getSingleMeasurements() != null) {
                         Element imageElement = doc.createElement("IMAGE");
 
                         Attr nameAttr = doc.createAttribute("NAME");
                         nameAttr.appendChild(doc.createTextNode(String.valueOf(imageName.getName())));
                         imageElement.setAttributeNode(nameAttr);
 
-                        for (HCSingleMeasurement measurement : image.getMeasurements().values()) {
+                        for (HCSingleMeasurement measurement : image.getSingleMeasurements().values()) {
                             String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                             Attr measAttr = doc.createAttribute(attrName);
                             String attrValue = df.format(measurement.getValue());
@@ -175,11 +137,36 @@ public class HCExporter {
                         objectElement.setAttributeNode(nameAttr);
 
                         for (HCSingleMeasurement measurement:object.getSingleMeasurements().values()) {
-                            String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
-                            Attr measAttr = doc.createAttribute(attrName);
-                            String attrValue = df.format(measurement.getValue());
-                            measAttr.appendChild(doc.createTextNode(attrValue));
-                            objectElement.setAttributeNode(measAttr);
+                            Element measElement = doc.createElement("MEAS");
+
+                            String name = measurement.getName().toUpperCase().replaceAll(" ", "_");
+                            measElement.setAttribute("NAME",name);
+
+                            String value = df.format(measurement.getValue());
+                            measElement.setAttribute("VALUE",value);
+
+                            // Adding the measurement as a child of that object
+                            objectElement.appendChild(measElement);
+
+                        }
+
+                        for (HCMultiMeasurement measurement:object.getMultiMeasurements().values()) {
+                            Element multiMeasElement = doc.createElement("MULTI_MEAS");
+
+                            String name = measurement.getName().toUpperCase().replaceAll(" ", "_");
+                            multiMeasElement.setAttribute("NAME",name);
+
+                            for (Double position:measurement.getValues().keySet()) {
+                                Element measElement = doc.createElement("MEAS");
+
+                                measElement.setAttribute("POS",String.valueOf(position));
+
+                                measElement.setAttribute("VALUE",String.valueOf(measurement.getValue(position)));
+
+                                // Adding the measurement as a child of that multi measurement
+                                multiMeasElement.appendChild(measElement);
+
+                            }
                         }
 
                         setElement.appendChild(objectElement);
@@ -214,7 +201,57 @@ public class HCExporter {
         }
     }
 
-    private void exportXLSX(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
+    private Element prepareParametersXML(Document doc, HCModuleCollection modules) {
+        Element parametersElement =  doc.createElement("PARAMETERS");
+
+        // Running through each parameter set (one for each module
+        for (HCModule module:modules) {
+            LinkedHashMap<String,HCParameter> parameters = module.getActiveParameters().getParameters();
+
+            boolean first = true;
+            Element moduleElement =  doc.createElement("MODULE");
+            for (HCParameter currParam:parameters.values()) {
+                // For the first parameter in a module, adding the name
+                if (first) {
+                    Attr nameAttr = doc.createAttribute("NAME");
+                    nameAttr.appendChild(doc.createTextNode(currParam.getModule().getClass().getName()));
+                    moduleElement.setAttributeNode(nameAttr);
+
+                    Attr hashAttr = doc.createAttribute("HASH");
+                    hashAttr.appendChild(doc.createTextNode(String.valueOf(currParam.getModule().hashCode())));
+                    moduleElement.setAttributeNode(hashAttr);
+
+                    first = false;
+                }
+
+                // Adding the name and value of the current parameter
+                Element parameterElement =  doc.createElement("PARAMETER");
+
+                Attr nameAttr = doc.createAttribute("NAME");
+                nameAttr.appendChild(doc.createTextNode(currParam.getName()));
+                parameterElement.setAttributeNode(nameAttr);
+
+                Attr valueAttr = doc.createAttribute("VALUE");
+                valueAttr.appendChild(doc.createTextNode(currParam.getValue().toString()));
+                parameterElement.setAttributeNode(valueAttr);
+
+                moduleElement.appendChild(parameterElement);
+
+            }
+
+            // Adding current module to parameters
+            parametersElement.appendChild(moduleElement);
+
+        }
+
+        return parametersElement;
+
+    }
+
+    private void exportXLSX(HCWorkspaceCollection workspaces, HCAnalysis analysis) {
+        // Getting modules
+        HCModuleCollection modules = analysis.getModules();
+
         // Initialising the workbook
         XSSFWorkbook workbook = new XSSFWorkbook();
 
@@ -344,7 +381,7 @@ public class HCExporter {
             for (HCImageName imageName : exampleWorkspace.getImages().keySet()) {
                 HCImage image = exampleWorkspace.getImages().get(imageName);
 
-                if (image.getMeasurements().size() != 0) {
+                if (image.getSingleMeasurements().size() != 0) {
                     // Creating relevant sheet prefixed with "IM"
                     imageSheets.put(imageName, workbook.createSheet("IM_" + imageName.getName()));
 
@@ -358,7 +395,7 @@ public class HCExporter {
                     Cell IDHeaderCell = imageHeaderRow.createCell(col++);
                     IDHeaderCell.setCellValue("ANALYSIS_ID");
 
-                    for (HCSingleMeasurement measurement : image.getMeasurements().values()) {
+                    for (HCSingleMeasurement measurement : image.getSingleMeasurements().values()) {
                         Cell measHeaderCell = imageHeaderRow.createCell(col++);
                         String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
@@ -371,7 +408,7 @@ public class HCExporter {
                 for (HCImageName imageName : workspace.getImages().keySet()) {
                     HCImage image = exampleWorkspace.getImages().get(imageName);
 
-                    if (image.getMeasurements().size() != 0) {
+                    if (image.getSingleMeasurements().size() != 0) {
                         // Adding the measurements from this image
                         int col = 0;
 
@@ -382,7 +419,7 @@ public class HCExporter {
                         Cell IDValueCell = imageValueRow.createCell(col++);
                         IDValueCell.setCellValue(workspace.getID());
 
-                        for (HCSingleMeasurement measurement : image.getMeasurements().values()) {
+                        for (HCSingleMeasurement measurement : image.getSingleMeasurements().values()) {
                             Cell measValueCell = imageValueRow.createCell(col++);
                             measValueCell.setCellValue(measurement.getValue());
                         }
@@ -456,7 +493,7 @@ public class HCExporter {
         }
     }
 
-    private void exportJSON(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
+    private void exportJSON(HCWorkspaceCollection workspaces, HCAnalysis analysis) {
         System.out.println("[WARN] No JSON export currently implemented.  File not saved.");
 
     }
