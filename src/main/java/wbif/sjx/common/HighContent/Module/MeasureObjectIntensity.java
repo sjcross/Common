@@ -9,20 +9,20 @@ import java.util.ArrayList;
 /**
  * Created by sc13967 on 05/05/2017.
  */
-public class MeasureObjectIntensity implements Module {
+public class MeasureObjectIntensity extends HCModule {
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String INPUT_IMAGE = "Input image";
 
 
     @Override
-    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
+    public void execute(HCWorkspace workspace, boolean verbose) {
         // Getting input objects
-        HCObjectName objectName = parameters.getValue(this,INPUT_OBJECTS);
+        HCObjectName objectName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet objects = workspace.getObjects().get(objectName);
 
         // Getting input image
-        ImageName imageName = parameters.getValue(this,INPUT_IMAGE);
-        Image image = workspace.getImages().get(imageName);
+        HCImageName imageName = parameters.getValue(INPUT_IMAGE);
+        HCImage image = workspace.getImages().get(imageName);
         ImagePlus ipl = image.getImagePlus();
 
         // Measuring intensity for each object and adding the measurement to that object
@@ -49,35 +49,40 @@ public class MeasureObjectIntensity implements Module {
             }
 
             // Calculating mean, std, min and max intensity
-            Measurement meanIntensity = new Measurement(imageName.getName()+"_MEAN", cs.getMean()[0]);
+            HCSingleMeasurement meanIntensity = new HCSingleMeasurement(imageName.getName()+"_MEAN", cs.getMean()[0]);
             meanIntensity.setSource(this);
-            object.addMeasurement(meanIntensity.getName(),meanIntensity);
+            object.addSingleMeasurement(meanIntensity.getName(),meanIntensity);
 
-            Measurement stdIntensity = new Measurement(imageName.getName()+"_STD", cs.getStd(CumStat.SAMPLE)[0]);
+            HCSingleMeasurement stdIntensity = new HCSingleMeasurement(imageName.getName()+"_STD", cs.getStd(CumStat.SAMPLE)[0]);
             stdIntensity.setSource(this);
-            object.addMeasurement(stdIntensity.getName(),stdIntensity);
+            object.addSingleMeasurement(stdIntensity.getName(),stdIntensity);
 
-            Measurement minIntensity = new Measurement(imageName.getName()+"_MIN", cs.getMin()[0]);
+            HCSingleMeasurement minIntensity = new HCSingleMeasurement(imageName.getName()+"_MIN", cs.getMin()[0]);
             minIntensity.setSource(this);
-            object.addMeasurement(minIntensity.getName(),minIntensity);
+            object.addSingleMeasurement(minIntensity.getName(),minIntensity);
 
-            Measurement maxIntensity = new Measurement(imageName.getName()+"_MAX", cs.getMax()[0]);
+            HCSingleMeasurement maxIntensity = new HCSingleMeasurement(imageName.getName()+"_MAX", cs.getMax()[0]);
             maxIntensity.setSource(this);
-            object.addMeasurement(maxIntensity.getName(),maxIntensity);
+            object.addSingleMeasurement(maxIntensity.getName(),maxIntensity);
 
         }
 
     }
 
     @Override
-    public ParameterCollection initialiseParameters() {
-        ParameterCollection parameters = new ParameterCollection();
+    public HCParameterCollection initialiseParameters() {
+        HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Measure object intensity",false));
-        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
-        parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Measure object intensity",false));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null,false));
 
         return parameters;
 
+    }
+
+    @Override
+    public HCParameterCollection getActiveParameters() {
+        return parameters;
     }
 }

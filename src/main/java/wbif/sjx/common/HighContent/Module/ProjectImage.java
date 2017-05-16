@@ -1,26 +1,26 @@
 package wbif.sjx.common.HighContent.Module;
 
 import wbif.sjx.common.HighContent.Object.*;
-import wbif.sjx.common.HighContent.Object.ParameterCollection;
+import wbif.sjx.common.HighContent.Object.HCParameterCollection;
 
 /**
  * Created by sc13967 on 04/05/2017.
  */
-public class ProjectImage implements Module {
+public class ProjectImage extends HCModule {
     public static final String INPUT_IMAGE = "Input image";
     public static final String OUTPUT_IMAGE = "Output image";
 
     @Override
-    public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
+    public void execute(HCWorkspace workspace, boolean verbose) {
         // Loading image into workspace
-        ImageName inputImageName = parameters.getValue(this,INPUT_IMAGE);
-        Image inputImage = workspace.getImages().get(inputImageName);
+        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
+        HCImage inputImage = workspace.getImages().get(inputImageName);
 
         // Getting output image name
-        ImageName outputImageName = parameters.getValue(this,OUTPUT_IMAGE);
+        HCImageName outputImageName = parameters.getValue(OUTPUT_IMAGE);
 
         // Create max projection image
-        Image outputImage = inputImage.projectImageInZ();
+        HCImage outputImage = inputImage.projectImageInZ();
 
         // Adding projected image to workspace
         workspace.addImage(outputImageName,outputImage);
@@ -28,14 +28,19 @@ public class ProjectImage implements Module {
     }
 
     @Override
-    public ParameterCollection initialiseParameters() {
-        ParameterCollection parameters = new ParameterCollection();
+    public HCParameterCollection initialiseParameters() {
+        HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Image projector",false));
-        parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
-        parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Image projector",false));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null,false));
+        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null,false));
 
         return parameters;
 
+    }
+
+    @Override
+    public HCParameterCollection getActiveParameters() {
+        return parameters;
     }
 }

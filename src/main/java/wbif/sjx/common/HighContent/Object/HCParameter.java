@@ -5,59 +5,79 @@ import java.util.HashMap;
 /**
  * Created by sc13967 on 03/05/2017.
  */
-public class Parameter {
+public class HCParameter {
     /**
      * Class only used for module titles.  These are displayed by ParameterWindow, but don't have anything to set
      */
     public final static int MODULE_TITLE = 0;
 
     /**
-     * Name of Image class objects.  Used to connect images to be analysed between classes
+     * Name of Image class objects input to the module.  Used to connect images to be analysed between classes.  Input
+     * images have been created by previous modules.
      */
-    public final static int IMAGE_NAME = 1;
+    public final static int INPUT_IMAGE = 1;
 
     /**
-     * Name of HCObject class objects.  Used to connect HCObjects to be analysed between classes
+     * Name of Image class objects output by the module.  Used to connect images to be analysed between classes.  Output
+     * images are created by this module.
      */
-    public final static int OBJECT_NAME = 2;
+    public final static int OUTPUT_IMAGE = 2;
+
+    /**
+     * Name of HCObject class objects input to the module.  Used to connect HCObjects to be analysed between classes.
+     * Input HCObjects have been created by previous modules.
+     */
+    public final static int INPUT_OBJECTS = 3;
+
+    /**
+     * Name of HCObject class objects output by the module.  Used to connect HCObjects to be analysed between classes.
+     * Output HCObjects are created by this module.
+     */
+    public final static int OUTPUT_OBJECTS = 4;
 
     /**
      * Single integer variable.  These can be set in ParameterWindow by numeric fields
      */
-    public final static int INTEGER = 3;
+    public final static int INTEGER = 5;
 
     /**
      * Single double variable.  These can be set in ParameterWindow by numeric fields
      */
-    public final static int DOUBLE = 4;
+    public final static int DOUBLE = 6;
 
     /**
      * Single string variable.  These can be set in ParameterWindow by string fields
      */
-    public final static int STRING = 5;
+    public final static int STRING = 7;
 
     /**
      * String array containing choices (e.g. names of thresholding methods).  These are displayed as drop-down choice
      * menus in ParameterWindow
      */
-    public final static int CHOICE_ARRAY = 6;
+    public final static int CHOICE_ARRAY = 8;
 
     /**
      * HashMap containing numeric values to be set in ParameterWindow.  ParameterWindow iterates through each of these
      * and displays it in its own numeric field
      */
-    public final static int CHOICE_MAP = 7;
+    public final static int CHOICE_MAP = 9;
 
     /**
      * Boolean class parameter.  These are displayed by ParameterWindow as checkboxes.
      */
-    public final static int BOOLEAN = 8;
+    public final static int BOOLEAN = 10;
+
+    /**
+     * System file parameter.  These are displayed as buttons for loading file open dialog.  This is stored as an
+     * absolute path String.
+     */
+    public final static int FILE_PATH = 11;
 
     /**
      * Miscellaneous object class parameter.  These can be anything not fitting the other categories.  These can't be
      * set using ParameterWindow.
      */
-    public final static int OBJECT = 9;
+    public final static int OBJECT = 12;
 
     final Object module;
     final String name;
@@ -69,7 +89,7 @@ public class Parameter {
 
     // CONSTRUCTORS
 
-    public Parameter(Object module, String name, int type, Object value, Object defaultValue, boolean visible) {
+    public HCParameter(Object module, String name, int type, Object value, Object defaultValue, boolean visible) {
         this.module = module;
         this.type = type;
         this.name = name;
@@ -79,7 +99,7 @@ public class Parameter {
 
     }
 
-    public Parameter(Object module, String name, int type, Object value, boolean visible) {
+    public HCParameter(Object module, String name, int type, Object value, boolean visible) {
         this.module = module;
         this.type = type;
         this.name = name;
@@ -138,12 +158,12 @@ public class Parameter {
         if (type == MODULE_TITLE) {
             return (String) value;
 
-        } else if (type == IMAGE_NAME) {
+        } else if (type == INPUT_IMAGE | type == OUTPUT_IMAGE) {
             System.out.println("Value: "+value);
             System.out.println("Value.toString(): "+value.toString());
             return value.toString();
 
-        } else if (type == OBJECT_NAME) {
+        } else if (type == INPUT_OBJECTS | type == OUTPUT_OBJECTS) {
             return value.toString();
 
         } else if (type == INTEGER) {

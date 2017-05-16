@@ -4,19 +4,20 @@ import wbif.sjx.common.HighContent.Extractor.CellVoyagerFilenameExtractor;
 import wbif.sjx.common.HighContent.Extractor.CellVoyagerFoldernameExtractor;
 import wbif.sjx.common.HighContent.Extractor.IncuCyteLongFilenameExtractor;
 import wbif.sjx.common.HighContent.Extractor.IncuCyteShortFilenameExtractor;
-import wbif.sjx.common.HighContent.Object.Metadata;
+import wbif.sjx.common.HighContent.Object.HCMetadata;
 
 
 /**
  * Created by sc13967 on 12/12/2016.
  */
+@Deprecated
 public class ParameterExtractor {
     public static final int CELLVOYAGERFILE = 0;
     public static final int CELLVOYAGERFOLDER = 1;
     public static final int INCUCYTESHORT = 2;
     public static final int INCUCYTELONG = 3;
 
-    private Metadata result;
+    private HCMetadata result;
 
     /**
      * Takes a supplied filename and uses regular expression interpretation to extract parameters.  This is basically a
@@ -24,7 +25,7 @@ public class ParameterExtractor {
      *
      * @param result Requires a pre-initialised Result object
      */
-    public ParameterExtractor(Metadata result) {
+    public ParameterExtractor(HCMetadata result) {
         this.result = result;
 
     }

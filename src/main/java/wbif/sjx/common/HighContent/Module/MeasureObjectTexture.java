@@ -1,8 +1,6 @@
 package wbif.sjx.common.HighContent.Module;
 
-import ij.IJ;
 import ij.ImagePlus;
-import ij.Prefs;
 import wbif.sjx.common.Analysis.TextureCalculator;
 import wbif.sjx.common.HighContent.Object.*;
 
@@ -12,7 +10,7 @@ import java.util.ArrayList;
  * Takes a set of objects and measures intensity texture values on a provided image.  Measurements are stored with the
  * objects.
  */
-public class MeasureObjectTexture implements Module {
+public class MeasureObjectTexture extends HCModule {
     public static final String INPUT_IMAGE = "Input image";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String MEASUREMENT_RADIUS = "Measurement radius";
@@ -23,23 +21,23 @@ public class MeasureObjectTexture implements Module {
 
 
     @Override
-    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
+    public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Running object texture analysis");
 
         // Getting parameters
-        int xOffs = parameters.getValue(this,X_OFFSET);
-        int yOffs = parameters.getValue(this,Y_OFFSET);
-        int zOffs = parameters.getValue(this,Z_OFFSET);
-        double radius = parameters.getValue(this,MEASUREMENT_RADIUS);
-        boolean calibrated = parameters.getValue(this,CALIBRATED_RADIUS);
+        int xOffs = parameters.getValue(X_OFFSET);
+        int yOffs = parameters.getValue(Y_OFFSET);
+        int zOffs = parameters.getValue(Z_OFFSET);
+        double radius = parameters.getValue(MEASUREMENT_RADIUS);
+        boolean calibrated = parameters.getValue(CALIBRATED_RADIUS);
 
         // Getting input image
-        ImageName inputImageName = parameters.getValue(this,INPUT_IMAGE);
-        Image inputImage = workspace.getImages().get(inputImageName);
+        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
+        HCImage inputImage = workspace.getImages().get(inputImageName);
         ImagePlus inputImagePlus = inputImage.getImagePlus();
 
         // Getting input objects
-        HCObjectName inputObjectsName = parameters.getValue(this,INPUT_OBJECTS);
+        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
 
         // Getting local object region
@@ -72,21 +70,21 @@ public class MeasureObjectTexture implements Module {
             textureCalculator.calculate(inputImagePlus,xOffs,yOffs,zOffs,coords);
 
             // Acquiring measurements
-            Measurement ASMMeasurement = new Measurement(inputImageName.getName()+"_ASM",textureCalculator.getASM());
+            HCSingleMeasurement ASMMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_ASM",textureCalculator.getASM());
             ASMMeasurement.setSource(this);
-            object.getParent().addMeasurement(ASMMeasurement.getName(),ASMMeasurement);
+            object.getParent().addSingleMeasurement(ASMMeasurement.getName(),ASMMeasurement);
 
-            Measurement contrastMeasurement = new Measurement(inputImageName.getName()+"_CONTRAST",textureCalculator.getContrast());
+            HCSingleMeasurement contrastMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_CONTRAST",textureCalculator.getContrast());
             contrastMeasurement.setSource(this);
-            object.getParent().addMeasurement(contrastMeasurement.getName(),contrastMeasurement);
+            object.getParent().addSingleMeasurement(contrastMeasurement.getName(),contrastMeasurement);
 
-            Measurement correlationMeasurement = new Measurement(inputImageName.getName()+"_CORRELATION",textureCalculator.getCorrelation());
+            HCSingleMeasurement correlationMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_CORRELATION",textureCalculator.getCorrelation());
             correlationMeasurement.setSource(this);
-            object.getParent().addMeasurement(correlationMeasurement.getName(),correlationMeasurement);
+            object.getParent().addSingleMeasurement(correlationMeasurement.getName(),correlationMeasurement);
 
-            Measurement entropyMeasurement = new Measurement(inputImageName.getName()+"_ENTROPY",textureCalculator.getEntropy());
+            HCSingleMeasurement entropyMeasurement = new HCSingleMeasurement(inputImageName.getName()+"_ENTROPY",textureCalculator.getEntropy());
             entropyMeasurement.setSource(this);
-            object.getParent().addMeasurement(entropyMeasurement.getName(),entropyMeasurement);
+            object.getParent().addSingleMeasurement(entropyMeasurement.getName(),entropyMeasurement);
 
         }
 
@@ -95,19 +93,24 @@ public class MeasureObjectTexture implements Module {
     }
 
     @Override
-    public ParameterCollection initialiseParameters() {
-        ParameterCollection parameters = new ParameterCollection();
+    public HCParameterCollection initialiseParameters() {
+        HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object texture measurement",true));
-        parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,"Im1",false));
-        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,"Obj1",false));
-        parameters.addParameter(new Parameter(this,CALIBRATED_RADIUS,Parameter.BOOLEAN,false,true));
-        parameters.addParameter(new Parameter(this,MEASUREMENT_RADIUS,Parameter.DOUBLE,10.0,true));
-        parameters.addParameter(new Parameter(this,X_OFFSET,Parameter.INTEGER,1,true));
-        parameters.addParameter(new Parameter(this,Y_OFFSET,Parameter.INTEGER,0,true));
-        parameters.addParameter(new Parameter(this,Z_OFFSET,Parameter.INTEGER,0,true));
+        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object texture measurement",true));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,"Im1",false));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,"Obj1",false));
+        parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false,true));
+        parameters.addParameter(new HCParameter(this,MEASUREMENT_RADIUS, HCParameter.DOUBLE,10.0,true));
+        parameters.addParameter(new HCParameter(this,X_OFFSET, HCParameter.INTEGER,1,true));
+        parameters.addParameter(new HCParameter(this,Y_OFFSET, HCParameter.INTEGER,0,true));
+        parameters.addParameter(new HCParameter(this,Z_OFFSET, HCParameter.INTEGER,0,true));
 
         return parameters;
 
+    }
+
+    @Override
+    public HCParameterCollection getActiveParameters() {
+        return parameters;
     }
 }

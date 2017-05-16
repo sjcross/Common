@@ -9,7 +9,7 @@ import java.util.Collections;
 /**
  * Created by sc13967 on 11/05/2017.
  */
-public class MeasureObjectCentroid implements Module {
+public class MeasureObjectCentroid extends HCModule {
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String CENTROID_METHOD = "Centroid method";
 
@@ -19,81 +19,6 @@ public class MeasureObjectCentroid implements Module {
 
     private static String[] methodChoices = new String[]{MEAN,MEDIAN,ALL};
 
-
-    @Override
-    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
-        if (verbose) System.out.println("   Measuring object centroids");
-
-        // Getting current objects
-        HCObjectName inputObjectName = parameters.getValue(this,INPUT_OBJECTS);
-        HCObjectSet inputObjects = workspace.getObjects().get(inputObjectName);
-
-        // Getting which centroid measures to calculate
-        String choice = parameters.getValue(this,CENTROID_METHOD);
-        boolean useMean = choice.equals(MEAN) | choice.equals(ALL);
-        boolean useMedian = choice.equals(MEDIAN) | choice.equals(ALL);
-        if (verbose) System.out.println("       Calculating centroid as "+choice);
-
-        // Getting the centroids of each and saving them to the objects
-        for (HCObject object:inputObjects.values()) {
-            ArrayList<Integer> x = object.getCoordinates(HCObject.X);
-            ArrayList<Integer> y = object.getCoordinates(HCObject.Y);
-            ArrayList<Integer> z = object.getCoordinates(HCObject.Z);
-
-            if (useMean) {
-                if (x != null) {
-                    double xMean = calculateCentroid(x,MEAN);
-                    Measurement measurement = new Measurement(Measurement.X_CENTROID_MEAN,xMean);
-                    measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
-                }
-                if (y!= null) {
-                    double yMean = calculateCentroid(y,MEAN);
-                    Measurement measurement = new Measurement(Measurement.Y_CENTROID_MEAN,yMean);
-                    measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
-                }
-                if (z!= null) {
-                    double zMean = calculateCentroid(z,MEAN);
-                    Measurement measurement = new Measurement(Measurement.Z_CENTROID_MEAN,zMean);
-                    measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
-                }
-            }
-
-            if (useMedian) {
-                if (x != null) {
-                    double xMedian = calculateCentroid(x,MEDIAN);
-                    Measurement measurement = new Measurement(Measurement.X_CENTROID_MEDIAN,xMedian);
-                    measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
-                }
-                if (y!= null) {
-                    double yMedian = calculateCentroid(y,MEDIAN);
-                    Measurement measurement = new Measurement(Measurement.Y_CENTROID_MEDIAN,yMedian);
-                    measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
-                }
-                if (z!= null) {
-                    double zMedian = calculateCentroid(z,MEDIAN);
-                    Measurement measurement = new Measurement(Measurement.Z_CENTROID_MEDIAN,zMedian);
-                    measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
-                }
-            }
-        }
-    }
-
-    @Override
-    public ParameterCollection initialiseParameters() {
-        ParameterCollection parameters = new ParameterCollection();
-
-        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.IMAGE_NAME,"Im1",true));
-        parameters.addParameter(new Parameter(this,CENTROID_METHOD,Parameter.CHOICE_ARRAY,methodChoices[0],true));
-
-        return parameters;
-
-    }
 
     public static double calculateCentroid(ArrayList<Integer> values, String method) {
         if (method.equals(MEAN)) {
@@ -117,5 +42,85 @@ public class MeasureObjectCentroid implements Module {
 
         return 0;
 
+    }
+
+    @Override
+    public void execute(HCWorkspace workspace, boolean verbose) {
+        if (verbose) System.out.println("   Measuring object centroids");
+
+        // Getting current objects
+        HCObjectName inputObjectName = parameters.getValue(INPUT_OBJECTS);
+        HCObjectSet inputObjects = workspace.getObjects().get(inputObjectName);
+
+        // Getting which centroid measures to calculate
+        String choice = parameters.getValue(CENTROID_METHOD);
+        boolean useMean = choice.equals(MEAN) | choice.equals(ALL);
+        boolean useMedian = choice.equals(MEDIAN) | choice.equals(ALL);
+        if (verbose) System.out.println("       Calculating centroid as "+choice);
+
+        // Getting the centroids of each and saving them to the objects
+        for (HCObject object:inputObjects.values()) {
+            ArrayList<Integer> x = object.getCoordinates(HCObject.X);
+            ArrayList<Integer> y = object.getCoordinates(HCObject.Y);
+            ArrayList<Integer> z = object.getCoordinates(HCObject.Z);
+
+            if (useMean) {
+                if (x != null) {
+                    double xMean = calculateCentroid(x,MEAN);
+                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.X_CENTROID_MEAN,xMean);
+                    measurement.setSource(this);
+                    object.addSingleMeasurement(measurement.getName(),measurement);
+                }
+                if (y!= null) {
+                    double yMean = calculateCentroid(y,MEAN);
+                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.Y_CENTROID_MEAN,yMean);
+                    measurement.setSource(this);
+                    object.addSingleMeasurement(measurement.getName(),measurement);
+                }
+                if (z!= null) {
+                    double zMean = calculateCentroid(z,MEAN);
+                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.Z_CENTROID_MEAN,zMean);
+                    measurement.setSource(this);
+                    object.addSingleMeasurement(measurement.getName(),measurement);
+                }
+            }
+
+            if (useMedian) {
+                if (x != null) {
+                    double xMedian = calculateCentroid(x,MEDIAN);
+                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.X_CENTROID_MEDIAN,xMedian);
+                    measurement.setSource(this);
+                    object.addSingleMeasurement(measurement.getName(),measurement);
+                }
+                if (y!= null) {
+                    double yMedian = calculateCentroid(y,MEDIAN);
+                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.Y_CENTROID_MEDIAN,yMedian);
+                    measurement.setSource(this);
+                    object.addSingleMeasurement(measurement.getName(),measurement);
+                }
+                if (z!= null) {
+                    double zMedian = calculateCentroid(z,MEDIAN);
+                    HCSingleMeasurement measurement = new HCSingleMeasurement(HCSingleMeasurement.Z_CENTROID_MEDIAN,zMedian);
+                    measurement.setSource(this);
+                    object.addSingleMeasurement(measurement.getName(),measurement);
+                }
+            }
+        }
+    }
+
+    @Override
+    public HCParameterCollection initialiseParameters() {
+        HCParameterCollection parameters = new HCParameterCollection();
+
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,"Im1",true));
+        parameters.addParameter(new HCParameter(this,CENTROID_METHOD, HCParameter.CHOICE_ARRAY,methodChoices[0],true));
+
+        return parameters;
+
+    }
+
+    @Override
+    public HCParameterCollection getActiveParameters() {
+        return parameters;
     }
 }
