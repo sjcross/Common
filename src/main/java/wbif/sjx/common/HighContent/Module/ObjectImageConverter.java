@@ -12,7 +12,7 @@ import java.util.Collections;
 /**
  * Created by sc13967 on 04/05/2017.
  */
-public class ObjectImageConverter implements Module {
+public class ObjectImageConverter extends HCModule {
     public static final String TEMPLATE_IMAGE = "Template image";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String INPUT_IMAGE = "Input image";
@@ -23,52 +23,8 @@ public class ObjectImageConverter implements Module {
     public static final int IMAGE_TO_OBJECTS = 0;
     public static final int OBJECTS_TO_IMAGE = 1;
 
-    @Override
-    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
-        int conversionMode = parameters.getValue(this,CONVERSION_MODE);
 
-        if (conversionMode == IMAGE_TO_OBJECTS) {
-            ImageName imageName = parameters.getValue(this,INPUT_IMAGE);
-            HCObjectName objectName = parameters.getValue(this,OUTPUT_OBJECTS);
-
-            Image image = workspace.getImages().get(imageName);
-
-            HCObjectSet objects = convertImageToObjects(image);
-
-            workspace.addObjects(objectName,objects);
-
-        } else if (conversionMode == OBJECTS_TO_IMAGE) {
-            HCObjectName objectName = parameters.getValue(this,INPUT_OBJECTS);
-            ImageName templateImageName = parameters.getValue(this,TEMPLATE_IMAGE);
-            ImageName outputImageName = parameters.getValue(this,OUTPUT_IMAGE);
-
-            HCObjectSet objects = workspace.getObjects().get(objectName);
-            Image templateImage = workspace.getImages().get(templateImageName);
-
-            Image image = convertObjectsToImage(objects,templateImage);
-
-            workspace.addImage(outputImageName,image);
-
-        }
-    }
-
-    @Override
-    public ParameterCollection initialiseParameters() {
-        ParameterCollection parameters = new ParameterCollection();
-
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Object-image converter",true));
-        parameters.addParameter(new Parameter(this,TEMPLATE_IMAGE,Parameter.IMAGE_NAME,null,false));
-        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
-        parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
-        parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
-        parameters.addParameter(new Parameter(this,OUTPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
-        parameters.addParameter(new Parameter(this,CONVERSION_MODE,Parameter.INTEGER,0,false));
-
-        return parameters;
-
-    }
-
-    public Image convertObjectsToImage(HCObjectSet objects, Image templateImage) {
+    public HCImage convertObjectsToImage(HCObjectSet objects, HCImage templateImage) {
         ImagePlus ipl;
 
         if (templateImage == null) {
@@ -119,11 +75,11 @@ public class ObjectImageConverter implements Module {
             }
         }
 
-        return new Image(ipl);
+        return new HCImage(ipl);
 
     }
 
-    public HCObjectSet convertImageToObjects(Image image) {
+    public HCObjectSet convertImageToObjects(HCImage image) {
         // Converting to ImagePlus for this operation
         ImagePlus ipl = image.getImagePlus();
 
@@ -166,6 +122,56 @@ public class ObjectImageConverter implements Module {
 
         return objects;
 
+    }
+
+    @Override
+    public void execute(HCWorkspace workspace, boolean verbose) {
+        int conversionMode = parameters.getValue(CONVERSION_MODE);
+
+        if (conversionMode == IMAGE_TO_OBJECTS) {
+            HCImageName imageName = parameters.getValue(INPUT_IMAGE);
+            HCObjectName objectName = parameters.getValue(OUTPUT_OBJECTS);
+
+            HCImage image = workspace.getImages().get(imageName);
+
+            HCObjectSet objects = convertImageToObjects(image);
+
+            workspace.addObjects(objectName,objects);
+
+        } else if (conversionMode == OBJECTS_TO_IMAGE) {
+            HCObjectName objectName = parameters.getValue(INPUT_OBJECTS);
+            HCImageName templateImageName = parameters.getValue(TEMPLATE_IMAGE);
+            HCImageName outputImageName = parameters.getValue(OUTPUT_IMAGE);
+
+            HCObjectSet objects = workspace.getObjects().get(objectName);
+            HCImage templateImage = workspace.getImages().get(templateImageName);
+
+            HCImage image = convertObjectsToImage(objects,templateImage);
+
+            workspace.addImage(outputImageName,image);
+
+        }
+    }
+
+    @Override
+    public HCParameterCollection initialiseParameters() {
+        HCParameterCollection parameters = new HCParameterCollection();
+
+        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object-image converter",true));
+        parameters.addParameter(new HCParameter(this,TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null,false));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null,false));
+        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null,false));
+        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null,false));
+        parameters.addParameter(new HCParameter(this,CONVERSION_MODE, HCParameter.INTEGER,0,false));
+
+        return parameters;
+
+    }
+
+    @Override
+    public HCParameterCollection getActiveParameters() {
+        return parameters;
     }
 
 }

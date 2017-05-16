@@ -1,32 +1,37 @@
 package wbif.sjx.common.HighContent.Module;
 
-import wbif.sjx.common.HighContent.Object.ImageName;
-import wbif.sjx.common.HighContent.Object.Parameter;
-import wbif.sjx.common.HighContent.Object.ParameterCollection;
-import wbif.sjx.common.HighContent.Object.Workspace;
+import wbif.sjx.common.HighContent.Object.HCImageName;
+import wbif.sjx.common.HighContent.Object.HCParameter;
+import wbif.sjx.common.HighContent.Object.HCParameterCollection;
+import wbif.sjx.common.HighContent.Object.HCWorkspace;
 
 /**
  * Created by sc13967 on 03/05/2017.
  */
-public class ShowImage implements Module {
+public class ShowImage extends HCModule {
     public final static String DISPLAY_IMAGE = "Display image";
 
     @Override
-    public void execute(Workspace workspace,ParameterCollection parameters, boolean verbose) {
-        ImageName imageName = parameters.getValue(this,DISPLAY_IMAGE);
+    public void execute(HCWorkspace workspace, boolean verbose) {
+        HCImageName imageName = parameters.getValue(DISPLAY_IMAGE);
 
         workspace.getImages().get(imageName).getImagePlus().show();
 
     }
 
     @Override
-    public ParameterCollection initialiseParameters() {
-        ParameterCollection parameters = new ParameterCollection();
+    public HCParameterCollection initialiseParameters() {
+        HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Show images",false));
-        parameters.addParameter(new Parameter(this,DISPLAY_IMAGE,Parameter.IMAGE_NAME,null,false));
+        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Show images",false));
+        parameters.addParameter(new HCParameter(this,DISPLAY_IMAGE, HCParameter.INPUT_IMAGE,null,false));
 
         return parameters;
 
+    }
+
+    @Override
+    public HCParameterCollection getActiveParameters() {
+        return parameters;
     }
 }

@@ -9,35 +9,35 @@ import java.util.LinkedHashMap;
 /**
  * Created by steph on 30/04/2017.
  */
-public class Image {
+public class HCImage {
     private ImagePlus imagePlus;
-    private LinkedHashMap<String,Measurement> measurements = new LinkedHashMap<>();
+    private LinkedHashMap<String,HCSingleMeasurement> measurements = new LinkedHashMap<>();
 
     // CONSTRUCTORS
 
-    public Image (ImagePlus imagePlus) {
+    public HCImage(ImagePlus imagePlus) {
         this.imagePlus = imagePlus;
     }
 
 
     // PUBLIC METHODS
 
-    public Image projectImageInZ() {
+    public HCImage projectImageInZ() {
         ZProjector z_projector = new ZProjector(imagePlus);
         z_projector.setMethod(ZProjector.MAX_METHOD);
         z_projector.doProjection();
         ImagePlus iplOut = z_projector.getProjection();
 
-        return new Image(iplOut);
+        return new HCImage(iplOut);
 
     }
 
-    public void addMeasurement(String name, Measurement measurement) {
+    public void addMeasurement(String name, HCSingleMeasurement measurement) {
         measurements.put(name,measurement);
 
     }
 
-    public Measurement getMeasurement(String name) {
+    public HCSingleMeasurement getMeasurement(String name) {
         return measurements.get(name);
 
     }
@@ -53,11 +53,11 @@ public class Image {
         this.imagePlus = imagePlus;
     }
 
-    public HashMap<String, Measurement> getMeasurements() {
+    public HashMap<String, HCSingleMeasurement> getMeasurements() {
         return measurements;
     }
 
-    public void setMeasurements(LinkedHashMap<String, Measurement> measurements) {
+    public void setMeasurements(LinkedHashMap<String, HCSingleMeasurement> measurements) {
         this.measurements = measurements;
     }
 

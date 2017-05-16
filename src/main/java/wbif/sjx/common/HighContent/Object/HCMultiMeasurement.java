@@ -1,9 +1,11 @@
 package wbif.sjx.common.HighContent.Object;
 
+import java.util.HashMap;
+
 /**
- * Created by sc13967 on 05/05/2017.
+ * Multidimensional measurement.  Each measurement value is stored along with its coordinate
  */
-public class Measurement {
+public class HCMultiMeasurement {
     // Spatial measures
     public static final String RADIUS = "Radius";
     public static final String X_CENTROID_MEAN = "X-Centroid Mean";
@@ -20,15 +22,27 @@ public class Measurement {
     public static final String STD_INTENSITY = "Stdev intensity";
 
     private String name;
-    private double value;
+    private HashMap<int[],Double> values;
     private Object source;
 
 
     // CONSTRUCTOR
 
-    public Measurement(String name, double value) {
+    public HCMultiMeasurement(String name) {
         this.name = name;
-        this.value = value;
+
+    }
+
+
+    // PUBLIC METHODS
+
+    public void addValue(int[] coordinate, double value) {
+        values.put(coordinate,value);
+
+    }
+
+    public double getValue(int[] coordinate) {
+        return values.get(coordinate);
 
     }
 
@@ -43,12 +57,12 @@ public class Measurement {
         this.name = name;
     }
 
-    public double getValue() {
-        return value;
+    public HashMap<int[],Double> getValues() {
+        return values;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setValues(HashMap<int[],Double> value) {
+        this.values = value;
     }
 
     public Object getSource() {

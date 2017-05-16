@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 /**
  * Created by sc13967 on 13/12/2016.
  */
+@Deprecated
 public class FilenameGenerator {
     public static final int CELLVOYAGER = 0;
 

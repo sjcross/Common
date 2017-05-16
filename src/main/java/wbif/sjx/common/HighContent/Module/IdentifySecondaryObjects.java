@@ -14,7 +14,7 @@ import wbif.sjx.common.HighContent.Object.*;
 /**
  * Created by sc13967 on 03/05/2017.
  */
-public class IdentifySecondaryObjects implements Module {
+public class IdentifySecondaryObjects extends HCModule {
     public static final String INPUT_IMAGE = "Input image";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String OUTPUT_OBJECTS = "Output objects";
@@ -24,23 +24,23 @@ public class IdentifySecondaryObjects implements Module {
     private static String[] thresholdMethods = new String[]{"Otsu","Huang","Li"};
 
     @Override
-    public void execute(Workspace workspace, ParameterCollection parameters, boolean verbose) {
+    public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("    Running secondary object identification");
 
         // Getting relevant parameters
-        double medFiltR = parameters.getValue(this,MEDIAN_FILTER_RADIUS);
-        String thrMeth = parameters.getValue(this,THRESHOLD_METHOD);
+        double medFiltR = parameters.getValue(MEDIAN_FILTER_RADIUS);
+        String thrMeth = parameters.getValue(THRESHOLD_METHOD);
 
         // Loading images and objects into workspace
-        ImageName inputImageName = parameters.getValue(this,INPUT_IMAGE);
-        Image inputImage2 = workspace.getImages().get(inputImageName);
+        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
+        HCImage inputImage2 = workspace.getImages().get(inputImageName);
         ImagePlus image2 = inputImage2.getImagePlus();
 
-        HCObjectName inputObjectsName = parameters.getValue(this,INPUT_OBJECTS);
+        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet objects1 = workspace.getObjects().get(inputObjectsName);
 
         // Initialising the output objects ArrayList
-        HCObjectName outputObjectsName = parameters.getValue(this,OUTPUT_OBJECTS);
+        HCObjectName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
 
         // Getting nuclei objects as image
         if (verbose) System.out.println("       Converting objects to image");
@@ -48,11 +48,11 @@ public class IdentifySecondaryObjects implements Module {
 
         // Segmenting cell image
         // Filtering cell image
-        if (verbose) System.out.println("       Applying filter (radius ="+medFiltR+" px)");
+        if (verbose) System.out.println("       Applying filter (radius = "+medFiltR+" px)");
         image2.setStack(Filters3D.filter(image2.getImageStack(), Filters3D.MEDIAN, (float) medFiltR, (float) medFiltR,1));
 
         // Thresholded cell image
-        if (verbose) System.out.println("       Applying threshold (method ="+thrMeth+")");
+        if (verbose) System.out.println("       Applying threshold (method = "+thrMeth+")");
         Auto_Threshold auto_threshold = new Auto_Threshold();
         Object[] results2 = auto_threshold.exec(image2,thrMeth,true,false,true,true,false,true);
         ImagePlus imMask = Threshold.threshold(image2,(Integer) results2[0],Integer.MAX_VALUE);
@@ -68,7 +68,7 @@ public class IdentifySecondaryObjects implements Module {
 
         // Converting the labelled cell image to objects
         if (verbose) System.out.println("       Converting image to objects");
-        HCObjectSet objects2 = new ObjectImageConverter().convertImageToObjects(new Image(im2));
+        HCObjectSet objects2 = new ObjectImageConverter().convertImageToObjects(new HCImage(im2));
 
         // Watershed will give one cell per nucleus and these should already have the same labelling number.
         if (verbose) System.out.println("       Linking primary and secondary objects by ID number");
@@ -81,17 +81,22 @@ public class IdentifySecondaryObjects implements Module {
     }
 
     @Override
-    public ParameterCollection initialiseParameters() {
-        ParameterCollection parameters = new ParameterCollection();
+    public HCParameterCollection initialiseParameters() {
+        HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new Parameter(this,MODULE_TITLE,Parameter.MODULE_TITLE,"Secondary object identification",true));
-        parameters.addParameter(new Parameter(this,INPUT_IMAGE,Parameter.IMAGE_NAME,null,false));
-        parameters.addParameter(new Parameter(this,INPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
-        parameters.addParameter(new Parameter(this,OUTPUT_OBJECTS,Parameter.OBJECT_NAME,null,false));
-        parameters.addParameter(new Parameter(this,MEDIAN_FILTER_RADIUS,Parameter.DOUBLE,2.0,true));
-        parameters.addParameter(new Parameter(this,THRESHOLD_METHOD,Parameter.CHOICE_ARRAY,thresholdMethods[0],thresholdMethods,true));
+        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Secondary object identification",true));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null,false));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
+        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null,false));
+        parameters.addParameter(new HCParameter(this,MEDIAN_FILTER_RADIUS, HCParameter.DOUBLE,2.0,true));
+        parameters.addParameter(new HCParameter(this,THRESHOLD_METHOD, HCParameter.CHOICE_ARRAY,thresholdMethods[0],thresholdMethods,true));
 
         return parameters;
 
+    }
+
+    @Override
+    public HCParameterCollection getActiveParameters() {
+        return parameters;
     }
 }
