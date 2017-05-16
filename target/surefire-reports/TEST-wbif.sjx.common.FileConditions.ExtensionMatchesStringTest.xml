@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="wbif.sjx.common.FileConditions.ExtensionMatchesStringTest" time="0.079" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="wbif.sjx.common.FileConditions.ExtensionMatchesStringTest" time="0.105" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2016.3.5"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -12,7 +12,7 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7535"/>
+    <property name="idea.launcher.port" value="7532"/>
     <property name="user.script" value=""/>
     <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
@@ -23,7 +23,7 @@
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_101\jre\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="visualvm.id" value="521711727943900"/>
+    <property name="visualvm.id" value="529803345430394"/>
     <property name="java.io.tmpdir" value="C:\Users\Stephen\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -65,5 +65,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="wbif.sjx.common.FileConditions.ExtensionMatchesStringTest" name="testTest" time="0.079"/>
+  <testcase classname="wbif.sjx.common.FileConditions.ExtensionMatchesStringTest" name="testTest" time="0.105"/>
 </testsuite>

@@ -21,6 +21,11 @@ public class HCObject {
     private int ID = 0;
 
     /**
+     * ID number shared between linked objects (e.g. spots in a track)
+     */
+    private int groupID = 0;
+
+    /**
      * 3D coordinates of this instance of the object.
      */
     private HashMap<Integer, ArrayList<Integer>> coordinates = new HashMap<>();
@@ -51,9 +56,12 @@ public class HCObject {
     // PUBLIC METHODS
 
     public void addCoordinate(int dim, int coordinate) {
-        coordinates.computeIfAbsent(dim, k -> new ArrayList<>());
-        coordinates.get(dim).add(coordinate);
-
+        if (dim < 3) {
+            coordinates.computeIfAbsent(dim, k -> new ArrayList<>());
+            coordinates.get(dim).add(coordinate);
+        } else {
+            positions.put(dim,coordinate);
+        }
     }
 
     public void removeCoordinate(int dim, double coordinate) {
@@ -114,6 +122,14 @@ public class HCObject {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public int getGroupID() {
+        return groupID;
+    }
+
+    public void setGroupID(int groupID) {
+        this.groupID = groupID;
     }
 
     /**

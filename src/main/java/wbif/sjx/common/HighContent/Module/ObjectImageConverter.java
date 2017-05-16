@@ -13,12 +13,13 @@ import java.util.Collections;
  * Created by sc13967 on 04/05/2017.
  */
 public class ObjectImageConverter extends HCModule {
-    public static final String TEMPLATE_IMAGE = "Template image";
-    public static final String INPUT_OBJECTS = "Input objects";
+    public static final String CONVERSION_MODE = "Conversion mode";
     public static final String INPUT_IMAGE = "Input image";
     public static final String OUTPUT_OBJECTS = "Output objects";
+    public static final String TEMPLATE_IMAGE = "Template image";
+    public static final String INPUT_OBJECTS = "Input objects";
     public static final String OUTPUT_IMAGE = "Output image";
-    public static final String CONVERSION_MODE = "Conversion mode";
+    public static final String USE_GROUP_ID = "Use group ID";
 
     public static final int IMAGE_TO_OBJECTS = 0;
     public static final int OBJECTS_TO_IMAGE = 1;
@@ -26,6 +27,9 @@ public class ObjectImageConverter extends HCModule {
 
     public HCImage convertObjectsToImage(HCObjectSet objects, HCImage templateImage) {
         ImagePlus ipl;
+
+        // Getting ID parameter
+        boolean useGroupID = parameters.getValue(USE_GROUP_ID);
 
         if (templateImage == null) {
             // Getting range of object pixels
@@ -83,7 +87,12 @@ public class ObjectImageConverter extends HCModule {
                 int tPos = t==null ? -1 : t;
 
                 ipl.setPosition(cPos+1,zPos+1,tPos+1);
-                ipl.getProcessor().set(x.get(i),y.get(i),object.getID());
+                if (useGroupID) {
+                    ipl.getProcessor().set(x.get(i),y.get(i),object.getGroupID());
+                } else {
+                    ipl.getProcessor().set(x.get(i), y.get(i), object.getID());
+                }
+
             }
         }
 
@@ -169,13 +178,14 @@ public class ObjectImageConverter extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object-image converter",true));
-        parameters.addParameter(new HCParameter(this,TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
+        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object-image converter",false));
+        parameters.addParameter(new HCParameter(this,CONVERSION_MODE, HCParameter.INTEGER,0,false));
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null,false));
         parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null,false));
+        parameters.addParameter(new HCParameter(this,TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null,false));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
         parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,CONVERSION_MODE, HCParameter.INTEGER,0,false));
+        parameters.addParameter(new HCParameter(this,USE_GROUP_ID, HCParameter.BOOLEAN,true,false));
 
         return parameters;
 
@@ -183,7 +193,23 @@ public class ObjectImageConverter extends HCModule {
 
     @Override
     public HCParameterCollection getActiveParameters() {
-        return parameters;
+        HCParameterCollection returnedParameters = new HCParameterCollection();
+        returnedParameters.addParameter(parameters.getParameter(MODULE_TITLE));
+        returnedParameters.addParameter(parameters.getParameter(CONVERSION_MODE));
+
+        if (parameters.getValue(CONVERSION_MODE).equals(IMAGE_TO_OBJECTS)) {
+            returnedParameters.addParameter(parameters.getParameter(INPUT_IMAGE));
+            returnedParameters.addParameter(parameters.getParameter(OUTPUT_OBJECTS));
+
+        } else if(parameters.getValue(CONVERSION_MODE).equals(OBJECTS_TO_IMAGE)) {
+            returnedParameters.addParameter(parameters.getParameter(TEMPLATE_IMAGE));
+            returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
+            returnedParameters.addParameter(parameters.getParameter(OUTPUT_IMAGE));
+            returnedParameters.addParameter(parameters.getParameter(USE_GROUP_ID));
+
+        }
+
+        return returnedParameters;
     }
 
 }

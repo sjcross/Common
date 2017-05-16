@@ -43,57 +43,42 @@ public class MeasureTrackIntensity extends HCModule {
             // Getting pixel coordinates
             ArrayList<Integer> x = object.getCoordinates(HCObject.X);
             ArrayList<Integer> y = object.getCoordinates(HCObject.Y);
-            ArrayList<Integer> c = object.getCoordinates(HCObject.C);
             ArrayList<Integer> z = object.getCoordinates(HCObject.Z);
-            ArrayList<Integer> t = object.getCoordinates(HCObject.T);
-
-            System.out.println(x+"_"+y+"_"+z+"_"+c+"_"+t);
+            Integer c = object.getCoordinates(HCObject.C);
+            Integer t = object.getCoordinates(HCObject.T);
 
             // Initialising the cumulative statistics object to store pixel intensities.  Unlike MeasureObjectIntensity,
             // this uses a multi-element CumStat where each element corresponds to a different frame
-            CumStat cs = new CumStat(t.size());
+            CumStat cs = new CumStat(1);
 
             // Running through all pixels in this object and adding the intensity to the CumStat object
             for (int i=0;i<x.size();i++) {
-                int cPos = c==null ? 0 : c.get(i);
                 int zPos = z==null ? 0 : z.get(i);
-                int tPos = t.get(i);
+                int cPos = c==null ? 0 : c;
+                int tPos = t==null ? 0 : t;
 
                 ipl.setPosition(cPos+1,zPos+1,tPos+1);
-                cs.addSingleMeasure(tPos,ipl.getProcessor().getPixelValue(x.get(i),y.get(i)));
+                cs.addMeasure(ipl.getProcessor().getPixelValue(x.get(i),y.get(i)));
 
             }
 
-//            // Calculating mean, std, min and max intensity and adding to the relevant object parent (we don't want to
-//            // add the measurements to the expanded objects)
-//            HCMultiMeasurement meanIntensity = new HCMultiMeasurement(inputImageName.getName()+"_MEAN");
-//            meanIntensity.setSource(this);
-//            object.getParent().addMultiMeasurement(meanIntensity.getName(),meanIntensity);
-//
-//            HCMultiMeasurement stdIntensity = new HCMultiMeasurement(inputImageName.getName()+"_STD");
-//            stdIntensity.setSource(this);
-//            object.getParent().addMultiMeasurement(stdIntensity.getName(),stdIntensity);
-//
-//            HCMultiMeasurement minIntensity = new HCMultiMeasurement(inputImageName.getName()+"_MIN");
-//            minIntensity.setSource(this);
-//            object.getParent().addMultiMeasurement(minIntensity.getName(),minIntensity);
-//
-//            HCMultiMeasurement maxIntensity = new HCMultiMeasurement(inputImageName.getName()+"_MAX");
-//            maxIntensity.setSource(this);
-//            object.getParent().addMultiMeasurement(maxIntensity.getName(),maxIntensity);
-//
-//            double[] mean = cs.getMean();
-//            double[] std = cs.getStd(CumStat.SAMPLE);
-//            double[] min = cs.getMin();
-//            double[] max = cs.getMax();
-//
-//            for (int i=0;i<mean.length;i++) {
-//                meanIntensity.addValue(t.get(i),mean[i]);
-//                stdIntensity.addValue(t.get(i),std[i]);
-//                minIntensity.addValue(t.get(i),min[i]);
-//                maxIntensity.addValue(t.get(i),max[i]);
-//
-//            }
+            // Calculating mean, std, min and max intensity and adding to the parent (we will discard the expanded
+            // objects after this module has run)
+            HCMeasurement meanIntensity = new HCMeasurement(inputImageName.getName()+"_MEAN", cs.getMean()[0]);
+            meanIntensity.setSource(this);
+            object.getParent().addMeasurement(meanIntensity.getName(),meanIntensity);
+
+            HCMeasurement stdIntensity = new HCMeasurement(inputImageName.getName()+"_STD", cs.getStd(CumStat.SAMPLE)[0]);
+            stdIntensity.setSource(this);
+            object.getParent().addMeasurement(stdIntensity.getName(),stdIntensity);
+
+            HCMeasurement minIntensity = new HCMeasurement(inputImageName.getName()+"_MIN", cs.getMin()[0]);
+            minIntensity.setSource(this);
+            object.getParent().addMeasurement(minIntensity.getName(),minIntensity);
+
+            HCMeasurement maxIntensity = new HCMeasurement(inputImageName.getName()+"_MAX", cs.getMax()[0]);
+            maxIntensity.setSource(this);
+            object.getParent().addMeasurement(maxIntensity.getName(),maxIntensity);
         }
     }
 
