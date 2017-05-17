@@ -66,6 +66,7 @@ wbif\sjx\common\Object\SpotCollection.class
 wbif\sjx\common\HighContent\Module\BioformatsImageLoader$1.class
 wbif\sjx\common\HighContent\Module\HCModule.class
 wbif\sjx\common\HighContent\Module\IdentifySecondaryObjects.class
+wbif\sjx\common\HighContent\Module\ShowObjectsOverlay.class
 wbif\sjx\common\HighContent\Object\HCWorkspaceCollection.class
 wbif\sjx\common\HighContent\Process\FilenameGenerator.class
 wbif\sjx\common\HighContent\Module\ObjectLinker.class

@@ -111,7 +111,7 @@ public class RunTrackMate extends HCModule {
                 // Adding radius measurement using the same coordinate system as HCObject (XYCZT)
                 HCMeasurement radiusMeasure = new HCMeasurement(HCMeasurement.RADIUS,calibration.getRawX(spot.getFeature(Spot.RADIUS)));
                 radiusMeasure.setSource(this);
-                object.addMeasurement(radiusMeasure.getName(),radiusMeasure);
+                object.addMeasurement(radiusMeasure);
 
                 // Adding calibration values to the HCObject (physical distance per pixel)
                 object.addCalibration(HCObject.X,calibration.getX(1));

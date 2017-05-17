@@ -69,19 +69,19 @@ public class MeasureObjectCentroid extends HCModule {
                     double xMean = calculateCentroid(x,MEAN);
                     HCMeasurement measurement = new HCMeasurement(HCMeasurement.X_CENTROID_MEAN,xMean);
                     measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement);
                 }
                 if (y!= null) {
                     double yMean = calculateCentroid(y,MEAN);
                     HCMeasurement measurement = new HCMeasurement(HCMeasurement.Y_CENTROID_MEAN,yMean);
                     measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement);
                 }
                 if (z!= null) {
                     double zMean = calculateCentroid(z,MEAN);
                     HCMeasurement measurement = new HCMeasurement(HCMeasurement.Z_CENTROID_MEAN,zMean);
                     measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement);
                 }
             }
 
@@ -90,19 +90,19 @@ public class MeasureObjectCentroid extends HCModule {
                     double xMedian = calculateCentroid(x,MEDIAN);
                     HCMeasurement measurement = new HCMeasurement(HCMeasurement.X_CENTROID_MEDIAN,xMedian);
                     measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement);
                 }
                 if (y!= null) {
                     double yMedian = calculateCentroid(y,MEDIAN);
                     HCMeasurement measurement = new HCMeasurement(HCMeasurement.Y_CENTROID_MEDIAN,yMedian);
                     measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement);
                 }
                 if (z!= null) {
                     double zMedian = calculateCentroid(z,MEDIAN);
                     HCMeasurement measurement = new HCMeasurement(HCMeasurement.Z_CENTROID_MEDIAN,zMedian);
                     measurement.setSource(this);
-                    object.addMeasurement(measurement.getName(),measurement);
+                    object.addMeasurement(measurement);
                 }
             }
         }

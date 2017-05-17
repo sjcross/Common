@@ -25,11 +25,8 @@ public class ObjectImageConverter extends HCModule {
     public static final int OBJECTS_TO_IMAGE = 1;
 
 
-    public HCImage convertObjectsToImage(HCObjectSet objects, HCImage templateImage) {
+    public HCImage convertObjectsToImage(HCObjectSet objects, HCImage templateImage, boolean useGroupID) {
         ImagePlus ipl;
-
-        // Getting ID parameter
-        boolean useGroupID = parameters.getValue(USE_GROUP_ID);
 
         if (templateImage == null) {
             // Getting range of object pixels
@@ -163,11 +160,12 @@ public class ObjectImageConverter extends HCModule {
             HCObjectName objectName = parameters.getValue(INPUT_OBJECTS);
             HCImageName templateImageName = parameters.getValue(TEMPLATE_IMAGE);
             HCImageName outputImageName = parameters.getValue(OUTPUT_IMAGE);
+            boolean useGroupID = parameters.getValue(USE_GROUP_ID);
 
             HCObjectSet objects = workspace.getObjects().get(objectName);
             HCImage templateImage = workspace.getImages().get(templateImageName);
 
-            HCImage image = convertObjectsToImage(objects,templateImage);
+            HCImage image = convertObjectsToImage(objects,templateImage,useGroupID);
 
             workspace.addImage(outputImageName,image);
 

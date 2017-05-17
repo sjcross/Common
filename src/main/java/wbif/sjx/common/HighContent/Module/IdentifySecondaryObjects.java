@@ -44,7 +44,7 @@ public class IdentifySecondaryObjects extends HCModule {
 
         // Getting nuclei objects as image
         if (verbose) System.out.println("       Converting objects to image");
-        ImagePlus image1 = new ObjectImageConverter().convertObjectsToImage(objects1,inputImage2).getImagePlus();
+        ImagePlus image1 = new ObjectImageConverter().convertObjectsToImage(objects1,inputImage2,true).getImagePlus();
 
         // Segmenting cell image
         // Filtering cell image

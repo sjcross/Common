@@ -51,19 +51,19 @@ public class MeasureObjectIntensity extends HCModule {
             // Calculating mean, std, min and max intensity
             HCMeasurement meanIntensity = new HCMeasurement(imageName.getName()+"_MEAN", cs.getMean()[0]);
             meanIntensity.setSource(this);
-            object.addMeasurement(meanIntensity.getName(),meanIntensity);
+            object.addMeasurement(meanIntensity);
 
             HCMeasurement stdIntensity = new HCMeasurement(imageName.getName()+"_STD", cs.getStd(CumStat.SAMPLE)[0]);
             stdIntensity.setSource(this);
-            object.addMeasurement(stdIntensity.getName(),stdIntensity);
+            object.addMeasurement(stdIntensity);
 
             HCMeasurement minIntensity = new HCMeasurement(imageName.getName()+"_MIN", cs.getMin()[0]);
             minIntensity.setSource(this);
-            object.addMeasurement(minIntensity.getName(),minIntensity);
+            object.addMeasurement(minIntensity);
 
             HCMeasurement maxIntensity = new HCMeasurement(imageName.getName()+"_MAX", cs.getMax()[0]);
             maxIntensity.setSource(this);
-            object.addMeasurement(maxIntensity.getName(),maxIntensity);
+            object.addMeasurement(maxIntensity);
 
         }
     }

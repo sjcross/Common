@@ -335,7 +335,8 @@ public class HCExporter {
                 // Running through all the metadata values, adding them as new columns
                 for (String name : exampleMetadata.keySet()) {
                     Cell metaHeaderCell = metaHeaderRow.createCell(metaCol++);
-                    metaHeaderCell.setCellValue(name);
+                    String metadataName = name.toUpperCase().replaceAll(" ", "_");
+                    metaHeaderCell.setCellValue(metadataName);
 
                 }
 
@@ -461,7 +462,7 @@ public class HCExporter {
                     // Adding single-valued position headers
                     for (int dim:object.getPositions().keySet()) {
                         Cell positionsHeaderCell = objectHeaderRow.createCell(col++);
-                        String dimName = dim==3 ? "CHANNEL" : dim == 4 ? "TIME" : "DIM_"+dim;
+                        String dimName = dim==3 ? "CHANNEL" : dim == 4 ? "FRAME" : "DIM_"+dim;
                         positionsHeaderCell.setCellValue(dimName);
 
                     }

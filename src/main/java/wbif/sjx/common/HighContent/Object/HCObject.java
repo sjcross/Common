@@ -50,6 +50,10 @@ public class HCObject {
     public HCObject(int ID) {
         this.ID = ID;
 
+        // Setting default values for C and T
+        positions.put(C,1);
+        positions.put(T,1);
+
     }
 
 
@@ -84,8 +88,8 @@ public class HCObject {
 
     }
 
-    public void addMeasurement(String name, HCMeasurement measurement) {
-        measurements.put(name,measurement);
+    public void addMeasurement(HCMeasurement measurement) {
+        measurements.put(measurement.getName(),measurement);
 
     }
 
@@ -253,3 +257,4 @@ public class HCObject {
     }
 
 }
+

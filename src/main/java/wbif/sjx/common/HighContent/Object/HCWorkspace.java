@@ -2,13 +2,14 @@ package wbif.sjx.common.HighContent.Object;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by sc13967 on 02/05/2017.
  */
 public class HCWorkspace {
-    private HashMap<HCObjectName, HCObjectSet> objects = new HashMap<>();
-    private HashMap<HCImageName, HCImage> images = new HashMap<>();
+    private LinkedHashMap<HCObjectName, HCObjectSet> objects = new LinkedHashMap<>();
+    private LinkedHashMap<HCImageName, HCImage> images = new LinkedHashMap<>();
     private HCMetadata metadata = new HCMetadata();
     private int ID;
 
@@ -62,7 +63,7 @@ public class HCWorkspace {
         return objects;
     }
 
-    public void setObjects(HashMap<HCObjectName, HCObjectSet> objects) {
+    public void setObjects(LinkedHashMap<HCObjectName, HCObjectSet> objects) {
         this.objects = objects;
     }
 
@@ -70,7 +71,7 @@ public class HCWorkspace {
         return images;
     }
 
-    public void setImages(HashMap<HCImageName, HCImage> images) {
+    public void setImages(LinkedHashMap<HCImageName, HCImage> images) {
         this.images = images;
     }
 

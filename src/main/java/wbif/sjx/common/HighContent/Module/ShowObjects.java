@@ -12,12 +12,16 @@ import wbif.sjx.common.Object.RandomLUT;
 public class ShowObjects extends HCModule {
     public final static String INPUT_OBJECTS = "Input objects";
     public final static String TEMPLATE_IMAGE = "Template image";
+    public final static String USE_GROUP_ID = "Use group ID";
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         // Loading objects
         HCObjectName inputObjectName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectName);
+
+        // Getting parameters
+        boolean useGroupID = parameters.getValue(USE_GROUP_ID);
 
         HCImage templateImage;
         if (parameters.getParameter(TEMPLATE_IMAGE) == null) {
@@ -30,7 +34,7 @@ public class ShowObjects extends HCModule {
         }
 
         // Converting objects to an image
-        HCImage image = new ObjectImageConverter().convertObjectsToImage(inputObjects,templateImage);
+        HCImage image = new ObjectImageConverter().convertObjectsToImage(inputObjects,templateImage,useGroupID);
         image.getImagePlus().setTitle(inputObjectName.getName());
 
         // Creating a random colour LUT and assigning it to the image (maximising intensity range to 0-255)
@@ -50,6 +54,7 @@ public class ShowObjects extends HCModule {
         parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Show objects",false));
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
         parameters.addParameter(new HCParameter(this,TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null,false));
+        parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,true,false));
 
         return parameters;
 

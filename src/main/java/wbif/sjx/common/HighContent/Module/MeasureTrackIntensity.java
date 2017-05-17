@@ -66,19 +66,19 @@ public class MeasureTrackIntensity extends HCModule {
             // objects after this module has run)
             HCMeasurement meanIntensity = new HCMeasurement(inputImageName.getName()+"_MEAN", cs.getMean()[0]);
             meanIntensity.setSource(this);
-            object.getParent().addMeasurement(meanIntensity.getName(),meanIntensity);
+            object.getParent().addMeasurement(meanIntensity);
 
             HCMeasurement stdIntensity = new HCMeasurement(inputImageName.getName()+"_STD", cs.getStd(CumStat.SAMPLE)[0]);
             stdIntensity.setSource(this);
-            object.getParent().addMeasurement(stdIntensity.getName(),stdIntensity);
+            object.getParent().addMeasurement(stdIntensity);
 
             HCMeasurement minIntensity = new HCMeasurement(inputImageName.getName()+"_MIN", cs.getMin()[0]);
             minIntensity.setSource(this);
-            object.getParent().addMeasurement(minIntensity.getName(),minIntensity);
+            object.getParent().addMeasurement(minIntensity);
 
             HCMeasurement maxIntensity = new HCMeasurement(inputImageName.getName()+"_MAX", cs.getMax()[0]);
             maxIntensity.setSource(this);
-            object.getParent().addMeasurement(maxIntensity.getName(),maxIntensity);
+            object.getParent().addMeasurement(maxIntensity);
         }
     }
 

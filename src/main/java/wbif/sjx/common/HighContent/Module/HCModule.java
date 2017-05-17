@@ -16,7 +16,7 @@ import wbif.sjx.common.HighContent.Object.HCWorkspace;
 public abstract class HCModule {
     public static final String MODULE_TITLE = "Module title";
 
-    HCParameterCollection parameters = null;
+    public HCParameterCollection parameters = null;
 
 
     // CONSTRUCTOR
