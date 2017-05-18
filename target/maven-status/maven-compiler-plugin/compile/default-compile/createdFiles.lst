@@ -75,6 +75,7 @@ wbif\sjx\common\HighContent\Module\ChannelExtractor.class
 wbif\sjx\common\Object\RandomLUT.class
 wbif\sjx\common\HighContent\Module\GetLocalObjectRegion.class
 wbif\sjx\common\Object\Spot.class
+wbif\sjx\common\HighContent\Module\ApplyManualClassification.class
 wbif\sjx\common\System\GUIElements.class
 wbif\sjx\common\Analysis\EuclideanDistanceCalculator.class
 wbif\sjx\common\HighContent\Object\HCImage.class

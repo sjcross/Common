@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
  * Created by steph on 30/04/2017.
  */
 public class HCObject {
+    // Indices for dimensional coordiantes.  Coordinates are all zero indexed
     public static final int X = 0;
     public static final int Y = 1;
     public static final int Z = 2;
@@ -51,8 +52,8 @@ public class HCObject {
         this.ID = ID;
 
         // Setting default values for C and T
-        positions.put(C,1);
-        positions.put(T,1);
+        positions.put(C,0);
+        positions.put(T,0);
 
     }
 

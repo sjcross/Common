@@ -4,8 +4,11 @@ import ij.ImagePlus;
 import ij.gui.OvalRoi;
 import ij.gui.Overlay;
 import ij.gui.TextRoi;
-import ij.plugin.Duplicator;
+import ij.plugin.HyperStackConverter;
+import ij.process.StackConverter;
 import wbif.sjx.common.HighContent.Object.*;
+
+import java.awt.*;
 
 /**
  * Created by sc13967 on 17/05/2017.
@@ -31,34 +34,49 @@ public class ShowObjectsOverlay extends HCModule {
         HCImage inputImage = workspace.getImages().get(inputImageName);
         ImagePlus ipl = inputImage.getImagePlus();
 
-        // Duplicating the image
-        ImagePlus ipl2 = new Duplicator().run(ipl);
+        // If necessary, turning the image into a HyperStack (if 2 dimensions=1 it will be a standard ImagePlus)
+        ImagePlus hyperstack = HyperStackConverter.toHyperStack(ipl,ipl.getNChannels(),ipl.getNSlices(),ipl.getNFrames());
+        if (!hyperstack.isHyperStack()) new StackConverter(hyperstack).convertToRGB();
 
-        Overlay overlay = new Overlay();
+        hyperstack.setOverlay(new Overlay());
 
         // Running through each object, adding it to the overlay along with an ID label
         for (HCObject object:inputObjects.values()) {
-            double xMean = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.X),MeasureObjectCentroid.MEAN);
+            double xMean = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.X), MeasureObjectCentroid.MEAN);
             double yMean = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.Y),MeasureObjectCentroid.MEAN);
             double zMean = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.Z),MeasureObjectCentroid.MEAN);
 
-            OvalRoi roi = new OvalRoi(xMean-1,xMean-1,2,2);
-            roi.setPosition(1,(int) Math.round(zMean+1),(int) object.getCoordinates(HCObject.T)+1);
-            overlay.add(roi);
+            // Getting coordinates to plot
+            int c = ((int) object.getCoordinates(HCObject.C)) + 1;
+            int z = (int) Math.round(zMean+1);
+            int t = ((int) object.getCoordinates(HCObject.T)) + 1;
 
+            // Adding circles where the object centroids are
+            OvalRoi roi = new OvalRoi(xMean-2,yMean-2,4,4);
+            if (hyperstack.isHyperStack()) {
+                roi.setPosition(c, z, t);
+            } else {
+                roi.setPosition(Math.max(Math.max(c,z),t));
+            }
+            hyperstack.getOverlay().add(roi);
+
+            // Adding text label
             TextRoi text;
             if (useGroupID) {
                 text = new TextRoi(xMean, yMean, String.valueOf(object.getGroupID()));
             } else {
                 text = new TextRoi(xMean, yMean, String.valueOf(object.getID()));
             }
-            text.setPosition(1,(int) Math.round(zMean+1),(int) object.getCoordinates(HCObject.T)+1);
-            overlay.add(text);
+            if (hyperstack.isHyperStack()) {
+                text.setPosition(c, z, t);
+            } else {
+                text.setPosition(Math.max(Math.max(c,z),t));
+            }
+            hyperstack.getOverlay().add(text);
 
         }
 
-        ipl2.setOverlay(overlay);
-        ipl2.show();
+        hyperstack.show();
 
     }
 
