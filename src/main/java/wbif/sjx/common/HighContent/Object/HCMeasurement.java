@@ -1,5 +1,7 @@
 package wbif.sjx.common.HighContent.Object;
 
+import wbif.sjx.common.HighContent.Module.HCModule;
+
 /**
  * Measurement that holds a single value for an object
  */
@@ -19,16 +21,37 @@ public class HCMeasurement {
     public static final String MAX_INTENSITY = "Maximum intensity";
     public static final String STD_INTENSITY = "Stdev intensity";
 
+    // Other measures
+    public static final String CLASS = "CLASS";
+
     private String name;
-    private double value;
-    private Object source;
+    private double value = Double.NaN;
+    private HCModule source = null;
 
 
     // CONSTRUCTOR
 
+    public HCMeasurement(String name) {
+        this.name = name;
+
+    }
+
+    public HCMeasurement(String name, HCModule source) {
+        this.name = name;
+        this.source = source;
+
+    }
+
     public HCMeasurement(String name, double value) {
         this.name = name;
         this.value = value;
+
+    }
+
+    public HCMeasurement(String name, double value, HCModule source) {
+        this.name = name;
+        this.value = value;
+        this.source = source;
 
     }
 
@@ -51,11 +74,11 @@ public class HCMeasurement {
         this.value = value;
     }
 
-    public Object getSource() {
+    public HCModule getSource() {
         return source;
     }
 
-    public void setSource(Object source) {
+    public void setSource(HCModule source) {
         this.source = source;
     }
 }

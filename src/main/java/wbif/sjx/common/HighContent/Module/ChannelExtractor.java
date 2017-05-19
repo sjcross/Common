@@ -18,12 +18,12 @@ public class ChannelExtractor extends HCModule {
         if (verbose) System.out.println("   Running channel extractor");
 
         // Loading input image
-        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
+        HCName inputImageName = parameters.getValue(INPUT_IMAGE);
         if (verbose) System.out.println("       Loading image ("+inputImageName.getName()+") into workspace");
         ImagePlus ipl = workspace.getImages().get(inputImageName).getImagePlus();
 
         // Getting parameters
-        HCImageName outputImageName = parameters.getValue(OUTPUT_IMAGE);
+        HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
         int channel = parameters.getValue(CHANNEL_TO_EXTRACT);
 
         // Getting selected channel
@@ -58,5 +58,10 @@ public class ChannelExtractor extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

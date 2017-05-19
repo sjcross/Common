@@ -1,7 +1,10 @@
+C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Object\HCName.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\GetLocalObjectRegion.java
+C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\PlotMeasurementsScatter.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\System\GUIElements.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\FileConditions\ExtensionMatchesString.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\MathFunc\MSD.java
+C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Object\HCMeasurementCollection.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\MeasureImageIntensity.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Analysis\TotalPathLengthCalculator.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Process\HCAnalysis.java
@@ -13,10 +16,8 @@ C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Hi
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\ImageStackLoader.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Object\SpotIntensity.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Extractor\IncuCyteLongFilenameExtractor.java
-C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Object\HCImageName.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\IdentifyPrimaryObjects.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\ShowImage.java
-C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Object\HCObjectName.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Extractor\CellVoyagerFoldernameExtractor.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Module\ApplyManualClassification.java
 C:\Users\sc13967\Documents\Java Projects\Common\src\main\java\wbif\sjx\common\HighContent\Extractor\CellVoyagerFilenameExtractor.java

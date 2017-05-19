@@ -8,8 +8,8 @@ import java.util.LinkedHashMap;
  * Created by sc13967 on 02/05/2017.
  */
 public class HCWorkspace {
-    private LinkedHashMap<HCObjectName, HCObjectSet> objects = new LinkedHashMap<>();
-    private LinkedHashMap<HCImageName, HCImage> images = new LinkedHashMap<>();
+    private LinkedHashMap<HCName, HCObjectSet> objects = new LinkedHashMap<>();
+    private LinkedHashMap<HCName, HCImage> images = new LinkedHashMap<>();
     private HCMetadata metadata = new HCMetadata();
     private int ID;
 
@@ -23,7 +23,7 @@ public class HCWorkspace {
 
     // PUBLIC METHODS
 
-    public void addObjects(HCObjectName name, HCObjectSet object) {
+    public void addObjects(HCName name, HCObjectSet object) {
         objects.put(name, object);
     }
 
@@ -31,7 +31,7 @@ public class HCWorkspace {
         objects.remove(name);
     }
 
-    public void addImage(HCImageName name, HCImage image) {
+    public void addImage(HCName name, HCImage image) {
         images.put(name, image);
     }
 
@@ -59,19 +59,19 @@ public class HCWorkspace {
 
     // GETTERS AND SETTERS
 
-    public HashMap<HCObjectName, HCObjectSet> getObjects() {
+    public HashMap<HCName, HCObjectSet> getObjects() {
         return objects;
     }
 
-    public void setObjects(LinkedHashMap<HCObjectName, HCObjectSet> objects) {
+    public void setObjects(LinkedHashMap<HCName, HCObjectSet> objects) {
         this.objects = objects;
     }
 
-    public HashMap<HCImageName, HCImage> getImages() {
+    public HashMap<HCName, HCImage> getImages() {
         return images;
     }
 
-    public void setImages(LinkedHashMap<HCImageName, HCImage> images) {
+    public void setImages(LinkedHashMap<HCName, HCImage> images) {
         this.images = images;
     }
 

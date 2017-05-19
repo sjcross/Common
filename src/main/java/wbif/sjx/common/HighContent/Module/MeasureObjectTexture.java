@@ -26,12 +26,12 @@ public class MeasureObjectTexture extends HCModule {
         if (verbose) System.out.println("   Running object texture analysis");
 
         // Getting input image
-        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
+        HCName inputImageName = parameters.getValue(INPUT_IMAGE);
         HCImage inputImage = workspace.getImages().get(inputImageName);
         ImagePlus inputImagePlus = inputImage.getImagePlus();
 
         // Getting input objects
-        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
+        HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
 
         // Getting parameters
@@ -151,5 +151,19 @@ public class MeasureObjectTexture extends HCModule {
         returnedParameters.addParameter(parameters.getParameter(Z_OFFSET));
 
         return returnedParameters;
+
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        HCMeasurementCollection measurements = new HCMeasurementCollection();
+
+        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_ASM");
+        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_CONTRAST");
+        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_CORRELATION");
+        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_ENTROPY");
+
+        return measurements;
+
     }
 }

@@ -1,9 +1,10 @@
 package wbif.sjx.common.HighContent.Process;
 
 import wbif.sjx.common.HighContent.Module.HCModule;
-import wbif.sjx.common.HighContent.Object.HCImageName;
-import wbif.sjx.common.HighContent.Object.HCModuleCollection;
-import wbif.sjx.common.HighContent.Object.HCWorkspace;
+import wbif.sjx.common.HighContent.Object.*;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by sc13967 on 21/10/2016.
@@ -13,7 +14,6 @@ import wbif.sjx.common.HighContent.Object.HCWorkspace;
  */
 public abstract class HCAnalysis {
     public HCModuleCollection modules = new HCModuleCollection();
-
 
     // CONSTRUCTOR
 
@@ -57,5 +57,4 @@ public abstract class HCAnalysis {
         return modules;
 
     }
-
 }

@@ -16,7 +16,7 @@ public class MeasureImageIntensity extends HCModule {
         if (verbose) System.out.println("   Measuring image intensity");
 
         // Getting input image
-        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
+        HCName inputImageName = parameters.getValue(INPUT_IMAGE);
         if (verbose) System.out.println("       Loading image ("+inputImageName+")");
         HCImage inputImage = workspace.getImages().get(inputImageName);
         ImagePlus inputImagePlus = inputImage.getImagePlus();
@@ -61,6 +61,11 @@ public class MeasureImageIntensity extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 
 }

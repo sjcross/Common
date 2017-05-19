@@ -14,6 +14,7 @@ wbif\sjx\common\FileConditions\ParentContainsString.class
 wbif\sjx\common\FileConditions\NameContainsString.class
 wbif\sjx\common\HighContent\Module\ShowImage.class
 wbif\sjx\common\HighContent\Module\MeasureImageTexture.class
+wbif\sjx\common\HighContent\Object\HCName.class
 wbif\sjx\common\MathFunc\Indexer.class
 wbif\sjx\common\HighContent\Module\IdentifyPrimaryObjects.class
 wbif\sjx\common\HighContent\GUI\ParameterWindow.class
@@ -21,7 +22,6 @@ wbif\sjx\common\HighContent\Extractor\IncuCyteShortFilenameExtractor.class
 wbif\sjx\common\HighContent\Module\RunTrackMate.class
 wbif\sjx\common\MathFunc\DirectionalPersistence.class
 wbif\sjx\common\HighContent\Module\MeasureObjectIntensity.class
-wbif\sjx\common\HighContent\Object\HCObjectName.class
 wbif\sjx\common\Analysis\TextureCalculator.class
 wbif\sjx\common\HighContent\Process\BatchProcessor.class
 wbif\sjx\common\Analysis\IntensityCalculator.class
@@ -32,12 +32,12 @@ wbif\sjx\common\HighContent\Object\HCMeasurement.class
 wbif\sjx\common\Object\Track.class
 wbif\sjx\common\MathFunc\CumStat.class
 wbif\sjx\common\HighContent\Extractor\IncuCyteLongFilenameExtractor.class
+wbif\sjx\common\HighContent\Module\PlotMeasurementsScatter.class
 wbif\sjx\common\HighContent\Object\HCObjectSet.class
 wbif\sjx\common\HighContent\Object\Patterns.class
 wbif\sjx\common\HighContent\Process\ParameterExtractor.class
 wbif\sjx\common\HighContent\Module\MeasureImageIntensity.class
 wbif\sjx\common\HighContent\Module\ProjectImage.class
-wbif\sjx\common\HighContent\Object\HCImageName.class
 wbif\sjx\common\MathFunc\MidpointCircle.class
 wbif\sjx\common\Object\Blob.class
 wbif\sjx\common\HighContent\Object\HCWorkspace.class
@@ -60,6 +60,7 @@ wbif\sjx\common\Analysis\TotalPathLengthCalculator.class
 wbif\sjx\common\Analysis\InstantaneousVelocityCalculator.class
 wbif\sjx\common\FileConditions\ExtensionMatchesString.class
 wbif\sjx\common\HighContent\Module\ImageStackLoader.class
+wbif\sjx\common\HighContent\Object\HCMeasurementCollection.class
 wbif\sjx\common\Analysis\StepSizeCalculator.class
 wbif\sjx\common\HighContent\Extractor\CellVoyagerFilenameExtractor.class
 wbif\sjx\common\Object\SpotCollection.class

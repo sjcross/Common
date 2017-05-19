@@ -7,8 +7,11 @@
 
 package wbif.sjx.common.HighContent.Module;
 
+import wbif.sjx.common.HighContent.Object.HCMeasurementCollection;
 import wbif.sjx.common.HighContent.Object.HCParameterCollection;
 import wbif.sjx.common.HighContent.Object.HCWorkspace;
+
+import java.util.ArrayList;
 
 /**
  * Created by sc13967 on 02/05/2017.
@@ -48,6 +51,8 @@ public abstract class HCModule {
      */
     public abstract HCParameterCollection getActiveParameters();
 
+    public abstract HCMeasurementCollection addActiveMeasurements();
+
     public void updateParameterValue(String name, Object value) {
         parameters.updateValue(name,value);
 
@@ -55,6 +60,11 @@ public abstract class HCModule {
 
     public <T> T getParameterValue(String name) {
         return parameters.getParameter(name).getValue();
+
+    }
+
+    public void setParameterVisibility(String name, boolean visible) {
+        parameters.updateVisible(name,visible);
 
     }
 

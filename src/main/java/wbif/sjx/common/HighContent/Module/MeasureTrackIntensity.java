@@ -23,12 +23,12 @@ public class MeasureTrackIntensity extends HCModule {
         if (verbose) System.out.println("   Measuring track intensity");
 
         // Getting image to measure track intensity for
-        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
+        HCName inputImageName = parameters.getValue(INPUT_IMAGE);
         HCImage inputImage = workspace.getImages().get(inputImageName);
         ImagePlus ipl = inputImage.getImagePlus();
 
         // Getting objects to measure
-        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
+        HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
 
         // Getting parameters
@@ -100,5 +100,18 @@ public class MeasureTrackIntensity extends HCModule {
     public HCParameterCollection getActiveParameters() {
         return parameters;
         
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        HCMeasurementCollection measurements = new HCMeasurementCollection();
+
+        HCName inputImageName = parameters.getValue(INPUT_IMAGE);
+        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),inputImageName+"_MEAN");
+        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),inputImageName+"_STD");
+        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),inputImageName+"_MIN");
+        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),inputImageName+"_MAX");
+
+        return measurements;
     }
 }

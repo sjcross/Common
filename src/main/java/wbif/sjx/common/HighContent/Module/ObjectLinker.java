@@ -26,8 +26,8 @@ public class ObjectLinker extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        HCObjectName objectName1 = parameters.getValue(INPUT_OBJECTS1);
-        HCObjectName objectName2 = parameters.getValue(INPUT_OBJECTS2);
+        HCName objectName1 = parameters.getValue(INPUT_OBJECTS1);
+        HCName objectName2 = parameters.getValue(INPUT_OBJECTS2);
 
         HCObjectSet objects1 = workspace.getObjects().get(objectName1);
         HCObjectSet objects2 = workspace.getObjects().get(objectName2);
@@ -51,6 +51,11 @@ public class ObjectLinker extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }
 

@@ -17,8 +17,8 @@ public class ProjectObjects extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
-        HCObjectName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
+        HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
+        HCName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
 
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
         HCObjectSet outputObjects = new HCObjectSet();
@@ -90,5 +90,10 @@ public class ProjectObjects extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

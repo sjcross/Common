@@ -17,11 +17,11 @@ public class MeasureObjectIntensity extends HCModule {
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         // Getting input objects
-        HCObjectName objectName = parameters.getValue(INPUT_OBJECTS);
+        HCName objectName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet objects = workspace.getObjects().get(objectName);
 
         // Getting input image
-        HCImageName imageName = parameters.getValue(INPUT_IMAGE);
+        HCName imageName = parameters.getValue(INPUT_IMAGE);
         HCImage image = workspace.getImages().get(imageName);
         ImagePlus ipl = image.getImagePlus();
 
@@ -89,5 +89,10 @@ public class MeasureObjectIntensity extends HCModule {
 
         return returnedParameters;
 
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

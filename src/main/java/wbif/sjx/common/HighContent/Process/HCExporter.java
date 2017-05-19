@@ -99,7 +99,7 @@ public class HCExporter {
                 }
 
                 // Creating new elements for each image in the current workspace with at least one measurement
-                for (HCImageName imageName:workspace.getImages().keySet()) {
+                for (HCName imageName:workspace.getImages().keySet()) {
                     HCImage image = workspace.getImages().get(imageName);
 
                     if (image.getSingleMeasurements() != null) {
@@ -123,7 +123,7 @@ public class HCExporter {
                 }
 
                 // Creating new elements for each object in the current workspace
-                for (HCObjectName objectNames:workspace.getObjects().keySet()) {
+                for (HCName objectNames:workspace.getObjects().keySet()) {
                     for (HCObject object:workspace.getObjects().get(objectNames).values()) {
                         Element objectElement =  doc.createElement("OBJECT");
 
@@ -369,11 +369,11 @@ public class HCExporter {
 
         if (exampleWorkspace.getImages() != null) {
             // Creating a new sheet for each image.  Each analysed file will have its own row.
-            HashMap<HCImageName, XSSFSheet> imageSheets = new HashMap<>();
-            HashMap<HCImageName, Integer> imageRows = new HashMap<>();
+            HashMap<HCName, XSSFSheet> imageSheets = new HashMap<>();
+            HashMap<HCName, Integer> imageRows = new HashMap<>();
 
             // Using the first workspace in the WorkspaceCollection to initialise column headers
-            for (HCImageName imageName : exampleWorkspace.getImages().keySet()) {
+            for (HCName imageName : exampleWorkspace.getImages().keySet()) {
                 HCImage image = exampleWorkspace.getImages().get(imageName);
 
                 if (image.getSingleMeasurements().size() != 0) {
@@ -400,7 +400,7 @@ public class HCExporter {
 
             // Running through each Workspace, adding rows
             for (HCWorkspace workspace : workspaces) {
-                for (HCImageName imageName : workspace.getImages().keySet()) {
+                for (HCName imageName : workspace.getImages().keySet()) {
                     HCImage image = exampleWorkspace.getImages().get(imageName);
 
                     if (image.getSingleMeasurements().size() != 0) {
@@ -430,11 +430,11 @@ public class HCExporter {
 
         if (exampleWorkspace != null) {
             // Creating a new sheet for each object.  Each analysed file will have its own set of rows (one for each object)
-            HashMap<HCObjectName, XSSFSheet> objectSheets = new HashMap<>();
-            HashMap<HCObjectName, Integer> objectRows = new HashMap<>();
+            HashMap<HCName, XSSFSheet> objectSheets = new HashMap<>();
+            HashMap<HCName, Integer> objectRows = new HashMap<>();
 
             // Using the first workspace in the WorkspaceCollection to initialise column headers
-            for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
+            for (HCName objectName : exampleWorkspace.getObjects().keySet()) {
                 HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
 
                 if (objects.values().iterator().next().getMeasurements().size() != 0) {
@@ -479,7 +479,7 @@ public class HCExporter {
 
             // Running through each Workspace, adding rows
             for (HCWorkspace workspace : workspaces) {
-                for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
+                for (HCName objectName : exampleWorkspace.getObjects().keySet()) {
                     HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
 
                     if (objects.values().iterator().next().getMeasurements().size() != 0) {

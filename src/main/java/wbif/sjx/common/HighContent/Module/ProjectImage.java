@@ -13,11 +13,11 @@ public class ProjectImage extends HCModule {
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         // Loading image into workspace
-        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
+        HCName inputImageName = parameters.getValue(INPUT_IMAGE);
         HCImage inputImage = workspace.getImages().get(inputImageName);
 
         // Getting output image name
-        HCImageName outputImageName = parameters.getValue(OUTPUT_IMAGE);
+        HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
 
         // Create max projection image
         HCImage outputImage = inputImage.projectImageInZ();
@@ -42,5 +42,10 @@ public class ProjectImage extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

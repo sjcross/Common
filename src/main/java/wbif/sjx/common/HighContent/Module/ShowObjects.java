@@ -17,7 +17,7 @@ public class ShowObjects extends HCModule {
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         // Loading objects
-        HCObjectName inputObjectName = parameters.getValue(INPUT_OBJECTS);
+        HCName inputObjectName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectName);
 
         // Getting parameters
@@ -28,7 +28,7 @@ public class ShowObjects extends HCModule {
             templateImage = null;
 
         } else {
-            HCImageName templateImageName = parameters.getValue(TEMPLATE_IMAGE);
+            HCName templateImageName = parameters.getValue(TEMPLATE_IMAGE);
             templateImage = workspace.getImages().get(templateImageName);
 
         }
@@ -63,5 +63,10 @@ public class ShowObjects extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

@@ -89,11 +89,11 @@ public class GetLocalObjectRegion extends HCModule {
         if (verbose) System.out.println("   Calculating local volume around object centroids");
 
         // Getting input objects
-        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
+        HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
 
         // Getting output objects name
-        HCObjectName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
+        HCName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
 
         // Getting parameters
         boolean calibrated = parameters.getValue(CALIBRATED_RADIUS);
@@ -126,6 +126,11 @@ public class GetLocalObjectRegion extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 
 

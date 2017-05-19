@@ -9,6 +9,7 @@ import ij.process.StackConverter;
 import wbif.sjx.common.HighContent.Object.*;
 
 import java.awt.*;
+import java.util.Random;
 
 /**
  * Created by sc13967 on 17/05/2017.
@@ -17,6 +18,7 @@ public class ShowObjectsOverlay extends HCModule {
     public static final String INPUT_IMAGE = "Input image";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String USE_GROUP_ID = "Use group ID";
+    public static final String RANDOM_COLOURS = "Random colours";
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
@@ -24,13 +26,14 @@ public class ShowObjectsOverlay extends HCModule {
 
         // Getting parameters
         boolean useGroupID = parameters.getValue(USE_GROUP_ID);
+        boolean randomColours = parameters.getValue(RANDOM_COLOURS);
 
         // Getting input objects
-        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
+        HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
 
         // Getting input image
-        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
+        HCName inputImageName = parameters.getValue(INPUT_IMAGE);
         HCImage inputImage = workspace.getImages().get(inputImageName);
         ImagePlus ipl = inputImage.getImagePlus();
 
@@ -42,7 +45,10 @@ public class ShowObjectsOverlay extends HCModule {
 
         // Running through each object, adding it to the overlay along with an ID label
         for (HCObject object:inputObjects.values()) {
-            double xMean = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.X), MeasureObjectCentroid.MEAN);
+            float randomID = new Random(object.getGroupID()*object.getGroupID()*object.getGroupID()).nextFloat();
+            Color colour = randomColours ? Color.getHSBColor(randomID,1,1) : Color.ORANGE;
+
+            double xMean = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.X),MeasureObjectCentroid.MEAN);
             double yMean = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.Y),MeasureObjectCentroid.MEAN);
             double zMean = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.Z),MeasureObjectCentroid.MEAN);
 
@@ -58,6 +64,7 @@ public class ShowObjectsOverlay extends HCModule {
             } else {
                 roi.setPosition(Math.max(Math.max(c,z),t));
             }
+            roi.setStrokeColor(colour);
             hyperstack.getOverlay().add(roi);
 
             // Adding text label
@@ -72,6 +79,7 @@ public class ShowObjectsOverlay extends HCModule {
             } else {
                 text.setPosition(Math.max(Math.max(c,z),t));
             }
+            text.setStrokeColor(colour);
             hyperstack.getOverlay().add(text);
 
         }
@@ -88,6 +96,7 @@ public class ShowObjectsOverlay extends HCModule {
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null,false));
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null,false));
         parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,null,false));
+        parameters.addParameter(new HCParameter(this,RANDOM_COLOURS,HCParameter.BOOLEAN,true,false));
 
         return parameters;
 
@@ -96,5 +105,10 @@ public class ShowObjectsOverlay extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

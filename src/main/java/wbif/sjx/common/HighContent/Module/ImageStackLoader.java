@@ -29,7 +29,7 @@ public class ImageStackLoader extends HCModule {
         String orderField = parameters.getValue(ORDER_FIELD);
         ArrayList<String> staticFields = parameters.getValue(STATIC_FIELDS);
         HashMap<String,String> setFields = parameters.getValue(SET_FIELDS);
-        HCImageName outputImage = parameters.getValue(OUTPUT_IMAGE);
+        HCName outputImage = parameters.getValue(OUTPUT_IMAGE);
 
         // Getting files
         File referenceFile = workspace.getMetadata().getFile();
@@ -115,5 +115,10 @@ public class ImageStackLoader extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

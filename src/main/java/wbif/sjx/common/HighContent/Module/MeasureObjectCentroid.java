@@ -20,6 +20,11 @@ public class MeasureObjectCentroid extends HCModule {
     private static String[] methodChoices = new String[]{MEAN,MEDIAN,ALL};
 
 
+    public static double calculateCentroid(ArrayList<Integer> values) {
+        return calculateCentroid(values,MEAN);
+
+    }
+
     public static double calculateCentroid(ArrayList<Integer> values, String method) {
         if (method.equals(MEAN)) {
             CumStat cs = new CumStat(1);
@@ -49,7 +54,7 @@ public class MeasureObjectCentroid extends HCModule {
         if (verbose) System.out.println("   Measuring object centroids");
 
         // Getting current objects
-        HCObjectName inputObjectName = parameters.getValue(INPUT_OBJECTS);
+        HCName inputObjectName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectName);
 
         // Getting which centroid measures to calculate
@@ -112,8 +117,9 @@ public class MeasureObjectCentroid extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
+        parameters.addParameter(new HCParameter(this,MODULE_TITLE,HCParameter.MODULE_TITLE,"Measure object centroid",true));
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,"Im1",true));
-        parameters.addParameter(new HCParameter(this,CENTROID_METHOD, HCParameter.CHOICE_ARRAY,methodChoices[0],true));
+        parameters.addParameter(new HCParameter(this,CENTROID_METHOD, HCParameter.CHOICE_ARRAY,methodChoices[0],methodChoices,true));
 
         return parameters;
 
@@ -122,5 +128,10 @@ public class MeasureObjectCentroid extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }
