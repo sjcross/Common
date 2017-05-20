@@ -1,12 +1,10 @@
 package wbif.sjx.common.HighContent.Module;
 
-import wbif.sjx.common.HighContent.Module.HCModule;
 import wbif.sjx.common.HighContent.Object.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
 
 /**
  * Applies manual object classifications from a .csv file at the specified location.  Each row of the file must
@@ -21,31 +19,40 @@ public class ApplyManualClassification extends HCModule {
         if (verbose) System.out.println("   Applying manual classifications");
 
         // Getting input objects
-        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
+        HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
 
         // Getting classification file and storing classifications as HashMap that can be easily read later on
-        HashMap<Integer,Integer> classification = new HashMap<>();
         String classificationFilePath = parameters.getValue(CLASSIFICATION_FILE);
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(classificationFilePath));
             String line;
             while((line=bufferedReader.readLine())!=null){
+                // Getting current object value
                 String vals[] = line.split(",");
-                classification.put(Integer.valueOf(vals[0]),Integer.valueOf(vals[1]));
+                int x = Integer.valueOf(vals[0]);
+                int y = Integer.valueOf(vals[1]);
+                int f = Integer.valueOf(vals[2]);
+                int currClass = Integer.valueOf(vals[3]);
 
+                for (HCObject object:inputObjects.values()) {
+                    double xCent = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.X));
+                    double yCent = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.Y));
+                    if (xCent==x & yCent==y & object.getCoordinates(HCObject.T).equals(f)) {
+                        HCMeasurement objClass = new HCMeasurement(HCMeasurement.CLASS,currClass);
+                        objClass.setSource(this);
+                        object.addMeasurement(objClass);
+
+                        break;
+                    }
+                }
             }
+
+            // Removing objects that don't have an assigned class
+            inputObjects.entrySet().removeIf(entry -> entry.getValue().getMeasurement("CLASS") == null);
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-        // Running through each object, applying the relevant classification based on its groupID
-        for (HCObject object:inputObjects.values()) {
-            HCMeasurement objClass = new HCMeasurement("CLASS",classification.get(object.getGroupID()));
-            objClass.setSource(this);
-            object.addMeasurement(objClass);
-
         }
     }
 
@@ -64,6 +71,19 @@ public class ApplyManualClassification extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+
+    }
+
+    /**
+     * Adds measurements from the current module to the measurement collection
+     */
+//    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        HCMeasurementCollection measurements = new HCMeasurementCollection();
+
+        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),HCMeasurement.CLASS);
+
+        return measurements;
 
     }
 }

@@ -2,7 +2,9 @@ package wbif.sjx.common.HighContent.GUI;
 
 import ij.gui.GenericDialog;
 import wbif.sjx.common.HighContent.Module.HCModule;
+import wbif.sjx.common.HighContent.Object.HCMeasurementCollection;
 import wbif.sjx.common.HighContent.Object.HCModuleCollection;
+import wbif.sjx.common.HighContent.Object.HCName;
 import wbif.sjx.common.HighContent.Object.HCParameter;
 
 import java.awt.*;
@@ -15,6 +17,8 @@ import java.util.Map;
 public class ParameterWindow {
     public void updateParameters(HCModuleCollection modules) {
         GenericDialog gd = new GenericDialog("Parameters");
+
+        HCMeasurementCollection measurements = modules.getMeasurements();
 
         // Creating a font for the module titles
         Font titleFont = new Font(Font.SANS_SERIF,Font.BOLD,12);
@@ -37,7 +41,7 @@ public class ParameterWindow {
                         gd.addStringField(entry.getKey(), String.valueOf(entry.getValue()));
 
                     } else if (entry.getValue().getType() == HCParameter.CHOICE_ARRAY) {
-                        gd.addChoice(entry.getKey(),(String[]) entry.getValue().getValueRange(), entry.getValue().getValue());
+                        gd.addChoice(entry.getKey(),(String[]) entry.getValue().getValueSource(), entry.getValue().getValue());
 
                     } else if (entry.getValue().getType() == HCParameter.CHOICE_MAP) {
                         HashMap<String, String> map = entry.getValue().getValue();
@@ -47,6 +51,10 @@ public class ParameterWindow {
                         }
                     } else if (entry.getValue().getType() == HCParameter.BOOLEAN) {
                         gd.addCheckbox(entry.getKey(), entry.getValue().getValue());
+
+                    } else if (entry.getValue().getType() == HCParameter.MEASUREMENT) {
+                        String[] measurementChoices = measurements.getMeasurementNames((HCName) entry.getValue().getValueSource());
+                        gd.addChoice(entry.getKey(),measurementChoices,measurementChoices[0]);
 
                     }
                 }
@@ -86,8 +94,10 @@ public class ParameterWindow {
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(map);
 
                         } else if (entry.getValue().getType() == HCParameter.BOOLEAN) {
-                            gd.addCheckbox(entry.getKey(), entry.getValue().getValue());
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextBoolean());
+
+                        } else if (entry.getValue().getType() == HCParameter.MEASUREMENT) {
+                            module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextChoice());
 
                         }
                     }

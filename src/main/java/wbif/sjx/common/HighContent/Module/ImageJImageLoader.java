@@ -15,7 +15,7 @@ public class ImageJImageLoader extends HCModule {
         if (verbose) System.out.println("   Loading image from ImageJ");
 
         // Getting image
-        HCImageName outputImageName = parameters.getValue(OUTPUT_IMAGE);
+        HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
         ImagePlus imagePlus = IJ.getImage();
 
         // Adding image to workspace
@@ -37,5 +37,10 @@ public class ImageJImageLoader extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

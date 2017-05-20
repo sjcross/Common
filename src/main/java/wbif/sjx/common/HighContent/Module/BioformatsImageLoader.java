@@ -22,7 +22,7 @@ public class BioformatsImageLoader extends HCModule {
         if (verbose) System.out.println("    Running Bioformats image loader");
 
         // Getting image name
-        HCImageName outputImageName = parameters.getValue(OUTPUT_IMAGE);
+        HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
 
         // Running Bio-formats importer
         if (verbose) System.out.println("       Loading image");
@@ -72,5 +72,10 @@ public class BioformatsImageLoader extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

@@ -1,5 +1,7 @@
 package wbif.sjx.common.HighContent.Object;
 
+import wbif.sjx.common.HighContent.Module.HCModule;
+
 import java.util.HashMap;
 
 /**
@@ -74,37 +76,43 @@ public class HCParameter {
     public final static int FILE_PATH = 11;
 
     /**
+     * HCMeasurement input to the module.  This could be used as a parameter for plotting, or as a value for another
+     * parameter
+     */
+    public final static int MEASUREMENT = 12;
+
+    /**
      * Miscellaneous object class parameter.  These can be anything not fitting the other categories.  These can't be
      * set using ParameterWindow.
      */
-    public final static int OBJECT = 12;
+    public final static int OBJECT = 13;
 
-    final Object module;
-    final String name;
-    final int type;
-    Object valueRange;
-    Object value;
-    boolean visible;
+    private final HCModule module;
+    private final String name;
+    private final int type;
+    private Object valueSource; // Where the possible values come from (used for CHOICE_ARRAY and MEASUREMENT)
+    private Object value;
+    private boolean visible;
 
 
     // CONSTRUCTORS
 
-    public HCParameter(Object module, String name, int type, Object value, Object defaultValue, boolean visible) {
+    public HCParameter(HCModule module, String name, int type, Object value, Object valueSource, boolean visible) {
         this.module = module;
         this.type = type;
         this.name = name;
         this.value = value;
-        this.valueRange = defaultValue;
+        this.valueSource = valueSource;
         this.visible = visible;
 
     }
 
-    public HCParameter(Object module, String name, int type, Object value, boolean visible) {
+    public HCParameter(HCModule module, String name, int type, Object value, boolean visible) {
         this.module = module;
         this.type = type;
         this.name = name;
         this.value = value;
-        this.valueRange = value;
+        this.valueSource = value;
         this.visible = visible;
 
     }
@@ -124,12 +132,12 @@ public class HCParameter {
         return type;
     }
 
-    public Object getValueRange() {
-        return valueRange;
+    public Object getValueSource() {
+        return valueSource;
     }
 
-    public void setValueRange(Object valueRange) {
-        this.valueRange = valueRange;
+    public void setValueSource(Object valueSource) {
+        this.valueSource = valueSource;
     }
 
     public <T> T getValue() {

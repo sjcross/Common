@@ -43,6 +43,11 @@ public class HCParameterCollection {
 
     }
 
+    public void updateValueRange(String name, Object valueRange) {
+        parameters.get(name).setValueSource(valueRange);
+
+    }
+
     public void initialiseModule(HCModule module) {
         HCParameterCollection moduleParameters = module.initialiseParameters();
         parameters.putAll(moduleParameters.getParameters());

@@ -32,15 +32,15 @@ public class IdentifySecondaryObjects extends HCModule {
         String thrMeth = parameters.getValue(THRESHOLD_METHOD);
 
         // Loading images and objects into workspace
-        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
+        HCName inputImageName = parameters.getValue(INPUT_IMAGE);
         HCImage inputImage2 = workspace.getImages().get(inputImageName);
         ImagePlus image2 = inputImage2.getImagePlus();
 
-        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
+        HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet objects1 = workspace.getObjects().get(inputObjectsName);
 
         // Initialising the output objects ArrayList
-        HCObjectName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
+        HCName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
 
         // Getting nuclei objects as image
         if (verbose) System.out.println("       Converting objects to image");
@@ -98,5 +98,10 @@ public class IdentifySecondaryObjects extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

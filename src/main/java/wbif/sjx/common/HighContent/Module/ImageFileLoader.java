@@ -21,7 +21,7 @@ public class ImageFileLoader extends HCModule {
         String filePath = parameters.getValue(FILE_PATH);
 
         // Getting name to save
-        HCImageName outputImageName = parameters.getValue(OUTPUT_IMAGE);
+        HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
 
         // Importing the file
         ImagePlus ipl = Opener.openUsingBioFormats(filePath);
@@ -48,6 +48,11 @@ public class ImageFileLoader extends HCModule {
     public HCParameterCollection getActiveParameters() {
         return parameters;
 
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 
 }

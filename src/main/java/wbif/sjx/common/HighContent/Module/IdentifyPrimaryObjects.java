@@ -24,10 +24,10 @@ public class IdentifyPrimaryObjects extends HCModule {
         // Getting parameters
         double medFiltR = parameters.getValue(MEDIAN_FILTER_RADIUS);
         double thrMult = parameters.getValue(THRESHOLD_MULTIPLIER);
-        HCObjectName outputObjectName = parameters.getValue(OUTPUT_OBJECT);
+        HCName outputObjectName = parameters.getValue(OUTPUT_OBJECT);
 
         // Getting image stack
-        HCImageName targetImageName = parameters.getValue(INPUT_IMAGE);
+        HCName targetImageName = parameters.getValue(INPUT_IMAGE);
         ImagePlus ipl = workspace.getImages().get(targetImageName).getImagePlus();
 
         // Applying smoothing filter
@@ -73,5 +73,10 @@ public class IdentifyPrimaryObjects extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

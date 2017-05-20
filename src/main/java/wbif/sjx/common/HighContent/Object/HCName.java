@@ -1,21 +1,20 @@
 package wbif.sjx.common.HighContent.Object;
 
 /**
- * Created by sc13967 on 04/05/2017.
+ * Created by sc13967 on 19/05/2017.
  */
-public class HCObjectName {
-    String name;
-
+public class HCName {
+    private String name = "";
 
     // CONSTRUCTOR
 
-    public HCObjectName(String name) {
+    public HCName(String name) {
         this.name = name;
 
     }
 
 
-    // GETTER AND SETTER
+    // GETTERS AND SETTERS
 
     public String getName() {
         return name;

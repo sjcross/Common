@@ -1,9 +1,6 @@
 package wbif.sjx.common.HighContent.Module;
 
-import wbif.sjx.common.HighContent.Object.HCImageName;
-import wbif.sjx.common.HighContent.Object.HCParameter;
-import wbif.sjx.common.HighContent.Object.HCParameterCollection;
-import wbif.sjx.common.HighContent.Object.HCWorkspace;
+import wbif.sjx.common.HighContent.Object.*;
 
 /**
  * Created by sc13967 on 03/05/2017.
@@ -13,7 +10,7 @@ public class ShowImage extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        HCImageName imageName = parameters.getValue(DISPLAY_IMAGE);
+        HCName imageName = parameters.getValue(DISPLAY_IMAGE);
 
         workspace.getImages().get(imageName).getImagePlus().show();
 
@@ -33,5 +30,10 @@ public class ShowImage extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 }

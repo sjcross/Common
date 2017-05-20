@@ -7,7 +7,6 @@ import ij.process.ImageProcessor;
 import wbif.sjx.common.HighContent.Object.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by sc13967 on 04/05/2017.
@@ -147,8 +146,8 @@ public class ObjectImageConverter extends HCModule {
         int conversionMode = parameters.getValue(CONVERSION_MODE);
 
         if (conversionMode == IMAGE_TO_OBJECTS) {
-            HCImageName imageName = parameters.getValue(INPUT_IMAGE);
-            HCObjectName objectName = parameters.getValue(OUTPUT_OBJECTS);
+            HCName imageName = parameters.getValue(INPUT_IMAGE);
+            HCName objectName = parameters.getValue(OUTPUT_OBJECTS);
 
             HCImage image = workspace.getImages().get(imageName);
 
@@ -157,9 +156,9 @@ public class ObjectImageConverter extends HCModule {
             workspace.addObjects(objectName,objects);
 
         } else if (conversionMode == OBJECTS_TO_IMAGE) {
-            HCObjectName objectName = parameters.getValue(INPUT_OBJECTS);
-            HCImageName templateImageName = parameters.getValue(TEMPLATE_IMAGE);
-            HCImageName outputImageName = parameters.getValue(OUTPUT_IMAGE);
+            HCName objectName = parameters.getValue(INPUT_OBJECTS);
+            HCName templateImageName = parameters.getValue(TEMPLATE_IMAGE);
+            HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
             boolean useGroupID = parameters.getValue(USE_GROUP_ID);
 
             HCObjectSet objects = workspace.getObjects().get(objectName);
@@ -208,6 +207,11 @@ public class ObjectImageConverter extends HCModule {
         }
 
         return returnedParameters;
+    }
+
+    @Override
+    public HCMeasurementCollection addActiveMeasurements() {
+        return null;
     }
 
 }
