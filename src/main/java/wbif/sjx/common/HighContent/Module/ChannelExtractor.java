@@ -14,6 +14,12 @@ public class ChannelExtractor extends HCModule {
     public static final String SHOW_IMAGE = "Show output image";
 
     @Override
+    public String getTitle() {
+        return "Channel extractor";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Running channel extractor");
 
@@ -46,10 +52,10 @@ public class ChannelExtractor extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,"Im1",false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,"Im2",false));
-        parameters.addParameter(new HCParameter(this,CHANNEL_TO_EXTRACT, HCParameter.INTEGER,1,false));
-        parameters.addParameter(new HCParameter(this,SHOW_IMAGE, HCParameter.BOOLEAN,false,false));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,CHANNEL_TO_EXTRACT, HCParameter.INTEGER,1));
+        parameters.addParameter(new HCParameter(this,SHOW_IMAGE, HCParameter.BOOLEAN,false));
 
         return parameters;
 

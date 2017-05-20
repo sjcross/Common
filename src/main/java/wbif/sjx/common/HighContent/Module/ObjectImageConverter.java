@@ -142,6 +142,12 @@ public class ObjectImageConverter extends HCModule {
     }
 
     @Override
+    public String getTitle() {
+        return "Image-object converter";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         int conversionMode = parameters.getValue(CONVERSION_MODE);
 
@@ -175,14 +181,13 @@ public class ObjectImageConverter extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object-image converter",false));
-        parameters.addParameter(new HCParameter(this,CONVERSION_MODE, HCParameter.INTEGER,0,false));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,USE_GROUP_ID, HCParameter.BOOLEAN,true,false));
+        parameters.addParameter(new HCParameter(this,CONVERSION_MODE, HCParameter.INTEGER,0));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,USE_GROUP_ID, HCParameter.BOOLEAN,true));
 
         return parameters;
 
@@ -191,7 +196,6 @@ public class ObjectImageConverter extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         HCParameterCollection returnedParameters = new HCParameterCollection();
-        returnedParameters.addParameter(parameters.getParameter(MODULE_TITLE));
         returnedParameters.addParameter(parameters.getParameter(CONVERSION_MODE));
 
         if (parameters.getValue(CONVERSION_MODE).equals(IMAGE_TO_OBJECTS)) {

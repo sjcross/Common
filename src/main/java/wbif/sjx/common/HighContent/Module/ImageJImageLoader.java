@@ -11,6 +11,12 @@ public class ImageJImageLoader extends HCModule {
     public static final String OUTPUT_IMAGE = "Output image";
 
     @Override
+    public String getTitle() {
+        return "Load image from ImageJ";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Loading image from ImageJ");
 
@@ -28,7 +34,7 @@ public class ImageJImageLoader extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,"Im1",false));
+        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
 
         return parameters;
 

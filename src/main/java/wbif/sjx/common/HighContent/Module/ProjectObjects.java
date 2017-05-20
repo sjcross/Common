@@ -16,6 +16,12 @@ public class ProjectObjects extends HCModule {
 
 
     @Override
+    public String getTitle() {
+        return "Project objects";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
@@ -79,9 +85,8 @@ public class ProjectObjects extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object projector",false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null,false));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
 
         return parameters;
 

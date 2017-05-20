@@ -17,7 +17,13 @@ public class MeasureTrackIntensity extends HCModule {
     public static final String MEASUREMENT_RADIUS = "Measurement radius";
     public static final String CALIBRATED_RADIUS = "Calibrated radius";
 
-    
+
+    @Override
+    public String getTitle() {
+        return "Measure track intensity";
+
+    }
+
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Measuring track intensity");
@@ -86,11 +92,10 @@ public class MeasureTrackIntensity extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE,HCParameter.MODULE_TITLE,"Measure track intensity",true));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false,true));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT_RADIUS, HCParameter.DOUBLE,10.0,true));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false));
+        parameters.addParameter(new HCParameter(this,MEASUREMENT_RADIUS, HCParameter.DOUBLE,10.0));
         
         return parameters;
         

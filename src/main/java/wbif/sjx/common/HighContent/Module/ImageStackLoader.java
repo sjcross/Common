@@ -23,6 +23,12 @@ public class ImageStackLoader extends HCModule {
     public static final String SET_FIELDS = "Set fields";
 
     @Override
+    public String getTitle() {
+        return "Image stack loader";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         // Getting parameters
         Extractor extractor = parameters.getValue(EXTRACTOR);
@@ -101,12 +107,11 @@ public class ImageStackLoader extends HCModule {
         HCParameterCollection parameters = new HCParameterCollection();
 
         // Setting the input image stack name
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Image stack loader",false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,EXTRACTOR, HCParameter.OBJECT,null,false));
-        parameters.addParameter(new HCParameter(this,ORDER_FIELD, HCParameter.STRING,"",false));
-        parameters.addParameter(new HCParameter(this,STATIC_FIELDS, HCParameter.OBJECT,new ArrayList<String>(),false));
-        parameters.addParameter(new HCParameter(this,SET_FIELDS, HCParameter.OBJECT,new HashMap<String,String>(),false));
+        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,EXTRACTOR, HCParameter.OBJECT,null));
+        parameters.addParameter(new HCParameter(this,ORDER_FIELD, HCParameter.STRING,""));
+        parameters.addParameter(new HCParameter(this,STATIC_FIELDS, HCParameter.OBJECT,new ArrayList<String>()));
+        parameters.addParameter(new HCParameter(this,SET_FIELDS, HCParameter.OBJECT,new HashMap<String,String>()));
 
         return parameters;
 

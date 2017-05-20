@@ -22,6 +22,12 @@ public class MeasureObjectTexture extends HCModule {
 
 
     @Override
+    public String getTitle() {
+        return "Measure object texture";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Running object texture analysis");
 
@@ -119,15 +125,14 @@ public class MeasureObjectTexture extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object texture measurement",true));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,"Im1",false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,"Obj1",false));
-        parameters.addParameter(new HCParameter(this,POINT_MEASUREMENT,HCParameter.BOOLEAN,false,true));
-        parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false,true));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT_RADIUS, HCParameter.DOUBLE,10.0,true));
-        parameters.addParameter(new HCParameter(this,X_OFFSET, HCParameter.INTEGER,1,true));
-        parameters.addParameter(new HCParameter(this,Y_OFFSET, HCParameter.INTEGER,0,true));
-        parameters.addParameter(new HCParameter(this,Z_OFFSET, HCParameter.INTEGER,0,true));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,POINT_MEASUREMENT,HCParameter.BOOLEAN,false));
+        parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false));
+        parameters.addParameter(new HCParameter(this,MEASUREMENT_RADIUS, HCParameter.DOUBLE,10.0));
+        parameters.addParameter(new HCParameter(this,X_OFFSET, HCParameter.INTEGER,1));
+        parameters.addParameter(new HCParameter(this,Y_OFFSET, HCParameter.INTEGER,0));
+        parameters.addParameter(new HCParameter(this,Z_OFFSET, HCParameter.INTEGER,0));
 
         return parameters;
 
@@ -136,7 +141,6 @@ public class MeasureObjectTexture extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         HCParameterCollection returnedParameters = new HCParameterCollection();
-        returnedParameters.addParameter(parameters.getParameter(MODULE_TITLE));
         returnedParameters.addParameter(parameters.getParameter(INPUT_IMAGE));
         returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
         returnedParameters.addParameter(parameters.getParameter(POINT_MEASUREMENT));

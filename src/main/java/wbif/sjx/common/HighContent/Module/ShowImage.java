@@ -9,6 +9,12 @@ public class ShowImage extends HCModule {
     public final static String DISPLAY_IMAGE = "Display image";
 
     @Override
+    public String getTitle() {
+        return "Show image";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         HCName imageName = parameters.getValue(DISPLAY_IMAGE);
 
@@ -20,8 +26,7 @@ public class ShowImage extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Show images",false));
-        parameters.addParameter(new HCParameter(this,DISPLAY_IMAGE, HCParameter.INPUT_IMAGE,null,false));
+        parameters.addParameter(new HCParameter(this,DISPLAY_IMAGE, HCParameter.INPUT_IMAGE,null));
 
         return parameters;
 

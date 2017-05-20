@@ -15,6 +15,11 @@ public class ShowObjects extends HCModule {
     public final static String USE_GROUP_ID = "Use group ID";
 
     @Override
+    public String getTitle() {
+        return "Show objects";
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         // Loading objects
         HCName inputObjectName = parameters.getValue(INPUT_OBJECTS);
@@ -51,10 +56,9 @@ public class ShowObjects extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Show objects",false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,true,false));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,true));
 
         return parameters;
 

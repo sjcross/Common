@@ -21,6 +21,11 @@ public class ShowObjectsOverlay extends HCModule {
     public static final String RANDOM_COLOURS = "Random colours";
 
     @Override
+    public String getTitle() {
+        return "Show objects as overlay";
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Overlaying objects on image");
 
@@ -92,11 +97,10 @@ public class ShowObjectsOverlay extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE,HCParameter.MODULE_TITLE,"Show objects overlay",null,false));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,null,false));
-        parameters.addParameter(new HCParameter(this,RANDOM_COLOURS,HCParameter.BOOLEAN,true,false));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,null));
+        parameters.addParameter(new HCParameter(this,RANDOM_COLOURS,HCParameter.BOOLEAN,true));
 
         return parameters;
 

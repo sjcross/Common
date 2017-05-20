@@ -15,6 +15,12 @@ public class ApplyManualClassification extends HCModule {
     public static final String CLASSIFICATION_FILE = "Classification file";
 
     @Override
+    public String getTitle() {
+        return "Apply manual classification";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Applying manual classifications");
 
@@ -60,9 +66,8 @@ public class ApplyManualClassification extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE,HCParameter.MODULE_TITLE,"Apply manual classification",false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,CLASSIFICATION_FILE,HCParameter.FILE_PATH,null,false));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,CLASSIFICATION_FILE,HCParameter.FILE_PATH,null));
 
         return parameters;
 
