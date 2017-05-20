@@ -2,13 +2,14 @@ package wbif.sjx.common.HighContent.Object;
 
 import wbif.sjx.common.HighContent.Module.HCModule;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
  * Created by sc13967 on 03/05/2017.
  */
-public class HCModuleCollection extends ArrayList<HCModule> {
+public class HCModuleCollection extends ArrayList<HCModule> implements Serializable {
     public HCMeasurementCollection getMeasurements(HCModule cutoffModule) {
         HCMeasurementCollection measurements = new HCMeasurementCollection();
 

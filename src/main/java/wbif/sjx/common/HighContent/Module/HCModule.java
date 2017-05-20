@@ -11,12 +11,13 @@ import wbif.sjx.common.HighContent.Object.HCMeasurementCollection;
 import wbif.sjx.common.HighContent.Object.HCParameterCollection;
 import wbif.sjx.common.HighContent.Object.HCWorkspace;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by sc13967 on 02/05/2017.
  */
-public abstract class HCModule {
+public abstract class HCModule implements Serializable {
     public HCParameterCollection parameters = null;
 
 

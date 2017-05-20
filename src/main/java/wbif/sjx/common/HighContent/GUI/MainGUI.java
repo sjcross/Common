@@ -15,7 +15,7 @@ import wbif.sjx.common.HighContent.Process.HCExporter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -47,6 +47,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     private boolean exportXML = false;
     private boolean exportXLSX = false;
 
+    private String savePath = "C:\\Users\\steph\\Desktop\\analysis.ser";
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
         MainGUI mainGUI = new MainGUI();
@@ -481,6 +482,28 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         }
     }
 
+    private void saveAnalysis() throws IOException {
+
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(new File(savePath)));
+
+        outputStream.writeObject(analysis);
+        outputStream.close();
+
+    }
+
+    private void loadAnalysis() throws IOException, ClassNotFoundException {
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(new File(savePath)));
+
+        analysis = (GUIAnalysis) inputStream.readObject();
+        inputStream.close();
+
+        modules = analysis.getModules();
+
+        populateModuleList();
+
+
+    }
+
     private void startAnalysis() {
         HCWorkspaceCollection workspaces = new HCWorkspaceCollection();
         HCWorkspace workspace;
@@ -539,7 +562,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
     }
 
-    private void reactToAction(Object object) throws IllegalAccessException, InstantiationException {
+    private void reactToAction(Object object) throws IllegalAccessException, InstantiationException, IOException, ClassNotFoundException {
         if (((JComponent) object).getName().equals("ControlButton")) {
             if (((JButton) object).getText().equals(addModuleText)) {
                 addModule();
@@ -555,6 +578,12 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
             } else if (((JButton) object).getText().equals(startAnalysisText)) {
                 startAnalysis();
+
+            } else if (((JButton) object).getText().equals(saveAnalysis)) {
+                saveAnalysis();
+
+            } else if (((JButton) object).getText().equals(loadAnalysis)) {
+                loadAnalysis();
 
             }
 
@@ -655,10 +684,9 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     public void actionPerformed(ActionEvent e) {
         try {
             reactToAction(e.getSource());
-        } catch (IllegalAccessException | InstantiationException e1) {
+        } catch (IllegalAccessException | InstantiationException | IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
-
     }
 
     @Override
@@ -670,10 +698,9 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     public void focusLost(FocusEvent e) {
         try {
             reactToAction(e.getSource());
-        } catch (IllegalAccessException | InstantiationException e1) {
+        } catch (IllegalAccessException | InstantiationException | IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
-
     }
 
     @Override

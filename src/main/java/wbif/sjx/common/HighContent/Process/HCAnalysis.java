@@ -3,6 +3,7 @@ package wbif.sjx.common.HighContent.Process;
 import wbif.sjx.common.HighContent.Module.HCModule;
 import wbif.sjx.common.HighContent.Object.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -12,7 +13,7 @@ import java.util.HashSet;
  * Interface Analysis-type class, which will be extended by particular analyses
  *
  */
-public abstract class HCAnalysis {
+public abstract class HCAnalysis implements Serializable {
     public HCModuleCollection modules = new HCModuleCollection();
 
     // CONSTRUCTOR
