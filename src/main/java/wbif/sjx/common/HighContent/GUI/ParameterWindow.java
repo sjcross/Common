@@ -18,8 +18,6 @@ public class ParameterWindow {
     public void updateParameters(HCModuleCollection modules) {
         GenericDialog gd = new GenericDialog("Parameters");
 
-        HCMeasurementCollection measurements = modules.getMeasurements();
-
         // Creating a font for the module titles
         Font titleFont = new Font(Font.SANS_SERIF,Font.BOLD,12);
 
@@ -27,11 +25,7 @@ public class ParameterWindow {
         for (HCModule module:modules) {
             for (Map.Entry<String,HCParameter> entry:module.getActiveParameters().getParameters().entrySet()) {
                 if (entry.getValue().isVisible()) {
-                    if (entry.getValue().getType() == HCParameter.MODULE_TITLE) {
-                        if (gd.getComponentCount() != 0) gd.addMessage(" ");
-                        gd.addMessage(entry.getValue().getValue(),titleFont);
-
-                    } else if (entry.getValue().getType() == HCParameter.INTEGER) {
+                    if (entry.getValue().getType() == HCParameter.INTEGER) {
                         gd.addNumericField(entry.getKey(), (double) ((int) entry.getValue().getValue()), 1);
 
                     } else if (entry.getValue().getType() == HCParameter.DOUBLE) {
@@ -53,6 +47,8 @@ public class ParameterWindow {
                         gd.addCheckbox(entry.getKey(), entry.getValue().getValue());
 
                     } else if (entry.getValue().getType() == HCParameter.MEASUREMENT) {
+                        // Getting the measurements available to this module
+                        HCMeasurementCollection measurements = modules.getMeasurements(module);
                         String[] measurementChoices = measurements.getMeasurementNames((HCName) entry.getValue().getValueSource());
                         gd.addChoice(entry.getKey(),measurementChoices,measurementChoices[0]);
 
@@ -71,11 +67,9 @@ public class ParameterWindow {
                     if (entry.getValue().isVisible()) {
                         if (entry.getValue().getType() == HCParameter.INTEGER) {
                             module.getActiveParameters().getParameter(entry.getKey()).setValue((int) Math.round(gd.getNextNumber()));
-                            gd.addNumericField(entry.getKey(), (double) ((int) entry.getValue().getValue()), 1);
 
                         } else if (entry.getValue().getType() == HCParameter.DOUBLE) {
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextNumber());
-                            gd.addNumericField(entry.getKey(), entry.getValue().getValue(), 1);
 
                         } else if (entry.getValue().getType() == HCParameter.STRING) {
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextString());
@@ -84,7 +78,7 @@ public class ParameterWindow {
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextChoice());
 
                         } else if (entry.getValue().getType() == HCParameter.CHOICE_MAP) {
-                            HashMap<String, String> map = entry.getValue().getValue();
+                            HashMap<String,String> map = entry.getValue().getValue();
 
                             for (String k:map.keySet()) {
                                 map.put(k,gd.getNextString());

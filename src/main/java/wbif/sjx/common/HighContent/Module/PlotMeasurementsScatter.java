@@ -11,6 +11,11 @@ public class PlotMeasurementsScatter extends HCModule {
     public static final String MEASUREMENT2 = "Second measurement";
 
     @Override
+    public String getTitle() {
+        return "Plot measurements as scatter";
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
 
     }
@@ -19,10 +24,9 @@ public class PlotMeasurementsScatter extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE,HCParameter.MODULE_TITLE,"Scatterplot measurements",true));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT1,HCParameter.MEASUREMENT,"",new String[]{"",""},true));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT2,HCParameter.MEASUREMENT,"",new String[]{"",""},true));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,MEASUREMENT1,HCParameter.MEASUREMENT,"",new String[]{"",""}));
+        parameters.addParameter(new HCParameter(this,MEASUREMENT2,HCParameter.MEASUREMENT,"",new String[]{"",""}));
 
         return parameters;
 
@@ -31,7 +35,6 @@ public class PlotMeasurementsScatter extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         HCParameterCollection returnedParameters = new HCParameterCollection();
-        returnedParameters.addParameter(parameters.getParameter(MODULE_TITLE));
         returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
         returnedParameters.addParameter(parameters.getParameter(MEASUREMENT1));
         returnedParameters.addParameter(parameters.getParameter(MEASUREMENT2));

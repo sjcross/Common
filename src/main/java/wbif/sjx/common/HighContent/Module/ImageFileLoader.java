@@ -14,6 +14,12 @@ public class ImageFileLoader extends HCModule {
 
 
     @Override
+    public String getTitle() {
+        return "Load image from file";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Loading image from file");
 
@@ -36,9 +42,9 @@ public class ImageFileLoader extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,FILE_PATH,HCParameter.FILE_PATH,null,true));
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE,HCParameter.OUTPUT_IMAGE,"Im1",false));
-        parameters.addParameter(new HCParameter(this,USE_BIOFORMATS,HCParameter.BOOLEAN,true,false));
+        parameters.addParameter(new HCParameter(this,FILE_PATH,HCParameter.FILE_PATH,null));
+        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE,HCParameter.OUTPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,USE_BIOFORMATS,HCParameter.BOOLEAN,true));
 
         return parameters;
 

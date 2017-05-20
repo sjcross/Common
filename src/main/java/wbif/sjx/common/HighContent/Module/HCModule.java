@@ -17,8 +17,6 @@ import java.util.ArrayList;
  * Created by sc13967 on 02/05/2017.
  */
 public abstract class HCModule {
-    public static final String MODULE_TITLE = "Module title";
-
     public HCParameterCollection parameters = null;
 
 
@@ -31,6 +29,8 @@ public abstract class HCModule {
 
 
     // PUBLIC METHODS
+
+    public abstract String getTitle();
 
     public abstract void execute(HCWorkspace workspace, boolean verbose);
 

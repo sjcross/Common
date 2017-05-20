@@ -18,6 +18,12 @@ public class IdentifyPrimaryObjects extends HCModule {
     public static final String MEDIAN_FILTER_RADIUS = "Median filter radius";
     public static final String THRESHOLD_MULTIPLIER = "Threshold multiplier";
 
+    @Override
+    public String getTitle() {
+        return "Identify primary objects";
+
+    }
+
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("    Running primary object identification");
 
@@ -60,11 +66,10 @@ public class IdentifyPrimaryObjects extends HCModule {
         HCParameterCollection parameters = new HCParameterCollection();
 
         // Setting the input image stack name
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Primary object identification",true));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECT, HCParameter.OUTPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,MEDIAN_FILTER_RADIUS, HCParameter.DOUBLE,2.0,true));
-        parameters.addParameter(new HCParameter(this,THRESHOLD_MULTIPLIER, HCParameter.DOUBLE,1.0,true));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECT, HCParameter.OUTPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,MEDIAN_FILTER_RADIUS, HCParameter.DOUBLE,2.0));
+        parameters.addParameter(new HCParameter(this,THRESHOLD_MULTIPLIER, HCParameter.DOUBLE,1.0));
 
         return parameters;
 

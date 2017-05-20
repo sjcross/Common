@@ -25,6 +25,12 @@ public class ObjectLinker extends HCModule {
     }
 
     @Override
+    public String getTitle() {
+        return "Link objects";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         HCName objectName1 = parameters.getValue(INPUT_OBJECTS1);
         HCName objectName2 = parameters.getValue(INPUT_OBJECTS2);
@@ -40,9 +46,8 @@ public class ObjectLinker extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object linker",true));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS1, HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS2, HCParameter.INPUT_OBJECTS,null,false));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS1, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS2, HCParameter.INPUT_OBJECTS,null));
 
         return parameters;
 

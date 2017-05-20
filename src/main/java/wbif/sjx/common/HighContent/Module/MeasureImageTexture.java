@@ -14,6 +14,12 @@ public class MeasureImageTexture extends HCModule {
     public static final String Z_OFFSET = "Z-offset";
 
     @Override
+    public String getTitle() {
+        return "Measure image texture";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Running image texture analysis");
 
@@ -63,11 +69,10 @@ public class MeasureImageTexture extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Image texture measurement",true));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,"Im1",false));
-        parameters.addParameter(new HCParameter(this,X_OFFSET, HCParameter.INTEGER,1,true));
-        parameters.addParameter(new HCParameter(this,Y_OFFSET, HCParameter.INTEGER,0,true));
-        parameters.addParameter(new HCParameter(this,Z_OFFSET, HCParameter.INTEGER,0,true));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,X_OFFSET, HCParameter.INTEGER,1));
+        parameters.addParameter(new HCParameter(this,Y_OFFSET, HCParameter.INTEGER,0));
+        parameters.addParameter(new HCParameter(this,Z_OFFSET, HCParameter.INTEGER,0));
 
         return parameters;
 

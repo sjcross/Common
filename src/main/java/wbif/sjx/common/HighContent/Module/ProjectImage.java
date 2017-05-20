@@ -11,6 +11,12 @@ public class ProjectImage extends HCModule {
     public static final String OUTPUT_IMAGE = "Output image";
 
     @Override
+    public String getTitle() {
+        return "Project image";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         // Loading image into workspace
         HCName inputImageName = parameters.getValue(INPUT_IMAGE);
@@ -31,9 +37,8 @@ public class ProjectImage extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Image projector",false));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null,false));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
 
         return parameters;
 

@@ -12,6 +12,12 @@ public class MetadataExtractor extends HCModule {
     public static final String FOLDERNAME_EXTRACTOR = "Foldername extractor";
 
     @Override
+    public String getTitle() {
+        return "Extract metadata";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         // Getting current result
         HCMetadata metadata = workspace.getMetadata();
@@ -33,8 +39,8 @@ public class MetadataExtractor extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,FILENAME_EXTRACTOR, HCParameter.OBJECT,null,false));
-        parameters.addParameter(new HCParameter(this,FOLDERNAME_EXTRACTOR, HCParameter.OBJECT,null,false));
+        parameters.addParameter(new HCParameter(this,FILENAME_EXTRACTOR, HCParameter.OBJECT,null));
+        parameters.addParameter(new HCParameter(this,FOLDERNAME_EXTRACTOR, HCParameter.OBJECT,null));
 
         return parameters;
 

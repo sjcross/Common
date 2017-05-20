@@ -49,7 +49,6 @@
     <orderEntry type="library" name="Maven: ome:turbojpeg:5.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.scijava:native-lib-loader:2.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.perf4j:perf4j:0.9.13" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:17.0" level="project" />
     <orderEntry type="library" name="Maven: com.drewnoakes:metadata-extractor:2.6.2" level="project" />
     <orderEntry type="library" name="Maven: com.adobe.xmp:xmpcore:5.1.2" level="project" />
     <orderEntry type="library" name="Maven: xerces:xercesImpl:2.8.1" level="project" />
@@ -70,7 +69,6 @@
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: sc.fiji:fiji-lib:2.1.1" level="project" />
     <orderEntry type="library" name="Maven: net.imagej:ij1-patcher:0.12.2" level="project" />
-    <orderEntry type="library" name="Maven: org.javassist:javassist:3.16.1-GA" level="project" />
     <orderEntry type="library" name="Maven: sc.fiji:Auto_Threshold:1.16.4" level="project" />
     <orderEntry type="library" name="Maven: sc.fiji:TrackMate_:3.5.1" level="project" />
     <orderEntry type="library" name="Maven: sc.fiji:3D_Viewer:4.0.1" level="project" />
@@ -125,5 +123,8 @@
     <orderEntry type="library" name="Maven: sc.fiji:VIB_:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: sc.fiji:pal-optimization:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: sc.fiji:VIB-lib:2.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.11" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:20.0" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.21.0-GA" level="project" />
   </component>
 </module>

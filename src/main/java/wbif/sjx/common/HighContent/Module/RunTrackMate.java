@@ -28,6 +28,12 @@ public class RunTrackMate extends HCModule {
     public static final String DO_TRACKING = "Run tracking";
 
     @Override
+    public String getTitle() {
+        return "Run TrackMate";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Running TrackMate detection");
 
@@ -150,8 +156,6 @@ public class RunTrackMate extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE,HCParameter.MODULE_TITLE,"TrackMate tracking",true));
-
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null,false));
         parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS,HCParameter.OUTPUT_OBJECTS,null,false));
 
@@ -173,7 +177,6 @@ public class RunTrackMate extends HCModule {
     @Override
     public HCParameterCollection getActiveParameters() {
         HCParameterCollection returnedParameters = new HCParameterCollection();
-        returnedParameters.addParameter(parameters.getParameter(MODULE_TITLE));
         returnedParameters.addParameter(parameters.getParameter(INPUT_IMAGE));
         returnedParameters.addParameter(parameters.getParameter(OUTPUT_OBJECTS));
         returnedParameters.addParameter(parameters.getParameter(CALIBRATED_UNITS));

@@ -18,6 +18,12 @@ public class BioformatsImageLoader extends HCModule {
     public static final String SHOW_IMAGE = "Show loaded image";
 
     @Override
+    public String getTitle() {
+        return "Bio-formats image loader";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("    Running Bioformats image loader");
 
@@ -61,9 +67,8 @@ public class BioformatsImageLoader extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Image stack loader",false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,"Im1",false));
-        parameters.addParameter(new HCParameter(this,SHOW_IMAGE, HCParameter.BOOLEAN,false,false));
+        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(this,SHOW_IMAGE, HCParameter.BOOLEAN,false));
 
         return parameters;
 

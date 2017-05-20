@@ -12,6 +12,12 @@ public class MeasureImageIntensity extends HCModule {
     public static final String INPUT_IMAGE = "Input image";
 
     @Override
+    public String getTitle() {
+        return "Measure image intensity";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
         if (verbose) System.out.println("   Measuring image intensity");
 
@@ -51,8 +57,7 @@ public class MeasureImageIntensity extends HCModule {
     public HCParameterCollection initialiseParameters() {
         HCParameterCollection parameters = new HCParameterCollection();
 
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Measure image intensity",false));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,"Im1",false));
+        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
 
         return parameters;
 
