@@ -4,12 +4,13 @@ package wbif.sjx.common.HighContent.Object;
 
 import wbif.sjx.common.HighContent.Module.HCModule;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * Created by sc13967 on 03/05/2017.
  */
-public class HCParameter {
+public class HCParameter implements Serializable {
     /**
      * Name of Image class objects input to the module.  Used to connect images to be analysed between classes.  Input
      * images have been created by previous modules.

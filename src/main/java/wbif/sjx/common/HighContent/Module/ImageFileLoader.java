@@ -1,8 +1,13 @@
 package wbif.sjx.common.HighContent.Module;
 
+import ij.IJ;
 import ij.ImagePlus;
 import ij.io.Opener;
 import wbif.sjx.common.HighContent.Object.*;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 /**
  * Created by sc13967 on 15/05/2017.
@@ -30,7 +35,24 @@ public class ImageFileLoader extends HCModule {
         HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
 
         // Importing the file
-        ImagePlus ipl = Opener.openUsingBioFormats(filePath);
+        ImagePlus ipl;
+        if (parameters.getValue(USE_BIOFORMATS)) {
+            // Bio-formats writes lots of unwanted information to System.out.  This diverts it to a fake PrintStream
+            PrintStream realStream = System.out;
+            PrintStream fakeStream = new PrintStream(new OutputStream() {
+                @Override
+                public void write(int b) throws IOException {
+                }
+            });
+
+            System.setOut(fakeStream);
+            ipl = Opener.openUsingBioFormats(filePath);
+            System.setOut(realStream);
+
+        } else {
+            ipl = IJ.openImage(filePath);
+
+        }
 
         // Adding image to workspace
         if (verbose) System.out.println("       Adding image ("+outputImageName+") to workspace");
