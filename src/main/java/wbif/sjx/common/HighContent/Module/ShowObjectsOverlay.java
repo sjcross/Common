@@ -99,7 +99,7 @@ public class ShowObjectsOverlay extends HCModule {
 
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,null));
+        parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,true));
         parameters.addParameter(new HCParameter(this,RANDOM_COLOURS,HCParameter.BOOLEAN,true));
 
         return parameters;

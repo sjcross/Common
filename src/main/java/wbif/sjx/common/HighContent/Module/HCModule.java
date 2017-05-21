@@ -12,7 +12,6 @@ import wbif.sjx.common.HighContent.Object.HCParameterCollection;
 import wbif.sjx.common.HighContent.Object.HCWorkspace;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * Created by sc13967 on 02/05/2017.

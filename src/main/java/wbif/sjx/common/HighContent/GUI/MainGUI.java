@@ -2,6 +2,7 @@
 
 package wbif.sjx.common.HighContent.GUI;
 
+import javafx.scene.control.Alert;
 import org.apache.commons.io.FilenameUtils;
 import org.reflections.Reflections;
 import org.reflections.util.Utils;
@@ -13,6 +14,9 @@ import wbif.sjx.common.HighContent.Process.HCAnalysis;
 import wbif.sjx.common.HighContent.Process.HCExporter;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -30,7 +34,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     private static final String saveAnalysis = "S";
     private static final String loadAnalysis = "L";
 
-    private int frameWidth = 600;
+    private int frameWidth = 500;
     private int frameHeight = 750;
     private int elementHeight = 30;
 
@@ -46,8 +50,6 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     private String outputFilePath = "";
     private boolean exportXML = false;
     private boolean exportXLSX = false;
-
-    private String savePath = "C:\\Users\\steph\\Desktop\\analysis.ser";
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
         MainGUI mainGUI = new MainGUI();
@@ -117,13 +119,14 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         int buttonSize = 50;
 
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(buttonSize,frameHeight));
+        panel.setPreferredSize(new Dimension(buttonSize+15,frameHeight));
+        panel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
         c.weighty = 0;
-        c.insets = new Insets(0,0,5,0);
+        c.insets = new Insets(5,5,5,5);
         c.anchor = GridBagConstraints.PAGE_START;
 
         // Add module button
@@ -197,14 +200,15 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         modulesPanel.removeAll();
 
         // Initialising the panel for module buttons
-        modulesPanel.setPreferredSize(new Dimension(buttonWidth,frameHeight));
+        modulesPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        modulesPanel.setPreferredSize(new Dimension(buttonWidth+15,frameHeight));
         modulesPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
         c.weightx = 1;
         c.weighty = 0;
-        c.insets = new Insets(0,0,5,0);
+        c.insets = new Insets(5,5,5,5);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.PAGE_START;
 
@@ -244,7 +248,8 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         paramsPanel.removeAll();
 
         paramsPanel.setLayout(new GridBagLayout());
-        paramsPanel.setPreferredSize(new Dimension(500,700));
+        paramsPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        paramsPanel.setPreferredSize(new Dimension(500,frameHeight));
 
         // Adding placeholder text
         JTextField textField = new JTextField("Select a module to edit its parameters");
@@ -264,7 +269,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.gridy = 0;
         c.weightx = 0;
         c.weighty = 0;
-        c.insets = new Insets(0,0,5,0);
+        c.insets = new Insets(5,5,5,5);
         c.anchor = GridBagConstraints.FIRST_LINE_START;
 
         // If the active module is set to null (i.e. we're looking at the analysis options panel) exit this method
@@ -277,6 +282,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             HCParameter parameter = iterator.next();
 
             c.gridx = 0;
+            c.anchor = GridBagConstraints.FIRST_LINE_START;
             if (!iterator.hasNext()) c.weighty = 1;
 
             JTextField parameterName = new JTextField(parameter.getName());
@@ -337,6 +343,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
             c.gridx++;
             c.weightx = 1;
+            c.anchor = GridBagConstraints.FIRST_LINE_END;
             if (parameterControl != null) {
                 paramsPanel.add(parameterControl,c);
                 parameterControl.setPreferredSize(new Dimension(200,elementHeight));
@@ -360,7 +367,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.gridy = 0;
         c.weightx = 0;
         c.weighty = 0;
-        c.insets = new Insets(0,0,5,0);
+        c.insets = new Insets(5,5,5,5);
         c.anchor = GridBagConstraints.FIRST_LINE_START;
 
 //        // Getting analysis mode
@@ -387,6 +394,8 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         exportFileButton.setPreferredSize(new Dimension(200,elementHeight));
         exportFileButton.setName("OutputFilePath");
         c.gridx++;
+        c.weightx = 1;
+        c.anchor = GridBagConstraints.FIRST_LINE_END;
         paramsPanel.add(exportFileButton,c);
 
         // Select export type
@@ -395,6 +404,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         xmlCheck.setSelected(false);
         xmlCheck.setName("XMLCheck");
         c.gridx = 0;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.gridy++;
         paramsPanel.add(xmlCheck,c);
 
@@ -483,16 +493,25 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     }
 
     private void saveAnalysis() throws IOException {
+        FileDialog fileDialog = new FileDialog(new Frame(),"Select file to save",FileDialog.SAVE);
+        fileDialog.setMultipleMode(false);
+        fileDialog.setVisible(true);
 
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(new File(savePath)));
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileDialog.getFiles()[0]));
 
         outputStream.writeObject(analysis);
         outputStream.close();
 
+        JOptionPane.showMessageDialog(null, "File saved", "File saved", JOptionPane.INFORMATION_MESSAGE);
+
     }
 
     private void loadAnalysis() throws IOException, ClassNotFoundException {
-        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(new File(savePath)));
+        FileDialog fileDialog = new FileDialog(new Frame(),"Select file to save",FileDialog.LOAD);
+        fileDialog.setMultipleMode(false);
+        fileDialog.setVisible(true);
+
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileDialog.getFiles()[0]));
 
         analysis = (GUIAnalysis) inputStream.readObject();
         inputStream.close();
@@ -500,6 +519,8 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         modules = analysis.getModules();
 
         populateModuleList();
+
+        JOptionPane.showMessageDialog(null, "File loaded", "File loaded", JOptionPane.INFORMATION_MESSAGE);
 
 
     }
@@ -516,7 +537,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         }
 
         // Running the analysis
-        analysis.execute(workspace);
+        analysis.execute(workspace,true);
 
         // Exporting XLSX
         if (exportXLSX & !outputFilePath.equals("")) {
@@ -576,14 +597,15 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             } else if (((JButton) object).getText().equals(moveModuleDownText)) {
                 moveModuleDown();
 
-            } else if (((JButton) object).getText().equals(startAnalysisText)) {
-                startAnalysis();
-
             } else if (((JButton) object).getText().equals(saveAnalysis)) {
                 saveAnalysis();
 
             } else if (((JButton) object).getText().equals(loadAnalysis)) {
                 loadAnalysis();
+
+            } else if (((JButton) object).getText().equals(startAnalysisText)) {
+                Thread t = new Thread(() -> startAnalysis());
+                t.start();
 
             }
 
@@ -656,17 +678,19 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         } else if (((JComponent) object).getName().equals("FileParameter")) {
             HCParameter parameter = ((FileParameter) object).getParameter();
 
-            JFileChooser fileChooser = new JFileChooser((String) parameter.getValue());
-            fileChooser.showOpenDialog(new JFrame());
+            FileDialog fileDialog = new FileDialog(new Frame(),"Select image to load",FileDialog.LOAD);
+            fileDialog.setMultipleMode(false);
+            fileDialog.setVisible(true);
 
-            parameter.setValue(fileChooser.getSelectedFile().getAbsolutePath());
+            parameter.setValue(fileDialog.getFiles()[0].getAbsolutePath());
             ((FileParameter) object).setText(FilenameUtils.getName(parameter.getValue()));
 
         } else if (((JComponent) object).getName().equals("OutputFilePath")) {
-            JFileChooser fileChooser = new JFileChooser(outputFilePath);
-            fileChooser.showOpenDialog(new JFrame());
+            FileDialog fileDialog = new FileDialog(new Frame(),"Select output path",FileDialog.SAVE);
+            fileDialog.setMultipleMode(false);
+            fileDialog.setVisible(true);
 
-            outputFilePath = fileChooser.getSelectedFile().getAbsolutePath();
+            outputFilePath = fileDialog.getFiles()[0].getAbsolutePath();
             populateAnalysisParameters();
 
         } else if (((JComponent) object).getName().equals("XMLCheck")) {
