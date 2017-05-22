@@ -21,7 +21,7 @@ public class IdentifySecondaryObjects extends HCModule {
     public static final String MEDIAN_FILTER_RADIUS = "Median filter radius";
     public static final String THRESHOLD_METHOD = "Threshold method";
 
-    private static String[] thresholdMethods = new String[]{"Otsu","Huang","Li"};
+    private static final String[] thresholdMethods = new String[]{"Otsu","Huang","Li"};
 
     @Override
     public String getTitle() {

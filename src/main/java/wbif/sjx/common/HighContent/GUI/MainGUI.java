@@ -2,21 +2,14 @@
 
 package wbif.sjx.common.HighContent.GUI;
 
-import javafx.scene.control.Alert;
 import org.apache.commons.io.FilenameUtils;
 import org.reflections.Reflections;
-import org.reflections.util.Utils;
-import org.slf4j.Logger;
 import wbif.sjx.common.HighContent.Module.*;
 import wbif.sjx.common.HighContent.Object.*;
-import wbif.sjx.common.HighContent.Process.BatchProcessor;
-import wbif.sjx.common.HighContent.Process.HCAnalysis;
 import wbif.sjx.common.HighContent.Process.HCExporter;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -31,6 +24,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     private static final String moveModuleUpText = "▲";
     private static final String moveModuleDownText = "▼";
     private static final String startAnalysisText = "✓";
+    private static final String stopAnalysisText = "✕";
     private static final String saveAnalysis = "S";
     private static final String loadAnalysis = "L";
 
@@ -43,6 +37,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     private JPanel modulesPanel = new JPanel();
     private JPanel paramsPanel = new JPanel();
     JPopupMenu moduleListMenu = new JPopupMenu();
+    Thread t = null;
 
     private GUIAnalysis analysis = new GUIAnalysis();
     private HCModuleCollection modules = analysis.modules;
@@ -87,13 +82,12 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 //        // END DEBUG CALLS
 
 
-
         frame.setLayout(new FlowLayout());
 
         // Setting location of panel
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setLocation((screenSize.width-frameWidth)/2,(screenSize.height-frameHeight)/2);
-        frame.setSize(frameWidth,frameHeight);
+        frame.setLocation((screenSize.width - frameWidth) / 2, (screenSize.height - frameHeight) / 2);
+        frame.setSize(frameWidth, frameHeight);
         frame.setVisible(true);
 
         // Populating the list containing all available modules
@@ -119,73 +113,81 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         int buttonSize = 50;
 
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(buttonSize+15,frameHeight));
+        panel.setPreferredSize(new Dimension(buttonSize + 15, frameHeight));
         panel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
         c.weighty = 0;
-        c.insets = new Insets(5,5,5,5);
+        c.insets = new Insets(5, 5, 5, 5);
         c.anchor = GridBagConstraints.PAGE_START;
 
         // Add module button
         JButton addModuleButton = new JButton(addModuleText);
-        addModuleButton.setPreferredSize(new Dimension(buttonSize,buttonSize));
+        addModuleButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         addModuleButton.addActionListener(this);
         addModuleButton.setName("ControlButton");
-        panel.add(addModuleButton,c);
+        panel.add(addModuleButton, c);
 
         // Remove module button
         JButton removeModuleButton = new JButton(removeModuleText);
-        removeModuleButton.setPreferredSize(new Dimension(buttonSize,buttonSize));
+        removeModuleButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         removeModuleButton.addActionListener(this);
         removeModuleButton.setName("ControlButton");
         c.gridy++;
-        panel.add(removeModuleButton,c);
+        panel.add(removeModuleButton, c);
 
         // Move module up button
         JButton moveModuleUpButton = new JButton(moveModuleUpText);
-        moveModuleUpButton.setPreferredSize(new Dimension(buttonSize,buttonSize));
+        moveModuleUpButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         moveModuleUpButton.addActionListener(this);
         moveModuleUpButton.setName("ControlButton");
         c.gridy++;
-        panel.add(moveModuleUpButton,c);
+        panel.add(moveModuleUpButton, c);
 
         // Move module up button
         JButton moveModuleDownButton = new JButton(moveModuleDownText);
-        moveModuleDownButton.setPreferredSize(new Dimension(buttonSize,buttonSize));
+        moveModuleDownButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         moveModuleDownButton.addActionListener(this);
         moveModuleDownButton.setName("ControlButton");
         c.gridy++;
-        panel.add(moveModuleDownButton,c);
+        panel.add(moveModuleDownButton, c);
 
         // Load analysis protocol button
         JButton loadAnalysisButton = new JButton(loadAnalysis);
-        loadAnalysisButton.setPreferredSize(new Dimension(buttonSize,buttonSize));
+        loadAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         loadAnalysisButton.addActionListener(this);
         loadAnalysisButton.setName("ControlButton");
         c.gridy++;
         c.weighty = 1;
         c.anchor = GridBagConstraints.PAGE_END;
-        panel.add(loadAnalysisButton,c);
+        panel.add(loadAnalysisButton, c);
 
         // Save analysis protocol button
         JButton saveAnalysisButton = new JButton(saveAnalysis);
-        saveAnalysisButton.setPreferredSize(new Dimension(buttonSize,buttonSize));
+        saveAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         saveAnalysisButton.addActionListener(this);
         saveAnalysisButton.setName("ControlButton");
         c.gridy++;
         c.weighty = 0;
-        panel.add(saveAnalysisButton,c);
+        panel.add(saveAnalysisButton, c);
 
         // Start analysis button
         JButton startAnalysisButton = new JButton(startAnalysisText);
-        startAnalysisButton.setPreferredSize(new Dimension(buttonSize,buttonSize));
+        startAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         startAnalysisButton.addActionListener(this);
         startAnalysisButton.setName("ControlButton");
         c.gridy++;
-        panel.add(startAnalysisButton,c);
+        panel.add(startAnalysisButton, c);
+
+        // Stop analysis button
+        JButton stopAnalysisButton = new JButton(stopAnalysisText);
+        stopAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        stopAnalysisButton.addActionListener(this);
+        stopAnalysisButton.setName("ControlButton");
+        c.gridy++;
+        panel.add(stopAnalysisButton, c);
 
         panel.validate();
         panel.repaint();
@@ -201,14 +203,14 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         // Initialising the panel for module buttons
         modulesPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        modulesPanel.setPreferredSize(new Dimension(buttonWidth+15,frameHeight));
+        modulesPanel.setPreferredSize(new Dimension(buttonWidth + 15, frameHeight));
         modulesPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
         c.weightx = 1;
         c.weighty = 0;
-        c.insets = new Insets(5,5,5,5);
+        c.insets = new Insets(5, 5, 5, 5);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.PAGE_START;
 
@@ -224,7 +226,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             if (activeModule != null) {
                 if (module == activeModule) button.setSelected(true);
             }
-            modulesPanel.add(button,c);
+            modulesPanel.add(button, c);
 
         }
 
@@ -237,7 +239,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.gridy++;
         c.weighty = 1;
         c.anchor = GridBagConstraints.PAGE_END;
-        modulesPanel.add(analysisOptionsButton,c);
+        modulesPanel.add(analysisOptionsButton, c);
 
         modulesPanel.validate();
         modulesPanel.repaint();
@@ -249,7 +251,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         paramsPanel.setLayout(new GridBagLayout());
         paramsPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        paramsPanel.setPreferredSize(new Dimension(500,frameHeight));
+        paramsPanel.setPreferredSize(new Dimension(700, frameHeight));
 
         // Adding placeholder text
         JTextField textField = new JTextField("Select a module to edit its parameters");
@@ -269,7 +271,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.gridy = 0;
         c.weightx = 0;
         c.weighty = 0;
-        c.insets = new Insets(5,5,5,5);
+        c.insets = new Insets(5, 5, 5, 5);
         c.anchor = GridBagConstraints.FIRST_LINE_START;
 
         // If the active module is set to null (i.e. we're looking at the analysis options panel) exit this method
@@ -286,19 +288,20 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             if (!iterator.hasNext()) c.weighty = 1;
 
             JTextField parameterName = new JTextField(parameter.getName());
-            parameterName.setPreferredSize(new Dimension(200,elementHeight));
+            parameterName.setPreferredSize(new Dimension(330, elementHeight));
             parameterName.setEditable(false);
             parameterName.setBorder(null);
-            paramsPanel.add(parameterName,c);
+            paramsPanel.add(parameterName, c);
 
             JComponent parameterControl = null;
 
-            if (parameter.getType()==HCParameter.INPUT_IMAGE) {
+            if (parameter.getType() == HCParameter.INPUT_IMAGE) {
                 // Getting a list of available images
-                ArrayList<HCParameter> images = modules.getParametersMatchingType(HCParameter.OUTPUT_IMAGE,activeModule);
+                ArrayList<HCParameter> images = modules.getParametersMatchingType(HCParameter.OUTPUT_IMAGE,
+                        activeModule);
 
                 parameterControl = new HCNameInputParameter(parameter);
-                for (HCParameter image:images) {
+                for (HCParameter image : images) {
                     ((HCNameInputParameter) parameterControl).addItem(image.getValue());
 
                 }
@@ -306,12 +309,13 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
                 parameterControl.addFocusListener(this);
                 parameterControl.setName("InputParameter");
 
-            } else if (parameter.getType()==HCParameter.INPUT_OBJECTS) {
+            } else if (parameter.getType() == HCParameter.INPUT_OBJECTS) {
                 // Getting a list of available images
-                ArrayList<HCParameter> images = modules.getParametersMatchingType(HCParameter.OUTPUT_OBJECTS,activeModule);
+                ArrayList<HCParameter> images = modules.getParametersMatchingType(HCParameter.OUTPUT_OBJECTS,
+                        activeModule);
 
                 parameterControl = new HCNameInputParameter(parameter);
-                for (HCParameter image:images) {
+                for (HCParameter image : images) {
                     ((HCNameInputParameter) parameterControl).addItem(image.getValue());
 
                 }
@@ -319,34 +323,59 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
                 parameterControl.addFocusListener(this);
                 parameterControl.setName("InputParameter");
 
-            } else if (parameter.getType()==HCParameter.OUTPUT_IMAGE | parameter.getType()==HCParameter.OUTPUT_OBJECTS | parameter.getType()==HCParameter.INTEGER | parameter.getType()==HCParameter.DOUBLE | parameter.getType()==HCParameter.STRING) {
+            } else if (parameter.getType() == HCParameter.INTEGER | parameter.getType() == HCParameter.DOUBLE
+                    | parameter.getType() == HCParameter.STRING | parameter.getType() == HCParameter.OUTPUT_IMAGE
+                    | parameter.getType() == HCParameter.OUTPUT_OBJECTS) {
+
                 parameterControl = new TextParameter(parameter);
                 String name = parameter.getValue() == null ? "" : parameter.getValue().toString();
                 ((TextParameter) parameterControl).setText(name);
                 parameterControl.addFocusListener(this);
                 parameterControl.setName("TextParameter");
 
-            } else if (parameter.getType()==HCParameter.BOOLEAN) {
+            } else if (parameter.getType() == HCParameter.BOOLEAN) {
                 parameterControl = new BooleanParameter(parameter);
                 ((BooleanParameter) parameterControl).setSelected(parameter.getValue());
                 ((BooleanParameter) parameterControl).addActionListener(this);
-                parameterControl.addFocusListener(this);
                 parameterControl.setName("BooleanParameter");
 
-            } else if (parameter.getType()==HCParameter.FILE_PATH) {
+            } else if (parameter.getType() == HCParameter.FILE_PATH) {
                 parameterControl = new FileParameter(parameter);
                 ((FileParameter) parameterControl).setText(FilenameUtils.getName(parameter.getValue()));
                 ((FileParameter) parameterControl).addActionListener(this);
                 parameterControl.setName("FileParameter");
 
+            } else if (parameter.getType() == HCParameter.CHOICE_ARRAY) {
+                String[] valueSource = (String[]) parameter.getValueSource();
+                parameterControl = new ChoiceArrayParameter(parameter,valueSource);
+                ((ChoiceArrayParameter) parameterControl).addActionListener(this);
+                System.out.println((String) parameter.getValue());
+                if (parameter.getValue() != null) {
+                    for (int i=0;i<valueSource.length;i++) {
+                        if (valueSource[i].equals(parameter.getValue())) {
+                            ((ChoiceArrayParameter) parameterControl).setSelectedItem(i);
+                        }
+                    }
+                }
+                parameterControl.setName("ChoiceArrayParameter");
+
+            } else if (parameter.getType() == HCParameter.MEASUREMENT) {
+                HCMeasurementCollection measurements = modules.getMeasurements(activeModule);
+                String[] measurementChoices = measurements.getMeasurementNames((HCName) parameter.getValueSource());
+                parameterControl = new ChoiceArrayParameter(parameter,measurementChoices);
+                if (parameter.getValue() != null) {
+                    ((ChoiceArrayParameter) parameterControl).setSelectedItem(parameter.getValue());
+                }
+                ((ChoiceArrayParameter) parameterControl).addActionListener(this);
+                parameterControl.setName("ChoiceArrayParameter");
+
             }
 
             c.gridx++;
-            c.weightx = 1;
             c.anchor = GridBagConstraints.FIRST_LINE_END;
             if (parameterControl != null) {
-                paramsPanel.add(parameterControl,c);
-                parameterControl.setPreferredSize(new Dimension(200,elementHeight));
+                paramsPanel.add(parameterControl, c);
+                parameterControl.setPreferredSize(new Dimension(330, elementHeight));
 
             }
 
@@ -367,7 +396,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.gridy = 0;
         c.weightx = 0;
         c.weighty = 0;
-        c.insets = new Insets(5,5,5,5);
+        c.insets = new Insets(5, 5, 5, 5);
         c.anchor = GridBagConstraints.FIRST_LINE_START;
 
 //        // Getting analysis mode
@@ -383,20 +412,20 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         // Select file export location
         JTextField exportFileName = new JTextField("Export location");
-        exportFileName.setPreferredSize(new Dimension(200,elementHeight));
+        exportFileName.setPreferredSize(new Dimension(200, elementHeight));
         exportFileName.setEditable(false);
         exportFileName.setBorder(null);
         c.gridy++;
-        paramsPanel.add(exportFileName,c);
+        paramsPanel.add(exportFileName, c);
 
         JButton exportFileButton = new JButton(outputFilePath);
         exportFileButton.addActionListener(this);
-        exportFileButton.setPreferredSize(new Dimension(200,elementHeight));
+        exportFileButton.setPreferredSize(new Dimension(200, elementHeight));
         exportFileButton.setName("OutputFilePath");
         c.gridx++;
         c.weightx = 1;
         c.anchor = GridBagConstraints.FIRST_LINE_END;
-        paramsPanel.add(exportFileButton,c);
+        paramsPanel.add(exportFileButton, c);
 
         // Select export type
         JCheckBox xmlCheck = new JCheckBox("Export XML");
@@ -406,7 +435,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.gridx = 0;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.gridy++;
-        paramsPanel.add(xmlCheck,c);
+        paramsPanel.add(xmlCheck, c);
 
         JCheckBox xlsxCheck = new JCheckBox("Export XLSX");
         xlsxCheck.addActionListener(this);
@@ -414,7 +443,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         xlsxCheck.setName("XLSXCheck");
         c.gridy++;
         c.weighty = 1;
-        paramsPanel.add(xlsxCheck,c);
+        paramsPanel.add(xlsxCheck, c);
 
         paramsPanel.validate();
         paramsPanel.repaint();
@@ -423,21 +452,21 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
     private void listAvailableModules() throws IllegalAccessException, InstantiationException {
         // Using Reflections tool to get list of classes extending HCModule
-        Reflections.log=null;
+        Reflections.log = null;
         Reflections reflections = new Reflections("wbif.sjx.common");
         Set<Class<? extends HCModule>> availableModules = reflections.getSubTypesOf(HCModule.class);
 
         // Creating new instances of these classes and adding to ArrayList
         ArrayList<HCModule> availableModulesList = new ArrayList<>();
-        for (Class clazz:availableModules) {
-                availableModulesList.add((HCModule) clazz.newInstance());
+        for (Class clazz : availableModules) {
+            availableModulesList.add((HCModule) clazz.newInstance());
         }
 
         // Sorting the ArrayList based on module title
         Collections.sort(availableModulesList, Comparator.comparing(HCModule::getTitle));
 
         // Adding the modules to the list
-        for (HCModule module:availableModulesList) {
+        for (HCModule module : availableModulesList) {
             PopupMenuItem menuItem = new PopupMenuItem(module);
             menuItem.addActionListener(this);
             menuItem.setName("ModuleName");
@@ -456,7 +485,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
     private void addModule() {
         moduleListMenu.addMouseListener(this);
-        moduleListMenu.setLocation(frame.getX(),frame.getY());
+        moduleListMenu.setLocation(frame.getX(), frame.getY());
         moduleListMenu.setVisible(true);
 
     }
@@ -493,7 +522,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     }
 
     private void saveAnalysis() throws IOException {
-        FileDialog fileDialog = new FileDialog(new Frame(),"Select file to save",FileDialog.SAVE);
+        FileDialog fileDialog = new FileDialog(new Frame(), "Select file to save", FileDialog.SAVE);
         fileDialog.setMultipleMode(false);
         fileDialog.setVisible(true);
 
@@ -507,7 +536,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     }
 
     private void loadAnalysis() throws IOException, ClassNotFoundException {
-        FileDialog fileDialog = new FileDialog(new Frame(),"Select file to save",FileDialog.LOAD);
+        FileDialog fileDialog = new FileDialog(new Frame(), "Select file to save", FileDialog.LOAD);
         fileDialog.setMultipleMode(false);
         fileDialog.setVisible(true);
 
@@ -537,19 +566,19 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         }
 
         // Running the analysis
-        analysis.execute(workspace,true);
+        analysis.execute(workspace, true);
 
         // Exporting XLSX
         if (exportXLSX & !outputFilePath.equals("")) {
             HCExporter exporter = new HCExporter(new File(outputFilePath), HCExporter.XLSX_EXPORT);
-            exporter.exportResults(workspaces,analysis);
+            exporter.exportResults(workspaces, analysis);
 
         }
 
         // Exporting XML
         if (exportXML & !outputFilePath.equals("")) {
             HCExporter exporter = new HCExporter(new File(outputFilePath), HCExporter.XML_EXPORT);
-            exporter.exportResults(workspaces,analysis);
+            exporter.exportResults(workspaces, analysis);
 
         }
     }
@@ -570,7 +599,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     }
 
     private ModuleButton getModuleButton(HCModule module) {
-        for (Component component:modulesPanel.getComponents()) {
+        for (Component component : modulesPanel.getComponents()) {
             if (component.getName().equals("ModuleButton")) {
                 if (((ModuleButton) component).getModule() == module) {
                     return (ModuleButton) component;
@@ -583,7 +612,10 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
     }
 
-    private void reactToAction(Object object) throws IllegalAccessException, InstantiationException, IOException, ClassNotFoundException {
+    private void reactToAction(Object object)
+            throws IllegalAccessException, InstantiationException, IOException, ClassNotFoundException {
+
+        System.out.println(((JComponent) object).getName());
         if (((JComponent) object).getName().equals("ControlButton")) {
             if (((JButton) object).getText().equals(addModuleText)) {
                 addModule();
@@ -604,8 +636,11 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
                 loadAnalysis();
 
             } else if (((JButton) object).getText().equals(startAnalysisText)) {
-                Thread t = new Thread(() -> startAnalysis());
+                t = new Thread(this::startAnalysis);
                 t.start();
+
+            } else if (((JButton) object).getText().equals(stopAnalysisText)) {
+                analysis.shutdown();
 
             }
 
@@ -617,10 +652,10 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             // Adding it after the currently-selected module
             HCModule module = ((PopupMenuItem) object).getModule().getClass().newInstance();
             if (activeModule != null) {
-                for (Component component:modulesPanel.getComponents()) {
+                for (Component component : modulesPanel.getComponents()) {
                     if (((ModuleButton) component).getModule() == activeModule) {
-                        int pos = modules.indexOf(((ModuleButton) component).getModule())+1;
-                        modules.add(pos,module);
+                        int pos = modules.indexOf(((ModuleButton) component).getModule()) + 1;
+                        modules.add(pos, module);
 
                         break;
 
@@ -650,6 +685,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         } else if (((JComponent) object).getName().equals("InputParameter")) {
             HCParameter parameter = ((HCNameInputParameter) object).getParameter();
             parameter.setValue(((HCNameInputParameter) object).getSelectedItem());
+            populateModuleParameters();
 
         } else if (((JComponent) object).getName().equals("TextParameter")) {
             HCParameter parameter = ((TextParameter) object).getParameter();
@@ -678,15 +714,19 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         } else if (((JComponent) object).getName().equals("FileParameter")) {
             HCParameter parameter = ((FileParameter) object).getParameter();
 
-            FileDialog fileDialog = new FileDialog(new Frame(),"Select image to load",FileDialog.LOAD);
+            FileDialog fileDialog = new FileDialog(new Frame(), "Select image to load", FileDialog.LOAD);
             fileDialog.setMultipleMode(false);
             fileDialog.setVisible(true);
 
             parameter.setValue(fileDialog.getFiles()[0].getAbsolutePath());
             ((FileParameter) object).setText(FilenameUtils.getName(parameter.getValue()));
 
+        } else if (((JComponent) object).getName().equals("ChoiceArrayParameter")) {
+            HCParameter parameter = ((ChoiceArrayParameter) object).getParameter();
+            parameter.setValue(((ChoiceArrayParameter) object).getSelectedItem());
+
         } else if (((JComponent) object).getName().equals("OutputFilePath")) {
-            FileDialog fileDialog = new FileDialog(new Frame(),"Select output path",FileDialog.SAVE);
+            FileDialog fileDialog = new FileDialog(new Frame(), "Select output path", FileDialog.SAVE);
             fileDialog.setMultipleMode(false);
             fileDialog.setVisible(true);
 
