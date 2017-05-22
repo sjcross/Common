@@ -5,6 +5,7 @@ import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by sc13967 on 19/05/2017.
@@ -62,48 +63,52 @@ public class PlotMeasurementsScatter extends HCModule {
         if (useColour) measurement3 = parameters.getValue(MEASUREMENT3);
 
         // Getting measurement values
-        double[] measurementValues1 = new double[inputObjects.size()];
-        double[] measurementValues2 = new double[inputObjects.size()];
+        ArrayList<Double> measurementValues1 = new ArrayList<>();
+        ArrayList<Double> measurementValues2 = new ArrayList<>();
         double[] measurementValues3 = null;
         if (useColour) measurementValues3 = new double[inputObjects.size()];
 
         int iter = 0;
         for (HCObject inputObject:inputObjects.values()) {
-            measurementValues1[iter] = inputObject.getMeasurement(measurement1).getValue();
-            measurementValues2[iter] = inputObject.getMeasurement(measurement2).getValue();
+            measurementValues1.add(inputObject.getMeasurement(measurement1).getValue());
+            measurementValues2.add(inputObject.getMeasurement(measurement2).getValue());
             if (useColour) measurementValues3[iter] = inputObject.getMeasurement(measurement3).getValue();
+
+            iter++;
 
         }
 
         // Creating the scatter plot
-        if (useColour) {
-            String title = "Scatter plot of " + measurement1 + ", " + measurement2+" and "+measurement3;
-            Plot plot = new Plot(title, measurement1, measurement2);
-
-            Color[] colors = null;
-            if (colourmap.equals(COLOURMAPS[0])) { // Red to blue
-                colors = createColourGradient(0,240/255,measurementValues3);
-
-            } else if (colourmap.equals(COLOURMAPS[1])) { // Red to green
-                colors = createColourGradient(0,120/255,measurementValues3);
-
-            }
-
-            for (int i=0;i<measurementValues1.length;i++) {
-                plot.setColor(colors[i]);
-                plot.addPoints(new double[]{measurementValues1[i]},new double[]{measurementValues2[i]},Plot.DOT);
-
-            }
-
-            plot.show();
-
-        } else {
+//        if (useColour) {
+//            String title = "Scatter plot of " + measurement1 + ", " + measurement2+" and "+measurement3;
+//            Plot plot = new Plot(title, measurement1, measurement2);
+//
+//            Color[] colors = null;
+//            if (colourmap.equals(COLOURMAPS[0])) { // Red to blue
+//                colors = createColourGradient(0,240/255,measurementValues3);
+//
+//            } else if (colourmap.equals(COLOURMAPS[1])) { // Red to green
+//                colors = createColourGradient(0,120/255,measurementValues3);
+//
+//            }
+//
+//            for (int i=0;i<measurementValues1.length;i++) {
+//                plot.setColor(colors[i]);
+//                plot.addPoints(new double[]{measurementValues1[i]},new double[]{measurementValues2[i]},Plot.DOT);
+//
+//            }
+//
+//            plot.show();
+//
+//        } else {
             String title = "Scatter plot of " + measurement1 + " and " + measurement2;
-            Plot plot = new Plot(title, measurement1, measurement2);
-            plot.addPoints(measurementValues1, measurementValues2, Plot.DOT);
-            plot.show();
+            Plot plt = new Plot(title, measurement1, measurement2);
+            double[] a = new double[]{1,2,3};
+        double[] b = new double[]{10,2,34};
+            plt.addPoints(a,b,0);
+            plt.show();
 
-        }
+//        }
 
     }
 
@@ -145,15 +150,15 @@ public class PlotMeasurementsScatter extends HCModule {
         if (parameters.getValue(INCLUDE_COLOUR)) {
             returnedParameters.addParameter(parameters.getParameter(MEASUREMENT3));
             returnedParameters.addParameter(parameters.getParameter(COLOURMAP));
-//
-//            if (objectName != null) {
-//                parameters.updateValueRange(MEASUREMENT3, objectName);
-//
-//            } else {
-//                parameters.updateValueRange(MEASUREMENT3, null);
-//
-//            }
-//
+
+            if (objectName != null) {
+                parameters.updateValueRange(MEASUREMENT3, objectName);
+
+            } else {
+                parameters.updateValueRange(MEASUREMENT3, null);
+
+            }
+
         }
 
         return returnedParameters;

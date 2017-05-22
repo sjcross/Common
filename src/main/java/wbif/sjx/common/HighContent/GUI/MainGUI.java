@@ -348,15 +348,12 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             } else if (parameter.getType() == HCParameter.CHOICE_ARRAY) {
                 String[] valueSource = (String[]) parameter.getValueSource();
                 parameterControl = new ChoiceArrayParameter(parameter,valueSource);
-                ((ChoiceArrayParameter) parameterControl).addActionListener(this);
-                System.out.println((String) parameter.getValue());
                 if (parameter.getValue() != null) {
-                    for (int i=0;i<valueSource.length;i++) {
-                        if (valueSource[i].equals(parameter.getValue())) {
-                            ((ChoiceArrayParameter) parameterControl).setSelectedItem(i);
-                        }
-                    }
+                    ((ChoiceArrayParameter) parameterControl).setSelectedItem(parameter.getValue());
+
                 }
+                ((ChoiceArrayParameter) parameterControl).addActionListener(this);
+
                 parameterControl.setName("ChoiceArrayParameter");
 
             } else if (parameter.getType() == HCParameter.MEASUREMENT) {
@@ -549,9 +546,6 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         populateModuleList();
 
-        JOptionPane.showMessageDialog(null, "File loaded", "File loaded", JOptionPane.INFORMATION_MESSAGE);
-
-
     }
 
     private void startAnalysis() {
@@ -615,7 +609,6 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     private void reactToAction(Object object)
             throws IllegalAccessException, InstantiationException, IOException, ClassNotFoundException {
 
-        System.out.println(((JComponent) object).getName());
         if (((JComponent) object).getName().equals("ControlButton")) {
             if (((JButton) object).getText().equals(addModuleText)) {
                 addModule();
