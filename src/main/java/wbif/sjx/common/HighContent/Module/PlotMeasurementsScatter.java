@@ -1,6 +1,7 @@
 package wbif.sjx.common.HighContent.Module;
 
 import ij.gui.Plot;
+import ij.gui.PlotWindow;
 import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
@@ -29,7 +30,7 @@ public class PlotMeasurementsScatter extends HCModule {
 
         Color[] colours = new Color[values.length];
         for (int i=0;i<colours.length;i++) {
-            double H = values[i]*(endH-startH)/(max-min) + startH;
+            double H = (values[i]-min)*(endH-startH)/(max-min) + startH;
             colours[i] = Color.getHSBColor((float) H,1,1);
 
         }
@@ -63,15 +64,15 @@ public class PlotMeasurementsScatter extends HCModule {
         if (useColour) measurement3 = parameters.getValue(MEASUREMENT3);
 
         // Getting measurement values
-        ArrayList<Double> measurementValues1 = new ArrayList<>();
-        ArrayList<Double> measurementValues2 = new ArrayList<>();
+        double[] measurementValues1 = new double[inputObjects.size()];
+        double[] measurementValues2 = new double[inputObjects.size()];
         double[] measurementValues3 = null;
         if (useColour) measurementValues3 = new double[inputObjects.size()];
 
         int iter = 0;
         for (HCObject inputObject:inputObjects.values()) {
-            measurementValues1.add(inputObject.getMeasurement(measurement1).getValue());
-            measurementValues2.add(inputObject.getMeasurement(measurement2).getValue());
+            measurementValues1[iter] = inputObject.getMeasurement(measurement1).getValue();
+            measurementValues2[iter] = inputObject.getMeasurement(measurement2).getValue();
             if (useColour) measurementValues3[iter] = inputObject.getMeasurement(measurement3).getValue();
 
             iter++;
@@ -79,36 +80,37 @@ public class PlotMeasurementsScatter extends HCModule {
         }
 
         // Creating the scatter plot
-//        if (useColour) {
-//            String title = "Scatter plot of " + measurement1 + ", " + measurement2+" and "+measurement3;
-//            Plot plot = new Plot(title, measurement1, measurement2);
-//
-//            Color[] colors = null;
-//            if (colourmap.equals(COLOURMAPS[0])) { // Red to blue
-//                colors = createColourGradient(0,240/255,measurementValues3);
-//
-//            } else if (colourmap.equals(COLOURMAPS[1])) { // Red to green
-//                colors = createColourGradient(0,120/255,measurementValues3);
-//
-//            }
-//
-//            for (int i=0;i<measurementValues1.length;i++) {
-//                plot.setColor(colors[i]);
-//                plot.addPoints(new double[]{measurementValues1[i]},new double[]{measurementValues2[i]},Plot.DOT);
-//
-//            }
-//
-//            plot.show();
-//
-//        } else {
-            String title = "Scatter plot of " + measurement1 + " and " + measurement2;
-            Plot plt = new Plot(title, measurement1, measurement2);
-            double[] a = new double[]{1,2,3};
-        double[] b = new double[]{10,2,34};
-            plt.addPoints(a,b,0);
-            plt.show();
+        if (useColour) {
+            String title = "Scatter plot of " + measurement1 + ", " + measurement2+" and "+measurement3;
+            Plot plot = new Plot(title, measurement1, measurement2);
 
-//        }
+            Color[] colors = null;
+            if (colourmap.equals(COLOURMAPS[0])) { // Red to blue
+                colors = createColourGradient(0,240d/255d,measurementValues3);
+
+            } else if (colourmap.equals(COLOURMAPS[1])) { // Red to green
+                colors = createColourGradient(0,120d/255d,measurementValues3);
+
+            }
+
+            for (int i=0;i<measurementValues1.length;i++) {
+                plot.setColor(colors[i]);
+                plot.addPoints(new double[]{measurementValues1[i]},new double[]{measurementValues2[i]},Plot.CIRCLE);
+
+            }
+
+            plot.setLimitsToFit(true);
+            plot.show();
+
+        } else {
+            String title = "Scatter plot of " + measurement1 + " and " + measurement2;
+            Plot plot = new Plot(title, measurement1, measurement2);
+
+            plot.addPoints(measurementValues1,measurementValues2,0);
+            plot.setLimitsToFit(true);
+            plot.show();
+
+        }
 
     }
 

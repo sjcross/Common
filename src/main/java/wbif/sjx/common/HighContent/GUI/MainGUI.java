@@ -2,6 +2,8 @@
 
 package wbif.sjx.common.HighContent.GUI;
 
+import ij.gui.Plot;
+import ij.gui.PlotWindow;
 import org.apache.commons.io.FilenameUtils;
 import org.reflections.Reflections;
 import wbif.sjx.common.HighContent.Module.*;
