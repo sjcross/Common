@@ -15,6 +15,7 @@ import java.util.HashSet;
  */
 public abstract class HCAnalysis implements Serializable {
     public HCModuleCollection modules = new HCModuleCollection();
+    private boolean shutdown = false;
 
     // CONSTRUCTOR
 
@@ -48,14 +49,33 @@ public abstract class HCAnalysis implements Serializable {
      * @return
      */
     public void execute(HCWorkspace workspace, boolean verbose) {
+        if (verbose) System.out.println("Starting analysis");
+
         // Running through modules
         for (HCModule module:modules) {
             module.execute(workspace,verbose);
+
+            if (shutdown) {
+                if (verbose) System.out.println("Shutting system down");
+                break;
+
+            }
         }
+
+        // Resetting the shutdown boolean
+        shutdown = false;
+
+        if (verbose) System.out.println("Complete");
+
     }
 
     public HCModuleCollection getModules() {
         return modules;
+
+    }
+
+    public void shutdown() {
+        shutdown = true;
 
     }
 }

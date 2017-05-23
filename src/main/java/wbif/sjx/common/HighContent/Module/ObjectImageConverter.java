@@ -24,7 +24,7 @@ public class ObjectImageConverter extends HCModule {
     public static final int OBJECTS_TO_IMAGE = 1;
 
 
-    public HCImage convertObjectsToImage(HCObjectSet objects, HCImage templateImage, boolean useGroupID) {
+    public HCImage convertObjectsToImage(HCObjectSet objects, HCName outputImageName, HCImage templateImage, boolean useGroupID) {
         ImagePlus ipl;
 
         if (templateImage == null) {
@@ -92,16 +92,16 @@ public class ObjectImageConverter extends HCModule {
             }
         }
 
-        return new HCImage(ipl);
+        return new HCImage(outputImageName,ipl);
 
     }
 
-    public HCObjectSet convertImageToObjects(HCImage image) {
+    public HCObjectSet convertImageToObjects(HCImage image, HCName outputObjectsName) {
         // Converting to ImagePlus for this operation
         ImagePlus ipl = image.getImagePlus();
 
         // Need to get coordinates and convert to a HCObject
-        HCObjectSet objects = new HCObjectSet(); //Local ArrayList of objects
+        HCObjectSet objects = new HCObjectSet(outputObjectsName); //Local ArrayList of objects
 
         ImageProcessor ipr = ipl.getProcessor();
 
@@ -152,14 +152,14 @@ public class ObjectImageConverter extends HCModule {
         int conversionMode = parameters.getValue(CONVERSION_MODE);
 
         if (conversionMode == IMAGE_TO_OBJECTS) {
-            HCName imageName = parameters.getValue(INPUT_IMAGE);
-            HCName objectName = parameters.getValue(OUTPUT_OBJECTS);
+            HCName inputImageName = parameters.getValue(INPUT_IMAGE);
+            HCName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
 
-            HCImage image = workspace.getImages().get(imageName);
+            HCImage inputImage = workspace.getImages().get(inputImageName);
 
-            HCObjectSet objects = convertImageToObjects(image);
+            HCObjectSet objects = convertImageToObjects(inputImage, outputObjectsName);
 
-            workspace.addObjects(objectName,objects);
+            workspace.addObjects(objects);
 
         } else if (conversionMode == OBJECTS_TO_IMAGE) {
             HCName objectName = parameters.getValue(INPUT_OBJECTS);
@@ -167,12 +167,12 @@ public class ObjectImageConverter extends HCModule {
             HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
             boolean useGroupID = parameters.getValue(USE_GROUP_ID);
 
-            HCObjectSet objects = workspace.getObjects().get(objectName);
+            HCObjectSet inputObjects = workspace.getObjects().get(objectName);
             HCImage templateImage = workspace.getImages().get(templateImageName);
 
-            HCImage image = convertObjectsToImage(objects,templateImage,useGroupID);
+            HCImage outputImage = convertObjectsToImage(inputObjects,outputImageName,templateImage,useGroupID);
 
-            workspace.addImage(outputImageName,image);
+            workspace.addImage(outputImage);
 
         }
     }
@@ -214,8 +214,13 @@ public class ObjectImageConverter extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 
 }

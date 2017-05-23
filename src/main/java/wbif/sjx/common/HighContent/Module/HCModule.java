@@ -1,15 +1,12 @@
-// TODO: Complete adding verbose output to modules
-// TODO: Module to show object outlines on an image (returns the image itself)
 // TODO: Module to save images and to save objects (could roll this into ShowImage and ShowObjects)
 // TODO: Module to plot histograms of measurements (e.g. mean intensity for objects)
 // TODO: Module to calculate size metrics of objects (can used Blob class)
-// TODO: Module to calulate radial intensity distribution of objects
+// TODO: Module to calculate radial intensity distribution of objects
+// TODO: Module to export the measurements from the current workspace (option to put file in current directory)
 
 package wbif.sjx.common.HighContent.Module;
 
-import wbif.sjx.common.HighContent.Object.HCMeasurementCollection;
-import wbif.sjx.common.HighContent.Object.HCParameterCollection;
-import wbif.sjx.common.HighContent.Object.HCWorkspace;
+import wbif.sjx.common.HighContent.Object.*;
 
 import java.io.Serializable;
 
@@ -51,7 +48,18 @@ public abstract class HCModule implements Serializable {
      */
     public abstract HCParameterCollection getActiveParameters();
 
-    public abstract HCMeasurementCollection addActiveMeasurements();
+    /**
+     * Takes an existing collection of measurements and adds any created
+     * @param measurements
+     * @return
+     */
+    public abstract void addMeasurements(HCMeasurementCollection measurements);
+
+    /**
+     * Returns a LinkedHashMap containing the parents (key) and their children (value)
+     * @return
+     */
+    public abstract void addRelationships(HCRelationshipCollection relationships);
 
     public void updateParameterValue(String name, Object value) {
         parameters.updateValue(name,value);

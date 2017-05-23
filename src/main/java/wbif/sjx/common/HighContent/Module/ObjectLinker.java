@@ -17,7 +17,7 @@ public class ObjectLinker extends HCModule {
             HCObject object2 = objects2.get(ID);
 
             if (object2 != null) {
-                object1.addChild(object2);
+                object1.addChild(objects2.getName(),object2);
                 object2.setParent(object1);
             }
 
@@ -59,8 +59,14 @@ public class ObjectLinker extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+        relationships.addRelationship(parameters.getValue(INPUT_OBJECTS1),parameters.getValue(INPUT_OBJECTS2));
+
     }
 }
 

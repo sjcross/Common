@@ -1,3 +1,5 @@
+//TODO: Colour overlay based on measurement
+
 package wbif.sjx.common.HighContent.Module;
 
 import ij.ImagePlus;
@@ -7,6 +9,7 @@ import ij.gui.TextRoi;
 import ij.plugin.HyperStackConverter;
 import ij.process.StackConverter;
 import wbif.sjx.common.HighContent.Object.*;
+import wbif.sjx.common.MathFunc.CumStat;
 
 import java.awt.*;
 import java.util.Random;
@@ -18,7 +21,10 @@ public class ShowObjectsOverlay extends HCModule {
     public static final String INPUT_IMAGE = "Input image";
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String USE_GROUP_ID = "Use group ID";
-    public static final String RANDOM_COLOURS = "Random colours";
+    public static final String COLOUR_MODE = "Colour mode";
+    public static final String MEASUREMENT = "Measurement";
+
+    public static final String[] COLOUR_MODES = new String[]{"Single colour","Use random colours","Use measurement"};
 
     @Override
     public String getTitle() {
@@ -31,7 +37,7 @@ public class ShowObjectsOverlay extends HCModule {
 
         // Getting parameters
         boolean useGroupID = parameters.getValue(USE_GROUP_ID);
-        boolean randomColours = parameters.getValue(RANDOM_COLOURS);
+        String colourMode = parameters.getValue(COLOUR_MODE);
 
         // Getting input objects
         HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
@@ -48,10 +54,36 @@ public class ShowObjectsOverlay extends HCModule {
 
         hyperstack.setOverlay(new Overlay());
 
+        // Getting minimum and maximum values from measurement (if required)
+        CumStat cs = new CumStat(1);
+        if (colourMode.equals(COLOUR_MODES[2])) {
+            String measurement = parameters.getValue(MEASUREMENT);
+            inputObjects.values().forEach(e -> cs.addSingleMeasure(0,e.getMeasurement(measurement).getValue()));
+
+        }
+
         // Running through each object, adding it to the overlay along with an ID label
         for (HCObject object:inputObjects.values()) {
             float randomID = new Random(object.getGroupID()*object.getGroupID()*object.getGroupID()).nextFloat();
-            Color colour = randomColours ? Color.getHSBColor(randomID,1,1) : Color.ORANGE;
+
+            Color colour;
+            if (colourMode.equals(COLOUR_MODES[1])) {
+                // Random colours
+                colour = Color.getHSBColor(randomID, 1, 1);
+
+            } else if(colourMode.equals(COLOUR_MODES[2])) {
+                String measurement = parameters.getValue(MEASUREMENT);
+
+                double value = object.getMeasurement(measurement).getValue();
+                double startH = 0;
+                double endH = 120d/255d;
+                double H = (value-cs.getMin()[0])*(endH-startH)/(cs.getMax()[0]-cs.getMin()[0]) + startH;
+                colour = Color.getHSBColor((float) H,1,1);
+
+            } else {
+                colour = Color.ORANGE;
+
+            }
 
             double xMean = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.X),MeasureObjectCentroid.MEAN);
             double yMean = MeasureObjectCentroid.calculateCentroid(object.getCoordinates(HCObject.Y),MeasureObjectCentroid.MEAN);
@@ -100,7 +132,8 @@ public class ShowObjectsOverlay extends HCModule {
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,true));
-        parameters.addParameter(new HCParameter(this,RANDOM_COLOURS,HCParameter.BOOLEAN,true));
+        parameters.addParameter(new HCParameter(this,COLOUR_MODE,HCParameter.CHOICE_ARRAY,COLOUR_MODES[0],COLOUR_MODES));
+        parameters.addParameter(new HCParameter(this,MEASUREMENT,HCParameter.MEASUREMENT,null,null));
 
         return parameters;
 
@@ -108,11 +141,33 @@ public class ShowObjectsOverlay extends HCModule {
 
     @Override
     public HCParameterCollection getActiveParameters() {
-        return parameters;
+        HCParameterCollection returnedParameters = new HCParameterCollection();
+        returnedParameters.addParameter(parameters.getParameter(INPUT_IMAGE));
+        returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
+        returnedParameters.addParameter(parameters.getParameter(USE_GROUP_ID));
+        returnedParameters.addParameter(parameters.getParameter(COLOUR_MODE));
+
+        if (parameters.getValue(COLOUR_MODE).equals(COLOUR_MODES[2])) {
+            // Use measurement
+            returnedParameters.addParameter(parameters.getParameter(MEASUREMENT));
+
+            if (parameters.getValue(INPUT_OBJECTS) != null) {
+                parameters.updateValueRange(MEASUREMENT,parameters.getValue(INPUT_OBJECTS));
+
+            }
+        }
+
+        return returnedParameters;
+
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 }

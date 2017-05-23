@@ -23,19 +23,19 @@ public class HCWorkspace {
 
     // PUBLIC METHODS
 
-    public void addObjects(HCName name, HCObjectSet object) {
-        objects.put(name, object);
+    public void addObjects(HCObjectSet object) {
+        objects.put(object.getName(), object);
     }
 
-    public void removeObject(String name) {
+    public void removeObject(HCName name) {
         objects.remove(name);
     }
 
-    public void addImage(HCName name, HCImage image) {
-        images.put(name, image);
+    public void addImage(HCImage image) {
+        images.put(image.getName(), image);
     }
 
-    public void removeImage(String name) {
+    public void removeImage(HCName name) {
         images.remove(name);
     }
 

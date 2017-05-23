@@ -5,6 +5,7 @@ import wbif.sjx.common.HighContent.Object.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedHashMap;
 
 /**
  * Applies manual object classifications from a .csv file at the specified location.  Each row of the file must
@@ -54,7 +55,12 @@ public class ApplyManualClassification extends HCModule {
                 }
             }
 
-            // Removing objects that don't have an assigned class
+            // Removing objects that don't have an assigned class (first removing the parent-child relationships)
+            for (HCObject object:inputObjects.values()) {
+                if (object.getMeasurement("CLASS") == null) {
+                    object.removeRelationships(inputObjectsName);
+                }
+            }
             inputObjects.entrySet().removeIf(entry -> entry.getValue().getMeasurement("CLASS") == null);
 
         } catch (IOException e) {
@@ -82,13 +88,13 @@ public class ApplyManualClassification extends HCModule {
     /**
      * Adds measurements from the current module to the measurement collection
      */
-//    @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        HCMeasurementCollection measurements = new HCMeasurementCollection();
-
+    @Override
+    public void addMeasurements(HCMeasurementCollection measurements) {
         measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),HCMeasurement.CLASS);
+    }
 
-        return measurements;
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
 
     }
 }

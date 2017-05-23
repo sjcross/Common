@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
  * Created by steph on 30/04/2017.
  */
 public class HCObject {
-    // Indices for dimensional coordiantes.  Coordinates are all zero indexed
+    // Indices for dimensional coordinates.  Coordinates are all zero indexed
     public static final int X = 0;
     public static final int Y = 1;
     public static final int Z = 2;
@@ -34,16 +34,16 @@ public class HCObject {
     /**
      * HashMap containing extra dimensions specifying the location of this instance
      */
-    private HashMap<Integer,Integer> positions = new HashMap<>();
+    private HashMap<Integer, Integer> positions = new HashMap<>();
     private HCObject parent = null;
-    private ArrayList<HCObject> children = new ArrayList<>();
-    private LinkedHashMap<String,HCMeasurement> measurements = new LinkedHashMap<>();
+    private LinkedHashMap<HCName, HCObjectSet> children = new LinkedHashMap<>();
+    private LinkedHashMap<String, HCMeasurement> measurements = new LinkedHashMap<>();
     private String calibratedUnits = "px";
 
     /**
      * Calibration for each dimension.  Stored as physical distance per pixel
      */
-    private HashMap<Integer,Double> calibration = new HashMap<>();
+    private HashMap<Integer, Double> calibration = new HashMap<>();
 
 
     // CONSTRUCTORS
@@ -52,8 +52,8 @@ public class HCObject {
         this.ID = ID;
 
         // Setting default values for C and T
-        positions.put(C,0);
-        positions.put(T,0);
+        positions.put(C, 0);
+        positions.put(T, 0);
 
     }
 
@@ -65,7 +65,7 @@ public class HCObject {
             coordinates.computeIfAbsent(dim, k -> new ArrayList<>());
             coordinates.get(dim).add(coordinate);
         } else {
-            positions.put(dim,coordinate);
+            positions.put(dim, coordinate);
         }
     }
 
@@ -77,7 +77,7 @@ public class HCObject {
     public int[][] getCoordinateRange() {
         int[][] dimSize = new int[3][2];
 
-        for (int dim:coordinates.keySet()) {
+        for (int dim : coordinates.keySet()) {
             if (coordinates.get(dim) != null) {
                 ArrayList<Integer> vals = coordinates.get(dim);
                 dimSize[dim][0] = Collections.min(vals);
@@ -90,7 +90,7 @@ public class HCObject {
     }
 
     public void addMeasurement(HCMeasurement measurement) {
-        measurements.put(measurement.getName(),measurement);
+        measurements.put(measurement.getName(), measurement);
 
     }
 
@@ -100,7 +100,7 @@ public class HCObject {
     }
 
     public void addCalibration(Integer dim, double cal) {
-        calibration.put(dim,cal);
+        calibration.put(dim, cal);
 
     }
 
@@ -114,12 +114,9 @@ public class HCObject {
 
     @Override
     public String toString() {
-        return  "HCObject with "+coordinates.size()+" coordinate points";
+        return "HCObject with " + coordinates.size() + " coordinate points";
 
     }
-
-
-    // GETTERS AND SETTERS
 
     public int getID() {
         return ID;
@@ -139,6 +136,7 @@ public class HCObject {
 
     /**
      * Setting one of the XYZ coordinates
+     *
      * @param dim
      * @param coordinateList
      */
@@ -150,6 +148,7 @@ public class HCObject {
 
     /**
      * Setting a single-valued coordinate (e.g. C or T)
+     *
      * @param dim
      * @param coordinateList
      */
@@ -161,7 +160,7 @@ public class HCObject {
 
     public <T> T getCoordinates(int dim) {
         // Returning one of the XYZ coordinates
-        if (dim < 3 ) {
+        if (dim < 3) {
             return (T) coordinates.get(dim);
         }
 
@@ -204,7 +203,7 @@ public class HCObject {
     }
 
     public void setExtraDimensions(int dim, int value) {
-        positions.put(dim,value);
+        positions.put(dim, value);
 
     }
 
@@ -216,20 +215,56 @@ public class HCObject {
         this.parent = parent;
     }
 
-    public ArrayList<HCObject> getChildren() {
+    public LinkedHashMap<HCName, HCObjectSet> getChildren() {
         return children;
     }
 
-    public void setChildren(ArrayList<HCObject> children) {
+    public HCObjectSet getChildren(HCName name) {
+        return children.get(name);
+    }
+
+    public void setChildren(LinkedHashMap<HCName, HCObjectSet> children) {
         this.children = children;
     }
 
-    public void addChild(HCObject child) {
-        children.add(child);
+    public void addChildren(HCObjectSet childSet) {
+        children.put(childSet.getName(), childSet);
     }
 
-    public void removeChild(HCObject child) {
-        children.remove(child);
+    public void removeChildren(HCName name) {
+        children.remove(name);
+    }
+
+    public void addChild(HCName name, HCObject childSet) {
+        children.computeIfAbsent(name, k -> new HCObjectSet(name));
+        children.get(name).put(childSet.getID(), childSet);
+
+    }
+
+    public void removeChild(HCName name, HCObject child) {
+        children.get(name).values().remove(child);
+
+    }
+
+    /**
+     * Removes itself from any other objects as a parent or child.
+     * @param name Name of this object
+     */
+    public void removeRelationships(HCName name) {
+        // Removing itself as a child from its parent
+        if (parent != null) {
+            parent.removeChild(name,this);
+        }
+
+        // Removing itself as a parent from any children
+        if (children != null) {
+            for (HCObjectSet childSet:children.values()) {
+                for (HCObject child:childSet.values()) {
+                    child.setParent(null);
+
+                }
+            }
+        }
     }
 
     public LinkedHashMap<String, HCMeasurement> getMeasurements() {

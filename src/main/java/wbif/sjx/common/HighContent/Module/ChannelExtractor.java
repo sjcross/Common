@@ -38,7 +38,7 @@ public class ChannelExtractor extends HCModule {
 
         // Adding image to workspace
         if (verbose) System.out.println("       Adding image ("+outputImageName.getName()+") to workspace");
-        workspace.addImage(outputImageName,new HCImage(outputChannelImagePlus));
+        workspace.addImage(new HCImage(outputImageName,outputChannelImagePlus));
 
         // (If selected) displaying the loaded image
         boolean showImage = parameters.getValue(SHOW_IMAGE);
@@ -67,7 +67,12 @@ public class ChannelExtractor extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 }

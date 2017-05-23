@@ -96,7 +96,12 @@ public class MeasureObjectIntensity extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 }

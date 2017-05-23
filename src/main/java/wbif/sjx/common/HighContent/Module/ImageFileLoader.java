@@ -56,7 +56,7 @@ public class ImageFileLoader extends HCModule {
 
         // Adding image to workspace
         if (verbose) System.out.println("       Adding image ("+outputImageName+") to workspace");
-        workspace.addImage(outputImageName,new HCImage(ipl));
+        workspace.addImage(new HCImage(outputImageName,ipl));
 
     }
 
@@ -79,8 +79,12 @@ public class ImageFileLoader extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
     }
 
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
+    }
 }

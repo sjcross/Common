@@ -35,7 +35,8 @@ public class ParameterWindow {
                         gd.addStringField(entry.getKey(), String.valueOf(entry.getValue()));
 
                     } else if (entry.getValue().getType() == HCParameter.CHOICE_ARRAY) {
-                        gd.addChoice(entry.getKey(),(String[]) entry.getValue().getValueSource(), entry.getValue().getValue());
+                        gd.addChoice(entry.getKey(),(String[]) entry.getValue().getValueSource(),
+                                entry.getValue().getValue());
 
                     } else if (entry.getValue().getType() == HCParameter.CHOICE_MAP) {
                         HashMap<String, String> map = entry.getValue().getValue();
@@ -49,7 +50,8 @@ public class ParameterWindow {
                     } else if (entry.getValue().getType() == HCParameter.MEASUREMENT) {
                         // Getting the measurements available to this module
                         HCMeasurementCollection measurements = modules.getMeasurements(module);
-                        String[] measurementChoices = measurements.getMeasurementNames((HCName) entry.getValue().getValueSource());
+                        String[] measurementChoices = measurements.getMeasurementNames(
+                                (HCName) entry.getValue().getValueSource());
                         gd.addChoice(entry.getKey(),measurementChoices,measurementChoices[0]);
 
                     }
@@ -66,7 +68,8 @@ public class ParameterWindow {
                 for (Map.Entry<String,HCParameter> entry:module.getActiveParameters().getParameters().entrySet()) {
                     if (entry.getValue().isVisible()) {
                         if (entry.getValue().getType() == HCParameter.INTEGER) {
-                            module.getActiveParameters().getParameter(entry.getKey()).setValue((int) Math.round(gd.getNextNumber()));
+                            module.getActiveParameters().getParameter(entry.getKey()).setValue(
+                                    (int) Math.round(gd.getNextNumber()));
 
                         } else if (entry.getValue().getType() == HCParameter.DOUBLE) {
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextNumber());

@@ -4,7 +4,6 @@ import wbif.sjx.common.HighContent.Module.HCModule;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 /**
  * Created by sc13967 on 03/05/2017.
@@ -18,16 +17,8 @@ public class HCModuleCollection extends ArrayList<HCModule> implements Serializa
                 break;
             }
 
-            HCMeasurementCollection currentMeasurements = module.addActiveMeasurements();
+            module.addMeasurements(measurements);
 
-            if (currentMeasurements != null) {
-                // Adding all the current values to the HCMeasurementCollection
-                for (HCName objectName : currentMeasurements.keySet()) {
-                    measurements.computeIfAbsent(objectName, k -> new HashSet<>());
-                    measurements.get(objectName).addAll(currentMeasurements.get(objectName));
-
-                }
-            }
         }
 
         return measurements;
@@ -70,6 +61,27 @@ public class HCModuleCollection extends ArrayList<HCModule> implements Serializa
 
     public ArrayList<HCParameter> getParametersMatchingType(int type) {
         return getParametersMatchingType(type,null);
+
+    }
+
+    public HCRelationshipCollection getRelationships(HCModule cutoffModule) {
+        HCRelationshipCollection relationships = new HCRelationshipCollection();
+
+        for (HCModule module:this) {
+            if (module == cutoffModule) {
+                break;
+            }
+
+            module.addRelationships(relationships);
+
+        }
+
+        return relationships;
+
+    }
+
+    public HCRelationshipCollection getRelationships() {
+        return getRelationships(null);
 
     }
 }

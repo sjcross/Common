@@ -39,7 +39,7 @@ public class ShowObjects extends HCModule {
         }
 
         // Converting objects to an image
-        HCImage image = new ObjectImageConverter().convertObjectsToImage(inputObjects,templateImage,useGroupID);
+        HCImage image = new ObjectImageConverter().convertObjectsToImage(inputObjects,new HCName("Object image"),templateImage,useGroupID);
         image.getImagePlus().setTitle(inputObjectName.getName());
 
         // Creating a random colour LUT and assigning it to the image (maximising intensity range to 0-255)
@@ -70,7 +70,12 @@ public class ShowObjects extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 }
