@@ -1,9 +1,8 @@
-// TODO: Add controls for all parameter types (Measurement, arrays, hashsets, etc.)
+// TODO: Add controls for all parameter types (hashsets, etc.)
+// TODO: Put module list and parameters in scrollable panes
 
 package wbif.sjx.common.HighContent.GUI;
 
-import ij.gui.Plot;
-import ij.gui.PlotWindow;
 import org.apache.commons.io.FilenameUtils;
 import org.reflections.Reflections;
 import wbif.sjx.common.HighContent.Module.*;
@@ -30,7 +29,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     private static final String saveAnalysis = "S";
     private static final String loadAnalysis = "L";
 
-    private int frameWidth = 500;
+    private int frameWidth = 1100;
     private int frameHeight = 750;
     private int elementHeight = 30;
 
@@ -54,43 +53,11 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     }
 
     public MainGUI() throws InstantiationException, IllegalAccessException {
-//        // DEBUG CALLS
-//        modules = new HCModuleCollection();
-//
-//        // Getting current image open in ImageJ (must be 2 channel)
-//        ImageJImageLoader IJLoader = new ImageJImageLoader();
-//        modules.add(IJLoader);
-//
-//        // Splitting stack into two
-//        ChannelExtractor chExtractor1 = new ChannelExtractor();
-//        modules.add(chExtractor1);
-//
-//        // Splitting stack into two
-//        ChannelExtractor chExtractor2 = new ChannelExtractor();
-//        modules.add(chExtractor2);
-//
-//        // Running TrackMate and storing tracks as objects
-//        RunTrackMate runTrackMate = new RunTrackMate();
-//        modules.add(runTrackMate);
-//
-//        // Showing objects
-//        ShowObjects showObjects = new ShowObjects();
-//        modules.add(showObjects);
-//
-//        // Measuring track intensity
-//        MeasureTrackIntensity trackIntensity = new MeasureTrackIntensity();
-//        modules.add(trackIntensity);
-//
-//        // END DEBUG CALLS
-
-
         frame.setLayout(new FlowLayout());
 
         // Setting location of panel
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation((screenSize.width - frameWidth) / 2, (screenSize.height - frameHeight) / 2);
-        frame.setSize(frameWidth, frameHeight);
-        frame.setVisible(true);
 
         // Populating the list containing all available modules
         listAvailableModules();
@@ -107,6 +74,8 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         initialiseParametersPanel();
         frame.add(paramsPanel);
 
+        frame.addMouseListener(this);
+        frame.setVisible(true);
         frame.pack();
 
     }
@@ -199,7 +168,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     }
 
     private void populateModuleList() {
-        int buttonWidth = 200;
+        int buttonWidth = 300;
 
         modulesPanel.removeAll();
 
@@ -278,6 +247,11 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         // If the active module is set to null (i.e. we're looking at the analysis options panel) exit this method
         if (activeModule == null) {
+            return;
+        }
+
+        // If the active module hasn't got parameters enabled, skip it
+        if (activeModule.getActiveParameters() == null) {
             return;
         }
 
@@ -361,12 +335,28 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             } else if (parameter.getType() == HCParameter.MEASUREMENT) {
                 HCMeasurementCollection measurements = modules.getMeasurements(activeModule);
                 String[] measurementChoices = measurements.getMeasurementNames((HCName) parameter.getValueSource());
+                Arrays.sort(measurementChoices);
+
                 parameterControl = new ChoiceArrayParameter(parameter,measurementChoices);
                 if (parameter.getValue() != null) {
                     ((ChoiceArrayParameter) parameterControl).setSelectedItem(parameter.getValue());
                 }
                 ((ChoiceArrayParameter) parameterControl).addActionListener(this);
                 parameterControl.setName("ChoiceArrayParameter");
+
+            } else if (parameter.getType() == HCParameter.CHILD_OBJECTS) {
+                HCRelationshipCollection relationships = modules.getRelationships(activeModule);
+                HCName[] relationshipChoices = relationships.getChildNames((HCName) parameter.getValueSource());
+                parameterControl = new HCNameInputParameter(parameter);
+                if (relationshipChoices != null) {
+                    for (HCName relationship : relationshipChoices) {
+                        ((HCNameInputParameter) parameterControl).addItem(relationship);
+
+                    }
+                    ((HCNameInputParameter) parameterControl).setSelectedItem(parameter.getValue());
+                }
+                ((HCNameInputParameter) parameterControl).addActionListener(this);
+                parameterControl.setName("InputParameter");
 
             }
 
@@ -472,14 +462,6 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             moduleListMenu.add(menuItem);
 
         }
-
-        // Adding a close list option
-        PopupMenuItem closeItem = new PopupMenuItem(null);
-        closeItem.setText("[Close list]");
-        closeItem.addActionListener(this);
-        closeItem.setName("ModuleName");
-        moduleListMenu.add(closeItem);
-
     }
 
     private void addModule() {
@@ -720,6 +702,8 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             HCParameter parameter = ((ChoiceArrayParameter) object).getParameter();
             parameter.setValue(((ChoiceArrayParameter) object).getSelectedItem());
 
+            populateModuleParameters();
+
         } else if (((JComponent) object).getName().equals("OutputFilePath")) {
             FileDialog fileDialog = new FileDialog(new Frame(), "Select output path", FileDialog.SAVE);
             fileDialog.setMultipleMode(false);
@@ -764,6 +748,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        moduleListMenu.setVisible(false);
 
     }
 

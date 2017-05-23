@@ -53,11 +53,12 @@ public class IdentifyPrimaryObjects extends HCModule {
 
         // Converting image to objects
         if (verbose) System.out.println("       Converting image to objects");
-        HCObjectSet objects = new ObjectImageConverter().convertImageToObjects(new HCImage(ipl));
+        HCImage tempImage = new HCImage(new HCName("Temp image"),ipl);
+        HCObjectSet outputObjects = new ObjectImageConverter().convertImageToObjects(tempImage,outputObjectName);
 
         // Adding objects to workspace
         if (verbose) System.out.println("       Adding objects ("+outputObjectName.getName()+") to workspace");
-        workspace.addObjects(outputObjectName,objects);
+        workspace.addObjects(outputObjects);
 
     }
 
@@ -81,7 +82,12 @@ public class IdentifyPrimaryObjects extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 }

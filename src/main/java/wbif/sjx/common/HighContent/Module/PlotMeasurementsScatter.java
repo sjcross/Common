@@ -69,11 +69,17 @@ public class PlotMeasurementsScatter extends HCModule {
         double[] measurementValues3 = null;
         if (useColour) measurementValues3 = new double[inputObjects.size()];
 
+        if (verbose) System.out.println("        Getting measurements to plot");
         int iter = 0;
+        CumStat cs = new CumStat(2);
         for (HCObject inputObject:inputObjects.values()) {
             measurementValues1[iter] = inputObject.getMeasurement(measurement1).getValue();
             measurementValues2[iter] = inputObject.getMeasurement(measurement2).getValue();
             if (useColour) measurementValues3[iter] = inputObject.getMeasurement(measurement3).getValue();
+
+            // Adding the current measurements to CumStat, so the min and max can be obtained
+            cs.addSingleMeasure(0,measurementValues1[iter]);
+            cs.addSingleMeasure(1,measurementValues2[iter]);
 
             iter++;
 
@@ -81,6 +87,8 @@ public class PlotMeasurementsScatter extends HCModule {
 
         // Creating the scatter plot
         if (useColour) {
+            if (verbose) System.out.println("        Plotting "+measurement1+", " + measurement2+" and "+measurement3);
+
             String title = "Scatter plot of " + measurement1 + ", " + measurement2+" and "+measurement3;
             Plot plot = new Plot(title, measurement1, measurement2);
 
@@ -94,24 +102,35 @@ public class PlotMeasurementsScatter extends HCModule {
             }
 
             for (int i=0;i<measurementValues1.length;i++) {
-                plot.setColor(colors[i]);
+                // Adding the current point (with its assigned colour)
+                plot.setColor(colors[i],colors[i]);
                 plot.addPoints(new double[]{measurementValues1[i]},new double[]{measurementValues2[i]},Plot.CIRCLE);
 
             }
 
-            plot.setLimitsToFit(true);
+            // Setting plot limits
+            plot.setLimits(cs.getMin()[0], cs.getMax()[0], cs.getMin()[1], cs.getMax()[1]);
+
+            // Displaying the plot
             plot.show();
 
         } else {
+            if (verbose) System.out.println("        Plotting "+measurement1+" and "+measurement2);
+
+            // Creating the plot
             String title = "Scatter plot of " + measurement1 + " and " + measurement2;
             Plot plot = new Plot(title, measurement1, measurement2);
 
+            // Adding points to plot
             plot.addPoints(measurementValues1,measurementValues2,0);
-            plot.setLimitsToFit(true);
+
+            // Setting plot limits
+            plot.setLimits(cs.getMin()[0], cs.getMax()[0], cs.getMin()[1], cs.getMax()[1]);
+
+            // Displaying the plot
             plot.show();
 
         }
-
     }
 
     @Override
@@ -168,8 +187,12 @@ public class PlotMeasurementsScatter extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
 
     }
 }

@@ -35,7 +35,7 @@ public class ImageStackLoader extends HCModule {
         String orderField = parameters.getValue(ORDER_FIELD);
         ArrayList<String> staticFields = parameters.getValue(STATIC_FIELDS);
         HashMap<String,String> setFields = parameters.getValue(SET_FIELDS);
-        HCName outputImage = parameters.getValue(OUTPUT_IMAGE);
+        HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
 
         // Getting files
         File referenceFile = workspace.getMetadata().getFile();
@@ -99,7 +99,8 @@ public class ImageStackLoader extends HCModule {
 
         ipl.setPosition(1);
 
-        workspace.addImage(outputImage,new HCImage(ipl));
+        workspace.addImage(new HCImage(outputImageName,ipl));
+
     }
 
     @Override
@@ -123,7 +124,12 @@ public class ImageStackLoader extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 }

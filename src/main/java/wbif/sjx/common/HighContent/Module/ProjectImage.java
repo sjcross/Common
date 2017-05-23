@@ -1,5 +1,7 @@
 package wbif.sjx.common.HighContent.Module;
 
+import ij.ImagePlus;
+import ij.plugin.ZProjector;
 import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.HighContent.Object.HCParameterCollection;
 
@@ -9,6 +11,16 @@ import wbif.sjx.common.HighContent.Object.HCParameterCollection;
 public class ProjectImage extends HCModule {
     public static final String INPUT_IMAGE = "Input image";
     public static final String OUTPUT_IMAGE = "Output image";
+
+    public HCImage projectImageInZ(HCImage inputImage, HCName outputImageName) {
+        ZProjector z_projector = new ZProjector(inputImage.getImagePlus());
+        z_projector.setMethod(ZProjector.MAX_METHOD);
+        z_projector.doProjection();
+        ImagePlus iplOut = z_projector.getProjection();
+
+        return new HCImage(outputImageName,iplOut);
+
+    }
 
     @Override
     public String getTitle() {
@@ -26,10 +38,10 @@ public class ProjectImage extends HCModule {
         HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
 
         // Create max projection image
-        HCImage outputImage = inputImage.projectImageInZ();
+        HCImage outputImage = projectImageInZ(inputImage,outputImageName);
 
         // Adding projected image to workspace
-        workspace.addImage(outputImageName,outputImage);
+        workspace.addImage(outputImage);
 
     }
 
@@ -50,7 +62,12 @@ public class ProjectImage extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 }

@@ -41,8 +41,8 @@ public class MeasureTrackIntensity extends HCModule {
         double radius = parameters.getValue(MEASUREMENT_RADIUS);
         boolean calibrated = parameters.getValue(CALIBRATED_RADIUS);
 
-        // Getting local object region
-        inputObjects = GetLocalObjectRegion.getLocalRegions(inputObjects, radius, calibrated);
+        // Getting local object region (this overwrites the original inputObjects)
+        inputObjects = GetLocalObjectRegion.getLocalRegions(inputObjects, inputObjectsName, radius, calibrated);
 
         // Running through each object's timepoints, getting intensity measurements
         for (HCObject object:inputObjects.values()) {
@@ -85,6 +85,7 @@ public class MeasureTrackIntensity extends HCModule {
             HCMeasurement maxIntensity = new HCMeasurement(inputImageName.getName()+"_MAX", cs.getMax()[0]);
             maxIntensity.setSource(this);
             object.getParent().addMeasurement(maxIntensity);
+
         }
     }
 
@@ -108,15 +109,17 @@ public class MeasureTrackIntensity extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        HCMeasurementCollection measurements = new HCMeasurementCollection();
-
+    public void addMeasurements(HCMeasurementCollection measurements) {
         HCName inputImageName = parameters.getValue(INPUT_IMAGE);
         measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),inputImageName+"_MEAN");
         measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),inputImageName+"_STD");
         measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),inputImageName+"_MIN");
         measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),inputImageName+"_MAX");
 
-        return measurements;
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 }

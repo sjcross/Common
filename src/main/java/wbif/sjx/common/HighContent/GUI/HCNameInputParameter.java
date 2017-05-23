@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  * Created by Stephen on 20/05/2017.
  */
-public class HCNameInputParameter extends JComboBox{
+public class HCNameInputParameter extends JComboBox {
     private HCParameter parameter;
 
     public HCNameInputParameter(HCParameter parameter) {

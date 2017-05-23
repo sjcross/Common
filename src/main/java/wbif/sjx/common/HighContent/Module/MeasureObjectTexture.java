@@ -52,7 +52,7 @@ public class MeasureObjectTexture extends HCModule {
             boolean calibrated = parameters.getValue(CALIBRATED_RADIUS);
 
             // Getting local object region
-            inputObjects = GetLocalObjectRegion.getLocalRegions(inputObjects, radius, calibrated);
+            inputObjects = GetLocalObjectRegion.getLocalRegions(inputObjects, inputObjectsName, radius, calibrated);
 
         }
 
@@ -159,15 +159,16 @@ public class MeasureObjectTexture extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        HCMeasurementCollection measurements = new HCMeasurementCollection();
-
+    public void addMeasurements(HCMeasurementCollection measurements) {
         measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_ASM");
         measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_CONTRAST");
         measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_CORRELATION");
         measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_ENTROPY");
 
-        return measurements;
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
 
     }
 }

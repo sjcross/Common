@@ -15,16 +15,16 @@ public class GetLocalObjectRegion extends HCModule {
     public static final String LOCAL_RADIUS = "Local radius";
     public static final String CALIBRATED_RADIUS = "Calibrated radius";
 
-    public static HCObjectSet getLocalRegions(HCObjectSet inputObjects, double radius, boolean calibrated) {
+    public static HCObjectSet getLocalRegions(HCObjectSet inputObjects, HCName outputObjectsName, double radius, boolean calibrated) {
         // Creating store for output objects
-        HCObjectSet outputObjects = new HCObjectSet();
+        HCObjectSet outputObjects = new HCObjectSet(outputObjectsName);
 
         // Running through each object, calculating the local texture
         for (HCObject inputObject:inputObjects.values()) {
             // Creating new object and assigning relationship to input objects
             HCObject outputObject = new HCObject(inputObject.getID());
             outputObject.setParent(inputObject);
-            inputObject.addChild(outputObject);
+            inputObject.addChild(outputObjects.getName(),outputObject);
 
             // Getting image calibration (to deal with different xy-z dimensions)
             double xCal = inputObject.getCalibration(HCObject.X);
@@ -108,10 +108,10 @@ public class GetLocalObjectRegion extends HCModule {
         if (verbose & !calibrated) System.out.println("       Using local radius of "+radius+" ");
 
         // Getting local region
-        HCObjectSet outputObjects = getLocalRegions(inputObjects, radius, calibrated);
+        HCObjectSet outputObjects = getLocalRegions(inputObjects, outputObjectsName, radius, calibrated);
 
         // Adding output objects to workspace
-        workspace.addObjects(outputObjectsName,outputObjects);
+        workspace.addObjects(outputObjects);
         if (verbose) System.out.println("       Adding objects ("+outputObjectsName+") to workspace");
 
     }
@@ -135,9 +135,13 @@ public class GetLocalObjectRegion extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
     }
 
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+        relationships.addRelationship(parameters.getValue(INPUT_OBJECTS),parameters.getValue(OUTPUT_OBJECTS));
 
+    }
 }

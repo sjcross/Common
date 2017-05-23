@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
  * Created by steph on 30/04/2017.
  */
 public class HCImage {
+    private HCName name;
     private ImagePlus imagePlus;
     private LinkedHashMap<String,HCMeasurement> singleMeasurements = new LinkedHashMap<>();
 //    private LinkedHashMap<String,HCMultiMeasurement> multiMeasurements = new LinkedHashMap<>();
@@ -17,22 +18,14 @@ public class HCImage {
 
     // CONSTRUCTORS
 
-    public HCImage(ImagePlus imagePlus) {
+    public HCImage(HCName name, ImagePlus imagePlus) {
+        this.name = name;
         this.imagePlus = imagePlus;
+
     }
 
 
     // PUBLIC METHODS
-
-    public HCImage projectImageInZ() {
-        ZProjector z_projector = new ZProjector(imagePlus);
-        z_projector.setMethod(ZProjector.MAX_METHOD);
-        z_projector.doProjection();
-        ImagePlus iplOut = z_projector.getProjection();
-
-        return new HCImage(iplOut);
-
-    }
 
     public void addMeasurement(String name, HCMeasurement measurement) {
         singleMeasurements.put(name,measurement);
@@ -46,6 +39,10 @@ public class HCImage {
 
 
     // GETTERS AND SETTERS
+
+    public HCName getName() {
+        return name;
+    }
 
     public ImagePlus getImagePlus() {
         return imagePlus;

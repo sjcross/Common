@@ -80,10 +80,15 @@ public class HCParameter implements Serializable {
     public final static int MEASUREMENT = 11;
 
     /**
+     * Child object of the given parent object.
+     */
+    public final static int CHILD_OBJECTS = 12;
+
+    /**
      * Miscellaneous object class parameter.  These can be anything not fitting the other categories.  These can't be
      * set using ParameterWindow.
      */
-    public final static int OBJECT = 12;
+    public final static int OBJECT = 13;
 
     private final HCModule module;
     private final String name;

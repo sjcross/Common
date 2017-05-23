@@ -27,7 +27,7 @@ public class ProjectObjects extends HCModule {
         HCName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
 
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
-        HCObjectSet outputObjects = new HCObjectSet();
+        HCObjectSet outputObjects = new HCObjectSet(outputObjectsName);
 
         for (HCObject inputObject:inputObjects.values()) {
             ArrayList<Integer> x = inputObject.getCoordinates().get(HCObject.X);
@@ -52,7 +52,7 @@ public class ProjectObjects extends HCModule {
             // Creating the new HCObject and assigning the parent-child relationship
             HCObject outputObject = new HCObject(inputObject.getID());
             outputObject.setParent(inputObject);
-            inputObject.addChild(outputObject);
+            inputObject.addChild(outputObjectsName,outputObject);
 
             // Adding coordinates to the projected object
             for (Double key : projCoords.keySet()) {
@@ -77,7 +77,7 @@ public class ProjectObjects extends HCModule {
 
         }
 
-        workspace.addObjects(outputObjectsName,outputObjects);
+        workspace.addObjects(outputObjects);
 
     }
 
@@ -98,7 +98,13 @@ public class ProjectObjects extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+        relationships.addRelationship(parameters.getValue(INPUT_OBJECTS),parameters.getValue(OUTPUT_OBJECTS));
+
     }
 }

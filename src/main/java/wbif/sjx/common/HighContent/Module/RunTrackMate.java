@@ -12,6 +12,8 @@ import ij.measure.Calibration;
 import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -44,7 +46,7 @@ public class RunTrackMate extends HCModule {
 
         // Loading input image
         HCName targetImageName = parameters.getValue(INPUT_IMAGE);
-        if (verbose) System.out.println("       Loading image ("+targetImageName.getName()+") into workspace");
+        if (verbose) System.out.println("        Loading image ("+targetImageName.getName()+") into workspace");
         ImagePlus ipl = workspace.getImages().get(targetImageName).getImagePlus();
 
         // Storing, then removing calibration.  This will be reapplied after the detection.
@@ -71,7 +73,7 @@ public class RunTrackMate extends HCModule {
 
         // Getting name of output objects
         HCName outputObjectsName = parameters.getValue(OUTPUT_SPOT_OBJECTS);
-        HCObjectSet objects = new HCObjectSet();
+        HCObjectSet outputObjects = new HCObjectSet(outputObjectsName);
 
         // Getting name of output summary objects (if required)
         boolean createSummary = parameters.getValue(CREATE_SUMMARY_OBJECTS);
@@ -79,7 +81,7 @@ public class RunTrackMate extends HCModule {
         HCObjectSet summaryObjects = null;
         if (createSummary) {
             outputSummaryObjectsName = parameters.getValue(OUTPUT_SUMMARY_OBJECTS);
-            summaryObjects = new HCObjectSet();
+            summaryObjects = new HCObjectSet(outputSummaryObjectsName);
 
         }
 
@@ -188,12 +190,12 @@ public class RunTrackMate extends HCModule {
                 // Adding the connection between instance and summary objects
                 if (createSummary) {
                     object.setParent(summaryObject);
-                    summaryObject.addChild(object);
+                    summaryObject.addChild(outputObjectsName,object);
 
                 }
 
                 // Adding the instance object to the relevant collection
-                objects.put(object.getID(),object);
+                outputObjects.put(object.getID(),object);
 
             }
 
@@ -208,9 +210,21 @@ public class RunTrackMate extends HCModule {
             }
         }
 
+        // Displaying the number of objects detected
+        if (verbose) {
+            System.out.println("        "+outputObjects.size()+" spots detected");
+
+            if (createSummary) {
+                System.out.println("        "+summaryObjects.size()+" tracks detected");
+
+            }
+        }
+
         // Adding objects to the workspace
-        if (verbose) System.out.println("       Adding objects ("+outputObjectsName.getName()+") to workspace");
-        workspace.addObjects(outputObjectsName,objects);
+        if (verbose) System.out.println("        Adding objects ("+outputObjectsName.getName()+") to workspace");
+        workspace.addObjects(outputObjects);
+
+        if (createSummary) workspace.addObjects(summaryObjects);
 
         // Reapplying calibration to input image
         ipl.setCalibration(calibration);
@@ -272,7 +286,13 @@ public class RunTrackMate extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+        relationships.addRelationship(parameters.getValue(OUTPUT_SUMMARY_OBJECTS),parameters.getValue(OUTPUT_SPOT_OBJECTS));
+
     }
 }

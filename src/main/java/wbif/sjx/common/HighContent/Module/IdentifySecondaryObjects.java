@@ -50,7 +50,7 @@ public class IdentifySecondaryObjects extends HCModule {
 
         // Getting nuclei objects as image
         if (verbose) System.out.println("       Converting objects to image");
-        ImagePlus image1 = new ObjectImageConverter().convertObjectsToImage(objects1,inputImage2,true).getImagePlus();
+        ImagePlus image1 = new ObjectImageConverter().convertObjectsToImage(objects1,new HCName("Temp image"),inputImage2,true).getImagePlus();
 
         // Segmenting cell image
         // Filtering cell image
@@ -74,7 +74,8 @@ public class IdentifySecondaryObjects extends HCModule {
 
         // Converting the labelled cell image to objects
         if (verbose) System.out.println("       Converting image to objects");
-        HCObjectSet objects2 = new ObjectImageConverter().convertImageToObjects(new HCImage(im2));
+        HCImage tempImage = new HCImage(new HCName("Temp image"),im2);
+        HCObjectSet objects2 = new ObjectImageConverter().convertImageToObjects(tempImage,outputObjectsName);
 
         // Watershed will give one cell per nucleus and these should already have the same labelling number.
         if (verbose) System.out.println("       Linking primary and secondary objects by ID number");
@@ -82,7 +83,7 @@ public class IdentifySecondaryObjects extends HCModule {
 
         // Adding objects to workspace
         if (verbose) System.out.println("       Adding objects ("+outputObjectsName.getName()+") to workspace");
-        workspace.addObjects(outputObjectsName,objects2);
+        workspace.addObjects(objects2);
 
     }
 
@@ -106,7 +107,13 @@ public class IdentifySecondaryObjects extends HCModule {
     }
 
     @Override
-    public HCMeasurementCollection addActiveMeasurements() {
-        return null;
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+        relationships.addRelationship(parameters.getValue(INPUT_OBJECTS),parameters.getValue(OUTPUT_OBJECTS));
+
     }
 }
