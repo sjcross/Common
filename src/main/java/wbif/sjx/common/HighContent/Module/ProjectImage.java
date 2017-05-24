@@ -49,13 +49,9 @@ public class ProjectImage extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
-
-        return parameters;
 
     }
 

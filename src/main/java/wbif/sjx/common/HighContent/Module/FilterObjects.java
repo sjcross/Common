@@ -40,14 +40,10 @@ public class FilterObjects extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,FILTER_METHOD,HCParameter.CHOICE_ARRAY,FILTER_METHODS[0],FILTER_METHODS));
         parameters.addParameter(new HCParameter(this,MEASUREMENT, HCParameter.MEASUREMENT,null,null));
-
-        return parameters;
 
     }
 

@@ -58,11 +58,11 @@ public class ApplyManualClassification extends HCModule {
 
             // Removing objects that don't have an assigned class (first removing the parent-child relationships)
             for (HCObject object:inputObjects.values()) {
-                if (object.getMeasurement("CLASS") == null) {
+                if (object.getMeasurement(HCMeasurement.CLASS) == null) {
                     object.removeRelationships(inputObjectsName);
                 }
             }
-            inputObjects.entrySet().removeIf(entry -> entry.getValue().getMeasurement("CLASS") == null);
+            inputObjects.entrySet().removeIf(entry -> entry.getValue().getMeasurement(HCMeasurement.CLASS) == null);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,13 +70,9 @@ public class ApplyManualClassification extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,CLASSIFICATION_FILE,HCParameter.FILE_PATH,null));
-
-        return parameters;
 
     }
 

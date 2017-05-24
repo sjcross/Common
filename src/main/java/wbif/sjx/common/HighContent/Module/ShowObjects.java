@@ -56,14 +56,10 @@ public class ShowObjects extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,true));
-
-        return parameters;
 
     }
 

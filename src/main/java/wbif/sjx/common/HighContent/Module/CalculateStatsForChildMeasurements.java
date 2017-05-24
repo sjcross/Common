@@ -98,13 +98,9 @@ public class CalculateStatsForChildMeasurements extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,PARENT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,CHILD_OBJECTS,HCParameter.CHILD_OBJECTS,null,null));
-
-        return parameters;
 
     }
 

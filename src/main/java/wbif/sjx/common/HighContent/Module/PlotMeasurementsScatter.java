@@ -135,17 +135,13 @@ public class PlotMeasurementsScatter extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,MEASUREMENT1,HCParameter.MEASUREMENT,null,null));
         parameters.addParameter(new HCParameter(this,MEASUREMENT2,HCParameter.MEASUREMENT,null,null));
         parameters.addParameter(new HCParameter(this,INCLUDE_COLOUR,HCParameter.BOOLEAN,false,null));
         parameters.addParameter(new HCParameter(this,MEASUREMENT3,HCParameter.MEASUREMENT,null,null));
         parameters.addParameter(new HCParameter(this,COLOURMAP,HCParameter.CHOICE_ARRAY,COLOURMAPS[0],COLOURMAPS));
-
-        return parameters;
 
     }
 

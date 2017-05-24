@@ -127,16 +127,12 @@ public class ShowObjectsOverlay extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,USE_GROUP_ID,HCParameter.BOOLEAN,true));
         parameters.addParameter(new HCParameter(this,COLOUR_MODE,HCParameter.CHOICE_ARRAY,COLOUR_MODES[0],COLOUR_MODES));
         parameters.addParameter(new HCParameter(this,MEASUREMENT,HCParameter.MEASUREMENT,null,null));
-
-        return parameters;
 
     }
 

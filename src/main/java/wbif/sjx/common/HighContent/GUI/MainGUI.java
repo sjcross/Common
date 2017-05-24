@@ -26,8 +26,8 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     private static final String moveModuleDownText = "▼";
     private static final String startAnalysisText = "✓";
     private static final String stopAnalysisText = "✕";
-    private static final String saveAnalysis = "S";
-    private static final String loadAnalysis = "L";
+    private static final String saveAnalysis = "Save";
+    private static final String loadAnalysis = "Load";
 
     private int frameWidth = 1100;
     private int frameHeight = 750;
@@ -83,7 +83,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.insets = new Insets(5,5,5,5);
         frame.add(paramsPanel,c);
 
-        // Initialising the status panel
+//         Initialising the status panel
         initialiseStatusPanel();
         c.gridx = 0;
         c.gridy++;
@@ -116,13 +116,20 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         JButton addModuleButton = new JButton(addModuleText);
         addModuleButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         addModuleButton.addActionListener(this);
+        addModuleButton.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,20));
+        addModuleButton.setMargin(new Insets(0,0,0,0));
+        addModuleButton.setFocusPainted(false);
         addModuleButton.setName("ControlButton");
+        addModuleButton.setMargin(new Insets(0,0,0,0));
         controlPanel.add(addModuleButton, c);
 
         // Remove module button
         JButton removeModuleButton = new JButton(removeModuleText);
         removeModuleButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         removeModuleButton.addActionListener(this);
+        removeModuleButton.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,20));
+        removeModuleButton.setMargin(new Insets(0,0,0,0));
+        removeModuleButton.setFocusPainted(false);
         removeModuleButton.setName("ControlButton");
         c.gridy++;
         controlPanel.add(removeModuleButton, c);
@@ -131,6 +138,9 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         JButton moveModuleUpButton = new JButton(moveModuleUpText);
         moveModuleUpButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         moveModuleUpButton.addActionListener(this);
+        moveModuleUpButton.setFont(new Font(Font.SANS_SERIF,Font.BOLD,16));
+        moveModuleUpButton.setMargin(new Insets(0,0,0,0));
+        moveModuleUpButton.setFocusPainted(false);
         moveModuleUpButton.setName("ControlButton");
         c.gridy++;
         controlPanel.add(moveModuleUpButton, c);
@@ -139,6 +149,9 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         JButton moveModuleDownButton = new JButton(moveModuleDownText);
         moveModuleDownButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         moveModuleDownButton.addActionListener(this);
+        moveModuleDownButton.setFont(new Font(Font.SANS_SERIF,Font.BOLD,16));
+        moveModuleDownButton.setMargin(new Insets(0,0,0,0));
+        moveModuleDownButton.setFocusPainted(false);
         moveModuleDownButton.setName("ControlButton");
         c.gridy++;
         controlPanel.add(moveModuleDownButton, c);
@@ -147,6 +160,8 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         JButton loadAnalysisButton = new JButton(loadAnalysis);
         loadAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         loadAnalysisButton.addActionListener(this);
+        loadAnalysisButton.setFocusPainted(false);
+        loadAnalysisButton.setMargin(new Insets(0,0,0,0));
         loadAnalysisButton.setName("ControlButton");
         c.gridy++;
         c.weighty = 1;
@@ -157,6 +172,8 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         JButton saveAnalysisButton = new JButton(saveAnalysis);
         saveAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         saveAnalysisButton.addActionListener(this);
+        saveAnalysisButton.setFocusPainted(false);
+        saveAnalysisButton.setMargin(new Insets(0,0,0,0));
         saveAnalysisButton.setName("ControlButton");
         c.gridy++;
         c.weighty = 0;
@@ -166,6 +183,9 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         JButton startAnalysisButton = new JButton(startAnalysisText);
         startAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         startAnalysisButton.addActionListener(this);
+        startAnalysisButton.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,16));
+        startAnalysisButton.setMargin(new Insets(0,0,0,0));
+        startAnalysisButton.setFocusPainted(false);
         startAnalysisButton.setName("ControlButton");
         c.gridy++;
         controlPanel.add(startAnalysisButton, c);
@@ -174,6 +194,9 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         JButton stopAnalysisButton = new JButton(stopAnalysisText);
         stopAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         stopAnalysisButton.addActionListener(this);
+        stopAnalysisButton.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,16));
+        stopAnalysisButton.setMargin(new Insets(0,0,0,0));
+        stopAnalysisButton.setFocusPainted(false);
         stopAnalysisButton.setName("ControlButton");
         c.gridy++;
         controlPanel.add(stopAnalysisButton, c);
@@ -548,18 +571,24 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         fileDialog.setMultipleMode(false);
         fileDialog.setVisible(true);
 
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileDialog.getFiles()[0]));
+        String outputFileName = fileDialog.getFiles()[0].getAbsolutePath();
+        if (!FilenameUtils.getExtension(outputFileName).equals("mia")) {
+            outputFileName = FilenameUtils.removeExtension(outputFileName)+".mia";
+        }
+
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(outputFileName));
 
         outputStream.writeObject(analysis);
         outputStream.close();
 
-        JOptionPane.showMessageDialog(null, "File saved", "File saved", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("File saved");
 
     }
 
     private void loadAnalysis() throws IOException, ClassNotFoundException {
         FileDialog fileDialog = new FileDialog(new Frame(), "Select file to save", FileDialog.LOAD);
         fileDialog.setMultipleMode(false);
+        fileDialog.setFile("*.mia");
         fileDialog.setVisible(true);
 
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileDialog.getFiles()[0]));
@@ -570,6 +599,8 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         modules = analysis.getModules();
 
         populateModuleList();
+
+        System.out.println("File loaded");
 
     }
 

@@ -8,6 +8,11 @@ import wbif.sjx.common.HighContent.Module.HCModule;
 public class HCMeasurement {
     // Spatial measures
     public static final String RADIUS = "Radius";
+    public static final String ESTIMATED_DIAMETER = "Estimated diameter";
+    public static final String DIRECTIONALITY_RATIO = "Directionality ratio";
+    public static final String DURATION = "Duration";
+    public static final String TOTAL_PATH_LENGTH = "Total path length";
+    public static final String EUCLIDEAN_DISTANCE = "Euclidean distance";
     public static final String X_CENTROID_MEAN = "X-Centroid Mean";
     public static final String Y_CENTROID_MEAN = "Y-Centroid Mean";
     public static final String Z_CENTROID_MEAN = "Z-Centroid Mean";
@@ -22,7 +27,7 @@ public class HCMeasurement {
     public static final String STD_INTENSITY = "Stdev intensity";
 
     // Other measures
-    public static final String CLASS = "CLASS";
+    public static final String CLASS = "Class";
 
     private String name;
     private double value = Double.NaN;

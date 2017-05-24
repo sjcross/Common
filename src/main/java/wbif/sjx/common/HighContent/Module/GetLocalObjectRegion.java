@@ -118,15 +118,11 @@ public class GetLocalObjectRegion extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,LOCAL_RADIUS, HCParameter.DOUBLE,10.0));
         parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false));
-
-        return parameters;
 
     }
 

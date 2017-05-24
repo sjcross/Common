@@ -50,15 +50,11 @@ public class ChannelExtractor extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,CHANNEL_TO_EXTRACT, HCParameter.INTEGER,1));
         parameters.addParameter(new HCParameter(this,SHOW_IMAGE, HCParameter.BOOLEAN,false));
-
-        return parameters;
 
     }
 

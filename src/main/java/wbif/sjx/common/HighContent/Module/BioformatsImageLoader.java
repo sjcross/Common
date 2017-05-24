@@ -65,13 +65,9 @@ public class BioformatsImageLoader extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,SHOW_IMAGE, HCParameter.BOOLEAN,false));
-
-        return parameters;
 
     }
 

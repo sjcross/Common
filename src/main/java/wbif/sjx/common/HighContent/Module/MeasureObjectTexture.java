@@ -123,9 +123,7 @@ public class MeasureObjectTexture extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,POINT_MEASUREMENT,HCParameter.BOOLEAN,false));
@@ -134,8 +132,6 @@ public class MeasureObjectTexture extends HCModule {
         parameters.addParameter(new HCParameter(this,X_OFFSET, HCParameter.INTEGER,1));
         parameters.addParameter(new HCParameter(this,Y_OFFSET, HCParameter.INTEGER,0));
         parameters.addParameter(new HCParameter(this,Z_OFFSET, HCParameter.INTEGER,0));
-
-        return parameters;
 
     }
 
@@ -161,11 +157,12 @@ public class MeasureObjectTexture extends HCModule {
 
     @Override
     public void addMeasurements(HCMeasurementCollection measurements) {
-        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_ASM");
-        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_CONTRAST");
-        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_CORRELATION");
-        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_ENTROPY");
-
+        if (parameters.getValue(INPUT_OBJECTS) != null) {
+            measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS), ((HCName) parameters.getValue(INPUT_IMAGE)).getName() + "_ASM");
+            measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS), ((HCName) parameters.getValue(INPUT_IMAGE)).getName() + "_CONTRAST");
+            measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS), ((HCName) parameters.getValue(INPUT_IMAGE)).getName() + "_CORRELATION");
+            measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS), ((HCName) parameters.getValue(INPUT_IMAGE)).getName() + "_ENTROPY");
+        }
     }
 
     @Override

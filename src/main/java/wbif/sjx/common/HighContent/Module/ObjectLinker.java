@@ -46,13 +46,9 @@ public class ObjectLinker extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS1, HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS2, HCParameter.INPUT_OBJECTS,null));
-
-        return parameters;
 
     }
 
