@@ -35,6 +35,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
     private HCModule activeModule = null;
     private Frame frame = new JFrame();
+    private JPanel controlPanel = new JPanel();
     private JPanel modulesPanel = new JPanel();
     private JPanel paramsPanel = new JPanel();
     private JPanel statusPanel = new JPanel();
@@ -68,11 +69,11 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         listAvailableModules();
 
         // Creating buttons to add and remove modules
-        JPanel addRemovePanel = createAddRemoveModulePanel();
-        frame.add(addRemovePanel,c);
+        initialiseControlPanel();
+        frame.add(controlPanel,c);
 
-        // Populating the module list
-        populateModuleList();
+        // Initialising the module list
+        initialisingModulesPanel();
         c.gridx++;
         frame.add(modulesPanel,c);
 
@@ -82,6 +83,14 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.insets = new Insets(5,5,5,5);
         frame.add(paramsPanel,c);
 
+        // Initialising the status panel
+        initialiseStatusPanel();
+        c.gridx = 0;
+        c.gridy++;
+        c.gridwidth = 3;
+        c.insets = new Insets(0,5,5,5);
+        frame.add(statusPanel,c);
+
         // Final bits for listeners
         frame.addMouseListener(this);
         frame.setVisible(true);
@@ -89,13 +98,13 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
     }
 
-    private JPanel createAddRemoveModulePanel() {
+    private void initialiseControlPanel() {
         int buttonSize = 50;
 
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(buttonSize + 15, frameHeight-50));
-        panel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        panel.setLayout(new GridBagLayout());
+        controlPanel = new JPanel();
+        controlPanel.setPreferredSize(new Dimension(buttonSize + 15, frameHeight-50));
+        controlPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        controlPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
@@ -108,7 +117,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         addModuleButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         addModuleButton.addActionListener(this);
         addModuleButton.setName("ControlButton");
-        panel.add(addModuleButton, c);
+        controlPanel.add(addModuleButton, c);
 
         // Remove module button
         JButton removeModuleButton = new JButton(removeModuleText);
@@ -116,7 +125,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         removeModuleButton.addActionListener(this);
         removeModuleButton.setName("ControlButton");
         c.gridy++;
-        panel.add(removeModuleButton, c);
+        controlPanel.add(removeModuleButton, c);
 
         // Move module up button
         JButton moveModuleUpButton = new JButton(moveModuleUpText);
@@ -124,7 +133,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         moveModuleUpButton.addActionListener(this);
         moveModuleUpButton.setName("ControlButton");
         c.gridy++;
-        panel.add(moveModuleUpButton, c);
+        controlPanel.add(moveModuleUpButton, c);
 
         // Move module up button
         JButton moveModuleDownButton = new JButton(moveModuleDownText);
@@ -132,7 +141,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         moveModuleDownButton.addActionListener(this);
         moveModuleDownButton.setName("ControlButton");
         c.gridy++;
-        panel.add(moveModuleDownButton, c);
+        controlPanel.add(moveModuleDownButton, c);
 
         // Load analysis protocol button
         JButton loadAnalysisButton = new JButton(loadAnalysis);
@@ -142,7 +151,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.gridy++;
         c.weighty = 1;
         c.anchor = GridBagConstraints.PAGE_END;
-        panel.add(loadAnalysisButton, c);
+        controlPanel.add(loadAnalysisButton, c);
 
         // Save analysis protocol button
         JButton saveAnalysisButton = new JButton(saveAnalysis);
@@ -151,7 +160,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         saveAnalysisButton.setName("ControlButton");
         c.gridy++;
         c.weighty = 0;
-        panel.add(saveAnalysisButton, c);
+        controlPanel.add(saveAnalysisButton, c);
 
         // Start analysis button
         JButton startAnalysisButton = new JButton(startAnalysisText);
@@ -159,7 +168,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         startAnalysisButton.addActionListener(this);
         startAnalysisButton.setName("ControlButton");
         c.gridy++;
-        panel.add(startAnalysisButton, c);
+        controlPanel.add(startAnalysisButton, c);
 
         // Stop analysis button
         JButton stopAnalysisButton = new JButton(stopAnalysisText);
@@ -167,24 +176,65 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         stopAnalysisButton.addActionListener(this);
         stopAnalysisButton.setName("ControlButton");
         c.gridy++;
-        panel.add(stopAnalysisButton, c);
+        controlPanel.add(stopAnalysisButton, c);
 
-        panel.validate();
-        panel.repaint();
-
-        return panel;
+        controlPanel.validate();
+        controlPanel.repaint();
 
     }
 
-    private void populateModuleList() {
+    private void initialisingModulesPanel() {
         int buttonWidth = 300;
-
-        modulesPanel.removeAll();
 
         // Initialising the panel for module buttons
         modulesPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         modulesPanel.setPreferredSize(new Dimension(buttonWidth + 15, frameHeight-50));
         modulesPanel.setLayout(new GridBagLayout());
+    }
+
+    private void initialiseParametersPanel() {
+        paramsPanel.removeAll();
+
+        paramsPanel.setLayout(new GridBagLayout());
+        paramsPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        paramsPanel.setPreferredSize(new Dimension(700, frameHeight-50));
+
+        // Adding placeholder text
+        JTextField textField = new JTextField("Select a module to edit its parameters");
+        textField.setBorder(null);
+        textField.setEditable(false);
+        paramsPanel.add(textField);
+
+        paramsPanel.validate();
+        paramsPanel.repaint();
+
+    }
+
+    private void initialiseStatusPanel() {
+        statusPanel.setPreferredSize(new Dimension(1090,40));
+        statusPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        statusPanel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5,5,5,5);
+
+        JTextField textField = new JTextField();
+        textField.setBackground(null);
+        textField.setPreferredSize(new Dimension(1070,25));
+        textField.setBorder(null);
+        textField.setText("Modular image analysis (version "+getClass().getPackage().getImplementationVersion()+")");
+        textField.setFont(new Font(Font.SANS_SERIF,Font.BOLD,12));
+        statusPanel.add(textField,c);
+
+
+        OutputStreamTextField outputStreamTextField = new OutputStreamTextField(textField);
+        PrintStream printStream = new PrintStream(outputStreamTextField);
+        System.setOut(printStream);
+
+    }
+
+    private void populateModuleList() {
+        modulesPanel.removeAll();
+
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
@@ -210,18 +260,6 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         }
 
-        // TEMPORARY
-
-        JTextArea textArea = new JTextArea();
-        textArea.setPreferredSize(new Dimension(buttonWidth,100));
-        textArea.setName("sdfsdf");
-        modulesPanel.add(textArea);
-        OutputStreamTextArea outputStreamTextArea = new OutputStreamTextArea(textArea);
-        PrintStream printStream = new PrintStream(outputStreamTextArea);
-        System.setOut(printStream);
-
-        // END TEMPORARY
-
         // Adding analysis options button
         JButton analysisOptionsButton = new JButton();
         analysisOptionsButton.setSelected(false);
@@ -235,24 +273,6 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         modulesPanel.validate();
         modulesPanel.repaint();
-
-    }
-
-    private void initialiseParametersPanel() {
-        paramsPanel.removeAll();
-
-        paramsPanel.setLayout(new GridBagLayout());
-        paramsPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        paramsPanel.setPreferredSize(new Dimension(700, frameHeight-50));
-
-        // Adding placeholder text
-        JTextField textField = new JTextField("Select a module to edit its parameters");
-        textField.setBorder(null);
-        textField.setEditable(false);
-        paramsPanel.add(textField);
-
-        paramsPanel.validate();
-        paramsPanel.repaint();
 
     }
 

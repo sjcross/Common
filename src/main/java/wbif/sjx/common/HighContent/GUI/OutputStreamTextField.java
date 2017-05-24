@@ -7,12 +7,12 @@ import java.io.OutputStream;
 /**
  * Created by sc13967 on 24/05/2017.
  */
-public class OutputStreamTextArea extends OutputStream {
-    private final JTextArea textArea;
+public class OutputStreamTextField extends OutputStream {
+    private final JTextField textField;
     private String currText = "";
 
-    public OutputStreamTextArea(JTextArea textArea) {
-        this.textArea = textArea;
+    public OutputStreamTextField(JTextField textField) {
+        this.textField = textField;
 
     }
 
@@ -23,8 +23,8 @@ public class OutputStreamTextArea extends OutputStream {
             currText = "";
 
         } else {
-            textArea.setText(currText+(char) b);
-            currText = textArea.getText();
+            textField.setText(currText+(char) b);
+            currText = textField.getText();
 
         }
     }
