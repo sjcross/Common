@@ -19,7 +19,8 @@ public class FilterObjects extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("    Filtering objects");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting input objects
         HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);

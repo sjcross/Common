@@ -16,6 +16,9 @@ public class ShowImage extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
+
         HCName imageName = parameters.getValue(DISPLAY_IMAGE);
 
         workspace.getImages().get(imageName).getImagePlus().show();

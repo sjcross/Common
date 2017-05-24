@@ -26,7 +26,8 @@ public class MeasureTrackIntensity extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Measuring track intensity");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting image to measure track intensity for
         HCName inputImageName = parameters.getValue(INPUT_IMAGE);

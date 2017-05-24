@@ -149,6 +149,9 @@ public class ObjectImageConverter extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
+
         int conversionMode = parameters.getValue(CONVERSION_MODE);
 
         if (conversionMode == IMAGE_TO_OBJECTS) {

@@ -201,6 +201,18 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         }
 
+        // TEMPORARY
+
+        JTextArea textArea = new JTextArea();
+        textArea.setPreferredSize(new Dimension(buttonWidth,100));
+        textArea.setName("sdfsdf");
+        modulesPanel.add(textArea);
+        OutputStreamTextArea outputStreamTextArea = new OutputStreamTextArea(textArea);
+        PrintStream printStream = new PrintStream(outputStreamTextArea);
+        System.setOut(printStream);
+
+        // END TEMPORARY
+
         // Adding analysis options button
         JButton analysisOptionsButton = new JButton();
         analysisOptionsButton.setSelected(false);
@@ -533,6 +545,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     }
 
     private void startAnalysis() {
+        // Initialising the workspace
         HCWorkspaceCollection workspaces = new HCWorkspaceCollection();
         HCWorkspace workspace;
         if (!inputFilePath.equals("")) {
@@ -559,6 +572,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             exporter.exportResults(workspaces, analysis);
 
         }
+
     }
 
     private void selectModule(HCModule module) {

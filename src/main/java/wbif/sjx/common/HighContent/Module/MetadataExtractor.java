@@ -19,6 +19,9 @@ public class MetadataExtractor extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
+
         // Getting current result
         HCMetadata metadata = workspace.getMetadata();
 

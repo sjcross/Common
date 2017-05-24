@@ -21,11 +21,12 @@ public class ChannelExtractor extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Running channel extractor");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Loading input image
         HCName inputImageName = parameters.getValue(INPUT_IMAGE);
-        if (verbose) System.out.println("       Loading image ("+inputImageName.getName()+") into workspace");
+        if (verbose) System.out.println("["+moduleName+"] Loading image ("+inputImageName.getName()+") into workspace");
         ImagePlus ipl = workspace.getImages().get(inputImageName).getImagePlus();
 
         // Getting parameters
@@ -33,17 +34,17 @@ public class ChannelExtractor extends HCModule {
         int channel = parameters.getValue(CHANNEL_TO_EXTRACT);
 
         // Getting selected channel
-        if (verbose) System.out.println("       Extracting channel "+channel);
+        if (verbose) System.out.println("["+moduleName+"] Extracting channel "+channel);
         ImagePlus outputChannelImagePlus = SubHyperstackMaker.makeSubhyperstack(ipl,String.valueOf(channel),"1-"+ipl.getNSlices(),"1-"+ipl.getNFrames());
 
         // Adding image to workspace
-        if (verbose) System.out.println("       Adding image ("+outputImageName.getName()+") to workspace");
+        if (verbose) System.out.println("["+moduleName+"] Adding image ("+outputImageName.getName()+") to workspace");
         workspace.addImage(new HCImage(outputImageName,outputChannelImagePlus));
 
         // (If selected) displaying the loaded image
         boolean showImage = parameters.getValue(SHOW_IMAGE);
         if (showImage) {
-            if (verbose) System.out.println("       Displaying extracted image");
+            if (verbose) System.out.println("["+moduleName+"] Displaying extracted image");
             outputChannelImagePlus.show();
         }
     }

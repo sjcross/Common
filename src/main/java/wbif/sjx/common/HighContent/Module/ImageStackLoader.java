@@ -30,6 +30,9 @@ public class ImageStackLoader extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
+
         // Getting parameters
         Extractor extractor = parameters.getValue(EXTRACTOR);
         String orderField = parameters.getValue(ORDER_FIELD);

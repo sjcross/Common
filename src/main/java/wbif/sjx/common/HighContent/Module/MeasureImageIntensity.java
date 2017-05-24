@@ -19,11 +19,12 @@ public class MeasureImageIntensity extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Measuring image intensity");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting input image
         HCName inputImageName = parameters.getValue(INPUT_IMAGE);
-        if (verbose) System.out.println("       Loading image ("+inputImageName+")");
+        if (verbose) System.out.println("["+moduleName+"] Loading image ("+inputImageName+")");
         HCImage inputImage = workspace.getImages().get(inputImageName);
         ImagePlus inputImagePlus = inputImage.getImagePlus();
 
@@ -34,22 +35,22 @@ public class MeasureImageIntensity extends HCModule {
         HCMeasurement meanIntensity = new HCMeasurement(HCMeasurement.MEAN_INTENSITY,cs.getMean()[0]);
         meanIntensity.setSource(this);
         inputImage.addMeasurement(meanIntensity.getName(),meanIntensity);
-        if (verbose) System.out.println("       Mean intensity = "+meanIntensity.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Mean intensity = "+meanIntensity.getValue());
 
         HCMeasurement stdIntensity = new HCMeasurement(HCMeasurement.STD_INTENSITY,cs.getStd(CumStat.SAMPLE)[0]);
         stdIntensity.setSource(this);
         inputImage.addMeasurement(stdIntensity.getName(),stdIntensity);
-        if (verbose) System.out.println("       Std intensity (sample) = "+stdIntensity.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Std intensity (sample) = "+stdIntensity.getValue());
 
         HCMeasurement minIntensity = new HCMeasurement(HCMeasurement.MIN_INTENSITY,cs.getMin()[0]);
         minIntensity.setSource(this);
         inputImage.addMeasurement(minIntensity.getName(),minIntensity);
-        if (verbose) System.out.println("       Min intensity = "+minIntensity.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Min intensity = "+minIntensity.getValue());
 
         HCMeasurement maxIntensity = new HCMeasurement(HCMeasurement.MAX_INTENSITY,cs.getMax()[0]);
         maxIntensity.setSource(this);
         inputImage.addMeasurement(maxIntensity.getName(),maxIntensity);
-        if (verbose) System.out.println("       Max intensity = "+maxIntensity.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Max intensity = "+maxIntensity.getValue());
 
     }
 

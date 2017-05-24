@@ -33,7 +33,8 @@ public class ShowObjectsOverlay extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Overlaying objects on image");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting parameters
         boolean useGroupID = parameters.getValue(USE_GROUP_ID);

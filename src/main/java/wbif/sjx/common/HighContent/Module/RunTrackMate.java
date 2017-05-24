@@ -42,11 +42,12 @@ public class RunTrackMate extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Running TrackMate detection");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Loading input image
         HCName targetImageName = parameters.getValue(INPUT_IMAGE);
-        if (verbose) System.out.println("        Loading image ("+targetImageName.getName()+") into workspace");
+        if (verbose) System.out.println("["+moduleName+"] Loading image ("+targetImageName.getName()+") into workspace");
         ImagePlus ipl = workspace.getImages().get(targetImageName).getImagePlus();
 
         // Storing, then removing calibration.  This will be reapplied after the detection.
@@ -212,16 +213,16 @@ public class RunTrackMate extends HCModule {
 
         // Displaying the number of objects detected
         if (verbose) {
-            System.out.println("        "+outputObjects.size()+" spots detected");
+            System.out.println("["+moduleName+"] "+outputObjects.size()+" spots detected");
 
             if (createSummary) {
-                System.out.println("        "+summaryObjects.size()+" tracks detected");
+                System.out.println("["+moduleName+"] "+summaryObjects.size()+" tracks detected");
 
             }
         }
 
         // Adding objects to the workspace
-        if (verbose) System.out.println("        Adding objects ("+outputObjectsName.getName()+") to workspace");
+        if (verbose) System.out.println("["+moduleName+"] Adding objects ("+outputObjectsName.getName()+") to workspace");
         workspace.addObjects(outputObjects);
 
         if (createSummary) workspace.addObjects(summaryObjects);
