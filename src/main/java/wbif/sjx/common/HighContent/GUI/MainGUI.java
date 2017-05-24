@@ -37,6 +37,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     private Frame frame = new JFrame();
     private JPanel modulesPanel = new JPanel();
     private JPanel paramsPanel = new JPanel();
+    private JPanel statusPanel = new JPanel();
     JPopupMenu moduleListMenu = new JPopupMenu();
     Thread t = null;
 
@@ -53,7 +54,11 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     }
 
     public MainGUI() throws InstantiationException, IllegalAccessException {
-        frame.setLayout(new FlowLayout());
+        frame.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5,5,5,0);
+        c.gridx = 0;
+        c.gridy = 0;
 
         // Setting location of panel
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -64,16 +69,20 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         // Creating buttons to add and remove modules
         JPanel addRemovePanel = createAddRemoveModulePanel();
-        frame.add(addRemovePanel);
+        frame.add(addRemovePanel,c);
 
         // Populating the module list
         populateModuleList();
-        frame.add(modulesPanel);
+        c.gridx++;
+        frame.add(modulesPanel,c);
 
         // Initialising the parameters panel
         initialiseParametersPanel();
-        frame.add(paramsPanel);
+        c.gridx++;
+        c.insets = new Insets(5,5,5,5);
+        frame.add(paramsPanel,c);
 
+        // Final bits for listeners
         frame.addMouseListener(this);
         frame.setVisible(true);
         frame.pack();
@@ -84,7 +93,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         int buttonSize = 50;
 
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(buttonSize + 15, frameHeight));
+        panel.setPreferredSize(new Dimension(buttonSize + 15, frameHeight-50));
         panel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -174,7 +183,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         // Initialising the panel for module buttons
         modulesPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        modulesPanel.setPreferredSize(new Dimension(buttonWidth + 15, frameHeight));
+        modulesPanel.setPreferredSize(new Dimension(buttonWidth + 15, frameHeight-50));
         modulesPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -234,7 +243,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         paramsPanel.setLayout(new GridBagLayout());
         paramsPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        paramsPanel.setPreferredSize(new Dimension(700, frameHeight));
+        paramsPanel.setPreferredSize(new Dimension(700, frameHeight-50));
 
         // Adding placeholder text
         JTextField textField = new JTextField("Select a module to edit its parameters");
