@@ -1,5 +1,3 @@
-// TODO: Add TrackMate measurements to measurement outputs
-
 package wbif.sjx.common.HighContent.Module;
 
 import com.google.common.collect.Sets;

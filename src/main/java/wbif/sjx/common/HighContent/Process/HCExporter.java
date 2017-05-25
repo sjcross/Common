@@ -1,3 +1,5 @@
+// TODO: Get measurements to export from analysis.getModules().getMeasurements().get(HCName) for each object
+
 package wbif.sjx.common.HighContent.Process;
 
 import org.apache.poi.ss.usermodel.Cell;

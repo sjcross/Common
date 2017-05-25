@@ -1,3 +1,5 @@
+// TODO: Add NaN exclusion for 2D plot (will have to remove items from an array (may involve intermediate ArrayLists)
+
 package wbif.sjx.common.HighContent.Module;
 
 import ij.gui.Plot;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
  */
 public class PlotMeasurementsScatter extends HCModule {
     public static final String INPUT_OBJECTS = "Input objects";
+    public static final String EXCLUDE_NAN = "Exclude NaN measurements";
     public static final String MEASUREMENT1 = "First measurement (X)";
     public static final String MEASUREMENT2 = "Second measurement (Y)";
     public static final String INCLUDE_COLOUR = "Add third measurement as colour";
@@ -54,6 +57,7 @@ public class PlotMeasurementsScatter extends HCModule {
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
 
         // Getting parameters
+        boolean excludeNaN = parameters.getValue(EXCLUDE_NAN);
         boolean useColour = parameters.getValue(INCLUDE_COLOUR);
         String colourmap = null;
         if (useColour) colourmap = parameters.getValue(COLOURMAP);
@@ -105,8 +109,15 @@ public class PlotMeasurementsScatter extends HCModule {
             for (int i=0;i<measurementValues1.length;i++) {
                 // Adding the current point (with its assigned colour)
                 plot.setColor(colors[i],colors[i]);
-                plot.addPoints(new double[]{measurementValues1[i]},new double[]{measurementValues2[i]},Plot.CIRCLE);
 
+                if (excludeNaN) {
+                    if (measurementValues1[i] != Double.NaN & measurementValues2[i] != Double.NaN & measurementValues3[i] != Double.NaN)
+                    plot.addPoints(new double[]{measurementValues1[i]}, new double[]{measurementValues2[i]}, Plot.CIRCLE);
+
+                } else {
+                    plot.addPoints(new double[]{measurementValues1[i]}, new double[]{measurementValues2[i]}, Plot.CIRCLE);
+
+                }
             }
 
             // Setting plot limits
@@ -137,6 +148,7 @@ public class PlotMeasurementsScatter extends HCModule {
     @Override
     public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(this,EXCLUDE_NAN,HCParameter.BOOLEAN,true));
         parameters.addParameter(new HCParameter(this,MEASUREMENT1,HCParameter.MEASUREMENT,null,null));
         parameters.addParameter(new HCParameter(this,MEASUREMENT2,HCParameter.MEASUREMENT,null,null));
         parameters.addParameter(new HCParameter(this,INCLUDE_COLOUR,HCParameter.BOOLEAN,false,null));
@@ -149,6 +161,7 @@ public class PlotMeasurementsScatter extends HCModule {
     public HCParameterCollection getActiveParameters() {
         HCParameterCollection returnedParameters = new HCParameterCollection();
         returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
+        returnedParameters.addParameter(parameters.getParameter(EXCLUDE_NAN));
         returnedParameters.addParameter(parameters.getParameter(MEASUREMENT1));
         returnedParameters.addParameter(parameters.getParameter(MEASUREMENT2));
 

@@ -83,13 +83,13 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.insets = new Insets(5,5,5,5);
         frame.add(paramsPanel,c);
 
-//         Initialising the status panel
-        initialiseStatusPanel();
-        c.gridx = 0;
-        c.gridy++;
-        c.gridwidth = 3;
-        c.insets = new Insets(0,5,5,5);
-        frame.add(statusPanel,c);
+//        // Initialising the status panel
+//        initialiseStatusPanel();
+//        c.gridx = 0;
+//        c.gridy++;
+//        c.gridwidth = 3;
+//        c.insets = new Insets(0,5,5,5);
+//        frame.add(statusPanel,c);
 
         // Final bits for listeners
         frame.addMouseListener(this);
@@ -483,7 +483,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         // Select export type
         JCheckBox xmlCheck = new JCheckBox("Export XML");
         xmlCheck.addActionListener(this);
-        xmlCheck.setSelected(false);
+        xmlCheck.setSelected(exportXML);
         xmlCheck.setName("XMLCheck");
         c.gridx = 0;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -492,7 +492,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         JCheckBox xlsxCheck = new JCheckBox("Export XLSX");
         xlsxCheck.addActionListener(this);
-        xlsxCheck.setSelected(true);
+        xlsxCheck.setSelected(exportXLSX);
         xlsxCheck.setName("XLSXCheck");
         c.gridy++;
         c.weighty = 1;
@@ -581,7 +581,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         outputStream.writeObject(analysis);
         outputStream.close();
 
-        System.out.println("File saved");
+        System.out.println("File saved ("+FilenameUtils.getName(outputFileName)+")");
 
     }
 
@@ -600,7 +600,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         populateModuleList();
 
-        System.out.println("File loaded");
+        System.out.println("File loaded ("+FilenameUtils.getName(fileDialog.getFiles()[0].getName())+")");
 
     }
 
@@ -620,6 +620,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         analysis.execute(workspace, true);
 
         // Exporting XLSX
+
         if (exportXLSX & !outputFilePath.equals("")) {
             HCExporter exporter = new HCExporter(new File(outputFilePath), HCExporter.XLSX_EXPORT);
             exporter.exportResults(workspaces, analysis);
@@ -691,6 +692,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
                 t.start();
 
             } else if (((JButton) object).getText().equals(stopAnalysisText)) {
+                System.out.println("Shutting system down");
                 analysis.shutdown();
 
             }

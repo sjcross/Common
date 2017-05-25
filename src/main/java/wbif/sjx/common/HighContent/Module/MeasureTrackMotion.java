@@ -1,15 +1,9 @@
-// TODO: Add measurements to export
-
 package wbif.sjx.common.HighContent.Module;
 
 import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.Object.Track;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Created by steph on 24/05/2017.
@@ -37,6 +31,7 @@ public class MeasureTrackMotion extends HCModule {
 
         // Converting objects to Track class object
         for (HCObject inputTrackObject:inputTrackObjects.values()) {
+
             // Initialising stores for coordinates
             double[] x = new double[inputTrackObject.getChildren(inputSpotObjectsName).size()];
             double[] y = new double[inputTrackObject.getChildren(inputSpotObjectsName).size()];
@@ -57,22 +52,43 @@ public class MeasureTrackMotion extends HCModule {
             // Create track object
             Track track = new Track(x, y, z, f);
 
-            // Adding measurements to track objects
-            HCMeasurement measurement = new HCMeasurement(HCMeasurement.DIRECTIONALITY_RATIO,track.getDirectionalityRatio());
-            measurement.setSource(this);
-            inputTrackObject.addMeasurement(measurement);
+            if (x.length == 0) {
+                // Adding measurements to track objects
+                HCMeasurement measurement = new HCMeasurement(HCMeasurement.DIRECTIONALITY_RATIO, Double.NaN);
+                measurement.setSource(this);
+                inputTrackObject.addMeasurement(measurement);
 
-            measurement = new HCMeasurement(HCMeasurement.EUCLIDEAN_DISTANCE,track.getEuclideanDistance());
-            measurement.setSource(this);
-            inputTrackObject.addMeasurement(measurement);
+                measurement = new HCMeasurement(HCMeasurement.EUCLIDEAN_DISTANCE, Double.NaN);
+                measurement.setSource(this);
+                inputTrackObject.addMeasurement(measurement);
 
-            measurement = new HCMeasurement(HCMeasurement.TOTAL_PATH_LENGTH,track.getTotalPathLength());
-            measurement.setSource(this);
-            inputTrackObject.addMeasurement(measurement);
+                measurement = new HCMeasurement(HCMeasurement.TOTAL_PATH_LENGTH, Double.NaN);
+                measurement.setSource(this);
+                inputTrackObject.addMeasurement(measurement);
 
-            measurement = new HCMeasurement(HCMeasurement.DURATION,track.getDuration());
-            measurement.setSource(this);
-            inputTrackObject.addMeasurement(measurement);
+                measurement = new HCMeasurement(HCMeasurement.DURATION, Double.NaN);
+                measurement.setSource(this);
+                inputTrackObject.addMeasurement(measurement);
+
+            } else {
+                // Adding measurements to track objects
+                HCMeasurement measurement = new HCMeasurement(HCMeasurement.DIRECTIONALITY_RATIO, track.getDirectionalityRatio());
+                measurement.setSource(this);
+                inputTrackObject.addMeasurement(measurement);
+
+                measurement = new HCMeasurement(HCMeasurement.EUCLIDEAN_DISTANCE, track.getEuclideanDistance());
+                measurement.setSource(this);
+                inputTrackObject.addMeasurement(measurement);
+
+                measurement = new HCMeasurement(HCMeasurement.TOTAL_PATH_LENGTH, track.getTotalPathLength());
+                measurement.setSource(this);
+                inputTrackObject.addMeasurement(measurement);
+
+                measurement = new HCMeasurement(HCMeasurement.DURATION, track.getDuration());
+                measurement.setSource(this);
+                inputTrackObject.addMeasurement(measurement);
+
+            }
 
         }
     }

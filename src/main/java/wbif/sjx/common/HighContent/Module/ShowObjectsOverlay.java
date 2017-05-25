@@ -1,5 +1,3 @@
-//TODO: Colour overlay based on measurement
-
 package wbif.sjx.common.HighContent.Module;
 
 import ij.ImagePlus;
