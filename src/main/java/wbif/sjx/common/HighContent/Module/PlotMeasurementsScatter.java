@@ -46,7 +46,8 @@ public class PlotMeasurementsScatter extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Plotting measurements as scatter");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting input objects
         HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
@@ -69,7 +70,7 @@ public class PlotMeasurementsScatter extends HCModule {
         double[] measurementValues3 = null;
         if (useColour) measurementValues3 = new double[inputObjects.size()];
 
-        if (verbose) System.out.println("        Getting measurements to plot");
+        if (verbose) System.out.println("["+moduleName+"] Getting measurements to plot");
         int iter = 0;
         CumStat cs = new CumStat(2);
         for (HCObject inputObject:inputObjects.values()) {
@@ -87,7 +88,7 @@ public class PlotMeasurementsScatter extends HCModule {
 
         // Creating the scatter plot
         if (useColour) {
-            if (verbose) System.out.println("        Plotting "+measurement1+", " + measurement2+" and "+measurement3);
+            if (verbose) System.out.println("["+moduleName+"] Plotting "+measurement1+", " + measurement2+" and "+measurement3);
 
             String title = "Scatter plot of " + measurement1 + ", " + measurement2+" and "+measurement3;
             Plot plot = new Plot(title, measurement1, measurement2);
@@ -115,7 +116,7 @@ public class PlotMeasurementsScatter extends HCModule {
             plot.show();
 
         } else {
-            if (verbose) System.out.println("        Plotting "+measurement1+" and "+measurement2);
+            if (verbose) System.out.println("["+moduleName+"] Plotting "+measurement1+" and "+measurement2);
 
             // Creating the plot
             String title = "Scatter plot of " + measurement1 + " and " + measurement2;
@@ -134,17 +135,13 @@ public class PlotMeasurementsScatter extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,MEASUREMENT1,HCParameter.MEASUREMENT,null,null));
         parameters.addParameter(new HCParameter(this,MEASUREMENT2,HCParameter.MEASUREMENT,null,null));
         parameters.addParameter(new HCParameter(this,INCLUDE_COLOUR,HCParameter.BOOLEAN,false,null));
         parameters.addParameter(new HCParameter(this,MEASUREMENT3,HCParameter.MEASUREMENT,null,null));
         parameters.addParameter(new HCParameter(this,COLOURMAP,HCParameter.CHOICE_ARRAY,COLOURMAPS[0],COLOURMAPS));
-
-        return parameters;
 
     }
 

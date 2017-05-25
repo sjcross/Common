@@ -49,12 +49,6 @@ public class HCParameterCollection implements Serializable {
 
     }
 
-    public void initialiseModule(HCModule module) {
-        HCParameterCollection moduleParameters = module.initialiseParameters();
-        parameters.putAll(moduleParameters.getParameters());
-
-    }
-
 
     // GETTERS AND SETTERS
 

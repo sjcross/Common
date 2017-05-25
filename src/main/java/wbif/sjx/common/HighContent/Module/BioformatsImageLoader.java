@@ -25,13 +25,14 @@ public class BioformatsImageLoader extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("    Running Bioformats image loader");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting image name
         HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
 
         // Running Bio-formats importer
-        if (verbose) System.out.println("       Loading image");
+        if (verbose) System.out.println("["+moduleName+"] Loading image");
 
         // Bio-formats writes lots of unwanted information to System.out.  This diverts it to a fake PrintStream
         PrintStream realStream = System.out;
@@ -46,31 +47,27 @@ public class BioformatsImageLoader extends HCModule {
 
         if (ipl != null) {
             // Adding image to workspace
-            if (verbose) System.out.println("       Adding image ("+outputImageName.getName()+") to workspace");
+            if (verbose) System.out.println("["+moduleName+"] Adding image ("+outputImageName.getName()+") to workspace");
             workspace.addImage(new HCImage(outputImageName, ipl));
 
             // (If selected) displaying the loaded image
             boolean showImage = parameters.getValue(SHOW_IMAGE);
             if (showImage) {
-                if (verbose) System.out.println("       Displaying loaded image");
+                if (verbose) System.out.println("["+moduleName+"] Displaying loaded image");
                 ipl.show();
             }
 
         } else {
             // Warning that no image loaded
-            if (verbose) System.out.println("       Image ("+outputImageName.getName()+") failed to load");
+            if (verbose) System.out.println("["+moduleName+"] Image ("+outputImageName.getName()+") failed to load");
 
         }
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,SHOW_IMAGE, HCParameter.BOOLEAN,false));
-
-        return parameters;
 
     }
 

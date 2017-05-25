@@ -26,7 +26,8 @@ public class ImageFileLoader extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Loading image from file");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting input file
         String filePath = parameters.getValue(FILE_PATH);
@@ -55,20 +56,16 @@ public class ImageFileLoader extends HCModule {
         }
 
         // Adding image to workspace
-        if (verbose) System.out.println("       Adding image ("+outputImageName+") to workspace");
+        if (verbose) System.out.println("["+moduleName+"] Adding image ("+outputImageName+") to workspace");
         workspace.addImage(new HCImage(outputImageName,ipl));
 
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,FILE_PATH,HCParameter.FILE_PATH,null));
         parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE,HCParameter.OUTPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,USE_BIOFORMATS,HCParameter.BOOLEAN,true));
-
-        return parameters;
 
     }
 

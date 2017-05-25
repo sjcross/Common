@@ -92,7 +92,8 @@ public class GetLocalObjectRegion extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Calculating local volume around object centroids");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting input objects
         HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
@@ -104,28 +105,24 @@ public class GetLocalObjectRegion extends HCModule {
         // Getting parameters
         boolean calibrated = parameters.getValue(CALIBRATED_RADIUS);
         double radius = parameters.getValue(LOCAL_RADIUS);
-        if (verbose & calibrated) System.out.println("       Using local radius of "+radius+" px");
-        if (verbose & !calibrated) System.out.println("       Using local radius of "+radius+" ");
+        if (verbose) System.out.println("["+moduleName+"] Using local radius of "+radius+" px");
+        if (verbose) System.out.println("["+moduleName+"] Using local radius of "+radius+" ");
 
         // Getting local region
         HCObjectSet outputObjects = getLocalRegions(inputObjects, outputObjectsName, radius, calibrated);
 
         // Adding output objects to workspace
         workspace.addObjects(outputObjects);
-        if (verbose) System.out.println("       Adding objects ("+outputObjectsName+") to workspace");
+        if (verbose) System.out.println("["+moduleName+"] Adding objects ("+outputObjectsName+") to workspace");
 
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,LOCAL_RADIUS, HCParameter.DOUBLE,10.0));
         parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false));
-
-        return parameters;
 
     }
 

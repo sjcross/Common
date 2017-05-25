@@ -22,7 +22,8 @@ public class CalculateStatsForChildMeasurements extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Calculating statistics for child measurements");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting input objects
         HCName parentObjectsName = parameters.getValue(PARENT_OBJECTS);
@@ -97,13 +98,9 @@ public class CalculateStatsForChildMeasurements extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,PARENT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,CHILD_OBJECTS,HCParameter.CHILD_OBJECTS,null,null));
-
-        return parameters;
 
     }
 

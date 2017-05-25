@@ -21,7 +21,8 @@ public class MeasureImageTexture extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Running image texture analysis");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting parameters
         int xOffs = parameters.getValue(X_OFFSET);
@@ -34,10 +35,10 @@ public class MeasureImageTexture extends HCModule {
         ImagePlus inputImagePlus = inputImage.getImagePlus();
 
         // Running texture measurement
-        if (verbose) System.out.println("       Calculating co-occurance matrix");
-        if (verbose) System.out.println("           X-offset: "+xOffs);
-        if (verbose) System.out.println("           Y-offset: "+yOffs);
-        if (verbose) System.out.println("           Z-offset: "+zOffs);
+        if (verbose) System.out.println("["+moduleName+"] Calculating co-occurance matrix");
+        if (verbose) System.out.println("["+moduleName+"] X-offset: "+xOffs);
+        if (verbose) System.out.println("["+moduleName+"] Y-offset: "+yOffs);
+        if (verbose) System.out.println("["+moduleName+"] Z-offset: "+zOffs);
 
         TextureCalculator textureCalculator = new TextureCalculator();
         textureCalculator.calculate(inputImagePlus,xOffs,yOffs,zOffs);
@@ -46,35 +47,31 @@ public class MeasureImageTexture extends HCModule {
         HCMeasurement ASMMeasurement = new HCMeasurement("ASM",textureCalculator.getASM());
         ASMMeasurement.setSource(this);
         inputImage.addMeasurement(ASMMeasurement.getName(),ASMMeasurement);
-        if (verbose) System.out.println("        ASM = "+ASMMeasurement.getValue());
+        if (verbose) System.out.println("["+moduleName+"] ASM = "+ASMMeasurement.getValue());
 
         HCMeasurement contrastMeasurement = new HCMeasurement("CONTRAST",textureCalculator.getContrast());
         contrastMeasurement.setSource(this);
         inputImage.addMeasurement(contrastMeasurement.getName(),contrastMeasurement);
-        if (verbose) System.out.println("        Contrast = "+contrastMeasurement.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Contrast = "+contrastMeasurement.getValue());
 
         HCMeasurement correlationMeasurement = new HCMeasurement("CORRELATION",textureCalculator.getCorrelation());
         correlationMeasurement.setSource(this);
         inputImage.addMeasurement(correlationMeasurement.getName(),correlationMeasurement);
-        if (verbose) System.out.println("        Correlation = "+correlationMeasurement.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Correlation = "+correlationMeasurement.getValue());
 
         HCMeasurement entropyMeasurement = new HCMeasurement("ENTROPY",textureCalculator.getEntropy());
         entropyMeasurement.setSource(this);
         inputImage.addMeasurement(entropyMeasurement.getName(),entropyMeasurement);
-        if (verbose) System.out.println("        Entropy = "+entropyMeasurement.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Entropy = "+entropyMeasurement.getValue());
 
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,X_OFFSET, HCParameter.INTEGER,1));
         parameters.addParameter(new HCParameter(this,Y_OFFSET, HCParameter.INTEGER,0));
         parameters.addParameter(new HCParameter(this,Z_OFFSET, HCParameter.INTEGER,0));
-
-        return parameters;
 
     }
 

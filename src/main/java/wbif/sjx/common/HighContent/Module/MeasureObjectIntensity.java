@@ -22,6 +22,9 @@ public class MeasureObjectIntensity extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
+
         // Getting input objects
         HCName objectName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet objects = workspace.getObjects().get(objectName);
@@ -75,13 +78,9 @@ public class MeasureObjectIntensity extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
-
-        return parameters;
 
     }
 

@@ -11,24 +11,25 @@ import java.util.ArrayList;
  * 3D.  Allows the user to specify the region around each point to be measured.  Intensity traces are stored as
  * HCMultiMeasurements
  */
-public class MeasureTrackIntensity extends HCModule {
+public class MeasureSpotIntensity extends HCModule {
     public static final String INPUT_IMAGE = "Input image";
-    public static final String INPUT_OBJECTS = "Input objects";
+    public static final String INPUT_OBJECTS = "Input spot objects";
     public static final String MEASUREMENT_RADIUS = "Measurement radius";
     public static final String CALIBRATED_RADIUS = "Calibrated radius";
 
 
     @Override
     public String getTitle() {
-        return "Measure track intensity";
+        return "Measure spot intensity";
 
     }
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Measuring track intensity");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
-        // Getting image to measure track intensity for
+        // Getting image to measure spot intensity for
         HCName inputImageName = parameters.getValue(INPUT_IMAGE);
         HCImage inputImage = workspace.getImages().get(inputImageName);
         ImagePlus ipl = inputImage.getImagePlus();
@@ -90,16 +91,13 @@ public class MeasureTrackIntensity extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT_RADIUS, HCParameter.DOUBLE,10.0));
+        parameters.addParameter(new HCParameter(this,MEASUREMENT_RADIUS, HCParameter.DOUBLE,2.0));
         
-        return parameters;
-        
+
     }
 
     @Override

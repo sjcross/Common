@@ -149,6 +149,9 @@ public class ObjectImageConverter extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
+
         int conversionMode = parameters.getValue(CONVERSION_MODE);
 
         if (conversionMode == IMAGE_TO_OBJECTS) {
@@ -178,9 +181,7 @@ public class ObjectImageConverter extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,CONVERSION_MODE, HCParameter.INTEGER,0));
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
@@ -188,8 +189,6 @@ public class ObjectImageConverter extends HCModule {
         parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
         parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this,USE_GROUP_ID, HCParameter.BOOLEAN,true));
-
-        return parameters;
 
     }
 

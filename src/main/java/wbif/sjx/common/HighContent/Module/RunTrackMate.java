@@ -2,8 +2,10 @@
 
 package wbif.sjx.common.HighContent.Module;
 
+import com.google.common.collect.Sets;
 import fiji.plugin.trackmate.*;
 import fiji.plugin.trackmate.detection.LogDetectorFactory;
+import fiji.plugin.trackmate.features.spot.SpotRadiusEstimatorFactory;
 import fiji.plugin.trackmate.tracking.LAPUtils;
 import fiji.plugin.trackmate.tracking.sparselap.SparseLAPTrackerFactory;
 import ij.IJ;
@@ -12,8 +14,9 @@ import ij.measure.Calibration;
 import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Set;
 
 /**
@@ -31,8 +34,8 @@ public class RunTrackMate extends HCModule {
     public static final String GAP_CLOSING_MAX_DISTANCE = "Gap closing max distance";
     public static final String MAX_FRAME_GAP = "Max frame gap";
     public static final String DO_TRACKING = "Run tracking";
-    public static final String CREATE_SUMMARY_OBJECTS = "Create summary objects (one per track)";
-    public static final String OUTPUT_SUMMARY_OBJECTS = "Output summary objects";
+    public static final String CREATE_TRACK_OBJECTS = "Create track objects";
+    public static final String OUTPUT_TRACK_OBJECTS = "Output track objects";
 
     @Override
     public String getTitle() {
@@ -42,11 +45,12 @@ public class RunTrackMate extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Running TrackMate detection");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Loading input image
         HCName targetImageName = parameters.getValue(INPUT_IMAGE);
-        if (verbose) System.out.println("        Loading image ("+targetImageName.getName()+") into workspace");
+        if (verbose) System.out.println("["+moduleName+"] Loading image ("+targetImageName.getName()+") into workspace");
         ImagePlus ipl = workspace.getImages().get(targetImageName).getImagePlus();
 
         // Storing, then removing calibration.  This will be reapplied after the detection.
@@ -76,11 +80,11 @@ public class RunTrackMate extends HCModule {
         HCObjectSet outputObjects = new HCObjectSet(outputObjectsName);
 
         // Getting name of output summary objects (if required)
-        boolean createSummary = parameters.getValue(CREATE_SUMMARY_OBJECTS);
+        boolean createSummary = parameters.getValue(CREATE_TRACK_OBJECTS);
         HCName outputSummaryObjectsName;
         HCObjectSet summaryObjects = null;
         if (createSummary) {
-            outputSummaryObjectsName = parameters.getValue(OUTPUT_SUMMARY_OBJECTS);
+            outputSummaryObjectsName = parameters.getValue(OUTPUT_TRACK_OBJECTS);
             summaryObjects = new HCObjectSet(outputSummaryObjectsName);
 
         }
@@ -104,12 +108,15 @@ public class RunTrackMate extends HCModule {
         settings.trackerSettings.put("GAP_CLOSING_MAX_DISTANCE", maxGapDist);
         settings.trackerSettings.put("MAX_FRAME_GAP",maxFrameGap);
 
+        settings.addSpotAnalyzerFactory(new SpotRadiusEstimatorFactory<>());
+
         // Initialising TrackMate
         Model model = new Model();
         model.setLogger(Logger.VOID_LOGGER);
         TrackMate trackmate = new TrackMate(model, settings);
 
         // Running TrackMate
+        if (verbose) System.out.println("["+moduleName+"] Running TrackMate");
         if (!trackmate.checkInput()) {
             IJ.log(trackmate.getErrorMessage());
         }
@@ -120,6 +127,7 @@ public class RunTrackMate extends HCModule {
 
         // Converting tracks to local track model
         int ID = 1;
+        if (verbose) System.out.println("["+moduleName+"] Converting tracks to local track model");
 
         TrackModel trackModel = model.getTrackModel();
         Set<Integer> trackIDs = trackModel.trackIDs(false);
@@ -140,11 +148,20 @@ public class RunTrackMate extends HCModule {
 
             }
 
-            Set<Spot> spots = trackModel.trackSpots(trackID);
+            ArrayList<Spot> spots = new ArrayList<>(trackModel.trackSpots(trackID));
+
+            // Sorting spots based on frame number
+            spots.sort((o1, o2) -> {
+                double t1 = o1.getFeature(Spot.FRAME);
+                double t2 = o2.getFeature(Spot.FRAME);
+                return t1 > t2 ? 1 : t1 == t2 ? 0 : -1;
+            });
 
             // Creating an array to store the radius measurements for the summary object
             CumStat radiusAv = null;
             if (createSummary) radiusAv = new CumStat(1);
+            CumStat estDiaAv = null;
+            if (createSummary) estDiaAv = new CumStat(1);
 
             // Getting x,y,f and 2-channel spot intensities from TrackMate results
             for (Spot spot:spots) {
@@ -179,6 +196,11 @@ public class RunTrackMate extends HCModule {
                 object.addMeasurement(radiusMeasure);
                 if (createSummary) radiusAv.addMeasure(spot.getFeature(Spot.RADIUS));
 
+                HCMeasurement estDiaMeasure = new HCMeasurement(HCMeasurement.ESTIMATED_DIAMETER,spot.getFeature(SpotRadiusEstimatorFactory.ESTIMATED_DIAMETER));
+                estDiaMeasure.setSource(this);
+                object.addMeasurement(estDiaMeasure);
+                if (createSummary) estDiaAv.addMeasure(spot.getFeature(SpotRadiusEstimatorFactory.ESTIMATED_DIAMETER));
+
                 // Adding calibration values to the HCObject (physical distance per pixel)
                 object.addCalibration(HCObject.X,calibration.getX(1));
                 object.addCalibration(HCObject.Y,calibration.getY(1));
@@ -205,6 +227,10 @@ public class RunTrackMate extends HCModule {
                 radiusMeasure.setSource(this);
                 summaryObject.addMeasurement(radiusMeasure);
 
+                HCMeasurement estDiaMeasure = new HCMeasurement(HCMeasurement.ESTIMATED_DIAMETER,estDiaAv.getMean()[0]);
+                estDiaMeasure.setSource(this);
+                summaryObject.addMeasurement(estDiaMeasure);
+
                 summaryObjects.put(summaryObject.getID(), summaryObject);
 
             }
@@ -212,16 +238,16 @@ public class RunTrackMate extends HCModule {
 
         // Displaying the number of objects detected
         if (verbose) {
-            System.out.println("        "+outputObjects.size()+" spots detected");
+            System.out.println("["+moduleName+"] "+outputObjects.size()+" spots detected");
 
             if (createSummary) {
-                System.out.println("        "+summaryObjects.size()+" tracks detected");
+                System.out.println("["+moduleName+"] "+summaryObjects.size()+" tracks detected");
 
             }
         }
 
         // Adding objects to the workspace
-        if (verbose) System.out.println("        Adding objects ("+outputObjectsName.getName()+") to workspace");
+        if (verbose) System.out.println("["+moduleName+"] Adding objects ("+outputObjectsName.getName()+") to workspace");
         workspace.addObjects(outputObjects);
 
         if (createSummary) workspace.addObjects(summaryObjects);
@@ -232,9 +258,7 @@ public class RunTrackMate extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null));
         parameters.addParameter(new HCParameter(this, OUTPUT_SPOT_OBJECTS,HCParameter.OUTPUT_OBJECTS,new HCName("Spots")));
 
@@ -249,10 +273,8 @@ public class RunTrackMate extends HCModule {
         parameters.addParameter(new HCParameter(this,GAP_CLOSING_MAX_DISTANCE,HCParameter.DOUBLE,2.0));
         parameters.addParameter(new HCParameter(this,MAX_FRAME_GAP,HCParameter.INTEGER,3));
 
-        parameters.addParameter(new HCParameter(this,CREATE_SUMMARY_OBJECTS,HCParameter.BOOLEAN,true));
-        parameters.addParameter(new HCParameter(this,OUTPUT_SUMMARY_OBJECTS,HCParameter.OUTPUT_OBJECTS,new HCName("Tracks")));
-
-        return parameters;
+        parameters.addParameter(new HCParameter(this, CREATE_TRACK_OBJECTS,HCParameter.BOOLEAN,true));
+        parameters.addParameter(new HCParameter(this, OUTPUT_TRACK_OBJECTS,HCParameter.OUTPUT_OBJECTS,new HCName("Tracks")));
 
     }
 
@@ -274,9 +296,9 @@ public class RunTrackMate extends HCModule {
             returnedParameters.addParameter(parameters.getParameter(GAP_CLOSING_MAX_DISTANCE));
             returnedParameters.addParameter(parameters.getParameter(MAX_FRAME_GAP));
 
-            returnedParameters.addParameter(parameters.getParameter(CREATE_SUMMARY_OBJECTS));
-            if (parameters.getValue(CREATE_SUMMARY_OBJECTS)) {
-                returnedParameters.addParameter(parameters.getParameter(OUTPUT_SUMMARY_OBJECTS));
+            returnedParameters.addParameter(parameters.getParameter(CREATE_TRACK_OBJECTS));
+            if (parameters.getValue(CREATE_TRACK_OBJECTS)) {
+                returnedParameters.addParameter(parameters.getParameter(OUTPUT_TRACK_OBJECTS));
 
             }
         }
@@ -287,12 +309,23 @@ public class RunTrackMate extends HCModule {
 
     @Override
     public void addMeasurements(HCMeasurementCollection measurements) {
+        if (parameters.getValue(OUTPUT_SPOT_OBJECTS) != null) {
+            measurements.addMeasurement(parameters.getValue(OUTPUT_SPOT_OBJECTS),HCMeasurement.RADIUS);
+            measurements.addMeasurement(parameters.getValue(OUTPUT_SPOT_OBJECTS),HCMeasurement.ESTIMATED_DIAMETER);
+        }
+
+        if (parameters.getValue(CREATE_TRACK_OBJECTS)) {
+            if (parameters.getValue(OUTPUT_TRACK_OBJECTS) != null) {
+                measurements.addMeasurement(parameters.getValue(OUTPUT_TRACK_OBJECTS),HCMeasurement.RADIUS);
+                measurements.addMeasurement(parameters.getValue(OUTPUT_TRACK_OBJECTS),HCMeasurement.ESTIMATED_DIAMETER);
+            }
+        }
 
     }
 
     @Override
     public void addRelationships(HCRelationshipCollection relationships) {
-        relationships.addRelationship(parameters.getValue(OUTPUT_SUMMARY_OBJECTS),parameters.getValue(OUTPUT_SPOT_OBJECTS));
+        relationships.addRelationship(parameters.getValue(OUTPUT_TRACK_OBJECTS),parameters.getValue(OUTPUT_SPOT_OBJECTS));
 
     }
 }
