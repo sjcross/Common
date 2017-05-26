@@ -1,33 +1,29 @@
+// TODO: Add measurements to output
+
 package wbif.sjx.common.HighContent.Module;
 
 import wbif.sjx.common.HighContent.Object.*;
 
 /**
- * Created by sc13967 on 03/05/2017.
+ * Created by sc13967 on 26/05/2017.
  */
-public class ShowImage extends HCModule {
-    public final static String DISPLAY_IMAGE = "Display image";
+public class MeasureSpotShape extends HCModule {
+    public static final String INPUT_OBJECTS = "Input spot objects";
+
 
     @Override
     public String getTitle() {
-        return "Show image";
-
+        return "Measure spot shape";
     }
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        String moduleName = this.getClass().getSimpleName();
-        if (verbose) System.out.println("["+moduleName+"] Initialising");
-
-        HCName imageName = parameters.getValue(DISPLAY_IMAGE);
-
-        workspace.getImages().get(imageName).getImagePlus().show();
 
     }
 
     @Override
     public void initialiseParameters() {
-        parameters.addParameter(new HCParameter(DISPLAY_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
 
     }
 

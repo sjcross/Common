@@ -68,10 +68,10 @@ public class MeasureImageTexture extends HCModule {
 
     @Override
     public void initialiseParameters() {
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
-        parameters.addParameter(new HCParameter(this,X_OFFSET, HCParameter.INTEGER,1));
-        parameters.addParameter(new HCParameter(this,Y_OFFSET, HCParameter.INTEGER,0));
-        parameters.addParameter(new HCParameter(this,Z_OFFSET, HCParameter.INTEGER,0));
+        parameters.addParameter(new HCParameter(INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(X_OFFSET, HCParameter.INTEGER,1));
+        parameters.addParameter(new HCParameter(Y_OFFSET, HCParameter.INTEGER,0));
+        parameters.addParameter(new HCParameter(Z_OFFSET, HCParameter.INTEGER,0));
 
     }
 

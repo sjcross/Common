@@ -40,8 +40,8 @@ public class MetadataExtractor extends HCModule {
 
     @Override
     public void initialiseParameters() {
-        parameters.addParameter(new HCParameter(this,FILENAME_EXTRACTOR, HCParameter.OBJECT,null));
-        parameters.addParameter(new HCParameter(this,FOLDERNAME_EXTRACTOR, HCParameter.OBJECT,null));
+        parameters.addParameter(new HCParameter(FILENAME_EXTRACTOR, HCParameter.OBJECT,null));
+        parameters.addParameter(new HCParameter(FOLDERNAME_EXTRACTOR, HCParameter.OBJECT,null));
 
     }
 

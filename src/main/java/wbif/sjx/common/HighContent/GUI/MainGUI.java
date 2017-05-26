@@ -83,13 +83,13 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         c.insets = new Insets(5,5,5,5);
         frame.add(paramsPanel,c);
 
-//        // Initialising the status panel
-//        initialiseStatusPanel();
-//        c.gridx = 0;
-//        c.gridy++;
-//        c.gridwidth = 3;
-//        c.insets = new Insets(0,5,5,5);
-//        frame.add(statusPanel,c);
+        // Initialising the status panel
+        initialiseStatusPanel();
+        c.gridx = 0;
+        c.gridy++;
+        c.gridwidth = 3;
+        c.insets = new Insets(0,5,5,5);
+        frame.add(statusPanel,c);
 
         // Final bits for listeners
         frame.addMouseListener(this);
@@ -224,6 +224,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         // Adding placeholder text
         JTextField textField = new JTextField("Select a module to edit its parameters");
+        textField.setFont(new Font(Font.SANS_SERIF,Font.BOLD,12));
         textField.setBorder(null);
         textField.setEditable(false);
         paramsPanel.add(textField);
@@ -604,7 +605,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
     }
 
-    private void startAnalysis() {
+    private void startAnalysis() throws IOException {
         // Initialising the workspace
         HCWorkspaceCollection workspaces = new HCWorkspaceCollection();
         HCWorkspace workspace;
@@ -620,16 +621,15 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         analysis.execute(workspace, true);
 
         // Exporting XLSX
-
         if (exportXLSX & !outputFilePath.equals("")) {
-            HCExporter exporter = new HCExporter(new File(outputFilePath), HCExporter.XLSX_EXPORT);
+            HCExporter exporter = new HCExporter(outputFilePath, HCExporter.XLSX_EXPORT);
             exporter.exportResults(workspaces, analysis);
 
         }
 
         // Exporting XML
         if (exportXML & !outputFilePath.equals("")) {
-            HCExporter exporter = new HCExporter(new File(outputFilePath), HCExporter.XML_EXPORT);
+            HCExporter exporter = new HCExporter(outputFilePath, HCExporter.XML_EXPORT);
             exporter.exportResults(workspaces, analysis);
 
         }
@@ -688,7 +688,13 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
                 loadAnalysis();
 
             } else if (((JButton) object).getText().equals(startAnalysisText)) {
-                t = new Thread(this::startAnalysis);
+                t = new Thread(() -> {
+                    try {
+                        startAnalysis();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
                 t.start();
 
             } else if (((JButton) object).getText().equals(stopAnalysisText)) {
@@ -781,7 +787,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             populateModuleParameters();
 
         } else if (((JComponent) object).getName().equals("OutputFilePath")) {
-            FileDialog fileDialog = new FileDialog(new Frame(), "Select output path", FileDialog.SAVE);
+            FileDialog fileDialog = new FileDialog(new Frame(), "Select file to save", FileDialog.SAVE);
             fileDialog.setMultipleMode(false);
             fileDialog.setVisible(true);
 

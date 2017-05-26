@@ -147,13 +147,13 @@ public class PlotMeasurementsScatter extends HCModule {
 
     @Override
     public void initialiseParameters() {
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,EXCLUDE_NAN,HCParameter.BOOLEAN,true));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT1,HCParameter.MEASUREMENT,null,null));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT2,HCParameter.MEASUREMENT,null,null));
-        parameters.addParameter(new HCParameter(this,INCLUDE_COLOUR,HCParameter.BOOLEAN,false,null));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT3,HCParameter.MEASUREMENT,null,null));
-        parameters.addParameter(new HCParameter(this,COLOURMAP,HCParameter.CHOICE_ARRAY,COLOURMAPS[0],COLOURMAPS));
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(EXCLUDE_NAN,HCParameter.BOOLEAN,true));
+        parameters.addParameter(new HCParameter(MEASUREMENT1,HCParameter.MEASUREMENT,null,null));
+        parameters.addParameter(new HCParameter(MEASUREMENT2,HCParameter.MEASUREMENT,null,null));
+        parameters.addParameter(new HCParameter(INCLUDE_COLOUR,HCParameter.BOOLEAN,false,null));
+        parameters.addParameter(new HCParameter(MEASUREMENT3,HCParameter.MEASUREMENT,null,null));
+        parameters.addParameter(new HCParameter(COLOURMAP,HCParameter.CHOICE_ARRAY,COLOURMAPS[0],COLOURMAPS));
 
     }
 

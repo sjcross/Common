@@ -90,11 +90,11 @@ public class IdentifySecondaryObjects extends HCModule {
 
     @Override
     public void initialiseParameters() {
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,MEDIAN_FILTER_RADIUS, HCParameter.DOUBLE,2.0));
-        parameters.addParameter(new HCParameter(this,THRESHOLD_METHOD, HCParameter.CHOICE_ARRAY,thresholdMethods[0],thresholdMethods));
+        parameters.addParameter(new HCParameter(INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(MEDIAN_FILTER_RADIUS, HCParameter.DOUBLE,2.0));
+        parameters.addParameter(new HCParameter(THRESHOLD_METHOD, HCParameter.CHOICE_ARRAY,thresholdMethods[0],thresholdMethods));
 
     }
 

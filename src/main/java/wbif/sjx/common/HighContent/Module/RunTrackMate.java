@@ -257,22 +257,22 @@ public class RunTrackMate extends HCModule {
 
     @Override
     public void initialiseParameters() {
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE,HCParameter.INPUT_IMAGE,null));
-        parameters.addParameter(new HCParameter(this, OUTPUT_SPOT_OBJECTS,HCParameter.OUTPUT_OBJECTS,new HCName("Spots")));
+        parameters.addParameter(new HCParameter(INPUT_IMAGE,HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter( OUTPUT_SPOT_OBJECTS,HCParameter.OUTPUT_OBJECTS,new HCName("Spots")));
 
-        parameters.addParameter(new HCParameter(this,CALIBRATED_UNITS,HCParameter.BOOLEAN,false));
-        parameters.addParameter(new HCParameter(this,DO_SUBPIXEL_LOCALIZATION,HCParameter.BOOLEAN,true));
-        parameters.addParameter(new HCParameter(this,DO_MEDIAN_FILTERING,HCParameter.BOOLEAN,false));
-        parameters.addParameter(new HCParameter(this,RADIUS,HCParameter.DOUBLE,2.0));
-        parameters.addParameter(new HCParameter(this,THRESHOLD,HCParameter.DOUBLE,5000.0));
+        parameters.addParameter(new HCParameter(CALIBRATED_UNITS,HCParameter.BOOLEAN,false));
+        parameters.addParameter(new HCParameter(DO_SUBPIXEL_LOCALIZATION,HCParameter.BOOLEAN,true));
+        parameters.addParameter(new HCParameter(DO_MEDIAN_FILTERING,HCParameter.BOOLEAN,false));
+        parameters.addParameter(new HCParameter(RADIUS,HCParameter.DOUBLE,2.0));
+        parameters.addParameter(new HCParameter(THRESHOLD,HCParameter.DOUBLE,5000.0));
 
-        parameters.addParameter(new HCParameter(this,DO_TRACKING,HCParameter.BOOLEAN,true));
-        parameters.addParameter(new HCParameter(this,LINKING_MAX_DISTANCE,HCParameter.DOUBLE,2.0));
-        parameters.addParameter(new HCParameter(this,GAP_CLOSING_MAX_DISTANCE,HCParameter.DOUBLE,2.0));
-        parameters.addParameter(new HCParameter(this,MAX_FRAME_GAP,HCParameter.INTEGER,3));
+        parameters.addParameter(new HCParameter(DO_TRACKING,HCParameter.BOOLEAN,true));
+        parameters.addParameter(new HCParameter(LINKING_MAX_DISTANCE,HCParameter.DOUBLE,2.0));
+        parameters.addParameter(new HCParameter(GAP_CLOSING_MAX_DISTANCE,HCParameter.DOUBLE,2.0));
+        parameters.addParameter(new HCParameter(MAX_FRAME_GAP,HCParameter.INTEGER,3));
 
-        parameters.addParameter(new HCParameter(this, CREATE_TRACK_OBJECTS,HCParameter.BOOLEAN,true));
-        parameters.addParameter(new HCParameter(this, OUTPUT_TRACK_OBJECTS,HCParameter.OUTPUT_OBJECTS,new HCName("Tracks")));
+        parameters.addParameter(new HCParameter(CREATE_TRACK_OBJECTS,HCParameter.BOOLEAN,true));
+        parameters.addParameter(new HCParameter(OUTPUT_TRACK_OBJECTS,HCParameter.OUTPUT_OBJECTS,new HCName("Tracks")));
 
     }
 

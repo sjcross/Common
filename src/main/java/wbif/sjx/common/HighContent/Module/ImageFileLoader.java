@@ -63,9 +63,9 @@ public class ImageFileLoader extends HCModule {
 
     @Override
     public void initialiseParameters() {
-        parameters.addParameter(new HCParameter(this,FILE_PATH,HCParameter.FILE_PATH,null));
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE,HCParameter.OUTPUT_IMAGE,null));
-        parameters.addParameter(new HCParameter(this,USE_BIOFORMATS,HCParameter.BOOLEAN,true));
+        parameters.addParameter(new HCParameter(FILE_PATH,HCParameter.FILE_PATH,null));
+        parameters.addParameter(new HCParameter(OUTPUT_IMAGE,HCParameter.OUTPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(USE_BIOFORMATS,HCParameter.BOOLEAN,true));
 
     }
 

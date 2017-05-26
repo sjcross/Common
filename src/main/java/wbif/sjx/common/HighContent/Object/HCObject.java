@@ -254,6 +254,7 @@ public class HCObject {
         // Removing itself as a child from its parent
         if (parent != null) {
             parent.removeChild(name,this);
+
         }
 
         // Removing itself as a parent from any children

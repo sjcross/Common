@@ -122,8 +122,8 @@ public class MeasureObjectCentroid extends HCModule {
 
     @Override
     public void initialiseParameters() {
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,CENTROID_METHOD, HCParameter.CHOICE_ARRAY,methodChoices[0],methodChoices));
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(CENTROID_METHOD, HCParameter.CHOICE_ARRAY,methodChoices[0],methodChoices));
 
     }
 

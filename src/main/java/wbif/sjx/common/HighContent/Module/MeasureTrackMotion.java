@@ -95,8 +95,8 @@ public class MeasureTrackMotion extends HCModule {
 
     @Override
     public void initialiseParameters() {
-        parameters.addParameter(new HCParameter(this, INPUT_TRACK_OBJECTS,HCParameter.INPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this, INPUT_SPOT_OBJECTS,HCParameter.CHILD_OBJECTS,null));
+        parameters.addParameter(new HCParameter( INPUT_TRACK_OBJECTS,HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter( INPUT_SPOT_OBJECTS,HCParameter.CHILD_OBJECTS,null));
 
     }
 
