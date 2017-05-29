@@ -29,7 +29,8 @@ public class MeasureObjectTexture extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Running object texture analysis");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting input image
         HCName inputImageName = parameters.getValue(INPUT_IMAGE);
@@ -57,18 +58,18 @@ public class MeasureObjectTexture extends HCModule {
         }
 
         // Running texture measurement
-        if (verbose) System.out.println("       Calculating co-occurance matrix");
-        if (verbose) System.out.println("           X-offset: "+xOffs);
-        if (verbose) System.out.println("           Y-offset: "+yOffs);
-        if (verbose) System.out.println("           Z-offset: "+zOffs);
+        if (verbose) System.out.println("["+moduleName+"] Calculating co-occurance matrix");
+        if (verbose) System.out.println("["+moduleName+"] X-offset: "+xOffs);
+        if (verbose) System.out.println("["+moduleName+"] Y-offset: "+yOffs);
+        if (verbose) System.out.println("["+moduleName+"] Z-offset: "+zOffs);
 
         TextureCalculator textureCalculator = new TextureCalculator();
 
         int nObjects = inputObjects.size();
         int iter = 1;
-        if (verbose) System.out.println("        Initialising measurements");
+        if (verbose) System.out.println("["+moduleName+"] Initialising measurements");
         for (HCObject object:inputObjects.values()) {
-            if (verbose) System.out.print("\r            Processing object "+(iter++)+" of "+nObjects);
+            if (verbose) System.out.println("["+moduleName+"] Processing object "+(iter++)+" of "+nObjects);
             ArrayList<int[]> coords = new ArrayList<>();
 
             ArrayList<Integer> x = object.getCoordinates(HCObject.X);
@@ -117,24 +118,20 @@ public class MeasureObjectTexture extends HCModule {
 
         }
 
-        if (verbose) System.out.println("\r        Measurements complete");
+        if (verbose) System.out.println("["+moduleName+"] Measurements complete");
 
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,POINT_MEASUREMENT,HCParameter.BOOLEAN,false));
-        parameters.addParameter(new HCParameter(this,CALIBRATED_RADIUS, HCParameter.BOOLEAN,false));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT_RADIUS, HCParameter.DOUBLE,10.0));
-        parameters.addParameter(new HCParameter(this,X_OFFSET, HCParameter.INTEGER,1));
-        parameters.addParameter(new HCParameter(this,Y_OFFSET, HCParameter.INTEGER,0));
-        parameters.addParameter(new HCParameter(this,Z_OFFSET, HCParameter.INTEGER,0));
-
-        return parameters;
+    public void initialiseParameters() {
+        parameters.addParameter(new HCParameter(INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(POINT_MEASUREMENT,HCParameter.BOOLEAN,false));
+        parameters.addParameter(new HCParameter(CALIBRATED_RADIUS, HCParameter.BOOLEAN,false));
+        parameters.addParameter(new HCParameter(MEASUREMENT_RADIUS, HCParameter.DOUBLE,10.0));
+        parameters.addParameter(new HCParameter(X_OFFSET, HCParameter.INTEGER,1));
+        parameters.addParameter(new HCParameter(Y_OFFSET, HCParameter.INTEGER,0));
+        parameters.addParameter(new HCParameter(Z_OFFSET, HCParameter.INTEGER,0));
 
     }
 
@@ -160,11 +157,12 @@ public class MeasureObjectTexture extends HCModule {
 
     @Override
     public void addMeasurements(HCMeasurementCollection measurements) {
-        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_ASM");
-        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_CONTRAST");
-        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_CORRELATION");
-        measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS),((HCName)parameters.getValue(INPUT_IMAGE)).getName()+"_ENTROPY");
-
+        if (parameters.getValue(INPUT_OBJECTS) != null) {
+            measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS), ((HCName) parameters.getValue(INPUT_IMAGE)).getName() + "_ASM");
+            measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS), ((HCName) parameters.getValue(INPUT_IMAGE)).getName() + "_CONTRAST");
+            measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS), ((HCName) parameters.getValue(INPUT_IMAGE)).getName() + "_CORRELATION");
+            measurements.addMeasurement(parameters.getValue(INPUT_OBJECTS), ((HCName) parameters.getValue(INPUT_IMAGE)).getName() + "_ENTROPY");
+        }
     }
 
     @Override

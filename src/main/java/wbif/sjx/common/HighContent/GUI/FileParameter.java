@@ -12,6 +12,7 @@ public class FileParameter extends JButton {
 
     public FileParameter(HCParameter parameter) {
         this.parameter = parameter;
+        setFocusPainted(false);
 
     }
 

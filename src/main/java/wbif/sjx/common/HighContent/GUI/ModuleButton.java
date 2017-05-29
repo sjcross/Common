@@ -15,6 +15,7 @@ public class ModuleButton extends JToggleButton {
 
     public ModuleButton(HCModule module) {
         this.module = module;
+        setFocusPainted(false);
         if (module != null) setText(module.getTitle());
 
     }

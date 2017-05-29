@@ -56,7 +56,6 @@ public abstract class HCAnalysis implements Serializable {
             module.execute(workspace,verbose);
 
             if (shutdown) {
-                if (verbose) System.out.println("Shutting system down");
                 break;
 
             }

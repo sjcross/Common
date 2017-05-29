@@ -31,7 +31,8 @@ public class IdentifySecondaryObjects extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("    Running secondary object identification");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting relevant parameters
         double medFiltR = parameters.getValue(MEDIAN_FILTER_RADIUS);
@@ -49,55 +50,51 @@ public class IdentifySecondaryObjects extends HCModule {
         HCName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
 
         // Getting nuclei objects as image
-        if (verbose) System.out.println("       Converting objects to image");
+        if (verbose) System.out.println("["+moduleName+"] Converting objects to image");
         ImagePlus image1 = new ObjectImageConverter().convertObjectsToImage(objects1,new HCName("Temp image"),inputImage2,true).getImagePlus();
 
         // Segmenting cell image
         // Filtering cell image
-        if (verbose) System.out.println("       Applying filter (radius = "+medFiltR+" px)");
+        if (verbose) System.out.println("["+moduleName+"] Applying filter (radius = "+medFiltR+" px)");
         image2.setStack(Filters3D.filter(image2.getImageStack(), Filters3D.MEDIAN, (float) medFiltR, (float) medFiltR,1));
 
         // Thresholded cell image
-        if (verbose) System.out.println("       Applying threshold (method = "+thrMeth+")");
+        if (verbose) System.out.println("["+moduleName+"] Applying threshold (method = "+thrMeth+")");
         Auto_Threshold auto_threshold = new Auto_Threshold();
         Object[] results2 = auto_threshold.exec(image2,thrMeth,true,false,true,true,false,true);
         ImagePlus imMask = Threshold.threshold(image2,(Integer) results2[0],Integer.MAX_VALUE);
 
         // Gradient of cell image
-        if (verbose) System.out.println("       Calculating gradient image");
+        if (verbose) System.out.println("["+moduleName+"] Calculating gradient image");
         Strel3D strel3D = Strel3D.Shape.BALL.fromRadius(1);
         image2 = new MorphologicalFilter3DPlugin().process(image2, Morphology.Operation.INTERNAL_GRADIENT, strel3D);
 
         // Getting the labelled cells
-        if (verbose) System.out.println("       Applying watershed segmentation");
+        if (verbose) System.out.println("["+moduleName+"] Applying watershed segmentation");
         ImagePlus im2 = Watershed.computeWatershed(image2,image1,imMask,8,false,false);
 
         // Converting the labelled cell image to objects
-        if (verbose) System.out.println("       Converting image to objects");
+        if (verbose) System.out.println("["+moduleName+"] Converting image to objects");
         HCImage tempImage = new HCImage(new HCName("Temp image"),im2);
         HCObjectSet objects2 = new ObjectImageConverter().convertImageToObjects(tempImage,outputObjectsName);
 
         // Watershed will give one cell per nucleus and these should already have the same labelling number.
-        if (verbose) System.out.println("       Linking primary and secondary objects by ID number");
+        if (verbose) System.out.println("["+moduleName+"] Linking primary and secondary objects by ID number");
         new ObjectLinker().linkMatchingIDs(objects1,objects2);
 
         // Adding objects to workspace
-        if (verbose) System.out.println("       Adding objects ("+outputObjectsName.getName()+") to workspace");
+        if (verbose) System.out.println("["+moduleName+"] Adding objects ("+outputObjectsName.getName()+") to workspace");
         workspace.addObjects(objects2);
 
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,MEDIAN_FILTER_RADIUS, HCParameter.DOUBLE,2.0));
-        parameters.addParameter(new HCParameter(this,THRESHOLD_METHOD, HCParameter.CHOICE_ARRAY,thresholdMethods[0],thresholdMethods));
-
-        return parameters;
+    public void initialiseParameters() {
+        parameters.addParameter(new HCParameter(INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(MEDIAN_FILTER_RADIUS, HCParameter.DOUBLE,2.0));
+        parameters.addParameter(new HCParameter(THRESHOLD_METHOD, HCParameter.CHOICE_ARRAY,thresholdMethods[0],thresholdMethods));
 
     }
 

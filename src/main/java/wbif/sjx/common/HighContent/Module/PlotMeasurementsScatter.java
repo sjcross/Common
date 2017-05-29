@@ -1,3 +1,5 @@
+// TODO: Add NaN exclusion for 2D plot (will have to remove items from an array (may involve intermediate ArrayLists)
+
 package wbif.sjx.common.HighContent.Module;
 
 import ij.gui.Plot;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
  */
 public class PlotMeasurementsScatter extends HCModule {
     public static final String INPUT_OBJECTS = "Input objects";
+    public static final String EXCLUDE_NAN = "Exclude NaN measurements";
     public static final String MEASUREMENT1 = "First measurement (X)";
     public static final String MEASUREMENT2 = "Second measurement (Y)";
     public static final String INCLUDE_COLOUR = "Add third measurement as colour";
@@ -46,13 +49,15 @@ public class PlotMeasurementsScatter extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Plotting measurements as scatter");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting input objects
         HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
 
         // Getting parameters
+        boolean excludeNaN = parameters.getValue(EXCLUDE_NAN);
         boolean useColour = parameters.getValue(INCLUDE_COLOUR);
         String colourmap = null;
         if (useColour) colourmap = parameters.getValue(COLOURMAP);
@@ -69,7 +74,7 @@ public class PlotMeasurementsScatter extends HCModule {
         double[] measurementValues3 = null;
         if (useColour) measurementValues3 = new double[inputObjects.size()];
 
-        if (verbose) System.out.println("        Getting measurements to plot");
+        if (verbose) System.out.println("["+moduleName+"] Getting measurements to plot");
         int iter = 0;
         CumStat cs = new CumStat(2);
         for (HCObject inputObject:inputObjects.values()) {
@@ -87,7 +92,7 @@ public class PlotMeasurementsScatter extends HCModule {
 
         // Creating the scatter plot
         if (useColour) {
-            if (verbose) System.out.println("        Plotting "+measurement1+", " + measurement2+" and "+measurement3);
+            if (verbose) System.out.println("["+moduleName+"] Plotting "+measurement1+", " + measurement2+" and "+measurement3);
 
             String title = "Scatter plot of " + measurement1 + ", " + measurement2+" and "+measurement3;
             Plot plot = new Plot(title, measurement1, measurement2);
@@ -104,8 +109,15 @@ public class PlotMeasurementsScatter extends HCModule {
             for (int i=0;i<measurementValues1.length;i++) {
                 // Adding the current point (with its assigned colour)
                 plot.setColor(colors[i],colors[i]);
-                plot.addPoints(new double[]{measurementValues1[i]},new double[]{measurementValues2[i]},Plot.CIRCLE);
 
+                if (excludeNaN) {
+                    if (measurementValues1[i] != Double.NaN & measurementValues2[i] != Double.NaN & measurementValues3[i] != Double.NaN)
+                    plot.addPoints(new double[]{measurementValues1[i]}, new double[]{measurementValues2[i]}, Plot.CIRCLE);
+
+                } else {
+                    plot.addPoints(new double[]{measurementValues1[i]}, new double[]{measurementValues2[i]}, Plot.CIRCLE);
+
+                }
             }
 
             // Setting plot limits
@@ -115,7 +127,7 @@ public class PlotMeasurementsScatter extends HCModule {
             plot.show();
 
         } else {
-            if (verbose) System.out.println("        Plotting "+measurement1+" and "+measurement2);
+            if (verbose) System.out.println("["+moduleName+"] Plotting "+measurement1+" and "+measurement2);
 
             // Creating the plot
             String title = "Scatter plot of " + measurement1 + " and " + measurement2;
@@ -134,17 +146,14 @@ public class PlotMeasurementsScatter extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT1,HCParameter.MEASUREMENT,null,null));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT2,HCParameter.MEASUREMENT,null,null));
-        parameters.addParameter(new HCParameter(this,INCLUDE_COLOUR,HCParameter.BOOLEAN,false,null));
-        parameters.addParameter(new HCParameter(this,MEASUREMENT3,HCParameter.MEASUREMENT,null,null));
-        parameters.addParameter(new HCParameter(this,COLOURMAP,HCParameter.CHOICE_ARRAY,COLOURMAPS[0],COLOURMAPS));
-
-        return parameters;
+    public void initialiseParameters() {
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(EXCLUDE_NAN,HCParameter.BOOLEAN,true));
+        parameters.addParameter(new HCParameter(MEASUREMENT1,HCParameter.MEASUREMENT,null,null));
+        parameters.addParameter(new HCParameter(MEASUREMENT2,HCParameter.MEASUREMENT,null,null));
+        parameters.addParameter(new HCParameter(INCLUDE_COLOUR,HCParameter.BOOLEAN,false,null));
+        parameters.addParameter(new HCParameter(MEASUREMENT3,HCParameter.MEASUREMENT,null,null));
+        parameters.addParameter(new HCParameter(COLOURMAP,HCParameter.CHOICE_ARRAY,COLOURMAPS[0],COLOURMAPS));
 
     }
 
@@ -152,6 +161,7 @@ public class PlotMeasurementsScatter extends HCModule {
     public HCParameterCollection getActiveParameters() {
         HCParameterCollection returnedParameters = new HCParameterCollection();
         returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
+        returnedParameters.addParameter(parameters.getParameter(EXCLUDE_NAN));
         returnedParameters.addParameter(parameters.getParameter(MEASUREMENT1));
         returnedParameters.addParameter(parameters.getParameter(MEASUREMENT2));
 

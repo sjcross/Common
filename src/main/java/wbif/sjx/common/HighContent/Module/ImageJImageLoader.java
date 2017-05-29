@@ -18,26 +18,23 @@ public class ImageJImageLoader extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Loading image from ImageJ");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting image
         HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
         ImagePlus imagePlus = IJ.getImage();
 
         // Adding image to workspace
-        if (verbose) System.out.println("       Adding image ("+outputImageName+") to workspace");
+        if (verbose) System.out.println("["+moduleName+"] Adding image ("+outputImageName+") to workspace");
         HCImage outputImage = new HCImage(outputImageName, imagePlus);
         workspace.addImage(outputImage);
 
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
-
-        return parameters;
+    public void initialiseParameters() {
+        parameters.addParameter(new HCParameter(OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
 
     }
 

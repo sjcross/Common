@@ -90,7 +90,6 @@ public class HCParameter implements Serializable {
      */
     public final static int OBJECT = 13;
 
-    private final HCModule module;
     private final String name;
     private final int type;
     private Object valueSource; // Where the possible values come from (used for CHOICE_ARRAY and MEASUREMENT)
@@ -100,8 +99,7 @@ public class HCParameter implements Serializable {
 
     // CONSTRUCTORS
 
-    public HCParameter(HCModule module, String name, int type, Object value, Object valueSource) {
-        this.module = module;
+    public HCParameter(String name, int type, Object value, Object valueSource) {
         this.type = type;
         this.name = name;
         this.value = value;
@@ -109,8 +107,7 @@ public class HCParameter implements Serializable {
 
     }
 
-    public HCParameter(HCModule module, String name, int type, Object value) {
-        this.module = module;
+    public HCParameter(String name, int type, Object value) {
         this.type = type;
         this.name = name;
         this.value = value;
@@ -119,10 +116,6 @@ public class HCParameter implements Serializable {
 
 
     // GETTERS AND SETTERS
-
-    public Object getModule() {
-        return module;
-    }
 
     public String getName() {
         return name;

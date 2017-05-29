@@ -26,8 +26,8 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     private static final String moveModuleDownText = "▼";
     private static final String startAnalysisText = "✓";
     private static final String stopAnalysisText = "✕";
-    private static final String saveAnalysis = "S";
-    private static final String loadAnalysis = "L";
+    private static final String saveAnalysis = "Save";
+    private static final String loadAnalysis = "Load";
 
     private int frameWidth = 1100;
     private int frameHeight = 750;
@@ -35,8 +35,10 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
     private HCModule activeModule = null;
     private Frame frame = new JFrame();
+    private JPanel controlPanel = new JPanel();
     private JPanel modulesPanel = new JPanel();
     private JPanel paramsPanel = new JPanel();
+    private JPanel statusPanel = new JPanel();
     JPopupMenu moduleListMenu = new JPopupMenu();
     Thread t = null;
 
@@ -53,7 +55,11 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
     }
 
     public MainGUI() throws InstantiationException, IllegalAccessException {
-        frame.setLayout(new FlowLayout());
+        frame.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5,5,5,0);
+        c.gridx = 0;
+        c.gridy = 0;
 
         // Setting location of panel
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -63,30 +69,42 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         listAvailableModules();
 
         // Creating buttons to add and remove modules
-        JPanel addRemovePanel = createAddRemoveModulePanel();
-        frame.add(addRemovePanel);
+        initialiseControlPanel();
+        frame.add(controlPanel,c);
 
-        // Populating the module list
-        populateModuleList();
-        frame.add(modulesPanel);
+        // Initialising the module list
+        initialisingModulesPanel();
+        c.gridx++;
+        frame.add(modulesPanel,c);
 
         // Initialising the parameters panel
         initialiseParametersPanel();
-        frame.add(paramsPanel);
+        c.gridx++;
+        c.insets = new Insets(5,5,5,5);
+        frame.add(paramsPanel,c);
 
+        // Initialising the status panel
+        initialiseStatusPanel();
+        c.gridx = 0;
+        c.gridy++;
+        c.gridwidth = 3;
+        c.insets = new Insets(0,5,5,5);
+        frame.add(statusPanel,c);
+
+        // Final bits for listeners
         frame.addMouseListener(this);
         frame.setVisible(true);
         frame.pack();
 
     }
 
-    private JPanel createAddRemoveModulePanel() {
+    private void initialiseControlPanel() {
         int buttonSize = 50;
 
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(buttonSize + 15, frameHeight));
-        panel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        panel.setLayout(new GridBagLayout());
+        controlPanel = new JPanel();
+        controlPanel.setPreferredSize(new Dimension(buttonSize + 15, frameHeight-50));
+        controlPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        controlPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
@@ -98,84 +116,149 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         JButton addModuleButton = new JButton(addModuleText);
         addModuleButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         addModuleButton.addActionListener(this);
+        addModuleButton.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,20));
+        addModuleButton.setMargin(new Insets(0,0,0,0));
+        addModuleButton.setFocusPainted(false);
         addModuleButton.setName("ControlButton");
-        panel.add(addModuleButton, c);
+        addModuleButton.setMargin(new Insets(0,0,0,0));
+        controlPanel.add(addModuleButton, c);
 
         // Remove module button
         JButton removeModuleButton = new JButton(removeModuleText);
         removeModuleButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         removeModuleButton.addActionListener(this);
+        removeModuleButton.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,20));
+        removeModuleButton.setMargin(new Insets(0,0,0,0));
+        removeModuleButton.setFocusPainted(false);
         removeModuleButton.setName("ControlButton");
         c.gridy++;
-        panel.add(removeModuleButton, c);
+        controlPanel.add(removeModuleButton, c);
 
         // Move module up button
         JButton moveModuleUpButton = new JButton(moveModuleUpText);
         moveModuleUpButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         moveModuleUpButton.addActionListener(this);
+        moveModuleUpButton.setFont(new Font(Font.SANS_SERIF,Font.BOLD,16));
+        moveModuleUpButton.setMargin(new Insets(0,0,0,0));
+        moveModuleUpButton.setFocusPainted(false);
         moveModuleUpButton.setName("ControlButton");
         c.gridy++;
-        panel.add(moveModuleUpButton, c);
+        controlPanel.add(moveModuleUpButton, c);
 
         // Move module up button
         JButton moveModuleDownButton = new JButton(moveModuleDownText);
         moveModuleDownButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         moveModuleDownButton.addActionListener(this);
+        moveModuleDownButton.setFont(new Font(Font.SANS_SERIF,Font.BOLD,16));
+        moveModuleDownButton.setMargin(new Insets(0,0,0,0));
+        moveModuleDownButton.setFocusPainted(false);
         moveModuleDownButton.setName("ControlButton");
         c.gridy++;
-        panel.add(moveModuleDownButton, c);
+        controlPanel.add(moveModuleDownButton, c);
 
         // Load analysis protocol button
         JButton loadAnalysisButton = new JButton(loadAnalysis);
         loadAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         loadAnalysisButton.addActionListener(this);
+        loadAnalysisButton.setFocusPainted(false);
+        loadAnalysisButton.setMargin(new Insets(0,0,0,0));
         loadAnalysisButton.setName("ControlButton");
         c.gridy++;
         c.weighty = 1;
         c.anchor = GridBagConstraints.PAGE_END;
-        panel.add(loadAnalysisButton, c);
+        controlPanel.add(loadAnalysisButton, c);
 
         // Save analysis protocol button
         JButton saveAnalysisButton = new JButton(saveAnalysis);
         saveAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         saveAnalysisButton.addActionListener(this);
+        saveAnalysisButton.setFocusPainted(false);
+        saveAnalysisButton.setMargin(new Insets(0,0,0,0));
         saveAnalysisButton.setName("ControlButton");
         c.gridy++;
         c.weighty = 0;
-        panel.add(saveAnalysisButton, c);
+        controlPanel.add(saveAnalysisButton, c);
 
         // Start analysis button
         JButton startAnalysisButton = new JButton(startAnalysisText);
         startAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         startAnalysisButton.addActionListener(this);
+        startAnalysisButton.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,16));
+        startAnalysisButton.setMargin(new Insets(0,0,0,0));
+        startAnalysisButton.setFocusPainted(false);
         startAnalysisButton.setName("ControlButton");
         c.gridy++;
-        panel.add(startAnalysisButton, c);
+        controlPanel.add(startAnalysisButton, c);
 
         // Stop analysis button
         JButton stopAnalysisButton = new JButton(stopAnalysisText);
         stopAnalysisButton.setPreferredSize(new Dimension(buttonSize, buttonSize));
         stopAnalysisButton.addActionListener(this);
+        stopAnalysisButton.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,16));
+        stopAnalysisButton.setMargin(new Insets(0,0,0,0));
+        stopAnalysisButton.setFocusPainted(false);
         stopAnalysisButton.setName("ControlButton");
         c.gridy++;
-        panel.add(stopAnalysisButton, c);
+        controlPanel.add(stopAnalysisButton, c);
 
-        panel.validate();
-        panel.repaint();
+        controlPanel.validate();
+        controlPanel.repaint();
 
-        return panel;
+    }
+
+    private void initialisingModulesPanel() {
+        int buttonWidth = 300;
+
+        // Initialising the panel for module buttons
+        modulesPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        modulesPanel.setPreferredSize(new Dimension(buttonWidth + 15, frameHeight-50));
+        modulesPanel.setLayout(new GridBagLayout());
+    }
+
+    private void initialiseParametersPanel() {
+        paramsPanel.removeAll();
+
+        paramsPanel.setLayout(new GridBagLayout());
+        paramsPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        paramsPanel.setPreferredSize(new Dimension(700, frameHeight-50));
+
+        // Adding placeholder text
+        JTextField textField = new JTextField("Select a module to edit its parameters");
+        textField.setFont(new Font(Font.SANS_SERIF,Font.BOLD,12));
+        textField.setBorder(null);
+        textField.setEditable(false);
+        paramsPanel.add(textField);
+
+        paramsPanel.validate();
+        paramsPanel.repaint();
+
+    }
+
+    private void initialiseStatusPanel() {
+        statusPanel.setPreferredSize(new Dimension(1090,40));
+        statusPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        statusPanel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5,5,5,5);
+
+        JTextField textField = new JTextField();
+        textField.setBackground(null);
+        textField.setPreferredSize(new Dimension(1070,25));
+        textField.setBorder(null);
+        textField.setText("Modular image analysis (version "+getClass().getPackage().getImplementationVersion()+")");
+        textField.setFont(new Font(Font.SANS_SERIF,Font.BOLD,12));
+        statusPanel.add(textField,c);
+
+
+        OutputStreamTextField outputStreamTextField = new OutputStreamTextField(textField);
+        PrintStream printStream = new PrintStream(outputStreamTextField);
+        System.setOut(printStream);
 
     }
 
     private void populateModuleList() {
-        int buttonWidth = 300;
-
         modulesPanel.removeAll();
 
-        // Initialising the panel for module buttons
-        modulesPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        modulesPanel.setPreferredSize(new Dimension(buttonWidth + 15, frameHeight));
-        modulesPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
@@ -214,24 +297,6 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         modulesPanel.validate();
         modulesPanel.repaint();
-
-    }
-
-    private void initialiseParametersPanel() {
-        paramsPanel.removeAll();
-
-        paramsPanel.setLayout(new GridBagLayout());
-        paramsPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        paramsPanel.setPreferredSize(new Dimension(700, frameHeight));
-
-        // Adding placeholder text
-        JTextField textField = new JTextField("Select a module to edit its parameters");
-        textField.setBorder(null);
-        textField.setEditable(false);
-        paramsPanel.add(textField);
-
-        paramsPanel.validate();
-        paramsPanel.repaint();
 
     }
 
@@ -419,7 +484,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         // Select export type
         JCheckBox xmlCheck = new JCheckBox("Export XML");
         xmlCheck.addActionListener(this);
-        xmlCheck.setSelected(false);
+        xmlCheck.setSelected(exportXML);
         xmlCheck.setName("XMLCheck");
         c.gridx = 0;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -428,7 +493,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         JCheckBox xlsxCheck = new JCheckBox("Export XLSX");
         xlsxCheck.addActionListener(this);
-        xlsxCheck.setSelected(true);
+        xlsxCheck.setSelected(exportXLSX);
         xlsxCheck.setName("XLSXCheck");
         c.gridy++;
         c.weighty = 1;
@@ -507,18 +572,24 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
         fileDialog.setMultipleMode(false);
         fileDialog.setVisible(true);
 
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileDialog.getFiles()[0]));
+        String outputFileName = fileDialog.getFiles()[0].getAbsolutePath();
+        if (!FilenameUtils.getExtension(outputFileName).equals("mia")) {
+            outputFileName = FilenameUtils.removeExtension(outputFileName)+".mia";
+        }
+
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(outputFileName));
 
         outputStream.writeObject(analysis);
         outputStream.close();
 
-        JOptionPane.showMessageDialog(null, "File saved", "File saved", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("File saved ("+FilenameUtils.getName(outputFileName)+")");
 
     }
 
     private void loadAnalysis() throws IOException, ClassNotFoundException {
         FileDialog fileDialog = new FileDialog(new Frame(), "Select file to save", FileDialog.LOAD);
         fileDialog.setMultipleMode(false);
+        fileDialog.setFile("*.mia");
         fileDialog.setVisible(true);
 
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileDialog.getFiles()[0]));
@@ -530,9 +601,12 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         populateModuleList();
 
+        System.out.println("File loaded ("+FilenameUtils.getName(fileDialog.getFiles()[0].getName())+")");
+
     }
 
-    private void startAnalysis() {
+    private void startAnalysis() throws IOException {
+        // Initialising the workspace
         HCWorkspaceCollection workspaces = new HCWorkspaceCollection();
         HCWorkspace workspace;
         if (!inputFilePath.equals("")) {
@@ -548,17 +622,18 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
 
         // Exporting XLSX
         if (exportXLSX & !outputFilePath.equals("")) {
-            HCExporter exporter = new HCExporter(new File(outputFilePath), HCExporter.XLSX_EXPORT);
+            HCExporter exporter = new HCExporter(outputFilePath, HCExporter.XLSX_EXPORT);
             exporter.exportResults(workspaces, analysis);
 
         }
 
         // Exporting XML
         if (exportXML & !outputFilePath.equals("")) {
-            HCExporter exporter = new HCExporter(new File(outputFilePath), HCExporter.XML_EXPORT);
+            HCExporter exporter = new HCExporter(outputFilePath, HCExporter.XML_EXPORT);
             exporter.exportResults(workspaces, analysis);
 
         }
+
     }
 
     private void selectModule(HCModule module) {
@@ -613,10 +688,17 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
                 loadAnalysis();
 
             } else if (((JButton) object).getText().equals(startAnalysisText)) {
-                t = new Thread(this::startAnalysis);
+                t = new Thread(() -> {
+                    try {
+                        startAnalysis();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
                 t.start();
 
             } else if (((JButton) object).getText().equals(stopAnalysisText)) {
+                System.out.println("Shutting system down");
                 analysis.shutdown();
 
             }
@@ -705,7 +787,7 @@ public class MainGUI implements ActionListener, FocusListener, MouseListener {
             populateModuleParameters();
 
         } else if (((JComponent) object).getName().equals("OutputFilePath")) {
-            FileDialog fileDialog = new FileDialog(new Frame(), "Select output path", FileDialog.SAVE);
+            FileDialog fileDialog = new FileDialog(new Frame(), "Select file to save", FileDialog.SAVE);
             fileDialog.setMultipleMode(false);
             fileDialog.setVisible(true);
 

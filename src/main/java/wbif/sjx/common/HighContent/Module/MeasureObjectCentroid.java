@@ -57,7 +57,8 @@ public class MeasureObjectCentroid extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Measuring object centroids");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting current objects
         HCName inputObjectName = parameters.getValue(INPUT_OBJECTS);
@@ -67,7 +68,7 @@ public class MeasureObjectCentroid extends HCModule {
         String choice = parameters.getValue(CENTROID_METHOD);
         boolean useMean = choice.equals(MEAN) | choice.equals(ALL);
         boolean useMedian = choice.equals(MEDIAN) | choice.equals(ALL);
-        if (verbose) System.out.println("       Calculating centroid as "+choice);
+        if (verbose) System.out.println("["+moduleName+"] Calculating centroid as "+choice);
 
         // Getting the centroids of each and saving them to the objects
         for (HCObject object:inputObjects.values()) {
@@ -120,13 +121,9 @@ public class MeasureObjectCentroid extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,CENTROID_METHOD, HCParameter.CHOICE_ARRAY,methodChoices[0],methodChoices));
-
-        return parameters;
+    public void initialiseParameters() {
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(CENTROID_METHOD, HCParameter.CHOICE_ARRAY,methodChoices[0],methodChoices));
 
     }
 

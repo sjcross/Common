@@ -14,13 +14,13 @@ import java.io.Serializable;
  * Created by sc13967 on 02/05/2017.
  */
 public abstract class HCModule implements Serializable {
-    public HCParameterCollection parameters = null;
+    public HCParameterCollection parameters = new HCParameterCollection();
 
 
     // CONSTRUCTOR
 
     public HCModule() {
-        parameters = initialiseParameters();
+        initialiseParameters();
 
     }
 
@@ -37,7 +37,7 @@ public abstract class HCModule implements Serializable {
      * operation is included in the method.
      * @return
      */
-    public abstract HCParameterCollection initialiseParameters();
+    public abstract void initialiseParameters();
 
     /**
      * Return a ParameterCollection of the currently active parameters.  This is run each time a parameter is changed.

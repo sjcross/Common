@@ -14,6 +14,7 @@ import java.util.LinkedHashMap;
 public class ApplyManualClassification extends HCModule {
     public static final String INPUT_OBJECTS = "Input objects";
     public static final String CLASSIFICATION_FILE = "Classification file";
+    public static final String REMOVE_MISSING = "Remove objects without classification";
 
     @Override
     public String getTitle() {
@@ -23,7 +24,8 @@ public class ApplyManualClassification extends HCModule {
 
     @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Applying manual classifications");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting input objects
         HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
@@ -55,13 +57,25 @@ public class ApplyManualClassification extends HCModule {
                 }
             }
 
-            // Removing objects that don't have an assigned class (first removing the parent-child relationships)
-            for (HCObject object:inputObjects.values()) {
-                if (object.getMeasurement("CLASS") == null) {
-                    object.removeRelationships(inputObjectsName);
+            // Removing objects that don't have an assigned class (first removing the parent-child relationships).
+            // Otherwise, the class measurement is set to Double.NaN
+            if (parameters.getValue(REMOVE_MISSING)) {
+                for (HCObject object : inputObjects.values()) {
+                    if (object.getMeasurement(HCMeasurement.CLASS) == null) {
+                        object.removeRelationships(inputObjectsName);
+                    }
+                }
+                inputObjects.entrySet().removeIf(entry -> entry.getValue().getMeasurement(HCMeasurement.CLASS) == null);
+
+            } else {
+                for (HCObject object : inputObjects.values()) {
+                    if (object.getMeasurement(HCMeasurement.CLASS) == null) {
+                        HCMeasurement objClass = new HCMeasurement(HCMeasurement.CLASS,Double.NaN);
+                        objClass.setSource(this);
+                        object.addMeasurement(objClass);
+                    }
                 }
             }
-            inputObjects.entrySet().removeIf(entry -> entry.getValue().getMeasurement("CLASS") == null);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,19 +83,21 @@ public class ApplyManualClassification extends HCModule {
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
-        parameters.addParameter(new HCParameter(this,CLASSIFICATION_FILE,HCParameter.FILE_PATH,null));
-
-        return parameters;
+    public void initialiseParameters() {
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS,HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(CLASSIFICATION_FILE,HCParameter.FILE_PATH,null));
+        parameters.addParameter(new HCParameter(REMOVE_MISSING,HCParameter.BOOLEAN,false));
 
     }
 
     @Override
     public HCParameterCollection getActiveParameters() {
-        return parameters;
+        HCParameterCollection returnedParameters = new HCParameterCollection();
+        returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
+        returnedParameters.addParameter(parameters.getParameter(CLASSIFICATION_FILE));
+        returnedParameters.addParameter(parameters.getParameter(REMOVE_MISSING));
+
+        return returnedParameters;
 
     }
 

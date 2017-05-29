@@ -1,5 +1,8 @@
+// TODO: Get measurements to export from analysis.getModules().getMeasurements().get(HCName) for each object
+
 package wbif.sjx.common.HighContent.Process;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -18,7 +21,6 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -34,14 +36,15 @@ public class HCExporter {
     public static final int JSON_EXPORT = 2;
 
     private int exportMode = XLSX_EXPORT;
-    private File rootFolder;
+
+    private String exportFilePath;
     private boolean verbose = false;
 
 
     // CONSTRUCTOR
 
-    public HCExporter(File rootFolder, int exportMode) {
-        this.rootFolder = rootFolder;
+    public HCExporter(String exportFilePath,int exportMode) {
+        this.exportFilePath = exportFilePath;
         this.exportMode = exportMode;
 
     }
@@ -49,12 +52,7 @@ public class HCExporter {
 
     // PUBLIC METHODS
 
-    public void exportResults(HCWorkspaceCollection workspaces) {
-        exportResults(workspaces,null);
-
-    }
-
-    public void exportResults(HCWorkspaceCollection workspaces, HCAnalysis analysis) {
+    public void exportResults(HCWorkspaceCollection workspaces, HCAnalysis analysis) throws IOException {
         if (exportMode == XML_EXPORT) {
             exportXML(workspaces,analysis);
 
@@ -173,7 +171,7 @@ public class HCExporter {
             }
 
             // Preparing the filepath and filename
-            String outPath = rootFolder+"\\"+"output.xml";
+            String outPath = FilenameUtils.removeExtension(exportFilePath) +".xml";
 
             // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -208,12 +206,8 @@ public class HCExporter {
                 // For the first parameter in a module, adding the name
                 if (first) {
                     Attr nameAttr = doc.createAttribute("NAME");
-                    nameAttr.appendChild(doc.createTextNode(currParam.getModule().getClass().getName()));
+                    nameAttr.appendChild(doc.createTextNode(module.getClass().getSimpleName()));
                     moduleElement.setAttributeNode(nameAttr);
-
-                    Attr hashAttr = doc.createAttribute("HASH");
-                    hashAttr.appendChild(doc.createTextNode(String.valueOf(currParam.getModule().hashCode())));
-                    moduleElement.setAttributeNode(hashAttr);
 
                     first = false;
                 }
@@ -242,7 +236,7 @@ public class HCExporter {
 
     }
 
-    private void exportXLSX(HCWorkspaceCollection workspaces, HCAnalysis analysis) {
+    private void exportXLSX(HCWorkspaceCollection workspaces, HCAnalysis analysis) throws IOException {
         // Getting modules
         HCModuleCollection modules = analysis.getModules();
 
@@ -252,22 +246,17 @@ public class HCExporter {
         // Adding relevant sheets
         prepareParametersXLSX(workbook,modules);
         prepareMetadataXLSX(workbook,workspaces);
-        prepareImagesXLSX(workbook,workspaces);
-        prepareObjectsXLSX(workbook,workspaces);
+        prepareImagesXLSX(workbook,workspaces,modules);
+        prepareObjectsXLSX(workbook,workspaces,modules);
 
         // Writing the workbook to file
-        try {
-            String outPath = rootFolder+"\\"+"output.xlsx";
-            FileOutputStream outputStream = new FileOutputStream(outPath);
-            workbook.write(outputStream);
-            workbook.close();
+        String outPath = FilenameUtils.removeExtension(exportFilePath) +".xlsx";
+        FileOutputStream outputStream = new FileOutputStream(outPath);
+        workbook.write(outputStream);
+        workbook.close();
 
-            if (verbose) System.out.println("Saved "+ outPath);
+        if (verbose) System.out.println("Saved "+ outPath);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
     }
 
     private void prepareParametersXLSX(XSSFWorkbook workbook, HCModuleCollection modules) {
@@ -305,7 +294,7 @@ public class HCExporter {
                 valueValueCell.setCellValue(currParam.getValue().toString());
 
                 Cell moduleValueCell = row.createCell(paramCol);
-                moduleValueCell.setCellValue(currParam.getModule().getClass().getName());
+                moduleValueCell.setCellValue(module.getClass().getSimpleName());
 
             }
 
@@ -363,7 +352,7 @@ public class HCExporter {
         }
     }
 
-    private void prepareImagesXLSX(XSSFWorkbook workbook, HCWorkspaceCollection workspaces) {
+    private void prepareImagesXLSX(XSSFWorkbook workbook, HCWorkspaceCollection workspaces, HCModuleCollection modules) {
         // Basing column names on the first workspace in the WorkspaceCollection
         HCWorkspace exampleWorkspace = workspaces.get(0);
 
@@ -390,10 +379,12 @@ public class HCExporter {
                     Cell IDHeaderCell = imageHeaderRow.createCell(col++);
                     IDHeaderCell.setCellValue("ANALYSIS_ID");
 
-                    for (HCMeasurement measurement : image.getSingleMeasurements().values()) {
+                    String[] measurementNames = modules.getMeasurements().getMeasurementNames(imageName);
+                    // Adding measurement headers
+                    for (String measurementName : measurementNames) {
                         Cell measHeaderCell = imageHeaderRow.createCell(col++);
-                        String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
+
                     }
                 }
             }
@@ -424,7 +415,7 @@ public class HCExporter {
         }
     }
 
-    private void prepareObjectsXLSX(XSSFWorkbook workbook,HCWorkspaceCollection workspaces) {
+    private void prepareObjectsXLSX(XSSFWorkbook workbook,HCWorkspaceCollection workspaces, HCModuleCollection modules) {
         // Basing column names on the first workspace in the WorkspaceCollection
         HCWorkspace exampleWorkspace = workspaces.get(0);
 
@@ -435,7 +426,8 @@ public class HCExporter {
 
             // Using the first workspace in the WorkspaceCollection to initialise column headers
             for (HCName objectName : exampleWorkspace.getObjects().keySet()) {
-                HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
+
+                HCObjectSet objects = exampleWorkspace.getObjects().get(objectName);
 
                 if (objects.values().iterator().next().getMeasurements().size() != 0) {
                     // Creating relevant sheet prefixed with "IM"
@@ -467,10 +459,10 @@ public class HCExporter {
 
                     }
 
+                    String[] measurementNames = modules.getMeasurements().getMeasurementNames(objectName);
                     // Adding measurement headers
-                    for (HCMeasurement measurement : object.getMeasurements().values()) {
+                    for (String measurementName : measurementNames) {
                         Cell measHeaderCell = objectHeaderRow.createCell(col++);
-                        String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
 
                     }
@@ -480,7 +472,7 @@ public class HCExporter {
             // Running through each Workspace, adding rows
             for (HCWorkspace workspace : workspaces) {
                 for (HCName objectName : exampleWorkspace.getObjects().keySet()) {
-                    HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
+                    HCObjectSet objects = exampleWorkspace.getObjects().get(objectName);
 
                     if (objects.values().iterator().next().getMeasurements().size() != 0) {
                         for (HCObject object : objects.values()) {

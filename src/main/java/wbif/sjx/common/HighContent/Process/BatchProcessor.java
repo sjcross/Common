@@ -6,6 +6,7 @@ import wbif.sjx.common.HighContent.Object.*;
 import wbif.sjx.common.System.FileCrawler;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by sc13967 on 21/10/2016.
@@ -28,7 +29,7 @@ public class BatchProcessor extends FileCrawler {
 
     // PUBLIC METHODS
 
-    public HCWorkspaceCollection runAnalysisOnStructure(HCAnalysis analysis, HCExporter exporter) {
+    public HCWorkspaceCollection runAnalysisOnStructure(HCAnalysis analysis, HCExporter exporter) throws IOException {
         int num_valid_files = getNumberOfValidFilesInStructure();
         resetIterator();
 
