@@ -10,7 +10,18 @@ public class DirectionalityRatioCalculator {
 
         double[] dir_persist = new double[eucl_dist.length];
         for (int i=0;i<dir_persist.length;i++) {
+            if (total_len[i] == 0) {
+                dir_persist[i] = Double.NaN;
+                continue;
+            }
+
+            if (eucl_dist[i] == 0) {
+                dir_persist[i] = 0;
+                continue;
+            }
+
             dir_persist[i] = eucl_dist[i]/total_len[i];
+
         }
 
         return dir_persist;

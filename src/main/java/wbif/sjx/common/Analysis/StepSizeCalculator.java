@@ -4,7 +4,7 @@ package wbif.sjx.common.Analysis;
  * Created by steph on 15/04/2017.
  */
 public class StepSizeCalculator {
-    public static double[] calculator(double[] x, double[] y, double[] z) {
+    public static double[] calculate(double[] x, double[] y, double[] z) {
         double[] steps = new double[x.length - 1];
 
         for (int i = 1; i < x.length; i++) {
