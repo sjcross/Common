@@ -5,6 +5,7 @@ import wbif.sjx.common.HighContent.Object.HCParameterCollection;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Projects xy coordinates into a single plane.  Duplicates of xy coordinates at different heights are removed.
@@ -15,12 +16,21 @@ public class ProjectObjects extends HCModule {
 
 
     @Override
+    public String getTitle() {
+        return "Project objects";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        HCObjectName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
-        HCObjectName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
+
+        HCName inputObjectsName = parameters.getValue(INPUT_OBJECTS);
+        HCName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
 
         HCObjectSet inputObjects = workspace.getObjects().get(inputObjectsName);
-        HCObjectSet outputObjects = new HCObjectSet();
+        HCObjectSet outputObjects = new HCObjectSet(outputObjectsName);
 
         for (HCObject inputObject:inputObjects.values()) {
             ArrayList<Integer> x = inputObject.getCoordinates().get(HCObject.X);
@@ -45,13 +55,19 @@ public class ProjectObjects extends HCModule {
             // Creating the new HCObject and assigning the parent-child relationship
             HCObject outputObject = new HCObject(inputObject.getID());
             outputObject.setParent(inputObject);
-            inputObject.addChild(outputObject);
+            inputObject.addChild(outputObjectsName,outputObject);
 
             // Adding coordinates to the projected object
             for (Double key : projCoords.keySet()) {
                 int i = projCoords.get(key);
                 outputObject.addCoordinate(HCObject.X,x.get(i));
                 outputObject.addCoordinate(HCObject.Y,y.get(i));
+            }
+
+            // Copying additional dimensions from inputObject
+            HashMap<Integer,Integer> positions = inputObject.getPositions();
+            for (Map.Entry<Integer,Integer> entry:positions.entrySet()) {
+                outputObject.setPosition(entry.getKey(),entry.getValue());
             }
 
             // Inheriting calibration from parent
@@ -64,24 +80,30 @@ public class ProjectObjects extends HCModule {
 
         }
 
-        workspace.addObjects(outputObjectsName,outputObjects);
+        workspace.addObjects(outputObjects);
 
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object projector",false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null,false));
-
-        return parameters;
+    public void initialiseParameters() {
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
 
     }
 
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+        relationships.addRelationship(parameters.getValue(INPUT_OBJECTS),parameters.getValue(OUTPUT_OBJECTS));
+
     }
 }

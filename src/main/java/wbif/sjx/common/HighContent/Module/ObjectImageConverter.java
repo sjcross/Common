@@ -7,49 +7,61 @@ import ij.process.ImageProcessor;
 import wbif.sjx.common.HighContent.Object.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by sc13967 on 04/05/2017.
  */
 public class ObjectImageConverter extends HCModule {
-    public static final String TEMPLATE_IMAGE = "Template image";
-    public static final String INPUT_OBJECTS = "Input objects";
+    public static final String CONVERSION_MODE = "Conversion mode";
     public static final String INPUT_IMAGE = "Input image";
     public static final String OUTPUT_OBJECTS = "Output objects";
+    public static final String TEMPLATE_IMAGE = "Template image";
+    public static final String INPUT_OBJECTS = "Input objects";
     public static final String OUTPUT_IMAGE = "Output image";
-    public static final String CONVERSION_MODE = "Conversion mode";
+    public static final String USE_GROUP_ID = "Use group ID";
 
     public static final int IMAGE_TO_OBJECTS = 0;
     public static final int OBJECTS_TO_IMAGE = 1;
 
 
-    public HCImage convertObjectsToImage(HCObjectSet objects, HCImage templateImage) {
+    public HCImage convertObjectsToImage(HCObjectSet objects, HCName outputImageName, HCImage templateImage, boolean useGroupID) {
         ImagePlus ipl;
 
         if (templateImage == null) {
             // Getting range of object pixels
-            int nDims = Collections.max(objects.values().iterator().next().getCoordinates().keySet()) + 1;
-            nDims = nDims <= 5 ? 5 : nDims;
-
-            int[][] dimSize = new int[nDims][2];
+            int[][] coordinateRange = new int[5][2];
 
             for (HCObject object : objects.values()) {
-                int[][] currDimSize = object.getCoordinateRange();
-                for (int dim = 0; dim < dimSize.length; dim++) {
-                    if (currDimSize[dim][0] < dimSize[dim][0]) {
-                        dimSize[dim][0] = currDimSize[dim][0];
+                // Getting range of XYZ
+                int[][] currCoordinateRange = object.getCoordinateRange();
+                for (int dim = 0; dim < coordinateRange.length; dim++) {
+                    if (currCoordinateRange[dim][0] < coordinateRange[dim][0]) {
+                        coordinateRange[dim][0] = currCoordinateRange[dim][0];
                     }
 
-                    if (currDimSize[dim][1] > dimSize[dim][1]) {
-                        dimSize[dim][1] = currDimSize[dim][1];
+                    if (currCoordinateRange[dim][1] > coordinateRange[dim][1]) {
+                        coordinateRange[dim][1] = currCoordinateRange[dim][1];
+                    }
+                }
+
+                // Getting range of additional dimensions
+                for (int dim:object.getPositions().keySet()) {
+                    int currValue = object.getPosition(dim);
+
+                    if (currValue < coordinateRange[dim][0]) {
+                        coordinateRange[dim][0] = currValue;
+                    }
+
+                    if (currValue > coordinateRange[dim][1]) {
+                        coordinateRange[dim][1] = currValue;
                     }
                 }
             }
 
             // Creating a new image
-            ipl = IJ.createHyperStack("Objects", dimSize[HCObject.X][1] + 1,
-                    dimSize[HCObject.Y][1] + 1, dimSize[HCObject.C][1] + 1, dimSize[HCObject.Z][1] + 1, dimSize[HCObject.T][1] + 1, 16);
+            ipl = IJ.createHyperStack("Objects", coordinateRange[HCObject.X][1] + 1,
+                    coordinateRange[HCObject.Y][1] + 1, coordinateRange[HCObject.C][1] + 1,
+                    coordinateRange[HCObject.Z][1] + 1, coordinateRange[HCObject.T][1] + 1, 16);
 
         } else {
             ImagePlus templateIpl = templateImage.getImagePlus();
@@ -62,29 +74,34 @@ public class ObjectImageConverter extends HCModule {
             ArrayList<Integer> x = object.getCoordinates(HCObject.X);
             ArrayList<Integer> y = object.getCoordinates(HCObject.Y);
             ArrayList<Integer> z = object.getCoordinates(HCObject.Z);
-            ArrayList<Integer> c = object.getCoordinates(HCObject.C);
-            ArrayList<Integer> t = object.getCoordinates(HCObject.T);
+            Integer c = object.getCoordinates(HCObject.C);
+            Integer t = object.getCoordinates(HCObject.T);
 
             for (int i=0;i<x.size();i++) {
-                int cPos = c==null ? 0 : c.get(i);
                 int zPos = z==null ? 0 : z.get(i);
-                int tPos = t==null ? 0 : t.get(i);
+                int cPos = c==null ? -1 : c;
+                int tPos = t==null ? -1 : t;
 
                 ipl.setPosition(cPos+1,zPos+1,tPos+1);
-                ipl.getProcessor().set(x.get(i),y.get(i),object.getID());
+                if (useGroupID) {
+                    ipl.getProcessor().set(x.get(i),y.get(i),object.getGroupID());
+                } else {
+                    ipl.getProcessor().set(x.get(i), y.get(i), object.getID());
+                }
+
             }
         }
 
-        return new HCImage(ipl);
+        return new HCImage(outputImageName,ipl);
 
     }
 
-    public HCObjectSet convertImageToObjects(HCImage image) {
+    public HCObjectSet convertImageToObjects(HCImage image, HCName outputObjectsName) {
         // Converting to ImagePlus for this operation
         ImagePlus ipl = image.getImagePlus();
 
         // Need to get coordinates and convert to a HCObject
-        HCObjectSet objects = new HCObjectSet(); //Local ArrayList of objects
+        HCObjectSet objects = new HCObjectSet(outputObjectsName); //Local ArrayList of objects
 
         ImageProcessor ipr = ipl.getProcessor();
 
@@ -125,53 +142,84 @@ public class ObjectImageConverter extends HCModule {
     }
 
     @Override
+    public String getTitle() {
+        return "Image-object converter";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
+
         int conversionMode = parameters.getValue(CONVERSION_MODE);
 
         if (conversionMode == IMAGE_TO_OBJECTS) {
-            HCImageName imageName = parameters.getValue(INPUT_IMAGE);
-            HCObjectName objectName = parameters.getValue(OUTPUT_OBJECTS);
+            HCName inputImageName = parameters.getValue(INPUT_IMAGE);
+            HCName outputObjectsName = parameters.getValue(OUTPUT_OBJECTS);
 
-            HCImage image = workspace.getImages().get(imageName);
+            HCImage inputImage = workspace.getImages().get(inputImageName);
 
-            HCObjectSet objects = convertImageToObjects(image);
+            HCObjectSet objects = convertImageToObjects(inputImage, outputObjectsName);
 
-            workspace.addObjects(objectName,objects);
+            workspace.addObjects(objects);
 
         } else if (conversionMode == OBJECTS_TO_IMAGE) {
-            HCObjectName objectName = parameters.getValue(INPUT_OBJECTS);
-            HCImageName templateImageName = parameters.getValue(TEMPLATE_IMAGE);
-            HCImageName outputImageName = parameters.getValue(OUTPUT_IMAGE);
+            HCName objectName = parameters.getValue(INPUT_OBJECTS);
+            HCName templateImageName = parameters.getValue(TEMPLATE_IMAGE);
+            HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
+            boolean useGroupID = parameters.getValue(USE_GROUP_ID);
 
-            HCObjectSet objects = workspace.getObjects().get(objectName);
+            HCObjectSet inputObjects = workspace.getObjects().get(objectName);
             HCImage templateImage = workspace.getImages().get(templateImageName);
 
-            HCImage image = convertObjectsToImage(objects,templateImage);
+            HCImage outputImage = convertObjectsToImage(inputObjects,outputImageName,templateImage,useGroupID);
 
-            workspace.addImage(outputImageName,image);
+            workspace.addImage(outputImage);
 
         }
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Object-image converter",true));
-        parameters.addParameter(new HCParameter(this,TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,CONVERSION_MODE, HCParameter.INTEGER,0,false));
-
-        return parameters;
+    public void initialiseParameters() {
+        parameters.addParameter(new HCParameter(CONVERSION_MODE, HCParameter.INTEGER,0));
+        parameters.addParameter(new HCParameter(INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(OUTPUT_OBJECTS, HCParameter.OUTPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(TEMPLATE_IMAGE, HCParameter.INPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(USE_GROUP_ID, HCParameter.BOOLEAN,true));
 
     }
 
     @Override
     public HCParameterCollection getActiveParameters() {
-        return parameters;
+        HCParameterCollection returnedParameters = new HCParameterCollection();
+        returnedParameters.addParameter(parameters.getParameter(CONVERSION_MODE));
+
+        if (parameters.getValue(CONVERSION_MODE).equals(IMAGE_TO_OBJECTS)) {
+            returnedParameters.addParameter(parameters.getParameter(INPUT_IMAGE));
+            returnedParameters.addParameter(parameters.getParameter(OUTPUT_OBJECTS));
+
+        } else if(parameters.getValue(CONVERSION_MODE).equals(OBJECTS_TO_IMAGE)) {
+            returnedParameters.addParameter(parameters.getParameter(TEMPLATE_IMAGE));
+            returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
+            returnedParameters.addParameter(parameters.getParameter(OUTPUT_IMAGE));
+            returnedParameters.addParameter(parameters.getParameter(USE_GROUP_ID));
+
+        }
+
+        return returnedParameters;
+    }
+
+    @Override
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 
 }

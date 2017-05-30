@@ -12,12 +12,19 @@ public class MeasureImageIntensity extends HCModule {
     public static final String INPUT_IMAGE = "Input image";
 
     @Override
+    public String getTitle() {
+        return "Measure image intensity";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
-        if (verbose) System.out.println("   Measuring image intensity");
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
 
         // Getting input image
-        HCImageName inputImageName = parameters.getValue(INPUT_IMAGE);
-        if (verbose) System.out.println("       Loading image ("+inputImageName+")");
+        HCName inputImageName = parameters.getValue(INPUT_IMAGE);
+        if (verbose) System.out.println("["+moduleName+"] Loading image ("+inputImageName+")");
         HCImage inputImage = workspace.getImages().get(inputImageName);
         ImagePlus inputImagePlus = inputImage.getImagePlus();
 
@@ -25,42 +32,47 @@ public class MeasureImageIntensity extends HCModule {
         CumStat cs = IntensityCalculator.calculate(inputImagePlus);
 
         // Adding measurements to image
-        HCSingleMeasurement meanIntensity = new HCSingleMeasurement(HCSingleMeasurement.MEAN_INTENSITY,cs.getMean()[0]);
+        HCMeasurement meanIntensity = new HCMeasurement(HCMeasurement.MEAN_INTENSITY,cs.getMean()[0]);
         meanIntensity.setSource(this);
         inputImage.addMeasurement(meanIntensity.getName(),meanIntensity);
-        if (verbose) System.out.println("       Mean intensity = "+meanIntensity.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Mean intensity = "+meanIntensity.getValue());
 
-        HCSingleMeasurement stdIntensity = new HCSingleMeasurement(HCSingleMeasurement.STD_INTENSITY,cs.getStd(CumStat.SAMPLE)[0]);
+        HCMeasurement stdIntensity = new HCMeasurement(HCMeasurement.STD_INTENSITY,cs.getStd(CumStat.SAMPLE)[0]);
         stdIntensity.setSource(this);
         inputImage.addMeasurement(stdIntensity.getName(),stdIntensity);
-        if (verbose) System.out.println("       Std intensity (sample) = "+stdIntensity.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Std intensity (sample) = "+stdIntensity.getValue());
 
-        HCSingleMeasurement minIntensity = new HCSingleMeasurement(HCSingleMeasurement.MIN_INTENSITY,cs.getMin()[0]);
+        HCMeasurement minIntensity = new HCMeasurement(HCMeasurement.MIN_INTENSITY,cs.getMin()[0]);
         minIntensity.setSource(this);
         inputImage.addMeasurement(minIntensity.getName(),minIntensity);
-        if (verbose) System.out.println("       Min intensity = "+minIntensity.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Min intensity = "+minIntensity.getValue());
 
-        HCSingleMeasurement maxIntensity = new HCSingleMeasurement(HCSingleMeasurement.MAX_INTENSITY,cs.getMax()[0]);
+        HCMeasurement maxIntensity = new HCMeasurement(HCMeasurement.MAX_INTENSITY,cs.getMax()[0]);
         maxIntensity.setSource(this);
         inputImage.addMeasurement(maxIntensity.getName(),maxIntensity);
-        if (verbose) System.out.println("       Max intensity = "+maxIntensity.getValue());
+        if (verbose) System.out.println("["+moduleName+"] Max intensity = "+maxIntensity.getValue());
 
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Measure image intensity",false));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,"Im1",false));
-
-        return parameters;
+    public void initialiseParameters() {
+        parameters.addParameter(new HCParameter(INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
 
     }
 
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 
 }

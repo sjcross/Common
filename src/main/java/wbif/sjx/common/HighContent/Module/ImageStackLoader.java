@@ -23,13 +23,22 @@ public class ImageStackLoader extends HCModule {
     public static final String SET_FIELDS = "Set fields";
 
     @Override
+    public String getTitle() {
+        return "Image stack loader";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
+
         // Getting parameters
         Extractor extractor = parameters.getValue(EXTRACTOR);
         String orderField = parameters.getValue(ORDER_FIELD);
         ArrayList<String> staticFields = parameters.getValue(STATIC_FIELDS);
         HashMap<String,String> setFields = parameters.getValue(SET_FIELDS);
-        HCImageName outputImage = parameters.getValue(OUTPUT_IMAGE);
+        HCName outputImageName = parameters.getValue(OUTPUT_IMAGE);
 
         // Getting files
         File referenceFile = workspace.getMetadata().getFile();
@@ -93,27 +102,33 @@ public class ImageStackLoader extends HCModule {
 
         ipl.setPosition(1);
 
-        workspace.addImage(outputImage,new HCImage(ipl));
+        workspace.addImage(new HCImage(outputImageName,ipl));
+
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
+    public void initialiseParameters() {
         // Setting the input image stack name
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Image stack loader",false));
-        parameters.addParameter(new HCParameter(this,OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null,false));
-        parameters.addParameter(new HCParameter(this,EXTRACTOR, HCParameter.OBJECT,null,false));
-        parameters.addParameter(new HCParameter(this,ORDER_FIELD, HCParameter.STRING,"",false));
-        parameters.addParameter(new HCParameter(this,STATIC_FIELDS, HCParameter.OBJECT,new ArrayList<String>(),false));
-        parameters.addParameter(new HCParameter(this,SET_FIELDS, HCParameter.OBJECT,new HashMap<String,String>(),false));
-
-        return parameters;
+        parameters.addParameter(new HCParameter(OUTPUT_IMAGE, HCParameter.OUTPUT_IMAGE,null));
+        parameters.addParameter(new HCParameter(EXTRACTOR, HCParameter.OBJECT,null));
+        parameters.addParameter(new HCParameter(ORDER_FIELD, HCParameter.STRING,""));
+        parameters.addParameter(new HCParameter(STATIC_FIELDS, HCParameter.OBJECT,new ArrayList<String>()));
+        parameters.addParameter(new HCParameter(SET_FIELDS, HCParameter.OBJECT,new HashMap<String,String>()));
 
     }
 
     @Override
     public HCParameterCollection getActiveParameters() {
         return parameters;
+    }
+
+    @Override
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 }

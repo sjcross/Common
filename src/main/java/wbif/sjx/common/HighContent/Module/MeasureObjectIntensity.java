@@ -15,13 +15,22 @@ public class MeasureObjectIntensity extends HCModule {
 
 
     @Override
+    public String getTitle() {
+        return "Measure object intensity";
+
+    }
+
+    @Override
     public void execute(HCWorkspace workspace, boolean verbose) {
+        String moduleName = this.getClass().getSimpleName();
+        if (verbose) System.out.println("["+moduleName+"] Initialising");
+
         // Getting input objects
-        HCObjectName objectName = parameters.getValue(INPUT_OBJECTS);
+        HCName objectName = parameters.getValue(INPUT_OBJECTS);
         HCObjectSet objects = workspace.getObjects().get(objectName);
 
         // Getting input image
-        HCImageName imageName = parameters.getValue(INPUT_IMAGE);
+        HCName imageName = parameters.getValue(INPUT_IMAGE);
         HCImage image = workspace.getImages().get(imageName);
         ImagePlus ipl = image.getImagePlus();
 
@@ -49,40 +58,49 @@ public class MeasureObjectIntensity extends HCModule {
             }
 
             // Calculating mean, std, min and max intensity
-            HCSingleMeasurement meanIntensity = new HCSingleMeasurement(imageName.getName()+"_MEAN", cs.getMean()[0]);
+            HCMeasurement meanIntensity = new HCMeasurement(imageName.getName()+"_MEAN", cs.getMean()[0]);
             meanIntensity.setSource(this);
-            object.addSingleMeasurement(meanIntensity.getName(),meanIntensity);
+            object.addMeasurement(meanIntensity);
 
-            HCSingleMeasurement stdIntensity = new HCSingleMeasurement(imageName.getName()+"_STD", cs.getStd(CumStat.SAMPLE)[0]);
+            HCMeasurement stdIntensity = new HCMeasurement(imageName.getName()+"_STD", cs.getStd(CumStat.SAMPLE)[0]);
             stdIntensity.setSource(this);
-            object.addSingleMeasurement(stdIntensity.getName(),stdIntensity);
+            object.addMeasurement(stdIntensity);
 
-            HCSingleMeasurement minIntensity = new HCSingleMeasurement(imageName.getName()+"_MIN", cs.getMin()[0]);
+            HCMeasurement minIntensity = new HCMeasurement(imageName.getName()+"_MIN", cs.getMin()[0]);
             minIntensity.setSource(this);
-            object.addSingleMeasurement(minIntensity.getName(),minIntensity);
+            object.addMeasurement(minIntensity);
 
-            HCSingleMeasurement maxIntensity = new HCSingleMeasurement(imageName.getName()+"_MAX", cs.getMax()[0]);
+            HCMeasurement maxIntensity = new HCMeasurement(imageName.getName()+"_MAX", cs.getMax()[0]);
             maxIntensity.setSource(this);
-            object.addSingleMeasurement(maxIntensity.getName(),maxIntensity);
+            object.addMeasurement(maxIntensity);
 
         }
-
     }
 
     @Override
-    public HCParameterCollection initialiseParameters() {
-        HCParameterCollection parameters = new HCParameterCollection();
-
-        parameters.addParameter(new HCParameter(this,MODULE_TITLE, HCParameter.MODULE_TITLE,"Measure object intensity",false));
-        parameters.addParameter(new HCParameter(this,INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null,false));
-        parameters.addParameter(new HCParameter(this,INPUT_IMAGE, HCParameter.INPUT_IMAGE,null,false));
-
-        return parameters;
+    public void initialiseParameters() {
+        parameters.addParameter(new HCParameter(INPUT_OBJECTS, HCParameter.INPUT_OBJECTS,null));
+        parameters.addParameter(new HCParameter(INPUT_IMAGE, HCParameter.INPUT_IMAGE,null));
 
     }
 
     @Override
     public HCParameterCollection getActiveParameters() {
-        return parameters;
+        HCParameterCollection returnedParameters = new HCParameterCollection();
+        returnedParameters.addParameter(parameters.getParameter(INPUT_IMAGE));
+        returnedParameters.addParameter(parameters.getParameter(INPUT_OBJECTS));
+
+        return returnedParameters;
+
+    }
+
+    @Override
+    public void addMeasurements(HCMeasurementCollection measurements) {
+
+    }
+
+    @Override
+    public void addRelationships(HCRelationshipCollection relationships) {
+
     }
 }

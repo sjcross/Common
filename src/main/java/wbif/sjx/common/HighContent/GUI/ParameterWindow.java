@@ -2,7 +2,9 @@ package wbif.sjx.common.HighContent.GUI;
 
 import ij.gui.GenericDialog;
 import wbif.sjx.common.HighContent.Module.HCModule;
+import wbif.sjx.common.HighContent.Object.HCMeasurementCollection;
 import wbif.sjx.common.HighContent.Object.HCModuleCollection;
+import wbif.sjx.common.HighContent.Object.HCName;
 import wbif.sjx.common.HighContent.Object.HCParameter;
 
 import java.awt.*;
@@ -23,11 +25,7 @@ public class ParameterWindow {
         for (HCModule module:modules) {
             for (Map.Entry<String,HCParameter> entry:module.getActiveParameters().getParameters().entrySet()) {
                 if (entry.getValue().isVisible()) {
-                    if (entry.getValue().getType() == HCParameter.MODULE_TITLE) {
-                        if (gd.getComponentCount() != 0) gd.addMessage(" ");
-                        gd.addMessage(entry.getValue().getValue(),titleFont);
-
-                    } else if (entry.getValue().getType() == HCParameter.INTEGER) {
+                    if (entry.getValue().getType() == HCParameter.INTEGER) {
                         gd.addNumericField(entry.getKey(), (double) ((int) entry.getValue().getValue()), 1);
 
                     } else if (entry.getValue().getType() == HCParameter.DOUBLE) {
@@ -37,7 +35,8 @@ public class ParameterWindow {
                         gd.addStringField(entry.getKey(), String.valueOf(entry.getValue()));
 
                     } else if (entry.getValue().getType() == HCParameter.CHOICE_ARRAY) {
-                        gd.addChoice(entry.getKey(),(String[]) entry.getValue().getValueRange(), entry.getValue().getValue());
+                        gd.addChoice(entry.getKey(),(String[]) entry.getValue().getValueSource(),
+                                entry.getValue().getValue());
 
                     } else if (entry.getValue().getType() == HCParameter.CHOICE_MAP) {
                         HashMap<String, String> map = entry.getValue().getValue();
@@ -47,6 +46,13 @@ public class ParameterWindow {
                         }
                     } else if (entry.getValue().getType() == HCParameter.BOOLEAN) {
                         gd.addCheckbox(entry.getKey(), entry.getValue().getValue());
+
+                    } else if (entry.getValue().getType() == HCParameter.MEASUREMENT) {
+                        // Getting the measurements available to this module
+                        HCMeasurementCollection measurements = modules.getMeasurements(module);
+                        String[] measurementChoices = measurements.getMeasurementNames(
+                                (HCName) entry.getValue().getValueSource());
+                        gd.addChoice(entry.getKey(),measurementChoices,measurementChoices[0]);
 
                     }
                 }
@@ -62,12 +68,11 @@ public class ParameterWindow {
                 for (Map.Entry<String,HCParameter> entry:module.getActiveParameters().getParameters().entrySet()) {
                     if (entry.getValue().isVisible()) {
                         if (entry.getValue().getType() == HCParameter.INTEGER) {
-                            module.getActiveParameters().getParameter(entry.getKey()).setValue((int) Math.round(gd.getNextNumber()));
-                            gd.addNumericField(entry.getKey(), (double) ((int) entry.getValue().getValue()), 1);
+                            module.getActiveParameters().getParameter(entry.getKey()).setValue(
+                                    (int) Math.round(gd.getNextNumber()));
 
                         } else if (entry.getValue().getType() == HCParameter.DOUBLE) {
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextNumber());
-                            gd.addNumericField(entry.getKey(), entry.getValue().getValue(), 1);
 
                         } else if (entry.getValue().getType() == HCParameter.STRING) {
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextString());
@@ -76,7 +81,7 @@ public class ParameterWindow {
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextChoice());
 
                         } else if (entry.getValue().getType() == HCParameter.CHOICE_MAP) {
-                            HashMap<String, String> map = entry.getValue().getValue();
+                            HashMap<String,String> map = entry.getValue().getValue();
 
                             for (String k:map.keySet()) {
                                 map.put(k,gd.getNextString());
@@ -86,8 +91,10 @@ public class ParameterWindow {
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(map);
 
                         } else if (entry.getValue().getType() == HCParameter.BOOLEAN) {
-                            gd.addCheckbox(entry.getKey(), entry.getValue().getValue());
                             module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextBoolean());
+
+                        } else if (entry.getValue().getType() == HCParameter.MEASUREMENT) {
+                            module.getActiveParameters().getParameter(entry.getKey()).setValue(gd.getNextChoice());
 
                         }
                     }

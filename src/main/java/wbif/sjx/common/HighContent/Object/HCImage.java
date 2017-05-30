@@ -10,40 +10,39 @@ import java.util.LinkedHashMap;
  * Created by steph on 30/04/2017.
  */
 public class HCImage {
+    private HCName name;
     private ImagePlus imagePlus;
-    private LinkedHashMap<String,HCSingleMeasurement> measurements = new LinkedHashMap<>();
+    private LinkedHashMap<String,HCMeasurement> singleMeasurements = new LinkedHashMap<>();
+//    private LinkedHashMap<String,HCMultiMeasurement> multiMeasurements = new LinkedHashMap<>();
+
 
     // CONSTRUCTORS
 
-    public HCImage(ImagePlus imagePlus) {
+    public HCImage(HCName name, ImagePlus imagePlus) {
+        this.name = name;
         this.imagePlus = imagePlus;
+
     }
 
 
     // PUBLIC METHODS
 
-    public HCImage projectImageInZ() {
-        ZProjector z_projector = new ZProjector(imagePlus);
-        z_projector.setMethod(ZProjector.MAX_METHOD);
-        z_projector.doProjection();
-        ImagePlus iplOut = z_projector.getProjection();
-
-        return new HCImage(iplOut);
+    public void addMeasurement(String name, HCMeasurement measurement) {
+        singleMeasurements.put(name,measurement);
 
     }
 
-    public void addMeasurement(String name, HCSingleMeasurement measurement) {
-        measurements.put(name,measurement);
-
-    }
-
-    public HCSingleMeasurement getMeasurement(String name) {
-        return measurements.get(name);
+    public HCMeasurement getMeasurement(String name) {
+        return singleMeasurements.get(name);
 
     }
 
 
     // GETTERS AND SETTERS
+
+    public HCName getName() {
+        return name;
+    }
 
     public ImagePlus getImagePlus() {
         return imagePlus;
@@ -53,12 +52,12 @@ public class HCImage {
         this.imagePlus = imagePlus;
     }
 
-    public HashMap<String, HCSingleMeasurement> getMeasurements() {
-        return measurements;
+    public HashMap<String, HCMeasurement> getSingleMeasurements() {
+        return singleMeasurements;
     }
 
-    public void setMeasurements(LinkedHashMap<String, HCSingleMeasurement> measurements) {
-        this.measurements = measurements;
+    public void setSingleMeasurements(LinkedHashMap<String, HCMeasurement> singleMeasurements) {
+        this.singleMeasurements = singleMeasurements;
     }
 
 }

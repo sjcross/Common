@@ -1,5 +1,8 @@
+// TODO: Get measurements to export from analysis.getModules().getMeasurements().get(HCName) for each object
+
 package wbif.sjx.common.HighContent.Process;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -18,7 +21,6 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -34,14 +36,15 @@ public class HCExporter {
     public static final int JSON_EXPORT = 2;
 
     private int exportMode = XLSX_EXPORT;
-    private File rootFolder;
+
+    private String exportFilePath;
     private boolean verbose = false;
 
 
     // CONSTRUCTOR
 
-    public HCExporter(File rootFolder, int exportMode) {
-        this.rootFolder = rootFolder;
+    public HCExporter(String exportFilePath,int exportMode) {
+        this.exportFilePath = exportFilePath;
         this.exportMode = exportMode;
 
     }
@@ -49,27 +52,25 @@ public class HCExporter {
 
     // PUBLIC METHODS
 
-    public void exportResults(HCWorkspaceCollection workspaces) {
-        exportResults(workspaces,null);
-
-    }
-
-    public void exportResults(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
+    public void exportResults(HCWorkspaceCollection workspaces, HCAnalysis analysis) throws IOException {
         if (exportMode == XML_EXPORT) {
-            exportXML(workspaces,modules);
+            exportXML(workspaces,analysis);
 
         } else if (exportMode == XLSX_EXPORT) {
-            exportXLSX(workspaces,modules);
+            exportXLSX(workspaces,analysis);
 
         } else if (exportMode == JSON_EXPORT) {
-            exportJSON(workspaces,modules);
+            exportJSON(workspaces,analysis);
 
         }
     }
 
-    private void exportXML(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
+    private void exportXML(HCWorkspaceCollection workspaces, HCAnalysis analysis) {
         // Initialising DecimalFormat
         DecimalFormat df = new DecimalFormat("0.000E0");
+
+        // Getting modules
+        HCModuleCollection modules = analysis.getModules();
 
         try {
             // Initialising the document
@@ -77,49 +78,8 @@ public class HCExporter {
             Element root = doc.createElement("ROOT");
             doc.appendChild(root);
 
-            Element parametersElement =  doc.createElement("PARAMETERS");
-
-            // Running through each parameter set (one for each module
-            for (HCModule module:modules) {
-                LinkedHashMap<String,HCParameter> parameters = module.getActiveParameters().getParameters();
-
-                boolean first = true;
-                Element moduleElement =  doc.createElement("MODULE");
-                for (HCParameter currParam:parameters.values()) {
-                    // For the first parameter in a module, adding the name
-                    if (first) {
-                        Attr nameAttr = doc.createAttribute("NAME");
-                        nameAttr.appendChild(doc.createTextNode(currParam.getModule().getClass().getName()));
-                        moduleElement.setAttributeNode(nameAttr);
-
-                        Attr hashAttr = doc.createAttribute("HASH");
-                        hashAttr.appendChild(doc.createTextNode(String.valueOf(currParam.getModule().hashCode())));
-                        moduleElement.setAttributeNode(hashAttr);
-
-                        first = false;
-                    }
-
-                    // Adding the name and value of the current parameter
-                    Element parameterElement =  doc.createElement("PARAMETER");
-
-                    Attr nameAttr = doc.createAttribute("NAME");
-                    nameAttr.appendChild(doc.createTextNode(currParam.getName()));
-                    parameterElement.setAttributeNode(nameAttr);
-
-                    Attr valueAttr = doc.createAttribute("VALUE");
-                    valueAttr.appendChild(doc.createTextNode(currParam.getValue().toString()));
-                    parameterElement.setAttributeNode(valueAttr);
-
-                    moduleElement.appendChild(parameterElement);
-
-                }
-
-                // Adding current module to parameters
-                parametersElement.appendChild(moduleElement);
-
-            }
-
-            // Adding parameters to main file
+            // Getting paramters as Element and adding to the main file
+            Element parametersElement = prepareParametersXML(doc,modules);
             root.appendChild(parametersElement);
 
             // Running through each workspace (each corresponds to a file) adding file information
@@ -137,17 +97,17 @@ public class HCExporter {
                 }
 
                 // Creating new elements for each image in the current workspace with at least one measurement
-                for (HCImageName imageName:workspace.getImages().keySet()) {
+                for (HCName imageName:workspace.getImages().keySet()) {
                     HCImage image = workspace.getImages().get(imageName);
 
-                    if (image.getMeasurements() != null) {
+                    if (image.getSingleMeasurements() != null) {
                         Element imageElement = doc.createElement("IMAGE");
 
                         Attr nameAttr = doc.createAttribute("NAME");
                         nameAttr.appendChild(doc.createTextNode(String.valueOf(imageName.getName())));
                         imageElement.setAttributeNode(nameAttr);
 
-                        for (HCSingleMeasurement measurement : image.getMeasurements().values()) {
+                        for (HCMeasurement measurement : image.getSingleMeasurements().values()) {
                             String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                             Attr measAttr = doc.createAttribute(attrName);
                             String attrValue = df.format(measurement.getValue());
@@ -161,7 +121,7 @@ public class HCExporter {
                 }
 
                 // Creating new elements for each object in the current workspace
-                for (HCObjectName objectNames:workspace.getObjects().keySet()) {
+                for (HCName objectNames:workspace.getObjects().keySet()) {
                     for (HCObject object:workspace.getObjects().get(objectNames).values()) {
                         Element objectElement =  doc.createElement("OBJECT");
 
@@ -170,16 +130,35 @@ public class HCExporter {
                         idAttr.appendChild(doc.createTextNode(String.valueOf(object.getID())));
                         objectElement.setAttributeNode(idAttr);
 
+                        // Setting the group ID number
+                        Attr groupidAttr = doc.createAttribute("GROUP_ID");
+                        groupidAttr.appendChild(doc.createTextNode(String.valueOf(object.getGroupID())));
+                        objectElement.setAttributeNode(groupidAttr);
+
                         Attr nameAttr = doc.createAttribute("NAME");
                         nameAttr.appendChild(doc.createTextNode(String.valueOf(objectNames.getName())));
                         objectElement.setAttributeNode(nameAttr);
 
-                        for (HCSingleMeasurement measurement:object.getSingleMeasurements().values()) {
-                            String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
-                            Attr measAttr = doc.createAttribute(attrName);
-                            String attrValue = df.format(measurement.getValue());
-                            measAttr.appendChild(doc.createTextNode(attrValue));
-                            objectElement.setAttributeNode(measAttr);
+                        for (int dim:object.getPositions().keySet()) {
+                            String dimName = dim==3 ? "CHANNEL" : dim == 4 ? "TIME" : "DIM_"+dim;
+                            Attr positionAttr = doc.createAttribute(dimName);
+                            positionAttr.appendChild(doc.createTextNode(String.valueOf(dim)));
+                            objectElement.setAttributeNode(positionAttr);
+
+                        }
+
+                        for (HCMeasurement measurement:object.getMeasurements().values()) {
+                            Element measElement = doc.createElement("MEAS");
+
+                            String name = measurement.getName().toUpperCase().replaceAll(" ", "_");
+                            measElement.setAttribute("NAME",name);
+
+                            String value = df.format(measurement.getValue());
+                            measElement.setAttribute("VALUE",value);
+
+                            // Adding the measurement as a child of that object
+                            objectElement.appendChild(measElement);
+
                         }
 
                         setElement.appendChild(objectElement);
@@ -192,7 +171,7 @@ public class HCExporter {
             }
 
             // Preparing the filepath and filename
-            String outPath = rootFolder+"\\"+"output.xml";
+            String outPath = FilenameUtils.removeExtension(exportFilePath) +".xml";
 
             // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -214,29 +193,70 @@ public class HCExporter {
         }
     }
 
-    private void exportXLSX(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
+    private Element prepareParametersXML(Document doc, HCModuleCollection modules) {
+        Element parametersElement =  doc.createElement("PARAMETERS");
+
+        // Running through each parameter set (one for each module
+        for (HCModule module:modules) {
+            LinkedHashMap<String,HCParameter> parameters = module.getActiveParameters().getParameters();
+
+            boolean first = true;
+            Element moduleElement =  doc.createElement("MODULE");
+            for (HCParameter currParam:parameters.values()) {
+                // For the first parameter in a module, adding the name
+                if (first) {
+                    Attr nameAttr = doc.createAttribute("NAME");
+                    nameAttr.appendChild(doc.createTextNode(module.getClass().getSimpleName()));
+                    moduleElement.setAttributeNode(nameAttr);
+
+                    first = false;
+                }
+
+                // Adding the name and value of the current parameter
+                Element parameterElement =  doc.createElement("PARAMETER");
+
+                Attr nameAttr = doc.createAttribute("NAME");
+                nameAttr.appendChild(doc.createTextNode(currParam.getName()));
+                parameterElement.setAttributeNode(nameAttr);
+
+                Attr valueAttr = doc.createAttribute("VALUE");
+                valueAttr.appendChild(doc.createTextNode(currParam.getValue().toString()));
+                parameterElement.setAttributeNode(valueAttr);
+
+                moduleElement.appendChild(parameterElement);
+
+            }
+
+            // Adding current module to parameters
+            parametersElement.appendChild(moduleElement);
+
+        }
+
+        return parametersElement;
+
+    }
+
+    private void exportXLSX(HCWorkspaceCollection workspaces, HCAnalysis analysis) throws IOException {
+        // Getting modules
+        HCModuleCollection modules = analysis.getModules();
+
         // Initialising the workbook
         XSSFWorkbook workbook = new XSSFWorkbook();
 
         // Adding relevant sheets
         prepareParametersXLSX(workbook,modules);
         prepareMetadataXLSX(workbook,workspaces);
-        prepareImagesXLSX(workbook,workspaces);
-        prepareObjectsXLSX(workbook,workspaces);
+        prepareImagesXLSX(workbook,workspaces,modules);
+        prepareObjectsXLSX(workbook,workspaces,modules);
 
         // Writing the workbook to file
-        try {
-            String outPath = rootFolder+"\\"+"output.xlsx";
-            FileOutputStream outputStream = new FileOutputStream(outPath);
-            workbook.write(outputStream);
-            workbook.close();
+        String outPath = FilenameUtils.removeExtension(exportFilePath) +".xlsx";
+        FileOutputStream outputStream = new FileOutputStream(outPath);
+        workbook.write(outputStream);
+        workbook.close();
 
-            if (verbose) System.out.println("Saved "+ outPath);
+        if (verbose) System.out.println("Saved "+ outPath);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
     }
 
     private void prepareParametersXLSX(XSSFWorkbook workbook, HCModuleCollection modules) {
@@ -274,7 +294,7 @@ public class HCExporter {
                 valueValueCell.setCellValue(currParam.getValue().toString());
 
                 Cell moduleValueCell = row.createCell(paramCol);
-                moduleValueCell.setCellValue(currParam.getModule().getClass().getName());
+                moduleValueCell.setCellValue(module.getClass().getSimpleName());
 
             }
 
@@ -304,7 +324,8 @@ public class HCExporter {
                 // Running through all the metadata values, adding them as new columns
                 for (String name : exampleMetadata.keySet()) {
                     Cell metaHeaderCell = metaHeaderRow.createCell(metaCol++);
-                    metaHeaderCell.setCellValue(name);
+                    String metadataName = name.toUpperCase().replaceAll(" ", "_");
+                    metaHeaderCell.setCellValue(metadataName);
 
                 }
 
@@ -331,20 +352,20 @@ public class HCExporter {
         }
     }
 
-    private void prepareImagesXLSX(XSSFWorkbook workbook, HCWorkspaceCollection workspaces) {
+    private void prepareImagesXLSX(XSSFWorkbook workbook, HCWorkspaceCollection workspaces, HCModuleCollection modules) {
         // Basing column names on the first workspace in the WorkspaceCollection
         HCWorkspace exampleWorkspace = workspaces.get(0);
 
         if (exampleWorkspace.getImages() != null) {
             // Creating a new sheet for each image.  Each analysed file will have its own row.
-            HashMap<HCImageName, XSSFSheet> imageSheets = new HashMap<>();
-            HashMap<HCImageName, Integer> imageRows = new HashMap<>();
+            HashMap<HCName, XSSFSheet> imageSheets = new HashMap<>();
+            HashMap<HCName, Integer> imageRows = new HashMap<>();
 
             // Using the first workspace in the WorkspaceCollection to initialise column headers
-            for (HCImageName imageName : exampleWorkspace.getImages().keySet()) {
+            for (HCName imageName : exampleWorkspace.getImages().keySet()) {
                 HCImage image = exampleWorkspace.getImages().get(imageName);
 
-                if (image.getMeasurements().size() != 0) {
+                if (image.getSingleMeasurements().size() != 0) {
                     // Creating relevant sheet prefixed with "IM"
                     imageSheets.put(imageName, workbook.createSheet("IM_" + imageName.getName()));
 
@@ -358,20 +379,22 @@ public class HCExporter {
                     Cell IDHeaderCell = imageHeaderRow.createCell(col++);
                     IDHeaderCell.setCellValue("ANALYSIS_ID");
 
-                    for (HCSingleMeasurement measurement : image.getMeasurements().values()) {
+                    String[] measurementNames = modules.getMeasurements().getMeasurementNames(imageName);
+                    // Adding measurement headers
+                    for (String measurementName : measurementNames) {
                         Cell measHeaderCell = imageHeaderRow.createCell(col++);
-                        String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
+
                     }
                 }
             }
 
             // Running through each Workspace, adding rows
             for (HCWorkspace workspace : workspaces) {
-                for (HCImageName imageName : workspace.getImages().keySet()) {
+                for (HCName imageName : workspace.getImages().keySet()) {
                     HCImage image = exampleWorkspace.getImages().get(imageName);
 
-                    if (image.getMeasurements().size() != 0) {
+                    if (image.getSingleMeasurements().size() != 0) {
                         // Adding the measurements from this image
                         int col = 0;
 
@@ -382,7 +405,7 @@ public class HCExporter {
                         Cell IDValueCell = imageValueRow.createCell(col++);
                         IDValueCell.setCellValue(workspace.getID());
 
-                        for (HCSingleMeasurement measurement : image.getMeasurements().values()) {
+                        for (HCMeasurement measurement : image.getSingleMeasurements().values()) {
                             Cell measValueCell = imageValueRow.createCell(col++);
                             measValueCell.setCellValue(measurement.getValue());
                         }
@@ -392,20 +415,21 @@ public class HCExporter {
         }
     }
 
-    private void prepareObjectsXLSX(XSSFWorkbook workbook,HCWorkspaceCollection workspaces) {
+    private void prepareObjectsXLSX(XSSFWorkbook workbook,HCWorkspaceCollection workspaces, HCModuleCollection modules) {
         // Basing column names on the first workspace in the WorkspaceCollection
         HCWorkspace exampleWorkspace = workspaces.get(0);
 
         if (exampleWorkspace != null) {
             // Creating a new sheet for each object.  Each analysed file will have its own set of rows (one for each object)
-            HashMap<HCObjectName, XSSFSheet> objectSheets = new HashMap<>();
-            HashMap<HCObjectName, Integer> objectRows = new HashMap<>();
+            HashMap<HCName, XSSFSheet> objectSheets = new HashMap<>();
+            HashMap<HCName, Integer> objectRows = new HashMap<>();
 
             // Using the first workspace in the WorkspaceCollection to initialise column headers
-            for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
-                HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
+            for (HCName objectName : exampleWorkspace.getObjects().keySet()) {
 
-                if (objects.values().iterator().next().getSingleMeasurements().size() != 0) {
+                HCObjectSet objects = exampleWorkspace.getObjects().get(objectName);
+
+                if (objects.values().iterator().next().getMeasurements().size() != 0) {
                     // Creating relevant sheet prefixed with "IM"
                     objectSheets.put(objectName, workbook.createSheet("OBJ_" + objectName.getName()));
 
@@ -419,21 +443,38 @@ public class HCExporter {
                     Cell IDHeaderCell = objectHeaderRow.createCell(col++);
                     IDHeaderCell.setCellValue("ANALYSIS_ID");
 
+                    Cell objectIDHeaderCell = objectHeaderRow.createCell(col++);
+                    objectIDHeaderCell.setCellValue("OBJECT_ID");
+
+                    Cell groupIDHeaderCell = objectHeaderRow.createCell(col++);
+                    groupIDHeaderCell.setCellValue("GROUP_ID");
+
                     HCObject object = objects.values().iterator().next();
-                    for (HCSingleMeasurement measurement : object.getSingleMeasurements().values()) {
+
+                    // Adding single-valued position headers
+                    for (int dim:object.getPositions().keySet()) {
+                        Cell positionsHeaderCell = objectHeaderRow.createCell(col++);
+                        String dimName = dim==3 ? "CHANNEL" : dim == 4 ? "FRAME" : "DIM_"+dim;
+                        positionsHeaderCell.setCellValue(dimName);
+
+                    }
+
+                    String[] measurementNames = modules.getMeasurements().getMeasurementNames(objectName);
+                    // Adding measurement headers
+                    for (String measurementName : measurementNames) {
                         Cell measHeaderCell = objectHeaderRow.createCell(col++);
-                        String measurementName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                         measHeaderCell.setCellValue(measurementName);
+
                     }
                 }
             }
 
             // Running through each Workspace, adding rows
             for (HCWorkspace workspace : workspaces) {
-                for (HCObjectName objectName : exampleWorkspace.getObjects().keySet()) {
-                    HashMap<Integer, HCObject> objects = exampleWorkspace.getObjects().get(objectName);
+                for (HCName objectName : exampleWorkspace.getObjects().keySet()) {
+                    HCObjectSet objects = exampleWorkspace.getObjects().get(objectName);
 
-                    if (objects.values().iterator().next().getSingleMeasurements().size() != 0) {
+                    if (objects.values().iterator().next().getMeasurements().size() != 0) {
                         for (HCObject object : objects.values()) {
                             // Adding the measurements from this image
                             int col = 0;
@@ -445,7 +486,19 @@ public class HCExporter {
                             Cell IDValueCell = objectValueRow.createCell(col++);
                             IDValueCell.setCellValue(workspace.getID());
 
-                            for (HCSingleMeasurement measurement : object.getSingleMeasurements().values()) {
+                            Cell objectIDValueCell = objectValueRow.createCell(col++);
+                            objectIDValueCell.setCellValue(object.getID());
+
+                            Cell groupIDValueCell = objectValueRow.createCell(col++);
+                            groupIDValueCell.setCellValue(object.getGroupID());
+
+                            for (int dim:object.getPositions().keySet()) {
+                                Cell positionsValueCell = objectValueRow.createCell(col++);
+                                positionsValueCell.setCellValue(object.getPosition(dim));
+
+                            }
+
+                            for (HCMeasurement measurement : object.getMeasurements().values()) {
                                 Cell measValueCell = objectValueRow.createCell(col++);
                                 measValueCell.setCellValue(measurement.getValue());
                             }
@@ -456,7 +509,7 @@ public class HCExporter {
         }
     }
 
-    private void exportJSON(HCWorkspaceCollection workspaces, HCModuleCollection modules) {
+    private void exportJSON(HCWorkspaceCollection workspaces, HCAnalysis analysis) {
         System.out.println("[WARN] No JSON export currently implemented.  File not saved.");
 
     }

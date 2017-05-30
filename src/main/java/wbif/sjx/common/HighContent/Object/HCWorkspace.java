@@ -2,13 +2,14 @@ package wbif.sjx.common.HighContent.Object;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by sc13967 on 02/05/2017.
  */
 public class HCWorkspace {
-    private HashMap<HCObjectName, HCObjectSet> objects = new HashMap<>();
-    private HashMap<HCImageName, HCImage> images = new HashMap<>();
+    private LinkedHashMap<HCName, HCObjectSet> objects = new LinkedHashMap<>();
+    private LinkedHashMap<HCName, HCImage> images = new LinkedHashMap<>();
     private HCMetadata metadata = new HCMetadata();
     private int ID;
 
@@ -22,19 +23,19 @@ public class HCWorkspace {
 
     // PUBLIC METHODS
 
-    public void addObjects(HCObjectName name, HCObjectSet object) {
-        objects.put(name, object);
+    public void addObjects(HCObjectSet object) {
+        objects.put(object.getName(), object);
     }
 
-    public void removeObject(String name) {
+    public void removeObject(HCName name) {
         objects.remove(name);
     }
 
-    public void addImage(HCImageName name, HCImage image) {
-        images.put(name, image);
+    public void addImage(HCImage image) {
+        images.put(image.getName(), image);
     }
 
-    public void removeImage(String name) {
+    public void removeImage(HCName name) {
         images.remove(name);
     }
 
@@ -58,19 +59,19 @@ public class HCWorkspace {
 
     // GETTERS AND SETTERS
 
-    public HashMap<HCObjectName, HCObjectSet> getObjects() {
+    public HashMap<HCName, HCObjectSet> getObjects() {
         return objects;
     }
 
-    public void setObjects(HashMap<HCObjectName, HCObjectSet> objects) {
+    public void setObjects(LinkedHashMap<HCName, HCObjectSet> objects) {
         this.objects = objects;
     }
 
-    public HashMap<HCImageName, HCImage> getImages() {
+    public HashMap<HCName, HCImage> getImages() {
         return images;
     }
 
-    public void setImages(HashMap<HCImageName, HCImage> images) {
+    public void setImages(LinkedHashMap<HCName, HCImage> images) {
         this.images = images;
     }
 

@@ -1,8 +1,11 @@
 package wbif.sjx.common.HighContent.Process;
 
 import wbif.sjx.common.HighContent.Module.HCModule;
-import wbif.sjx.common.HighContent.Object.HCModuleCollection;
-import wbif.sjx.common.HighContent.Object.HCWorkspace;
+import wbif.sjx.common.HighContent.Object.*;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by sc13967 on 21/10/2016.
@@ -10,9 +13,9 @@ import wbif.sjx.common.HighContent.Object.HCWorkspace;
  * Interface Analysis-type class, which will be extended by particular analyses
  *
  */
-public abstract class HCAnalysis {
+public abstract class HCAnalysis implements Serializable {
     public HCModuleCollection modules = new HCModuleCollection();
-
+    private boolean shutdown = false;
 
     // CONSTRUCTOR
 
@@ -46,10 +49,23 @@ public abstract class HCAnalysis {
      * @return
      */
     public void execute(HCWorkspace workspace, boolean verbose) {
+        if (verbose) System.out.println("Starting analysis");
+
         // Running through modules
         for (HCModule module:modules) {
             module.execute(workspace,verbose);
+
+            if (shutdown) {
+                break;
+
+            }
         }
+
+        // Resetting the shutdown boolean
+        shutdown = false;
+
+        if (verbose) System.out.println("Complete");
+
     }
 
     public HCModuleCollection getModules() {
@@ -57,4 +73,8 @@ public abstract class HCAnalysis {
 
     }
 
+    public void shutdown() {
+        shutdown = true;
+
+    }
 }

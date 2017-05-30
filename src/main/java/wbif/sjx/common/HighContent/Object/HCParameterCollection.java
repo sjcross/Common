@@ -2,12 +2,13 @@ package wbif.sjx.common.HighContent.Object;
 
 import wbif.sjx.common.HighContent.Module.HCModule;
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 
 /**
  * Created by sc13967 on 02/05/2017.
  */
-public class HCParameterCollection {
+public class HCParameterCollection implements Serializable {
     private LinkedHashMap<String,HCParameter> parameters = new LinkedHashMap<>();
 
 
@@ -43,9 +44,8 @@ public class HCParameterCollection {
 
     }
 
-    public void initialiseModule(HCModule module) {
-        HCParameterCollection moduleParameters = module.initialiseParameters();
-        parameters.putAll(moduleParameters.getParameters());
+    public void updateValueRange(String name, Object valueRange) {
+        parameters.get(name).setValueSource(valueRange);
 
     }
 
