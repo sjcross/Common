@@ -4,6 +4,7 @@ import org.apache.commons.math3.stat.descriptive.summary.Sum;
 import wbif.sjx.common.Analysis.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -35,6 +36,15 @@ public class Track {
 
     }
 
+    public Track(ArrayList<Integer> xArray, ArrayList<Integer> yArray, ArrayList<Integer> zArray, ArrayList<Integer> fArray) {
+        for (int i=0;i<x.length;i++) {
+            x[i] = xArray.get(i);
+            y[i] = yArray.get(i);
+            z[i] = zArray.get(i);
+            f[i] = fArray.get(i);
+
+        }
+    }
 
     // PUBLIC METHODS
 
@@ -54,7 +64,7 @@ public class Track {
     }
 
     public double[] getStepSizes() {
-        return StepSizeCalculator.calculator(x,y,z);
+        return StepSizeCalculator.calculate(x,y,z);
 
     }
 

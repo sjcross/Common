@@ -52,10 +52,23 @@ public class Indexer {
         dim_m[2] = dim_x*dim_y;
     }
 
+    /**
+     * Calculates a single-valued index for the provided coordinates.  If the coordinates are outside the initialised
+     * size a value of -1 is returned.
+     * @param coord
+     * @return
+     */
     public int getIndex(int[] coord) {
-        int ind = 0;
+        // Verifying the provided coordinates aren't outside the specified dimensions
+        for (int i=0;i<coord.length;i++) {
+            if (coord[i] < 0 | coord[i] >= dim[i]) {
+                return -1;
+
+            }
+        }
 
         //Adding each coordinate (multiplied by the relevant dimension) to ind
+        int ind = 0;
         for (int i=0;i<dim_m.length;i++) {
             ind += coord[i]*dim_m[i];
         }
@@ -64,8 +77,15 @@ public class Indexer {
     }
 
     public int[] getCoord(int ind) {
-        int[] coord = new int[dim_m.length];
+        // Verifying the index is within the indexer size
+        int indexerSize = 1;
+        for (int i=0;i<dim.length;i++) {
+            indexerSize *= dim[i];
+        }
 
+        if (ind < 0 | ind > indexerSize) return null;
+
+        int[] coord = new int[dim_m.length];
         coord[0] = ind%dim_m[1];
         for (int i=1;i<dim_m.length;i++) {
             coord[i] = (int) Math.floor(ind/dim_m[i])%dim[i];
