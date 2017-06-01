@@ -64,7 +64,7 @@ public class Track {
     }
 
     public double[] getStepSizes() {
-        return StepSizeCalculator.calculator(x,y,z);
+        return StepSizeCalculator.calculate(x,y,z);
 
     }
 

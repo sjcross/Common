@@ -5,7 +5,7 @@ package wbif.sjx.common.Analysis;
  */
 public class TotalPathLengthCalculator {
     public static double[] calculate(double[] x, double[] y, double[] z) {
-        double[] steps = StepSizeCalculator.calculator(x,y,z);
+        double[] steps = StepSizeCalculator.calculate(x,y,z);
         double[] dist = new double[x.length];
 
         dist[0] = 0;

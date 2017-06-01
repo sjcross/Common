@@ -10,185 +10,186 @@ public class CumStat {
     public static final int POPULATION = 1;
     public static final int SAMPLE = 2;
 
-    private double[] x_mean;
-    private double[] x_var_pop; // Population variance
-    private double[] x_var_samp; // Sample variance
+    private double[] xMean;
+    private double[] xVarPop; // Population variance
+    private double[] xVarSamp; // Sample variance
     private double[] n;
-    private double[] w_sum;
+    private double[] wSum;
     private double[] S;
-    private double[] x_sum;
-    private double[] x_min;
-    private double[] x_max;
+    private double[] xSum;
+    private double[] xMin;
+    private double[] xMax;
 
     public CumStat(int len) {
-        x_mean = new double[len];
-        x_var_pop = new double[len];
-        x_var_samp = new double[len];
+        xMean = new double[len];
+        xVarPop = new double[len];
+        xVarSamp = new double[len];
         n = new double[len];
-        w_sum = new double[len];
+        wSum = new double[len];
         S = new double[len];
-        x_sum = new double[len];
-        x_min = new double[len];
-        Arrays.fill(x_min, Double.POSITIVE_INFINITY);
-        x_max = new double[len];
-        Arrays.fill(x_max, Double.NEGATIVE_INFINITY);
+        xSum = new double[len];
+        xMin = new double[len];
+        Arrays.fill(xMin, Double.POSITIVE_INFINITY);
+        xMax = new double[len];
+        Arrays.fill(xMax, Double.NEGATIVE_INFINITY);
     }
 
-    public synchronized void addMeasure(double[] x_in) { //Non-weighted vector
-        for (int i=0;i<x_in.length;i++) {
-            if (!Double.isNaN(x_in[i])) {
+    public synchronized void addMeasure(double[] xIn) { //Non-weighted vector
+        for (int i=0;i<xIn.length;i++) {
+            if (!Double.isNaN(xIn[i])) {
                 n[i] ++;
-                x_sum[i] = x_sum[i] + x_in[i];
-                w_sum[i] = w_sum[i] + 1;
-                double x_mean_prev = x_mean[i];
-                x_mean[i] = x_mean[i] + (1/w_sum[i])*(x_in[i]-x_mean[i]);
-                S[i] = S[i]+(x_in[i]-x_mean_prev)*(x_in[i]-x_mean[i]);
-                x_var_pop[i] = S[i]/w_sum[i];
-                x_var_samp[i] = S[i]/(w_sum[i]-1);
+                xSum[i] = xSum[i] + xIn[i];
+                wSum[i] = wSum[i] + 1;
+                double x_mean_prev = xMean[i];
+                xMean[i] = xMean[i] + (1/ wSum[i])*(xIn[i]- xMean[i]);
+                S[i] = S[i]+(xIn[i]-x_mean_prev)*(xIn[i]- xMean[i]);
+                xVarPop[i] = S[i]/ wSum[i];
+                xVarSamp[i] = S[i]/(wSum[i]-1);
 
-                if (x_in[i] < x_min[i]) {
-                    x_min[i] = x_in[i];
+                if (xIn[i] < xMin[i]) {
+                    xMin[i] = xIn[i];
                 }
 
-                if (x_in[i] > x_max[i]) {
-                    x_max[i] = x_in[i];
+                if (xIn[i] > xMax[i]) {
+                    xMax[i] = xIn[i];
                 }
             }
         }
     }
 
-    public synchronized void addMeasure(double[] x_in, int opt) {
-        for (int i=0;i<x_mean.length;i++) {
-            if (opt == IGNOREZEROS & x_in[i] == 0) {
-                x_in[i] = Double.NaN;
+    public synchronized void addMeasure(double[] xIn, int opt) {
+        for (int i = 0; i< xMean.length; i++) {
+            if (opt == IGNOREZEROS & xIn[i] == 0) {
+                xIn[i] = Double.NaN;
             }
         }
-        addMeasure(x_in);
+        addMeasure(xIn);
     }
 
-    public synchronized void addSingleMeasure(int i, double x_in) {
-        if (!Double.isNaN(x_in)) {
+    public synchronized void addSingleMeasure(int i, double xIn) {
+        if (!Double.isNaN(xIn)) {
             n[i] ++;
-            x_sum[i] = x_sum[i] + x_in;
-            w_sum[i] = w_sum[i] + 1;
-            double x_mean_prev = x_mean[i];
-            x_mean[i] = x_mean[i] + (1/w_sum[i])*(x_in-x_mean[i]);
-            S[i] = S[i]+(x_in-x_mean_prev)*(x_in-x_mean[i]);
-            x_var_pop[i] = S[i]/w_sum[i];
-            x_var_samp[i] = S[i]/(w_sum[i]-1);
+            xSum[i] = xSum[i] + xIn;
+            wSum[i] = wSum[i] + 1;
+            double x_mean_prev = xMean[i];
+            xMean[i] = xMean[i] + (1/ wSum[i])*(xIn- xMean[i]);
+            S[i] = S[i]+(xIn-x_mean_prev)*(xIn- xMean[i]);
+            xVarPop[i] = S[i]/ wSum[i];
+            xVarSamp[i] = S[i]/(wSum[i]-1);
 
-            if (x_in < x_min[i]) {
-                x_min[i] = x_in;
+            if (xIn < xMin[i]) {
+                xMin[i] = xIn;
             }
 
-            if (x_in > x_max[i]) {
-                x_max[i] = x_in;
+            if (xIn > xMax[i]) {
+                xMax[i] = xIn;
             }
         }
     }
 
-    public synchronized void addMeasure(double[] x_in, double[] w, int opt) {
-        for (int i=0;i<x_mean.length;i++) {
-            if (opt == IGNOREZEROS & x_in[i] == 0) {
-                x_in[i] = Double.NaN;
-            }
-        }
-        addMeasure(x_in,w);
-    }
-
-    public synchronized void addMeasure(double x_in) { //Non-weighted value
-        if (!Double.isNaN(x_in)) {
+    public synchronized void addMeasure(double xIn) { //Non-weighted value
+        if (!Double.isNaN(xIn)) {
             n[0] ++;
-            x_sum[0] = x_sum[0] + x_in;
-            w_sum[0] = w_sum[0] + 1;
-            double x_mean_prev = x_mean[0];
-            x_mean[0] = x_mean[0] + (1/w_sum[0])*(x_in-x_mean[0]);
-            S[0] = S[0]+(x_in-x_mean_prev)*(x_in-x_mean[0]);
-            x_var_pop[0] = S[0]/w_sum[0];
-            x_var_samp[0] = S[0]/(w_sum[0]-1);
+            xSum[0] = xSum[0] + xIn;
+            wSum[0] = wSum[0] + 1;
+            double x_mean_prev = xMean[0];
+            xMean[0] = xMean[0] + (1/ wSum[0])*(xIn- xMean[0]);
+            S[0] = S[0]+(xIn-x_mean_prev)*(xIn- xMean[0]);
+            xVarPop[0] = S[0]/ wSum[0];
+            xVarSamp[0] = S[0]/(wSum[0]-1);
 
-            if (x_in < x_min[0]) {
-                x_min[0] = x_in;
+            if (xIn < xMin[0]) {
+                xMin[0] = xIn;
             }
 
-            if (x_in > x_max[0]) {
-                x_max[0] = x_in;
+            if (xIn > xMax[0]) {
+                xMax[0] = xIn;
             }
         }
     }
 
-    public synchronized void addMeasure(double[] x_in, double[] w) {//Weighted vector
-        for (int i=0;i<x_mean.length;i++) {
-            if (!Double.isNaN(x_in[i])) {
+    public synchronized void addMeasure(double[] xIn, double[] w) {//Weighted vector
+        for (int i = 0; i< xMean.length; i++) {
+            if (!Double.isNaN(xIn[i])) {
                 if (w[i] != 0) {
                     n[i] ++;
-                    x_sum[i] = x_sum[i] + x_in[i];
-                    w_sum[i] = w_sum[i] + w[i];
-                    double x_mean_prev = x_mean[i];
-                    x_mean[i] = x_mean[i] + (w[i]/w_sum[i])*(x_in[i]-x_mean[i]);
-                    S[i] = S[i]+w[i]*(x_in[i]-x_mean_prev)*(x_in[i]-x_mean[i]);
-                    x_var_pop[i] = S[i]/w_sum[i];
-                    x_var_samp[i] = S[i]/(w_sum[i]-1);
+                    xSum[i] = xSum[i] + xIn[i];
+                    wSum[i] = wSum[i] + w[i];
+                    double x_mean_prev = xMean[i];
+                    xMean[i] = xMean[i] + (w[i]/ wSum[i])*(xIn[i]- xMean[i]);
+                    S[i] = S[i]+w[i]*(xIn[i]-x_mean_prev)*(xIn[i]- xMean[i]);
+                    xVarPop[i] = S[i]/ wSum[i];
+                    xVarSamp[i] = S[i]/(wSum[i]-1);
 
-                    if (x_in[i] < x_min[i]) {
-                        x_min[i] = x_in[i];
+                    if (xIn[i] < xMin[i]) {
+                        xMin[i] = xIn[i];
                     }
 
-                    if (x_in[i] > x_max[i]) {
-                        x_max[i] = x_in[i];
+                    if (xIn[i] > xMax[i]) {
+                        xMax[i] = xIn[i];
                     }
                 }
             }
         }
     }
 
-    public synchronized void addMeasure(double x_in, double w) {//Weighted value
-        if (!Double.isNaN(x_in)) {
+    public synchronized void addMeasure(double[] xIn, double[] w, int opt) {
+        for (int i = 0; i< xMean.length; i++) {
+            if (opt == IGNOREZEROS & xIn[i] == 0) {
+                xIn[i] = Double.NaN;
+            }
+        }
+        addMeasure(xIn,w);
+    }
+
+    public synchronized void addMeasure(double xIn, double w) {//Weighted value
+        if (!Double.isNaN(xIn)) {
             if (w != 0) {
                 n[0] ++;
-                x_sum[0] = x_sum[0] + x_in;
-                w_sum[0] = w_sum[0] + w;
-                double x_mean_prev = x_mean[0];
-                x_mean[0] = x_mean[0] + (w/w_sum[0])*(x_in-x_mean[0]);
-                S[0] = S[0]+w*(x_in-x_mean_prev)*(x_in-x_mean[0]);
-                x_var_pop[0] = S[0]/w_sum[0];
-                x_var_samp[0] = S[0]/(w_sum[0]-1);
+                xSum[0] = xSum[0] + xIn;
+                wSum[0] = wSum[0] + w;
+                double x_mean_prev = xMean[0];
+                xMean[0] = xMean[0] + (w/ wSum[0])*(xIn- xMean[0]);
+                S[0] = S[0]+w*(xIn-x_mean_prev)*(xIn- xMean[0]);
+                xVarPop[0] = S[0]/ wSum[0];
+                xVarSamp[0] = S[0]/(wSum[0]-1);
 
-                if (x_in < x_min[0]) {
-                    x_min[0] = x_in;
+                if (xIn < xMin[0]) {
+                    xMin[0] = xIn;
                 }
 
-                if (x_in > x_max[0]) {
-                    x_max[0] = x_in;
+                if (xIn > xMax[0]) {
+                    xMax[0] = xIn;
                 }
             }
         }
     }
 
     /**
-     * Add multiple measurements to a single cumulative value.  Different from addMeasure, which adds a single value to each element of a cumulative array.
+     * Add multiple measurements to a single cumulative value.  Different from addMeasure, which adds a single value to
+     * each element of a cumulative array.
      */
-    public synchronized void addMeasures(double[] x_in) {
-        for (int i=0;i<x_in.length;i++) {
-            addMeasure(x_in[i]);
+    public synchronized void addMeasures(double[] xIn) {
+        for (int i=0;i<xIn.length;i++) {
+            addMeasure(xIn[i]);
         }
     }
 
     /**
      * Add multiple measurements with weighting to a single cumulative value.  Different from addMeasure, which adds a single value to each element of a cumulative array.
      */
-    public synchronized void addMeasures(double[] x_in, double[] w) {
-        for (int i=0;i<x_in.length;i++) {
-            addMeasure(x_in[i], w[i]);
+    public synchronized void addMeasures(double[] xIn, double[] w) {
+        for (int i=0;i<xIn.length;i++) {
+            addMeasure(xIn[i], w[i]);
         }
     }
 
     public synchronized double[] getMean() {
-        return x_mean;
+        return xMean;
     }
 
     public synchronized double[] getSum() {
-        return x_sum;
+        return xSum;
     }
 
     /**
@@ -196,7 +197,7 @@ public class CumStat {
      * @return
      */
     public synchronized double[] getVar() {
-        return x_var_samp;
+        return xVarSamp;
     }
 
     /**
@@ -206,10 +207,10 @@ public class CumStat {
      */
     public synchronized double[] getVar(int mode) {
         if (mode == SAMPLE) {
-            return x_var_samp;
+            return xVarSamp;
 
         } else if (mode == POPULATION) {
-            return x_var_pop;
+            return xVarPop;
 
         }
 
@@ -222,11 +223,7 @@ public class CumStat {
       * @return
      */
     public synchronized double[] getStd() {
-        double[] x_std = new double[x_var_samp.length];
-        for (int i = 0; i< x_var_samp.length; i++) {
-            x_std[i] = Math.sqrt(x_var_samp[i]);
-        }
-        return x_std;
+        return getStd(SAMPLE);
     }
 
     /**
@@ -236,16 +233,16 @@ public class CumStat {
      */
     public synchronized double[] getStd(int mode) {
         if (mode == SAMPLE) {
-            double[] x_std = new double[x_var_samp.length];
-            for (int i = 0; i< x_var_samp.length; i++) {
-                x_std[i] = Math.sqrt(x_var_samp[i]);
+            double[] x_std = new double[xVarSamp.length];
+            for (int i = 0; i< xVarSamp.length; i++) {
+                x_std[i] = Math.sqrt(xVarSamp[i]);
             }
             return x_std;
 
         } else if (mode == POPULATION) {
-            double[] x_std = new double[x_var_pop.length];
-            for (int i = 0; i< x_var_pop.length; i++) {
-                x_std[i] = Math.sqrt(x_var_pop[i]);
+            double[] x_std = new double[xVarPop.length];
+            for (int i = 0; i< xVarPop.length; i++) {
+                x_std[i] = Math.sqrt(xVarPop[i]);
             }
             return x_std;
 
@@ -260,15 +257,15 @@ public class CumStat {
     }
 
     public synchronized double[] getMin() {
-        return x_min;
+        return xMin;
     }
 
     public synchronized double[] getMax() {
-        return x_max;
+        return xMax;
     }
 
     public synchronized double[] getWeight() {
-        return w_sum;
+        return wSum;
 
     }
 }
