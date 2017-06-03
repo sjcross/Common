@@ -4,7 +4,7 @@
 
     <groupId>wbif.sjx</groupId>
     <artifactId>Common</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
     <packaging>jar</packaging>
 
     <name>Common</name>
@@ -20,17 +20,6 @@
         <repository>
             <id>imagej.public</id>
             <url>http://maven.imagej.net/content/groups/public</url>
-        </repository>
-
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-
-        <repository>
-            <id>ome-web-prod.lifesci.dundee.ac.uk</id>
-            <name>ome-web-prod.lifesci.dundee.ac.uk-releases</name>
-            <url>http://artifacts.openmicroscopy.org/artifactory/ome.releases</url>
         </repository>
     </repositories>
 
@@ -54,15 +43,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.quickhull3d</groupId>
-            <artifactId>quickhull3d</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.bonej</groupId>
-            <artifactId>boneJ-legacy-plugins</artifactId>
-            <version>1.0.0</version>
+            <groupId>net.imagej</groupId>
+            <artifactId>ij</artifactId>
+            <version>1.51h</version>
         </dependency>
     </dependencies>
 

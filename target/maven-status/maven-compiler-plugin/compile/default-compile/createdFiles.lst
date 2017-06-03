@@ -1,3 +1,4 @@
+wbif\sjx\common\Process\NanBinner.class
 wbif\sjx\common\Analysis\DirectionalityRatioCalculator.class
 wbif\sjx\common\FileConditions\NameContainsPattern.class
 wbif\sjx\common\MathFunc\GeneralOps.class
@@ -6,7 +7,9 @@ wbif\sjx\common\Object\SpotIntensity.class
 wbif\sjx\common\System\FileCrawler.class
 wbif\sjx\common\FileConditions\ParentContainsString.class
 wbif\sjx\common\FileConditions\NameContainsString.class
+wbif\sjx\common\Object\LUTs.class
 wbif\sjx\common\System\Folder.class
+wbif\sjx\common\Process\SwitchTAndZ.class
 wbif\sjx\common\MathFunc\MSD.class
 wbif\sjx\common\Analysis\TotalPathLengthCalculator.class
 wbif\sjx\common\MathFunc\Indexer.class
@@ -21,10 +24,11 @@ wbif\sjx\common\MathFunc\ArrayFunc.class
 wbif\sjx\common\Analysis\MSDCalculator.class
 wbif\sjx\common\Object\Track.class
 wbif\sjx\common\MathFunc\CumStat.class
-wbif\sjx\common\Object\RandomLUT.class
+wbif\sjx\common\Process\ImageJOps.class
 wbif\sjx\common\MathFunc\MidpointCircle.class
-wbif\sjx\common\Object\Blob.class
+wbif\sjx\common\Process\IntensityMinMax.class
 wbif\sjx\common\Object\Spot.class
 wbif\sjx\common\FileConditions\FileCondition.class
+wbif\sjx\common\Filters\DoG.class
 wbif\sjx\common\System\GUIElements.class
 wbif\sjx\common\Analysis\EuclideanDistanceCalculator.class
