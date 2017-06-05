@@ -1,8 +1,0 @@
-wbif\sjx\common\Analysis\EuclideanDistanceCalculatorTest.class
-wbif\sjx\common\MathFunc\IndexerTest.class
-wbif\sjx\common\Analysis\DirectionalityRatioCalculatorTest.class
-wbif\sjx\common\MathFunc\CumStatTest.class
-wbif\sjx\common\Analysis\TotalPathLengthCalculatorTest.class
-wbif\sjx\common\FileConditions\ExtensionMatchesStringTest.class
-wbif\sjx\common\Analysis\StepSizeCalculatorTest.class
-wbif\sjx\common\FileConditions\NameContainsExtractorTest.class
