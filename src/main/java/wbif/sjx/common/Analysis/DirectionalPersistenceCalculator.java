@@ -9,9 +9,9 @@ import wbif.sjx.common.MathFunc.CumStat;
  * Calculates the direction autocorrelation.  Tested against results from DiPer.
  */
 public class DirectionalPersistenceCalculator {
-    public static CumStat calculate(int[] f, double[] x, double[] y, double[] z) {
+    public static CumStat[] calculate(int[] f, double[] x, double[] y, double[] z) {
         int maxDf = f[f.length - 1] - f[0]; // Maximum frame separation
-        CumStat cumStat = new CumStat(maxDf);
+        CumStat[] cumStat = new CumStat[maxDf];
 
         for (int i = 0; i < f.length-1; i++) {
             for (int j = i; j < f.length-1; j++) {
@@ -22,7 +22,8 @@ public class DirectionalPersistenceCalculator {
                     Vector3D v2 = new Vector3D((x[j+1] - x[j]), (y[j+1] - y[j]), (z[j+1] - z[j]));
 
                     if (v1.getNorm() != 0 & v2.getNorm() != 0) {
-                        cumStat.addSingleMeasure(df, Math.cos(Vector3D.angle(v1, v2)));
+                        if (cumStat[df] == null) cumStat[df] = new CumStat();
+                        cumStat[df].addMeasure(Math.cos(Vector3D.angle(v1, v2)));
                     }
                 }
             }
@@ -32,7 +33,7 @@ public class DirectionalPersistenceCalculator {
 
     }
 
-    public static CumStat calculateContinuous(double[] x, double[] y, double[] z) {
+    public static CumStat[] calculateContinuous(double[] x, double[] y, double[] z) {
         int[] f = new int[x.length];
         for (int i=0;i<f.length;i++) {
             f[i] = i;

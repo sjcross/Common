@@ -6,8 +6,8 @@ import wbif.sjx.common.MathFunc.CumStat;
  * Created by steph on 15/04/2017.
  */
 public class MSDCalculator {
-    public static CumStat calculate(int[] f, double[] x, double[] y, double[] z) {
-        CumStat cumStat = new CumStat(f[f.length - 1]);
+    public static CumStat[] calculate(int[] f, double[] x, double[] y, double[] z) {
+        CumStat[] cumStat = new CumStat[f[f.length - 1]];
 
         for (int i = 0; i <= f[f.length - 1]; i++) { //Incrementing over all time steps
             for (int j = 0; j < x.length; j++) {//Incrementing over all frames with the possibility for that time step
@@ -20,7 +20,7 @@ public class MSDCalculator {
 
                         double val = dx * dx + dy * dy + dz * dz;
 
-                        cumStat.addMeasure(i, val);
+                        cumStat[i].addMeasure(val);
                     }
                 }
             }

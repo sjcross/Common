@@ -209,7 +209,7 @@ public class LUTs {
         random.nextBytes(b);
 
         if (blackBackground) {
-            r[0] = g[0] = b[0] = -128;
+            r[0] = g[0] = b[0] = 0;
 
         } else {
             r[0] = g[0] = b[0] = 127;
