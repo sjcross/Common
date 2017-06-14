@@ -9,7 +9,7 @@ import wbif.sjx.common.MathFunc.CumStat;
 public class IntensityCalculator {
     public static CumStat calculate(ImagePlus inputImagePlus) {
         // Initialising the pixel value store
-        CumStat cs = new CumStat(1);
+        CumStat cs = new CumStat();
 
         // Running through all pixels in the image, adding them to the CumStat object
         for (int z = 0; z < inputImagePlus.getNSlices(); z++) {
