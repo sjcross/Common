@@ -2,7 +2,7 @@ package wbif.sjx.common.Object;
 
 import org.w3c.dom.Element;
 
-public class Spot {
+public class Spot extends Point{
     public static final String MAXI = "Maximum intensity";
     public static final String MINI = "Minimum intensity";
     public static final String MEANI = "Mean intensity";
@@ -19,12 +19,8 @@ public class Spot {
     public static final int SLICE = 6;
 
     public String name;
-    double x;
-    double y;
-    double z;
     int ID;
     double t;
-    int frame;
     int slice;
     public double[] min_I;
     public double[] max_I;
@@ -43,42 +39,9 @@ public class Spot {
 
     boolean hasint = false; //True when intensity has been measured
 
-    public Spot() {
-        min_I = new double[n_ch];
-        max_I = new double[n_ch];
-        mean_I = new double[n_ch];
-        med_I = new double[n_ch];
-        total_I = new double[n_ch];
-        std_I = new double[n_ch];
-    }
-
-    public Spot(double x, double y, double z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-
-    }
-
-    public Spot(double x, double y, double z, double radius) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public Spot(double x, double y, double z, int f, double radius) {
+        super(x,y,z,f);
         this.radius = radius;
-
-    }
-
-    public double getX() {
-        return x;
-
-    }
-
-    public double getY() {
-        return y;
-
-    }
-
-    public double getZ() {
-        return z;
 
     }
 
@@ -87,20 +50,7 @@ public class Spot {
 
     }
 
-    public void setX(double x) {
-        this.x = x;
 
-    }
-
-    public void setY(double y) {
-        this.y = y;
-
-    }
-
-    public void setZ(double z) {
-        this.z = z;
-
-    }
 
     public void setSlice(int slice) {
         this.slice = slice;
@@ -114,11 +64,6 @@ public class Spot {
 
     public double getT() {
         return t;
-
-    }
-
-    public int getFrame() {
-        return frame;
 
     }
 
@@ -137,8 +82,8 @@ public class Spot {
 
     }
 
-    public void setFrame(int frame) {
-        this.frame = frame;
+    public void setF(int f) {
+        this.f = f;
 
     }
 
@@ -154,7 +99,7 @@ public class Spot {
         y = Double.valueOf(e.getAttribute("POSITION_Y"));
         z = Double.valueOf(e.getAttribute("POSITION_Z"));
         t = Double.valueOf(e.getAttribute("POSITION_T"));
-        frame = Integer.valueOf(e.getAttribute("FRAME"));
+        f = Integer.valueOf(e.getAttribute("FRAME"));
         min_I[0] = Double.valueOf(e.getAttribute("MIN_INTENSITY"));
         max_I[0] = Double.valueOf(e.getAttribute("MAX_INTENSITY"));
         mean_I[0] = Double.valueOf(e.getAttribute("MEAN_INTENSITY"));
@@ -192,7 +137,7 @@ public class Spot {
         else if (type == Z)         return z;
         else if (type == ID_NUM)    return ID;
         else if (type == SLICE)     return slice;
-        else if (type == FRAME)     return frame;
+        else if (type == FRAME)     return f;
         else if (type == T)         return t;
 
         return null;

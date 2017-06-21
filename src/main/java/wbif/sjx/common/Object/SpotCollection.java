@@ -30,7 +30,7 @@ public class SpotCollection extends HashSet<Spot> {
 
         while(iterator().hasNext()) {
             Spot next = iterator.next();
-            if (next.getFrame() == frame) {
+            if (next.getF() == frame) {
                 to_return.add(next);
             }
         }

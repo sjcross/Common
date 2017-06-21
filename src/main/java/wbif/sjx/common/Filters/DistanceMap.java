@@ -6,9 +6,6 @@ import ij.ImagePlus;
 import ij.plugin.filter.ExtendedPlugInFilter;
 import ij.plugin.filter.PlugInFilterRunner;
 import ij.process.ImageProcessor;
-import inra.ijpb.binary.ChamferWeights;
-import inra.ijpb.binary.distmap.DistanceTransform3x3Short;
-import inra.ijpb.plugins.ChamferDistanceMapPlugin;
 
 /**
  * Created by sc13967 on 07/06/2017.
