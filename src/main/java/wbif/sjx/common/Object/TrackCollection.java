@@ -1,17 +1,16 @@
 package wbif.sjx.common.Object;
 
-import ij.IJ;
-import ij.measure.ResultsTable;
+import wbif.sjx.common.Analysis.DirectionalPersistenceCalculator;
+import wbif.sjx.common.Analysis.MSDCalculator;
 import wbif.sjx.common.MathFunc.CumStat;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by sc13967 on 13/06/2017.
  */
-public class TrackCollection extends HashMap<Integer,Track> {
+public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
     // PUBLIC METHODS
 
@@ -41,11 +40,17 @@ public class TrackCollection extends HashMap<Integer,Track> {
             }
         }
 
+        // Getting the frame numbers
+        double[] f = new double[longestDuration];
+        for (int i=0;i<f.length;i++) {
+            f[i] = i;
+        }
+
         // Getting the average and standard deviations
         double[] averageEuclideanDistance = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
         double[] stdevEuclideanDistance = Arrays.stream(cs).mapToDouble(CumStat::getStd).toArray();
 
-        return new double[][]{averageEuclideanDistance,stdevEuclideanDistance};
+        return new double[][]{f,averageEuclideanDistance,stdevEuclideanDistance};
 
     }
 
@@ -75,14 +80,139 @@ public class TrackCollection extends HashMap<Integer,Track> {
             }
         }
 
+        // Getting the frame numbers
+        double[] f = new double[longestDuration];
+        for (int i=0;i<f.length;i++) {
+            f[i] = i;
+        }
+
         // Getting the average and standard deviations
         double[] averageTotalPathLength = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
         double[] stdevTotalPathLength = Arrays.stream(cs).mapToDouble(CumStat::getStd).toArray();
 
-        return new double[][]{averageTotalPathLength,stdevTotalPathLength};
+        return new double[][]{f,averageTotalPathLength,stdevTotalPathLength};
 
     }
 
+    /**
+     * Rolling directionality ratio.  Values are stored per frame, relative to the start of that track.
+     * @return
+     */
+    public double[][] getAverageDirectionalityRatio(boolean pixelDistances) {
+        // Determining the longest duration
+        int longestDuration = 0;
+        for (Track track:values()) {
+            if (track.getDuration() > longestDuration) {
+                longestDuration = track.getDuration();
+            }
+        }
+
+        // Creating the CumStat array
+        CumStat[] cs = new CumStat[longestDuration+1];
+        for (int i=0;i<cs.length;i++) {
+            cs[i] = new CumStat();
+        }
+
+        for (Track track:values()) {
+            double[] rollingDirectionalityRatio = track.getRollingDirectionalityRatio(pixelDistances);
+            for (int i=0;i<rollingDirectionalityRatio.length;i++) {
+                cs[i].addMeasure(rollingDirectionalityRatio[i]);
+            }
+        }
+
+        // Getting the frame numbers
+        double[] f = new double[longestDuration];
+        for (int i=0;i<f.length;i++) {
+            f[i] = i;
+        }
+
+        // Getting the average and standard deviations
+        double[] averageDirectionalityRatio = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
+        double[] stdDirectionalityRatio = Arrays.stream(cs).mapToDouble(CumStat::getStd).toArray();
+
+        return new double[][]{f,averageDirectionalityRatio,stdDirectionalityRatio};
+
+    }
+
+    /**
+     * Average directional persistence.  Values are stored as the average for each frame gap.
+     * @return
+     */
+    public double[][] getAverageDirectionalPersistence(boolean pixelDistances) {
+        // Determining the longest duration.  This is also the largest possible frame gap.
+        int longestDuration = 0;
+        for (Track track:values()) {
+            if (track.getDuration() > longestDuration) {
+                longestDuration = track.getDuration();
+            }
+        }
+
+        // Creating the CumStat array
+        CumStat[] cs = new CumStat[longestDuration+1];
+        for (int i=0;i<cs.length;i++) {
+            cs[i] = new CumStat();
+        }
+
+        // The same
+        for (Track track:values()) {
+            DirectionalPersistenceCalculator.calculate(cs,track.getF(),track.getX(pixelDistances),track.getY(pixelDistances),track.getZ(pixelDistances));
+        }
+
+        // Getting the frame intervals
+        double[] df = new double[longestDuration];
+        for (int i=0;i<df.length;i++) {
+            df[i] = i;
+        }
+
+        // Getting the average and standard deviations
+        double[] averageDirectionalPersistence = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
+        double[] stdevDirectionalPersistence = Arrays.stream(cs).mapToDouble(CumStat::getStd).toArray();
+
+        return new double[][]{df,averageDirectionalPersistence,stdevDirectionalPersistence};
+
+    }
+
+    /**
+     * Average MSD.  Values are stored as the average for each frame gap.
+     * @return
+     */
+    public double[][] getAverageMSD(boolean pixelDistances) {
+        // Determining the longest duration.  This is also the largest possible frame gap.
+        int longestDuration = 0;
+        for (Track track:values()) {
+            if (track.getDuration() > longestDuration) {
+                longestDuration = track.getDuration();
+            }
+        }
+
+        // Creating the CumStat array
+        CumStat[] cs = new CumStat[longestDuration+1];
+        for (int i=0;i<cs.length;i++) {
+            cs[i] = new CumStat();
+        }
+
+        for (Track track:values()) {
+            MSDCalculator.calculate(cs,track.getF(),track.getX(pixelDistances),track.getY(pixelDistances),track.getZ(pixelDistances));
+        }
+
+        // Getting the frame intervals
+        double[] df = new double[cs.length];
+        for (int i=0;i<cs.length;i++) {
+            df[i] = i;
+        }
+
+        // Getting the average and standard deviations
+        double[] averageMSD = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
+        double[] stdevMSD = Arrays.stream(cs).mapToDouble(CumStat::getStd).toArray();
+
+        return new double[][]{df,averageMSD,stdevMSD};
+
+    }
+
+    /**
+     * Number of objects per frame
+     * @return int[][]{frame[],n[]
+     */
     public int[][] getNumberOfObjects() {
         // Determining the first and last frames
         int firstFrame = Integer.MAX_VALUE;
@@ -102,7 +232,7 @@ public class TrackCollection extends HashMap<Integer,Track> {
         for (Track track:values()) {
             int[] f = track.getF();
             for (int ff:f) {
-                f[ff]++;
+                n[ff-firstFrame] = n[ff-firstFrame] + 1;
             }
         }
 
@@ -115,4 +245,5 @@ public class TrackCollection extends HashMap<Integer,Track> {
         return new int[][]{f,n};
 
     }
+
 }

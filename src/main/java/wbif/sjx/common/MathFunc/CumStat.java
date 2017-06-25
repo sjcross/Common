@@ -19,6 +19,30 @@ public class CumStat {
     public CumStat() {
     }
 
+    public CumStat(double[] vals) {
+        for (double val:vals) {
+            addMeasure(val);
+        }
+    }
+
+    public CumStat(double[] vals, boolean ignoreZeroes) {
+        for (double val:vals) {
+            addMeasure(val,ignoreZeroes);
+        }
+    }
+
+    public CumStat(double[] vals, double[] weights) {
+        for (int i=0;i<vals.length;i++) {
+            addMeasure(vals[i],weights[i]);
+        }
+    }
+
+    public CumStat(double[] vals, double[] weights, boolean ignoreZeroes) {
+        for (int i=0;i<vals.length;i++) {
+            addMeasure(vals[i],weights[i],ignoreZeroes);
+        }
+    }
+
     public synchronized void addMeasure(double xIn) {
         addMeasure(xIn, 1, false);
     }

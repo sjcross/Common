@@ -6,16 +6,11 @@ import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
  * Created by sc13967 on 25/01/2017.
  */
 public class DirectionalPersistence {
-    CumStat[] cosTheta;
-
+    private CumStat[] cosTheta;
 
     // CONSTRUCTORS
     public DirectionalPersistence(CumStat[] cosTheta) {
         this.cosTheta = cosTheta;
-    }
-
-    public DirectionalPersistence(int len) {
-        cosTheta = new CumStat[len];
     }
 
 

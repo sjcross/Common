@@ -1,10 +1,10 @@
 package wbif.sjx.common.Object;
 
-import org.apache.commons.math3.stat.descriptive.summary.Sum;
 import wbif.sjx.common.Analysis.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
@@ -66,50 +66,38 @@ public class Track extends ArrayList<Point> {
 
     // PUBLIC METHODS
 
-//    public CumStat[] getDirectionalPersistence() {
-//        return getDirectionalPersistence(false);
-//
-//    }
-
     public CumStat[] getDirectionalPersistence(boolean pixelDistances) {
         return DirectionalPersistenceCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
-
-//    public CumStat[] getMSD() {
-//        return getMSD(false);
-//
-//    }
 
     public CumStat[] getMSD(boolean pixelDistances) {
         return MSDCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
-//    public double[] getInstantaneousVelocity() {
-//        return getInstantaneousVelocity(false);
-//
-//    }
+    public double[] getMSDLinearFit(boolean pixelDistances, int nPoints) {
+        CumStat[] cs = MSDCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+
+        double[] df = new double[cs.length];
+        for (int i=0;i<cs.length;i++) {
+            df[i] = i;
+        }
+        double[] MSD = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
+
+        return MSDCalculator.getLinearFit(df,MSD,nPoints);
+
+    }
 
     public double[] getInstantaneousVelocity(boolean pixelDistances) {
         return InstantaneousVelocityCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
-//    public double[] getStepSizes() {
-//        return getStepSizes(false);
-//
-//    }
-
     public double[] getStepSizes(boolean pixelDistances) {
         return StepSizeCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
-
-//    public double getEuclideanDistance() {
-//        return getEuclideanDistance(false);
-//
-//    }
 
     public double getEuclideanDistance(boolean pixelDistances) {
         double[] x = getX(pixelDistances);
@@ -124,35 +112,17 @@ public class Track extends ArrayList<Point> {
 
     }
 
-//    public double getTotalPathLength() {
-//        return getTotalPathLength(false);
-//
-//    }
-
     public double getTotalPathLength(boolean pixelDistances) {
         double[] steps = getStepSizes(pixelDistances);
 
-        return new Sum().evaluate(steps);
+        return Arrays.stream(steps).sum();
 
     }
-
-//    public double getDirectionalityRatio() {
-//        return getDirectionalityRatio(false);
-//
-//    }
 
     public double getDirectionalityRatio(boolean pixelDistances) {
         return getEuclideanDistance(pixelDistances)/getTotalPathLength(pixelDistances);
 
     }
-
-    /**
-     * Returns a double[] containing the Euclidean distance at all time steps
-     */
-//    public double[] getRollingEuclideanDistance() {
-//        return getRollingEuclideanDistance(false);
-//
-//    }
 
     /**
      * Returns a double[] containing the Euclidean distance at all time steps
@@ -165,26 +135,10 @@ public class Track extends ArrayList<Point> {
     /**
      * Returns a double[] containing the total path length up to each time step
      */
-//    public double[] getRollingTotalPathLength() {
-//        return getRollingTotalPathLength(false);
-//
-//    }
-
-    /**
-     * Returns a double[] containing the total path length up to each time step
-     */
     public double[] getRollingTotalPathLength(boolean pixelDistances) {
         return TotalPathLengthCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
-
-    /**
-     * Returns a double[] containing the directionality ratio at all time steps
-     */
-//    public double[] getRollingDirectionalityRatio() {
-//        return getRollingDirectionalityRatio(false);
-//
-//    }
 
     public double[] getRollingDirectionalityRatio(boolean pixelDistances) {
         return DirectionalityRatioCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
@@ -197,11 +151,6 @@ public class Track extends ArrayList<Point> {
         return f[f.length-1]-f[0];
 
     }
-
-//    public double[][] getLimits(){
-//        return getLimits(false);
-//
-//    }
 
     public double[][] getLimits(boolean pixelDistances){
         double[] x = getX(pixelDistances);
@@ -235,11 +184,6 @@ public class Track extends ArrayList<Point> {
 
     // GETTERS AND SETTERS
 
-//    public double[] getX() {
-//       return getX(false);
-//
-//    }
-
     public double[] getX(boolean pixelDistances) {
         double[] x = stream().mapToDouble(Point::getX).toArray();
 
@@ -249,11 +193,6 @@ public class Track extends ArrayList<Point> {
 
     }
 
-//    public double[] getY() {
-//        return getY(false);
-//
-//    }
-
     public double[] getY(boolean pixelDistances) {
         double[] y = stream().mapToDouble(Point::getY).toArray();
 
@@ -262,11 +201,6 @@ public class Track extends ArrayList<Point> {
         return y;
 
     }
-
-//    public double[] getZ() {
-//        return getZ(false);
-//
-//    }
 
     public double[] getZ(boolean pixelDistances) {
         double[] z = stream().mapToDouble(Point::getZ).toArray();
