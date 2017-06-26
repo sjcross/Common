@@ -66,6 +66,20 @@ public class Track extends ArrayList<Point> {
 
     // PUBLIC METHODS
 
+    /**
+     *
+     * @return mean position as double[][]{meanX,meanY,meanZ}{stdevX,stdevY,stdevZ}
+     */
+    public double[][] getMeanPosition(boolean pixelDistances) {
+        CumStat csX = new CumStat(getX(pixelDistances));
+        CumStat csY = new CumStat(getY(pixelDistances));
+        CumStat csZ = new CumStat(getZ(pixelDistances));
+
+        return new double[][]{{csX.getMean(),csY.getMean(),csZ.getMean()},
+                {csX.getStd(),csY.getStd(),csZ.getStd()}};
+
+    }
+
     public CumStat[] getDirectionalPersistence(boolean pixelDistances) {
         return DirectionalPersistenceCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
@@ -101,8 +115,8 @@ public class Track extends ArrayList<Point> {
 
     public double getEuclideanDistance(boolean pixelDistances) {
         double[] x = getX(pixelDistances);
-        double[] y = getX(pixelDistances);
-        double[] z = getX(pixelDistances);
+        double[] y = getY(pixelDistances);
+        double[] z = getZ(pixelDistances);
 
         double dx = x[x.length-1]-x[0];
         double dy = y[x.length-1]-y[0];
@@ -154,8 +168,8 @@ public class Track extends ArrayList<Point> {
 
     public double[][] getLimits(boolean pixelDistances){
         double[] x = getX(pixelDistances);
-        double[] y = getX(pixelDistances);
-        double[] z = getX(pixelDistances);
+        double[] y = getY(pixelDistances);
+        double[] z = getZ(pixelDistances);
         int[] f = getF();
 
         double[][] limits = new double[4][2];

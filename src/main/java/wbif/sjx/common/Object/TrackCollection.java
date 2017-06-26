@@ -34,9 +34,12 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         }
 
         for (Track track:values()) {
+            int[] f = track.getF();
             double[] rollingEuclideanDistance = track.getRollingEuclideanDistance(pixelDistances);
+
             for (int i=0;i<rollingEuclideanDistance.length;i++) {
-                cs[i].addMeasure(rollingEuclideanDistance[i]);
+                int pos = f[i]-f[0];
+                cs[pos].addMeasure(rollingEuclideanDistance[i]);
             }
         }
 
@@ -74,9 +77,12 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         }
 
         for (Track track:values()) {
+            int[] f = track.getF();
             double[] rollingTotalPathLength = track.getRollingTotalPathLength(pixelDistances);
+
             for (int i=0;i<rollingTotalPathLength.length;i++) {
-                cs[i].addMeasure(rollingTotalPathLength[i]);
+                int pos = f[i]-f[0];
+                cs[pos].addMeasure(rollingTotalPathLength[i]);
             }
         }
 
@@ -114,9 +120,11 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         }
 
         for (Track track:values()) {
+            int[] f = track.getF();
             double[] rollingDirectionalityRatio = track.getRollingDirectionalityRatio(pixelDistances);
             for (int i=0;i<rollingDirectionalityRatio.length;i++) {
-                cs[i].addMeasure(rollingDirectionalityRatio[i]);
+                int pos = f[i] - f[0];
+                cs[pos].addMeasure(rollingDirectionalityRatio[i]);
             }
         }
 
@@ -153,7 +161,6 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
             cs[i] = new CumStat();
         }
 
-        // The same
         for (Track track:values()) {
             DirectionalPersistenceCalculator.calculate(cs,track.getF(),track.getX(pixelDistances),track.getY(pixelDistances),track.getZ(pixelDistances));
         }
