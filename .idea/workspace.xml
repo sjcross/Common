@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,7 +24,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
+            <state relative-caret-position="85">
               <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
               <folding />
             </state>
@@ -35,7 +34,7 @@
       <file leaf-file-name="Validator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/Validator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="170">
               <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#Validator#0" expanded="false" />
@@ -47,7 +46,7 @@
       <file leaf-file-name="GaussianFitter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GaussianFitter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="2057">
               <caret line="137" column="65" lean-forward="false" selection-start-line="137" selection-start-column="65" selection-end-line="137" selection-end-column="65" />
               <folding>
                 <element signature="docComment;class#GaussianFitter#0" expanded="false" />
@@ -58,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Track.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-645">
-              <caret line="142" column="7" lean-forward="false" selection-start-line="142" selection-start-column="7" selection-end-line="142" selection-end-column="7" />
+            <state relative-caret-position="317">
+              <caret line="87" column="52" lean-forward="true" selection-start-line="87" selection-start-column="52" selection-end-line="87" selection-end-column="52" />
               <folding>
                 <element signature="docComment;class#Track#0" expanded="false" />
                 <element signature="method#Track#0;class#Track#0" expanded="false" />
@@ -74,8 +73,6 @@
                 <element signature="docComment;method#getMeanPosition#0;class#Track#0" expanded="false" />
                 <element signature="method#getMeanPosition#0;class#Track#0" expanded="false" />
                 <element signature="method#getDirectionalPersistence#0;class#Track#0" expanded="false" />
-                <element signature="method#getMSD#0;class#Track#0" expanded="false" />
-                <element signature="method#getMSDLinearFit#0;class#Track#0" expanded="false" />
                 <element signature="method#getInstantaneousVelocity#0;class#Track#0" expanded="false" />
                 <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
                 <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
@@ -91,16 +88,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrackCollection.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TrackCollection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+            <state relative-caret-position="408">
+              <caret line="239" column="7" lean-forward="true" selection-start-line="239" selection-start-column="7" selection-end-line="239" selection-end-column="7" />
               <folding>
                 <element signature="docComment;class#TrackCollection#0" expanded="false" />
                 <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
                 <element signature="method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
                 <element signature="docComment;method#getAverageTotalPathLength#0;class#TrackCollection#0" expanded="false" />
+                <element signature="method#getAverageTotalPathLength#0;class#TrackCollection#0" expanded="false" />
                 <element signature="docComment;method#getAverageDirectionalityRatio#0;class#TrackCollection#0" expanded="false" />
                 <element signature="method#getAverageDirectionalityRatio#0;class#TrackCollection#0" expanded="false" />
                 <element signature="docComment;method#getAverageDirectionalPersistence#0;class#TrackCollection#0" expanded="false" />
@@ -108,7 +106,6 @@
                 <element signature="docComment;method#getAverageMSD#0;class#TrackCollection#0" expanded="false" />
                 <element signature="method#getAverageMSD#0;class#TrackCollection#0" expanded="false" />
                 <element signature="docComment;method#getNumberOfObjects#0;class#TrackCollection#0" expanded="false" />
-                <element signature="method#getNumberOfObjects#0;class#TrackCollection#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -117,8 +114,8 @@
       <file leaf-file-name="CumStat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/CumStat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            <state relative-caret-position="153">
+              <caret line="9" column="31" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
               <folding>
                 <element signature="method#CumStat#0;class#CumStat#0" expanded="false" />
                 <element signature="method#CumStat#1;class#CumStat#0" expanded="false" />
@@ -152,11 +149,9 @@
       <file leaf-file-name="DistanceMap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Filters/DistanceMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="34">
               <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -176,10 +171,9 @@
       <file leaf-file-name="LUTs.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/LUTs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="527">
               <caret line="128" column="0" lean-forward="false" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#LUTs#0" expanded="false" />
                 <element signature="method#BlackIce#0;class#LUTs#0" expanded="false" />
                 <element signature="method#BlackSpectrum#0;class#LUTs#0" expanded="false" />
@@ -208,6 +202,7 @@
       <find>this.</find>
       <find>Sys</find>
       <find>getx</find>
+      <find>ignore</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -265,9 +260,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1874" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -288,9 +283,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -409,76 +401,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MathFunc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MathFunc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GaussianFitter.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Analysis" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -807,7 +738,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="1912" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -815,49 +746,32 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780084" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883817" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18123667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20066153" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3989305" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883817" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32834226" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18791947" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -1034,9 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1360">
           <caret line="85" column="9" lean-forward="false" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,15 +962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2856">
           <caret line="174" column="51" lean-forward="false" selection-start-line="174" selection-start-column="51" selection-end-line="174" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#6219#6220#0" expanded="false" />
-            <element signature="e#6247#6248#0" expanded="false" />
-            <element signature="e#6276#6277#0" expanded="false" />
-            <element signature="e#6304#6305#0" expanded="false" />
-            <element signature="e#6333#6334#0" expanded="false" />
-            <element signature="e#6361#6362#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1074,36 +976,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2363">
           <caret line="162" column="26" lean-forward="false" selection-start-line="162" selection-start-column="26" selection-end-line="162" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#CumStatTest#0" expanded="false" />
-            <element signature="docComment;method#testAddMeasure#0;class#CumStatTest#0" expanded="false" />
-            <element signature="e#391#502#0" expanded="false" />
-            <element signature="docComment;method#testAddMeasure1#0;class#CumStatTest#0" expanded="false" />
-            <element signature="e#2572#2683#0" expanded="false" />
-            <element signature="docComment;method#testAddMeasure3#0;class#CumStatTest#0" expanded="false" />
-            <element signature="e#4813#4924#0" expanded="false" />
-            <element signature="docComment;method#testAddMeasure4#0;class#CumStatTest#0" expanded="false" />
-            <element signature="e#7180#7291#0" expanded="false" />
-            <element signature="docComment;method#testAddMeasure5#0;class#CumStatTest#0" expanded="false" />
-            <element signature="method#testAddMeasure5#0;class#CumStatTest#0" expanded="false" />
-            <element signature="e#9534#9645#0" expanded="false" />
-            <element signature="docComment;method#testAddMeasures#0;class#CumStatTest#0" expanded="false" />
-            <element signature="method#testAddMeasures#0;class#CumStatTest#0" expanded="false" />
-            <element signature="e#11682#11793#0" expanded="false" />
-            <element signature="docComment;method#testAddMeasures1#0;class#CumStatTest#0" expanded="false" />
-            <element signature="method#testAddMeasures1#0;class#CumStatTest#0" expanded="false" />
-            <element signature="e#13793#13904#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/LUTs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="527">
           <caret line="128" column="0" lean-forward="false" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
             <element signature="docComment;class#LUTs#0" expanded="false" />
             <element signature="method#BlackIce#0;class#LUTs#0" expanded="false" />
             <element signature="method#BlackSpectrum#0;class#LUTs#0" expanded="false" />
@@ -1118,11 +998,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Filters/DistanceMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="34">
           <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1135,7 +1013,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GaussianFitter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="2057">
           <caret line="137" column="65" lean-forward="false" selection-start-line="137" selection-start-column="65" selection-end-line="137" selection-end-column="65" />
           <folding>
             <element signature="docComment;class#GaussianFitter#0" expanded="false" />
@@ -1147,7 +1025,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/Validator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="170">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Validator#0" expanded="false" />
@@ -1159,22 +1037,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="method#Point#0;class#Point#0" expanded="false" />
-            <element signature="e#277#278#0" expanded="false" />
-            <element signature="e#301#302#0" expanded="false" />
-            <element signature="e#329#330#0" expanded="false" />
-            <element signature="e#353#354#0" expanded="false" />
-            <element signature="e#381#382#0" expanded="false" />
-            <element signature="e#405#406#0" expanded="false" />
-            <element signature="e#430#431#0" expanded="false" />
-            <element signature="e#454#455#0" expanded="false" />
-            <element signature="method#setX#0;class#Point#0" expanded="false" />
-            <element signature="method#setY#0;class#Point#0" expanded="false" />
-            <element signature="method#setZ#0;class#Point#0" expanded="false" />
-            <element signature="e#668#669#0" expanded="false" />
-            <element signature="e#694#695#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1183,7 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1191,7 +1052,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1199,7 +1059,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="79" column="8" lean-forward="false" selection-start-line="79" selection-start-column="8" selection-end-line="85" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1207,11 +1066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#DirectionalPersistence#0" expanded="false" />
-            <element signature="e#294#295#0" expanded="false" />
-            <element signature="e#334#335#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1225,7 +1079,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
+        <state relative-caret-position="85">
           <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
           <folding />
         </state>
@@ -1237,37 +1091,6 @@
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#EuclideanDistanceCalculator#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-645">
-          <caret line="142" column="7" lean-forward="false" selection-start-line="142" selection-start-column="7" selection-end-line="142" selection-end-column="7" />
-          <folding>
-            <element signature="docComment;class#Track#0" expanded="false" />
-            <element signature="method#Track#0;class#Track#0" expanded="false" />
-            <element signature="method#Track#1;class#Track#0" expanded="false" />
-            <element signature="method#Track#2;class#Track#0" expanded="false" />
-            <element signature="method#Track#3;class#Track#0" expanded="false" />
-            <element signature="method#Track#4;class#Track#0" expanded="false" />
-            <element signature="method#Track#5;class#Track#0" expanded="false" />
-            <element signature="docComment;method#getMeanPosition#0;class#Track#0" expanded="false" />
-            <element signature="method#getMeanPosition#0;class#Track#0" expanded="false" />
-            <element signature="method#getDirectionalPersistence#0;class#Track#0" expanded="false" />
-            <element signature="method#getMSD#0;class#Track#0" expanded="false" />
-            <element signature="method#getMSDLinearFit#0;class#Track#0" expanded="false" />
-            <element signature="method#getInstantaneousVelocity#0;class#Track#0" expanded="false" />
-            <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
-            <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-            <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-            <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-            <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
-            <element signature="method#getDuration#0;class#Track#0" expanded="false" />
-            <element signature="method#getY#0;class#Track#0" expanded="false" />
-            <element signature="method#getZ#0;class#Track#0" expanded="false" />
-            <element signature="method#getF#0;class#Track#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1287,8 +1110,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/CumStat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state relative-caret-position="153">
+          <caret line="9" column="31" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
           <folding>
             <element signature="method#CumStat#0;class#CumStat#0" expanded="false" />
             <element signature="method#CumStat#1;class#CumStat#0" expanded="false" />
@@ -1305,13 +1128,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        <state relative-caret-position="408">
+          <caret line="239" column="7" lean-forward="true" selection-start-line="239" selection-start-column="7" selection-end-line="239" selection-end-column="7" />
           <folding>
             <element signature="docComment;class#TrackCollection#0" expanded="false" />
             <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
             <element signature="method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
             <element signature="docComment;method#getAverageTotalPathLength#0;class#TrackCollection#0" expanded="false" />
+            <element signature="method#getAverageTotalPathLength#0;class#TrackCollection#0" expanded="false" />
             <element signature="docComment;method#getAverageDirectionalityRatio#0;class#TrackCollection#0" expanded="false" />
             <element signature="method#getAverageDirectionalityRatio#0;class#TrackCollection#0" expanded="false" />
             <element signature="docComment;method#getAverageDirectionalPersistence#0;class#TrackCollection#0" expanded="false" />
@@ -1319,7 +1143,35 @@
             <element signature="docComment;method#getAverageMSD#0;class#TrackCollection#0" expanded="false" />
             <element signature="method#getAverageMSD#0;class#TrackCollection#0" expanded="false" />
             <element signature="docComment;method#getNumberOfObjects#0;class#TrackCollection#0" expanded="false" />
-            <element signature="method#getNumberOfObjects#0;class#TrackCollection#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="87" column="52" lean-forward="true" selection-start-line="87" selection-start-column="52" selection-end-line="87" selection-end-column="52" />
+          <folding>
+            <element signature="docComment;class#Track#0" expanded="false" />
+            <element signature="method#Track#0;class#Track#0" expanded="false" />
+            <element signature="method#Track#1;class#Track#0" expanded="false" />
+            <element signature="method#Track#2;class#Track#0" expanded="false" />
+            <element signature="method#Track#3;class#Track#0" expanded="false" />
+            <element signature="method#Track#4;class#Track#0" expanded="false" />
+            <element signature="method#Track#5;class#Track#0" expanded="false" />
+            <element signature="docComment;method#getMeanPosition#0;class#Track#0" expanded="false" />
+            <element signature="method#getMeanPosition#0;class#Track#0" expanded="false" />
+            <element signature="method#getDirectionalPersistence#0;class#Track#0" expanded="false" />
+            <element signature="method#getInstantaneousVelocity#0;class#Track#0" expanded="false" />
+            <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
+            <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
+            <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
+            <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
+            <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
+            <element signature="method#getDuration#0;class#Track#0" expanded="false" />
+            <element signature="method#getY#0;class#Track#0" expanded="false" />
+            <element signature="method#getZ#0;class#Track#0" expanded="false" />
+            <element signature="method#getF#0;class#Track#0" expanded="false" />
           </folding>
         </state>
       </provider>

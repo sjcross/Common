@@ -18,14 +18,20 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Rolling Euclidean distance.  Values are stored per frame, relative to the start of that track.
      * @return
      */
-    public double[][] getAverageRollingEuclideanDistance(boolean pixelDistances) {
-        // Determining the longest duration
-        int longestDuration = 0;
+    public double[][] getAverageRollingEuclideanDistance(boolean pixelDistances, boolean relativeToTrackStart) {
+        // Determining the first and last frames
+        int firstFrame = Integer.MAX_VALUE;
+        int lastFrame = 0;
         for (Track track:values()) {
-            if (track.getDuration() > longestDuration) {
-                longestDuration = track.getDuration();
+            int[] f = track.getF();
+            if (f[0] < firstFrame) {
+                firstFrame = f[0];
+            }
+            if (f[f.length-1] > lastFrame) {
+                lastFrame = f[f.length-1];
             }
         }
+        int longestDuration = lastFrame-firstFrame;
 
         // Creating the CumStat array
         CumStat[] cs = new CumStat[longestDuration+1];
@@ -38,7 +44,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
             double[] rollingEuclideanDistance = track.getRollingEuclideanDistance(pixelDistances);
 
             for (int i=0;i<rollingEuclideanDistance.length;i++) {
-                int pos = f[i]-f[0];
+                int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
                 cs[pos].addMeasure(rollingEuclideanDistance[i]);
             }
         }
@@ -61,14 +67,20 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Rolling total path length.  Values are stored per frame, relative to the start of that track.
      * @return
      */
-    public double[][] getAverageTotalPathLength(boolean pixelDistances) {
-        // Determining the longest duration
-        int longestDuration = 0;
+    public double[][] getAverageTotalPathLength(boolean pixelDistances, boolean relativeToTrackStart) {
+        // Determining the first and last frames
+        int firstFrame = Integer.MAX_VALUE;
+        int lastFrame = 0;
         for (Track track:values()) {
-            if (track.getDuration() > longestDuration) {
-                longestDuration = track.getDuration();
+            int[] f = track.getF();
+            if (f[0] < firstFrame) {
+                firstFrame = f[0];
+            }
+            if (f[f.length-1] > lastFrame) {
+                lastFrame = f[f.length-1];
             }
         }
+        int longestDuration = lastFrame-firstFrame;
 
         // Creating the CumStat array
         CumStat[] cs = new CumStat[longestDuration+1];
@@ -81,7 +93,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
             double[] rollingTotalPathLength = track.getRollingTotalPathLength(pixelDistances);
 
             for (int i=0;i<rollingTotalPathLength.length;i++) {
-                int pos = f[i]-f[0];
+                int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
                 cs[pos].addMeasure(rollingTotalPathLength[i]);
             }
         }
@@ -104,14 +116,20 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Rolling directionality ratio.  Values are stored per frame, relative to the start of that track.
      * @return
      */
-    public double[][] getAverageDirectionalityRatio(boolean pixelDistances) {
-        // Determining the longest duration
-        int longestDuration = 0;
+    public double[][] getAverageDirectionalityRatio(boolean pixelDistances, boolean relativeToTrackStart) {
+        // Determining the first and last frames
+        int firstFrame = Integer.MAX_VALUE;
+        int lastFrame = 0;
         for (Track track:values()) {
-            if (track.getDuration() > longestDuration) {
-                longestDuration = track.getDuration();
+            int[] f = track.getF();
+            if (f[0] < firstFrame) {
+                firstFrame = f[0];
+            }
+            if (f[f.length-1] > lastFrame) {
+                lastFrame = f[f.length-1];
             }
         }
+        int longestDuration = lastFrame-firstFrame;
 
         // Creating the CumStat array
         CumStat[] cs = new CumStat[longestDuration+1];
@@ -123,7 +141,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
             int[] f = track.getF();
             double[] rollingDirectionalityRatio = track.getRollingDirectionalityRatio(pixelDistances);
             for (int i=0;i<rollingDirectionalityRatio.length;i++) {
-                int pos = f[i] - f[0];
+                int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
                 cs[pos].addMeasure(rollingDirectionalityRatio[i]);
             }
         }
@@ -220,7 +238,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Number of objects per frame
      * @return int[][]{frame[],n[]
      */
-    public int[][] getNumberOfObjects() {
+    public int[][] getNumberOfObjects(boolean relativeToTrackStart) {
         // Determining the first and last frames
         int firstFrame = Integer.MAX_VALUE;
         int lastFrame = 0;
@@ -239,7 +257,8 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         for (Track track:values()) {
             int[] f = track.getF();
             for (int ff:f) {
-                n[ff-firstFrame] = n[ff-firstFrame] + 1;
+                int pos = relativeToTrackStart ? ff-f[0] : ff-firstFrame;
+                n[pos] = n[pos] + 1;
             }
         }
 
