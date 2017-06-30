@@ -28,6 +28,7 @@ public class DoG {
                         ipl2.setPosition(channel+1,slice+1,frame+1);
 
                         applyDoG(ipl1,ipl2,sigma);
+
                     }
                 }
             }
@@ -36,6 +37,9 @@ public class DoG {
             applyDoG(ipl1,ipl2,sigma);
 
         }
+
+        ipl1.setPosition(1,1,1);
+        ipl2.setPosition(1,1,1);
 
         // Subtracting one from the other to give the final DoG result
         ipl.setImage(new ImageCalculator().run("Subtract create stack 32-bit",ipl2,ipl1));
