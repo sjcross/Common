@@ -56,5 +56,6 @@ public class DoG {
         // gaussian-and-the (Accessed 14-03-2017)
         new GaussianBlur().blurGaussian(ipl1.getProcessor(), sigma, sigma, 0.01);
         new GaussianBlur().blurGaussian(ipl2.getProcessor(), sigma * 1.6, sigma * 1.6, 0.01);
+
     }
 }
