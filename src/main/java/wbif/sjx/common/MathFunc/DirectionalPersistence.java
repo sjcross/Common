@@ -6,16 +6,11 @@ import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
  * Created by sc13967 on 25/01/2017.
  */
 public class DirectionalPersistence {
-    CumStat cosTheta;
-
+    private CumStat[] cosTheta;
 
     // CONSTRUCTORS
-    public DirectionalPersistence(CumStat cosTheta) {
+    public DirectionalPersistence(CumStat[] cosTheta) {
         this.cosTheta = cosTheta;
-    }
-
-    public DirectionalPersistence(int len) {
-        cosTheta = new CumStat(len);
     }
 
 
@@ -31,7 +26,7 @@ public class DirectionalPersistence {
                     Vector3D v2 = new Vector3D((x[i + df] - x[i + 1 + df]), (y[i + df] - y[i + 1 + df]), (z[i + df] - z[i + 1 + df]));
 
                     if (v1.getNorm() != 0 & v2.getNorm() != 0) {
-                        cosTheta.addSingleMeasure(df, Math.cos(Vector3D.angle(v1, v2)));
+                        cosTheta[df].addMeasure(Math.cos(Vector3D.angle(v1, v2)));
                     }
                 }
             }
@@ -41,7 +36,7 @@ public class DirectionalPersistence {
 
     // GETTERS AND SETTERS
 
-    public CumStat getCosTheta(){
+    public CumStat[] getCosTheta(){
         return cosTheta;
 
     }

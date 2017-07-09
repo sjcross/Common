@@ -1,74 +1,123 @@
 package wbif.sjx.common.Object;
 
-import org.apache.commons.math3.stat.descriptive.summary.Sum;
 import wbif.sjx.common.Analysis.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 /**
  * Created by sc13967 on 03/02/2017.
  */
-public class Track {
-    double[] x;
-    double[] y;
-    double[] z;
-    int[] f;
-
+public class Track extends ArrayList<Point> {
+    private double distXY = 1;
+    private double distZ = 1;
+    private String units = "px";
 
     // CONSTRUCTORS
+    public Track() {
+
+    }
+
+    public Track(double distXY, double distZ, String units) {
+        this.distXY = distXY;
+        this.distZ = distZ;
+        this.units = units;
+
+    }
 
     public Track(double[] x, double[] y, double[] z, int[] f) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.f = f;
-
-    }
-
-    public Track(double[] x, double[] y, int[] f) {
-        this.x = x;
-        this.y = y;
-        this.z = new double[x.length];
-        Arrays.fill(z, 1);
-        this.f = f;
-
-    }
-
-    public Track(ArrayList<Integer> xArray, ArrayList<Integer> yArray, ArrayList<Integer> zArray, ArrayList<Integer> fArray) {
         for (int i=0;i<x.length;i++) {
-            x[i] = xArray.get(i);
-            y[i] = yArray.get(i);
-            z[i] = zArray.get(i);
-            f[i] = fArray.get(i);
+            add(new Point(x[i],y[i],z[i],f[i]));
 
         }
     }
 
+    public Track(double[] x, double[] y, double[] z, int[] f, double distXY, double distZ, String unitsXY) {
+        this.distXY = distXY;
+        this.distZ = distZ;
+        this.units = unitsXY;
+
+        for (int i=0;i<x.length;i++) {
+            add(new Point(x[i],y[i],z[i],f[i]));
+
+        }
+    }
+
+    public Track(ArrayList<Double> x, ArrayList<Double> y, ArrayList<Double> z, ArrayList<Integer> f) {
+        for (int i=0;i<x.size();i++) {
+            add(new Point(x.get(i),y.get(i),z.get(i),f.get(i)));
+
+        }
+    }
+
+    public Track(ArrayList<Double> x, ArrayList<Double> y, ArrayList<Double> z, ArrayList<Integer> f, double distXY, double distZ, String unitsXY) {
+        this.distXY = distXY;
+        this.distZ = distZ;
+        this.units = unitsXY;
+
+        for (int i=0;i<x.size();i++) {
+            add(new Point(x.get(i),y.get(i),z.get(i),f.get(i)));
+
+        }
+    }
+
+
     // PUBLIC METHODS
 
-    public CumStat getDirectionalPersistence() {
-        return DirectionalPersistenceCalculator.calculate(f,x,y,z);
+    /**
+     *
+     * @return mean position as double[][]{meanX,meanY,meanZ}{stdevX,stdevY,stdevZ}
+     */
+    public double[][] getMeanPosition(boolean pixelDistances) {
+        CumStat csX = new CumStat(getX(pixelDistances));
+        CumStat csY = new CumStat(getY(pixelDistances));
+        CumStat csZ = new CumStat(getZ(pixelDistances));
+
+        return new double[][]{{csX.getMean(),csY.getMean(),csZ.getMean()},
+                {csX.getStd(),csY.getStd(),csZ.getStd()}};
 
     }
 
-    public CumStat getMSD() {
-        return MSDCalculator.calculate(f,x,y,z);
+    public CumStat[] getDirectionalPersistence(boolean pixelDistances) {
+        return DirectionalPersistenceCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
-    public double[] getInstantaneousVelocity() {
-        return InstantaneousVelocityCalculator.calculate(f,x,y,z);
+    public CumStat[] getMSD(boolean pixelDistances) {
+        return MSDCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
-    public double[] getStepSizes() {
-        return StepSizeCalculator.calculate(x,y,z);
+    public double[] getMSDLinearFit(boolean pixelDistances, int nPoints) {
+        CumStat[] cs = MSDCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+
+        double[] df = new double[cs.length];
+        for (int i=0;i<cs.length;i++) {
+            df[i] = i;
+        }
+        double[] MSD = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
+
+        return MSDCalculator.getLinearFit(df,MSD,nPoints);
 
     }
 
-    public double getEuclideanDistance() {
+    public double[] getInstantaneousVelocity(boolean pixelDistances) {
+        return InstantaneousVelocityCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+
+    }
+
+    public double[] getStepSizes(boolean pixelDistances) {
+        return StepSizeCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+
+    }
+
+    public double getEuclideanDistance(boolean pixelDistances) {
+        double[] x = getX(pixelDistances);
+        double[] y = getY(pixelDistances);
+        double[] z = getZ(pixelDistances);
+
         double dx = x[x.length-1]-x[0];
         double dy = y[x.length-1]-y[0];
         double dz = z[x.length-1]-z[0];
@@ -77,80 +126,123 @@ public class Track {
 
     }
 
-    public double getTotalPathLength() {
-        double[] steps = getStepSizes();
+    public double getTotalPathLength(boolean pixelDistances) {
+        double[] steps = getStepSizes(pixelDistances);
 
-        return new Sum().evaluate(steps);
+        return Arrays.stream(steps).sum();
 
     }
 
-    public double getDirectionalityRatio() {
-        return getEuclideanDistance()/getTotalPathLength();
+    public double getDirectionalityRatio(boolean pixelDistances) {
+        return getEuclideanDistance(pixelDistances)/getTotalPathLength(pixelDistances);
 
     }
 
     /**
      * Returns a double[] containing the Euclidean distance at all time steps
      */
-    public double[] getRollingEuclideanDistance() {
-        return EuclideanDistanceCalculator.calculate(x,y,z);
+    public double[] getRollingEuclideanDistance(boolean pixelDistances) {
+        return EuclideanDistanceCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
     /**
      * Returns a double[] containing the total path length up to each time step
      */
-    public double[] getRollingTotalPathLength() {
-        return TotalPathLengthCalculator.calculate(x,y,z);
+    public double[] getRollingTotalPathLength(boolean pixelDistances) {
+        return TotalPathLengthCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
-    /**
-     * Returns a double[] containing the directionality ratio at all time steps
-     */
-    public double[] getRollingDirectionalityRatio() {
-        return DirectionalityRatioCalculator.calculate(x,y,z);
+    public double[] getRollingDirectionalityRatio(boolean pixelDistances) {
+        return DirectionalityRatioCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
     public int getDuration() {
+        int[] f = getF();
+
         return f[f.length-1]-f[0];
+
+    }
+
+    public double[][] getLimits(boolean pixelDistances){
+        double[] x = getX(pixelDistances);
+        double[] y = getY(pixelDistances);
+        double[] z = getZ(pixelDistances);
+        int[] f = getF();
+
+        double[][] limits = new double[4][2];
+        for (double[] row:limits) {
+            row[0] = Double.MAX_VALUE;
+            row[1] = Double.MIN_VALUE;
+
+        }
+
+        for (int i=0;i<x.length;i++) {
+            if (x[i] < limits[0][0]) limits[0][0] = x[i];
+            if (x[i] > limits[0][1]) limits[0][1] = x[i];
+            if (y[i] < limits[1][0]) limits[1][0] = y[i];
+            if (y[i] > limits[1][1]) limits[1][1] = y[i];
+            if (z[i] < limits[2][0]) limits[2][0] = z[i];
+            if (z[i] > limits[2][1]) limits[2][1] = z[i];
+            if (f[i] < limits[3][0]) limits[3][0] = f[i];
+            if (f[i] > limits[3][1]) limits[3][1] = f[i];
+
+        }
+
+        return limits;
 
     }
 
 
     // GETTERS AND SETTERS
 
+    public double[] getX(boolean pixelDistances) {
+        double[] x = stream().mapToDouble(Point::getX).toArray();
 
-    public double[] getX() {
+        if (pixelDistances) IntStream.range(0,x.length).forEach(i -> x[i] = x[i]/distXY);
+
         return x;
+
     }
 
-    public void setX(double[] x) {
-        this.x = x;
-    }
+    public double[] getY(boolean pixelDistances) {
+        double[] y = stream().mapToDouble(Point::getY).toArray();
 
-    public double[] getY() {
+        if (pixelDistances) IntStream.range(0,y.length).forEach(i -> y[i] = y[i]/distXY);
+
         return y;
+
     }
 
-    public void setY(double[] y) {
-        this.y = y;
-    }
+    public double[] getZ(boolean pixelDistances) {
+        double[] z = stream().mapToDouble(Point::getZ).toArray();
 
-    public double[] getZ() {
+        if (pixelDistances) IntStream.range(0,z.length).forEach(i -> z[i] = z[i]/distZ);
+
         return z;
-    }
 
-    public void setZ(double[] z) {
-        this.z = z;
     }
 
     public int[] getF() {
-        return f;
+        return stream().mapToInt(Point::getF).toArray();
+
     }
 
-    public void setF(int[] f) {
-        this.f = f;
+    public double[] getFAsDouble() {
+        return stream().mapToDouble(Point::getF).toArray();
+    }
+
+    public double getDistXY() {
+        return distXY;
+    }
+
+    public double getDistZ() {
+        return distZ;
+    }
+
+    public String getUnits(boolean pixelDistances) {
+        return pixelDistances ? "px" : units;
     }
 }

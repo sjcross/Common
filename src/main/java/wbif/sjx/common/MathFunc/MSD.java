@@ -17,10 +17,6 @@ public class MSD
         post = post_in;
     }
 
-    public MSD() {
-
-    }
-
     public double[] getLinearFit(double inc_t, int dur) {
         double[] arr_x = getXValues(inc_t);
         double[] arr_y = getMSDValues(inc_t);

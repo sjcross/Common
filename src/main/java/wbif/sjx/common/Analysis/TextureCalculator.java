@@ -6,14 +6,14 @@ import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.Indexer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Texture measures, largely from  Robert M. Haralick, K. Shanmugam, and Its'hak Dinstein, "Textural Features for Image
  * Classification", IEEE Transactions on Systems, Man, and Cybernetics, 1973, SMC-3 (6): 610–621
  */
 public class TextureCalculator {
-    private HashMap<Integer,Double> matrix = new HashMap<>();
+    private LinkedHashMap<Integer,Double> matrix = new LinkedHashMap<>();
     private int xOffs = 1;
     private int yOffs = 0;
     private int zOffs = 0;
@@ -33,8 +33,8 @@ public class TextureCalculator {
         if (image.getBitDepth() != 8) {
             // The analysis requires discrete pixels values.  Therefore, 32-bit images are converted to 8-bit
             CumStat cs = IntensityCalculator.calculate(image);
-            double min = cs.getMin()[0];
-            double max = cs.getMax()[0];
+            double min = cs.getMin();
+            double max = cs.getMax();
 
             image.getProcessor().setMinAndMax(min, max);
             new ImageConverter(image).convertToGray8();
@@ -50,8 +50,8 @@ public class TextureCalculator {
         int width = image.getWidth();
         int nSlices = image.getNSlices();
 
-        // Initialising new HashMap (acting as a sparse matrix) to store the co-occurance matrix
-        matrix = new HashMap<>();
+        // Initialising new HashMap (acting as a sparse matrix) to store the co-occurrence matrix
+        matrix = new LinkedHashMap<>();
 
         // Indexer to get index for addressing HashMap
         Indexer indexer = new Indexer(256,256);
@@ -155,8 +155,8 @@ public class TextureCalculator {
         double correlation = 0;
 
         // Getting partial probability density functions
-        CumStat px = new CumStat(1);
-        CumStat py = new CumStat(1);
+        CumStat px = new CumStat();
+        CumStat py = new CumStat();
 
         Indexer indexer = new Indexer(256,256);
         for (Integer index:matrix.keySet()) {
@@ -168,11 +168,11 @@ public class TextureCalculator {
         }
 
         // Calculating the mean and standard deviations for the partial probability density functions
-        double xMean = px.getMean()[0];
-        double yMean = py.getMean()[0];
+        double xMean = px.getMean();
+        double yMean = py.getMean();
 
-        double xStd = px.getStd(CumStat.POPULATION)[0];
-        double yStd = py.getStd(CumStat.POPULATION)[0];
+        double xStd = px.getStd(CumStat.POPULATION);
+        double yStd = py.getStd(CumStat.POPULATION);
 
         // Calculating the correlation
         for (Integer index:matrix.keySet()) {
@@ -204,6 +204,11 @@ public class TextureCalculator {
 
 
     // GETTERS
+
+
+    public LinkedHashMap<Integer, Double> getCoOccurrenceMatrix() {
+        return matrix;
+    }
 
     public int getxOffs() {
         return xOffs;
