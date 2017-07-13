@@ -4,6 +4,8 @@ package wbif.sjx.common.Object;
 
 import java.util.ArrayList;
 
+import ij.ImagePlus;
+import ij.process.ImageProcessor;
 import wbif.sjx.common.MathFunc.MidpointCircle;
 import org.apache.commons.math3.stat.descriptive.moment.Mean;
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
@@ -11,15 +13,12 @@ import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.commons.math3.stat.descriptive.rank.Min;
 import org.apache.commons.math3.stat.descriptive.summary.Sum;
 
-import ij.ImagePlus;
-
 public class SpotIntensity {
-    double[] int_arr;
+    private double[] int_arr;
 
-    public SpotIntensity(ImagePlus ip, double x_in, double y_in, double r_in, int fr) {
-        ip.setT(fr+1);
-        int im_w = ip.getWidth();
-        int im_h = ip.getHeight();
+    public SpotIntensity(ImageProcessor ipr, double x_in, double y_in, double r_in) {
+        int im_w = ipr.getWidth();
+        int im_h = ipr.getHeight();
 
         int x = (int) Math.round(x_in);
         int y = (int) Math.round(y_in);
@@ -33,7 +32,7 @@ public class SpotIntensity {
 
         for (int j=0;j<xx.length;j++) {
             if (x+xx[j]>=0 & x+xx[j]<im_w & y+yy[j]>=0 & y+yy[j]<im_h) {
-                float temp = ip.getProcessor().getPixelValue((x+xx[j]), (y+yy[j]));
+                float temp = ipr.getPixelValue((x+xx[j]), (y+yy[j]));
                 temp_al.add(temp);
             }
         }
