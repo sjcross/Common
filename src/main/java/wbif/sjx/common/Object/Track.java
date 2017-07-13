@@ -1,5 +1,6 @@
 package wbif.sjx.common.Object;
 
+import ij.ImagePlus;
 import wbif.sjx.common.Analysis.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
@@ -192,6 +193,27 @@ public class Track extends ArrayList<Point> {
         }
 
         return limits;
+
+    }
+
+    public double[] getRollingIntensity(ImagePlus ipl, int radius) {
+        double[] x = getX(true);
+        double[] y = getY(true);
+        double[] z = getZ(true);
+
+        int[] f = getF();
+        double[] intensity = new double[x.length];
+
+        for (int i=0;i<x.length;i++) {
+            ipl.setPosition(0,(int) Math.round(z[i])+1,f[i]+1);
+
+            SpotIntensity spotIntensity = new SpotIntensity(ipl.getProcessor(),x[i],y[i],radius);
+
+            intensity[i] = spotIntensity.getMeanPointIntensity();
+
+        }
+
+        return intensity;
 
     }
 
