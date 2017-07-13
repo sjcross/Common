@@ -1,6 +1,6 @@
 package wbif.sjx.common.MetadataExtractors;
 
-import wbif.sjx.ModularImageAnalysis.Object.HCMetadata;
+import wbif.sjx.common.Object.HCMetadata;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
