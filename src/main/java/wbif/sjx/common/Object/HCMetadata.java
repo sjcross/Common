@@ -10,6 +10,8 @@ import java.util.LinkedHashMap;
  */
 public class HCMetadata extends LinkedHashMap<String,Object> {
     public static final String WELL = "Well";
+    public static final String ROW = "Row";
+    public static final String COL = "Col";
     public static final String FIELD = "Field";
     public static final String TIMEPOINT = "Timepoint";
     public static final String ZPOSITION = "Z-position";
@@ -83,6 +85,22 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
 
     public void setWell(String well) {
         put(WELL,well);
+    }
+
+    public int getRow() {
+        return get(ROW) == null ? -1 : (Integer) get(ROW);
+    }
+
+    public void setRow(int row) {
+        put(ROW,row);
+    }
+
+    public int getCol() {
+        return get(COL) == null ? -1 : (Integer) get(COL);
+    }
+
+    public void setCol(int col) {
+        put(COL,col);
     }
 
     public int getField() {
