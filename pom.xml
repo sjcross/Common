@@ -21,6 +21,12 @@
             <id>imagej.public</id>
             <url>http://maven.imagej.net/content/groups/public</url>
         </repository>
+
+        <repository>
+            <id>ome-web-prod.lifesci.dundee.ac.uk</id>
+            <name>ome-web-prod.lifesci.dundee.ac.uk-releases</name>
+            <url>http://artifacts.openmicroscopy.org/artifactory/ome.releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -29,6 +35,12 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ome</groupId>
+            <artifactId>bio-formats_plugins</artifactId>
+            <version>5.4.1</version>
         </dependency>
 
         <dependency>

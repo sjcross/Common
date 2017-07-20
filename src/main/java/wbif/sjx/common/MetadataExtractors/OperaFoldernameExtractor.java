@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * Created by sc13967 on 18/07/2017.
  */
-public class OperaFoldernameExtractor implements Extractor {
+public class OperaFoldernameExtractor implements NameExtractor {
     private static final String name = "Opera foldername";
     private static final String pattern = "Meas_(\\d{2})\\((\\d{4})-(\\d{2})-(\\d{2})_(\\d{2})-(\\d{2})-(\\d{2})\\)";
 

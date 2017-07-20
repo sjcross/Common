@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * Created by sc13967 on 18/07/2017.
  */
-public class OperaFilenameExtractor implements Extractor {
+public class OperaFilenameExtractor implements NameExtractor {
     private static final String name = "Opera filename";
     private static final String pattern = "(\\d{3})(\\d{3})(\\d{3})";
 

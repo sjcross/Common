@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * Created by steph on 30/04/2017.
  */
-public class CellVoyagerFoldernameExtractor implements Extractor {
+public class CellVoyagerFoldernameExtractor implements NameExtractor {
     private static final String name = "CellVoyager folder name";
     private static final String pattern = "(\\d{4})(\\d{2})(\\d{2})T(\\d{2})(\\d{2})(\\d{2})_([^_]+?)_([^_\\\\]++)_?([.[^\\\\]]++)?";
 
