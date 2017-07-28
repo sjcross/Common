@@ -252,4 +252,5 @@ public class LUTs {
         return new LUT(8,256,r,g,b);
 
     }
+
 }

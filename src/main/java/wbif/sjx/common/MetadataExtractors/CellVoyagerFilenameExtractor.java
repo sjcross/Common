@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * Created by steph on 30/04/2017.
  */
-public class CellVoyagerFilenameExtractor implements Extractor {
+public class CellVoyagerFilenameExtractor implements NameExtractor {
     private static final String name = "CellVoyager filename";
     private static final String pattern = "W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)";
 

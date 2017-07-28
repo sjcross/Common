@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * Created by steph on 30/04/2017.
  */
-public class IncuCyteShortFilenameExtractor implements Extractor {
+public class IncuCyteShortFilenameExtractor implements NameExtractor {
     private static final String name = "IncuCyte (short) filename";
     private static final String pattern = "(.+)_([A-Z]\\d+?)_(\\d++)";
 

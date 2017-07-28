@@ -6,22 +6,24 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by steph on 30/04/2017.
+ * Created by sc13967 on 18/07/2017.
  */
-public class IncuCyteLongFilenameExtractor implements NameExtractor {
-    private static final String name = "IncuCyte (long) filename";
-    private static final String pattern = "(.+)_([A-Z]\\d+?)_(\\d++)_(\\d{4})y(\\d{2})m(\\d{2})d_(\\d{2})h(\\d{2})m";
+public class OperaFilenameExtractor implements NameExtractor {
+    private static final String name = "Opera filename";
+    private static final String pattern = "(\\d{3})(\\d{3})(\\d{3})";
 
+
+    @Override
     public String getName() {
         return name;
-
     }
 
+    @Override
     public String getPattern() {
         return pattern;
-
     }
 
+    @Override
     public boolean extract(HCMetadata result, String str) {
         Pattern fi_pattern = Pattern.compile(pattern);
         Matcher fi_matcher = fi_pattern.matcher(str);
@@ -32,14 +34,13 @@ public class IncuCyteLongFilenameExtractor implements NameExtractor {
         }
 
         if (fi_matcher.find()) {
-            result.setComment(fi_matcher.group(1));
-            result.setWell(fi_matcher.group(2));
+            result.setRow(Integer.parseInt(fi_matcher.group(1)));
+            result.setCol(Integer.parseInt(fi_matcher.group(2)));
             result.setField(Integer.parseInt(fi_matcher.group(3)));
-            result.setYear(Integer.parseInt(fi_matcher.group(4)));
-            result.setMonth(Integer.parseInt(fi_matcher.group(5)));
-            result.setDay(Integer.parseInt(fi_matcher.group(6)));
-            result.setHour(Integer.parseInt(fi_matcher.group(7)));
-            result.setMin(Integer.parseInt(fi_matcher.group(8)));
+
+            String rowLetter = String.valueOf((char) (Integer.parseInt(fi_matcher.group(1)) + 64));
+            String colLetter = String.valueOf(Integer.parseInt(fi_matcher.group(2)));
+            result.setWell(rowLetter+colLetter);
 
             return true;
 
