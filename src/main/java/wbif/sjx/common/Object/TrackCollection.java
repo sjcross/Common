@@ -272,4 +272,19 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
     }
 
+    /**
+     * Returns the largest frame number of any track
+     * @return
+     */
+    public int getHighestFrame() {
+        int maxFr = 0;
+        for (Track track:values()) {
+            for (int fr:track.keySet()) {
+                maxFr = Math.max(maxFr,fr);
+            }
+        }
+
+        return maxFr;
+
+    }
 }

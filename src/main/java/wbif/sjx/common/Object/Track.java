@@ -6,12 +6,14 @@ import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.TreeMap;
 import java.util.stream.IntStream;
 
 /**
  * Created by sc13967 on 03/02/2017.
  */
-public class Track extends ArrayList<Point> {
+public class Track extends TreeMap<Integer,Point> {
     private double distXY = 1;
     private double distZ = 1;
     private String units = "px";
@@ -30,7 +32,7 @@ public class Track extends ArrayList<Point> {
 
     public Track(double[] x, double[] y, double[] z, int[] f) {
         for (int i=0;i<x.length;i++) {
-            add(new Point(x[i],y[i],z[i],f[i]));
+            put(f[i],new Point(x[i],y[i],z[i],f[i]));
 
         }
     }
@@ -41,14 +43,14 @@ public class Track extends ArrayList<Point> {
         this.units = unitsXY;
 
         for (int i=0;i<x.length;i++) {
-            add(new Point(x[i],y[i],z[i],f[i]));
+            put(f[i],new Point(x[i],y[i],z[i],f[i]));
 
         }
     }
 
     public Track(ArrayList<Double> x, ArrayList<Double> y, ArrayList<Double> z, ArrayList<Integer> f) {
         for (int i=0;i<x.size();i++) {
-            add(new Point(x.get(i),y.get(i),z.get(i),f.get(i)));
+            put(f.get(i),new Point(x.get(i),y.get(i),z.get(i),f.get(i)));
 
         }
     }
@@ -59,7 +61,7 @@ public class Track extends ArrayList<Point> {
         this.units = unitsXY;
 
         for (int i=0;i<x.size();i++) {
-            add(new Point(x.get(i),y.get(i),z.get(i),f.get(i)));
+            put(f.get(i),new Point(x.get(i),y.get(i),z.get(i),f.get(i)));
 
         }
     }
@@ -221,7 +223,7 @@ public class Track extends ArrayList<Point> {
     // GETTERS AND SETTERS
 
     public double[] getX(boolean pixelDistances) {
-        double[] x = stream().mapToDouble(Point::getX).toArray();
+        double[] x = values().stream().mapToDouble(Point::getX).toArray();
 
         if (pixelDistances) IntStream.range(0,x.length).forEach(i -> x[i] = x[i]/distXY);
 
@@ -230,7 +232,7 @@ public class Track extends ArrayList<Point> {
     }
 
     public double[] getY(boolean pixelDistances) {
-        double[] y = stream().mapToDouble(Point::getY).toArray();
+        double[] y = values().stream().mapToDouble(Point::getY).toArray();
 
         if (pixelDistances) IntStream.range(0,y.length).forEach(i -> y[i] = y[i]/distXY);
 
@@ -239,7 +241,7 @@ public class Track extends ArrayList<Point> {
     }
 
     public double[] getZ(boolean pixelDistances) {
-        double[] z = stream().mapToDouble(Point::getZ).toArray();
+        double[] z = values().stream().mapToDouble(Point::getZ).toArray();
 
         if (pixelDistances) IntStream.range(0,z.length).forEach(i -> z[i] = z[i]/distZ);
 
@@ -248,12 +250,17 @@ public class Track extends ArrayList<Point> {
     }
 
     public int[] getF() {
-        return stream().mapToInt(Point::getF).toArray();
+        return values().stream().mapToInt(Point::getF).toArray();
+
+    }
+
+    public Point getPointAtFrame(int frame) {
+        return get(frame);
 
     }
 
     public double[] getFAsDouble() {
-        return stream().mapToDouble(Point::getF).toArray();
+        return values().stream().mapToDouble(Point::getF).toArray();
     }
 
     public double getDistXY() {
