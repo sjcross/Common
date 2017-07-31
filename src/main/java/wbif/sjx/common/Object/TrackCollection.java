@@ -287,4 +287,31 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         return maxFr;
 
     }
+
+    /**
+     * Returns the minimum and maximum coordinates of any point in 3D
+     * @param pixelDistances
+     * @return
+     */
+    public double[][] getSpatialLimits(boolean pixelDistances) {
+        double[][] limits = new double[][]{{Double.MAX_VALUE,Double.MIN_VALUE},{Double.MAX_VALUE,Double.MIN_VALUE},{Double.MAX_VALUE,Double.MIN_VALUE}};
+
+        for (Track track:values()) {
+            double[] x = track.getX(pixelDistances);
+            double[] y = track.getX(pixelDistances);
+            double[] z = track.getX(pixelDistances);
+
+            for (int i=0;i<x.length;i++) {
+                limits[0][0] = Math.min(limits[0][0],x[i]);
+                limits[0][1] = Math.max(limits[0][1],x[i]);
+                limits[1][0] = Math.min(limits[1][0],y[i]);
+                limits[1][1] = Math.max(limits[1][1],y[i]);
+                limits[2][0] = Math.min(limits[2][0],z[i]);
+                limits[2][1] = Math.max(limits[2][1],z[i]);
+            }
+        }
+
+        return limits;
+
+    }
 }
