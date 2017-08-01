@@ -316,16 +316,23 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
     }
 
+    /**
+     * Returns a Point object at the mean location of all points in the present frame
+     * @param frame
+     * @return
+     */
     public Point getMeanPoint(int frame) {
         CumStat[] cs = new CumStat[3];
 
         for (int i=0;i<3;i++) cs[i] = new CumStat();
 
         for (Track track:values()) {
-            cs[0].addMeasure(track.get(0).getX());
-            cs[1].addMeasure(track.get(0).getY());
-            cs[2].addMeasure(track.get(0).getZ());
+            if (track.hasFrame(frame)) {
+                cs[0].addMeasure(track.get(frame).getX());
+                cs[1].addMeasure(track.get(frame).getY());
+                cs[2].addMeasure(track.get(frame).getZ());
 
+            }
         }
 
         return new Point(cs[0].getMean(),cs[1].getMean(),cs[2].getMean(),frame);

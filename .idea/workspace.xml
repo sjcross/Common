@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -105,8 +105,8 @@
       <file leaf-file-name="TrackCollection.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="332" column="5" lean-forward="false" selection-start-line="332" selection-start-column="5" selection-end-line="332" selection-end-column="5" />
+            <state relative-caret-position="514">
+              <caret line="334" column="13" lean-forward="false" selection-start-line="334" selection-start-column="13" selection-end-line="334" selection-end-column="13" />
               <folding>
                 <element signature="docComment;class#TrackCollection#0" expanded="false" />
                 <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
@@ -1286,8 +1286,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="332" column="5" lean-forward="false" selection-start-line="332" selection-start-column="5" selection-end-line="332" selection-end-column="5" />
+        <state relative-caret-position="514">
+          <caret line="334" column="13" lean-forward="false" selection-start-line="334" selection-start-column="13" selection-end-line="334" selection-end-column="13" />
           <folding>
             <element signature="docComment;class#TrackCollection#0" expanded="false" />
             <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
