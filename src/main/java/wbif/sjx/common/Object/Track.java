@@ -224,6 +224,7 @@ public class Track extends TreeMap<Integer,Point> {
 
     }
 
+
     // GETTERS AND SETTERS
 
     public double[] getX(boolean pixelDistances) {

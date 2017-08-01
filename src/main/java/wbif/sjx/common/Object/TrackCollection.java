@@ -315,4 +315,20 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         return limits;
 
     }
+
+    public Point getMeanPoint(int frame) {
+        CumStat[] cs = new CumStat[3];
+
+        for (int i=0;i<3;i++) cs[i] = new CumStat();
+
+        for (Track track:values()) {
+            cs[0].addMeasure(track.get(0).getX());
+            cs[1].addMeasure(track.get(0).getY());
+            cs[2].addMeasure(track.get(0).getZ());
+
+        }
+
+        return new Point(cs[0].getMean(),cs[1].getMean(),cs[2].getMean(),frame);
+
+    }
 }
