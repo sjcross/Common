@@ -219,6 +219,10 @@ public class Track extends TreeMap<Integer,Point> {
 
     }
 
+    public boolean hasFrame(int frame) {
+        return containsKey(frame);
+
+    }
 
     // GETTERS AND SETTERS
 

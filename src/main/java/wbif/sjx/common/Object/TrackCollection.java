@@ -308,6 +308,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
                 limits[1][1] = Math.max(limits[1][1],y[i]);
                 limits[2][0] = Math.min(limits[2][0],z[i]);
                 limits[2][1] = Math.max(limits[2][1],z[i]);
+
             }
         }
 
