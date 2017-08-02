@@ -338,4 +338,19 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         return new Point(cs[0].getMean(),cs[1].getMean(),cs[2].getMean(),frame);
 
     }
+
+    public double getMaximumInstantaneousVelocity() {
+        double maxVelocity = 0;
+
+        for (Track track:values()) {
+            double[] velocities = track.getInstantaneousVelocity(true);
+
+            for (double velocity:velocities) {
+                maxVelocity = Math.max(maxVelocity,velocity);
+            }
+        }
+
+        return maxVelocity;
+
+    }
 }
