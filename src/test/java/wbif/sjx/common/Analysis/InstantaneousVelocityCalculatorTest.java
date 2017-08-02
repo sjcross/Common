@@ -16,7 +16,7 @@ public class InstantaneousVelocityCalculatorTest {
         double[] z = new double[]{1,2,-5.3,-1,1.4,4.11,3.5,-2.1,7.9};
 
         double[] measuredValues = InstantaneousVelocityCalculator.calculate(f,x,y,z);
-        double[] expectedValues = new double[]{0,1.73,7.69,8.39,8.57,5.23,8.46,8.32,12.20};
+        double[] expectedValues = new double[]{1.73,7.69,8.39,8.57,5.23,8.46,8.32,12.20};
 
         assertArrayEquals(expectedValues,measuredValues,0.01);
 
@@ -30,7 +30,7 @@ public class InstantaneousVelocityCalculatorTest {
         double[] z = new double[]{1,2,-5.3,-1,1.4,4.11,3.5,-2.1,7.9};
 
         double[] measuredValues = InstantaneousVelocityCalculator.calculate(f,x,y,z);
-        double[] expectedValues = new double[]{0,1.73,7.69,-8.39,2.86,-2.62,2.11,8.32,12.20};
+        double[] expectedValues = new double[]{1.73,7.69,-8.39,2.86,-2.62,2.11,8.32,12.20};
 
         assertArrayEquals(expectedValues,measuredValues,0.01);
 
