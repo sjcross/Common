@@ -298,8 +298,8 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             double[] x = track.getX(pixelDistances);
-            double[] y = track.getX(pixelDistances);
-            double[] z = track.getX(pixelDistances);
+            double[] y = track.getY(pixelDistances);
+            double[] z = track.getZ(pixelDistances);
 
             for (int i=0;i<x.length;i++) {
                 limits[0][0] = Math.min(limits[0][0],x[i]);
