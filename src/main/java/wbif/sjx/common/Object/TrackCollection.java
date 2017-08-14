@@ -298,8 +298,8 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             double[] x = track.getX(pixelDistances);
-            double[] y = track.getX(pixelDistances);
-            double[] z = track.getX(pixelDistances);
+            double[] y = track.getY(pixelDistances);
+            double[] z = track.getZ(pixelDistances);
 
             for (int i=0;i<x.length;i++) {
                 limits[0][0] = Math.min(limits[0][0],x[i]);
@@ -313,6 +313,44 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         }
 
         return limits;
+
+    }
+
+    /**
+     * Returns a Point object at the mean location of all points in the present frame
+     * @param frame
+     * @return
+     */
+    public Point getMeanPoint(int frame) {
+        CumStat[] cs = new CumStat[3];
+
+        for (int i=0;i<3;i++) cs[i] = new CumStat();
+
+        for (Track track:values()) {
+            if (track.hasFrame(frame)) {
+                cs[0].addMeasure(track.get(frame).getX());
+                cs[1].addMeasure(track.get(frame).getY());
+                cs[2].addMeasure(track.get(frame).getZ());
+
+            }
+        }
+
+        return new Point(cs[0].getMean(),cs[1].getMean(),cs[2].getMean(),frame);
+
+    }
+
+    public double getMaximumInstantaneousVelocity() {
+        double maxVelocity = 0;
+
+        for (Track track:values()) {
+            double[] velocities = track.getInstantaneousVelocity(true);
+
+            for (double velocity:velocities) {
+                maxVelocity = Math.max(maxVelocity,velocity);
+            }
+        }
+
+        return maxVelocity;
 
     }
 }

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/DoubleTreeMapConverter.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/DoubleTreeMapConverter.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,57 +22,17 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Point.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Volume.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="18" column="60" lean-forward="false" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
-              <folding>
-                <element signature="docComment;class#Volume#0" expanded="false" />
-                <element signature="method#Volume#0;class#Volume#0" expanded="false" />
-                <element signature="method#getX#0;class#Volume#0" expanded="false" />
-                <element signature="method#getY#0;class#Volume#0" expanded="false" />
-                <element signature="method#getZ#0;class#Volume#0" expanded="false" />
-                <element signature="method#getXMean#0;class#Volume#0" expanded="false" />
-                <element signature="method#getYMean#0;class#Volume#0" expanded="false" />
-                <element signature="method#getZMean#0;class#Volume#0" expanded="false" />
-                <element signature="method#getCalXY#0;class#Volume#0" expanded="false" />
-                <element signature="method#getCalZ#0;class#Volume#0" expanded="false" />
-                <element signature="method#getHeight#0;class#Volume#0" expanded="false" />
-                <element signature="method#getExtents#0;class#Volume#0" expanded="false" />
-                <element signature="method#hasVolume#0;class#Volume#0" expanded="false" />
-                <element signature="method#hasArea#0;class#Volume#0" expanded="false" />
-                <element signature="method#getVoxelVolume#0;class#Volume#0" expanded="false" />
-                <element signature="method#getNVoxels#0;class#Volume#0" expanded="false" />
-                <element signature="method#getProjectedArea#0;class#Volume#0" expanded="false" />
-                <element signature="method#getOverlap#0;class#Volume#0" expanded="false" />
-                <element signature="method#getCentroidDistanceToPoint#0;class#Volume#0" expanded="false" />
-                <element signature="method#getNearestDistanceToPoint#0;class#Volume#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Track.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="221" column="39" lean-forward="false" selection-start-line="221" selection-start-column="39" selection-end-line="221" selection-end-column="39" />
+            <state relative-caret-position="952">
+              <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#Track#0" expanded="false" />
                 <element signature="method#Track#0;class#Track#0" expanded="false" />
                 <element signature="method#Track#1;class#Track#0" expanded="false" />
                 <element signature="method#Track#2;class#Track#0" expanded="false" />
+                <element signature="method#Track#3;class#Track#0" expanded="false" />
                 <element signature="method#Track#4;class#Track#0" expanded="false" />
                 <element signature="method#Track#5;class#Track#0" expanded="false" />
                 <element signature="docComment;method#getMeanPosition#0;class#Track#0" expanded="false" />
@@ -97,16 +58,70 @@
                 <element signature="method#getY#0;class#Track#0" expanded="false" />
                 <element signature="method#getZ#0;class#Track#0" expanded="false" />
                 <element signature="method#getF#0;class#Track#0" expanded="false" />
+                <element signature="method#getPointAtFrame#0;class#Track#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TextureCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
+      <file leaf-file-name="DoubleTreeMapConverter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/DoubleTreeMapConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="659">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#DoubleTreeMapConverter#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrackCollection.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="387">
+              <caret line="273" column="0" lean-forward="true" selection-start-line="273" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#TrackCollection#0" expanded="false" />
+                <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
+                <element signature="method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
+                <element signature="docComment;method#getAverageTotalPathLength#0;class#TrackCollection#0" expanded="false" />
+                <element signature="method#getAverageTotalPathLength#0;class#TrackCollection#0" expanded="false" />
+                <element signature="docComment;method#getAverageDirectionalityRatio#0;class#TrackCollection#0" expanded="false" />
+                <element signature="method#getAverageDirectionalityRatio#0;class#TrackCollection#0" expanded="false" />
+                <element signature="docComment;method#getAverageDirectionalPersistence#0;class#TrackCollection#0" expanded="false" />
+                <element signature="method#getAverageDirectionalPersistence#0;class#TrackCollection#0" expanded="false" />
+                <element signature="docComment;method#getAverageMSD#0;class#TrackCollection#0" expanded="false" />
+                <element signature="method#getAverageMSD#0;class#TrackCollection#0" expanded="false" />
+                <element signature="docComment;method#getNumberOfObjects#0;class#TrackCollection#0" expanded="false" />
+                <element signature="method#getNumberOfObjects#0;class#TrackCollection#0" expanded="false" />
+                <element signature="docComment;method#getHighestFrame#0;class#TrackCollection#0" expanded="false" />
+                <element signature="method#getHighestFrame#0;class#TrackCollection#0" expanded="false" />
+                <element signature="docComment;method#getSpatialLimits#0;class#TrackCollection#0" expanded="false" />
+                <element signature="docComment;method#getMeanPoint#0;class#TrackCollection#0" expanded="false" />
+                <element signature="method#getMeanPoint#0;class#TrackCollection#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InstantaneousVelocityCalculator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#InstantaneousVelocityCalculator#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DirectionalityRatioCalculator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/DirectionalityRatioCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -117,8 +132,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -130,6 +145,10 @@
       <find>getx</find>
       <find>ignore</find>
       <find>blob</find>
+      <find>v</find>
+      <find>ve</find>
+      <find>vel</find>
+      <find>velo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,7 +190,6 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Filters/DoG.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/SpotIntensity.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CellVoyagerFoldernameExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/IncuCyteLongFilenameExtractor.java" />
@@ -182,15 +200,19 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/NameExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaPlateLayoutFileExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFileExtractor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/LUTs.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Blob.java" />
         <option value="$PROJECT_DIR$/../SegmentAnalysis/src/main/java/wolfson/SegmentAnalysis/Blob.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/FileExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/DurationCalculator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/LUTs.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculatorTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Process/DoubleTreeMapConverterTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/DoubleTreeMapConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" />
       </list>
     </option>
   </component>
@@ -208,9 +230,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1874" />
+    <option name="width" value="1936" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -231,7 +253,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,6 +278,48 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Analysis" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -281,6 +346,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Process" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -406,8 +501,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -421,6 +515,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="wbif.sjx.common.Process" />
       <recent name="wbif.sjx.common.Analysis" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -819,7 +914,7 @@
     <option name="totallyTimeSpent" value="3075000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -828,10 +923,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32572615" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32572615" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21719956" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21215352" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -864,7 +959,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -873,20 +968,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/MidpointCircle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/BresenhamLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -985,7 +1066,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculatorTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1061,9 +1141,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#OperaFileExtractor#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1071,26 +1148,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="24" column="59" lean-forward="false" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/LUTs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="254" column="0" lean-forward="false" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#LUTs#0" expanded="false" />
-            <element signature="method#BlackIce#0;class#LUTs#0" expanded="false" />
-            <element signature="method#BlackSpectrum#0;class#LUTs#0" expanded="false" />
-            <element signature="method#GreyFire#0;class#LUTs#0" expanded="false" />
-            <element signature="method#BlackFire#0;class#LUTs#0" expanded="false" />
-            <element signature="method#BlackThermal#0;class#LUTs#0" expanded="false" />
-            <element signature="method#HiLo#0;class#LUTs#0" expanded="false" />
-            <element signature="method#Grey#0;class#LUTs#0" expanded="false" />
-            <element signature="method#Random#0;class#LUTs#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1098,7 +1155,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2244">
           <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1113,13 +1169,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="12" column="68" lean-forward="false" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-          <folding>
-            <element signature="docComment;class#OperaFoldernameExtractor#0" expanded="false" />
-            <element signature="e#483#484#0" expanded="false" />
-            <element signature="e#510#511#0" expanded="false" />
-            <element signature="e#558#559#0" expanded="false" />
-            <element signature="e#588#589#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1131,6 +1180,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EuclideanDistanceCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/FileExtractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="60" lean-forward="false" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/DurationCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/LUTs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="165" column="119" lean-forward="true" selection-start-line="165" selection-start-column="119" selection-end-line="165" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="30" column="7" lean-forward="false" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/DirectionalityRatioCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1139,120 +1237,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EuclideanDistanceCalculator.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Process/DoubleTreeMapConverterTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="85">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/DoubleTreeMapConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#DoubleTreeMapConverter#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="3" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/DurationCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#DurationCalculator#0" expanded="false" />
+            <element signature="docComment;class#InstantaneousVelocityCalculator#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/FileExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#TrackCollection#0" expanded="false" />
-            <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
-            <element signature="method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
-            <element signature="docComment;method#getAverageTotalPathLength#0;class#TrackCollection#0" expanded="false" />
-            <element signature="method#getAverageTotalPathLength#0;class#TrackCollection#0" expanded="false" />
-            <element signature="docComment;method#getAverageDirectionalityRatio#0;class#TrackCollection#0" expanded="false" />
-            <element signature="method#getAverageDirectionalityRatio#0;class#TrackCollection#0" expanded="false" />
-            <element signature="docComment;method#getAverageDirectionalPersistence#0;class#TrackCollection#0" expanded="false" />
-            <element signature="method#getAverageDirectionalPersistence#0;class#TrackCollection#0" expanded="false" />
-            <element signature="docComment;method#getAverageMSD#0;class#TrackCollection#0" expanded="false" />
-            <element signature="method#getAverageMSD#0;class#TrackCollection#0" expanded="false" />
-            <element signature="docComment;method#getNumberOfObjects#0;class#TrackCollection#0" expanded="false" />
-            <element signature="method#getNumberOfObjects#0;class#TrackCollection#0" expanded="false" />
-            <element signature="docComment;method#getHighestFrame#0;class#TrackCollection#0" expanded="false" />
-            <element signature="method#getHighestFrame#0;class#TrackCollection#0" expanded="false" />
-            <element signature="docComment;method#getSpatialLimits#0;class#TrackCollection#0" expanded="false" />
-            <element signature="method#getSpatialLimits#0;class#TrackCollection#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="60" lean-forward="false" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
-          <folding>
-            <element signature="docComment;class#Volume#0" expanded="false" />
-            <element signature="method#Volume#0;class#Volume#0" expanded="false" />
-            <element signature="method#getX#0;class#Volume#0" expanded="false" />
-            <element signature="method#getY#0;class#Volume#0" expanded="false" />
-            <element signature="method#getZ#0;class#Volume#0" expanded="false" />
-            <element signature="method#getXMean#0;class#Volume#0" expanded="false" />
-            <element signature="method#getYMean#0;class#Volume#0" expanded="false" />
-            <element signature="method#getZMean#0;class#Volume#0" expanded="false" />
-            <element signature="method#getCalXY#0;class#Volume#0" expanded="false" />
-            <element signature="method#getCalZ#0;class#Volume#0" expanded="false" />
-            <element signature="method#getHeight#0;class#Volume#0" expanded="false" />
-            <element signature="method#getExtents#0;class#Volume#0" expanded="false" />
-            <element signature="method#hasVolume#0;class#Volume#0" expanded="false" />
-            <element signature="method#hasArea#0;class#Volume#0" expanded="false" />
-            <element signature="method#getVoxelVolume#0;class#Volume#0" expanded="false" />
-            <element signature="method#getNVoxels#0;class#Volume#0" expanded="false" />
-            <element signature="method#getProjectedArea#0;class#Volume#0" expanded="false" />
-            <element signature="method#getOverlap#0;class#Volume#0" expanded="false" />
-            <element signature="method#getCentroidDistanceToPoint#0;class#Volume#0" expanded="false" />
-            <element signature="method#getNearestDistanceToPoint#0;class#Volume#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="221" column="39" lean-forward="false" selection-start-line="221" selection-start-column="39" selection-end-line="221" selection-end-column="39" />
+        <state relative-caret-position="952">
+          <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Track#0" expanded="false" />
             <element signature="method#Track#0;class#Track#0" expanded="false" />
             <element signature="method#Track#1;class#Track#0" expanded="false" />
             <element signature="method#Track#2;class#Track#0" expanded="false" />
+            <element signature="method#Track#3;class#Track#0" expanded="false" />
             <element signature="method#Track#4;class#Track#0" expanded="false" />
             <element signature="method#Track#5;class#Track#0" expanded="false" />
             <element signature="docComment;method#getMeanPosition#0;class#Track#0" expanded="false" />
@@ -1278,6 +1300,34 @@
             <element signature="method#getY#0;class#Track#0" expanded="false" />
             <element signature="method#getZ#0;class#Track#0" expanded="false" />
             <element signature="method#getF#0;class#Track#0" expanded="false" />
+            <element signature="method#getPointAtFrame#0;class#Track#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="273" column="0" lean-forward="true" selection-start-line="273" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#TrackCollection#0" expanded="false" />
+            <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
+            <element signature="method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" expanded="false" />
+            <element signature="docComment;method#getAverageTotalPathLength#0;class#TrackCollection#0" expanded="false" />
+            <element signature="method#getAverageTotalPathLength#0;class#TrackCollection#0" expanded="false" />
+            <element signature="docComment;method#getAverageDirectionalityRatio#0;class#TrackCollection#0" expanded="false" />
+            <element signature="method#getAverageDirectionalityRatio#0;class#TrackCollection#0" expanded="false" />
+            <element signature="docComment;method#getAverageDirectionalPersistence#0;class#TrackCollection#0" expanded="false" />
+            <element signature="method#getAverageDirectionalPersistence#0;class#TrackCollection#0" expanded="false" />
+            <element signature="docComment;method#getAverageMSD#0;class#TrackCollection#0" expanded="false" />
+            <element signature="method#getAverageMSD#0;class#TrackCollection#0" expanded="false" />
+            <element signature="docComment;method#getNumberOfObjects#0;class#TrackCollection#0" expanded="false" />
+            <element signature="method#getNumberOfObjects#0;class#TrackCollection#0" expanded="false" />
+            <element signature="docComment;method#getHighestFrame#0;class#TrackCollection#0" expanded="false" />
+            <element signature="method#getHighestFrame#0;class#TrackCollection#0" expanded="false" />
+            <element signature="docComment;method#getSpatialLimits#0;class#TrackCollection#0" expanded="false" />
+            <element signature="docComment;method#getMeanPoint#0;class#TrackCollection#0" expanded="false" />
+            <element signature="method#getMeanPoint#0;class#TrackCollection#0" expanded="false" />
           </folding>
         </state>
       </provider>
