@@ -1,12 +1,12 @@
 package wbif.sjx.common.Object;
 
-public class Point {
-    double x;
-    double y;
-    double z;
+public class Point<T extends Number> {
+    T x;
+    T y;
+    T z;
     int f;
 
-    public Point(double x, double y, double z, int f) {
+    public Point(T x, T y, T z, int f) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -14,15 +14,15 @@ public class Point {
 
     }
 
-    public double getX() {
+    public T getX() {
         return x;
     }
 
-    public double getY() {
+    public T getY() {
         return y;
     }
 
-    public double getZ() {
+    public T getZ() {
         return z;
     }
 
@@ -30,17 +30,17 @@ public class Point {
         return f;
     }
 
-    public void setX(double x) {
+    public void setX(T x) {
         this.x = x;
 
     }
 
-    public void setY(double y) {
+    public void setY(T y) {
         this.y = y;
 
     }
 
-    public void setZ(double z) {
+    public void setZ(T z) {
         this.z = z;
 
     }
