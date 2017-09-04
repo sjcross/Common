@@ -2,6 +2,9 @@
 
 package wbif.sjx.common.Object;
 
+import ij.IJ;
+import ij.ImagePlus;
+import ij.plugin.filter.Convolver;
 import org.apache.commons.math3.stat.descriptive.moment.Mean;
 import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.commons.math3.stat.descriptive.rank.Min;
@@ -19,6 +22,7 @@ public class Volume {
     protected final String calibratedUnits;
 
     protected ArrayList<Point<Integer>> points = new ArrayList<>() ;
+    protected ArrayList<Point<Integer>> surface = null;
 
     public ArrayList<Point<Integer>> getPoints() {
         return points;
@@ -69,6 +73,58 @@ public class Volume {
 
     }
 
+    public ArrayList<Integer> getSurfaceXCoords() {
+        if (surface == null) calculateSurface();
+        return surface.stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
+
+    }
+
+    public ArrayList<Integer> getSurfaceYCoords() {
+        if (surface == null) calculateSurface();
+        return surface.stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
+
+    }
+
+    public ArrayList<Integer> getSurfaceZCoords() {
+        if (surface == null) calculateSurface();
+        return surface.stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
+
+    }
+
+    public void calculateSurface() {
+        surface = new ArrayList<>();
+
+        double[] extents = getExtents(true,false);
+        int[][][] coords = new int[(int) extents[1]+1][(int) extents[3]+1][(int) extents[5]+1];
+
+        // Adding pixels to a 3D array
+        for (Point<Integer> point:points) {
+            int x = point.getX();
+            int y = point.getY();
+            int z = point.getZ();
+
+            coords[x][y][z] = 1;
+
+        }
+
+        // Checking for neighbours
+        for (Point<Integer> point:points) {
+            int x = point.getX();
+            int y = point.getY();
+            int z = point.getZ();
+
+            // Points at the edge of the image are automatically classed as being edge pixels
+            if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
+                surface.add(new Point<>(x, y, z, 0));
+                continue;
+            }
+
+            if (coords[x-1][y][z] + coords[x+1][y][z] + coords[x][y-1][z] + coords[x][y+1][z] + coords[x][y][z-1] + coords[x][y][z+1] < 6) {
+                surface.add(new Point<>(x,y,z,0));
+            }
+        }
+    }
+
     public double[] getX(boolean pixelDistances) {
         if (pixelDistances)
             return points.stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
@@ -102,6 +158,45 @@ public class Volume {
 
         else
             return points.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v->v* dppZ).toArray();
+
+    }
+
+    public double[] getSurfaceX(boolean pixelDistances) {
+        if (surface == null) calculateSurface();
+        if (pixelDistances)
+            return surface.stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
+        else
+            return surface.stream().map(Point::getX).mapToDouble(Integer::doubleValue).map(v->v* dppXY).toArray();
+
+    }
+
+    public double[] getSurfaceY(boolean pixelDistances) {
+        if (surface == null) calculateSurface();
+        if (pixelDistances)
+            return surface.stream().map(Point::getY).mapToDouble(Integer::doubleValue).toArray();
+        else
+            return surface.stream().map(Point::getY).mapToDouble(Integer::doubleValue).map(v->v* dppXY).toArray();
+
+    }
+
+    /**
+     *
+     * @param pixelDistances
+     * @param matchXY Get Z-coordinates in equivalent pixel distances to XY (e.g. for Z-coordinates at twice the XY
+     *                spacing, Z of 1 will be returned as 2).
+     * @return
+     */
+    public double[] getSurfaceZ(boolean pixelDistances, boolean matchXY) {
+        if (surface == null) calculateSurface();
+        if (pixelDistances)
+            if (matchXY)
+                return surface.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v -> v* dppZ / dppXY).toArray();
+
+            else
+                return surface.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).toArray();
+
+        else
+            return surface.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v->v* dppZ).toArray();
 
     }
 
