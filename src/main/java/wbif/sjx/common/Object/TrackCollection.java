@@ -272,4 +272,85 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
     }
 
+    /**
+     * Returns the largest frame number of any track
+     * @return
+     */
+    public int getHighestFrame() {
+        int maxFr = 0;
+        for (Track track:values()) {
+            for (int fr:track.keySet()) {
+                maxFr = Math.max(maxFr,fr);
+            }
+        }
+
+        return maxFr;
+
+    }
+
+    /**
+     * Returns the minimum and maximum coordinates of any point in 3D
+     * @param pixelDistances
+     * @return
+     */
+    public double[][] getSpatialLimits(boolean pixelDistances) {
+        double[][] limits = new double[][]{{Double.MAX_VALUE,Double.MIN_VALUE},{Double.MAX_VALUE,Double.MIN_VALUE},{Double.MAX_VALUE,Double.MIN_VALUE}};
+
+        for (Track track:values()) {
+            double[] x = track.getX(pixelDistances);
+            double[] y = track.getY(pixelDistances);
+            double[] z = track.getZ(pixelDistances);
+
+            for (int i=0;i<x.length;i++) {
+                limits[0][0] = Math.min(limits[0][0],x[i]);
+                limits[0][1] = Math.max(limits[0][1],x[i]);
+                limits[1][0] = Math.min(limits[1][0],y[i]);
+                limits[1][1] = Math.max(limits[1][1],y[i]);
+                limits[2][0] = Math.min(limits[2][0],z[i]);
+                limits[2][1] = Math.max(limits[2][1],z[i]);
+
+            }
+        }
+
+        return limits;
+
+    }
+
+    /**
+     * Returns a Point object at the mean location of all points in the present frame
+     * @param frame
+     * @return
+     */
+    public Point getMeanPoint(int frame) {
+        CumStat[] cs = new CumStat[3];
+
+        for (int i=0;i<3;i++) cs[i] = new CumStat();
+
+        for (Track track:values()) {
+            if (track.hasFrame(frame)) {
+                cs[0].addMeasure(track.get(frame).getX());
+                cs[1].addMeasure(track.get(frame).getY());
+                cs[2].addMeasure(track.get(frame).getZ());
+
+            }
+        }
+
+        return new Point(cs[0].getMean(),cs[1].getMean(),cs[2].getMean(),frame);
+
+    }
+
+    public double getMaximumInstantaneousVelocity() {
+        double maxVelocity = 0;
+
+        for (Track track:values()) {
+            double[] velocities = track.getInstantaneousVelocity(true);
+
+            for (double velocity:velocities) {
+                maxVelocity = Math.max(maxVelocity,velocity);
+            }
+        }
+
+        return maxVelocity;
+
+    }
 }
