@@ -29,7 +29,7 @@ public class TextureCalculator {
      * @param zOffs
      * @param positions ArrayList containing x,y,z positions of pixels in region of interest
      */
-    public void calculate(ImagePlus image, int xOffs, int yOffs, int zOffs, ArrayList<int[]> positions) {
+    public void calculate(ImagePlus image, int xOffs, int yOffs, int zOffs, int c, int t, ArrayList<int[]> positions) {
         if (image.getBitDepth() != 8) {
             // The analysis requires discrete pixels values.  Therefore, 32-bit images are converted to 8-bit
             CumStat cs = IntensityCalculator.calculate(image);
@@ -60,11 +60,11 @@ public class TextureCalculator {
         for (int[] pos:positions) {
             if (pos[0]>=0 & pos[0]<width & pos[1]>=0 & pos[1]<height & pos[2]>=0 & pos[2]<nSlices) {
                 // Getting current pixel value
-                image.setPosition(1, pos[2], 1);
+                image.setPosition(c, pos[2], t);
                 int v1 = image.getProcessor().getPixel(pos[0], pos[1]);
 
                 // Getting tested pixel value
-                image.setPosition(1, pos[2] + zOffs, 1);
+                image.setPosition(c, pos[2] + zOffs, t);
                 int v2 = image.getProcessor().getPixel(pos[0] + xOffs, pos[1] + yOffs);
 
                 // Storing in the HashMap
@@ -88,7 +88,7 @@ public class TextureCalculator {
      * @param yOffs
      * @param zOffs
      */
-    public void calculate(ImagePlus image, int xOffs, int yOffs, int zOffs) {
+    public void calculate(ImagePlus image, int xOffs, int yOffs, int zOffs, int c, int t) {
         // Creating an ArrayList of all pixel coordinates in the image.  These are the coordinates to be tested.  This
         // isn't the most efficient way to do it, but it retains compatibility with the general method used to
         // calculate for small regions
@@ -108,7 +108,7 @@ public class TextureCalculator {
             }
         }
 
-        calculate(image,xOffs,yOffs,zOffs,positions);
+        calculate(image,xOffs,yOffs,zOffs,c,t,positions);
 
     }
 

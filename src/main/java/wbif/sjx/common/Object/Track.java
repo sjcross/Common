@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 /**
  * Created by sc13967 on 03/02/2017.
  */
-public class Track extends TreeMap<Integer,Point> {
+public class Track extends TreeMap<Integer,Point<Double>> {
     private double distXY = 1;
     private double distZ = 1;
     private String units = "px";
