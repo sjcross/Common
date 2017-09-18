@@ -59,5 +59,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Maven: sc.fiji:Fiji_Plugins:3.1.1" level="project" />
+    <orderEntry type="library" name="Maven: sc.fiji:fiji-lib:2.1.1" level="project" />
+    <orderEntry type="library" name="Maven: net.imagej:ij1-patcher:0.12.2" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.16.1-GA" level="project" />
   </component>
 </module>
