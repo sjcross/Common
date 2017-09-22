@@ -1,16 +1,16 @@
 package wbif.sjx.common.Object;
 
-public class Point<T extends Number> {
-    T x;
-    T y;
-    T z;
-    int f;
+import java.io.Serializable;
 
-    public Point(T x, T y, T z, int f) {
+public class Point<T extends Number> implements Serializable {
+    protected T x;
+    protected T y;
+    protected T z;
+
+    public Point(T x, T y, T z) {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.f = f;
 
     }
 
@@ -26,10 +26,6 @@ public class Point<T extends Number> {
         return z;
     }
 
-    public int getF() {
-        return f;
-    }
-
     public void setX(T x) {
         this.x = x;
 
@@ -43,9 +39,5 @@ public class Point<T extends Number> {
     public void setZ(T z) {
         this.z = z;
 
-    }
-
-    public void setF(int f) {
-        this.f = f;
     }
 }

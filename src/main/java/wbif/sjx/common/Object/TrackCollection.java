@@ -335,7 +335,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
             }
         }
 
-        return new Point(cs[0].getMean(),cs[1].getMean(),cs[2].getMean(),frame);
+        return new Timepoint(cs[0].getMean(),cs[1].getMean(),cs[2].getMean(),frame);
 
     }
 
