@@ -1,29 +1,29 @@
 package wbif.sjx.common.Filters;
 
 import ij.IJ;
-import ij.ImageJ;
 import ij.ImagePlus;
 import ij.plugin.Duplicator;
 import ij.plugin.Filters3D;
+import ij.plugin.PlugIn;
 import ij.process.ImageConverter;
 import wbif.sjx.common.Process.IntensityMinMax;
 
 /**
  * Created by sc13967 on 14/11/2017.
- * Calculates and applies the Phansalkar local threshold in 3D.
  */
-public class Phansalkar3D {
-    public static void main(String[] args) {
-        new ImageJ();
-        IJ.runMacro("waitForUser");
+public class AutoLocalThreshold3D  implements PlugIn {
+    private static final String PHANSALKAR = "Phansalkar";
 
-        ImagePlus ipl = IJ.getImage();
+    public void exec(ImagePlus ipl, String myMethod, int radiusXY, int radiusZ, double thrMult, double par1, double par2, boolean doIwhite) {
+        switch(myMethod) {
+            case PHANSALKAR:
+                Phansalkar(ipl,radiusXY,radiusZ,thrMult,par1,par2,doIwhite);
+                break;
 
-        new Phansalkar3D().Phansalkar3D(ipl,25,1,0,0.0,0.7,true);
-
+        }
     }
 
-    public void Phansalkar3D(ImagePlus ipl, int radiusXY, int radiusZ, double par1, double par2, double thrMult, boolean doIwhite) {
+    void Phansalkar(ImagePlus ipl, int radiusXY, int radiusZ, double thrMult, double par1, double par2, boolean doIwhite) {
         // Setting parameters (from Auto_Local_Threshold)
         ImagePlus meanIpl, varIpl, oriIpl;
         double k_value = 0.25;
@@ -98,7 +98,10 @@ public class Phansalkar3D {
 
         ipl.setPosition(1,1,1);
 
-        ipl.show();
+    }
+
+    @Override
+    public void run(String s) {
 
     }
 }
