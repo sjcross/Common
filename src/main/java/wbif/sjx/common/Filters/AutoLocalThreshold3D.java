@@ -19,6 +19,9 @@ public class AutoLocalThreshold3D  implements PlugIn {
     public static final String MEDIAN = "Median";
     public static final String PHANSALKAR = "Phansalkar";
 
+    private int lowerThreshold = Integer.MIN_VALUE;
+    private int upperThreshold = Integer.MAX_VALUE;
+
     public static void main(String[] args) {
         new ImageJ();
         IJ.runMacro("waitForUser");
@@ -213,8 +216,12 @@ public class AutoLocalThreshold3D  implements PlugIn {
                     byte[] pixels = (byte[]) ipl.getProcessor().getPixels();
                     float[] mean = (float[]) meanIpl.getProcessor().getPixels();
 
-                    for (int i = 0; i < pixels.length; i++)
-                        pixels[i] = ((pixels[i] & 0xff) > (int) thrMult*(mean[i] - c_value)) ? object : backg;
+                    for (int i = 0; i < pixels.length; i++) {
+                        int thr = (int) (thrMult * (mean[i] - c_value));
+                        if (thr < lowerThreshold) thr = lowerThreshold;
+                        if (thr > upperThreshold) thr = upperThreshold;
+                        pixels[i] = ((pixels[i] & 0xff) > thr) ? object : backg;
+                    }
                 }
             }
         }
@@ -350,5 +357,21 @@ public class AutoLocalThreshold3D  implements PlugIn {
     @Override
     public void run(String s) {
 
+    }
+
+    public int getLowerThreshold() {
+        return lowerThreshold;
+    }
+
+    public void setLowerThreshold(int lowerThreshold) {
+        this.lowerThreshold = lowerThreshold;
+    }
+
+    public int getUpperThreshold() {
+        return upperThreshold;
+    }
+
+    public void setUpperThreshold(int upperThreshold) {
+        this.upperThreshold = upperThreshold;
     }
 }
