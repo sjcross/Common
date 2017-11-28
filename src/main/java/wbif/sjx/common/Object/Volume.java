@@ -2,15 +2,13 @@
 
 package wbif.sjx.common.Object;
 
-import ij.IJ;
-import ij.ImagePlus;
-import ij.plugin.filter.Convolver;
-import org.apache.commons.math3.stat.descriptive.moment.Mean;
 import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.commons.math3.stat.descriptive.rank.Min;
 import wbif.sjx.common.MathFunc.ArrayFunc;
+import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 /**
@@ -24,8 +22,21 @@ public class Volume {
     protected ArrayList<Point<Integer>> points = new ArrayList<>() ;
     protected ArrayList<Point<Integer>> surface = null;
 
+    /**
+     * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
+     * pixel or calibrated distances.
+     */
+    private Point<Double> meanCentroid = null;
+
+    /**
+     * Median coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
+     * pixel or calibrated distances.
+     */
+    private Point<Double> medianCentroid = null;
+
     public ArrayList<Point<Integer>> getPoints() {
         return points;
+
     }
 
     public void setPoints(ArrayList<Point<Integer>> points) {
@@ -40,7 +51,7 @@ public class Volume {
     }
 
     public void addCoord(int xIn, int yIn, int zIn) {
-        points.add(new Point<>(xIn,yIn,zIn,0));
+        points.add(new Point<>(xIn,yIn,zIn));
 
     }
 
@@ -65,7 +76,6 @@ public class Volume {
 
     public ArrayList<Integer> getYCoords() {
         return points.stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
-
     }
 
     public ArrayList<Integer> getZCoords() {
@@ -115,12 +125,12 @@ public class Volume {
 
             // Points at the edge of the image are automatically classed as being edge pixels
             if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
-                surface.add(new Point<>(x, y, z, 0));
+                surface.add(new Point<>(x, y, z));
                 continue;
             }
 
             if (coords[x-1][y][z] + coords[x+1][y][z] + coords[x][y-1][z] + coords[x][y+1][z] + coords[x][y][z-1] + coords[x][y][z+1] < 6) {
-                surface.add(new Point<>(x,y,z,0));
+                surface.add(new Point<>(x,y,z));
             }
         }
     }
@@ -200,18 +210,114 @@ public class Volume {
 
     }
 
+    public void calculateMeanCentroid() {
+        CumStat csX = new CumStat();
+        CumStat csY = new CumStat();
+        CumStat csZ = new CumStat();
+
+        for (double value:getXCoords()) csX.addMeasure(value);
+        for (double value:getYCoords()) csY.addMeasure(value);
+        for (double value:getZCoords()) csZ.addMeasure(value);
+
+        meanCentroid = new Point<>(csX.getMean(),csY.getMean(),csZ.getMean());
+
+    }
+
+    private void calculateMedianCentroid() {
+        // Getting coordinates
+        ArrayList<Integer> xCoords = getXCoords();
+        ArrayList<Integer> yCoords = getYCoords();
+        ArrayList<Integer> zCoords = getZCoords();
+
+        // Sorting values in ascending order
+        Collections.sort(xCoords);
+        Collections.sort(yCoords);
+        Collections.sort(zCoords);
+
+        // Taking the central value
+        int nValues = xCoords.size();
+
+        if (nValues%2==0) {
+            double xCent = ((double)xCoords.get(nValues/2-1)+(double)xCoords.get(nValues/2))/2;
+            double yCent = ((double)yCoords.get(nValues/2-1)+(double)yCoords.get(nValues/2))/2;
+            double zCent = ((double)zCoords.get(nValues/2-1)+(double)zCoords.get(nValues/2))/2;
+
+            medianCentroid = new Point<>(xCent,yCent,zCent);
+
+        } else {
+            double xCent =  xCoords.get(nValues/2);
+            double yCent =  yCoords.get(nValues/2);
+            double zCent =  zCoords.get(nValues/2);
+
+            medianCentroid = new Point<>(xCent,yCent,zCent);
+
+        }
+    }
+
+    /**
+     * Returns the previously-calculated mean x centroid.  If no centroid was previously calculated, it is calculated.
+     * @param pixelDistances
+     * @return
+     */
     public double getXMean(boolean pixelDistances) {
-        return new Mean().evaluate(getX(pixelDistances));
+        // Checking if the centroid has previously been calculated
+        if (meanCentroid == null) calculateMeanCentroid();
+
+        if (pixelDistances) return meanCentroid.getX();
+
+        return meanCentroid.getY()*dppXY;
 
     }
 
     public double getYMean(boolean pixelDistances) {
-        return new Mean().evaluate(getY(pixelDistances));
+        // Checking if the centroid has previously been calculated
+        if (meanCentroid == null) calculateMeanCentroid();
+
+        if (pixelDistances) return meanCentroid.getY();
+
+        return meanCentroid.getY()*dppXY;
 
     }
 
     public double getZMean(boolean pixelDistances, boolean matchXY) {
-        return new Mean().evaluate(getZ(pixelDistances,matchXY));
+        // Checking if the centroid has previously been calculated
+        if (meanCentroid == null) calculateMeanCentroid();
+
+        if (pixelDistances && !matchXY) return meanCentroid.getZ();
+        if (pixelDistances && matchXY) return meanCentroid.getZ()*dppZ/dppXY;
+
+        return meanCentroid.getY()*dppZ;
+
+    }
+
+    public double getXMedian(boolean pixelDistances) {
+        // Checking if the centroid has previously been calculated
+        if (medianCentroid == null) calculateMedianCentroid();
+
+        if (pixelDistances) return medianCentroid.getX();
+
+        return medianCentroid.getY()*dppXY;
+
+    }
+
+    public double getYMedian(boolean pixelDistances) {
+        // Checking if the centroid has previously been calculated
+        if (medianCentroid == null) calculateMedianCentroid();
+
+        if (pixelDistances) return medianCentroid.getY();
+
+        return medianCentroid.getY()*dppXY;
+
+    }
+
+    public double getZMedian(boolean pixelDistances, boolean matchXY) {
+        // Checking if the centroid has previously been calculated
+        if (medianCentroid == null) calculateMedianCentroid();
+
+        if (pixelDistances && !matchXY) return medianCentroid.getZ();
+        if (pixelDistances && matchXY) return medianCentroid.getZ()*dppZ/dppXY;
+
+        return medianCentroid.getY()*dppZ;
 
     }
 

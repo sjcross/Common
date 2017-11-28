@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 /**
  * Created by sc13967 on 03/02/2017.
  */
-public class Track extends TreeMap<Integer,Point<Double>> {
+public class Track extends TreeMap<Integer,Timepoint<Double>> {
     private double distXY = 1;
     private double distZ = 1;
     private String units = "px";
@@ -32,7 +32,7 @@ public class Track extends TreeMap<Integer,Point<Double>> {
 
     public Track(double[] x, double[] y, double[] z, int[] f) {
         for (int i=0;i<x.length;i++) {
-            put(f[i],new Point(x[i],y[i],z[i],f[i]));
+            put(f[i],new Timepoint(x[i],y[i],z[i],f[i]));
 
         }
     }
@@ -43,14 +43,14 @@ public class Track extends TreeMap<Integer,Point<Double>> {
         this.units = unitsXY;
 
         for (int i=0;i<x.length;i++) {
-            put(f[i],new Point(x[i],y[i],z[i],f[i]));
+            put(f[i],new Timepoint(x[i],y[i],z[i],f[i]));
 
         }
     }
 
     public Track(ArrayList<Double> x, ArrayList<Double> y, ArrayList<Double> z, ArrayList<Integer> f) {
         for (int i=0;i<x.size();i++) {
-            put(f.get(i),new Point(x.get(i),y.get(i),z.get(i),f.get(i)));
+            put(f.get(i),new Timepoint(x.get(i),y.get(i),z.get(i),f.get(i)));
 
         }
     }
@@ -61,7 +61,7 @@ public class Track extends TreeMap<Integer,Point<Double>> {
         this.units = unitsXY;
 
         for (int i=0;i<x.size();i++) {
-            put(f.get(i),new Point(x.get(i),y.get(i),z.get(i),f.get(i)));
+            put(f.get(i),new Timepoint(x.get(i),y.get(i),z.get(i),f.get(i)));
 
         }
     }
@@ -255,7 +255,7 @@ public class Track extends TreeMap<Integer,Point<Double>> {
     }
 
     public int[] getF() {
-        return values().stream().mapToInt(Point::getF).toArray();
+        return values().stream().mapToInt(Timepoint::getF).toArray();
 
     }
 
@@ -265,7 +265,7 @@ public class Track extends TreeMap<Integer,Point<Double>> {
     }
 
     public double[] getFAsDouble() {
-        return values().stream().mapToDouble(Point::getF).toArray();
+        return values().stream().mapToDouble(Timepoint::getF).toArray();
     }
 
     public double getDistXY() {

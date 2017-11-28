@@ -2,7 +2,7 @@ package wbif.sjx.common.Object;
 
 import org.w3c.dom.Element;
 
-public class Spot extends Point<Double> {
+public class Spot extends Timepoint<Double> {
     public static final String MAXI = "Maximum intensity";
     public static final String MINI = "Minimum intensity";
     public static final String MEANI = "Mean intensity";
