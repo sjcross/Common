@@ -184,8 +184,16 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
     }
 
     public String getAsString(String property) {
-        // If the property is null return null.  Otherwise check if it's a File; if it is, return the name, otherwise return the string value
-        return get(property) == null ? null : get(property) instanceof File ? ((File) get(property)).getName() : String.valueOf(get(property));
+        Object propertyObject = get(property);
+        if (propertyObject == null) return null;
+
+        if (propertyObject instanceof File) {
+            return ((File) propertyObject).getAbsolutePath();
+
+        }
+
+        return propertyObject.toString();
+
     }
 
     public void printParameters() {
