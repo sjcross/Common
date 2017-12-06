@@ -169,7 +169,8 @@ public class AutoLocalThreshold3D  implements PlugIn {
                     byte[] min = (byte[]) minIpl.getProcessor().getPixels();
 
                     for (int i = 0; i < pixels.length; i++) {
-                        pixels[i] = ((Math.abs((max[i] & 0xff - pixels[i] & 0xff)) <= thrMult*Math.abs((pixels[i] & 0xff - min[i] & 0xff)))) ? object : backg;
+                        pixels[i] = ((Math.abs((max[i] & 0xff - pixels[i] & 0xff))
+                                        <= thrMult*Math.abs((pixels[i] & 0xff - min[i] & 0xff)))) ? object : backg;
                     }
                 }
             }
@@ -344,7 +345,8 @@ public class AutoLocalThreshold3D  implements PlugIn {
                     float[] var = (float []) varIpl.getProcessor().getPixels();
 
                     for (int i=0; i<pixels.length; i++)
-                        pixels[i] = ( (ori[i]) > thrMult*( mean[i] * (1.0 + p_value * Math.exp(-q_value * mean[i]) + k_value * (( Math.sqrt(var[i]) / r_value)- 1.0)))) ? object : backg;
+                        pixels[i] = ( (ori[i]) > thrMult*( mean[i] * (1.0 + p_value * Math.exp(-q_value * mean[i])
+                                + k_value * (( Math.sqrt(var[i]) / r_value)- 1.0)))) ? object : backg;
 
                 }
             }
