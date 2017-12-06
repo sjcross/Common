@@ -210,6 +210,10 @@ public class Volume {
 
     }
 
+    public void clearSurface() {
+        surface = null;
+    }
+
     public void calculateMeanCentroid() {
         CumStat csX = new CumStat();
         CumStat csY = new CumStat();
