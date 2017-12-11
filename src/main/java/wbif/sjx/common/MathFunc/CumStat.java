@@ -95,42 +95,48 @@ public class CumStat {
     }
 
     public synchronized double getMean() {
-        return xMean;
+        return n == 0 ? Double.NaN : xMean;
     }
 
     public synchronized double getSum() {
-        return xSum;
+        return n == 0 ? Double.NaN : xSum;
     }
 
     public synchronized double getVar() {
-        return xVarSamp;
+        return n == 0 ? Double.NaN : xVarSamp;
     }
 
     public synchronized double getVar(int mode) {
+        if (n == 0) return Double.NaN;
+
         return mode == 2?xVarSamp:(mode == 1?xVarPop:0);
+
     }
 
     public synchronized double getStd() {
-        return getStd(2);
+        return n == 0 ? Double.NaN : getStd(2);
     }
 
     public synchronized double getStd(int mode) {
+        if (n == 0) return Double.NaN;
+
         return mode == 2?Math.sqrt(xVarSamp):(mode == 1?Math.sqrt(xVarPop):0);
+
     }
 
     public synchronized double getN() {
-        return n;
+        return n == 0 ? Double.NaN : n;
     }
 
     public synchronized double getMin() {
-        return xMin;
+        return n == 0 ? Double.NaN : xMin;
     }
 
     public synchronized double getMax() {
-        return xMax;
+        return n == 0 ? Double.NaN : xMax;
     }
 
     public synchronized double getWeight() {
-        return wSum;
+        return n == 0 ? Double.NaN : wSum;
     }
 }

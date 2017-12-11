@@ -20,7 +20,6 @@ public class AutoLocalThreshold3D  implements PlugIn {
     public static final String PHANSALKAR = "Phansalkar";
 
     private double lowerThreshold = Double.MIN_VALUE;
-    private double upperThreshold = Double.MAX_VALUE;
 
     public static void main(String[] args) {
         new ImageJ();
@@ -28,7 +27,9 @@ public class AutoLocalThreshold3D  implements PlugIn {
 
         ImagePlus ipl = IJ.getImage();
 
-        new AutoLocalThreshold3D().Phansalkar(ipl,25,25,3,0,0,true);
+        AutoLocalThreshold3D autoLocalThreshold3D = new AutoLocalThreshold3D();
+        autoLocalThreshold3D.setLowerThreshold(300);
+        autoLocalThreshold3D.Phansalkar(ipl,20,0,1,0,0,true);
         ipl.show();
 
     }
@@ -68,7 +69,7 @@ public class AutoLocalThreshold3D  implements PlugIn {
         //  http://citeseer.ist.psu.edu/sezgin04survey.html
         // Ported to ImageJ plugin from E Celebi's fourier_0.8 routines
         // This version uses a circular local window, instead of a rectagular one
-        ImagePlus maxIpl, minIpl;
+        ImagePlus maxIpl, minIpl, oriIpl;
         int contrast_threshold = (int) Math.round(15*thrMult);
         int local_contrast;
         int mid_gray;
@@ -87,6 +88,9 @@ public class AutoLocalThreshold3D  implements PlugIn {
             backg =  (byte) 0xff;
         }
 
+        oriIpl = new Duplicator().run(ipl);
+        IJ.run(oriIpl,"32-bit",null);
+
         IntensityMinMax.run(ipl,true);
         IJ.run(ipl,"8-bit",null);
 
@@ -102,10 +106,12 @@ public class AutoLocalThreshold3D  implements PlugIn {
             for (int c = 1; c <= ipl.getNChannels(); c++) {
                 for (int t = 1; t <= ipl.getNFrames(); t++) {
                     ipl.setPosition(c, z, t);
+                    oriIpl.setPosition(c, z, t);
                     maxIpl.setPosition(c, z, t);
                     minIpl.setPosition(c, z, t);
 
                     byte[] pixels = (byte[]) ipl.getProcessor().getPixels();
+                    float[] ori = (float[]) oriIpl.getProcessor().getPixels();
                     byte[] max = (byte[]) maxIpl.getProcessor().getPixels();
                     byte[] min = (byte[]) minIpl.getProcessor().getPixels();
 
@@ -114,9 +120,9 @@ public class AutoLocalThreshold3D  implements PlugIn {
                         mid_gray = ((min[i] & 0xff) + (max[i] & 0xff)) / 2;
                         temp = (pixels[i] & 0x0000ff);
                         if (local_contrast < contrast_threshold)
-                            pixels[i] = (mid_gray >= 128) ? object : backg;  //Low contrast region
+                            pixels[i] = (mid_gray >= 128 & ori[i] > lowerThreshold) ? object : backg;  //Low contrast region
                         else
-                            pixels[i] = (temp >= mid_gray) ? object : backg;
+                            pixels[i] = (temp >= mid_gray & ori[i] > lowerThreshold) ? object : backg;
                     }
                 }
             }
@@ -163,6 +169,7 @@ public class AutoLocalThreshold3D  implements PlugIn {
             for (int c = 1; c <= ipl.getNChannels(); c++) {
                 for (int t = 1; t <= ipl.getNFrames(); t++) {
                     ipl.setPosition(c, z, t);
+                    oriIpl.setPosition(c, z, t);
                     maxIpl.setPosition(c, z, t);
                     minIpl.setPosition(c, z, t);
 
@@ -221,6 +228,7 @@ public class AutoLocalThreshold3D  implements PlugIn {
             for (int c = 1; c <= ipl.getNChannels(); c++) {
                 for (int t = 1; t <= ipl.getNFrames(); t++) {
                     ipl.setPosition(c, z, t);
+                    oriIpl.setPosition(c, z, t);
                     meanIpl.setPosition(c, z, t);
 
                     byte[] pixels = (byte[]) ipl.getProcessor().getPixels();
@@ -279,6 +287,7 @@ public class AutoLocalThreshold3D  implements PlugIn {
             for (int c = 1; c <= ipl.getNChannels(); c++) {
                 for (int t = 1; t <= ipl.getNFrames(); t++) {
                     ipl.setPosition(c, z, t);
+                    oriIpl.setPosition(c, z, t);
                     medIpl.setPosition(c, z, t);
 
                     byte[] pixels = (byte[]) ipl.getProcessor().getPixels();
@@ -355,6 +364,7 @@ public class AutoLocalThreshold3D  implements PlugIn {
             for (int c = 1; c <= ipl.getNChannels(); c++) {
                 for (int t = 1; t <= ipl.getNFrames(); t++) {
                     ipl.setPosition(c, z, t);
+                    oriIpl.setPosition(c, z, t);
                     normIpl.setPosition(c, z, t);
                     meanIpl.setPosition(c, z, t);
                     varIpl.setPosition(c, z, t);
@@ -393,11 +403,4 @@ public class AutoLocalThreshold3D  implements PlugIn {
         this.lowerThreshold = lowerThreshold;
     }
 
-    public double getUpperThreshold() {
-        return upperThreshold;
-    }
-
-    public void setUpperThreshold(int upperThreshold) {
-        this.upperThreshold = upperThreshold;
-    }
 }
