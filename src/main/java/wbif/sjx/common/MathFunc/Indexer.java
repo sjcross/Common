@@ -77,7 +77,7 @@ public class Indexer {
     }
 
     public int[] getCoord(int ind) {
-        // Verifying the index is within the indexer size
+        // Verifying the index is within the accumulatorIndexer size
         int indexerSize = 1;
         for (int i=0;i<dim.length;i++) {
             indexerSize *= dim[i];

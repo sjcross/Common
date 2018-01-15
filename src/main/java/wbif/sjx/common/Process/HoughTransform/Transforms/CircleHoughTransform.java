@@ -1,10 +1,8 @@
 package wbif.sjx.common.Process.HoughTransform.Transforms;
 
-import ij.ImagePlus;
 import ij.process.ImageProcessor;
 import wbif.sjx.common.MathFunc.MidpointCircle;
-import wbif.sjx.common.Process.HoughTransform.Accumulator;
-import wbif.sjx.common.Process.HoughTransform.CircleAccumulator;
+import wbif.sjx.common.Process.HoughTransform.Accumulators.CircleAccumulator;
 
 /**
  * Created by sc13967 on 12/01/2018.
@@ -12,12 +10,9 @@ import wbif.sjx.common.Process.HoughTransform.CircleAccumulator;
 public class CircleHoughTransform extends GenericHoughTransform {
     private int[][] parameterRanges;
 
-    public CircleHoughTransform(ImageProcessor ipr) {
+    public CircleHoughTransform(ImageProcessor ipr, int[][] parameterRanges) {
         super(ipr);
 
-    }
-
-    public void setAccumulator(int[][] parameterRanges) {
         this.parameterRanges = parameterRanges;
         this.accumulator = new CircleAccumulator(parameterRanges);
 
@@ -48,7 +43,6 @@ public class CircleHoughTransform extends GenericHoughTransform {
             int nX = maxX-minX+1;
             int nY = maxY-minY+1;
             for (int iX=0;iX<nX;iX++) {
-                System.out.println(iX);
                 for (int iY=0;iY<nY;iY++) {
                     // Getting current XY values
                     int X = minX+iX;
@@ -61,5 +55,4 @@ public class CircleHoughTransform extends GenericHoughTransform {
             }
         }
     }
-
 }

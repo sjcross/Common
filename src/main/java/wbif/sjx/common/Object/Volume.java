@@ -102,6 +102,42 @@ public class Volume {
     }
 
     public void calculateSurface() {
+        calculateSurface3D();
+    }
+
+    public void calculateSurface2D() {
+        surface = new ArrayList<>();
+
+        double[] extents = getExtents(true,false);
+        int[][] coords = new int[(int) extents[1]+1][(int) extents[3]+1];
+
+        // Adding pixels to a 3D array
+        for (Point<Integer> point:points) {
+            int x = point.getX();
+            int y = point.getY();
+
+            coords[x][y] = 1;
+
+        }
+
+        // Checking for neighbours
+        for (Point<Integer> point:points) {
+            int x = point.getX();
+            int y = point.getY();
+
+            // Points at the edge of the image are automatically classed as being edge pixels
+            if (x == 0 | x == extents[1] | y == 0 | y == extents[3]) {
+                surface.add(new Point<>(x, y, 0));
+                continue;
+            }
+
+            if (coords[x-1][y] + coords[x+1][y] + coords[x][y-1] + coords[x][y+1] + coords[x][y] + coords[x][y] < 4) {
+                surface.add(new Point<>(x,y,0));
+            }
+        }
+    }
+
+    public void calculateSurface3D() {
         surface = new ArrayList<>();
 
         double[] extents = getExtents(true,false);
@@ -349,6 +385,22 @@ public class Volume {
         extents[3] = new Max().evaluate(y);
         extents[4] = new Min().evaluate(z);
         extents[5] = new Max().evaluate(z);
+
+        return extents;
+
+    }
+
+    public double[] getExtents2D(boolean pixelDistances) {
+        //Minimum and maximum values for all dimensions [x_min, y_min, z_min; x_max, y_max, z_max]
+        double[] extents = new double[6];
+
+        double[] x = getX(pixelDistances);
+        double[] y = getY(pixelDistances);
+
+        extents[0] = new Min().evaluate(x);
+        extents[1] = new Max().evaluate(x);
+        extents[2] = new Min().evaluate(y);
+        extents[3] = new Max().evaluate(y);
 
         return extents;
 

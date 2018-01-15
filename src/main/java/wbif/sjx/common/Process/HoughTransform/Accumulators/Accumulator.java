@@ -1,7 +1,9 @@
-package wbif.sjx.common.Process.HoughTransform;
+package wbif.sjx.common.Process.HoughTransform.Accumulators;
 
 import ij.ImagePlus;
 import wbif.sjx.common.MathFunc.Indexer;
+
+import java.util.ArrayList;
 
 /**
  * Created by sc13967 on 12/01/2018.
@@ -10,6 +12,9 @@ public abstract class Accumulator {
     protected Indexer indexer;
     protected double[] accumulator;
     protected int[][] parameterRanges;
+
+
+    // CONSTRUCTOR
 
     /**
      * Constructor for Accumulator object.
@@ -37,7 +42,16 @@ public abstract class Accumulator {
 
     }
 
+
+    // ABSTRACT METHODS
+
+    public abstract void addDetectedObjectsOverlay(ImagePlus ipl, ArrayList<double[]> objects);
+
+    public abstract void normaliseScores();
+
     public abstract void addPoints(int[] parameters, double value, int[] x, int[] y);
+
+    public abstract ArrayList<double[]> getObjects(double minScore, int exclusionR);
 
     public abstract ImagePlus getAccumulatorAsImage();
 

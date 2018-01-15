@@ -4,12 +4,13 @@ import ij.IJ;
 import ij.ImageJ;
 import ij.ImagePlus;
 import ij.process.ImageProcessor;
-import wbif.sjx.common.MathFunc.Indexer;
-import wbif.sjx.common.Process.HoughTransform.Accumulator;
+import wbif.sjx.common.Process.HoughTransform.Accumulators.Accumulator;
 import wbif.sjx.common.Process.HoughTransform.PixelArrays.BytePixelArray;
 import wbif.sjx.common.Process.HoughTransform.PixelArrays.FloatPixelArray;
 import wbif.sjx.common.Process.HoughTransform.PixelArrays.PixelArray;
 import wbif.sjx.common.Process.HoughTransform.PixelArrays.ShortPixelArray;
+
+import java.util.ArrayList;
 
 /**
  * Created by sc13967 on 12/01/2018.
@@ -39,36 +40,69 @@ public abstract class GenericHoughTransform {
         }
     }
 
-    public ImagePlus getAccumulatorAsImage() {
-        return accumulator.getAccumulatorAsImage();
-    }
-
     /**
      * Performs the Hough Transform on the image passed to the constructor.  This should be an edge image.
      */
     public abstract void run();
 
-    public abstract void setAccumulator(int[][] parameterRanges);
+    public void addDetectedObjectsOverlay(ImagePlus ipl, ArrayList<double[]> objects) {
+        accumulator.addDetectedObjectsOverlay(ipl,objects);
+
+    }
+
+    /**
+     * Normalises scores to the number of points that contribute to that position.
+     */
+    public void normaliseScores() {
+        accumulator.normaliseScores();
+
+    }
+
+    /**
+     * Iterates over all pixels in the Accumulator and stores the pixel (parameter set) with the highest score.
+     * All pixels proximal to this (within {@param exclusionR}) have their score set to zero.
+     * This prevents identification of multiple objects very close to each other.  Currently this can't return multiple
+     * overlapping objects with different radii (i.e. concentric circles).
+     * @param minScore
+     * @param exclusionR
+     * @return
+     */
+    public ArrayList<double[]> getObjects(double minScore, int exclusionR) {
+        return accumulator.getObjects(minScore,exclusionR);
+
+    }
+
+    public ImagePlus getAccumulatorAsImage() {
+        return accumulator.getAccumulatorAsImage();
+
+    }
 
     public static void main(String[] args) {
         // Loading test image
         new ImageJ();
-        ImagePlus ipl = IJ.openImage("C:\\Users\\sc13967\\Local Documents\\HoughTest.tif");
+        ImagePlus ipl = IJ.openImage("C:\\Users\\sc13967\\Desktop\\1000px-Data_Setup-Gradient.tif");
 
         // Initialising the Hough transform
-        CircleHoughTransform circleHoughTransform = new CircleHoughTransform(ipl.getProcessor());
-
-        // Creating the Accumulator
         int[][] parameterRanges =
-                new int[][]{{0,ipl.getWidth()-1,1},{0,ipl.getHeight()-1,1},{33,33,1}};
-        circleHoughTransform.setAccumulator(parameterRanges);
+                new int[][]{{0,ipl.getWidth()-1},{0,ipl.getHeight()-1},{30,70}};
+        CircleHoughTransform circleHoughTransform = new CircleHoughTransform(ipl.getProcessor(),parameterRanges);
 
         // Running the transforms
         circleHoughTransform.run();
 
+        // Normalising scores based on the number of points in that circle
+        circleHoughTransform.normaliseScores();
+
         // Getting the accumulator as an image
         ImagePlus iplHough = circleHoughTransform.getAccumulatorAsImage();
         iplHough.show();
+
+        // Getting brightest points.
+        ArrayList<double[]> circles = circleHoughTransform.getObjects(35,50);
+
+        // Adding an overlay to the input image showing the detected circles
+        circleHoughTransform.addDetectedObjectsOverlay(ipl,circles);
+        ipl.show();
 
     }
 }
