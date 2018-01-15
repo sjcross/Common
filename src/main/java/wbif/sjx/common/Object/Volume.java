@@ -108,10 +108,10 @@ public class Volume {
     public void calculateSurface2D() {
         surface = new ArrayList<>();
 
-        double[] extents = getExtents(true,false);
+        double[] extents = getExtents2D(true);
         int[][] coords = new int[(int) extents[1]+1][(int) extents[3]+1];
 
-        // Adding pixels to a 3D array
+        // Adding pixels to a 2D array
         for (Point<Integer> point:points) {
             int x = point.getX();
             int y = point.getY();
@@ -126,12 +126,13 @@ public class Volume {
             int y = point.getY();
 
             // Points at the edge of the image are automatically classed as being edge pixels
+            // THIS FIRST CONDITION CAN PROBABLY GO?
             if (x == 0 | x == extents[1] | y == 0 | y == extents[3]) {
                 surface.add(new Point<>(x, y, 0));
                 continue;
             }
 
-            if (coords[x-1][y] + coords[x+1][y] + coords[x][y-1] + coords[x][y+1] + coords[x][y] + coords[x][y] < 4) {
+            if (coords[x-1][y] + coords[x+1][y] + coords[x][y-1] + coords[x][y+1] < 4) {
                 surface.add(new Point<>(x,y,0));
             }
         }

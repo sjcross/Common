@@ -76,33 +76,4 @@ public abstract class GenericHoughTransform {
         return accumulator.getAccumulatorAsImage();
 
     }
-
-    public static void main(String[] args) {
-        // Loading test image
-        new ImageJ();
-        ImagePlus ipl = IJ.openImage("C:\\Users\\sc13967\\Desktop\\1000px-Data_Setup-Gradient.tif");
-
-        // Initialising the Hough transform
-        int[][] parameterRanges =
-                new int[][]{{0,ipl.getWidth()-1},{0,ipl.getHeight()-1},{30,70}};
-        CircleHoughTransform circleHoughTransform = new CircleHoughTransform(ipl.getProcessor(),parameterRanges);
-
-        // Running the transforms
-        circleHoughTransform.run();
-
-        // Normalising scores based on the number of points in that circle
-        circleHoughTransform.normaliseScores();
-
-        // Getting the accumulator as an image
-        ImagePlus iplHough = circleHoughTransform.getAccumulatorAsImage();
-        iplHough.show();
-
-        // Getting brightest points.
-        ArrayList<double[]> circles = circleHoughTransform.getObjects(35,50);
-
-        // Adding an overlay to the input image showing the detected circles
-        circleHoughTransform.addDetectedObjectsOverlay(ipl,circles);
-        ipl.show();
-
-    }
 }
