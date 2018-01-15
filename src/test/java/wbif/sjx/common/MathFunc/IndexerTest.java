@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
  */
 public class IndexerTest {
     /**
-     * Testing the indexer as constructed explicitly for 2D
+     * Testing the accumulatorIndexer as constructed explicitly for 2D
      * @throws Exception
      */
     @Test
@@ -22,13 +22,13 @@ public class IndexerTest {
         assertEquals("First element",0,indexer.getIndex(new int[]{0,0}));
         assertEquals("Mid-array element",38,indexer.getIndex(new int[]{3,5}));
         assertEquals("Final element",90,indexer.getIndex(new int[]{6,12}));
-        assertEquals("X-value larger than indexer size",-1,indexer.getIndex(new int[]{7,0}));
+        assertEquals("X-value larger than accumulatorIndexer size",-1,indexer.getIndex(new int[]{7,0}));
         assertEquals("Y-value less than zero",-1,indexer.getIndex(new int[]{4,-5}));
 
     }
 
     /**
-     * Testing the indexer as constructed explicitly for 3D
+     * Testing the accumulatorIndexer as constructed explicitly for 3D
      * @throws Exception
      */
     @Test
@@ -42,13 +42,13 @@ public class IndexerTest {
         assertEquals("First element",0,indexer.getIndex(new int[]{0,0,0}));
         assertEquals("Mid-array element",311,indexer.getIndex(new int[]{3,5,3}));
         assertEquals("Final element",545,indexer.getIndex(new int[]{6,12,5}));
-        assertEquals("X-value larger than indexer size",-1,indexer.getIndex(new int[]{7,0,0}));
+        assertEquals("X-value larger than accumulatorIndexer size",-1,indexer.getIndex(new int[]{7,0,0}));
         assertEquals("Y-value less than zero",-1,indexer.getIndex(new int[]{4,-5,3}));
 
     }
 
     /**
-     * Testing the indexer as constructed generically for 3D
+     * Testing the accumulatorIndexer as constructed generically for 3D
      * @throws Exception
      */
     @Test
@@ -62,13 +62,13 @@ public class IndexerTest {
         assertEquals("First element",0,indexer.getIndex(new int[]{0,0,0}));
         assertEquals("Mid-array element",311,indexer.getIndex(new int[]{3,5,3}));
         assertEquals("Final element",545,indexer.getIndex(new int[]{6,12,5}));
-        assertEquals("X-value larger than indexer size",-1,indexer.getIndex(new int[]{7,0,0}));
+        assertEquals("X-value larger than accumulatorIndexer size",-1,indexer.getIndex(new int[]{7,0,0}));
         assertEquals("Y-value less than zero",-1,indexer.getIndex(new int[]{4,-5,3}));
 
     }
 
     /**
-     * Testing the reverse operation (getting coordinates from an index) for indexer explicitly constructed in 2D
+     * Testing the reverse operation (getting coordinates from an index) for accumulatorIndexer explicitly constructed in 2D
      * @throws Exception
      */
     @Test
@@ -82,12 +82,12 @@ public class IndexerTest {
         assertArrayEquals("Mid-array element",new int[]{3,5},indexer.getCoord(38));
         assertArrayEquals("Final element",new int[]{6,12},indexer.getCoord(90));
         assertArrayEquals("Index smaller than zero",null,indexer.getCoord(-1));
-        assertArrayEquals("Index larger than indexer size",null,indexer.getCoord(1000));
+        assertArrayEquals("Index larger than accumulatorIndexer size",null,indexer.getCoord(1000));
 
     }
 
     /**
-     * Testing the reverse operation (getting coordinates from an index) for indexer explicitly constructed in 3D
+     * Testing the reverse operation (getting coordinates from an index) for accumulatorIndexer explicitly constructed in 3D
      * @throws Exception
      */
     @Test
@@ -102,12 +102,12 @@ public class IndexerTest {
         assertArrayEquals("Mid-array element",new int[]{3,5,3},indexer.getCoord(311));
         assertArrayEquals("Final element",new int[]{6,12,5},indexer.getCoord(545));
         assertArrayEquals("Index smaller than zero",null,indexer.getCoord(-1));
-        assertArrayEquals("Index larger than indexer size",null,indexer.getCoord(1000));
+        assertArrayEquals("Index larger than accumulatorIndexer size",null,indexer.getCoord(1000));
 
     }
 
     /**
-     * Testing the reverse operation (getting coordinates from an index) for indexer explicitly constructed in 3D
+     * Testing the reverse operation (getting coordinates from an index) for accumulatorIndexer explicitly constructed in 3D
      * @throws Exception
      */
     @Test
@@ -122,7 +122,7 @@ public class IndexerTest {
         assertArrayEquals("Mid-array element",new int[]{3,5,3},indexer.getCoord(311));
         assertArrayEquals("Final element",new int[]{6,12,5},indexer.getCoord(545));
         assertArrayEquals("Index smaller than zero",null,indexer.getCoord(-1));
-        assertArrayEquals("Index larger than indexer size",null,indexer.getCoord(1000));
+        assertArrayEquals("Index larger than accumulatorIndexer size",null,indexer.getCoord(1000));
 
     }
 }

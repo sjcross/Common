@@ -6,8 +6,8 @@ package wbif.sjx.common.MathFunc;
  */
 
 public class Indexer {
-    int[] dim;
-    int[] dim_m;
+    private int[] dim;
+    private int[] dim_m;
 
     /**
      * Generic constructor for index of arbitrary dimension
@@ -30,11 +30,11 @@ public class Indexer {
         dim_m = new int[2];
         dim = new int[2];
 
-        this.dim[0] = dim_x;
-        this.dim[1] = dim_y;
+        dim[0] = dim_x;
+        dim[1] = dim_y;
 
         dim_m[0] = 1;
-        dim_m[1] = this.dim[0];
+        dim_m[1] = dim[0];
     }
 
     /**
@@ -43,9 +43,9 @@ public class Indexer {
     public Indexer(int dim_x, int dim_y, int dim_z) {
         dim_m = new int[3];
         dim = new int[3];
-        this.dim[0] = dim_x;
-        this.dim[1] = dim_y;
-        this.dim[2] = dim_z;
+        dim[0] = dim_x;
+        dim[1] = dim_y;
+        dim[2] = dim_z;
 
         dim_m[0] = 1;
         dim_m[1] = dim_x;
@@ -77,7 +77,7 @@ public class Indexer {
     }
 
     public int[] getCoord(int ind) {
-        // Verifying the index is within the indexer size
+        // Verifying the index is within the accumulatorIndexer size
         int indexerSize = 1;
         for (int i=0;i<dim.length;i++) {
             indexerSize *= dim[i];
@@ -92,5 +92,16 @@ public class Indexer {
         }
 
         return coord;
+    }
+
+    public int getLength() {
+        int size = 1;
+        for (int dimension:dim) size *= dimension;
+        return size;
+
+    }
+
+    public int[] getDim() {
+        return dim;
     }
 }
