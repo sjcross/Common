@@ -15,8 +15,8 @@ import wbif.sjx.common.Process.HoughTransform.PixelArrays.ShortPixelArray;
  * Created by sc13967 on 12/01/2018.
  */
 public abstract class GenericHoughTransform {
-    private PixelArray pixels;
-    private Accumulator accumulator;
+    protected PixelArray pixels;
+    protected Accumulator accumulator;
 
 
     public GenericHoughTransform(ImageProcessor ipr) {
@@ -39,19 +39,36 @@ public abstract class GenericHoughTransform {
         }
     }
 
-    public abstract void run(int[][] parameterRanges);
+    public ImagePlus getAccumulatorAsImage() {
+        return accumulator.getAccumulatorAsImage();
+    }
+
+    /**
+     * Performs the Hough Transform on the image passed to the constructor.  This should be an edge image.
+     */
+    public abstract void run();
+
+    public abstract void setAccumulator(int[][] parameterRanges);
 
     public static void main(String[] args) {
+        // Loading test image
         new ImageJ();
-        IJ.runMacro("waitForUser");
+        ImagePlus ipl = IJ.openImage("C:\\Users\\sc13967\\Local Documents\\HoughTest.tif");
 
-        ImagePlus ipl = IJ.getImage();
+        // Initialising the Hough transform
         CircleHoughTransform circleHoughTransform = new CircleHoughTransform(ipl.getProcessor());
 
-        // Creating parameters
-        int[][] parameters = new int[][]{{},{},{}};
-        circleHoughTransform.run(parameters);
+        // Creating the Accumulator
+        int[][] parameterRanges =
+                new int[][]{{0,ipl.getWidth()-1,1},{0,ipl.getHeight()-1,1},{33,33,1}};
+        circleHoughTransform.setAccumulator(parameterRanges);
 
+        // Running the transforms
+        circleHoughTransform.run();
+
+        // Getting the accumulator as an image
+        ImagePlus iplHough = circleHoughTransform.getAccumulatorAsImage();
+        iplHough.show();
 
     }
 }

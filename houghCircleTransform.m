@@ -11,7 +11,7 @@ for r=minR:maxR
     % signal pixel
     for xx = 1:size(im,1)
         for yy = 1:size(im,2)
-            if im(xx,yy) ~= 0
+            %if im(xx,yy) ~= 0 %%% IF THIS IS BINARY THE ZERO PIXELS WON'T CONTRIBUTE ANYWAY
                 % Getting pixel coordinates around the current pixel
                 x1 = x+xx;
                 y1 = y+yy;
@@ -23,7 +23,7 @@ for r=minR:maxR
                 for i=1:numel(idx)
                     acc(x1(idx(i)),y1(idx(i)),r-minR+1) = acc(x1(idx(i)),y1(idx(i)),r-minR+1) + double(im(xx,yy));
                 end
-            end
+            %end
         end
     end
     

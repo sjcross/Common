@@ -53,7 +53,7 @@ public class TextureCalculator {
         // Initialising new HashMap (acting as a sparse matrix) to store the co-occurrence matrix
         matrix = new LinkedHashMap<>();
 
-        // Indexer to get index for addressing HashMap
+        // Indexer to getPixelValue index for addressing HashMap
         Indexer indexer = new Indexer(256,256);
 
         // Running through all specified positions,

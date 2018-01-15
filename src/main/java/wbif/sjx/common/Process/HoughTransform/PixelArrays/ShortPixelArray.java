@@ -18,7 +18,7 @@ public class ShortPixelArray extends PixelArray {
     }
 
     @Override
-    public double get(int i) {
+    public double getPixelValue(int i) {
         return pixels[i];
     }
 }

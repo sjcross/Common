@@ -1,25 +1,44 @@
 package wbif.sjx.common.Process.HoughTransform;
 
+import ij.ImagePlus;
 import wbif.sjx.common.MathFunc.Indexer;
 
 /**
  * Created by sc13967 on 12/01/2018.
  */
-public class Accumulator {
-    private Indexer indexer;
-    private double[] accumulator;
+public abstract class Accumulator {
+    protected Indexer indexer;
+    protected double[] accumulator;
+    protected int[][] parameterRanges;
 
     /**
      * Constructor for Accumulator object.
-     * @param dimensions Integer array containing the dimensions over which the accumulator exists.
+     * @param parameterRanges 2D Integer array containing the dimensions over which the accumulator exists.
      */
-    public Accumulator(int[] dimensions) {
-        indexer = new Indexer(dimensions);
+    public Accumulator(int[][] parameterRanges) {
+        // Keeping track of the parameter ranges.  These will be needed to access the correct index
+        this.parameterRanges = parameterRanges;
+
+        // Calculating the number of elements in each dimension
+        int[] dims = new int[parameterRanges.length];
+        int i = 0;
+        for (int[] range:parameterRanges) {
+            int n = range[1]-range[0]+1;
+            dims[i++] = n;
+
+        }
+
+        // Initialising the indexer
+        indexer = new Indexer(dims);
 
         // Creating the accumulator to occupy the whole space
-        int size = 1;
-        for (int dimension:dimensions) size *= dimension;
+        int size = indexer.getLength();
         accumulator = new double[size];
 
     }
+
+    public abstract void addPoints(int[] parameters, double value, int[] x, int[] y);
+
+    public abstract ImagePlus getAccumulatorAsImage();
+
 }

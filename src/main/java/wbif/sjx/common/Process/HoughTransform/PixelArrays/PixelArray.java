@@ -14,7 +14,13 @@ public abstract class PixelArray extends Indexer {
 
     }
 
+    public double getPixelValue(int[] coord) {
+        int idx = getIndex(coord);
+        return getPixelValue(idx);
+
+    }
+
     public abstract int length();
-    public abstract double get(int i);
+    public abstract double getPixelValue(int i);
 
 }
