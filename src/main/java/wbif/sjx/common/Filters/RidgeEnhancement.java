@@ -1,66 +1,107 @@
 package wbif.sjx.common.Filters;
 
+import ij.IJ;
 import ij.ImagePlus;
+import ij.plugin.ImageCalculator;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
+import wbif.sjx.common.MathFunc.Indexer;
+
+import java.util.Arrays;
 
 /**
  * Created by sc13967 on 17/01/2018.
  */
 public class RidgeEnhancement {
-    // Need to generate 1D zero-order and second-order Gaussians
-    // Combine Gaussians into a 2D array
-    // Do convolution using 2D array
+    public static void run(ImagePlus ipl, float sigma, boolean stack) {
+        if (stack) {
+            // Iterating over all images in the Hyperstack
+            for (int channel = 0; channel < ipl.getNChannels(); channel++) {
+                for (int slice = 0; slice < ipl.getNSlices(); slice++) {
+                    for (int frame = 0; frame < ipl.getNFrames(); frame++) {
+                        ipl.setPosition(channel+1,slice+1,frame+1);
 
-    public static void run(ImagePlus ipl, double sigma, boolean stack) {
-        // Generating 1D zero-order Gaussian distribution
+                        FloatProcessor enhancedProcessor = runOnProcessor(ipl.getProcessor(), sigma);
+                        ipl.setProcessor(enhancedProcessor);
+                    }
+                }
+            }
 
-    }
-
-    public static int[] getGaussian(double sigma, int order) {
-        int nElements = (int) Math.round(sigma)*5;
-        int[] gauss = new int[nElements];
-
-        for (int i=0;i<nElements;i++) {
+        } else {
+            // Running on the current image
+            FloatProcessor enhancedProcessor = runOnProcessor(ipl.getProcessor(), sigma);
+            ipl.setProcessor(enhancedProcessor);
 
         }
 
-        return null;
+        ipl.show();
+    }
+
+    public static FloatProcessor runOnProcessor(ImageProcessor ipr, float sigma) {
+        // Generating 1D zero-order and second-order Gaussian distributions
+        float[] gauss0 = getGaussian(sigma,0);
+        float[] gauss2 = getGaussian(sigma,2);
+
+        // Creating the kernels
+        Indexer indexer = new Indexer(gauss0.length,gauss0.length);
+        float[] xKernel = new float[gauss0.length*gauss0.length];
+        float[] yKernel = new float[gauss0.length*gauss0.length];
+
+        for (int i=0;i<gauss0.length;i++) {
+            for (int j=0;j<gauss0.length;j++) {
+                int idx = indexer.getIndex(new int[]{i,j});
+                xKernel[idx] = gauss0[j]*gauss2[i];
+                yKernel[idx] = gauss0[i]*gauss2[j];
+            }
+        }
+
+        // Applying the convolution in x and y
+        FloatProcessor xProcessor = (FloatProcessor) ipr.convertToFloat();
+        FloatProcessor yProcessor = (FloatProcessor) ipr.convertToFloat();
+        xProcessor.convolve(xKernel,gauss0.length,gauss0.length);
+        yProcessor.convolve(yKernel,gauss0.length,gauss0.length);
+
+        // Multiplying the values from the convolutions into a single FloatProcessor
+        float[] xPixels = (float[]) xProcessor.getPixels();
+        float[] yPixels = (float[]) yProcessor.getPixels();
+        float[] xyPixels = new float[xPixels.length];
+
+        for (int i=0;i<xyPixels.length;i++) {
+            xyPixels[i] = xPixels[i]*yPixels[i];
+        }
+
+        // Applying the new pixel values as a FloatProcessor
+        return new FloatProcessor(xProcessor.getWidth(),xProcessor.getHeight(),xyPixels);
 
     }
+
+    public static float[] getGaussian(float sigma, int order) {
+        int nElements = (int) Math.round(sigma)*6+1;
+        float[] gauss = new float[nElements];
+
+        float a = 1/(sigma* (float) Math.sqrt(2*Math.PI));
+        float b = 1/(2*sigma*sigma);
+
+        for (int i=0;i<nElements;i++) {
+            int x = i - (int) Math.round(sigma)*3;
+
+            switch (order) {
+                case 0:
+                    gauss[i] = a*(float) Math.exp(-x*x*b);
+                    break;
+
+                case 1:
+                    gauss[i] = ((-x*a)/(sigma*sigma))*(float) Math.exp(-x*x*b);
+                    break;
+
+                case 2:
+                    gauss[i] = ((x*x-sigma*sigma)*a/(sigma*sigma*sigma*sigma))*(float) Math.exp(-x*x*b);
+                    break;
+            }
+        }
+
+        return gauss;
+
+    }
+
 }
-
-
-// function [mask] = computeGaussMask(mode,sigma)
-//
-// N = rdGaussN(mode,sigma);
-// mask = zeros(2*N+1,1);
-//
-// for i=1:2*N+1
-//     mask(i) = rdGauss(mode,-(i-N)+0.5,sigma) - rdGauss(mode,-(i-N)-0.5,sigma);
-// end
-
-// function phi = rdGauss(mode, x, sigma)
-//
-// if mode == 0
-//    phi = normcdf(x/sigma);
-// elseif mode == 1
-//    phi = 1/(sqrt(2*pi)*sigma)*exp(-x^2/(2*sigma^2));
-// elseif mode == 2
-//    phi = -x/(sqrt(2*pi)*sigma^3)*exp(-x^2/(2*sigma^2));
-// end
-
-//    function N = rdGaussN(mode,sigma)
-//
-//    err_lim = 1E-4;
-//    N=0;
-//    sum_gauss = 0;
-//    val = 1;
-//
-//    while 2*val/(sum_gauss+val) > err_lim
-//        N = N + 1;
-//        if mode == 0
-//            val = abs(1 - rdGauss(mode,N,sigma));
-//        else
-//            val = abs(rdGauss(mode,N,sigma));
-//        end
-//        sum_gauss = sum_gauss + val;
-//    end
