@@ -70,6 +70,9 @@ public class PathEnergy extends Energy{
         int x2 = (int) Math.round(node2.getX());
         int y2 = (int) Math.round(node2.getY());
 
+        // If the node point is outside the image window, apply a massive penalty
+        if (x1<0 || y1<0 || x1>im[0].length || y1>im.length) return Double.MAX_VALUE;
+
         int[][] line = BresenhamLine.getLine(x1,x2,y1,y2);
 
         CumStat cs = new CumStat();

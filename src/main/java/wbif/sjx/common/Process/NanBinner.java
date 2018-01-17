@@ -13,9 +13,6 @@ public class NanBinner {
     public static final int MIN = 2;
     public static final int SUM = 3;
 
-    public NanBinner() {
-    }
-
     public static ImagePlus shrink(ImagePlus ipl, int xshrink, int yshrink, int zshrink, int method) {
         ImageProcessor ipr = ipl.getProcessor();
         int widthIn = ipl.getWidth();

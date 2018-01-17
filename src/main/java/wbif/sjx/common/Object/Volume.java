@@ -43,6 +43,10 @@ public class Volume {
         this.points = points;
     }
 
+    public void clearPoints() {
+        points = new ArrayList<>();
+    }
+
     public Volume(double dppXY, double dppZ, String calibratedUnits) {
         this.dppXY = dppXY;
         this.dppZ = dppZ;
