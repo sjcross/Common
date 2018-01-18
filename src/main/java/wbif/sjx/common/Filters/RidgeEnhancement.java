@@ -33,8 +33,6 @@ public class RidgeEnhancement {
             ipl.setProcessor(enhancedProcessor);
 
         }
-
-        ipl.show();
     }
 
     public static FloatProcessor runOnProcessor(ImageProcessor ipr, float sigma) {
@@ -67,7 +65,7 @@ public class RidgeEnhancement {
         float[] xyPixels = new float[xPixels.length];
 
         for (int i=0;i<xyPixels.length;i++) {
-            xyPixels[i] = xPixels[i]*yPixels[i];
+            xyPixels[i] = xPixels[i]+yPixels[i];
         }
 
         // Applying the new pixel values as a FloatProcessor
@@ -103,5 +101,4 @@ public class RidgeEnhancement {
         return gauss;
 
     }
-
 }
