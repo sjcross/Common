@@ -214,11 +214,6 @@ public class MidpointCircle {
 			x_circ[i-1+x_half.length] = -x_half[i];
 		}
 
-		System.out.println("x_circ");
-		for (int i=0;i<x_circ.length;i++) {
-			System.out.println(String.valueOf(x_circ[i]));
-		}
-
 		return x_circ;
 	}
 
@@ -231,11 +226,6 @@ public class MidpointCircle {
 		}		
 		for (int i=1;i<y_half.length-1;i++) {
 			y_circ[i-1+y_half.length] = y_half[i];
-		}
-
-		System.out.println("y_circ");
-		for (int i=0;i<y_circ.length;i++) {
-			System.out.println(String.valueOf(y_circ[i]));
 		}
 
 		return y_circ;
