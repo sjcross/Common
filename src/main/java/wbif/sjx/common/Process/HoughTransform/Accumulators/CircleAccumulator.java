@@ -5,8 +5,10 @@ import ij.ImagePlus;
 import ij.gui.OvalRoi;
 import ij.gui.Overlay;
 import wbif.sjx.common.MathFunc.MidpointCircle;
+import wbif.sjx.common.Process.GoreaudEdgeCorrection;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by sc13967 on 13/01/2018.
@@ -60,33 +62,38 @@ public class CircleAccumulator extends Accumulator {
 
     @Override
     public void normaliseScores() {
+        int minX = parameterRanges[0][0];
+        int maxX = parameterRanges[0][1];
+        int minY = parameterRanges[1][0];
+        int maxY = parameterRanges[1][1];
+        int minR = parameterRanges[2][0];
+        int maxR = parameterRanges[2][1];
+
+        GoreaudEdgeCorrection goreaudEdgeCorrection = new GoreaudEdgeCorrection(minX,maxX,minY,maxY);
+
+        // Generating lookup table for the number of points per circle
+        HashMap<Integer,Integer> radii = new HashMap<>();
+        for (int radius=minR;radius<=maxR;radius++) {
+            // Getting the number of points on the midpoint circle
+            MidpointCircle midpointCircle = new MidpointCircle(radius);
+            int nPoints = midpointCircle.getXCircle().length;
+            radii.put(radius,nPoints);
+        }
+
         // Iterates over all pixels, dividing by the number of circle points at that location
         for (int idx=0;idx<accumulator.length;idx++) {
             // Getting parameters for brightest current spot and adding to ArrayList
             int[] parameters = indexer.getCoord(idx);
-            parameters[0] = parameters[0] + parameterRanges[0][0];
-            parameters[1] = parameters[1] + parameterRanges[1][0];
+            int x = parameters[0] + minX;
+            int y = parameters[1] + minY;
+            int r = parameters[2] + parameterRanges[2][0];
 
-            // Generating coordinates for the points on the midpoint circle
-            MidpointCircle midpointCircle = new MidpointCircle(parameters[2] + parameterRanges[2][0]);
-            int[] x = midpointCircle.getXCircle();
-            int[] y = midpointCircle.getYCircle();
+            // Calculating the edge correction factor
+            double alphaOut = goreaudEdgeCorrection.getFractionInsideRectangle(x,y,r);
 
-            int counter = 0;
-            for (int i = 0; i < x.length; i++) {
-                int xx = parameters[0] + x[i] - parameterRanges[0][0];
-                int yy = parameters[1] + y[i] - parameterRanges[1][0];
+            int nPoints = radii.get(r);
+            accumulator[idx] = accumulator[idx]*2*Math.PI/(nPoints*(2*Math.PI-alphaOut));
 
-                int currIdx = indexer.getIndex(new int[]{xx, yy, parameters[2]});
-
-                if (currIdx != -1) counter++;
-
-            }
-
-//            System.out.println(accumulator[idx]+"_"+((double) counter+"_"+x.length)+"_"+parameters[2]);
-            accumulator[idx] = accumulator[idx]/((double) counter);
-//            System.out.println("    "+accumulator[idx]);
-//            System.out.println(counter);
         }
     }
 
