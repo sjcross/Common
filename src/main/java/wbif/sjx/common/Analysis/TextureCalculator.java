@@ -1,6 +1,7 @@
 package wbif.sjx.common.Analysis;
 
 import ij.ImagePlus;
+import ij.plugin.Duplicator;
 import ij.process.ImageConverter;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.Indexer;
@@ -31,6 +32,9 @@ public class TextureCalculator {
      */
     public void calculate(ImagePlus image, int xOffs, int yOffs, int zOffs, int c, int t, ArrayList<int[]> positions) {
         if (image.getBitDepth() != 8) {
+            // Duplicating the image, so the original isn't affected
+            image = new Duplicator().run(image);
+
             // The analysis requires discrete pixels values.  Therefore, 32-bit images are converted to 8-bit
             CumStat cs = IntensityCalculator.calculate(image);
             double min = cs.getMin();
