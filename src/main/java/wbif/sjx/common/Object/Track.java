@@ -50,7 +50,7 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
 
     public Track(ArrayList<Double> x, ArrayList<Double> y, ArrayList<Double> z, ArrayList<Integer> f) {
         for (int i=0;i<x.size();i++) {
-            put(f.get(i),new Timepoint(x.get(i),y.get(i),z.get(i),f.get(i)));
+            put(f.get(i),new Timepoint<>(x.get(i),y.get(i),z.get(i),f.get(i)));
 
         }
     }
@@ -68,6 +68,10 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
 
 
     // PUBLIC METHODS
+
+    public void addTimepoint(double x, double y, double z, int f) {
+        put(f,new Timepoint<>(x,y,z,f));
+    }
 
     /**
      *
