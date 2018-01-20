@@ -150,16 +150,16 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
     /**
      * Returns a double[] containing the Euclidean distance at all time steps
      */
-    public double[] getRollingEuclideanDistance(boolean pixelDistances) {
-        return EuclideanDistanceCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getRollingEuclideanDistance(boolean pixelDistances) {
+        return new EuclideanDistanceCalculator().calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
     /**
      * Returns a double[] containing the total path length up to each time step
      */
-    public double[] getRollingTotalPathLength(boolean pixelDistances) {
-        return CumulativePathLengthCalculator.calculate(getF(), getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getRollingTotalPathLength(boolean pixelDistances) {
+        return new CumulativePathLengthCalculator().calculate(getF(), getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 

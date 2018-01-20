@@ -42,11 +42,11 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             int[] f = track.getF();
-            double[] rollingEuclideanDistance = track.getRollingEuclideanDistance(pixelDistances);
+            TreeMap<Integer,Double> rollingEuclideanDistance = track.getRollingEuclideanDistance(pixelDistances);
 
-            for (int i=0;i<rollingEuclideanDistance.length;i++) {
+            for (int i=0;i<rollingEuclideanDistance.size();i++) {
                 int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
-                cs[pos].addMeasure(rollingEuclideanDistance[i]);
+                cs[pos].addMeasure(rollingEuclideanDistance.get(f[i]));
             }
         }
 
@@ -91,11 +91,11 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             int[] f = track.getF();
-            double[] rollingTotalPathLength = track.getRollingTotalPathLength(pixelDistances);
+            TreeMap<Integer,Double> rollingTotalPathLength = track.getRollingTotalPathLength(pixelDistances);
 
-            for (int i=0;i<rollingTotalPathLength.length;i++) {
+            for (int i=0;i<rollingTotalPathLength.size();i++) {
                 int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
-                cs[pos].addMeasure(rollingTotalPathLength[i]);
+                cs[pos].addMeasure(rollingTotalPathLength.get(f[i]));
             }
         }
 
