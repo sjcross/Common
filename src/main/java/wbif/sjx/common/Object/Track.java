@@ -6,7 +6,6 @@ import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.TreeMap;
 import java.util.stream.IntStream;
 
@@ -110,13 +109,13 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
 
     }
 
-    public double[] getInstantaneousVelocity(boolean pixelDistances) {
-        return InstantaneousVelocityCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getInstantaneousVelocity(boolean pixelDistances) {
+        return new InstantaneousVelocityCalculator().calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
-    public double[] getStepSizes(boolean pixelDistances) {
-        return StepSizeCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getInstantaneousStepSizes(boolean pixelDistances) {
+        return new InstantaneousStepSizeCalculator().calculate(getF(), getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
@@ -134,9 +133,12 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
     }
 
     public double getTotalPathLength(boolean pixelDistances) {
-        double[] steps = getStepSizes(pixelDistances);
+        TreeMap<Integer,Double> steps = getInstantaneousStepSizes(pixelDistances);
 
-        return Arrays.stream(steps).sum();
+        double totalPathLength = 0;
+        for (double value:steps.values()) totalPathLength += value;
+
+        return totalPathLength;
 
     }
 
@@ -157,12 +159,12 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
      * Returns a double[] containing the total path length up to each time step
      */
     public double[] getRollingTotalPathLength(boolean pixelDistances) {
-        return TotalPathLengthCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+        return CumulativePathLengthCalculator.calculate(getF(), getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
-    public double[] getRollingDirectionalityRatio(boolean pixelDistances) {
-        return DirectionalityRatioCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getRollingDirectionalityRatio(boolean pixelDistances) {
+        return new DirectionalityRatioCalculator().calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 

@@ -6,6 +6,7 @@ import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.TreeMap;
 
 /**
  * Created by sc13967 on 13/06/2017.
@@ -139,10 +140,10 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             int[] f = track.getF();
-            double[] rollingDirectionalityRatio = track.getRollingDirectionalityRatio(pixelDistances);
-            for (int i=0;i<rollingDirectionalityRatio.length;i++) {
+            TreeMap<Integer,Double> rollingDirectionalityRatio = track.getRollingDirectionalityRatio(pixelDistances);
+            for (int i=0;i<rollingDirectionalityRatio.size();i++) {
                 int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
-                cs[pos].addMeasure(rollingDirectionalityRatio[i]);
+                cs[pos].addMeasure(rollingDirectionalityRatio.get(f[i]));
             }
         }
 
@@ -343,9 +344,9 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         double maxVelocity = 0;
 
         for (Track track:values()) {
-            double[] velocities = track.getInstantaneousVelocity(true);
+            TreeMap<Integer,Double> velocities = track.getInstantaneousVelocity(true);
 
-            for (double velocity:velocities) {
+            for (double velocity:velocities.values()) {
                 maxVelocity = Math.max(maxVelocity,velocity);
             }
         }

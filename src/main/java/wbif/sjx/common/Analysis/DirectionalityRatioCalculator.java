@@ -1,30 +1,34 @@
 package wbif.sjx.common.Analysis;
 
+import java.util.TreeMap;
+
 /**
  * Created by steph on 15/04/2017.
  */
-public class DirectionalityRatioCalculator {
-    public static double[] calculate(double[] x, double[] y, double[] z) {
-        double[] eucl_dist = EuclideanDistanceCalculator.calculate(x,y,z);
-        double[] total_len = TotalPathLengthCalculator.calculate(x,y,z);
+public class DirectionalityRatioCalculator implements SpatialCalculator {
+    public TreeMap<Integer,Double> calculate(int[] f, double[] x, double[] y, double[] z) {
+        double[] euclideanDistance = EuclideanDistanceCalculator.calculate(x,y,z);
+        double[] totalLength = CumulativePathLengthCalculator.calculate(f,x,y,z);
 
-        double[] dir_persist = new double[eucl_dist.length];
-        for (int i=0;i<dir_persist.length;i++) {
-            if (total_len[i] == 0) {
-                dir_persist[i] = Double.NaN;
+        TreeMap<Integer,Double> directionalPersistance = new TreeMap<>();
+        directionalPersistance.put(f[0],0d);
+        for (int i=0;i<x.length;i++) {
+            int ff = f[i];
+            if (totalLength[i] == 0) {
+                directionalPersistance.put(ff,Double.NaN);
                 continue;
             }
 
-            if (eucl_dist[i] == 0) {
-                dir_persist[i] = 0;
+            if (euclideanDistance[i] == 0) {
+                directionalPersistance.put(ff,0d);
                 continue;
             }
 
-            dir_persist[i] = eucl_dist[i]/total_len[i];
+            directionalPersistance.put(ff,euclideanDistance[i]/totalLength[i]);
 
         }
 
-        return dir_persist;
+        return directionalPersistance;
 
     }
 }

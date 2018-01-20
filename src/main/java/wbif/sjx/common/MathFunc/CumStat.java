@@ -3,6 +3,8 @@ package wbif.sjx.common.MathFunc;
 // THIS CLASS IS BASED ON THE INCREMENTAL CALCULATION OF WEIGHTED MEAN AND VARIANCE FROM
 // http://www-uxsup.csx.cam.ac.uk/~fanf2/hermes/doc/antiforgery/stats.pdf (Accessed 30-06-2016).
 
+import java.util.Collection;
+
 public class CumStat {
     public static final int POPULATION = 1;
     public static final int SAMPLE = 2;
@@ -40,6 +42,12 @@ public class CumStat {
     public CumStat(double[] vals, double[] weights, boolean ignoreZeroes) {
         for (int i=0;i<vals.length;i++) {
             addMeasure(vals[i],weights[i],ignoreZeroes);
+        }
+    }
+
+    public CumStat(Collection<Double> vals) {
+        for (double val:vals) {
+            addMeasure(val);
         }
     }
 
