@@ -235,6 +235,51 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
     }
 
+    public double[][] getAverageNearestNeighbourDistance(boolean pixelDistances) {
+        // Determining the first and last frames
+        int firstFrame = Integer.MAX_VALUE;
+        int lastFrame = 0;
+        for (Track track:values()) {
+            int[] f = track.getF();
+            if (f[0] < firstFrame) {
+                firstFrame = f[0];
+            }
+            if (f[f.length-1] > lastFrame) {
+                lastFrame = f[f.length-1];
+            }
+        }
+        int longestDuration = lastFrame-firstFrame;
+
+        // Creating the CumStat array
+        CumStat[] cs = new CumStat[longestDuration+1];
+        for (int i=0;i<cs.length;i++) {
+            cs[i] = new CumStat();
+        }
+
+        for (Track track:values()) {
+            int[] f = track.getF();
+            TreeMap<Integer,double[]> nearestNeighbourDistance = track.getNearestNeighbourDistance(this,pixelDistances);
+
+            for (int i=0;i<nearestNeighbourDistance.size();i++) {
+                int pos = f[i]-firstFrame;
+                cs[pos].addMeasure(nearestNeighbourDistance.get(f[i])[1]);
+            }
+        }
+
+        // Getting the frame numbers
+        double[] f = new double[longestDuration];
+        for (int i=0;i<f.length;i++) {
+            f[i] = i;
+        }
+
+        // Getting the average and standard deviations
+        double[] averageNearestNeighbourDistance = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
+        double[] stdevNearestNeighbourDistance = Arrays.stream(cs).mapToDouble(CumStat::getStd).toArray();
+
+        return new double[][]{f,averageNearestNeighbourDistance,stdevNearestNeighbourDistance};
+
+    }
+
     /**
      * Number of objects per frame
      * @return int[][]{frame[],n[]

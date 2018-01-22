@@ -1,6 +1,7 @@
 package wbif.sjx.common.Analysis;
 
 import org.junit.Test;
+import wbif.sjx.common.Analysis.SpatialCalculators.InstantaneousVelocityCalculator;
 
 import java.util.TreeMap;
 

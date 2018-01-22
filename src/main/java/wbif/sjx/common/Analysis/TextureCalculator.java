@@ -1,5 +1,6 @@
 package wbif.sjx.common.Analysis;
 
+import ij.IJ;
 import ij.ImagePlus;
 import ij.plugin.Duplicator;
 import ij.process.ImageConverter;
@@ -40,7 +41,13 @@ public class TextureCalculator {
             double min = cs.getMin();
             double max = cs.getMax();
 
-            image.getProcessor().setMinAndMax(min, max);
+            for (int tt = 1; tt <= image.getNFrames(); tt++) {
+                for (int zz = 1; zz <= image.getNSlices(); zz++) {
+                    image.setPosition(c, zz, tt);
+                    image.getProcessor().setMinAndMax(min, max);
+
+                }
+            }
             new ImageConverter(image).convertToGray8();
         }
 

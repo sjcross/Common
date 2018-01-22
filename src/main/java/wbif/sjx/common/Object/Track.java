@@ -2,6 +2,7 @@ package wbif.sjx.common.Object;
 
 import ij.ImagePlus;
 import wbif.sjx.common.Analysis.*;
+import wbif.sjx.common.Analysis.SpatialCalculators.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.ArrayList;
@@ -168,6 +169,10 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
 
     }
 
+    public TreeMap<Integer, double[]> getNearestNeighbourDistance(TrackCollection tracks, boolean pixelDistances) {
+        return new NearestNeighbourCalculator().calculate(this,tracks,pixelDistances);
+    }
+
     public int getDuration() {
         int[] f = getF();
 
@@ -255,6 +260,30 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
         double[] z = values().stream().mapToDouble(Point::getZ).toArray();
 
         if (pixelDistances) IntStream.range(0,z.length).forEach(i -> z[i] = z[i]/distZ);
+
+        return z;
+
+    }
+
+    public double getX(int f, boolean pixelDistances) {
+        double x = get(f).getX();
+        if (pixelDistances) x /= distXY;
+
+        return x;
+
+    }
+
+    public double getY(int f, boolean pixelDistances) {
+        double y = get(f).getY();
+        if (pixelDistances) y /= distXY;
+
+        return y;
+
+    }
+
+    public double getZ(int f, boolean pixelDistances) {
+        double z= get(f).getZ();
+        if (pixelDistances) z /= distZ;
 
         return z;
 

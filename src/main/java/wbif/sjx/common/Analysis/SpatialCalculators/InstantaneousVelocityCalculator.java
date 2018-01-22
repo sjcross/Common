@@ -1,4 +1,4 @@
-package wbif.sjx.common.Analysis;
+package wbif.sjx.common.Analysis.SpatialCalculators;
 
 import java.util.TreeMap;
 
