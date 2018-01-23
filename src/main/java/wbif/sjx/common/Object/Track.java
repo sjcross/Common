@@ -2,11 +2,11 @@ package wbif.sjx.common.Object;
 
 import ij.ImagePlus;
 import wbif.sjx.common.Analysis.*;
+import wbif.sjx.common.Analysis.SpatialCalculators.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.TreeMap;
 import java.util.stream.IntStream;
 
@@ -50,7 +50,7 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
 
     public Track(ArrayList<Double> x, ArrayList<Double> y, ArrayList<Double> z, ArrayList<Integer> f) {
         for (int i=0;i<x.size();i++) {
-            put(f.get(i),new Timepoint(x.get(i),y.get(i),z.get(i),f.get(i)));
+            put(f.get(i),new Timepoint<>(x.get(i),y.get(i),z.get(i),f.get(i)));
 
         }
     }
@@ -68,6 +68,10 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
 
 
     // PUBLIC METHODS
+
+    public void addTimepoint(double x, double y, double z, int f) {
+        put(f,new Timepoint<>(x,y,z,f));
+    }
 
     /**
      *
@@ -106,13 +110,13 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
 
     }
 
-    public double[] getInstantaneousVelocity(boolean pixelDistances) {
-        return InstantaneousVelocityCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getInstantaneousVelocity(boolean pixelDistances) {
+        return new InstantaneousVelocityCalculator().calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
-    public double[] getStepSizes(boolean pixelDistances) {
-        return StepSizeCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getInstantaneousStepSizes(boolean pixelDistances) {
+        return new InstantaneousStepSizeCalculator().calculate(getF(), getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
@@ -130,9 +134,12 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
     }
 
     public double getTotalPathLength(boolean pixelDistances) {
-        double[] steps = getStepSizes(pixelDistances);
+        TreeMap<Integer,Double> steps = getInstantaneousStepSizes(pixelDistances);
 
-        return Arrays.stream(steps).sum();
+        double totalPathLength = 0;
+        for (double value:steps.values()) totalPathLength += value;
+
+        return totalPathLength;
 
     }
 
@@ -144,22 +151,26 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
     /**
      * Returns a double[] containing the Euclidean distance at all time steps
      */
-    public double[] getRollingEuclideanDistance(boolean pixelDistances) {
-        return EuclideanDistanceCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getRollingEuclideanDistance(boolean pixelDistances) {
+        return new EuclideanDistanceCalculator().calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
     /**
      * Returns a double[] containing the total path length up to each time step
      */
-    public double[] getRollingTotalPathLength(boolean pixelDistances) {
-        return TotalPathLengthCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getRollingTotalPathLength(boolean pixelDistances) {
+        return new CumulativePathLengthCalculator().calculate(getF(), getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
-    public double[] getRollingDirectionalityRatio(boolean pixelDistances) {
-        return DirectionalityRatioCalculator.calculate(getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getRollingDirectionalityRatio(boolean pixelDistances) {
+        return new DirectionalityRatioCalculator().calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
+    }
+
+    public TreeMap<Integer, double[]> getNearestNeighbourDistance(TrackCollection tracks, boolean pixelDistances) {
+        return new NearestNeighbourCalculator().calculate(this,tracks,pixelDistances);
     }
 
     public int getDuration() {
@@ -249,6 +260,30 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
         double[] z = values().stream().mapToDouble(Point::getZ).toArray();
 
         if (pixelDistances) IntStream.range(0,z.length).forEach(i -> z[i] = z[i]/distZ);
+
+        return z;
+
+    }
+
+    public double getX(int f, boolean pixelDistances) {
+        double x = get(f).getX();
+        if (pixelDistances) x /= distXY;
+
+        return x;
+
+    }
+
+    public double getY(int f, boolean pixelDistances) {
+        double y = get(f).getY();
+        if (pixelDistances) y /= distXY;
+
+        return y;
+
+    }
+
+    public double getZ(int f, boolean pixelDistances) {
+        double z= get(f).getZ();
+        if (pixelDistances) z /= distZ;
 
         return z;
 
