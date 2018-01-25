@@ -4,7 +4,7 @@ import ij.ImagePlus;
 import ij.gui.Line;
 import ij.gui.OvalRoi;
 import ij.gui.Overlay;
-import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Node;
+import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Vertex;
 import wbif.sjx.common.Process.ActiveContour.PhysicalModel.NodeCollection;
 
 import java.awt.*;
@@ -16,16 +16,16 @@ import java.util.Iterator;
 public class GridOverlay {
     Color line_col = Color.MAGENTA;
     Color node_col = Color.CYAN;
-    double node_r = 10;
+    double node_r = 1;
 
     public void drawOverlay(NodeCollection nodes, ImagePlus ipl) {
         Overlay ovl = new Overlay();
 
-        Iterator<Node> iterator = nodes.iterator();
+        Iterator<Vertex> iterator = nodes.iterator();
 
         while (iterator.hasNext()) {
 
-            Node node = iterator.next();
+            Vertex node = iterator.next();
 
             //Adding current node
             OvalRoi ovr = drawNode(node);
@@ -44,18 +44,18 @@ public class GridOverlay {
 
     }
 
-    private OvalRoi drawNode(Node node) {
+    private OvalRoi drawNode(Vertex node) {
         double x = node.getX();
         double y = node.getY();
 
-        OvalRoi ovr = new OvalRoi(x-node_r/2,y-node_r/2,node_r,node_r);
+        OvalRoi ovr = new OvalRoi(x-node_r/2+0.5,y-node_r/2+0.5,node_r,node_r);
         ovr.setStrokeColor(node_col);
 
         return ovr;
 
     }
 
-    private Line drawLine(Node node1, Node node2) {
+    private Line drawLine(Vertex node1, Vertex node2) {
         if (node2 == null) {
             return null;
 
@@ -66,7 +66,7 @@ public class GridOverlay {
         double x2 = node2.getX();
         double y2 = node2.getY();
 
-        Line line = new Line(x1,y1,x2,y2);
+        Line line = new Line(x1+0.5,y1+0.5,x2+0.5,y2+0.5);
         line.setStrokeColor(line_col);
 
         return line;

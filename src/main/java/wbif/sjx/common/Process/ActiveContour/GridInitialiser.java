@@ -1,7 +1,7 @@
 package wbif.sjx.common.Process.ActiveContour;
 
 import wbif.sjx.common.MathFunc.Indexer;
-import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Node;
+import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Vertex;
 import wbif.sjx.common.Process.ActiveContour.PhysicalModel.NodeCollection;
 
 /**
@@ -29,7 +29,7 @@ public class GridInitialiser {
     }
 
     public NodeCollection buildGrid(){
-        Node[] node_arr = new Node[n_cols*n_rows];
+        Vertex[] node_arr = new Vertex[n_cols*n_rows];
         Indexer indexer = new Indexer(n_cols, n_rows);
 
         //Adding Nodes to Vertex array
@@ -39,16 +39,16 @@ public class GridInitialiser {
                 double y = y_min+r*y_space;
 
                 int ind = indexer.getIndex(new int[]{c,r});
-                node_arr[ind] = new Node(x,y);
+                node_arr[ind] = new Vertex(x,y);
 
                 if (c == 0 & r == 0) {
-                    node_arr[ind].setSpecial(Node.TOPLEFT);
+                    node_arr[ind].setSpecial(Vertex.TOPLEFT);
                 } else if (c == n_cols-1 & r == 0) {
-                    node_arr[ind].setSpecial(Node.TOPRIGHT);
+                    node_arr[ind].setSpecial(Vertex.TOPRIGHT);
                 } else if (c == 0 & r == n_rows-1) {
-                    node_arr[ind].setSpecial(Node.BOTTOMLEFT);
+                    node_arr[ind].setSpecial(Vertex.BOTTOMLEFT);
                 } else if (c == n_cols-1 & r == n_rows-1) {
-                    node_arr[ind].setSpecial(Node.BOTTOMRIGHT);
+                    node_arr[ind].setSpecial(Vertex.BOTTOMRIGHT);
                 }
 
                 if (fix_edges) {
@@ -66,10 +66,10 @@ public class GridInitialiser {
         //Adding node links
         for (int c = 0;c < n_cols; c++) {
             for (int r = 0;r < n_rows; r++) {
-                Node top_neighbour = null;
-                Node bottom_neighbour = null;
-                Node left_neighbour = null;
-                Node right_neighbour = null;
+                Vertex top_neighbour = null;
+                Vertex bottom_neighbour = null;
+                Vertex left_neighbour = null;
+                Vertex right_neighbour = null;
 
                 if (r > 0) {
                     int ind_top = indexer.getIndex(new int[]{c, r - 1});

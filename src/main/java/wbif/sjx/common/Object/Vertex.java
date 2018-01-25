@@ -1,6 +1,4 @@
-package wbif.sjx.common.Process.SkeletonTools;
-
-import wbif.sjx.common.Object.Point;
+package wbif.sjx.common.Object;
 
 import java.util.HashSet;
 
@@ -22,6 +20,10 @@ public class Vertex extends Point<Integer> {
         neighbours.add(neighbour);
     }
 
+    public void removeNeighbour(Vertex neighbour) {
+        neighbours.remove(neighbour);
+    }
+
     public HashSet<Vertex> getNeighbours() {
         return neighbours;
     }
@@ -41,4 +43,5 @@ public class Vertex extends Point<Integer> {
         return Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) + (z2-z1)*(z2-z1));
 
     }
+
 }
