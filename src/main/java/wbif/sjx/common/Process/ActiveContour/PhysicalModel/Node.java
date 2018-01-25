@@ -18,7 +18,7 @@ public class Node
     private double energy = 0;
     private int ID; // Specific to that node
     private int special = 0; //No special state
-    private boolean moved = false; // Condition that can be used to check if the Node moved last time
+    private boolean moved = false; // Condition that can be used to check if the Vertex moved last time
 
     public Node(double x, double y) {
         this.x = x;

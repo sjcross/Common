@@ -29,7 +29,7 @@ public class GreedyMinimiser {
     }
 
     /**
-     * Evaluates all the energies in the EnergyCollection at the specified Node
+     * Evaluates all the energies in the EnergyCollection at the specified Vertex
      * @param node
      */
     public void evaluateGreedy(Node node) {

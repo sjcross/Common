@@ -10,7 +10,7 @@ public class ContourInitialiser {
     public static NodeCollection buildContour(int[] xCoords, int[] yCoords){
         Node[] nodeArr = new Node[xCoords.length];
 
-        //Adding Nodes to Node array
+        //Adding Nodes to Vertex array
         for (int i = 0;i<xCoords.length;i++) {
             nodeArr[i] = new Node(xCoords[i],yCoords[i],i);
 

@@ -32,7 +32,7 @@ public class GridInitialiser {
         Node[] node_arr = new Node[n_cols*n_rows];
         Indexer indexer = new Indexer(n_cols, n_rows);
 
-        //Adding Nodes to Node array
+        //Adding Nodes to Vertex array
         for (int c = 0;c < n_cols; c++) {
             for (int r = 0;r < n_rows; r++) {
                 double x = x_min+c*x_space;

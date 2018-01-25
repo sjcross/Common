@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.commons.math3.stat.descriptive.moment.Mean;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 
+@Deprecated
 public class MSD
 {
     private double[] posx;
