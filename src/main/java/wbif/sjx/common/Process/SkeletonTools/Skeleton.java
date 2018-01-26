@@ -3,10 +3,13 @@ package wbif.sjx.common.Process.SkeletonTools;
 import ij.IJ;
 import ij.ImageJ;
 import ij.ImagePlus;
+import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Vertex;
 import wbif.sjx.common.Object.VertexCollection;
+import wbif.sjx.common.Object.Volume;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by sc13967 on 24/01/2018.
@@ -27,11 +30,14 @@ public class Skeleton extends VertexCollection {
         int i = 0;
         for (int x=0;x<ipl.getWidth();x++) {
             for (int y=0;y<ipl.getHeight();y++) {
-                if (ipl.getProcessor().getPixel(x,y) == 255) {
-                    xx[i] = x;
-                    yy[i] = y;
-                    zz[i] = 0;
-                    i++;
+                for (int z=0;z<ipl.getNSlices();z++) {
+                    ipl.setPosition(1,z+1,1);
+                    if (ipl.getProcessor().getPixel(x,y) == 0) {
+                        xx[i] = x;
+                        yy[i] = y;
+                        zz[i] = 0;
+                        i++;
+                    }
                 }
             }
         }
@@ -46,6 +52,22 @@ public class Skeleton extends VertexCollection {
 
     }
 
+    public Skeleton(ImagePlus ipl) {
+        for (int x=0;x<ipl.getWidth();x++) {
+            for (int y=0;y<ipl.getHeight();y++) {
+                for (int z=0;z<ipl.getNSlices();z++) {
+                    ipl.setPosition(1,z+1,1);
+                    if (ipl.getProcessor().getPixel(x,y) == 0) {
+                        add(new Vertex(x,y,z));
+                    }
+                }
+            }
+        }
+
+        assignNeighbours();
+
+    }
+
     public Skeleton(int[] x, int[] y, int[] z) {
         // Creating an array of neighbours
         for (int i=0;i<x.length;i++) {
@@ -53,6 +75,63 @@ public class Skeleton extends VertexCollection {
 
         }
 
+        assignNeighbours();
+
+    }
+
+    public LinkedHashSet<Vertex> getLongestPath() {
+        longestDistance = 0;
+        longestPath = new LinkedHashSet<>();
+
+        // Getting the vertices with one neighbour (those at branch ends)
+        HashSet<Vertex> endPoints = getEndPoints();
+
+        for (Vertex vertex : endPoints) {
+            LinkedHashSet<Vertex> currentPath = new LinkedHashSet<>();
+            addDistanceToNextVertex(vertex, 0, currentPath);
+        }
+
+        return longestPath;
+
+    }
+
+    public HashSet<Vertex> getEndPoints() {
+        HashSet<Vertex> endPoints = new HashSet<>();
+
+        // End points only have one neighbour
+        for (Vertex vertex:this) {
+            if (vertex.getNumberOfNeighbours() == 1) endPoints.add(vertex);
+        }
+
+        return endPoints;
+
+    }
+
+    public HashSet<Vertex> getBranchPoints() {
+        HashSet<Vertex> branchPoints = new HashSet<>();
+
+        // Branch points have 3 or more neighbours
+        for (Vertex vertex:this) {
+            if (vertex.getNumberOfNeighbours() >= 3) branchPoints.add(vertex);
+        }
+
+        return branchPoints;
+
+    }
+
+    public int[] getX() {
+        return stream().mapToInt(Vertex::getX).toArray();
+    }
+
+    public int[] getY() {
+        return stream().mapToInt(Vertex::getY).toArray();
+    }
+
+    public int[] getZ() {
+        return stream().mapToInt(Vertex::getZ).toArray();
+    }
+
+    private void assignNeighbours() {
         // Assigning neighbours
         for (Vertex vertex1:this) {
             for (Vertex vertex2:this) {
@@ -98,47 +177,7 @@ public class Skeleton extends VertexCollection {
         }
     }
 
-    public LinkedHashSet<Vertex> getLongestPath() {
-        longestDistance = 0;
-        longestPath = new LinkedHashSet<>();
-
-        // Getting the vertices with one neighbour (those at branch ends)
-        HashSet<Vertex> endPoints = getEndPoints();
-
-        for (Vertex vertex : endPoints) {
-            LinkedHashSet<Vertex> currentPath = new LinkedHashSet<>();
-            addDistanceToNextVertex(vertex, 0, currentPath);
-        }
-
-        return longestPath;
-
-    }
-
-    public HashSet<Vertex> getEndPoints() {
-        HashSet<Vertex> endPoints = new HashSet<>();
-
-        // End points only have one neighbour
-        for (Vertex vertex:this) {
-            if (vertex.getNumberOfNeighbours() == 1) endPoints.add(vertex);
-        }
-
-        return endPoints;
-
-    }
-
-    public HashSet<Vertex> getBranchPoints() {
-        HashSet<Vertex> branchPoints = new HashSet<>();
-
-        // Branch points have 3 or more neighbours
-        for (Vertex vertex:this) {
-            if (vertex.getNumberOfNeighbours() >= 3) branchPoints.add(vertex);
-        }
-
-        return branchPoints;
-
-    }
-
-    public void addDistanceToNextVertex(Vertex currentVertex, double distance, LinkedHashSet<Vertex> currentPath) {
+    private void addDistanceToNextVertex(Vertex currentVertex, double distance, LinkedHashSet<Vertex> currentPath) {
         // Making a new path for this point onwards
         LinkedHashSet<Vertex> newCurrentPath = new LinkedHashSet<>();
         newCurrentPath.addAll(currentPath);

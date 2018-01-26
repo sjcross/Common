@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/VertexCollection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/SkeletonVisualiser.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/Node.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/Vertex.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/Vertex.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Vertex.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common.iml" afterPath="$PROJECT_DIR$/Common.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ContourInitialiser.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ContourInitialiser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/BendingEnergy.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/BendingEnergy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ElasticEnergy.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ElasticEnergy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/Energy.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/Energy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/EnergyCollection.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/EnergyCollection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageEnergy.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageEnergy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/PathEnergy.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/PathEnergy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/GridInitialiser.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/GridInitialiser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Minimisers/GreedyMinimiser.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Minimisers/GreedyMinimiser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/NodeCollection.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/NodeCollection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Visualisation/GridOverlay.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Visualisation/GridOverlay.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/Skeleton.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/Skeleton.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,14 +40,18 @@
       <file leaf-file-name="Vertex.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Vertex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="336">
               <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
               <folding>
                 <element signature="docComment;class#Vertex#0" expanded="false" />
-                <element signature="e#260#261#0" expanded="true" />
-                <element signature="e#290#291#0" expanded="true" />
-                <element signature="e#516#517#0" expanded="true" />
-                <element signature="e#560#561#0" expanded="true" />
+                <element signature="e#332#333#0" expanded="false" />
+                <element signature="e#372#373#0" expanded="false" />
+                <element signature="e#422#423#0" expanded="false" />
+                <element signature="e#463#464#0" expanded="false" />
+                <element signature="e#606#607#0" expanded="false" />
+                <element signature="e#639#640#0" expanded="false" />
+                <element signature="e#700#701#0" expanded="false" />
+                <element signature="e#744#745#0" expanded="false" />
                 <element signature="method#getEdgeLength#0;class#Vertex#0" expanded="false" />
               </folding>
             </state>
@@ -75,15 +61,37 @@
       <file leaf-file-name="Skeleton.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/Skeleton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="357">
+              <caret line="59" column="61" lean-forward="false" selection-start-line="59" selection-start-column="61" selection-end-line="59" selection-end-column="61" />
               <folding>
                 <element signature="docComment;class#Skeleton#0" expanded="false" />
-                <element signature="method#Skeleton#0;class#Skeleton#0" expanded="false" />
+                <element signature="method#main#0;class#Skeleton#0" expanded="false" />
+                <element signature="method#Skeleton#1;class#Skeleton#0" expanded="false" />
                 <element signature="method#getLongestPath#0;class#Skeleton#0" expanded="false" />
                 <element signature="method#getEndPoints#0;class#Skeleton#0" expanded="false" />
                 <element signature="method#getBranchPoints#0;class#Skeleton#0" expanded="false" />
+                <element signature="e#3342#3343#0" expanded="true" />
+                <element signature="e#3406#3407#0" expanded="true" />
+                <element signature="e#3433#3434#0" expanded="true" />
+                <element signature="e#3497#3498#0" expanded="true" />
+                <element signature="e#3524#3525#0" expanded="true" />
+                <element signature="e#3588#3589#0" expanded="true" />
+                <element signature="method#assignNeighbours#0;class#Skeleton#0" expanded="false" />
+                <element signature="e#4285#4383#0" expanded="false" />
                 <element signature="method#addDistanceToNextVertex#0;class#Skeleton#0" expanded="false" />
+                <element signature="e#6388#6497#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VertexCollection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/VertexCollection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding>
+                <element signature="docComment;class#VertexCollection#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -92,9 +100,10 @@
       <file leaf-file-name="SkeletonVisualiser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/SkeletonVisualiser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state relative-caret-position="525">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#SkeletonVisualiser#0" expanded="false" />
                 <element signature="method#drawNode#0;class#SkeletonVisualiser#0" expanded="false" />
                 <element signature="method#drawLine#0;class#SkeletonVisualiser#0" expanded="false" />
@@ -205,10 +214,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="x" value="65" />
+    <option name="y" value="-9" />
+    <option name="width" value="1864" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -228,9 +237,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -595,6 +602,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -628,7 +637,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Skeleton">
+  <component name="RunManager" selected="Maven.Common [install]">
     <configuration default="false" name="RidgeEnhancement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -752,6 +761,61 @@
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -988,58 +1052,41 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
+    <frame x="65" y="-9" width="1864" height="1098" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="1920" y="0" width="1855" height="1080" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795155" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4325726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="779" y="484" width="919" height="112" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24040511" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" x="1938" y="39" width="333" height="964" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1897574" sideWeight="0.5072464" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39834026" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26942483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="779" y="484" width="919" height="112" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32675907" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" x="1938" y="39" width="333" height="964" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896066" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39834026" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="1920" y="0" width="1855" height="1080" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26970956" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="779" y="484" width="919" height="112" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32675907" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" x="1938" y="39" width="333" height="964" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896066" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1897574" sideWeight="0.5072464" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3975782" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795155" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1357,15 +1404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="86" column="24" lean-forward="true" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
-          <folding>
-            <element signature="docComment;class#NodeCollection#0" expanded="false" />
-            <element signature="docComment;method#setFixedX#0;class#NodeCollection#0" expanded="false" />
-            <element signature="method#setFixedX#0;class#NodeCollection#0" expanded="false" />
-            <element signature="docComment;method#setFixedY#0;class#NodeCollection#0" expanded="false" />
-            <element signature="method#setFixedY#0;class#NodeCollection#0" expanded="false" />
-            <element signature="docComment;method#getNodeCoordinates#0;class#NodeCollection#0" expanded="false" />
-            <element signature="docComment;method#anyNodesMoved#0;class#NodeCollection#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1373,9 +1411,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#GreedyMinimiser#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1452,7 +1487,6 @@
             <element signature="method#getZ#1;class#Track#0" expanded="false" />
             <element signature="method#getF#0;class#Track#0" expanded="false" />
             <element signature="method#getPointAtFrame#0;class#Track#0" expanded="false" />
-            <marker date="1516707961721" expanded="false" signature="5393:5464" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1463,7 +1497,6 @@
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#InstantaneousVelocityCalculator#0" expanded="false" />
-            <marker date="1516707961714" expanded="true" signature="695:741" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1472,17 +1505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/VertexCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#VertexCollection#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1490,17 +1512,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#GridOverlay#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/SkeletonVisualiser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="525">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#SkeletonVisualiser#0" expanded="false" />
             <element signature="method#drawNode#0;class#SkeletonVisualiser#0" expanded="false" />
             <element signature="method#drawLine#0;class#SkeletonVisualiser#0" expanded="false" />
@@ -1513,30 +1533,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Vertex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="336">
           <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
           <folding>
             <element signature="docComment;class#Vertex#0" expanded="false" />
-            <element signature="e#260#261#0" expanded="true" />
-            <element signature="e#290#291#0" expanded="true" />
-            <element signature="e#516#517#0" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
+            <element signature="e#332#333#0" expanded="false" />
+            <element signature="e#372#373#0" expanded="false" />
+            <element signature="e#422#423#0" expanded="false" />
+            <element signature="e#463#464#0" expanded="false" />
+            <element signature="e#606#607#0" expanded="false" />
+            <element signature="e#639#640#0" expanded="false" />
+            <element signature="e#700#701#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
             <element signature="method#getEdgeLength#0;class#Vertex#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/VertexCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="docComment;class#VertexCollection#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/Skeleton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="357">
+          <caret line="59" column="61" lean-forward="false" selection-start-line="59" selection-start-column="61" selection-end-line="59" selection-end-column="61" />
           <folding>
             <element signature="docComment;class#Skeleton#0" expanded="false" />
-            <element signature="method#Skeleton#0;class#Skeleton#0" expanded="false" />
+            <element signature="method#main#0;class#Skeleton#0" expanded="false" />
+            <element signature="method#Skeleton#1;class#Skeleton#0" expanded="false" />
             <element signature="method#getLongestPath#0;class#Skeleton#0" expanded="false" />
             <element signature="method#getEndPoints#0;class#Skeleton#0" expanded="false" />
             <element signature="method#getBranchPoints#0;class#Skeleton#0" expanded="false" />
+            <element signature="e#3342#3343#0" expanded="true" />
+            <element signature="e#3406#3407#0" expanded="true" />
+            <element signature="e#3433#3434#0" expanded="true" />
+            <element signature="e#3497#3498#0" expanded="true" />
+            <element signature="e#3524#3525#0" expanded="true" />
+            <element signature="e#3588#3589#0" expanded="true" />
+            <element signature="method#assignNeighbours#0;class#Skeleton#0" expanded="false" />
+            <element signature="e#4285#4383#0" expanded="false" />
             <element signature="method#addDistanceToNextVertex#0;class#Skeleton#0" expanded="false" />
+            <element signature="e#6388#6497#0" expanded="false" />
           </folding>
         </state>
       </provider>
