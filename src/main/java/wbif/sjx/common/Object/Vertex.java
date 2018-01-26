@@ -33,6 +33,8 @@ public class Vertex extends Point<Integer> {
     }
 
     public double getEdgeLength(Vertex vertex) {
+        if (vertex == null) return 0d;
+
         int x1 = getX();
         int x2 = vertex.getX();
         int y1 = getY();
