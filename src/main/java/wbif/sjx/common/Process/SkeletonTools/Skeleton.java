@@ -3,25 +3,11 @@ package wbif.sjx.common.Process.SkeletonTools;
 import ij.IJ;
 import ij.ImageJ;
 import ij.ImagePlus;
-import ij.gui.OvalRoi;
-import ij.gui.Overlay;
-import org.apache.commons.math3.analysis.BivariateFunction;
-import org.apache.commons.math3.analysis.interpolation.*;
-import org.apache.commons.math3.analysis.polynomials.PolynomialFunction;
-import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
-import org.apache.commons.math3.fitting.CurveFitter;
-import org.apache.commons.math3.fitting.PolynomialCurveFitter;
-import org.apache.commons.math3.fitting.WeightedObservedPoint;
-import org.apache.commons.math3.optimization.DifferentiableMultivariateVectorMultiStartOptimizer;
-import org.apache.commons.math3.optimization.DifferentiableMultivariateVectorOptimizer;
-import wbif.sjx.common.Object.Point;
+import wbif.sjx.common.Analysis.CurvatureCalculator;
 import wbif.sjx.common.Object.Vertex;
 import wbif.sjx.common.Object.VertexCollection;
-import wbif.sjx.common.Object.Volume;
 
-import java.awt.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by sc13967 on 24/01/2018.
@@ -34,54 +20,16 @@ public class Skeleton extends VertexCollection {
     public static void main(String[] args) {
         new ImageJ();
 
-        ImagePlus ipl = IJ.openImage("Y:\\Stephen\\People\\H\\Chrissy Hammond\\2018-01-16 Fish tracking\\Line.tif");
+        ImagePlus ipl = IJ.openImage("C:\\Users\\sc13967\\Downloads\\FakeFish.tif");
         ipl.show();
 
         Skeleton skeleton = new Skeleton(ipl);
 
         LinkedHashSet<Vertex> longestPath = skeleton.getLongestPath();
-        PolynomialSplineFunction[] splines = skeleton.getSplines(longestPath,2,10);
+        CurvatureCalculator curvatureCalculator = new CurvatureCalculator(longestPath);
+        TreeMap<Double,Double> curvature = curvatureCalculator.getCurvature();
+        curvatureCalculator.showOverlay(ipl);
 
-        // Extracting the gradients as a function of position along the curve
-        PolynomialSplineFunction dxSpline = splines[0].polynomialSplineDerivative();
-        PolynomialSplineFunction ddxSpline = dxSpline.polynomialSplineDerivative();
-        PolynomialSplineFunction dySpline = splines[1].polynomialSplineDerivative();
-        PolynomialSplineFunction ddySpline = dySpline.polynomialSplineDerivative();
-
-        double[] knots = splines[0].getKnots();
-        double endPoint = knots[knots.length-1];
-
-//        for (int i=0;i<endPoint;i++) {
-//            double dx = dxSpline.value(i);
-//            double ddx = ddxSpline.value(i);
-//            double dy = dySpline.value(i);
-//            double ddy = ddySpline.value(i);
-//
-//            kk[i] = Math.abs(dx*ddy-dy*ddx)/Math.pow((dx*dx+dy*dy),3d/2d);
-//
-//        }
-
-        double pos = 0;
-        double r = 2;
-        Overlay ovl = new Overlay();
-        for (int j=0;j<100000;j++) {
-            if (!splines[0].isValidPoint(pos)) break;
-            double xxx = splines[0].value(pos);
-            double yyx = splines[1].value(pos);
-
-            double dx = dxSpline.value(pos);
-            double ddx = ddxSpline.value(pos);
-            double dy = dySpline.value(pos);
-            double ddy = ddySpline.value(pos);
-
-            OvalRoi ovr = new OvalRoi(xxx-r/2+0.5,yyx-r /2+0.5, r, r);
-            double b = Math.abs(dx*ddy-dy*ddx)/Math.pow((dx*dx+dy*dy),3d/2d)/0.15;
-            ovr.setStrokeColor(Color.getHSBColor((float) b,1f,1f));
-            ovl.addElement(ovr);
-            ipl.setOverlay(ovl);
-
-            pos = pos + 0.1;
-        }
     }
 
     public Skeleton(ImagePlus ipl) {
@@ -234,42 +182,4 @@ public class Skeleton extends VertexCollection {
         }
     }
 
-    public PolynomialSplineFunction[] getSplines(LinkedHashSet<Vertex> path, int offset, int interval) {
-        // Preparing line coordinates for spline fitting
-        double[] t = new double[path.size()];
-        double[] x = new double[path.size()];
-        double[] y = new double[path.size()];
-
-        int count=0;
-        Vertex prevVertex = null;
-        for (Vertex vertex:path) {
-            t[count] = count==0 ? 0 : t[count-1] + vertex.getEdgeLength(prevVertex);
-            x[count] = vertex.getX();
-            y[count++] = vertex.getY();
-
-            prevVertex = vertex;
-
-        }
-
-        // Getting every nth point
-        double[] tt = new double[(int) Math.ceil((double)(t.length-offset)/(double) interval)];
-        double[] xx = new double[(int) Math.ceil((double)(t.length-offset)/(double) interval)];
-        double[] yy = new double[(int) Math.ceil((double)(t.length-offset)/(double) interval)];
-        double[] kk = new double[(int) Math.ceil((double)(t.length-offset)/(double) interval)];
-
-        for (int i=0;i<tt.length;i++) {
-            tt[i] = t[(i+offset)*interval];
-            xx[i] = x[(i+offset)*interval];
-            yy[i] = y[(i+offset)*interval];
-        }
-
-        // Fitting the spline pair
-        SplineInterpolator interpolator = new SplineInterpolator();
-        PolynomialSplineFunction[] splineFunctions = new PolynomialSplineFunction[2];
-        splineFunctions[0] = interpolator.interpolate(tt,xx);
-        splineFunctions[1] = interpolator.interpolate(tt,yy);
-
-        return splineFunctions;
-
-    }
 }
