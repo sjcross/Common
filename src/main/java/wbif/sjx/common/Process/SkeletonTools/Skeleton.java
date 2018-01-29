@@ -20,15 +20,20 @@ public class Skeleton extends VertexCollection {
     public static void main(String[] args) {
         new ImageJ();
 
-        ImagePlus ipl = IJ.openImage("C:\\Users\\sc13967\\Downloads\\FakeFish.tif");
+//        ImagePlus ipl = IJ.openImage("C:\\Users\\sc13967\\Downloads\\FakeFish.tif");
+        ImagePlus ipl = IJ.openImage("Y:\\Stephen\\People\\H\\Chrissy Hammond\\2018-01-16 Fish tracking\\FakeSkeleton.tif");
         ipl.show();
 
         Skeleton skeleton = new Skeleton(ipl);
 
         LinkedHashSet<Vertex> longestPath = skeleton.getLongestPath();
         CurvatureCalculator curvatureCalculator = new CurvatureCalculator(longestPath);
+        curvatureCalculator.setFittingMethod(CurvatureCalculator.FittingMethod.LOESS);
+        curvatureCalculator.setLoessNNeighbours(10);
+        curvatureCalculator.setLoessIterations(10000);
+        curvatureCalculator.setLoessAccuracy(1);
         TreeMap<Double,Double> curvature = curvatureCalculator.getCurvature();
-        curvatureCalculator.showOverlay(ipl);
+        curvatureCalculator.showOverlay(ipl,new int[]{1,1,1});
 
     }
 
