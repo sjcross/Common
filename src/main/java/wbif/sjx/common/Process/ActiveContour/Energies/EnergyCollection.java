@@ -2,8 +2,7 @@
 
 package wbif.sjx.common.Process.ActiveContour.Energies;
 
-import wbif.sjx.common.Process.ActiveContour.Energies.Energy;
-import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Node;
+import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Vertex;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -34,7 +33,7 @@ public class EnergyCollection {
 
     }
 
-    public double getEnergy(Node node) {
+    public double getEnergy(Vertex node) {
         double energy = 0;
 
         Iterator<Energy> iterator = iterator();

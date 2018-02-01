@@ -7,7 +7,7 @@ package wbif.sjx.common.Process.ActiveContour.Energies;
 
 import ij.ImagePlus;
 import ij.process.ImageProcessor;
-import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Node;
+import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Vertex;
 
 /**
  * Created by Stephen on 16/09/2016.
@@ -45,7 +45,7 @@ public class ImageGradientEnergy extends Energy {
 
     }
 
-    public double getEnergy(Node node) {
+    public double getEnergy(Vertex node) {
         int x = Math.toIntExact(Math.round(node.getX()));
         int y = Math.toIntExact(Math.round(node.getY()));
         double w = im_x.length;

@@ -1,6 +1,6 @@
 package wbif.sjx.common.Process.ActiveContour.Energies;
 
-import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Node;
+import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Vertex;
 
 /**
  * Created by Stephen on 16/09/2016.
@@ -23,7 +23,7 @@ public class Energy {
 
     }
 
-    public double getEnergy(Node node) {
+    public double getEnergy(Vertex node) {
         return 0;
 
     }
