@@ -9,14 +9,14 @@ import java.util.Iterator;
 /**
  * Created by Stephen on 07/09/2016.
  */
-public class NodeCollection extends HashSet<Node> {
+public class NodeCollection extends HashSet<Vertex> {
 
     /**
      * Sets all nodes in NodeCollection to the same fixed_x value
      * @param fixed_x
      */
     public void setFixedX(boolean fixed_x) {
-        Iterator<Node> itor = iterator();
+        Iterator<Vertex> itor = iterator();
         while (itor.hasNext()) {
             itor.next().setFixedX(fixed_x);
 
@@ -28,17 +28,17 @@ public class NodeCollection extends HashSet<Node> {
      * @param fixed_y
      */
     public void setFixedY(boolean fixed_y) {
-        Iterator<Node> itor = iterator();
+        Iterator<Vertex> itor = iterator();
         while (itor.hasNext()) {
             itor.next().setFixedY(fixed_y);
 
         }
     }
 
-    public Node getSpecialNode(int special) {
-        Node node = null;
+    public Vertex getSpecialNode(int special) {
+        Vertex node = null;
 
-        Iterator<Node> itor = iterator();
+        Iterator<Vertex> itor = iterator();
         while (itor.hasNext()) {
             node = itor.next();
             if (node.getSpecial() == special) {
@@ -50,8 +50,8 @@ public class NodeCollection extends HashSet<Node> {
 
     }
 
-    public Node getRandomNode() {
-        Iterator<Node> iterator = iterator();
+    public Vertex getRandomNode() {
+        Iterator<Vertex> iterator = iterator();
 
         return iterator.next();
 
@@ -65,7 +65,7 @@ public class NodeCollection extends HashSet<Node> {
     public double[][] getNodeCoordinates() {
         double[][] coords = new double[size()][2];
 
-        Node node = getRandomNode();
+        Vertex node = getRandomNode();
         int ID = node.getID();
         coords[0][0] = node.getX();
         coords[0][1] = node.getY();
@@ -103,7 +103,7 @@ public class NodeCollection extends HashSet<Node> {
      * @return
      */
     public boolean anyNodesMoved() {
-        for (Node node:this) {
+        for (Vertex node:this) {
             if (node.hasMoved()) return true;
         }
 

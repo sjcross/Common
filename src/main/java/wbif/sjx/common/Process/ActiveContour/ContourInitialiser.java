@@ -1,6 +1,6 @@
 package wbif.sjx.common.Process.ActiveContour;
 
-import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Node;
+import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Vertex;
 import wbif.sjx.common.Process.ActiveContour.PhysicalModel.NodeCollection;
 
 /**
@@ -8,11 +8,11 @@ import wbif.sjx.common.Process.ActiveContour.PhysicalModel.NodeCollection;
  */
 public class ContourInitialiser {
     public static NodeCollection buildContour(int[] xCoords, int[] yCoords){
-        Node[] nodeArr = new Node[xCoords.length];
+        Vertex[] nodeArr = new Vertex[xCoords.length];
 
-        //Adding Nodes to Node array
+        //Adding Nodes to Vertex array
         for (int i = 0;i<xCoords.length;i++) {
-            nodeArr[i] = new Node(xCoords[i],yCoords[i],i);
+            nodeArr[i] = new Vertex(xCoords[i],yCoords[i],i);
 
         }
 

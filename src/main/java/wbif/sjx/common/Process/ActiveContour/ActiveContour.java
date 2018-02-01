@@ -3,18 +3,13 @@ package wbif.sjx.common.Process.ActiveContour;
 import ij.IJ;
 import ij.ImageJ;
 import ij.ImagePlus;
-import ij.gui.OvalRoi;
 import ij.gui.Overlay;
-import ij.gui.PolygonRoi;
 import ij.gui.Roi;
 import wbif.sjx.common.Process.ActiveContour.Energies.*;
 import wbif.sjx.common.Process.ActiveContour.Minimisers.GreedyMinimiser;
-import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Node;
 import wbif.sjx.common.Process.ActiveContour.PhysicalModel.NodeCollection;
-import wbif.sjx.common.Process.ActiveContour.Visualisation.GridOverlay;
 
 import java.awt.*;
-import java.util.Iterator;
 
 /**
  * Created by Stephen on 08/09/2016.

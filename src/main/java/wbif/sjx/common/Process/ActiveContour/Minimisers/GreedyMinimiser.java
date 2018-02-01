@@ -4,7 +4,7 @@ package wbif.sjx.common.Process.ActiveContour.Minimisers;
 
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.Process.ActiveContour.Energies.EnergyCollection;
-import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Node;
+import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Vertex;
 import wbif.sjx.common.Process.ActiveContour.PhysicalModel.NodeCollection;
 
 import java.util.Iterator;
@@ -29,10 +29,10 @@ public class GreedyMinimiser {
     }
 
     /**
-     * Evaluates all the energies in the EnergyCollection at the specified Node
+     * Evaluates all the energies in the EnergyCollection at the specified Vertex
      * @param node
      */
-    public void evaluateGreedy(Node node) {
+    public void evaluateGreedy(Vertex node) {
         double x = node.getX();
         double y = node.getY();
         double x_min = x-width/2;
@@ -76,7 +76,7 @@ public class GreedyMinimiser {
     public void evaluateGreedy(NodeCollection nodes) {
         switch(sequence){
             case RANDOM:
-                Iterator<Node> iterator = nodes.iterator();
+                Iterator<Vertex> iterator = nodes.iterator();
                 while (iterator.hasNext()) {
                     evaluateGreedy(iterator.next());
 
@@ -85,8 +85,8 @@ public class GreedyMinimiser {
                 break;
 
             case RIGHTDOWN:
-                Node node_row = nodes.getSpecialNode(Node.TOPLEFT); //The starting node
-                Node node_col = node_row;
+                Vertex node_row = nodes.getSpecialNode(Vertex.TOPLEFT); //The starting node
+                Vertex node_col = node_row;
 
                 while (node_row.getBottomNeighbour() != null) {
                     while (node_col.getRightNeighbour() != null) {
@@ -112,7 +112,7 @@ public class GreedyMinimiser {
 
             case CLOCKWISE:
                 iterator = nodes.iterator();
-                Node node = iterator.next();
+                Vertex node = iterator.next();
                 evaluateGreedy(node);
                 int startNode = node.getID();
 

@@ -1,16 +1,15 @@
 package wbif.sjx.common.Process.ActiveContour.PhysicalModel;
 
-public class Node
-{
+public class Vertex {
     public static int TOPLEFT = 1;
     public static int BOTTOMLEFT = 2;
     public static int TOPRIGHT = 3;
     public static int BOTTOMRIGHT = 4;
 
-    private Node top_neighbour = null;
-    private Node bottom_neighbour = null;
-    private Node left_neighbour = null;
-    private Node right_neighbour = null;
+    private Vertex top_neighbour = null;
+    private Vertex bottom_neighbour = null;
+    private Vertex left_neighbour = null;
+    private Vertex right_neighbour = null;
     private boolean fixed_x = false;
     private boolean fixed_y = false;
     private double x;
@@ -18,15 +17,15 @@ public class Node
     private double energy = 0;
     private int ID; // Specific to that node
     private int special = 0; //No special state
-    private boolean moved = false; // Condition that can be used to check if the Node moved last time
+    private boolean moved = false; // Condition that can be used to check if the Vertex moved last time
 
-    public Node(double x, double y) {
+    public Vertex(double x, double y) {
         this.x = x;
         this.y = y;
         this.ID = 0;
     }
 
-    public Node(double x, double y, int ID) {
+    public Vertex(double x, double y, int ID) {
         this.x = x;
         this.y = y;
         this.ID = ID;
@@ -67,22 +66,22 @@ public class Node
 
     }
 
-    public void setTopNeighbour(Node top_neighbour) {
+    public void setTopNeighbour(Vertex top_neighbour) {
         this.top_neighbour = top_neighbour;
 
     }
 
-    public void setBottomNeighbour(Node bottom_neighbour) {
+    public void setBottomNeighbour(Vertex bottom_neighbour) {
         this.bottom_neighbour = bottom_neighbour;
 
     }
 
-    public void setLeftNeighbour(Node left_neighbour) {
+    public void setLeftNeighbour(Vertex left_neighbour) {
         this.left_neighbour = left_neighbour;
 
     }
 
-    public void setRightNeighbour(Node right_neighbour) {
+    public void setRightNeighbour(Vertex right_neighbour) {
         this.right_neighbour = right_neighbour;
 
     }
@@ -102,22 +101,22 @@ public class Node
 
     }
 
-    public Node getTopNeighbour() {
+    public Vertex getTopNeighbour() {
         return top_neighbour;
 
     }
 
-    public Node getBottomNeighbour() {
+    public Vertex getBottomNeighbour() {
         return bottom_neighbour;
 
     }
 
-    public Node getLeftNeighbour() {
+    public Vertex getLeftNeighbour() {
         return left_neighbour;
 
     }
 
-    public Node getRightNeighbour() {
+    public Vertex getRightNeighbour() {
         return right_neighbour;
 
     }

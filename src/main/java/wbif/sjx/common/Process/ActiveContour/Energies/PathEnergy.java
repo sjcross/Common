@@ -4,7 +4,7 @@ import ij.ImagePlus;
 import ij.process.ImageProcessor;
 import wbif.sjx.common.MathFunc.BresenhamLine;
 import wbif.sjx.common.MathFunc.CumStat;
-import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Node;
+import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Vertex;
 
 /**
  * Created by sc13967 on 23/09/2016.
@@ -35,7 +35,7 @@ public class PathEnergy extends Energy{
         }
     }
 
-    public double getEnergy(Node node) {
+    public double getEnergy(Vertex node) {
         double path_energy_1 = 0;
         double path_energy_2 = 0;
         double path_energy_3 = 0;
@@ -64,7 +64,7 @@ public class PathEnergy extends Energy{
 
     }
 
-    private double energyAlongPath(Node node1, Node node2) {
+    private double energyAlongPath(Vertex node1, Vertex node2) {
         int x1 = (int) Math.round(node1.getX());
         int y1 = (int) Math.round(node1.getY());
         int x2 = (int) Math.round(node2.getX());
