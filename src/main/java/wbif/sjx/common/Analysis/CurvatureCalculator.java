@@ -88,8 +88,8 @@ public class CurvatureCalculator {
 
             double dx = (splines[0].value(maxPos) - splines[0].value(minPos)) / width;
             double dy = (splines[1].value(maxPos) - splines[1].value(minPos)) / width;
-            double ddx = (splines[2].value(maxPos) - splines[2].value(minPos)) / width;
-            double ddy = (splines[3].value(maxPos) - splines[3].value(minPos)) / width;
+            double ddx = (splines[2].value(maxPos) - splines[2].value(minPos)) / (0.5*width);
+            double ddy = (splines[3].value(maxPos) - splines[3].value(minPos)) / (0.5*width);
 
             double k = Math.abs(dx * ddy - dy * ddx) / Math.pow((dx * dx + dy * dy), 3d / 2d);
 
