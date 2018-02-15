@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public abstract class Accumulator {
     protected Indexer indexer;
     protected double[] accumulator;
+    protected int[] counts;
     protected int[][] parameterRanges;
 
 
@@ -39,15 +40,20 @@ public abstract class Accumulator {
         // Creating the accumulator to occupy the whole space
         int size = indexer.getLength();
         accumulator = new double[size];
+        counts = new int[size];
 
+    }
+
+    public void normaliseScores() {
+        for (int i=0;i<counts.length;i++) {
+            accumulator[i] = accumulator[i]/counts[i];
+        }
     }
 
 
     // ABSTRACT METHODS
 
     public abstract void addDetectedObjectsOverlay(ImagePlus ipl, ArrayList<double[]> objects);
-
-    public abstract void normaliseScores();
 
     public abstract void addPoints(int[] parameters, double value, int[] x, int[] y);
 

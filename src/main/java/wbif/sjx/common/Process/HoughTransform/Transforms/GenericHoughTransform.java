@@ -18,6 +18,8 @@ import java.util.ArrayList;
 public abstract class GenericHoughTransform {
     protected PixelArray pixels;
     protected Accumulator accumulator;
+    protected boolean randomSampling = false;
+    protected double sampleFraction = 0.5;
 
 
     public GenericHoughTransform(ImageProcessor ipr) {
@@ -75,5 +77,21 @@ public abstract class GenericHoughTransform {
     public ImagePlus getAccumulatorAsImage() {
         return accumulator.getAccumulatorAsImage();
 
+    }
+
+    public boolean isRandomSampling() {
+        return randomSampling;
+    }
+
+    public void setRandomSampling(boolean randomSampling) {
+        this.randomSampling = randomSampling;
+    }
+
+    public double getSampleFraction() {
+        return sampleFraction;
+    }
+
+    public void setSampleFraction(double sampleFraction) {
+        this.sampleFraction = sampleFraction;
     }
 }

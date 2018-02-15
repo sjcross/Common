@@ -44,6 +44,9 @@ public class CircleHoughTransform extends GenericHoughTransform {
             int nY = maxY-minY+1;
             for (int iX=0;iX<nX;iX++) {
                 for (int iY=0;iY<nY;iY++) {
+                    // If randomly sampling the image, only a fraction of pixels are used
+                    if (randomSampling && Math.random() > sampleFraction) continue;
+
                     // Getting current XY values
                     int X = minX+iX;
                     int Y = minY+iY;
