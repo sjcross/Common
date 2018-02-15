@@ -27,6 +27,7 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
     public static final String COMMENT = "Comment";
     public static final String FILE = "File";
     public static final String EXTENSION = "Extension";
+    public static final String KEYWORD = "Keyword";
 
 
     // CONSTRUCTOR
@@ -182,6 +183,12 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
     public void setComment(String comment) {
         put(COMMENT,comment);
     }
+
+    public String getKeyword() {
+        return get(KEYWORD) == null ? null : (String) get(KEYWORD);
+    }
+
+    public void putKeyword(String keyword) {put(KEYWORD,keyword);}
 
     public String getAsString(String property) {
         Object propertyObject = get(property);
