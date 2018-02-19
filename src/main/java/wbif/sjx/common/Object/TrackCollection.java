@@ -6,6 +6,7 @@ import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.TreeMap;
 
 /**
  * Created by sc13967 on 13/06/2017.
@@ -41,11 +42,11 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             int[] f = track.getF();
-            double[] rollingEuclideanDistance = track.getRollingEuclideanDistance(pixelDistances);
+            TreeMap<Integer,Double> rollingEuclideanDistance = track.getRollingEuclideanDistance(pixelDistances);
 
-            for (int i=0;i<rollingEuclideanDistance.length;i++) {
+            for (int i=0;i<rollingEuclideanDistance.size();i++) {
                 int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
-                cs[pos].addMeasure(rollingEuclideanDistance[i]);
+                cs[pos].addMeasure(rollingEuclideanDistance.get(f[i]));
             }
         }
 
@@ -90,11 +91,11 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             int[] f = track.getF();
-            double[] rollingTotalPathLength = track.getRollingTotalPathLength(pixelDistances);
+            TreeMap<Integer,Double> rollingTotalPathLength = track.getRollingTotalPathLength(pixelDistances);
 
-            for (int i=0;i<rollingTotalPathLength.length;i++) {
+            for (int i=0;i<rollingTotalPathLength.size();i++) {
                 int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
-                cs[pos].addMeasure(rollingTotalPathLength[i]);
+                cs[pos].addMeasure(rollingTotalPathLength.get(f[i]));
             }
         }
 
@@ -139,10 +140,10 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             int[] f = track.getF();
-            double[] rollingDirectionalityRatio = track.getRollingDirectionalityRatio(pixelDistances);
-            for (int i=0;i<rollingDirectionalityRatio.length;i++) {
+            TreeMap<Integer,Double> rollingDirectionalityRatio = track.getRollingDirectionalityRatio(pixelDistances);
+            for (int i=0;i<rollingDirectionalityRatio.size();i++) {
                 int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
-                cs[pos].addMeasure(rollingDirectionalityRatio[i]);
+                cs[pos].addMeasure(rollingDirectionalityRatio.get(f[i]));
             }
         }
 
@@ -234,6 +235,51 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
     }
 
+    public double[][] getAverageNearestNeighbourDistance(boolean pixelDistances) {
+        // Determining the first and last frames
+        int firstFrame = Integer.MAX_VALUE;
+        int lastFrame = 0;
+        for (Track track:values()) {
+            int[] f = track.getF();
+            if (f[0] < firstFrame) {
+                firstFrame = f[0];
+            }
+            if (f[f.length-1] > lastFrame) {
+                lastFrame = f[f.length-1];
+            }
+        }
+        int longestDuration = lastFrame-firstFrame;
+
+        // Creating the CumStat array
+        CumStat[] cs = new CumStat[longestDuration+1];
+        for (int i=0;i<cs.length;i++) {
+            cs[i] = new CumStat();
+        }
+
+        for (Track track:values()) {
+            int[] f = track.getF();
+            TreeMap<Integer,double[]> nearestNeighbourDistance = track.getNearestNeighbourDistance(this,pixelDistances);
+
+            for (int i=0;i<nearestNeighbourDistance.size();i++) {
+                int pos = f[i]-firstFrame;
+                cs[pos].addMeasure(nearestNeighbourDistance.get(f[i])[1]);
+            }
+        }
+
+        // Getting the frame numbers
+        double[] f = new double[longestDuration];
+        for (int i=0;i<f.length;i++) {
+            f[i] = i;
+        }
+
+        // Getting the average and standard deviations
+        double[] averageNearestNeighbourDistance = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
+        double[] stdevNearestNeighbourDistance = Arrays.stream(cs).mapToDouble(CumStat::getStd).toArray();
+
+        return new double[][]{f,averageNearestNeighbourDistance,stdevNearestNeighbourDistance};
+
+    }
+
     /**
      * Number of objects per frame
      * @return int[][]{frame[],n[]
@@ -272,4 +318,85 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
     }
 
+    /**
+     * Returns the largest frame number of any track
+     * @return
+     */
+    public int getHighestFrame() {
+        int maxFr = 0;
+        for (Track track:values()) {
+            for (int fr:track.keySet()) {
+                maxFr = Math.max(maxFr,fr);
+            }
+        }
+
+        return maxFr;
+
+    }
+
+    /**
+     * Returns the minimum and maximum coordinates of any point in 3D
+     * @param pixelDistances
+     * @return
+     */
+    public double[][] getSpatialLimits(boolean pixelDistances) {
+        double[][] limits = new double[][]{{Double.MAX_VALUE,Double.MIN_VALUE},{Double.MAX_VALUE,Double.MIN_VALUE},{Double.MAX_VALUE,Double.MIN_VALUE}};
+
+        for (Track track:values()) {
+            double[] x = track.getX(pixelDistances);
+            double[] y = track.getY(pixelDistances);
+            double[] z = track.getZ(pixelDistances);
+
+            for (int i=0;i<x.length;i++) {
+                limits[0][0] = Math.min(limits[0][0],x[i]);
+                limits[0][1] = Math.max(limits[0][1],x[i]);
+                limits[1][0] = Math.min(limits[1][0],y[i]);
+                limits[1][1] = Math.max(limits[1][1],y[i]);
+                limits[2][0] = Math.min(limits[2][0],z[i]);
+                limits[2][1] = Math.max(limits[2][1],z[i]);
+
+            }
+        }
+
+        return limits;
+
+    }
+
+    /**
+     * Returns a Point object at the mean location of all points in the present frame
+     * @param frame
+     * @return
+     */
+    public Point getMeanPoint(int frame) {
+        CumStat[] cs = new CumStat[3];
+
+        for (int i=0;i<3;i++) cs[i] = new CumStat();
+
+        for (Track track:values()) {
+            if (track.hasFrame(frame)) {
+                cs[0].addMeasure(track.get(frame).getX());
+                cs[1].addMeasure(track.get(frame).getY());
+                cs[2].addMeasure(track.get(frame).getZ());
+
+            }
+        }
+
+        return new Timepoint(cs[0].getMean(),cs[1].getMean(),cs[2].getMean(),frame);
+
+    }
+
+    public double getMaximumInstantaneousVelocity() {
+        double maxVelocity = 0;
+
+        for (Track track:values()) {
+            TreeMap<Integer,Double> velocities = track.getInstantaneousVelocity(true);
+
+            for (double velocity:velocities.values()) {
+                maxVelocity = Math.max(maxVelocity,velocity);
+            }
+        }
+
+        return maxVelocity;
+
+    }
 }

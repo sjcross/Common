@@ -1,51 +1,43 @@
 package wbif.sjx.common.Object;
 
-public class Point {
-    double x;
-    double y;
-    double z;
-    int f;
+import java.io.Serializable;
 
-    public Point(double x, double y, double z, int f) {
+public class Point<T extends Number> implements Serializable {
+    protected T x;
+    protected T y;
+    protected T z;
+
+    public Point(T x, T y, T z) {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.f = f;
 
     }
 
-    public double getX() {
+    public T getX() {
         return x;
     }
 
-    public double getY() {
+    public T getY() {
         return y;
     }
 
-    public double getZ() {
+    public T getZ() {
         return z;
     }
 
-    public int getF() {
-        return f;
-    }
-
-    public void setX(double x) {
+    public void setX(T x) {
         this.x = x;
 
     }
 
-    public void setY(double y) {
+    public void setY(T y) {
         this.y = y;
 
     }
 
-    public void setZ(double z) {
+    public void setZ(T z) {
         this.z = z;
 
-    }
-
-    public void setF(int f) {
-        this.f = f;
     }
 }
