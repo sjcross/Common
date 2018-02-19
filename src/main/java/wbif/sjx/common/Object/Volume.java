@@ -2,13 +2,13 @@
 
 package wbif.sjx.common.Object;
 
+import com.google.common.hash.HashCode;
 import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.commons.math3.stat.descriptive.rank.Min;
 import wbif.sjx.common.MathFunc.ArrayFunc;
 import wbif.sjx.common.MathFunc.CumStat;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -19,8 +19,8 @@ public class Volume {
     protected final double dppZ; //Calibration in z (fixed once declared in constructor)
     protected final String calibratedUnits;
 
-    protected ArrayList<Point<Integer>> points = new ArrayList<>() ;
-    protected ArrayList<Point<Integer>> surface = null;
+    protected TreeSet<Point<Integer>> points = new TreeSet<>(new PointComparator());
+    protected TreeSet<Point<Integer>> surface = null;
 
     /**
      * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
@@ -34,17 +34,17 @@ public class Volume {
      */
     private Point<Double> medianCentroid = null;
 
-    public ArrayList<Point<Integer>> getPoints() {
+    public TreeSet<Point<Integer>> getPoints() {
         return points;
 
     }
 
-    public void setPoints(ArrayList<Point<Integer>> points) {
+    public void setPoints(TreeSet<Point<Integer>> points) {
         this.points = points;
     }
 
     public void clearPoints() {
-        points = new ArrayList<>();
+        points = new TreeSet<>();
     }
 
     public Volume(double dppXY, double dppZ, String calibratedUnits) {
@@ -110,7 +110,7 @@ public class Volume {
     }
 
     public void calculateSurface2D() {
-        surface = new ArrayList<>();
+        surface = new TreeSet<>();
 
         double[] extents = getExtents2D(true);
         int[][] coords = new int[(int) extents[1]+1][(int) extents[3]+1];
@@ -143,7 +143,7 @@ public class Volume {
     }
 
     public void calculateSurface3D() {
-        surface = new ArrayList<>();
+        surface = new TreeSet<>();
 
         double[] extents = getExtents(true,false);
         int[][][] coords = new int[(int) extents[1]+1][(int) extents[3]+1][(int) extents[5]+1];
@@ -516,125 +516,82 @@ public class Volume {
 
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 1;
 
-    // DEPRECATED METHODS
+        hash = 31*hash + ((Number) dppXY).hashCode();
+        hash = 31*hash + ((Number) dppZ).hashCode();
+        hash = 31*hash + calibratedUnits.toUpperCase().hashCode();
 
-//    @Deprecated
-//    public void addCoord(double xIn, double yIn, double zIn) {
-//        points.add(new Point<>((int) Math.round(xIn),(int) Math.round(yIn),(int) Math.round(zIn),0));
-//
-//    }
-//
-//    @Deprecated
-//    public double getCalXY() {
-//        return dppXY;
-//
-//    }
-//
-//    @Deprecated
-//    public double getCalZ() {
-//        return dppZ;
-//
-//    }
-//
-//    @Deprecated
-//    public double[] getX() {
-//        return getX(true);
-//    }
-//
-//    @Deprecated
-//    public double[] getY() {
-//        return getY(true);
-//    }
-//
-//    @Deprecated
-//    public double[] getZ() {
-//        return getZ(true,false);
-//    }
-//
-//    @Deprecated
-//    public double getXMean() {
-//        return new Mean().evaluate(getX(true));
-//
-//    }
-//
-//    @Deprecated
-//    public double getYMean() {
-//        return new Mean().evaluate(getY(true));
-//
-//    }
-//
-//    @Deprecated
-//    public double getZMean() {
-//        return new Mean().evaluate(getZ(true,false));
-//
-//    }
-//
-//    @Deprecated
-//    public double getHeight() {
-//        double[] z = getZ();
-//
-//        double min_z = new Min().evaluate(z);
-//        double max_z = new Max().evaluate(z);
-//
-//        double height = max_z - min_z;
-//
-//        return height;
-//
-//    }
-//
-//    @Deprecated
-//    public double[] getExtents() {
-//        //Minimum and maximum values for all dimensions [x_min, y_min, z_min; x_max, y_max, z_max]
-//        double[] extents = new double[6];
-//
-//        double[] x = getX();
-//        double[] y = getY();
-//        double[] z = getZ();
-//
-//        extents[0] = new Min().evaluate(x);
-//        extents[1] = new Max().evaluate(x);
-//        extents[2] = new Min().evaluate(y);
-//        extents[3] = new Max().evaluate(y);
-//        extents[4] = new Min().evaluate(z);
-//        extents[5] = new Max().evaluate(z);
-//
-//        return extents;
-//
-//    }
-//
-//    @Deprecated
-//    public double getVoxelVolume() {
-//        return getX(true).length* dppXY * dppXY * dppZ;
-//
-//    }
-//
-//    @Deprecated
-//    public double getProjectedArea() {
-//        double[] x = getX();
-//        double[] y = getY();
-//        double[][] coords = new double[x.length][2];
-//
-//        for (int i=0;i<x.length;i++) {
-//            coords[i][0] = x[i];
-//            coords[i][1] = y[i];
-//        }
-//
-//        coords = ArrayFunc.uniqueRows(coords);
-//
-//        return coords.length* dppXY * dppXY;
-//
-//    }
-//
-//    @Deprecated
-//    public double getCentroidDistanceToPoint(Spot point) {
-//        return getCentroidDistanceToPoint(point,true);
-//
-//    }
-//
-//    @Deprecated
-//    public double getNearestDistanceToPoint(Spot point) {
-//        return getNearestDistanceToPoint(point,true);
-//
-//    }
+        for (Point<Integer> point:points) {
+            hash = 31*hash + point.hashCode();
+        }
+
+        return hash;
+
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Volume)) return false;
+
+        Volume volume2 = (Volume) obj;
+        TreeSet<Point<Integer>> points1 = getPoints();
+        TreeSet<Point<Integer>> points2 = volume2.getPoints();
+
+        if (points1.size() != points2.size()) return false;
+
+        if (dppXY != volume2.getDistPerPxXY()) return false;
+        if (dppZ != volume2.getDistPerPxZ()) return false;
+        if (!calibratedUnits.toUpperCase().equals(volume2.getCalibratedUnits().toUpperCase())) return false;
+
+        Iterator<Point<Integer>> iterator1 = points1.iterator();
+        Iterator<Point<Integer>> iterator2 = points2.iterator();
+
+        while (iterator1.hasNext()) {
+            Point<Integer> point1 = iterator1.next();
+            Point<Integer> point2 = iterator2.next();
+
+            if (!point1.equals(point2)) return false;
+
+        }
+
+        return true;
+
+    }
+}
+
+class PointComparator implements Comparator<Point> {
+    @Override
+    public int compare(Point o1, Point o2) {
+        Point<Integer> p1 = (Point<Integer>) o1;
+        Point<Integer> p2 = (Point<Integer>) o2;
+
+        int x1 = p1.getX();
+        int x2 = p2.getX();
+        int y1 = p1.getY();
+        int y2 = p2.getY();
+        int z1 = p1.getZ();
+        int z2 = p2.getZ();
+
+        if (x1 > x2) {
+            return 1;
+        } else if (x1 < x2) {
+            return -1;
+        } else {
+            if (y1 > y2) {
+                return 1;
+            } else if (y1 < y2) {
+                return -1;
+            } else {
+                if (z1 > z2) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        }
+    }
 }
