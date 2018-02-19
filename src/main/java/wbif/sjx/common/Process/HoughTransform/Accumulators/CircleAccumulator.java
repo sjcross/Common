@@ -54,45 +54,9 @@ public class CircleAccumulator extends Accumulator {
 
             if (idx == -1) continue;
 
-            // Adding the current value
+            // Adding the current value and incrementing the count
             accumulator[idx] = accumulator[idx] + value;
-
-        }
-    }
-
-    @Override
-    public void normaliseScores() {
-        int minX = parameterRanges[0][0];
-        int maxX = parameterRanges[0][1];
-        int minY = parameterRanges[1][0];
-        int maxY = parameterRanges[1][1];
-        int minR = parameterRanges[2][0];
-        int maxR = parameterRanges[2][1];
-
-        GoreaudEdgeCorrection goreaudEdgeCorrection = new GoreaudEdgeCorrection(minX,maxX,minY,maxY);
-
-        // Generating lookup table for the number of points per circle
-        HashMap<Integer,Integer> radii = new HashMap<>();
-        for (int radius=minR;radius<=maxR;radius++) {
-            // Getting the number of points on the midpoint circle
-            MidpointCircle midpointCircle = new MidpointCircle(radius);
-            int nPoints = midpointCircle.getXCircle().length;
-            radii.put(radius,nPoints);
-        }
-
-        // Iterates over all pixels, dividing by the number of circle points at that location
-        for (int idx=0;idx<accumulator.length;idx++) {
-            // Getting parameters for brightest current spot and adding to ArrayList
-            int[] parameters = indexer.getCoord(idx);
-            int x = parameters[0] + minX;
-            int y = parameters[1] + minY;
-            int r = parameters[2] + parameterRanges[2][0];
-
-            // Calculating the edge correction factor
-            double alphaOut = goreaudEdgeCorrection.getFractionInsideRectangle(x,y,r);
-
-            int nPoints = radii.get(r);
-            accumulator[idx] = accumulator[idx]*2*Math.PI/(nPoints*(2*Math.PI-alphaOut));
+            counts[idx]++;
 
         }
     }
@@ -186,4 +150,6 @@ public class CircleAccumulator extends Accumulator {
         return maxIdx;
 
     }
+
+
 }
