@@ -310,7 +310,7 @@ public class Volume {
 
         if (pixelDistances) return meanCentroid.getX();
 
-        return meanCentroid.getY()*dppXY;
+        return meanCentroid.getX()*dppXY;
 
     }
 
@@ -331,7 +331,7 @@ public class Volume {
         if (pixelDistances && !matchXY) return meanCentroid.getZ();
         if (pixelDistances && matchXY) return meanCentroid.getZ()*dppZ/dppXY;
 
-        return meanCentroid.getY()*dppZ;
+        return meanCentroid.getZ()*dppZ;
 
     }
 
@@ -341,7 +341,7 @@ public class Volume {
 
         if (pixelDistances) return medianCentroid.getX();
 
-        return medianCentroid.getY()*dppXY;
+        return medianCentroid.getX()*dppXY;
 
     }
 
@@ -362,7 +362,7 @@ public class Volume {
         if (pixelDistances && !matchXY) return medianCentroid.getZ();
         if (pixelDistances && matchXY) return medianCentroid.getZ()*dppZ/dppXY;
 
-        return medianCentroid.getY()*dppZ;
+        return medianCentroid.getZ()*dppZ;
 
     }
 
@@ -437,11 +437,6 @@ public class Volume {
         }
 
         return hasarea;
-
-    }
-
-    public double getVoxelVolume(boolean pixelDistances) {
-        return getX(pixelDistances).length;
 
     }
 
