@@ -40,4 +40,26 @@ public class Point<T extends Number> implements Serializable {
         this.z = z;
 
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 1;
+
+        hash = 31*hash + x.hashCode();
+        hash = 31*hash + y.hashCode();
+        hash = 31*hash + z.hashCode();
+
+        return hash;
+
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Point)) return false;
+
+        Point point = (Point) obj;
+        return x.equals(point.x )&& y.equals(point.y) && z.equals(point.z);
+
+    }
 }

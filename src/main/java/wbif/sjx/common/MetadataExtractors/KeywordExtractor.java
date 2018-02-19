@@ -3,7 +3,6 @@ package wbif.sjx.common.MetadataExtractors;
 import wbif.sjx.common.Object.HCMetadata;
 
 import java.util.StringTokenizer;
-import java.util.regex.Matcher;
 
 /**
  * Created by sc13967 on 07/02/2018.
