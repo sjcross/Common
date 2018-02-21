@@ -110,7 +110,7 @@ public class Volume {
     }
 
     public void calculateSurface2D() {
-        surface = new TreeSet<>();
+        surface = new TreeSet<>(new PointComparator());
 
         double[] extents = getExtents2D(true);
         int[][] coords = new int[(int) extents[1]+1][(int) extents[3]+1];
@@ -143,7 +143,7 @@ public class Volume {
     }
 
     public void calculateSurface3D() {
-        surface = new TreeSet<>();
+        surface = new TreeSet<>(new PointComparator());
 
         double[] extents = getExtents(true,false);
         int[][][] coords = new int[(int) extents[1]+1][(int) extents[3]+1][(int) extents[5]+1];
