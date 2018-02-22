@@ -18,7 +18,7 @@ public class Volume {
     protected final double dppZ; //Calibration in z (fixed once declared in constructor)
     protected final String calibratedUnits;
 
-    protected TreeSet<Point<Integer>> points = new TreeSet<>(new PointComparator());
+    protected TreeSet<Point<Integer>> points = new TreeSet<>();
     protected TreeSet<Point<Integer>> surface = null;
 
     /**
@@ -109,7 +109,7 @@ public class Volume {
     }
 
     public void calculateSurface2D() {
-        surface = new TreeSet<>(new PointComparator());
+        surface = new TreeSet<>();
 
         double[] extents = getExtents2D(true);
         int[][] coords = new int[(int) extents[1]+1][(int) extents[3]+1];
@@ -142,7 +142,7 @@ public class Volume {
     }
 
     public void calculateSurface3D() {
-        surface = new TreeSet<>(new PointComparator());
+        surface = new TreeSet<>();
 
         double[] extents = getExtents(true,false);
         int[][][] coords = new int[(int) extents[1]+1][(int) extents[3]+1][(int) extents[5]+1];
@@ -556,39 +556,4 @@ public class Volume {
 
     }
 
-}
-
-class PointComparator implements Comparator<Point> {
-    @Override
-    public int compare(Point o1, Point o2) {
-        Point<Integer> p1 = (Point<Integer>) o1;
-        Point<Integer> p2 = (Point<Integer>) o2;
-
-        int x1 = p1.getX();
-        int x2 = p2.getX();
-        int y1 = p1.getY();
-        int y2 = p2.getY();
-        int z1 = p1.getZ();
-        int z2 = p2.getZ();
-
-        if (x1 > x2) {
-            return 1;
-        } else if (x1 < x2) {
-            return -1;
-        } else {
-            if (y1 > y2) {
-                return 1;
-            } else if (y1 < y2) {
-                return -1;
-            } else {
-                if (z1 > z2) {
-                    return 1;
-                } else if (z1 < z2){
-                    return -1;
-                } else {
-                    return 0;
-                }
-            }
-        }
-    }
 }

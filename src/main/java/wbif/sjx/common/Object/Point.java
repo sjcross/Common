@@ -2,7 +2,7 @@ package wbif.sjx.common.Object;
 
 import java.io.Serializable;
 
-public class Point<T extends Number> implements Serializable {
+public class Point<T extends Number> implements Comparable<Point<T>>, Serializable {
     protected T x;
     protected T y;
     protected T z;
@@ -63,4 +63,36 @@ public class Point<T extends Number> implements Serializable {
 
     }
 
+
+    @Override
+    public int compareTo(Point o) {
+        Point<T> p2 = (Point<T>) o;
+
+        double x1 = x.doubleValue();
+        double x2 = p2.getX().doubleValue();
+        double y1 = y.doubleValue();
+        double y2 = p2.getY().doubleValue();
+        double z1 = z.doubleValue();
+        double z2 = p2.getZ().doubleValue();
+
+        if (x1 > x2) {
+            return 1;
+        } else if (x1 < x2) {
+            return -1;
+        } else {
+            if (y1 > y2) {
+                return 1;
+            } else if (y1 < y2) {
+                return -1;
+            } else {
+                if (z1 > z2) {
+                    return 1;
+                } else if (z1 < z2){
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        }
+    }
 }
