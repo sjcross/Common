@@ -2,7 +2,6 @@
 
 package wbif.sjx.common.Object;
 
-import com.google.common.hash.HashCode;
 import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.commons.math3.stat.descriptive.rank.Min;
 import wbif.sjx.common.MathFunc.ArrayFunc;
@@ -556,6 +555,7 @@ public class Volume {
         return true;
 
     }
+
 }
 
 class PointComparator implements Comparator<Point> {
@@ -583,8 +583,10 @@ class PointComparator implements Comparator<Point> {
             } else {
                 if (z1 > z2) {
                     return 1;
-                } else {
+                } else if (z1 < z2){
                     return -1;
+                } else {
+                    return 0;
                 }
             }
         }

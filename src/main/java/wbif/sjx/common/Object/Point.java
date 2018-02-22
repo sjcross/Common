@@ -62,4 +62,5 @@ public class Point<T extends Number> implements Serializable {
         return x.equals(point.x )&& y.equals(point.y) && z.equals(point.z);
 
     }
+
 }
