@@ -1,4 +1,5 @@
 // TODO: Change getProjectedArea to use HashSet for coordinate indices
+// TODO: Should get calculateSurface methods to work for negative values too (not just ignore them)
 
 package wbif.sjx.common.Object;
 
@@ -142,6 +143,29 @@ public class Volume {
     }
 
     public void calculateSurface3D() {
+//        surface = new TreeSet<>();
+//
+//        double[] extents = getExtents(true,false);
+//
+//        // Checking for neighbours
+//        for (Point<Integer> point:points) {
+//            int x = point.getX();
+//            int y = point.getY();
+//            int z = point.getZ();
+//
+//            // Points at the edge of the image are automatically classed as being edge pixels
+//            if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
+//                surface.add(new Point<>(x, y, z));
+//                continue;
+//            }
+//
+//            if (points.contains(new Point<>(x-1,y,z)) || points.contains(new Point<>(x+1,y,z))
+//                || points.contains(new Point<>(x,y-1,z)) || points.contains(new Point<>(x,y+1,z))
+//                || points.contains(new Point<>(x,y,z-1)) || points.contains(new Point<>(x,y,z+1))) {
+//                surface.add(new Point<>(x,y,z));
+//            }
+//        }
+
         surface = new TreeSet<>();
 
         double[] extents = getExtents(true,false);
@@ -153,7 +177,8 @@ public class Volume {
             int y = point.getY();
             int z = point.getZ();
 
-            coords[x][y][z] = 1;
+            // Ignore points outside smaller than zero
+            if (x > 0 && y > 0 && z> 0) coords[x][y][z] = 1;
 
         }
 
@@ -163,14 +188,16 @@ public class Volume {
             int y = point.getY();
             int z = point.getZ();
 
-            // Points at the edge of the image are automatically classed as being edge pixels
-            if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
-                surface.add(new Point<>(x, y, z));
-                continue;
-            }
+            if (x > 0 && y > 0 && z > 0) {
+                // Points at the edge of the image are automatically classed as being edge pixels
+                if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
+                    surface.add(new Point<>(x, y, z));
+                    continue;
+                }
 
-            if (coords[x-1][y][z] + coords[x+1][y][z] + coords[x][y-1][z] + coords[x][y+1][z] + coords[x][y][z-1] + coords[x][y][z+1] < 6) {
-                surface.add(new Point<>(x,y,z));
+                if (coords[x - 1][y][z] + coords[x + 1][y][z] + coords[x][y - 1][z] + coords[x][y + 1][z] + coords[x][y][z - 1] + coords[x][y][z + 1] < 6) {
+                    surface.add(new Point<>(x, y, z));
+                }
             }
         }
     }
