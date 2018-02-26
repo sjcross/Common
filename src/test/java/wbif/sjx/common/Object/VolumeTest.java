@@ -245,4 +245,20 @@ public class VolumeTest {
         assertFalse(volume2.equals(volume1));
 
     }
+
+    @Test
+    public void testContainsPoint() {
+        Volume volume1 = new Volume(2.0,1.0,"PX");
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+
+        Point<Integer> point1 = new Point<>(1,2,3);
+        Point<Integer> point2 = new Point<>(2,2,3);
+
+        assertTrue(volume1.getPoints().contains(point1));
+        assertFalse(volume1.getPoints().contains(point2));
+
+    }
 }
