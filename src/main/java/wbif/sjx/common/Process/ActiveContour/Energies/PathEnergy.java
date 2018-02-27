@@ -81,8 +81,11 @@ public class PathEnergy extends Energy{
             int x = line[i][0];
             int y = line[i][1];
 
-            cs.addMeasure(Math.pow(im[x][y],2));
-
+            if (x < 0 || x >= im.length || y < 0 || y >= im[0].length) {
+                cs.addMeasure(Double.POSITIVE_INFINITY);
+            } else {
+                cs.addMeasure(Math.pow(im[x][y],2));
+            }
         }
 
         return cs.getMean();
