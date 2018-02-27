@@ -11,10 +11,6 @@ public class KeywordExtractor {
     private static final String name = "Keyword";
     private static String[] keywordArray;
 
-    public static void main(String[] args) {
-        new KeywordExtractor("MRSF,CORS, FG, ddf_2DD");
-    }
-
     public KeywordExtractor(String keywords) {
         StringTokenizer tokenizer = new StringTokenizer(keywords,",");
         keywordArray = new String[tokenizer.countTokens()];
@@ -36,6 +32,8 @@ public class KeywordExtractor {
                 return true;
             }
         }
+
+        result.put(HCMetadata.KEYWORD,"");
 
         return false;
     }
