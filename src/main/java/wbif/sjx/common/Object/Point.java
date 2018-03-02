@@ -41,6 +41,18 @@ public class Point<T extends Number> implements Comparable<Point<T>>, Serializab
 
     }
 
+    public double calculateDistanceToPoint(Point<T> point) {
+        double x1 = x.doubleValue();
+        double x2 = point.getX().doubleValue();
+        double y1 = y.doubleValue();
+        double y2 = point.getY().doubleValue();
+        double z1 = z.doubleValue();
+        double z2 = point.getZ().doubleValue();
+
+        return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1));
+
+    }
+
     @Override
     public int hashCode() {
         int hash = 1;
@@ -65,13 +77,13 @@ public class Point<T extends Number> implements Comparable<Point<T>>, Serializab
 
 
     @Override
-    public int compareTo(Point<T> o) {
+    public int compareTo(Point<T> point) {
         double x1 = x.doubleValue();
-        double x2 = o.getX().doubleValue();
+        double x2 = point.getX().doubleValue();
         double y1 = y.doubleValue();
-        double y2 = o.getY().doubleValue();
+        double y2 = point.getY().doubleValue();
         double z1 = z.doubleValue();
-        double z2 = o.getZ().doubleValue();
+        double z2 = point.getZ().doubleValue();
 
         if (x1 > x2) {
             return 1;
