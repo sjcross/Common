@@ -537,6 +537,23 @@ public class Volume {
 
     }
 
+    /**
+     * Calculates the angle of the trajectory from this volume to volume2.  Angle is in radians and is relative to the
+     * positive x-axis.
+     * @param volume2
+     * @return
+     */
+    public double calculateAngle2D(Volume volume2) {
+        double x1 = getXMean(true);
+        double y1 = getYMean(true);
+        double x2 = volume2.getXMean(true);
+        double y2 = volume2.getYMean(true);
+
+        return Math.atan2((y2-y1),(x2-x1));
+
+
+    }
+
     @Override
     public int hashCode() {
         int hash = 1;
