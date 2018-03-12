@@ -178,7 +178,7 @@ public class Volume {
             int z = point.getZ();
 
             // Ignore points outside smaller than zero
-            if (x > 0 && y > 0 && z> 0) coords[x][y][z] = 1;
+            if (x >= 0 && y >= 0 && z>= 0) coords[x][y][z] = 1;
 
         }
 
@@ -188,7 +188,7 @@ public class Volume {
             int y = point.getY();
             int z = point.getZ();
 
-            if (x > 0 && y > 0 && z > 0) {
+            if (x >= 0 && y >= 0 && z >= 0) {
                 // Points at the edge of the image are automatically classed as being edge pixels
                 if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
                     surface.add(new Point<>(x, y, z));
@@ -506,6 +506,24 @@ public class Volume {
         }
 
         return ovl;
+    }
+
+    public ArrayList<Point<Integer>> getOverlappingPoints(Volume volume2) {
+        TreeSet<Point<Integer>> points1 = getPoints();
+        TreeSet<Point<Integer>> points2 = volume2.getPoints();
+
+        ArrayList<Point<Integer>> overlapping = new ArrayList<>();
+
+        for (Point<Integer> p1:points1) {
+            for (Point<Integer> p2:points2) {
+                if(p1.getX().equals(p2.getX()) && p1.getY().equals(p2.getY()) && p1.getZ().equals(p2.getZ())) {
+                    overlapping.add(p2);
+                }
+            }
+        }
+
+        return overlapping;
+
     }
 
     public double getCentroidDistanceToPoint(Spot point,boolean pixelDistances) {
