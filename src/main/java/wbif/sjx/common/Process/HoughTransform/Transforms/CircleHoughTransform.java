@@ -1,5 +1,7 @@
 package wbif.sjx.common.Process.HoughTransform.Transforms;
 
+import ij.IJ;
+import ij.ImagePlus;
 import ij.process.ImageProcessor;
 import wbif.sjx.common.MathFunc.MidpointCircle;
 import wbif.sjx.common.Process.HoughTransform.Accumulators.CircleAccumulator;
