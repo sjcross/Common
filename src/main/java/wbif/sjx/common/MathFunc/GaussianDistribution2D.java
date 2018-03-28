@@ -1,8 +1,5 @@
 package wbif.sjx.common.MathFunc;
 
-import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
-import org.apache.commons.math3.linear.ArrayRealVector;
-import org.apache.commons.math3.linear.RealVector;
 
 /**
  * Created by sc13967 on 27/03/2018.
