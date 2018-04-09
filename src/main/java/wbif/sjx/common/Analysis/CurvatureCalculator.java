@@ -16,7 +16,7 @@ import java.util.TreeMap;
  * Created by sc13967 on 26/01/2018.
  */
 public class CurvatureCalculator {
-    private LinkedHashSet< Vertex > path = null;
+    private LinkedHashSet< Vertex > path;
     private PolynomialSplineFunction[] splines = null;
     private TreeMap<Double,Double> curvature = null;
     private FittingMethod fittingMethod = FittingMethod.STANDARD;

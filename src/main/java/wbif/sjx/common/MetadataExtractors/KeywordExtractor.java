@@ -25,16 +25,29 @@ public class KeywordExtractor {
         return name;
     }
 
+    /**
+     * Matches the given string against a list of keywords.  Assigns the longest matching keyword.
+     * @param result
+     * @param str
+     * @return
+     */
     public boolean extract(HCMetadata result, String str) {
+        int length = Integer.MIN_VALUE;
+        String currentKeyword = "";
         for (String keyword:keywordArray) {
-            if (str.contains(keyword)) {
-                result.put(HCMetadata.KEYWORD,keyword);
-                return true;
+            if (str.contains(keyword) && keyword.length() > length) {
+                currentKeyword = keyword;
+                length = keyword.length();
             }
         }
 
-        result.put(HCMetadata.KEYWORD,"");
+        if (currentKeyword.equals("")) {
+            result.put(HCMetadata.KEYWORD,"");
+            return false;
+        }
 
-        return false;
+        result.put(HCMetadata.KEYWORD,currentKeyword);
+        return true;
+
     }
 }

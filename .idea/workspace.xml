@@ -7,6 +7,8 @@
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/CurvatureCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/CurvatureCalculator.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,11 +19,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Filters.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Filters.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.*</FILTER>
@@ -32,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="CurvatureCalculator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CurvatureCalculator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/CurvatureCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="84" column="53" lean-forward="true" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
+            <state relative-caret-position="-336">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#CurvatureCalculator#0" expanded="false" />
                 <element signature="class#FittingMethod#0;class#CurvatureCalculator#0" expanded="false" />
@@ -45,6 +47,28 @@
                 <element signature="method#showOverlay#0;class#CurvatureCalculator#0" expanded="false" />
                 <element signature="method#showOverlay#1;class#CurvatureCalculator#0" expanded="false" />
                 <element signature="method#setLoessNNeighbours#0;class#CurvatureCalculator#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KeywordExtractor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="19" column="61" lean-forward="true" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MSDCalculator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,6 +100,7 @@
       <find>compar</find>
       <find>tree</find>
       <find>getsu</find>
+      <find>show</find>
     </findStrings>
     <replaceStrings>
       <replace>Float</replace>
@@ -93,7 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/CumulativePathLengthCalculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/CumulativePathLengthCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EuclideanDistanceCalculator.java" />
@@ -122,8 +146,6 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/CurvatureCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/Skeleton.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/PointTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageEnergy.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/PathEnergy.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" />
@@ -143,7 +165,10 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GaussianDistribution2D.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/HCMetadata.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/CurvatureCalculator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java" />
       </list>
     </option>
   </component>
@@ -154,11 +179,10 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1874" />
-    <option name="height" value="1096" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="913" />
+    <option name="width" value="937" />
+    <option name="height" value="1088" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -178,6 +202,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,15 +252,23 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="MetadataExtractors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="Object" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -253,6 +286,11 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="wbif.sjx.common.Analysis" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sc13967\Local Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Process" />
+      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour\Energies" />
+      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="wbif.sjx.common.Process.ActiveContour" />
       <recent name="wbif.sjx.common.Process.ActiveContour.Visualisation" />
@@ -260,11 +298,6 @@
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sc13967\Local Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Process" />
-      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour\Energies" />
-      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -529,7 +562,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1874" height="1096" extended-state="7" />
+    <frame x="-9" y="-9" width="1860" height="1098" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -539,20 +572,18 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2614728" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="779" y="484" width="919" height="112" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26105717" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="779" y="484" width="919" height="112" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21003307" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" x="1938" y="39" width="333" height="964" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20964126" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" x="1938" y="39" width="333" height="964" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39626557" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1897574" sideWeight="0.5072464" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -563,7 +594,9 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32657003" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279396" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -614,13 +647,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GeneralOps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/FixSkeletonBreaks.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/DirectionalPersistence.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -758,13 +784,6 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/TreeSet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="35" column="42" lean-forward="false" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageEnergy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
@@ -867,7 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
           <caret line="62" column="11" lean-forward="false" selection-start-line="62" selection-start-column="11" selection-end-line="67" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,7 +893,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -883,7 +900,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -891,7 +907,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="26" column="41" lean-forward="false" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -906,7 +921,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="54" column="27" lean-forward="false" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -914,9 +928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="23" column="29" lean-forward="false" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-          <folding>
-            <element signature="e#670#671#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -924,7 +935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2023">
           <caret line="127" column="70" lean-forward="false" selection-start-line="127" selection-start-column="70" selection-end-line="127" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -932,11 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding>
-            <element signature="docComment;class#GaussianDistribution2D#0" expanded="false" />
-            <marker date="1522737408084" expanded="true" signature="537:700" ph="{...}" />
-            <marker date="1522737408084" expanded="true" signature="752:1301" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -944,9 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="21" column="45" lean-forward="false" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-          <folding>
-            <element signature="docComment;class#HCMetadata#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -954,14 +956,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/CurvatureCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="84" column="53" lean-forward="true" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
+        <state relative-caret-position="-336">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#CurvatureCalculator#0" expanded="false" />
             <element signature="class#FittingMethod#0;class#CurvatureCalculator#0" expanded="false" />
@@ -971,6 +982,14 @@
             <element signature="method#showOverlay#1;class#CurvatureCalculator#0" expanded="false" />
             <element signature="method#setLoessNNeighbours#0;class#CurvatureCalculator#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="19" column="61" lean-forward="true" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>
