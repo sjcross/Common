@@ -112,6 +112,8 @@ class Model implements MultivariateJacobianFunction {
         double ABG = p.getEntry(5); // background amplitude
         double th = p.getEntry(6); // theta
 
+        GaussianDistribution2D distribution2D = new GaussianDistribution2D(x0,y0,sx,sy,A0,ABG,th);
+
         for (int i=0;i<imagePoints.length;i++) {
             // The current point to evaluate
             Vector3D currPoint = imagePoints[i];
@@ -119,17 +121,14 @@ class Model implements MultivariateJacobianFunction {
             double y = currPoint.getY();
 
             // The value of the function at this location
-            double a = (Math.cos(th)*Math.cos(th))/(2*sx*sx) + (Math.sin(th)*Math.sin(th))/(2*sy*sy);
-            double b = Math.sin(2*th)/(4*sy*sy) - Math.sin(2*th)/(4*sx*sx);
-            double c = (Math.cos(th)*Math.cos(th))/(2*sy*sy) + (Math.sin(th)*Math.sin(th))/(2*sx*sx);
-            double val = ABG + A0*Math.exp(-(a*((x-x0)*(x-x0))-2*b*(x-x0)*(y-y0)+c*((y-y0)*(y-y0))));
-            value.setEntry(i, val);
+            double[] values = distribution2D.getValues(x,y);
+            value.setEntry(i, values[0]);
 
             // Partial derivatives of the Gaussian function with respect to each parameter
-            double ori = Math.exp(-a*((x-x0)*(x-x0))-c*((y-y0)*(y-y0))
+            double ori = Math.exp(-values[1]*((x-x0)*(x-x0))-values[3]*((y-y0)*(y-y0))
                     -(Math.sin(2*th)/(2*sx*sx)-Math.sin(2*th)/(2*sy*sy))*(x-x0)*(y-y0));
-            double j0 = A0*ori*((Math.sin(2*th)/(2*sx*sx)-Math.sin(2*th)/(2*sy*sy))*(y-y0)+a*(2*x-2*x0));
-            double j1 = A0*ori*((Math.sin(2*th)/(2*sx*sx)-Math.sin(2*th)/(2*sy*sy))*(x-x0)+c*(2*y-2*y0));
+            double j0 = A0*ori*((Math.sin(2*th)/(2*sx*sx)-Math.sin(2*th)/(2*sy*sy))*(y-y0)+values[1]*(2*x-2*x0));
+            double j1 = A0*ori*((Math.sin(2*th)/(2*sx*sx)-Math.sin(2*th)/(2*sy*sy))*(x-x0)+values[3]*(2*y-2*y0));
             double j2 = A0*ori*(((Math.cos(th)*Math.cos(th))*((x-x0)*(x-x0))/(sx*sx*sx))
                     + ((Math.sin(th)*Math.sin(th))*((y-y0)*(y-y0)))/(sx*sx*sx)
                     + (Math.sin(2*th)*(x-x0)*(y-y0))/(sx*sx*sx));
@@ -154,13 +153,7 @@ class Model implements MultivariateJacobianFunction {
             jacobian.setEntry(i, 5, j5);
             jacobian.setEntry(i, 6, j6);
 
-//            System.out.println("    "+j0+"_"+j1+"_"+j2+"_"+j3+"_"+4+"_"+j5+"_"+j6);
-
         }
-
-//        System.out.println("x0 = "+x0+", y0 = "+y0+", sx = "+sx+", sy = "+sy+", A0 = "+A0+", ABG = "+ABG+", th = "+(th*180/Math.PI));
-
-
 
         return new Pair<>(value, jacobian);
 

@@ -16,7 +16,7 @@ import java.util.TreeMap;
  * Created by sc13967 on 26/01/2018.
  */
 public class CurvatureCalculator {
-    private LinkedHashSet< Vertex > path = null;
+    private LinkedHashSet< Vertex > path;
     private PolynomialSplineFunction[] splines = null;
     private TreeMap<Double,Double> curvature = null;
     private FittingMethod fittingMethod = FittingMethod.STANDARD;
@@ -91,7 +91,7 @@ public class CurvatureCalculator {
             double ddx = (splines[2].value(maxPos) - splines[2].value(minPos)) / (0.5*width);
             double ddy = (splines[3].value(maxPos) - splines[3].value(minPos)) / (0.5*width);
 
-            double k = Math.abs(dx * ddy - dy * ddx) / Math.pow((dx * dx + dy * dy), 3d / 2d);
+            double k = (dx * ddy - dy * ddx) / Math.pow((dx * dx + dy * dy), 3d / 2d);
 
             curvature.put(knots[i],k);
 

@@ -3,8 +3,6 @@ package wbif.sjx.common.Analysis;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 import wbif.sjx.common.MathFunc.CumStat;
 
-import java.util.Arrays;
-
 /**
  * Created by steph on 15/04/2017.
  */
