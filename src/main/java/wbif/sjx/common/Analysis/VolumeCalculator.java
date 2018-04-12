@@ -72,10 +72,15 @@ public class VolumeCalculator {
                 break;
         }
 
-
-
         hull = new QuickHull3D();
-        hull.build(pts);
+
+        // Certain point configurations (e.g. points in a line) will cause the fitting to fail
+        try {
+            hull.build(pts);
+        } catch (IllegalArgumentException e) {
+            return;
+        }
+
         hull.triangulate(); //Converts all faces to triangles
 
     }

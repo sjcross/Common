@@ -34,30 +34,33 @@ public class NameContainsString implements FileCondition {
 
     }
 
-    public boolean test(File file) {
+    public boolean test(String string) {
         boolean cnd = false;
 
-        if (file != null) {
-            String name = file.getName();
+        for (int i = 0; i < testStr.length; i++) {
+            if (mode == INC_COMPLETE) {
+                if (string.equals(testStr[i])) cnd = true;
 
-            for (int i = 0; i < testStr.length; i++) {
-                if (mode == INC_COMPLETE) {
-                    if (name.equals(testStr[i])) cnd = true;
+            } else if (mode == INC_PARTIAL) {
+                if (string.contains(testStr[i])) cnd = true;
 
-                } else if (mode == INC_PARTIAL) {
-                    if (name.contains(testStr[i])) cnd = true;
+            } else if (mode == EXC_COMPLETE) {
+                if (!string.equals(testStr[i])) cnd = true;
 
-                } else if (mode == EXC_COMPLETE) {
-                    if (!name.equals(testStr[i])) cnd = true;
-
-                } else if (mode == EXC_PARTIAL) {
-                    if (!name.contains(testStr[i])) cnd = true;
-
-                }
+            } else if (mode == EXC_PARTIAL) {
+                if (!string.contains(testStr[i])) cnd = true;
             }
         }
 
         return cnd;
+
+    }
+
+    public boolean test(File file) {
+        if (file == null) return false;
+
+        String name = file.getName();
+        return test(name);
 
     }
 }
