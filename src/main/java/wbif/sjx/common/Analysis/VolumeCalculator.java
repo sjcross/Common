@@ -5,18 +5,22 @@ import com.github.quickhull3d.QuickHull3D;
 import org.apache.commons.math3.linear.LUDecomposition;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import wbif.sjx.common.MathFunc.GeneralOps;
 import wbif.sjx.common.Object.Volume;
+
+import java.util.logging.Level;
 
 public class VolumeCalculator {
     public static final int CENTROID = 0; //Fit hull around voxel centroids (hull volume < voxel volume)
     public static final int CORNER = 1; //Fit hull around voxel corners (hull volume > voxel volume)
 
-    Volume volume;
-    Point3d[] pts;
-    QuickHull3D hull;
-    double hullSurfaceArea = Double.NaN;
-    double hullVolume = Double.NaN;
+    private Volume volume;
+    private Point3d[] pts;
+    private QuickHull3D hull;
+    private double hullSurfaceArea = Double.NaN;
+    private double hullVolume = Double.NaN;
 
     public VolumeCalculator(Volume volume, int fitMode) {
         this.volume = volume;
@@ -36,14 +40,14 @@ public class VolumeCalculator {
         return (volume.hasVolume() & volume.getNVoxels() > 4);
     }
 
-    private void fitConvexHull(int fit_mode) {
+    private void fitConvexHull(int fitMode) {
         if (!canFitHull()) return;
 
         double[] x = volume.getX(true);
         double[] y = volume.getY(true);
         double[] z = volume.getZ(true,true);
 
-        switch (fit_mode) {
+        switch (fitMode) {
             case CORNER:
                 //Adding coordinates to Point3d structure
                 pts = new Point3d[x.length * 8]; //Works on corners of each voxel
@@ -61,12 +65,14 @@ public class VolumeCalculator {
                 break;
 
             case CENTROID:
-                pts = new Point3d[x.length * 8]; //Works on corners of each voxel
+                pts = new Point3d[x.length]; //Works on corners of each voxel
                 for (int i=0;i<x.length;i++) {
-                    pts[i * 8] = new Point3d(x[i], y[i], z[i]);
+                    pts[i] = new Point3d(x[i], y[i], z[i]);
                 }
                 break;
         }
+
+
 
         hull = new QuickHull3D();
         hull.build(pts);
@@ -131,8 +137,8 @@ public class VolumeCalculator {
             double[] b = {verts[faces[i][1]].get(0), verts[faces[i][1]].get(1), verts[faces[i][1]].get(2)};
             double[] c = {verts[faces[i][2]].get(0), verts[faces[i][2]].get(1), verts[faces[i][2]].get(2)};
 
-            double[][] matrix_data = {{a[0], b[0], c[0]}, {a[1], b[1], c[1]}, {a[2], b[2], c[2]}};
-            RealMatrix rm = MatrixUtils.createRealMatrix(matrix_data);
+            double[][] matrixData = {{a[0], b[0], c[0]}, {a[1], b[1], c[1]}, {a[2], b[2], c[2]}};
+            RealMatrix rm = MatrixUtils.createRealMatrix(matrixData);
             LUDecomposition lud = new LUDecomposition(rm);
 
             hullVolume += lud.getDeterminant();
