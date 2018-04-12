@@ -467,7 +467,7 @@ public class Volume {
     }
 
     public int getNVoxels() {
-        return getX(true).length;
+        return points.size();
 
     }
 
@@ -570,6 +570,14 @@ public class Volume {
         return Math.atan2((y2-y1),(x2-x1));
 
 
+    }
+
+    public double getContainedVolume(boolean pixelDistances) {
+        if (pixelDistances) {
+            return points.size()*dppZ/dppXY;
+        } else {
+            return points.size()*dppXY*dppXY*dppZ;
+        }
     }
 
     @Override
