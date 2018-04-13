@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
  * Created by sc13967 on 25/10/2016.
  */
 public class HCMetadata extends LinkedHashMap<String,Object> {
+    public static final String FILENAME = "Filename";
     public static final String WELL = "Well";
     public static final String ROW = "Row";
     public static final String COL = "Col";
@@ -28,7 +29,8 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
     public static final String FILE = "File";
     public static final String EXTENSION = "Extension";
     public static final String KEYWORD = "Keyword";
-    public static final String SERIES = "Series";
+    public static final String SERIES_NUMBER = "Series number";
+    public static final String SERIES_NAME = "Series name";
 
 
     // CONSTRUCTOR
@@ -39,6 +41,14 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
 
 
     // GETTERS AND SETTERS
+
+    public String getFilename() {
+        return get(FILENAME) == null ? null : (String) get(FILENAME);
+    }
+
+    public void setFilename(String filename) {
+        put(FILENAME,filename);
+    }
 
     public String getExt() {
         return get(EXTENSION) == null ? null : (String) get(EXTENSION);
@@ -191,10 +201,16 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
 
     public void putKeyword(String keyword) {put(KEYWORD,keyword);}
 
-    public int getSeries() {return get(SERIES) == null ? -1 : (Integer) get(SERIES);}
+    public int getSeriesNumber() {return get(SERIES_NUMBER) == null ? -1 : (Integer) get(SERIES_NUMBER);}
 
-    public void setSeries(int series) {
-        put(SERIES,series);
+    public void setSeriesNumber(int seriesNumber) {
+        put(SERIES_NUMBER,seriesNumber);
+    }
+
+    public String getSeriesName() {return get(SERIES_NAME) == null ? null : (String) get(SERIES_NAME);}
+
+    public void setSeriesName(String seriesName) {
+        put(SERIES_NAME,seriesName);
     }
 
     public String getAsString(String property) {
