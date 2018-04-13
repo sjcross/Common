@@ -7,6 +7,8 @@ public class EllipseCalculator {
     private double[] e2d;
 
     public EllipseCalculator(Volume volume) {
+        if (volume.getNVoxels() == 1) return;
+
         //Uses FitEllipse class from BoneJ
         double[] x = volume.getX(true);
         double[] y = volume.getY(true);
@@ -27,6 +29,8 @@ public class EllipseCalculator {
     }
 
     public double getEllipseThetaRads() {
+        if (e2d == null) return Double.NaN;
+
         if (e2d[1] == 0 & e2d[0] < e2d[2]) {
             return 0;
 
