@@ -422,8 +422,8 @@ public class Volume {
     }
 
     public double[] getExtents2D(boolean pixelDistances) {
-        //Minimum and maximum values for all dimensions [x_min, y_min, z_min; x_max, y_max, z_max]
-        double[] extents = new double[6];
+        //Minimum and maximum values for all dimensions [x_min, y_min, z_min; x_max, y_max]
+        double[] extents = new double[4];
 
         double[] x = getX(pixelDistances);
         double[] y = getY(pixelDistances);

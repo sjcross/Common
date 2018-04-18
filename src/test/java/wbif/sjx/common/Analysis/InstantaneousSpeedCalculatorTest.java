@@ -1,7 +1,7 @@
 package wbif.sjx.common.Analysis;
 
 import org.junit.Test;
-import wbif.sjx.common.Analysis.SpatialCalculators.InstantaneousVelocityCalculator;
+import wbif.sjx.common.Analysis.SpatialCalculators.InstantaneousSpeedCalculator;
 
 import java.util.TreeMap;
 
@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 /**
  * Created by steph on 09/07/2017.
  */
-public class InstantaneousVelocityCalculatorTest {
+public class InstantaneousSpeedCalculatorTest {
     @Test
     public void testCalculateIncreasing() throws Exception {
         int[] f = new int[]{1,2,3,4,5,6,7,9,10};
@@ -18,7 +18,7 @@ public class InstantaneousVelocityCalculatorTest {
         double[] y = new double[]{1,2,4.2,-3,5,3.2,11.4,-4.2,2.5};
         double[] z = new double[]{1,2,-5.3,-1,1.4,4.11,3.5,-2.1,7.9};
 
-        TreeMap<Integer,Double> measuredValues = new InstantaneousVelocityCalculator().calculate(f,x,y,z);
+        TreeMap<Integer,Double> measuredValues = new InstantaneousSpeedCalculator().calculate(f,x,y,z);
         TreeMap<Integer,Double> expectedValues = new TreeMap<>();
         expectedValues.put(1,0d);
         expectedValues.put(2,1.73);
