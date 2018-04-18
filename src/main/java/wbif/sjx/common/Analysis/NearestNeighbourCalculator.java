@@ -35,6 +35,9 @@ public class NearestNeighbourCalculator {
                 // We don't want to compare our track to itself
                 if (track == testTrack) continue;
 
+                // If the test track doesn't have this time frame, skip it
+                if (!testTrack.containsKey(f)) continue;
+
                 // Getting coordinates for the comparison (test) track at the same frame
                 double x2 = testTrack.getX(f,pixelDistances);
                 double y2 = testTrack.getY(f,pixelDistances);

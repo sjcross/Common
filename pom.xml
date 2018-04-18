@@ -4,16 +4,24 @@
 
     <groupId>wbif.sjx</groupId>
     <artifactId>Common</artifactId>
-    <version>1.3.4</version>
+    <version>1.3.11</version>
     <packaging>jar</packaging>
-
     <name>Common</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/SJCross/Common</url>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License v3+</name>
+            <url>http://www.gnu.org/licenses/gpl.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <myscope>compile</myscope>
     </properties>
 
     <repositories>
@@ -41,6 +49,7 @@
             <groupId>ome</groupId>
             <artifactId>bio-formats_plugins</artifactId>
             <version>5.4.1</version>
+            <scope>${myscope}</scope>
         </dependency>
 
         <dependency>
@@ -55,20 +64,16 @@
         </dependency>
 
         <dependency>
-            <groupId>org.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-            <version>3.4.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>net.imagej</groupId>
             <artifactId>ij</artifactId>
             <version>1.51h</version>
+            <scope>${myscope}</scope>
         </dependency>
         <dependency>
             <groupId>sc.fiji</groupId>
             <artifactId>Fiji_Plugins</artifactId>
             <version>3.1.1</version>
+            <scope>${myscope}</scope>
         </dependency>
 
         <dependency>
@@ -76,6 +81,18 @@
             <artifactId>MorphoLibJ_</artifactId>
             <version>1.3.2</version>
             <scope>${myscope}</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.bonej</groupId>
+            <artifactId>boneJ-legacy-plugins</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.quickhull3d</groupId>
+            <artifactId>quickhull3d</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

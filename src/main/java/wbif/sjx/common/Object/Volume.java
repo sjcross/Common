@@ -1,8 +1,8 @@
 // TODO: Change getProjectedArea to use HashSet for coordinate indices
+// TODO: Should get calculateSurface methods to work for negative values too (not just ignore them)
 
 package wbif.sjx.common.Object;
 
-import com.google.common.hash.HashCode;
 import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.commons.math3.stat.descriptive.rank.Min;
 import wbif.sjx.common.MathFunc.ArrayFunc;
@@ -19,7 +19,7 @@ public class Volume {
     protected final double dppZ; //Calibration in z (fixed once declared in constructor)
     protected final String calibratedUnits;
 
-    protected TreeSet<Point<Integer>> points = new TreeSet<>(new PointComparator());
+    protected TreeSet<Point<Integer>> points = new TreeSet<>();
     protected TreeSet<Point<Integer>> surface = null;
 
     /**
@@ -143,6 +143,29 @@ public class Volume {
     }
 
     public void calculateSurface3D() {
+//        surface = new TreeSet<>();
+//
+//        double[] extents = getExtents(true,false);
+//
+//        // Checking for neighbours
+//        for (Point<Integer> point:points) {
+//            int x = point.getX();
+//            int y = point.getY();
+//            int z = point.getZ();
+//
+//            // Points at the edge of the image are automatically classed as being edge pixels
+//            if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
+//                surface.add(new Point<>(x, y, z));
+//                continue;
+//            }
+//
+//            if (points.contains(new Point<>(x-1,y,z)) || points.contains(new Point<>(x+1,y,z))
+//                || points.contains(new Point<>(x,y-1,z)) || points.contains(new Point<>(x,y+1,z))
+//                || points.contains(new Point<>(x,y,z-1)) || points.contains(new Point<>(x,y,z+1))) {
+//                surface.add(new Point<>(x,y,z));
+//            }
+//        }
+
         surface = new TreeSet<>();
 
         double[] extents = getExtents(true,false);
@@ -154,7 +177,8 @@ public class Volume {
             int y = point.getY();
             int z = point.getZ();
 
-            coords[x][y][z] = 1;
+            // Ignore points outside smaller than zero
+            if (x >= 0 && y >= 0 && z>= 0) coords[x][y][z] = 1;
 
         }
 
@@ -164,14 +188,16 @@ public class Volume {
             int y = point.getY();
             int z = point.getZ();
 
-            // Points at the edge of the image are automatically classed as being edge pixels
-            if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
-                surface.add(new Point<>(x, y, z));
-                continue;
-            }
+            if (x >= 0 && y >= 0 && z >= 0) {
+                // Points at the edge of the image are automatically classed as being edge pixels
+                if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
+                    surface.add(new Point<>(x, y, z));
+                    continue;
+                }
 
-            if (coords[x-1][y][z] + coords[x+1][y][z] + coords[x][y-1][z] + coords[x][y+1][z] + coords[x][y][z-1] + coords[x][y][z+1] < 6) {
-                surface.add(new Point<>(x,y,z));
+                if (coords[x - 1][y][z] + coords[x + 1][y][z] + coords[x][y - 1][z] + coords[x][y + 1][z] + coords[x][y][z - 1] + coords[x][y][z + 1] < 6) {
+                    surface.add(new Point<>(x, y, z));
+                }
             }
         }
     }
@@ -310,7 +336,7 @@ public class Volume {
 
         if (pixelDistances) return meanCentroid.getX();
 
-        return meanCentroid.getY()*dppXY;
+        return meanCentroid.getX()*dppXY;
 
     }
 
@@ -331,7 +357,7 @@ public class Volume {
         if (pixelDistances && !matchXY) return meanCentroid.getZ();
         if (pixelDistances && matchXY) return meanCentroid.getZ()*dppZ/dppXY;
 
-        return meanCentroid.getY()*dppZ;
+        return meanCentroid.getZ()*dppZ;
 
     }
 
@@ -341,7 +367,7 @@ public class Volume {
 
         if (pixelDistances) return medianCentroid.getX();
 
-        return medianCentroid.getY()*dppXY;
+        return medianCentroid.getX()*dppXY;
 
     }
 
@@ -362,7 +388,7 @@ public class Volume {
         if (pixelDistances && !matchXY) return medianCentroid.getZ();
         if (pixelDistances && matchXY) return medianCentroid.getZ()*dppZ/dppXY;
 
-        return medianCentroid.getY()*dppZ;
+        return medianCentroid.getZ()*dppZ;
 
     }
 
@@ -440,13 +466,8 @@ public class Volume {
 
     }
 
-    public double getVoxelVolume(boolean pixelDistances) {
-        return getX(pixelDistances).length;
-
-    }
-
     public int getNVoxels() {
-        return getX(true).length;
+        return points.size();
 
     }
 
@@ -487,6 +508,24 @@ public class Volume {
         return ovl;
     }
 
+    public ArrayList<Point<Integer>> getOverlappingPoints(Volume volume2) {
+        TreeSet<Point<Integer>> points1 = getPoints();
+        TreeSet<Point<Integer>> points2 = volume2.getPoints();
+
+        ArrayList<Point<Integer>> overlapping = new ArrayList<>();
+
+        for (Point<Integer> p1:points1) {
+            for (Point<Integer> p2:points2) {
+                if(p1.getX().equals(p2.getX()) && p1.getY().equals(p2.getY()) && p1.getZ().equals(p2.getZ())) {
+                    overlapping.add(p2);
+                }
+            }
+        }
+
+        return overlapping;
+
+    }
+
     public double getCentroidDistanceToPoint(Spot point,boolean pixelDistances) {
         double x_cent = getXMean(pixelDistances);
         double y_cent = getYMean(pixelDistances);
@@ -514,6 +553,31 @@ public class Volume {
 
         return dist;
 
+    }
+
+    /**
+     * Calculates the angle of the trajectory from this volume to volume2.  Angle is in radians and is relative to the
+     * positive x-axis.
+     * @param volume2
+     * @return
+     */
+    public double calculateAngle2D(Volume volume2) {
+        double x1 = getXMean(true);
+        double y1 = getYMean(true);
+        double x2 = volume2.getXMean(true);
+        double y2 = volume2.getYMean(true);
+
+        return Math.atan2((y2-y1),(x2-x1));
+
+
+    }
+
+    public double getContainedVolume(boolean pixelDistances) {
+        if (pixelDistances) {
+            return points.size()*dppZ/dppXY;
+        } else {
+            return points.size()*dppXY*dppXY*dppZ;
+        }
     }
 
     @Override
@@ -561,37 +625,5 @@ public class Volume {
         return true;
 
     }
-}
 
-class PointComparator implements Comparator<Point> {
-    @Override
-    public int compare(Point o1, Point o2) {
-        Point<Integer> p1 = (Point<Integer>) o1;
-        Point<Integer> p2 = (Point<Integer>) o2;
-
-        int x1 = p1.getX();
-        int x2 = p2.getX();
-        int y1 = p1.getY();
-        int y2 = p2.getY();
-        int z1 = p1.getZ();
-        int z2 = p2.getZ();
-
-        if (x1 > x2) {
-            return 1;
-        } else if (x1 < x2) {
-            return -1;
-        } else {
-            if (y1 > y2) {
-                return 1;
-            } else if (y1 < y2) {
-                return -1;
-            } else {
-                if (z1 > z2) {
-                    return 1;
-                } else {
-                    return -1;
-                }
-            }
-        }
-    }
 }

@@ -2,7 +2,7 @@ package wbif.sjx.common.Object;
 
 import java.io.Serializable;
 
-public class Point<T extends Number> implements Serializable {
+public class Point<T extends Number> implements Comparable<Point<T>>, Serializable {
     protected T x;
     protected T y;
     protected T z;
@@ -41,6 +41,18 @@ public class Point<T extends Number> implements Serializable {
 
     }
 
+    public double calculateDistanceToPoint(Point<T> point) {
+        double x1 = x.doubleValue();
+        double x2 = point.getX().doubleValue();
+        double y1 = y.doubleValue();
+        double y2 = point.getY().doubleValue();
+        double z1 = z.doubleValue();
+        double z2 = point.getZ().doubleValue();
+
+        return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1));
+
+    }
+
     @Override
     public int hashCode() {
         int hash = 1;
@@ -60,6 +72,38 @@ public class Point<T extends Number> implements Serializable {
 
         Point point = (Point) obj;
         return x.equals(point.x )&& y.equals(point.y) && z.equals(point.z);
+
+    }
+
+
+    @Override
+    public int compareTo(Point<T> point) {
+        double x1 = x.doubleValue();
+        double x2 = point.getX().doubleValue();
+        double y1 = y.doubleValue();
+        double y2 = point.getY().doubleValue();
+        double z1 = z.doubleValue();
+        double z2 = point.getZ().doubleValue();
+
+        if (x1 > x2) {
+            return 1;
+        } else if (x1 < x2) {
+            return -1;
+        } else {
+            if (y1 > y2) {
+                return 1;
+            } else if (y1 < y2) {
+                return -1;
+            } else {
+                if (z1 > z2) {
+                    return 1;
+                } else if (z1 < z2){
+                    return -1;
+                }
+            }
+        }
+
+        return 0;
 
     }
 }

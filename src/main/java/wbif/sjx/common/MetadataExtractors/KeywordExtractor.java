@@ -11,10 +11,6 @@ public class KeywordExtractor {
     private static final String name = "Keyword";
     private static String[] keywordArray;
 
-    public static void main(String[] args) {
-        new KeywordExtractor("MRSF,CORS, FG, ddf_2DD");
-    }
-
     public KeywordExtractor(String keywords) {
         StringTokenizer tokenizer = new StringTokenizer(keywords,",");
         keywordArray = new String[tokenizer.countTokens()];
@@ -29,14 +25,29 @@ public class KeywordExtractor {
         return name;
     }
 
+    /**
+     * Matches the given string against a list of keywords.  Assigns the longest matching keyword.
+     * @param result
+     * @param str
+     * @return
+     */
     public boolean extract(HCMetadata result, String str) {
+        int length = Integer.MIN_VALUE;
+        String currentKeyword = "";
         for (String keyword:keywordArray) {
-            if (str.contains(keyword)) {
-                result.put(HCMetadata.KEYWORD,keyword);
-                return true;
+            if (str.contains(keyword) && keyword.length() > length) {
+                currentKeyword = keyword;
+                length = keyword.length();
             }
         }
 
-        return false;
+        if (currentKeyword.equals("")) {
+            result.put(HCMetadata.KEYWORD,"");
+            return false;
+        }
+
+        result.put(HCMetadata.KEYWORD,currentKeyword);
+        return true;
+
     }
 }
