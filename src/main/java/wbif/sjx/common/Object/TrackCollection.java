@@ -389,7 +389,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         double maxVelocity = 0;
 
         for (Track track:values()) {
-            TreeMap<Integer,Double> velocities = track.getInstantaneousVelocity(true);
+            TreeMap<Integer,Double> velocities = track.getInstantaneousSpeed(true);
 
             for (double velocity:velocities.values()) {
                 maxVelocity = Math.max(maxVelocity,velocity);
