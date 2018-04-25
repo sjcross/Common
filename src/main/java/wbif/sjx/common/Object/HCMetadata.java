@@ -31,6 +31,7 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
     public static final String KEYWORD = "Keyword";
     public static final String SERIES_NUMBER = "Series number";
     public static final String SERIES_NAME = "Series name";
+    public static final String UNITS = "Units";
 
 
     // CONSTRUCTOR
@@ -199,18 +200,32 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
         return get(KEYWORD) == null ? null : (String) get(KEYWORD);
     }
 
-    public void putKeyword(String keyword) {put(KEYWORD,keyword);}
+    public void putKeyword(String keyword) {
+        put(KEYWORD,keyword);
+    }
 
-    public int getSeriesNumber() {return get(SERIES_NUMBER) == null ? -1 : (Integer) get(SERIES_NUMBER);}
+    public int getSeriesNumber() {
+        return get(SERIES_NUMBER) == null ? -1 : (Integer) get(SERIES_NUMBER);
+    }
 
     public void setSeriesNumber(int seriesNumber) {
         put(SERIES_NUMBER,seriesNumber);
     }
 
-    public String getSeriesName() {return get(SERIES_NAME) == null ? null : (String) get(SERIES_NAME);}
+    public String getSeriesName() {
+        return get(SERIES_NAME) == null ? null : (String) get(SERIES_NAME);
+    }
 
     public void setSeriesName(String seriesName) {
         put(SERIES_NAME,seriesName);
+    }
+
+    public String getUnits() {
+        return get(UNITS) == null ? null : (String) get(UNITS);
+    }
+
+    public void setUnits(String units) {
+        put(UNITS,units);
     }
 
     public String getAsString(String property) {
