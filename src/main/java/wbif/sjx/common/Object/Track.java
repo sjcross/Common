@@ -110,9 +110,21 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
 
     }
 
-    public TreeMap<Integer, Double> getInstantaneousVelocity(boolean pixelDistances) {
-        return new InstantaneousVelocityCalculator().calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+    public TreeMap<Integer, Double> getInstantaneousSpeed(boolean pixelDistances) {
+        return new InstantaneousSpeedCalculator().calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
+    }
+
+    public TreeMap<Integer, Double> getInstantaneousXVelocity(boolean pixelDistances) {
+        return new InstantaneousVelocityCalculator().calculate(getF(),getX(pixelDistances));
+    }
+
+    public TreeMap<Integer, Double> getInstantaneousYVelocity(boolean pixelDistances) {
+        return new InstantaneousVelocityCalculator().calculate(getF(),getY(pixelDistances));
+    }
+
+    public TreeMap<Integer, Double> getInstantaneousZVelocity(boolean pixelDistances) {
+        return new InstantaneousVelocityCalculator().calculate(getF(),getZ(pixelDistances));
     }
 
     public TreeMap<Integer, Double> getInstantaneousStepSizes(boolean pixelDistances) {
