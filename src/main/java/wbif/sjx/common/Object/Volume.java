@@ -143,29 +143,6 @@ public class Volume {
     }
 
     public void calculateSurface3D() {
-//        surface = new TreeSet<>();
-//
-//        double[] extents = getExtents(true,false);
-//
-//        // Checking for neighbours
-//        for (Point<Integer> point:points) {
-//            int x = point.getX();
-//            int y = point.getY();
-//            int z = point.getZ();
-//
-//            // Points at the edge of the image are automatically classed as being edge pixels
-//            if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
-//                surface.add(new Point<>(x, y, z));
-//                continue;
-//            }
-//
-//            if (points.contains(new Point<>(x-1,y,z)) || points.contains(new Point<>(x+1,y,z))
-//                || points.contains(new Point<>(x,y-1,z)) || points.contains(new Point<>(x,y+1,z))
-//                || points.contains(new Point<>(x,y,z-1)) || points.contains(new Point<>(x,y,z+1))) {
-//                surface.add(new Point<>(x,y,z));
-//            }
-//        }
-
         surface = new TreeSet<>();
 
         double[] extents = getExtents(true,false);

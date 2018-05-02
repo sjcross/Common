@@ -297,6 +297,238 @@ public class VolumeTest {
     }
 
 
+    // MEDIAN POSITION
+
+    @Test
+    public void testGetXMedianPixelDistancesEvenN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+
+        assertEquals(10.5,volume.getXMedian(true),tolerance);
+    }
+
+    @Test
+    public void testGetXMedianCalibratedDistancesEvenN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+
+        assertEquals(0.21,volume.getXMedian(false),tolerance);
+
+    }
+
+    @Test
+    public void testGetYMedianPixelDistancesEvenN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+
+        assertEquals(5,volume.getYMedian(true),tolerance);
+    }
+
+    @Test
+    public void testGetYMedianCalibratedDistancesEvenN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+
+        assertEquals(0.1,volume.getYMedian(false),tolerance);
+
+    }
+
+    @Test
+    public void testGetZMedianPixelDistancesDoesntMatchXYEvenN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+
+        assertEquals(1.5,volume.getZMedian(true,false),tolerance);
+
+    }
+
+    @Test
+    public void testGetZMedianPixelDistancesDoesMatchXYEvenN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+
+        assertEquals(7.5,volume.getZMedian(true,true),tolerance);
+
+    }
+
+    @Test
+    public void testGetZMedianCalibratedDistancesEvenN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+
+        assertEquals(0.15,volume.getZMedian(false,false),tolerance);
+        assertEquals(0.15,volume.getZMedian(false,true),tolerance);
+
+    }
+
+    @Test
+    public void testGetXMedianPixelDistancesOddN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+        volume.addCoord(13,7,2);
+
+        assertEquals(11,volume.getXMedian(true),tolerance);
+    }
+
+    @Test
+    public void testGetXMedianCalibratedDistancesOddN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+        volume.addCoord(13,7,2);
+
+        assertEquals(0.22,volume.getXMedian(false),tolerance);
+
+    }
+
+    @Test
+    public void testGetYMedianPixelDistancesOddN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+        volume.addCoord(13,7,2);
+
+        assertEquals(5,volume.getYMedian(true),tolerance);
+    }
+
+    @Test
+    public void testGetYMedianCalibratedDistancesOddN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+        volume.addCoord(13,7,2);
+
+        assertEquals(0.1,volume.getYMedian(false),tolerance);
+
+    }
+
+    @Test
+    public void testGetZMedianPixelDistancesDoesntMatchXYOddN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+        volume.addCoord(13,7,2);
+
+        assertEquals(2,volume.getZMedian(true,false),tolerance);
+
+    }
+
+    @Test
+    public void testGetZMedianPixelDistancesDoesMatchXYOddN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+        volume.addCoord(13,7,2);
+
+        assertEquals(10,volume.getZMedian(true,true),tolerance);
+
+    }
+
+    @Test
+    public void testGetZMedianCalibratedDistancesOddN() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units);
+        volume.addCoord(10,5,1);
+        volume.addCoord(10,5,2);
+        volume.addCoord(11,5,2);
+        volume.addCoord(13,7,1);
+        volume.addCoord(13,7,2);
+
+        assertEquals(0.2,volume.getZMedian(false,false),tolerance);
+        assertEquals(0.2,volume.getZMedian(false,true),tolerance);
+
+    }
+
+
     // ANGLE BETWEEN TWO VOLUMES
 
     @Test
@@ -801,6 +1033,7 @@ public class VolumeTest {
 
     }
 
+
     // HASHCODE TESTS
 
     @Test
@@ -1047,4 +1280,45 @@ public class VolumeTest {
 
     }
 
+
+    // MISCELLANEOUS METHODS
+
+    @Test
+    public void testClearSurface() {
+        Volume volume1 = new Volume(2.0,1.0,"PX");
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+        volume1.addCoord(1,2,8);
+        volume1.addCoord(1,4,8);
+        volume1.addCoord(2,4,8);
+        volume1.addCoord(3,4,8);
+        volume1.addCoord(2,4,2);
+        volume1.addCoord(2,6,9);
+
+        volume1.calculateSurface();
+        assertNotNull(volume1.surface);
+
+        volume1.clearSurface();
+        assertNull(volume1.surface);
+    }
+
+    @Test
+    public void testClearPoints() {
+        Volume volume1 = new Volume(2.0,1.0,"PX");
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+        volume1.addCoord(1,2,8);
+        volume1.addCoord(1,4,8);
+        volume1.addCoord(2,4,8);
+        volume1.addCoord(3,4,8);
+        volume1.addCoord(2,4,2);
+        volume1.addCoord(2,6,9);
+
+        volume1.clearPoints();
+        assertEquals(0,volume1.points.size());
+    }
 }
