@@ -6,8 +6,8 @@ import wbif.sjx.common.Object.Volume;
 public class EllipseCalculator {
     private double[] e2d;
 
-    public EllipseCalculator(Volume volume) {
-        if (volume.getNVoxels() == 1) return;
+    public EllipseCalculator(Volume volume) throws RuntimeException {
+        if (volume.getNVoxels() <= 2) return;
 
         //Uses FitEllipse class from BoneJ
         double[] x = volume.getX(true);
