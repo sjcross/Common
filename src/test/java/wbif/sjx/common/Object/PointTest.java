@@ -5,6 +5,23 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PointTest {
+    private double tolerance = 1E-2;
+
+    @Test
+    public void testCalculateDistanceToPoint() {
+        Point<Integer> p1 = new Point<>(1,2,3);
+        Point<Integer> p2 = new Point<>(2,3,5);
+
+        double expected = 2.45;
+        double actual = p1.calculateDistanceToPoint(p2);
+        assertEquals(expected,actual,tolerance);
+
+        expected = 0;
+        actual = p1.calculateDistanceToPoint(p1);
+        assertEquals(expected,actual,tolerance);
+
+    }
+
     @Test
     public void testHashCode() {
         Point<Integer> p1 = new Point<>(1,2,3);
