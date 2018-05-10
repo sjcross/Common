@@ -32,6 +32,11 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
     public static final String SERIES_NUMBER = "Series number";
     public static final String SERIES_NAME = "Series name";
     public static final String UNITS = "Units";
+    public static final String PLATE_NAME = "Plate name";
+    public static final String PLATE_MANUFACTURER = "Plate manufacturer";
+    public static final String PLATE_MODEL = "Plate model";
+    public static final String TIMELINE_NUMBER = "Timeline number";
+    public static final String ACTION_NUMBER = "Action number";
 
 
     // CONSTRUCTOR
@@ -226,6 +231,46 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
 
     public void setUnits(String units) {
         put(UNITS,units);
+    }
+
+    public String getPlateName() {
+        return get(PLATE_NAME) == null ? null : (String) get(PLATE_NAME);
+    }
+
+    public void setPlateName(String plateName) {
+        put(PLATE_NAME,plateName);
+    }
+
+    public String getPlateManufacturer() {
+        return get(PLATE_MANUFACTURER) == null ? null : (String) get(PLATE_MANUFACTURER);
+    }
+
+    public void setPlateManufacturer(String plateManufacturer) {
+        put(PLATE_MANUFACTURER,plateManufacturer);
+    }
+
+    public String getPlateModel() {
+        return get(PLATE_MODEL) == null ? null : (String) get(PLATE_MODEL);
+    }
+
+    public void setPlateModel(String plateModel) {
+        put(PLATE_MODEL,plateModel);
+    }
+
+    public int getTimelineNumber() {
+        return get(TIMELINE_NUMBER) == null ? -1 : (Integer) get(TIMELINE_NUMBER);
+    }
+
+    public void setTimelineNumber(int timelineNumber) {
+        put(TIMELINE_NUMBER,timelineNumber);
+    }
+
+    public int getActionNumber() {
+        return get(ACTION_NUMBER) == null ? -1 : (Integer) get(ACTION_NUMBER);
+    }
+
+    public void setActionNumber(int actionNumber) {
+        put(ACTION_NUMBER,actionNumber);
     }
 
     public String getAsString(String property) {
