@@ -2,6 +2,7 @@ package wbif.sjx.common.MetadataExtractors;
 
 import wbif.sjx.common.Object.HCMetadata;
 
+import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,5 +50,18 @@ public class CV7000FilenameExtractor implements NameExtractor {
             return false;
 
         }
+    }
+
+    public String construct(HCMetadata metadata) {
+        DecimalFormat df2 = new DecimalFormat("00");
+        DecimalFormat df3 = new DecimalFormat("000");
+        DecimalFormat df4 = new DecimalFormat("0000");
+
+        return metadata.getPlateName() + "_" + metadata.getPlateManufacturer() + "_#" + metadata.getPlateModel() +
+                "_" + metadata.getWell() + "_T" + df4.format(metadata.getTimepoint()) + "F" +
+                df3.format(metadata.getField()) + "L" + df2.format(metadata.getTimelineNumber()) + "A" +
+                df2.format(metadata.getActionNumber()) + "Z" + df2.format(metadata.getZ()) + "C" +
+                df2.format(metadata.getChannel()) + "." + metadata.getExt();
+
     }
 }
