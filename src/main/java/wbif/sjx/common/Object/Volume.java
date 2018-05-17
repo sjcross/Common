@@ -331,6 +331,7 @@ public class Volume {
         // Checking if the centroid has previously been calculated
         if (meanCentroid == null) calculateMeanCentroid();
 
+        // matchXY is ignored if using calibrated distances
         if (pixelDistances && !matchXY) return meanCentroid.getZ();
         if (pixelDistances && matchXY) return meanCentroid.getZ()*dppZ/dppXY;
 
@@ -483,6 +484,20 @@ public class Volume {
         }
 
         return ovl;
+
+    }
+
+    public double getCentroidSeparation(Volume volume2, boolean pixelDistances) {
+        double x1 = getXMean(pixelDistances);
+        double y1 = getYMean(pixelDistances);
+        double z1 = getZMean(pixelDistances,true);
+
+        double x2 = volume2.getXMean(pixelDistances);
+        double y2 = volume2.getYMean(pixelDistances);
+        double z2 = volume2.getZMean(pixelDistances,true);
+
+        return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1));
+
     }
 
     public ArrayList<Point<Integer>> getOverlappingPoints(Volume volume2) {
