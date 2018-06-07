@@ -18,6 +18,7 @@ public class Volume {
     protected final double dppXY; //Calibration in xy (fixed once declared in constructor)
     protected final double dppZ; //Calibration in z (fixed once declared in constructor)
     protected final String calibratedUnits;
+    protected final boolean twoD;
 
     protected TreeSet<Point<Integer>> points = new TreeSet<>();
     protected TreeSet<Point<Integer>> surface = null;
@@ -34,6 +35,15 @@ public class Volume {
      */
     private Point<Double> medianCentroid = null;
 
+
+    public Volume(double dppXY, double dppZ, String calibratedUnits, boolean twoD) {
+        this.dppXY = dppXY;
+        this.dppZ = dppZ;
+        this.calibratedUnits = calibratedUnits;
+        this.twoD = twoD;
+    }
+
+
     public TreeSet<Point<Integer>> getPoints() {
         return points;
 
@@ -45,13 +55,6 @@ public class Volume {
 
     public void clearPoints() {
         points = new TreeSet<>();
-    }
-
-    public Volume(double dppXY, double dppZ, String calibratedUnits) {
-        this.dppXY = dppXY;
-        this.dppZ = dppZ;
-        this.calibratedUnits = calibratedUnits;
-
     }
 
     public void addCoord(int xIn, int yIn, int zIn) {
@@ -71,6 +74,10 @@ public class Volume {
 
     public String getCalibratedUnits() {
         return calibratedUnits;
+    }
+
+    public boolean is2D() {
+        return twoD;
     }
 
     public ArrayList<Integer> getXCoords() {
@@ -106,7 +113,11 @@ public class Volume {
     }
 
     public void calculateSurface() {
-        calculateSurface3D();
+        if (twoD) {
+            calculateSurface2D();
+        } else {
+            calculateSurface3D();
+        }
     }
 
     public void calculateSurface2D() {
