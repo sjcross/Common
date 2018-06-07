@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,20 +47,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="VolumeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
+            <state relative-caret-position="578">
               <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
               <folding />
             </state>
@@ -74,7 +63,6 @@
             <state relative-caret-position="663">
               <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#PeriodogramCalculator#0" expanded="false" />
                 <element signature="method#padSignal#0;class#PeriodogramCalculator#0" expanded="false" />
                 <element signature="method#calculateFFT#0;class#PeriodogramCalculator#0" expanded="false" />
@@ -94,7 +82,6 @@
             <state relative-caret-position="459">
               <caret line="86" column="57" lean-forward="false" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
               <folding>
-                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#PeriodogramCalculatorTest#0" expanded="false" />
                 <element signature="method#testPadSignal#0;class#PeriodogramCalculatorTest#0" expanded="false" />
                 <element signature="method#testCalculateFFT#0;class#PeriodogramCalculatorTest#0" expanded="false" />
@@ -121,9 +108,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,25 +118,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1530">
               <caret line="100" column="50" lean-forward="false" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#4868#4869#0" expanded="false" />
-                <element signature="e#4907#4908#0" expanded="false" />
-                <element signature="e#5329#5330#0" expanded="false" />
-                <element signature="e#5366#5367#0" expanded="false" />
-                <element signature="e#5405#5406#0" expanded="false" />
-                <element signature="e#5443#5444#0" expanded="false" />
-                <element signature="e#5502#5503#0" expanded="false" />
-                <element signature="e#5556#5557#0" expanded="false" />
-                <element signature="e#5596#5597#0" expanded="false" />
-                <element signature="e#5632#5633#0" expanded="false" />
-                <element signature="e#5690#5691#0" expanded="false" />
-                <element signature="e#5740#5741#0" expanded="false" />
-                <element signature="e#5787#5788#0" expanded="false" />
-                <element signature="e#5823#5824#0" expanded="false" />
-                <element signature="e#5888#5889#0" expanded="false" />
-                <element signature="e#5938#5939#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -163,12 +130,6 @@
               <caret line="65" column="5" lean-forward="false" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
               <folding>
                 <element signature="method#Point#0;class#Point#0" expanded="false" />
-                <element signature="e#328#329#0" expanded="false" />
-                <element signature="e#352#353#0" expanded="false" />
-                <element signature="e#375#376#0" expanded="false" />
-                <element signature="e#399#400#0" expanded="false" />
-                <element signature="e#422#423#0" expanded="false" />
-                <element signature="e#446#447#0" expanded="false" />
                 <element signature="method#setX#0;class#Point#0" expanded="false" />
                 <element signature="method#setY#0;class#Point#0" expanded="false" />
                 <element signature="method#setZ#0;class#Point#0" expanded="false" />
@@ -181,11 +142,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Volume.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Volume.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="765">
+              <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#Volume#0" expanded="false" />
                 <element signature="docComment;field#meanCentroid#0;class#Volume#0" expanded="false" />
@@ -194,8 +155,6 @@
                 <element signature="method#addCoord#0;class#Volume#0" expanded="false" />
                 <element signature="method#getDistPerPxXY#0;class#Volume#0" expanded="false" />
                 <element signature="method#getDistPerPxZ#0;class#Volume#0" expanded="false" />
-                <element signature="e#2170#2171#0" expanded="true" />
-                <element signature="e#2197#2198#0" expanded="true" />
                 <element signature="method#getXCoords#0;class#Volume#0" expanded="false" />
                 <element signature="method#getYCoords#0;class#Volume#0" expanded="false" />
                 <element signature="method#getZCoords#0;class#Volume#0" expanded="false" />
@@ -245,12 +204,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
               <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#Track#0" expanded="false" />
                 <element signature="method#Track#0;class#Track#0" expanded="false" />
                 <element signature="method#Track#1;class#Track#0" expanded="false" />
@@ -258,6 +228,8 @@
                 <element signature="method#Track#3;class#Track#0" expanded="false" />
                 <element signature="method#Track#4;class#Track#0" expanded="false" />
                 <element signature="method#Track#5;class#Track#0" expanded="false" />
+                <element signature="e#1905#1906#0" expanded="false" />
+                <element signature="e#1952#1953#0" expanded="false" />
                 <element signature="docComment;method#getMeanPosition#0;class#Track#0" expanded="false" />
                 <element signature="method#getDirectionalPersistence#0;class#Track#0" expanded="false" />
                 <element signature="method#getMSD#0;class#Track#0" expanded="false" />
@@ -284,6 +256,14 @@
                 <element signature="method#getZ#1;class#Track#0" expanded="false" />
                 <element signature="method#getF#0;class#Track#0" expanded="false" />
                 <element signature="method#getPointAtFrame#0;class#Track#0" expanded="false" />
+                <element signature="e#9364#9365#0" expanded="false" />
+                <element signature="e#9443#9444#0" expanded="false" />
+                <element signature="e#9476#9477#0" expanded="false" />
+                <element signature="e#9505#9506#0" expanded="false" />
+                <element signature="e#9537#9538#0" expanded="false" />
+                <element signature="e#9565#9566#0" expanded="false" />
+                <element signature="e#9619#9620#0" expanded="false" />
+                <element signature="e#9671#9672#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -391,10 +371,10 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Periodogram.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/PeriodogramCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -429,6 +409,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -715,9 +698,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -725,7 +705,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SkeletonTools" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="settings.editor.selected.configurable" value="copyright.filetypes.JAVA" />
   </component>
@@ -1107,20 +1087,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1862" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="1920" y="0" width="1855" height="1080" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252191" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25511196" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="779" y="484" width="919" height="112" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25511196" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="779" y="484" width="919" height="112" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20747562" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" x="1938" y="39" width="333" height="964" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1133,7 +1112,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252191" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1449,12 +1430,6 @@
           <caret line="65" column="5" lean-forward="false" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding>
             <element signature="method#Point#0;class#Point#0" expanded="false" />
-            <element signature="e#328#329#0" expanded="false" />
-            <element signature="e#352#353#0" expanded="false" />
-            <element signature="e#375#376#0" expanded="false" />
-            <element signature="e#399#400#0" expanded="false" />
-            <element signature="e#422#423#0" expanded="false" />
-            <element signature="e#446#447#0" expanded="false" />
             <element signature="method#setX#0;class#Point#0" expanded="false" />
             <element signature="method#setY#0;class#Point#0" expanded="false" />
             <element signature="method#setZ#0;class#Point#0" expanded="false" />
@@ -1484,9 +1459,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1494,25 +1467,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
           <caret line="100" column="50" lean-forward="false" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4868#4869#0" expanded="false" />
-            <element signature="e#4907#4908#0" expanded="false" />
-            <element signature="e#5329#5330#0" expanded="false" />
-            <element signature="e#5366#5367#0" expanded="false" />
-            <element signature="e#5405#5406#0" expanded="false" />
-            <element signature="e#5443#5444#0" expanded="false" />
-            <element signature="e#5502#5503#0" expanded="false" />
-            <element signature="e#5556#5557#0" expanded="false" />
-            <element signature="e#5596#5597#0" expanded="false" />
-            <element signature="e#5632#5633#0" expanded="false" />
-            <element signature="e#5690#5691#0" expanded="false" />
-            <element signature="e#5740#5741#0" expanded="false" />
-            <element signature="e#5787#5788#0" expanded="false" />
-            <element signature="e#5823#5824#0" expanded="false" />
-            <element signature="e#5888#5889#0" expanded="false" />
-            <element signature="e#5938#5939#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1543,7 +1498,6 @@
         <state relative-caret-position="459">
           <caret line="86" column="57" lean-forward="false" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
           <folding>
-            <element signature="imports" expanded="false" />
             <element signature="docComment;class#PeriodogramCalculatorTest#0" expanded="false" />
             <element signature="method#testPadSignal#0;class#PeriodogramCalculatorTest#0" expanded="false" />
             <element signature="method#testCalculateFFT#0;class#PeriodogramCalculatorTest#0" expanded="false" />
@@ -1569,7 +1523,6 @@
         <state relative-caret-position="663">
           <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
             <element signature="docComment;class#PeriodogramCalculator#0" expanded="false" />
             <element signature="method#padSignal#0;class#PeriodogramCalculator#0" expanded="false" />
             <element signature="method#calculateFFT#0;class#PeriodogramCalculator#0" expanded="false" />
@@ -1582,19 +1535,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#Track#0" expanded="false" />
             <element signature="method#Track#0;class#Track#0" expanded="false" />
             <element signature="method#Track#1;class#Track#0" expanded="false" />
@@ -1602,6 +1548,8 @@
             <element signature="method#Track#3;class#Track#0" expanded="false" />
             <element signature="method#Track#4;class#Track#0" expanded="false" />
             <element signature="method#Track#5;class#Track#0" expanded="false" />
+            <element signature="e#1905#1906#0" expanded="false" />
+            <element signature="e#1952#1953#0" expanded="false" />
             <element signature="docComment;method#getMeanPosition#0;class#Track#0" expanded="false" />
             <element signature="method#getDirectionalPersistence#0;class#Track#0" expanded="false" />
             <element signature="method#getMSD#0;class#Track#0" expanded="false" />
@@ -1628,13 +1576,21 @@
             <element signature="method#getZ#1;class#Track#0" expanded="false" />
             <element signature="method#getF#0;class#Track#0" expanded="false" />
             <element signature="method#getPointAtFrame#0;class#Track#0" expanded="false" />
+            <element signature="e#9364#9365#0" expanded="false" />
+            <element signature="e#9443#9444#0" expanded="false" />
+            <element signature="e#9476#9477#0" expanded="false" />
+            <element signature="e#9505#9506#0" expanded="false" />
+            <element signature="e#9537#9538#0" expanded="false" />
+            <element signature="e#9565#9566#0" expanded="false" />
+            <element signature="e#9619#9620#0" expanded="false" />
+            <element signature="e#9671#9672#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
+        <state relative-caret-position="578">
           <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
           <folding />
         </state>
@@ -1642,8 +1598,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="765">
+          <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Volume#0" expanded="false" />
             <element signature="docComment;field#meanCentroid#0;class#Volume#0" expanded="false" />
@@ -1652,8 +1608,6 @@
             <element signature="method#addCoord#0;class#Volume#0" expanded="false" />
             <element signature="method#getDistPerPxXY#0;class#Volume#0" expanded="false" />
             <element signature="method#getDistPerPxZ#0;class#Volume#0" expanded="false" />
-            <element signature="e#2170#2171#0" expanded="true" />
-            <element signature="e#2197#2198#0" expanded="true" />
             <element signature="method#getXCoords#0;class#Volume#0" expanded="false" />
             <element signature="method#getYCoords#0;class#Volume#0" expanded="false" />
             <element signature="method#getZCoords#0;class#Volume#0" expanded="false" />
@@ -1699,6 +1653,14 @@
             <element signature="method#hashCode#0;class#Volume#0" expanded="false" />
             <element signature="method#equals#0;class#Volume#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
