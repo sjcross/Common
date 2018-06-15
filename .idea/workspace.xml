@@ -7,6 +7,7 @@
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,173 +38,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Spot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Spot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VolumeTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PeriodogramCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-              <folding>
-                <element signature="docComment;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#padSignal#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#calculateFFT#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#calculatePSD#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#calculateFrequency#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#calculate#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="docComment;method#getMaxPowerFrequency#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#flattenPeak#0;class#PeriodogramCalculator#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PeriodogramCalculatorTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/PeriodogramCalculatorTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="86" column="57" lean-forward="false" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
-              <folding>
-                <element signature="docComment;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testPadSignal#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testCalculateFFT#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testCalculatePSD#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testCalculateFrequency#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testCalculate#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testGetMaxPowerFrequency#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getRawSignal#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getPaddedSignal#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getFFT#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getPSD#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getFrequency#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getPeriodogram#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getFirstFlattenedPSD#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getSecondFlattenedPSD#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getKeyFrequencies#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EllipseCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CurvatureCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/CurvatureCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="100" column="50" lean-forward="false" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Point.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="65" column="5" lean-forward="false" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-              <folding>
-                <element signature="method#Point#0;class#Point#0" expanded="false" />
-                <element signature="method#setX#0;class#Point#0" expanded="false" />
-                <element signature="method#setY#0;class#Point#0" expanded="false" />
-                <element signature="method#setZ#0;class#Point#0" expanded="false" />
-                <element signature="method#calculateDistanceToPoint#0;class#Point#0" expanded="false" />
-                <element signature="method#hashCode#0;class#Point#0" expanded="false" />
-                <element signature="method#equals#0;class#Point#0" expanded="false" />
-                <element signature="method#compareTo#0;class#Point#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Volume.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
-              <folding>
-                <element signature="docComment;class#Volume#0" expanded="false" />
-                <element signature="docComment;field#meanCentroid#0;class#Volume#0" expanded="false" />
-                <element signature="docComment;field#medianCentroid#0;class#Volume#0" expanded="false" />
-                <element signature="method#getPoints#0;class#Volume#0" expanded="false" />
-                <element signature="method#addCoord#0;class#Volume#0" expanded="false" />
-                <element signature="method#getDistPerPxXY#0;class#Volume#0" expanded="false" />
-                <element signature="method#getDistPerPxZ#0;class#Volume#0" expanded="false" />
-                <element signature="method#getXCoords#0;class#Volume#0" expanded="false" />
-                <element signature="method#getYCoords#0;class#Volume#0" expanded="false" />
-                <element signature="method#getZCoords#0;class#Volume#0" expanded="false" />
-                <element signature="method#getSurfaceXCoords#0;class#Volume#0" expanded="false" />
-                <element signature="method#getSurfaceYCoords#0;class#Volume#0" expanded="false" />
-                <element signature="method#getSurfaceZCoords#0;class#Volume#0" expanded="false" />
-                <element signature="method#calculateSurface#0;class#Volume#0" expanded="false" />
-                <element signature="method#calculateSurface2D#0;class#Volume#0" expanded="false" />
-                <element signature="e#3986#4067#0" expanded="false" />
-                <element signature="method#calculateSurface3D#0;class#Volume#0" expanded="false" />
-                <element signature="method#getX#0;class#Volume#0" expanded="false" />
-                <element signature="method#getY#0;class#Volume#0" expanded="false" />
-                <element signature="docComment;method#getZ#0;class#Volume#0" expanded="false" />
-                <element signature="method#getZ#0;class#Volume#0" expanded="false" />
-                <element signature="method#getSurfaceX#0;class#Volume#0" expanded="false" />
-                <element signature="method#getSurfaceY#0;class#Volume#0" expanded="false" />
-                <element signature="docComment;method#getSurfaceZ#0;class#Volume#0" expanded="false" />
-                <element signature="method#getSurfaceZ#0;class#Volume#0" expanded="false" />
-                <element signature="method#calculateMeanCentroid#0;class#Volume#0" expanded="false" />
-                <element signature="method#calculateMedianCentroid#0;class#Volume#0" expanded="false" />
-                <element signature="docComment;method#getXMean#0;class#Volume#0" expanded="false" />
-                <element signature="method#getXMean#0;class#Volume#0" expanded="false" />
-                <element signature="method#getYMean#0;class#Volume#0" expanded="false" />
-                <element signature="method#getZMean#0;class#Volume#0" expanded="false" />
-                <element signature="method#getXMedian#0;class#Volume#0" expanded="false" />
-                <element signature="method#getYMedian#0;class#Volume#0" expanded="false" />
-                <element signature="method#getZMedian#0;class#Volume#0" expanded="false" />
-                <element signature="method#getHeight#0;class#Volume#0" expanded="false" />
-                <element signature="method#getExtents#0;class#Volume#0" expanded="false" />
-                <element signature="method#getExtents2D#0;class#Volume#0" expanded="false" />
-                <element signature="method#hasVolume#0;class#Volume#0" expanded="false" />
-                <element signature="method#hasArea#0;class#Volume#0" expanded="false" />
-                <element signature="method#getNVoxels#0;class#Volume#0" expanded="false" />
-                <element signature="method#getProjectedArea#0;class#Volume#0" expanded="false" />
-                <element signature="method#getOverlap#0;class#Volume#0" expanded="false" />
-                <element signature="method#getCentroidSeparation#0;class#Volume#0" expanded="false" />
-                <element signature="method#getOverlappingPoints#0;class#Volume#0" expanded="false" />
-                <element signature="method#getCentroidDistanceToPoint#0;class#Volume#0" expanded="false" />
-                <element signature="method#getNearestDistanceToPoint#0;class#Volume#0" expanded="false" />
-                <element signature="docComment;method#calculateAngle2D#0;class#Volume#0" expanded="false" />
-                <element signature="method#calculateAngle2D#0;class#Volume#0" expanded="false" />
-                <element signature="method#getContainedVolume#0;class#Volume#0" expanded="false" />
-                <element signature="method#hashCode#0;class#Volume#0" expanded="false" />
-                <element signature="method#equals#0;class#Volume#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -214,56 +48,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
+      <file leaf-file-name="CV7000FilenameExtractor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
+            <state relative-caret-position="153">
+              <caret line="38" column="38" lean-forward="false" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="docComment;class#Track#0" expanded="false" />
-                <element signature="method#Track#0;class#Track#0" expanded="false" />
-                <element signature="method#Track#1;class#Track#0" expanded="false" />
-                <element signature="method#Track#2;class#Track#0" expanded="false" />
-                <element signature="method#Track#3;class#Track#0" expanded="false" />
-                <element signature="method#Track#4;class#Track#0" expanded="false" />
-                <element signature="method#Track#5;class#Track#0" expanded="false" />
-                <element signature="e#1905#1906#0" expanded="false" />
-                <element signature="e#1952#1953#0" expanded="false" />
-                <element signature="docComment;method#getMeanPosition#0;class#Track#0" expanded="false" />
-                <element signature="method#getDirectionalPersistence#0;class#Track#0" expanded="false" />
-                <element signature="method#getMSD#0;class#Track#0" expanded="false" />
-                <element signature="method#getMSDLinearFit#0;class#Track#0" expanded="false" />
-                <element signature="method#getInstantaneousStepSizes#0;class#Track#0" expanded="false" />
-                <element signature="method#getEuclideanDistance#0;class#Track#0" expanded="false" />
-                <element signature="method#getTotalPathLength#0;class#Track#0" expanded="false" />
-                <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
-                <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-                <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
-                <element signature="method#getNearestNeighbourDistance#0;class#Track#0" expanded="false" />
-                <element signature="method#getDuration#0;class#Track#0" expanded="false" />
-                <element signature="method#getLimits#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingIntensity#0;class#Track#0" expanded="false" />
-                <element signature="method#hasFrame#0;class#Track#0" expanded="false" />
-                <element signature="method#getX#0;class#Track#0" expanded="false" />
-                <element signature="method#getY#0;class#Track#0" expanded="false" />
-                <element signature="method#getZ#0;class#Track#0" expanded="false" />
-                <element signature="method#getX#1;class#Track#0" expanded="false" />
-                <element signature="method#getY#1;class#Track#0" expanded="false" />
-                <element signature="method#getZ#1;class#Track#0" expanded="false" />
-                <element signature="method#getF#0;class#Track#0" expanded="false" />
-                <element signature="method#getPointAtFrame#0;class#Track#0" expanded="false" />
-                <element signature="e#9364#9365#0" expanded="false" />
-                <element signature="e#9443#9444#0" expanded="false" />
-                <element signature="e#9476#9477#0" expanded="false" />
-                <element signature="e#9505#9506#0" expanded="false" />
-                <element signature="e#9537#9538#0" expanded="false" />
-                <element signature="e#9565#9566#0" expanded="false" />
-                <element signature="e#9619#9620#0" expanded="false" />
-                <element signature="e#9671#9672#0" expanded="false" />
+                <element signature="e#3097#3098#0" expanded="true" />
+                <element signature="e#3137#3138#0" expanded="true" />
+                <element signature="e#3203#3204#0" expanded="true" />
+                <element signature="e#3258#3259#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -366,7 +160,6 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/NameExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/HCMetadata.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/Periodogram.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Periodogram.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/PeriodogramCalculatorTest.java" />
@@ -374,6 +167,7 @@
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
@@ -409,8 +203,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -663,6 +457,66 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MetadataExtractors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FileConditions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1098,7 +952,7 @@
       <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25511196" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="779" y="484" width="919" height="112" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20747562" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" x="1938" y="39" width="333" height="964" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20729166" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" x="1938" y="39" width="333" height="964" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1417,13 +1271,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -1540,7 +1387,6 @@
         <state relative-caret-position="408">
           <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="false" />
             <element signature="docComment;class#Track#0" expanded="false" />
             <element signature="method#Track#0;class#Track#0" expanded="false" />
             <element signature="method#Track#1;class#Track#0" expanded="false" />
@@ -1548,8 +1394,6 @@
             <element signature="method#Track#3;class#Track#0" expanded="false" />
             <element signature="method#Track#4;class#Track#0" expanded="false" />
             <element signature="method#Track#5;class#Track#0" expanded="false" />
-            <element signature="e#1905#1906#0" expanded="false" />
-            <element signature="e#1952#1953#0" expanded="false" />
             <element signature="docComment;method#getMeanPosition#0;class#Track#0" expanded="false" />
             <element signature="method#getDirectionalPersistence#0;class#Track#0" expanded="false" />
             <element signature="method#getMSD#0;class#Track#0" expanded="false" />
@@ -1576,14 +1420,6 @@
             <element signature="method#getZ#1;class#Track#0" expanded="false" />
             <element signature="method#getF#0;class#Track#0" expanded="false" />
             <element signature="method#getPointAtFrame#0;class#Track#0" expanded="false" />
-            <element signature="e#9364#9365#0" expanded="false" />
-            <element signature="e#9443#9444#0" expanded="false" />
-            <element signature="e#9476#9477#0" expanded="false" />
-            <element signature="e#9505#9506#0" expanded="false" />
-            <element signature="e#9537#9538#0" expanded="false" />
-            <element signature="e#9565#9566#0" expanded="false" />
-            <element signature="e#9619#9620#0" expanded="false" />
-            <element signature="e#9671#9672#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1598,7 +1434,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
+        <state relative-caret-position="1428">
           <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Volume#0" expanded="false" />
@@ -1652,6 +1488,19 @@
             <element signature="method#getContainedVolume#0;class#Volume#0" expanded="false" />
             <element signature="method#hashCode#0;class#Volume#0" expanded="false" />
             <element signature="method#equals#0;class#Volume#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="38" column="38" lean-forward="false" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+          <folding>
+            <element signature="e#3097#3098#0" expanded="true" />
+            <element signature="e#3137#3138#0" expanded="true" />
+            <element signature="e#3203#3204#0" expanded="true" />
+            <element signature="e#3258#3259#0" expanded="true" />
           </folding>
         </state>
       </provider>
