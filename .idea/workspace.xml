@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/VolumeCalculatorTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/VolumeCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/VolumeCalculator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,11 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Spot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Spot.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="493">
+              <caret line="86" column="20" lean-forward="false" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -50,94 +52,33 @@
       <file leaf-file-name="VolumeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+            <state relative-caret-position="391">
+              <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PeriodogramCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java">
+      <file leaf-file-name="VolumeCalculator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/VolumeCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+            <state relative-caret-position="764">
+              <caret line="229" column="8" lean-forward="false" selection-start-line="229" selection-start-column="8" selection-end-line="229" selection-end-column="8" />
               <folding>
-                <element signature="docComment;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#padSignal#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#calculateFFT#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#calculatePSD#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#calculateFrequency#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#calculate#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="docComment;method#getMaxPowerFrequency#0;class#PeriodogramCalculator#0" expanded="false" />
-                <element signature="method#flattenPeak#0;class#PeriodogramCalculator#0" expanded="false" />
+                <element signature="method#getHullVolume#0;class#VolumeCalculator#0" expanded="false" />
+                <element signature="e#5304#5415#0" expanded="false" />
+                <element signature="method#getSphericity#0;class#VolumeCalculator#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PeriodogramCalculatorTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/PeriodogramCalculatorTest.java">
+      <file leaf-file-name="VolumeCalculatorTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/VolumeCalculatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="86" column="57" lean-forward="false" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
-              <folding>
-                <element signature="docComment;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testPadSignal#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testCalculateFFT#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testCalculatePSD#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testCalculateFrequency#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testCalculate#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#testGetMaxPowerFrequency#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getRawSignal#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getPaddedSignal#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getFFT#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getPSD#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getFrequency#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getPeriodogram#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getFirstFlattenedPSD#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getSecondFlattenedPSD#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-                <element signature="method#getKeyFrequencies#0;class#PeriodogramCalculatorTest#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EllipseCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+            <state relative-caret-position="424">
+              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CurvatureCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/CurvatureCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="100" column="50" lean-forward="false" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Point.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="65" column="5" lean-forward="false" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-              <folding>
-                <element signature="method#Point#0;class#Point#0" expanded="false" />
-                <element signature="method#setX#0;class#Point#0" expanded="false" />
-                <element signature="method#setY#0;class#Point#0" expanded="false" />
-                <element signature="method#setZ#0;class#Point#0" expanded="false" />
-                <element signature="method#calculateDistanceToPoint#0;class#Point#0" expanded="false" />
-                <element signature="method#hashCode#0;class#Point#0" expanded="false" />
-                <element signature="method#equals#0;class#Point#0" expanded="false" />
-                <element signature="method#compareTo#0;class#Point#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -145,14 +86,13 @@
       <file leaf-file-name="Volume.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
+            <state relative-caret-position="589">
+              <caret line="59" column="52" lean-forward="false" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
               <folding>
                 <element signature="docComment;class#Volume#0" expanded="false" />
                 <element signature="docComment;field#meanCentroid#0;class#Volume#0" expanded="false" />
                 <element signature="docComment;field#medianCentroid#0;class#Volume#0" expanded="false" />
                 <element signature="method#getPoints#0;class#Volume#0" expanded="false" />
-                <element signature="method#addCoord#0;class#Volume#0" expanded="false" />
                 <element signature="method#getDistPerPxXY#0;class#Volume#0" expanded="false" />
                 <element signature="method#getDistPerPxZ#0;class#Volume#0" expanded="false" />
                 <element signature="method#getXCoords#0;class#Volume#0" expanded="false" />
@@ -183,7 +123,6 @@
                 <element signature="method#getYMedian#0;class#Volume#0" expanded="false" />
                 <element signature="method#getZMedian#0;class#Volume#0" expanded="false" />
                 <element signature="method#getHeight#0;class#Volume#0" expanded="false" />
-                <element signature="method#getExtents#0;class#Volume#0" expanded="false" />
                 <element signature="method#getExtents2D#0;class#Volume#0" expanded="false" />
                 <element signature="method#hasVolume#0;class#Volume#0" expanded="false" />
                 <element signature="method#hasArea#0;class#Volume#0" expanded="false" />
@@ -199,71 +138,6 @@
                 <element signature="method#getContainedVolume#0;class#Volume#0" expanded="false" />
                 <element signature="method#hashCode#0;class#Volume#0" expanded="false" />
                 <element signature="method#equals#0;class#Volume#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="docComment;class#Track#0" expanded="false" />
-                <element signature="method#Track#0;class#Track#0" expanded="false" />
-                <element signature="method#Track#1;class#Track#0" expanded="false" />
-                <element signature="method#Track#2;class#Track#0" expanded="false" />
-                <element signature="method#Track#3;class#Track#0" expanded="false" />
-                <element signature="method#Track#4;class#Track#0" expanded="false" />
-                <element signature="method#Track#5;class#Track#0" expanded="false" />
-                <element signature="e#1905#1906#0" expanded="false" />
-                <element signature="e#1952#1953#0" expanded="false" />
-                <element signature="docComment;method#getMeanPosition#0;class#Track#0" expanded="false" />
-                <element signature="method#getDirectionalPersistence#0;class#Track#0" expanded="false" />
-                <element signature="method#getMSD#0;class#Track#0" expanded="false" />
-                <element signature="method#getMSDLinearFit#0;class#Track#0" expanded="false" />
-                <element signature="method#getInstantaneousStepSizes#0;class#Track#0" expanded="false" />
-                <element signature="method#getEuclideanDistance#0;class#Track#0" expanded="false" />
-                <element signature="method#getTotalPathLength#0;class#Track#0" expanded="false" />
-                <element signature="method#getDirectionalityRatio#0;class#Track#0" expanded="false" />
-                <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingEuclideanDistance#0;class#Track#0" expanded="false" />
-                <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingTotalPathLength#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" expanded="false" />
-                <element signature="method#getNearestNeighbourDistance#0;class#Track#0" expanded="false" />
-                <element signature="method#getDuration#0;class#Track#0" expanded="false" />
-                <element signature="method#getLimits#0;class#Track#0" expanded="false" />
-                <element signature="method#getRollingIntensity#0;class#Track#0" expanded="false" />
-                <element signature="method#hasFrame#0;class#Track#0" expanded="false" />
-                <element signature="method#getX#0;class#Track#0" expanded="false" />
-                <element signature="method#getY#0;class#Track#0" expanded="false" />
-                <element signature="method#getZ#0;class#Track#0" expanded="false" />
-                <element signature="method#getX#1;class#Track#0" expanded="false" />
-                <element signature="method#getY#1;class#Track#0" expanded="false" />
-                <element signature="method#getZ#1;class#Track#0" expanded="false" />
-                <element signature="method#getF#0;class#Track#0" expanded="false" />
-                <element signature="method#getPointAtFrame#0;class#Track#0" expanded="false" />
-                <element signature="e#9364#9365#0" expanded="false" />
-                <element signature="e#9443#9444#0" expanded="false" />
-                <element signature="e#9476#9477#0" expanded="false" />
-                <element signature="e#9505#9506#0" expanded="false" />
-                <element signature="e#9537#9538#0" expanded="false" />
-                <element signature="e#9565#9566#0" expanded="false" />
-                <element signature="e#9619#9620#0" expanded="false" />
-                <element signature="e#9671#9672#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -324,7 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/PruneSkeleton.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/Node.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/Vertex.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/Node.java" />
@@ -353,7 +226,6 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsString.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/VolumeCalculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousSpeedCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/InstantaneousSpeedCalculator.java" />
@@ -375,6 +247,8 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/VolumeCalculatorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/VolumeCalculator.java" />
       </list>
     </option>
   </component>
@@ -386,9 +260,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1862" />
+    <option name="width" value="1936" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -718,18 +592,18 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="wbif.sjx.common.Analysis" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sc13967\Local Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Process" />
-      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour\Energies" />
-      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour" />
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="wbif.sjx.common.Process.ActiveContour" />
       <recent name="wbif.sjx.common.Process.ActiveContour.Visualisation" />
       <recent name="wbif.sjx.common.Process.ActiveContour.Minimisers" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sc13967\Local Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Process" />
+      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour\Energies" />
+      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -744,7 +618,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Common [install]">
+  <component name="RunManager" selected="JUnit.VolumeCalculatorTest.getContainedPointsCube">
     <configuration default="false" name="All in Common" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="Common" />
@@ -805,6 +679,32 @@
       <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
       <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.PeriodogramCalculatorTest" />
       <option name="METHOD_NAME" value="testGetKeyFrequencies" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="VolumeCalculatorTest.getContainedPointsCube" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="wbif.sjx.common.Analysis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Common" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.VolumeCalculatorTest" />
+      <option name="METHOD_NAME" value="getContainedPointsCube" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1014,17 +914,19 @@
       </MavenSettings>
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Maven.Common [install]" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.All in Common" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.PeriodogramCalculatorTest.testGetMaxPowerFrequency" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.PeriodogramCalculatorTest.testGetKeyFrequencies" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.VolumeCalculatorTest.getContainedPointsCube" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.All in Common" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.PeriodogramCalculatorTest.testGetKeyFrequencies" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.PeriodogramCalculatorTest.testGetMaxPowerFrequency" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.VolumeCalculatorTest.getContainedPointsCube" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.All in Common" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PeriodogramCalculatorTest.testGetKeyFrequencies" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PeriodogramCalculatorTest.testGetMaxPowerFrequency" />
       </list>
     </recent_temporary>
   </component>
@@ -1045,35 +947,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_Common - 2018.05.23 at 11h 59m 39s.xml">
-      <configuration name="All in Common" configurationId="JUnit" />
+    <history-entry file="VolumeCalculatorTest_getContainedPointsCube - 2018.06.18 at 16h 35m 06s.xml">
+      <configuration name="VolumeCalculatorTest.getContainedPointsCube" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Common - 2018.05.23 at 12h 00m 07s.xml">
-      <configuration name="All in Common" configurationId="JUnit" />
+    <history-entry file="VolumeCalculatorTest_getContainedPointsCube - 2018.06.18 at 16h 37m 14s.xml">
+      <configuration name="VolumeCalculatorTest.getContainedPointsCube" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Common - 2018.05.23 at 12h 10m 06s.xml">
-      <configuration name="All in Common" configurationId="JUnit" />
+    <history-entry file="VolumeCalculatorTest_getContainedPointsCube - 2018.06.18 at 16h 37m 32s.xml">
+      <configuration name="VolumeCalculatorTest.getContainedPointsCube" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PeriodogramCalculatorTest - 2018.05.22 at 11h 27m 37s.xml">
-      <configuration name="PeriodogramCalculatorTest" configurationId="JUnit" />
+    <history-entry file="VolumeCalculatorTest_getContainedPointsCube - 2018.06.18 at 16h 37m 42s.xml">
+      <configuration name="VolumeCalculatorTest.getContainedPointsCube" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PeriodogramCalculatorTest - 2018.05.22 at 16h 45m 34s.xml">
-      <configuration name="PeriodogramCalculatorTest" configurationId="JUnit" />
+    <history-entry file="VolumeCalculatorTest_getContainedPointsCube - 2018.06.18 at 16h 37m 53s.xml">
+      <configuration name="VolumeCalculatorTest.getContainedPointsCube" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PeriodogramCalculatorTest_testFlattenPeak - 2018.05.23 at 11h 46m 07s.xml">
-      <configuration name="PeriodogramCalculatorTest.testFlattenPeak" configurationId="JUnit" />
+    <history-entry file="VolumeCalculatorTest_getContainedPointsCube - 2018.06.18 at 16h 39m 47s.xml">
+      <configuration name="VolumeCalculatorTest.getContainedPointsCube" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PeriodogramCalculatorTest_testFlattenPeak - 2018.05.23 at 11h 53m 02s.xml">
-      <configuration name="PeriodogramCalculatorTest.testFlattenPeak" configurationId="JUnit" />
+    <history-entry file="VolumeCalculatorTest_getContainedPointsCube - 2018.06.18 at 16h 40m 14s.xml">
+      <configuration name="VolumeCalculatorTest.getContainedPointsCube" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PeriodogramCalculatorTest_testFlattenPeak - 2018.05.23 at 11h 58m 28s.xml">
-      <configuration name="PeriodogramCalculatorTest.testFlattenPeak" configurationId="JUnit" />
+    <history-entry file="VolumeCalculatorTest_getContainedPointsCube - 2018.06.18 at 16h 40m 41s.xml">
+      <configuration name="VolumeCalculatorTest.getContainedPointsCube" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PeriodogramCalculatorTest_testGetKeyFrequencies - 2018.05.23 at 12h 09m 39s.xml">
-      <configuration name="PeriodogramCalculatorTest.testGetKeyFrequencies" configurationId="JUnit" />
+    <history-entry file="VolumeCalculatorTest_getContainedPointsCube - 2018.06.18 at 16h 45m 12s.xml">
+      <configuration name="VolumeCalculatorTest.getContainedPointsCube" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PeriodogramCalculatorTest_testGetMaxPowerFrequency - 2018.05.23 at 12h 03m 56s.xml">
-      <configuration name="PeriodogramCalculatorTest.testGetMaxPowerFrequency" configurationId="JUnit" />
+    <history-entry file="VolumeCalculatorTest_getContainedPointsCube - 2018.06.18 at 16h 46m 09s.xml">
+      <configuration name="VolumeCalculatorTest.getContainedPointsCube" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -1086,19 +988,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1862" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="1920" y="0" width="1855" height="1080" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252191" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25511196" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="779" y="484" width="919" height="112" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5063291" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="779" y="484" width="919" height="112" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20747562" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" x="1938" y="39" width="333" height="964" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20677084" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" x="1938" y="39" width="333" height="964" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1114,7 +1017,6 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252191" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1171,21 +1073,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/TreeSet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageEnergy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/PathEnergy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="84" column="56" lean-forward="false" selection-start-line="84" selection-start-column="56" selection-end-line="84" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsPattern.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1316,13 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
           <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/VolumeCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1588,24 +1468,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        <state relative-caret-position="153">
+          <caret line="38" column="38" lean-forward="false" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+          <folding>
+            <element signature="e#3097#3098#0" expanded="true" />
+            <element signature="e#3137#3138#0" expanded="true" />
+            <element signature="e#3203#3204#0" expanded="true" />
+            <element signature="e#3258#3259#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="86" column="20" lean-forward="false" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
+        <state relative-caret-position="589">
+          <caret line="59" column="52" lean-forward="false" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
           <folding>
             <element signature="docComment;class#Volume#0" expanded="false" />
             <element signature="docComment;field#meanCentroid#0;class#Volume#0" expanded="false" />
             <element signature="docComment;field#medianCentroid#0;class#Volume#0" expanded="false" />
             <element signature="method#getPoints#0;class#Volume#0" expanded="false" />
-            <element signature="method#addCoord#0;class#Volume#0" expanded="false" />
             <element signature="method#getDistPerPxXY#0;class#Volume#0" expanded="false" />
             <element signature="method#getDistPerPxZ#0;class#Volume#0" expanded="false" />
             <element signature="method#getXCoords#0;class#Volume#0" expanded="false" />
@@ -1636,7 +1528,6 @@
             <element signature="method#getYMedian#0;class#Volume#0" expanded="false" />
             <element signature="method#getZMedian#0;class#Volume#0" expanded="false" />
             <element signature="method#getHeight#0;class#Volume#0" expanded="false" />
-            <element signature="method#getExtents#0;class#Volume#0" expanded="false" />
             <element signature="method#getExtents2D#0;class#Volume#0" expanded="false" />
             <element signature="method#hasVolume#0;class#Volume#0" expanded="false" />
             <element signature="method#hasArea#0;class#Volume#0" expanded="false" />
@@ -1656,11 +1547,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        <state relative-caret-position="391">
+          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/quickhull3d/quickhull3d/1.0.0/quickhull3d-1.0.0.jar!/com/github/quickhull3d/QuickHull3D.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="41" column="64" lean-forward="false" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Assert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="321" column="0" lean-forward="false" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/VolumeCalculatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/VolumeCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="764">
+          <caret line="229" column="8" lean-forward="false" selection-start-line="229" selection-start-column="8" selection-end-line="229" selection-end-column="8" />
+          <folding>
+            <element signature="method#getHullVolume#0;class#VolumeCalculator#0" expanded="false" />
+            <element signature="e#5304#5415#0" expanded="false" />
+            <element signature="method#getSphericity#0;class#VolumeCalculator#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
