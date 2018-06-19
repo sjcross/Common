@@ -190,36 +190,32 @@ public class VolumeCalculator {
 
         // Getting a list of vertices
         Point3d[] vertices = hull.getVertices();
-        LinkedList<Vector3D> vectorList = new LinkedList<>();
-        for (Point3d point3d:vertices) {
-            vectorList.add(new Vector3D(point3d.x,point3d.y,(point3d.z/5)));
-            System.out.println("    point: "+point3d.x+"_"+point3d.y+"_"+(point3d.z/5));
+        Vector3D[] verts = new Vector3D[vertices.length];
+        double cal = volume.getDistPerPxXY()/volume.getDistPerPxZ();
+        for (int i=0;i<vertices.length;i++) {
+            Point3d point3d = vertices[i];
+            verts[i] = new Vector3D(point3d.x,point3d.y,(point3d.z*cal));
         }
 
         // Getting a list of facets
-        int[][] facets = hull.getFaces(QuickHull3D.CLOCKWISE);
-        LinkedList<int[]> facetsList = new LinkedList<>();
-        for (int[] facet:facets) {
-            facetsList.add(facet);
-            System.out.println("    facet: "+facet[0]+"_"+facet[1]+"_"+facet[2]);
-        }
-//        facetsList.addAll(Arrays.asList(facets));
+        int[][] faces = hull.getFaces();
 
         // Creating the PolyhedronsSet
-        PolyhedronsSet polyhedronsSet = new PolyhedronsSet(vectorList,facetsList,1E-2);
+        PolyhedronsSet polyhedronsSet = new PolyhedronsSet(Arrays.asList(verts),Arrays.asList(faces),1E-10);
 
         // Testing which points are within the convex hull
         double[] extents = volume.getExtents(true,false);
         Volume insideHull = new Volume(volume.getDistPerPxXY(),volume.getDistPerPxZ(),volume.getCalibratedUnits(),volume.is2D());
-        for (int x=(int) extents[0];x<=extents[1]+1;x++) {
+
+        for (int x=(int) extents[0];x<=extents[1];x++) {
             for (int y=(int) extents[2];y<=extents[3];y++) {
                 for (int z=(int) extents[4];z<=extents[5];z++) {
-                    Region.Location location = polyhedronsSet.checkPoint(new Vector3D(1,1,1));
-                    if (location.equals(Region.Location.INSIDE)) {
-                        insideHull.addCoord(x,y,z);
-                        System.out.println("    Inside "+x+"_"+y+"_"+z);
-                    } else {
-                        System.out.println("    Outside "+x+"_"+y+"_"+z);
+                    Region.Location location = polyhedronsSet.checkPoint(new Vector3D(x,y,z));
+                    switch (location) {
+                        case INSIDE:
+                        case BOUNDARY:
+                            insideHull.addCoord(x,y,z);
+                            break;
                     }
                 }
             }
@@ -227,14 +223,6 @@ public class VolumeCalculator {
 
         RegionFactory<Euclidean3D> regionFactory = new RegionFactory<>();
         ArrayList<Plane> planes = new ArrayList<>();
-        
-
-        PolyhedronsSet tree =
-                (PolyhedronsSet) new RegionFactory<Euclidean3D>().buildConvex(
-                        new Plane(vertex3, vertex2, vertex1, 1.0e-10),
-                        new Plane(vertex2, vertex3, vertex4, 1.0e-10),
-                        new Plane(vertex4, vertex3, vertex1, 1.0e-10),
-                        new Plane(vertex1, vertex2, vertex4, 1.0e-10));
 
         return insideHull;
 

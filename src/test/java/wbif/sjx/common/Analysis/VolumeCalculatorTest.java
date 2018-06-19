@@ -38,6 +38,11 @@ public class VolumeCalculatorTest {
     public void getSolidity() throws Exception {
     }
 
+    /**
+     * Basic test to check the method can return the points inside a cube.  It isn't capable of showing points outside
+     * this cube aren't tested.
+     * @throws Exception
+     */
     @Test
     public void getContainedPointsCube() throws Exception {
         double dppXY = 0.02;
@@ -50,10 +55,10 @@ public class VolumeCalculatorTest {
         volume.addCoord(12,20,5);
         volume.addCoord(12,22,5);
         volume.addCoord(10,22,5);
-        volume.addCoord(10,20,6);
-        volume.addCoord(12,20,6);
-        volume.addCoord(12,22,6);
-        volume.addCoord(10,22,6);
+        volume.addCoord(10,20,7);
+        volume.addCoord(12,20,7);
+        volume.addCoord(12,22,7);
+        volume.addCoord(10,22,7);
 
         // Creating the VolumeCalculator
         VolumeCalculator volumeCalculator = new VolumeCalculator(volume,VolumeCalculator.CENTROID);
@@ -81,15 +86,15 @@ public class VolumeCalculatorTest {
         expected.addCoord(12,22,6);
         expected.addCoord(11,22,6);
         expected.addCoord(10,22,6);
-//        expected.addCoord(10,20,7);
-//        expected.addCoord(11,20,7);
-//        expected.addCoord(12,20,7);
-//        expected.addCoord(10,21,7);
-//        expected.addCoord(11,21,7);
-//        expected.addCoord(12,21,7);
-//        expected.addCoord(12,22,7);
-//        expected.addCoord(11,22,7);
-//        expected.addCoord(10,22,7);
+        expected.addCoord(10,20,7);
+        expected.addCoord(11,20,7);
+        expected.addCoord(12,20,7);
+        expected.addCoord(10,21,7);
+        expected.addCoord(11,21,7);
+        expected.addCoord(12,21,7);
+        expected.addCoord(12,22,7);
+        expected.addCoord(11,22,7);
+        expected.addCoord(10,22,7);
 
         assertEquals(expected,actual);
 
