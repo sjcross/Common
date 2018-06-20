@@ -9,6 +9,9 @@ import java.util.regex.Pattern;
 public class CV7000FilenameExtractor implements NameExtractor {
     private static final String name = "CV7000 filename";
     private static final String pattern = "(\\w+?)_(\\w+?)_#(\\w+?)_([A-Z a-z]+?\\d+?)_T(\\d+?)F(\\d+?)L(\\d+?)A(\\d+?)Z(\\d+?)C(\\d+)";
+
+    private boolean useActionWildcard = false;
+
 //    (.+)_([A-Z]\d+?)_(\d++)
 //    AssayPlate_Greiner_#655090_C02_T0001F001L01A01Z01C01
 
@@ -57,11 +60,27 @@ public class CV7000FilenameExtractor implements NameExtractor {
         DecimalFormat df3 = new DecimalFormat("000");
         DecimalFormat df4 = new DecimalFormat("0000");
 
-        return metadata.getPlateName() + "_" + metadata.getPlateManufacturer() + "_#" + metadata.getPlateModel() +
-                "_" + metadata.getWell() + "_T" + df4.format(metadata.getTimepoint()) + "F" +
-                df3.format(metadata.getField()) + "L" + df2.format(metadata.getTimelineNumber()) + "A" +
-                df2.format(metadata.getActionNumber()) + "Z" + df2.format(metadata.getZ()) + "C" +
-                df2.format(metadata.getChannel()) + "." + metadata.getExt();
+        if (useActionWildcard) {
+            return metadata.getPlateName() + "_" + metadata.getPlateManufacturer() + "_#" + metadata.getPlateModel() +
+                    "_" + metadata.getWell() + "_T" + df4.format(metadata.getTimepoint()) + "F" +
+                    df3.format(metadata.getField()) + "L" + df2.format(metadata.getTimelineNumber()) + "A(\\d+?)Z" +
+                    df2.format(metadata.getZ()) + "C" + df2.format(metadata.getChannel()) + "." + metadata.getExt();
 
+        } else {
+            return metadata.getPlateName() + "_" + metadata.getPlateManufacturer() + "_#" + metadata.getPlateModel() +
+                    "_" + metadata.getWell() + "_T" + df4.format(metadata.getTimepoint()) + "F" +
+                    df3.format(metadata.getField()) + "L" + df2.format(metadata.getTimelineNumber()) + "A" +
+                    df2.format(metadata.getActionNumber()) + "Z" + df2.format(metadata.getZ()) + "C" +
+                    df2.format(metadata.getChannel()) + "." + metadata.getExt();
+
+        }
+    }
+
+    public boolean getUseActionWildcard() {
+        return useActionWildcard;
+    }
+
+    public void setToUseActionWildcard(boolean actionWildcard) {
+        this.useActionWildcard = actionWildcard;
     }
 }
