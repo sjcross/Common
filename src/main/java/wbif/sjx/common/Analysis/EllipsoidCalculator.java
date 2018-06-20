@@ -15,11 +15,20 @@ public class EllipsoidCalculator {
     private final Volume volume;
     private final Ellipsoid ell;
 
+    /**
+     * This constructor is package-private.  As such, it's intended for testing only.
+     * @param ell
+     * @param volume
+     */
+    EllipsoidCalculator(Ellipsoid ell, Volume volume) {
+        this.ell = ell;
+        this.volume = volume;
+    }
+
     public EllipsoidCalculator(Volume volume) {
         this.volume = volume;
 
         //Fitting an ellipsoid using method from BoneJ
-
         double[] x = volume.getX(true);
         double[] y = volume.getY(true);
         double[] z = volume.getZ(true,true);
@@ -31,32 +40,31 @@ public class EllipsoidCalculator {
             coords[i][2] = z[i];
         }
 
-//        ell = inertia(coords);
-        Object[] yuri = yuryPetrov(coords);
-        double[] centre = (double[]) yuri[0];
-        double[] radii = (double[]) yuri[1];
-        double[][] eigenVectors = (double[][]) yuri[2];
+        Object[] yury = yuryPetrov(coords);
+        double[] centre = (double[]) yury[0];
+        double[] radii = (double[]) yury[1];
+        double[][] eigenVectors = (double[][]) yury[2];
 
         ell = new Ellipsoid(radii[0],radii[1],radii[2],centre[0],centre[1],centre[2],eigenVectors);
 
     }
 
-    public double[] getEllipsoidCentre() {
+    public double[] getCentroid() {
         return ell.getCentre();
 
     }
 
-    public double[] getEllipsoidRadii() {
+    public double[] getRadii() {
         return ell.getRadii();
 
     }
 
-    public double[][] getEllipsoidRotationMatrix() {
+    public double[][] getRotationMatrix() {
         return ell.getRotation();
 
     }
 
-    public double[] getEllipsoidOrientationRads() {
+    public double[] getOrientationRads() {
         double[][] rot = ell.getRotation();
         double[] orien = new double[2];
 
@@ -69,6 +77,52 @@ public class EllipsoidCalculator {
         }
 
         return orien;
+
+    }
+
+    /**
+     * Gives an approximation of the surface area, which has a relative error of 1.061% (Knud Thomsen's formula)
+     * @return
+     */
+    public double getSurfaceArea() {
+        double p = 1.6075;
+
+        double[] r = getRadii();
+
+        double t1 = Math.pow(r[0],p)*Math.pow(r[1],p);
+        double t2 = Math.pow(r[0],p)*Math.pow(r[2],p);
+        double t3 = Math.pow(r[1],p)*Math.pow(r[2],p);
+
+        return 4*Math.PI*Math.pow(((t1+t2+t3)/3d),1d/p);
+
+    }
+
+    public double getVolume() {
+        double[] r = getRadii();
+        return (4d/3d)*Math.PI*r[0]*r[1]*r[2];
+
+    }
+
+    public double getSphericity() {
+        double SA = getSurfaceArea();
+        double V = getVolume();
+
+        double t1 = Math.pow(Math.PI,1d/3d);
+        double t2 = Math.pow((6*V),2d/3d);
+
+        return (t1*t2)/SA;
+
+    }
+
+    public double[] getAspectRatios() {
+        double[] AR = new double[3];
+        double[] r = getRadii();
+
+        AR[0] = r[1]/r[0];
+        AR[1] = r[2]/r[0];
+        AR[2] = r[2]/r[1];
+
+        return AR;
 
     }
 
@@ -99,4 +153,5 @@ public class EllipsoidCalculator {
         return insideEllipsoid;
 
     }
+
 }
