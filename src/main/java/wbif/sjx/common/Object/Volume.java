@@ -112,6 +112,10 @@ public class Volume {
 
     }
 
+    public double getXYScaledZ(double z) {
+        return z*dppZ/dppZ;
+    }
+
     public void calculateSurface() {
         if (twoD) {
             calculateSurface2D();

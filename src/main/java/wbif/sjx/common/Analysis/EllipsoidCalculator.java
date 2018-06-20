@@ -1,5 +1,8 @@
 package wbif.sjx.common.Analysis;
 
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
 import org.apache.commons.math3.geometry.euclidean.threed.PolyhedronsSet;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import org.apache.commons.math3.geometry.partitioning.Region;
@@ -14,6 +17,7 @@ import static org.bonej.geometry.FitEllipsoid.yuryPetrov;
 public class EllipsoidCalculator {
     private final Volume volume;
     private final Ellipsoid ell;
+
 
     /**
      * This constructor is package-private.  As such, it's intended for testing only.
@@ -32,12 +36,57 @@ public class EllipsoidCalculator {
         double[] x = volume.getX(true);
         double[] y = volume.getY(true);
         double[] z = volume.getZ(true,true);
-        double[][] coords = new double[x.length][3];
 
+        double[][] coords = new double[x.length][3];
         for (int i=0;i<x.length;i++) {
             coords[i][0] = x[i];
             coords[i][1] = y[i];
             coords[i][2] = z[i];
+        }
+
+        for (int i=0;i<coords.length;i++) {
+            System.out.println(coords[i][0]+"_"+coords[i][1]+"_"+coords[i][2]);
+        }
+
+        Object[] yury = yuryPetrov(coords);
+        double[] centre = (double[]) yury[0];
+        double[] radii = (double[]) yury[1];
+        double[][] eigenVectors = (double[][]) yury[2];
+
+        ell = new Ellipsoid(radii[0],radii[1],radii[2],centre[0],centre[1],centre[2],eigenVectors);
+
+    }
+
+    /**
+     * Adds a proportional number of points to each pixel depending on its intensity
+     * @param volume
+     * @param imageStack
+     */
+    public EllipsoidCalculator(Volume volume, ImageStack imageStack) {
+        this.volume = volume;
+
+        //Fitting an ellipsoid using method from BoneJ
+        double[] x = volume.getX(true);
+        double[] y = volume.getY(true);
+        double[] z = volume.getZ(true,true);
+        double[] zSlice = volume.getZ(true,false);
+
+        // Determining the number of coordinates to add
+        int count = 0;
+        for (int i=0;i<x.length;i++) {
+            count = count + (int) imageStack.getVoxel((int) x[i], (int) y[i], (int) zSlice[i]);
+        }
+
+        double[][] coords = new double[count][3];
+        count = 0;
+        for (int i=0;i<x.length;i++) {
+            int val = (int) imageStack.getVoxel((int) x[i], (int) y[i], (int) zSlice[i]);
+
+            for (int j=0; j<val; j++) {
+                coords[count][0] = x[i];
+                coords[count][1] = y[i];
+                coords[count++][2] = z[i];
+            }
         }
 
         Object[] yury = yuryPetrov(coords);
@@ -111,18 +160,6 @@ public class EllipsoidCalculator {
         double t2 = Math.pow((6*V),2d/3d);
 
         return (t1*t2)/SA;
-
-    }
-
-    public double[] getAspectRatios() {
-        double[] AR = new double[3];
-        double[] r = getRadii();
-
-        AR[0] = r[1]/r[0];
-        AR[1] = r[2]/r[0];
-        AR[2] = r[2]/r[1];
-
-        return AR;
 
     }
 

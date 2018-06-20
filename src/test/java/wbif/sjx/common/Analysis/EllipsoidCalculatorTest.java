@@ -106,7 +106,7 @@ public class EllipsoidCalculatorTest {
         // Testing the measured value
         double actual = calculator.getSurfaceArea();
         double expected = 93.57;
-        System.out.println(actual);
+
         assertEquals(expected,actual,tolerance);
 
     }
@@ -170,37 +170,6 @@ public class EllipsoidCalculatorTest {
         double expected = 0.7234;
 
         assertEquals(expected,actual,tolerance);
-
-    }
-
-    @Test
-    public void getAspectRatios() {
-        // Specifying spatial calibration
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        // Defining the example ellipsoid
-        double r1 = 5;
-        double r2 = 2.5;
-        double r3 = 1;
-        double x = 10;
-        double y = 12;
-        double z = 3;
-
-        double[][] eigenVectors = new double[][]{{0,0,-1},{0,1,0},{-1,0,0}};
-
-        Ellipsoid ellipsoid = new Ellipsoid(r1,r2,r3,x,y,z,eigenVectors);
-
-        // Initialising the calculator
-        Volume volume = new Volume(dppXY,dppZ,units,false);
-        EllipsoidCalculator calculator = new EllipsoidCalculator(ellipsoid,volume);
-
-        // Testing the measured value
-        double[] actual = calculator.getAspectRatios();
-        double[] expected = new double[]{0.5,0.2,0.4};
-
-        assertArrayEquals(expected,actual,tolerance);
 
     }
 
