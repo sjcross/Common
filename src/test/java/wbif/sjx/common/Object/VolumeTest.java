@@ -180,6 +180,21 @@ public class VolumeTest {
 
     }
 
+    @Test
+    public void testGetXYScaledZ() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume = new Volume(dppXY,dppZ,units, false);
+
+        double actual = volume.getXYScaledZ(1);
+        double expected = 5d;
+
+        assertEquals(expected,actual,tolerance);
+
+    }
+
 
     // MEAN POSITION
 
