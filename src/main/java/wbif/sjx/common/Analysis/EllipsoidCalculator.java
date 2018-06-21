@@ -44,10 +44,6 @@ public class EllipsoidCalculator {
             coords[i][2] = z[i];
         }
 
-        for (int i=0;i<coords.length;i++) {
-            System.out.println(coords[i][0]+"_"+coords[i][1]+"_"+coords[i][2]);
-        }
-
         Object[] yury = yuryPetrov(coords);
         double[] centre = (double[]) yury[0];
         double[] radii = (double[]) yury[1];
