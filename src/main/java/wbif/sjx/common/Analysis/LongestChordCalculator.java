@@ -61,8 +61,8 @@ public class LongestChordCalculator {
         CumStat cumStat = new CumStat();
 
         // Creating a vector between the two end points of the longest chord
-        Vector3D v1 = new Vector3D(LC[0][0],LC[0][1],volume.getXYScaledZ(LC[0][3]));
-        Vector3D v2 = new Vector3D(LC[1][0],LC[1][1],volume.getXYScaledZ(LC[1][3]));
+        Vector3D v1 = new Vector3D(LC[0][0],LC[0][1],volume.getXYScaledZ(LC[0][2]));
+        Vector3D v2 = new Vector3D(LC[1][0],LC[1][1],volume.getXYScaledZ(LC[1][2]));
         Line line = new Line(v1,v2,tolerance);
 
         // Iterating over all points on the surface, calculating the closest distance to the longest chord
