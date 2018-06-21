@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by steph on 30/04/2017.
+ * Created by stephen on 30/04/2017.
  */
 public class CellVoyagerFilenameExtractor implements NameExtractor {
     private static final String name = "CellVoyager filename";

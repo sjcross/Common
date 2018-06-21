@@ -53,7 +53,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.sun:tools:1.4.2">
         <CLASSES>
-          <root url="jar://C:/Program Files/Java/jdk1.8.0_161/lib/tools.jar!/" />
+          <root url="jar://C:/Program Files/Java/jdk1.8.0_51/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -79,6 +79,5 @@
     <orderEntry type="library" name="Maven: sc.fiji:pal-optimization:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: sc.fiji:VIB-lib:2.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.scijava:vecmath:1.6.0-scijava-2" level="project" />
-    <orderEntry type="library" name="Maven: com.github.quickhull3d:quickhull3d:1.0.0" level="project" />
   </component>
 </module>

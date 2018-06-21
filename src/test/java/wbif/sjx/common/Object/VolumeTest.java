@@ -16,7 +16,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(0,0,0);
         volume.addCoord(0,0,0);
         volume.addCoord(1,0,0);
@@ -34,7 +34,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
 
         double[] actualX = volume.getX(true);
         double[] expectedX = new double[]{};
@@ -50,7 +50,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -69,7 +69,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -88,7 +88,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -107,7 +107,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -126,7 +126,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -145,7 +145,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -164,7 +164,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -189,7 +189,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -205,7 +205,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -221,7 +221,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -237,7 +237,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -253,7 +253,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -269,7 +269,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -285,7 +285,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -305,7 +305,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -320,7 +320,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -336,7 +336,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -351,7 +351,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -367,7 +367,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -383,7 +383,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -399,7 +399,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -416,7 +416,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -432,7 +432,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -449,7 +449,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -465,7 +465,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -482,7 +482,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -499,7 +499,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -516,7 +516,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -537,10 +537,10 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(dppXY,dppZ,units);
+        Volume volume1 = new Volume(dppXY,dppZ,units, false);
         volume1.addCoord(0,0,0);
 
-        Volume volume2 = new Volume(dppXY,dppZ,units);
+        Volume volume2 = new Volume(dppXY,dppZ,units, false);
         volume2.addCoord(10,10,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -556,10 +556,10 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(dppXY,dppZ,units);
+        Volume volume1 = new Volume(dppXY,dppZ,units, false);
         volume1.addCoord(0,0,0);
 
-        Volume volume2 = new Volume(dppXY,dppZ,units);
+        Volume volume2 = new Volume(dppXY,dppZ,units, false);
         volume2.addCoord(-5,5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -575,10 +575,10 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(dppXY,dppZ,units);
+        Volume volume1 = new Volume(dppXY,dppZ,units, false);
         volume1.addCoord(0,0,0);
 
-        Volume volume2 = new Volume(dppXY,dppZ,units);
+        Volume volume2 = new Volume(dppXY,dppZ,units, false);
         volume2.addCoord(-5,-5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -594,10 +594,10 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(dppXY,dppZ,units);
+        Volume volume1 = new Volume(dppXY,dppZ,units, false);
         volume1.addCoord(0,0,0);
 
-        Volume volume2 = new Volume(dppXY,dppZ,units);
+        Volume volume2 = new Volume(dppXY,dppZ,units, false);
         volume2.addCoord(5,-5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -613,10 +613,10 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(dppXY,dppZ,units);
+        Volume volume1 = new Volume(dppXY,dppZ,units, false);
         volume1.addCoord(0,0,0);
 
-        Volume volume2 = new Volume(dppXY,dppZ,units);
+        Volume volume2 = new Volume(dppXY,dppZ,units, false);
         volume2.addCoord(5,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -632,10 +632,10 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(dppXY,dppZ,units);
+        Volume volume1 = new Volume(dppXY,dppZ,units, false);
         volume1.addCoord(0,0,0);
 
-        Volume volume2 = new Volume(dppXY,dppZ,units);
+        Volume volume2 = new Volume(dppXY,dppZ,units, false);
         volume2.addCoord(0,5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -651,10 +651,10 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(dppXY,dppZ,units);
+        Volume volume1 = new Volume(dppXY,dppZ,units, false);
         volume1.addCoord(0,0,0);
 
-        Volume volume2 = new Volume(dppXY,dppZ,units);
+        Volume volume2 = new Volume(dppXY,dppZ,units, false);
         volume2.addCoord(-5,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -670,10 +670,10 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(dppXY,dppZ,units);
+        Volume volume1 = new Volume(dppXY,dppZ,units, false);
         volume1.addCoord(0,0,0);
 
-        Volume volume2 = new Volume(dppXY,dppZ,units);
+        Volume volume2 = new Volume(dppXY,dppZ,units, false);
         volume2.addCoord(0,-5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -691,7 +691,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,3);
@@ -707,7 +707,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,3);
@@ -723,7 +723,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,3);
@@ -742,7 +742,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,3);
@@ -761,7 +761,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,3);
@@ -780,7 +780,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,3);
@@ -801,7 +801,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,3);
@@ -819,7 +819,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,3);
@@ -840,7 +840,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
 
         assertFalse(volume.hasVolume());
 
@@ -852,7 +852,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,1);
         volume.addCoord(11,5,1);
@@ -868,7 +868,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -884,7 +884,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
 
         assertFalse(volume.hasArea());
 
@@ -896,7 +896,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,1);
         volume.addCoord(11,5,1);
@@ -912,7 +912,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -927,7 +927,7 @@ public class VolumeTest {
 
     @Test
     public void testContainsPoint() {
-        Volume volume1 = new Volume(2.0,1.0,"PX");
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
@@ -947,7 +947,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
 
         assertEquals(0,volume.getNVoxels());
 
@@ -959,7 +959,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -975,7 +975,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -991,7 +991,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,5,2);
         volume.addCoord(11,5,2);
@@ -1007,7 +1007,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,6,1);
         volume.addCoord(11,5,1);
@@ -1023,7 +1023,7 @@ public class VolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(dppXY,dppZ,units);
+        Volume volume = new Volume(dppXY,dppZ,units, false);
         volume.addCoord(10,5,1);
         volume.addCoord(10,6,1);
         volume.addCoord(11,5,1);
@@ -1038,13 +1038,13 @@ public class VolumeTest {
 
     @Test
     public void testHashCodeDifferentValue() {
-        Volume volume1 = new Volume(1.0,1.0,"Test");
+        Volume volume1 = new Volume(1.0,1.0,"Test", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(1.0,1.0,"Test");
+        Volume volume2 = new Volume(1.0,1.0,"Test", false);
         volume2.addCoord(1,2,3);
         volume2.addCoord(-4,3,12);
         volume2.addCoord(2,1,2);
@@ -1057,19 +1057,19 @@ public class VolumeTest {
     @Test
     public void testHashCodeDifferentPointOrder() {
         // Verifying that the order of point placement doesn't matter
-        Volume volume1 = new Volume(2.0,1.0,"Test");
+        Volume volume1 = new Volume(2.0,1.0,"Test", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(2.0,1.0,"Test");
+        Volume volume2 = new Volume(2.0,1.0,"Test", false);
         volume2.addCoord(1,2,3);
         volume2.addCoord(4,3,12);
         volume2.addCoord(2,1,2);
         volume2.addCoord(1,2,5);
 
-        Volume volume3 = new Volume(2.0,1.0,"Test");
+        Volume volume3 = new Volume(2.0,1.0,"Test", false);
         volume3.addCoord(2,1,2);
         volume3.addCoord(1,2,3);
         volume3.addCoord(4,3,12);
@@ -1084,13 +1084,13 @@ public class VolumeTest {
     @Test
     public void testHashCodeMissingPoint() {
         // Verifying that all points need to be present for equality
-        Volume volume1 = new Volume(1.0,1.0,"Test");
+        Volume volume1 = new Volume(1.0,1.0,"Test", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(1.0,1.0,"Test");
+        Volume volume2 = new Volume(1.0,1.0,"Test", false);
         volume2.addCoord(2,1,2);
         volume2.addCoord(4,3,12);
         volume2.addCoord(1,2,5);
@@ -1101,13 +1101,13 @@ public class VolumeTest {
 
     @Test
     public void testHashCodeDifferentCalibration() {
-        Volume volume1 = new Volume(2.0,1.0,"PX");
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(2.1,1.0,"PX");
+        Volume volume2 = new Volume(2.1,1.0,"PX", false);
         volume2.addCoord(1,2,3);
         volume2.addCoord(4,3,12);
         volume2.addCoord(2,1,2);
@@ -1119,13 +1119,13 @@ public class VolumeTest {
 
     @Test
     public void testHashCodeDifferentUnitsCase() {
-        Volume volume1 = new Volume(2.0,1.0,"PX");
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(2.0,1.0,"px");
+        Volume volume2 = new Volume(2.0,1.0,"px", false);
         volume2.addCoord(1,2,3);
         volume2.addCoord(4,3,12);
         volume2.addCoord(2,1,2);
@@ -1137,13 +1137,13 @@ public class VolumeTest {
 
     @Test
     public void testHashCodeDifferentUnits() {
-        Volume volume1 = new Volume(2.0,1.0,"PX");
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(2.0,1.0,"um");
+        Volume volume2 = new Volume(2.0,1.0,"um", false);
         volume2.addCoord(1,2,3);
         volume2.addCoord(4,3,12);
         volume2.addCoord(2,1,2);
@@ -1158,13 +1158,13 @@ public class VolumeTest {
 
     @Test
     public void testEqualsDifferentValue() {
-        Volume volume1 = new Volume(1.0,1.0,"Test");
+        Volume volume1 = new Volume(1.0,1.0,"Test", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(1.0,1.0,"Test");
+        Volume volume2 = new Volume(1.0,1.0,"Test", false);
         volume2.addCoord(1,2,3);
         volume2.addCoord(-4,3,12);
         volume2.addCoord(2,1,2);
@@ -1177,19 +1177,19 @@ public class VolumeTest {
 
     @Test
     public void testEqualsDifferentPointOrder() {// Verifying that the order of point placement doesn't matter
-        Volume volume1 = new Volume(2.0,1.0,"PX");
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(2.0,1.0,"PX");
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
         volume2.addCoord(1,2,3);
         volume2.addCoord(4,3,12);
         volume2.addCoord(2,1,2);
         volume2.addCoord(1,2,5);
 
-        Volume volume3 = new Volume(2.0,1.0,"PX");
+        Volume volume3 = new Volume(2.0,1.0,"PX", false);
         volume3.addCoord(2,1,2);
         volume3.addCoord(1,2,3);
         volume3.addCoord(4,3,12);
@@ -1207,13 +1207,13 @@ public class VolumeTest {
     @Test
     public void testEqualsMissingPoint() {
         // Verifying that all points need to be present for equality
-        Volume volume1 = new Volume(1.0,1.0,"Test");
+        Volume volume1 = new Volume(1.0,1.0,"Test", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(1.0,1.0,"Test");
+        Volume volume2 = new Volume(1.0,1.0,"Test", false);
         volume2.addCoord(2,1,2);
         volume2.addCoord(4,3,12);
         volume2.addCoord(1,2,5);
@@ -1225,13 +1225,13 @@ public class VolumeTest {
 
     @Test
     public void testEqualsDifferentCalibration() {
-        Volume volume1 = new Volume(2.0,1.0,"PX");
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(2.1,1.0,"PX");
+        Volume volume2 = new Volume(2.1,1.0,"PX", false);
         volume2.addCoord(1,2,3);
         volume2.addCoord(4,3,12);
         volume2.addCoord(2,1,2);
@@ -1244,13 +1244,13 @@ public class VolumeTest {
 
     @Test
     public void testEqualsDifferentUnitsCase() {
-        Volume volume1 = new Volume(2.0,1.0,"PX");
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(2.0,1.0,"px");
+        Volume volume2 = new Volume(2.0,1.0,"px", false);
         volume2.addCoord(1,2,3);
         volume2.addCoord(4,3,12);
         volume2.addCoord(2,1,2);
@@ -1263,13 +1263,13 @@ public class VolumeTest {
 
     @Test
     public void testEqualsDifferentUnits() {
-        Volume volume1 = new Volume(2.0,1.0,"PX");
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
         volume1.addCoord(1,2,5);
 
-        Volume volume2 = new Volume(2.0,1.0,"um");
+        Volume volume2 = new Volume(2.0,1.0,"um", false);
         volume2.addCoord(1,2,3);
         volume2.addCoord(4,3,12);
         volume2.addCoord(2,1,2);
@@ -1285,7 +1285,7 @@ public class VolumeTest {
 
     @Test
     public void testClearSurface() {
-        Volume volume1 = new Volume(2.0,1.0,"PX");
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
@@ -1306,7 +1306,7 @@ public class VolumeTest {
 
     @Test
     public void testClearPoints() {
-        Volume volume1 = new Volume(2.0,1.0,"PX");
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
         volume1.addCoord(2,1,2);
