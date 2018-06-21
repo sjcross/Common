@@ -113,7 +113,7 @@ public class Volume {
     }
 
     public double getXYScaledZ(double z) {
-        return z*dppZ/dppZ;
+        return z*dppZ/dppXY;
     }
 
     public void calculateSurface() {
