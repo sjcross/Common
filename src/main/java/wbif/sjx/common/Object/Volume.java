@@ -388,10 +388,10 @@ public class Volume {
     public double getHeight(boolean pixelDistances, boolean matchXY) {
         double[] z = getZ(pixelDistances,matchXY);
 
-        double min_z = new Min().evaluate(z);
-        double max_z = new Max().evaluate(z);
+        double minZ = new Min().evaluate(z);
+        double maxZ = new Max().evaluate(z);
 
-        return max_z - min_z;
+        return maxZ - minZ;
 
     }
 
@@ -530,35 +530,6 @@ public class Volume {
         }
 
         return overlapping;
-
-    }
-
-    public double getCentroidDistanceToPoint(Spot point,boolean pixelDistances) {
-        double x_cent = getXMean(pixelDistances);
-        double y_cent = getYMean(pixelDistances);
-        double z_cent = getZMean(pixelDistances,true);
-
-        return Math.sqrt(Math.pow(x_cent-point.getX(),2) + Math.pow(y_cent-point.getY(),2)
-                + Math.pow(z_cent-point.getZ(),2))-point.getRadius();
-
-    }
-
-    public double getNearestDistanceToPoint(Spot point,boolean pixelDistances) {
-        double[] x = getX(pixelDistances);
-        double[] y = getY(pixelDistances);
-        double[] z = getZ(pixelDistances,true);
-
-        double dist = Double.POSITIVE_INFINITY;
-        for (int i=0;i<x.length;i++) {
-            double temp_dist = Math.sqrt(Math.pow(x[i] - point.getX(), 2) + Math.pow(y[i] - point.getY(), 2)
-                    + Math.pow(z[i] - point.getZ(), 2))-point.getRadius();
-
-            if (temp_dist < dist) {
-                dist = temp_dist;
-            }
-        }
-
-        return dist;
 
     }
 

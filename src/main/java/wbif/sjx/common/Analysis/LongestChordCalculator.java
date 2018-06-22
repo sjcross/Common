@@ -22,7 +22,7 @@ public class LongestChordCalculator {
 
     }
 
-    private double[][] calculateLC() {
+    double[][] calculateLC() {
         //Reference for use as orientation descriptor: "Computer-Assisted Microscopy: The Measurement and Analysis of
         //Images", John C. Russ, Springer, 6 Dec 2012
 
