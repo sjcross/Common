@@ -1,11 +1,14 @@
+% Creates a binary image of a cylinder with the axis of the cylinder along
+% the y-axis of the image
+
 clear
 
 im = zeros(76,64,60);
 
 % Creating the circle in 2D for all slices
 xCent = 30;
-zCent = 25;
-r = 12;
+zCent = 26;
+r = 22;
 
 for z = 1:size(im,3)
     for x = 1:size(im,2)

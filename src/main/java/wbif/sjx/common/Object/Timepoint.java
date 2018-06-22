@@ -19,4 +19,5 @@ public class Timepoint<T extends Number> extends Point<T> {
     public void setF(int f) {
         this.f = f;
     }
+
 }
