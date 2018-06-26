@@ -19,7 +19,6 @@ public class LongestChordCalculatorTest {
 
     @Test
     public void calculateAverageDistanceFromLCHorizontalCylinderR22() {
-        String inputObjectsName = "Test_objects";
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -41,7 +40,6 @@ public class LongestChordCalculatorTest {
 
     @Test
     public void calculateAverageDistanceFromLCVerticalCylinderR5Calibrated() {
-        String inputObjectsName = "Test_objects";
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -63,7 +61,6 @@ public class LongestChordCalculatorTest {
 
     @Test
     public void calculateAverageDistanceFromLCVerticalCylinderR5Uncalibrated() {
-        String inputObjectsName = "Test_objects";
         double dppXY = 1;
         double dppZ = 1;
         String calibratedUnits = "um";
@@ -85,7 +82,6 @@ public class LongestChordCalculatorTest {
 
     @Test
     public void testCalculateLCHorizontalCylinderR22() {
-        String inputObjectsName = "Test_objects";
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -110,7 +106,6 @@ public class LongestChordCalculatorTest {
 
     @Test
     public void testCalculateLCVerticalCylinderR5Calibrated() {
-        String inputObjectsName = "Test_objects";
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -135,7 +130,6 @@ public class LongestChordCalculatorTest {
 
     @Test
     public void testCalculateLCVerticalCylinderR5Uncalibrated() {
-        String inputObjectsName = "Test_objects";
         double dppXY = 1;
         double dppZ = 1;
         String calibratedUnits = "um";
@@ -160,7 +154,6 @@ public class LongestChordCalculatorTest {
 
     @Test
     public void testGetLCLengthHorizontalCylinderR22() {
-        String inputObjectsName = "Test_objects";
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -178,7 +171,6 @@ public class LongestChordCalculatorTest {
 
     @Test
     public void testGetLCLengthVerticalCylinderR5Calibrated() {
-        String inputObjectsName = "Test_objects";
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -196,7 +188,6 @@ public class LongestChordCalculatorTest {
 
     @Test
     public void testGetLCLengthVerticalCylinderR5Uncalibrated() {
-        String inputObjectsName = "Test_objects";
         double dppXY = 1;
         double dppZ = 1;
         String calibratedUnits = "um";
