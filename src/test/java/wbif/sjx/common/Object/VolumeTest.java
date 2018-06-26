@@ -763,10 +763,12 @@ public class VolumeTest {
         volume.addCoord(11,5,3);
         volume.addCoord(13,7,1);
 
-        double[] actualExtents = volume.getExtents(true,false);
-        double[] expectedExtents = new double[]{10,13,5,7,1,3};
+        double[][] actualExtents = volume.getExtents(true,false);
+        double[][] expectedExtents = new double[][]{{10,13},{5,7},{1,3}};
 
-        assertArrayEquals(expectedExtents,actualExtents,tolerance);
+        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
+        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
+        assertArrayEquals(expectedExtents[2],actualExtents[2],tolerance);
 
     }
 
@@ -782,15 +784,17 @@ public class VolumeTest {
         volume.addCoord(11,5,3);
         volume.addCoord(13,7,1);
 
-        double[] actualExtents = volume.getExtents(true,true);
-        double[] expectedExtents = new double[]{10,13,5,7,5,15};
+        double[][] actualExtents = volume.getExtents(true,true);
+        double[][] expectedExtents = new double[][]{{10,13},{5,7},{5,15}};
 
-        assertArrayEquals(expectedExtents,actualExtents,tolerance);
+        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
+        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
+        assertArrayEquals(expectedExtents[2],actualExtents[2],tolerance);
 
     }
 
     @Test
-    public void testGetExtentscalibratedDistances() {
+    public void testGetExtentsCalibratedDistances() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -801,12 +805,16 @@ public class VolumeTest {
         volume.addCoord(11,5,3);
         volume.addCoord(13,7,1);
 
-        double[] expectedExtents = new double[]{0.2,0.26,0.1,0.14,0.1,0.3};
-        double[] actualExtents = volume.getExtents(false,true);
-        assertArrayEquals(expectedExtents,actualExtents,tolerance);
+        double[][] expectedExtents = new double[][]{{0.2,0.26},{0.1,0.14},{0.1,0.3}};
+        double[][] actualExtents = volume.getExtents(false,true);
+        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
+        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
+        assertArrayEquals(expectedExtents[2],actualExtents[2],tolerance);
 
         actualExtents = volume.getExtents(false,false);
-        assertArrayEquals(expectedExtents,actualExtents,tolerance);
+        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
+        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
+        assertArrayEquals(expectedExtents[2],actualExtents[2],tolerance);
 
     }
 
@@ -822,9 +830,10 @@ public class VolumeTest {
         volume.addCoord(11,5,3);
         volume.addCoord(13,7,1);
 
-        double[] expectedExtents = new double[]{10,13,5,7};
-        double[] actualExtents = volume.getExtents2D(true);
-        assertArrayEquals(expectedExtents,actualExtents,tolerance);
+        double[][] expectedExtents = new double[][]{{10,13},{5,7}};
+        double[][] actualExtents = volume.getExtents2D(true);
+        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
+        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
 
     }
 
@@ -840,9 +849,10 @@ public class VolumeTest {
         volume.addCoord(11,5,3);
         volume.addCoord(13,7,1);
 
-        double[] expectedExtents = new double[]{0.2,0.26,0.1,0.14};
-        double[] actualExtents = volume.getExtents2D(false);
-        assertArrayEquals(expectedExtents,actualExtents,tolerance);
+        double[][] expectedExtents = new double[][]{{0.2,0.26},{0.1,0.14}};
+        double[][] actualExtents = volume.getExtents2D(false);
+        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
+        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
 
     }
 
