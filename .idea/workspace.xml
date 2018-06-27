@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/TextureCalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/sc13967.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/sc13967.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ColocalisationCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ColocalisationCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/IntensityCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/IntensityCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,103 +22,95 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$VolumeTest.coverage" NAME="VolumeTest Coverage Results" MODIFIED="1524037637387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Object.*</FILTER>
+    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.Filters.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
+    <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Common$All_in_Common.coverage" NAME="All in Common Coverage Results" MODIFIED="1529653217331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Common$VolumeTest.coverage" NAME="VolumeTest Coverage Results" MODIFIED="1524037637387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Object.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$All_in_Common.coverage" NAME="All in Common Coverage Results" MODIFIED="1529653217331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Common" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ColocalisationCalculator.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ColocalisationCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
-              <folding>
-                <element signature="method#calculatePCC#0;class#ColocalisationCalculator#0" />
-                <element signature="docComment;method#calculatePCC#1;class#ColocalisationCalculator#0" />
-                <element signature="method#calculatePCC#1;class#ColocalisationCalculator#0" />
-                <element signature="method#calculatePCC#2;class#ColocalisationCalculator#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntensityCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/IntensityCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="25" column="78" selection-start-line="25" selection-start-column="78" selection-end-line="25" selection-end-column="78" />
-              <folding>
-                <element signature="docComment;class#IntensityCalculator#0" />
-                <element signature="method#calculate#0;class#IntensityCalculator#0" />
-                <element signature="method#calculate#1;class#IntensityCalculator#0" />
-                <element signature="method#calculate#2;class#IntensityCalculator#0" />
-                <element signature="method#calculate#3;class#IntensityCalculator#0" />
-                <element signature="method#calculate#2;class#IntensityCalculator#0" />
-                <element signature="method#calculate#5;class#IntensityCalculator#0" />
-                <element signature="method#calculate#4;class#IntensityCalculator#0" />
-                <element signature="method#calculate#5;class#IntensityCalculator#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ColocalisationCalculatorTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/ColocalisationCalculatorTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="48" column="64" selection-start-line="48" selection-start-column="64" selection-end-line="48" selection-end-column="64" />
-              <folding>
-                <element signature="method#calculatePCCWithVolume2D#0;class#ColocalisationCalculatorTest#0" />
-                <element signature="method#calculatePCCWholeImage2D8bit#0;class#ColocalisationCalculatorTest#0" />
-                <element signature="method#calculatePCCWholeImage2D16bit#0;class#ColocalisationCalculatorTest#0" />
-                <element signature="method#calculatePCCWholeImage2D32bit#0;class#ColocalisationCalculatorTest#0" />
-                <element signature="method#calculatePCCWholeImage3D8bit#0;class#ColocalisationCalculatorTest#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Objects2D.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExpectedObjects.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
-              <folding>
-                <element signature="docComment;class#ExpectedObjects#0" />
-                <element signature="method#getObject#0;class#ExpectedObjects#0" />
-                <element signature="method#getCoordinates5D#1;class#ExpectedObjects#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.38333333">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="TextureCalculator.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="408">
+                  <caret line="156" column="57" lean-forward="true" selection-start-line="156" selection-start-column="57" selection-end-line="156" selection-end-column="57" />
+                  <folding>
+                    <element signature="docComment;class#TextureCalculator#0" />
+                    <element signature="method#TextureCalculator#0;class#TextureCalculator#0" />
+                    <element signature="docComment;method#calculate#0;class#TextureCalculator#0" />
+                    <element signature="docComment;method#calculate#1;class#TextureCalculator#0" />
+                    <element signature="method#calculate#1;class#TextureCalculator#0" />
+                    <element signature="method#addValueToConfusionMatrix#0;class#TextureCalculator#0" />
+                    <element signature="docComment;method#getASM#0;class#TextureCalculator#0" />
+                    <element signature="method#getASM#0;class#TextureCalculator#0" />
+                    <element signature="docComment;method#getContrast#0;class#TextureCalculator#0" />
+                    <element signature="method#getContrast#0;class#TextureCalculator#0" />
+                    <element signature="docComment;method#getCorrelation#0;class#TextureCalculator#0" />
+                    <element signature="method#getCorrelation#0;class#TextureCalculator#0" />
+                    <element signature="docComment;method#getEntropy#0;class#TextureCalculator#0" />
+                    <element signature="e#8455#8456#0" expanded="true" />
+                    <element signature="e#8484#8485#0" expanded="true" />
+                    <element signature="e#8519#8520#0" expanded="true" />
+                    <element signature="e#8549#8550#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Objects2D.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="476">
+                  <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="TextureCalculatorTest.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/TextureCalculatorTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="422">
+                  <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
+                  <folding>
+                    <element signature="method#testGetASMWholeImage1px#0;class#TextureCalculatorTest#0" />
+                    <element signature="method#testGetContrastWholeImage1px#0;class#TextureCalculatorTest#0" />
+                    <element signature="method#testGetCorrelationWholeImage1px#0;class#TextureCalculatorTest#0" />
+                    <element signature="method#testGetEntropyWholeImage1px#0;class#TextureCalculatorTest#0" />
+                    <element signature="method#testGetASMWholeImage1px#1;class#TextureCalculatorTest#0" />
+                    <element signature="method#testGetContrastWholeImage1px#1;class#TextureCalculatorTest#0" />
+                    <element signature="method#testGetCorrelationWholeImage1px#1;class#TextureCalculatorTest#0" />
+                    <element signature="method#testGetEntropyWholeImage1px#1;class#TextureCalculatorTest#0" />
+                    <element signature="method#testGetContrastWholeImage#1;class#TextureCalculatorTest#0" />
+                    <element signature="method#testGetCorrelationWholeImage#1;class#TextureCalculatorTest#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -126,7 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Syste</find>
       <find>Byte</find>
       <find>debug</find>
       <find>bit</find>
@@ -156,12 +151,14 @@
       <find>spot</find>
       <find>Spot</find>
       <find>tostr</find>
+      <find>1E-4</find>
     </findStrings>
     <replaceStrings>
       <replace>Float</replace>
       <replace>Short</replace>
       <replace>);</replace>
       <replace>false</replace>
+      <replace>tolerance</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -170,7 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/HoughTransform/Transforms/CircleHoughTransform.java" />
         <option value="$PROJECT_DIR$/../ModularImageAnalysis/src/main/java/wbif/sjx/ModularImageAnalysis/Object/OperaFileExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFileExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GaussianFitter.java" />
@@ -211,16 +207,17 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Spot.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/SpotCollection.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/LongestChordCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects3D.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/VerticalCylinderR5.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/HorizontalCylinderR22.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/ColocalisationCalculatorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/IntensityCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ColocalisationCalculator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/IntensityCalculator.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/TextureCalculatorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java" />
       </list>
     </option>
   </component>
@@ -231,11 +228,9 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="228" />
-    <option name="y" value="375" />
-    <option name="width" value="1862" />
-    <option name="height" value="1093" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="960" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -246,6 +241,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -347,7 +343,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -369,14 +364,14 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="wbif.sjx.common.Analysis" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="wbif.sjx.common" />
       <recent name="wbif.sjx.common.Process.ActiveContour" />
       <recent name="wbif.sjx.common.Process.ActiveContour.Visualisation" />
       <recent name="wbif.sjx.common.Process.ActiveContour.Minimisers" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sc13967\Documents\Java Projects\Common\src\test\java\wbif\sjx\common\ExpectedObjects" />
@@ -397,21 +392,119 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Common [install]">
+  <component name="RunManager" selected="JUnit.TextureCalculatorTest.testGetASMWithVolume">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="All in Common" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TextureCalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wbif.sjx.common.Analysis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
+      <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.TextureCalculatorTest" />
       <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="TextureCalculatorTest.testGetASMWithVolume" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wbif.sjx.common.Analysis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.TextureCalculatorTest" />
+      <option name="METHOD_NAME" value="testGetASMWithVolume" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="TextureCalculatorTest.testGetEntropyWholeImage1px" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wbif.sjx.common.Analysis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.TextureCalculatorTest" />
+      <option name="METHOD_NAME" value="testGetEntropyWholeImage1px" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="TextureCalculatorTest.testGetEntropyWholeImage256Levels" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wbif.sjx.common.Analysis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.TextureCalculatorTest" />
+      <option name="METHOD_NAME" value="testGetEntropyWholeImage256Levels" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="TextureCalculatorTest.testGetEntropyWholeImage3px" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wbif.sjx.common.Analysis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.TextureCalculatorTest" />
+      <option name="METHOD_NAME" value="testGetEntropyWholeImage3px" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -486,11 +579,19 @@
     </configuration>
     <list>
       <item itemvalue="Maven.Common [install]" />
-      <item itemvalue="JUnit.All in Common" />
+      <item itemvalue="JUnit.TextureCalculatorTest.testGetEntropyWholeImage256Levels" />
+      <item itemvalue="JUnit.TextureCalculatorTest" />
+      <item itemvalue="JUnit.TextureCalculatorTest.testGetEntropyWholeImage1px" />
+      <item itemvalue="JUnit.TextureCalculatorTest.testGetEntropyWholeImage3px" />
+      <item itemvalue="JUnit.TextureCalculatorTest.testGetASMWithVolume" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in Common" />
+        <item itemvalue="JUnit.TextureCalculatorTest.testGetASMWithVolume" />
+        <item itemvalue="JUnit.TextureCalculatorTest" />
+        <item itemvalue="JUnit.TextureCalculatorTest.testGetEntropyWholeImage3px" />
+        <item itemvalue="JUnit.TextureCalculatorTest.testGetEntropyWholeImage1px" />
+        <item itemvalue="JUnit.TextureCalculatorTest.testGetEntropyWholeImage256Levels" />
       </list>
     </recent_temporary>
   </component>
@@ -508,35 +609,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ColocalisationCalculatorTest_calculatePCCWholeImage3D8bit - 2018.06.26 at 15h 52m 04s.xml">
-      <configuration name="ColocalisationCalculatorTest.calculatePCCWholeImage3D8bit" configurationId="JUnit" />
+    <history-entry file="TextureCalculatorTest_testGetASMWithVolume - 2018.06.27 at 16h 45m 13s.xml">
+      <configuration name="TextureCalculatorTest.testGetASMWithVolume" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColocalisationCalculatorTest_calculatePCCWithVolume - 2018.06.26 at 16h 20m 57s.xml">
-      <configuration name="ColocalisationCalculatorTest.calculatePCCWithVolume" configurationId="JUnit" />
+    <history-entry file="TextureCalculatorTest_testGetASMWithVolume - 2018.06.27 at 16h 45m 27s.xml">
+      <configuration name="TextureCalculatorTest.testGetASMWithVolume" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColocalisationCalculatorTest_calculatePCCWithVolume - 2018.06.26 at 16h 22m 25s.xml">
-      <configuration name="ColocalisationCalculatorTest.calculatePCCWithVolume" configurationId="JUnit" />
+    <history-entry file="TextureCalculatorTest_testGetASMWithVolume - 2018.06.27 at 16h 45m 41s.xml">
+      <configuration name="TextureCalculatorTest.testGetASMWithVolume" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColocalisationCalculatorTest_calculatePCCWithVolume - 2018.06.26 at 16h 22m 40s.xml">
-      <configuration name="ColocalisationCalculatorTest.calculatePCCWithVolume" configurationId="JUnit" />
+    <history-entry file="TextureCalculatorTest_testGetASMWithVolume - 2018.06.27 at 16h 48m 03s.xml">
+      <configuration name="TextureCalculatorTest.testGetASMWithVolume" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColocalisationCalculatorTest_calculatePCCWithVolume - 2018.06.26 at 16h 27m 21s.xml">
-      <configuration name="ColocalisationCalculatorTest.calculatePCCWithVolume" configurationId="JUnit" />
+    <history-entry file="TextureCalculatorTest_testGetASMWithVolume - 2018.06.27 at 16h 51m 50s.xml">
+      <configuration name="TextureCalculatorTest.testGetASMWithVolume" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColocalisationCalculatorTest_calculatePCCWithVolume - 2018.06.26 at 16h 28m 18s.xml">
-      <configuration name="ColocalisationCalculatorTest.calculatePCCWithVolume" configurationId="JUnit" />
+    <history-entry file="TextureCalculatorTest_testGetASMWithVolume - 2018.06.27 at 16h 51m 59s.xml">
+      <configuration name="TextureCalculatorTest.testGetASMWithVolume" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColocalisationCalculatorTest_calculatePCCWithVolume - 2018.06.26 at 16h 28m 27s.xml">
-      <configuration name="ColocalisationCalculatorTest.calculatePCCWithVolume" configurationId="JUnit" />
+    <history-entry file="TextureCalculatorTest_testGetASMWithVolume - 2018.06.27 at 16h 52m 14s.xml">
+      <configuration name="TextureCalculatorTest.testGetASMWithVolume" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColocalisationCalculatorTest_calculatePCCWithVolume - 2018.06.26 at 16h 28m 54s.xml">
-      <configuration name="ColocalisationCalculatorTest.calculatePCCWithVolume" configurationId="JUnit" />
+    <history-entry file="TextureCalculatorTest_testGetASMWithVolume - 2018.06.27 at 16h 52m 25s.xml">
+      <configuration name="TextureCalculatorTest.testGetASMWithVolume" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Common - 2018.06.26 at 16h 34m 43s.xml">
-      <configuration name="All in Common" configurationId="JUnit" />
+    <history-entry file="TextureCalculatorTest_testGetASMWithVolume - 2018.06.27 at 16h 52m 46s.xml">
+      <configuration name="TextureCalculatorTest.testGetASMWithVolume" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Common - 2018.06.26 at 17h 44m 12s.xml">
-      <configuration name="All in Common" configurationId="JUnit" />
+    <history-entry file="TextureCalculatorTest_testGetASMWithVolume - 2018.06.27 at 16h 53m 00s.xml">
+      <configuration name="TextureCalculatorTest.testGetASMWithVolume" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -549,50 +650,50 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1488" height="878" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" x="1920" y="0" width="1855" height="1080" id="TODO" order="6" type="FLOATING" weight="0.32987553" />
-      <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.3230198" />
+      <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.32292682" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="9" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="1" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" visible="true" weight="0.33787128" />
+      <window_info active="true" anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" visible="true" weight="0.28585365" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32987553" />
-      <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
       <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.203125" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
+      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.2521322" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info auto_hide="true" id="Favorites" order="6" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39121953" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Database" order="10" />
+      <window_info anchor="bottom" auto_hide="true" id="Debug" order="3" weight="0.39121953" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info id="Nl-Palette" order="2" />
-      <window_info anchor="right" id="Properties" order="6" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
+      <window_info anchor="right" id="Database" order="10" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.32844734" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Properties" order="6" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="Designer" order="4" />
-      <window_info auto_hide="true" id="Favorites" order="7" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" weight="0.25782093" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.32903588" />
       <window_info id="UI Designer" order="5" />
       <window_info anchor="right" id="Properties" order="6" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32987553" />
@@ -602,11 +703,13 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.32606325" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20842217" />
       <window_info anchor="bottom" id="Run with VisualVM" order="10" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info id="Nl-Palette" order="2" />
       <window_info anchor="right" id="Maven Projects" order="1" />
-      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20842217" />
+      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Database" order="10" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
@@ -614,9 +717,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info id="Structure" order="1" weight="0.2521322" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.32903588" />
-      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info auto_hide="true" id="Favorites" order="7" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39626557" />
     </layout-to-restore>
   </component>
@@ -633,20 +734,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/PointTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/NameExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CellVoyagerFilenameExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
@@ -905,13 +992,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="100" column="7" lean-forward="true" selection-start-line="100" selection-start-column="7" selection-end-line="100" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Spot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -973,39 +1053,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/ColocalisationCalculatorTest.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/net/imagej/ij/1.51h/ij-1.51h.jar!/ij/process/ImageConverter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="48" column="64" selection-start-line="48" selection-start-column="64" selection-end-line="48" selection-end-column="64" />
-          <folding>
-            <element signature="method#calculatePCCWithVolume2D#0;class#ColocalisationCalculatorTest#0" />
-            <element signature="method#calculatePCCWholeImage2D8bit#0;class#ColocalisationCalculatorTest#0" />
-            <element signature="method#calculatePCCWholeImage2D16bit#0;class#ColocalisationCalculatorTest#0" />
-            <element signature="method#calculatePCCWholeImage2D32bit#0;class#ColocalisationCalculatorTest#0" />
-            <element signature="method#calculatePCCWholeImage3D8bit#0;class#ColocalisationCalculatorTest#0" />
-          </folding>
+          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/IntensityCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="25" column="78" selection-start-line="25" selection-start-column="78" selection-end-line="25" selection-end-column="78" />
+        <state relative-caret-position="663">
+          <caret line="45" column="67" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
           <folding>
             <element signature="docComment;class#IntensityCalculator#0" />
-            <element signature="method#calculate#0;class#IntensityCalculator#0" />
-            <element signature="method#calculate#1;class#IntensityCalculator#0" />
-            <element signature="method#calculate#2;class#IntensityCalculator#0" />
-            <element signature="method#calculate#3;class#IntensityCalculator#0" />
-            <element signature="method#calculate#2;class#IntensityCalculator#0" />
-            <element signature="method#calculate#5;class#IntensityCalculator#0" />
             <element signature="method#calculate#4;class#IntensityCalculator#0" />
             <element signature="method#calculate#5;class#IntensityCalculator#0" />
           </folding>
@@ -1014,13 +1074,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ColocalisationCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+        <state relative-caret-position="204">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
           <folding>
             <element signature="method#calculatePCC#0;class#ColocalisationCalculator#0" />
             <element signature="docComment;method#calculatePCC#1;class#ColocalisationCalculator#0" />
             <element signature="method#calculatePCC#1;class#ColocalisationCalculator#0" />
             <element signature="method#calculatePCC#2;class#ColocalisationCalculator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/ColocalisationCalculatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding>
+            <element signature="method#calculatePCCWholeImage2D16bit#0;class#ColocalisationCalculatorTest#0" />
+            <element signature="method#calculatePCCWholeImage2D32bit#0;class#ColocalisationCalculatorTest#0" />
+            <element signature="method#calculatePCCWholeImage3D8bit#0;class#ColocalisationCalculatorTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/TextureCalculatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
+          <folding>
+            <element signature="method#testGetASMWholeImage1px#0;class#TextureCalculatorTest#0" />
+            <element signature="method#testGetContrastWholeImage1px#0;class#TextureCalculatorTest#0" />
+            <element signature="method#testGetCorrelationWholeImage1px#0;class#TextureCalculatorTest#0" />
+            <element signature="method#testGetEntropyWholeImage1px#0;class#TextureCalculatorTest#0" />
+            <element signature="method#testGetASMWholeImage1px#1;class#TextureCalculatorTest#0" />
+            <element signature="method#testGetContrastWholeImage1px#1;class#TextureCalculatorTest#0" />
+            <element signature="method#testGetCorrelationWholeImage1px#1;class#TextureCalculatorTest#0" />
+            <element signature="method#testGetEntropyWholeImage1px#1;class#TextureCalculatorTest#0" />
+            <element signature="method#testGetContrastWholeImage#1;class#TextureCalculatorTest#0" />
+            <element signature="method#testGetCorrelationWholeImage#1;class#TextureCalculatorTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="156" column="57" lean-forward="true" selection-start-line="156" selection-start-column="57" selection-end-line="156" selection-end-column="57" />
+          <folding>
+            <element signature="docComment;class#TextureCalculator#0" />
+            <element signature="method#TextureCalculator#0;class#TextureCalculator#0" />
+            <element signature="docComment;method#calculate#0;class#TextureCalculator#0" />
+            <element signature="docComment;method#calculate#1;class#TextureCalculator#0" />
+            <element signature="method#calculate#1;class#TextureCalculator#0" />
+            <element signature="method#addValueToConfusionMatrix#0;class#TextureCalculator#0" />
+            <element signature="docComment;method#getASM#0;class#TextureCalculator#0" />
+            <element signature="method#getASM#0;class#TextureCalculator#0" />
+            <element signature="docComment;method#getContrast#0;class#TextureCalculator#0" />
+            <element signature="method#getContrast#0;class#TextureCalculator#0" />
+            <element signature="docComment;method#getCorrelation#0;class#TextureCalculator#0" />
+            <element signature="method#getCorrelation#0;class#TextureCalculator#0" />
+            <element signature="docComment;method#getEntropy#0;class#TextureCalculator#0" />
+            <element signature="e#8455#8456#0" expanded="true" />
+            <element signature="e#8484#8485#0" expanded="true" />
+            <element signature="e#8519#8520#0" expanded="true" />
+            <element signature="e#8549#8550#0" expanded="true" />
           </folding>
         </state>
       </provider>
