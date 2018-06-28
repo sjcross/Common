@@ -13,19 +13,6 @@ import ij.process.ImageProcessor;
 public class DistanceMap implements ExtendedPlugInFilter{
     private int flags = DOES_8G | DOES_STACKS | PARALLELIZE_STACKS;
 
-    public static void main(String[] args) {
-        // Loading a new ImageJ, so an image can be opened
-        new ImageJ();
-        IJ.runMacro("waitForUser");
-
-        // Getting the ImagePlus and running the plugin
-        ImagePlus ipl = IJ.getImage();
-        new DistanceMap().run(ipl.getProcessor());
-
-        ipl.updateAndDraw();
-
-    }
-
     @Override
     public int showDialog(ImagePlus imagePlus, String s, PlugInFilterRunner plugInFilterRunner) {
         return flags;

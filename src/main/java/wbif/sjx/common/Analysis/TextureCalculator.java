@@ -6,10 +6,12 @@ import ij.ImageStack;
 import ij.plugin.Duplicator;
 import ij.process.ImageConverter;
 import ij.process.ImageProcessor;
+import ij.process.TypeConverter;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.Indexer;
 import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Process.IntensityMinMax;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -54,9 +56,6 @@ public class TextureCalculator {
 
         // Indexer to getPixelValue index for addressing HashMap
         indexer = new Indexer(256,256);
-
-        // Normalising to the intensity range within the object
-//        image = normaliseIntensity(image,volume);
 
         // Running through all specified positions,
         int count = 0;
@@ -116,50 +115,12 @@ public class TextureCalculator {
 
     ImageStack convertTo8Bit(ImageStack image) {
         // Duplicating the image, so the original isn't affected
-        image = image.duplicate();
+        ImagePlus ipl = new ImagePlus("Temp",image.duplicate());
 
-        // The analysis requires discrete pixels values.  Therefore, 32-bit images are converted to 8-bit
-        CumStat cs = IntensityCalculator.calculate(image);
-        double min = cs.getMin();
-        double max = cs.getMax();
+        IntensityMinMax.run(ipl,true);
+        IJ.run(ipl, "8-bit", null);
 
-        for (int z = 1; z <= image.size(); z++) {
-            ImageProcessor processor = image.getProcessor(z);
-            processor.setMinAndMax(min, max);
-            processor.convertToByte(false);
-            image.setProcessor(processor,z);
-
-        }
-
-        return image;
-
-    }
-
-    ImageStack normaliseIntensity(ImageStack image, Volume volume) {
-        // Duplicating the image, so the original isn't affected
-        image = image.duplicate();
-
-        // The analysis requires discrete pixels values.  Therefore, 32-bit images are converted to 8-bit
-        double min = Double.MAX_VALUE;
-        double max = -Double.MAX_VALUE;
-
-        for (Point<Integer> point:volume.getPoints()) {
-            double val = image.getVoxel(point.getX(),point.getY(),point.getZ());
-            min = Math.min(min,val);
-            max = Math.max(max,val);
-        }
-
-        for (int z = 0; z < image.size(); z++) {
-            for (int x = 0; x < image.getWidth(); x++) {
-                for (int y = 0; y < image.getHeight(); y++) {
-                    double val = image.getVoxel(x, y, z);
-                    val = (val-min)/(max-min)*255;
-                    image.setVoxel(x, y, z, val);
-                }
-            }
-        }
-
-        return image;
+        return ipl.getImageStack();
 
     }
 
@@ -280,5 +241,17 @@ public class TextureCalculator {
 
     public Indexer getIndexer() {
         return indexer;
+    }
+
+    public int getXOffs() {
+        return xOffs;
+    }
+
+    public int getYOffs() {
+        return yOffs;
+    }
+
+    public int getZOffs() {
+        return zOffs;
     }
 }
