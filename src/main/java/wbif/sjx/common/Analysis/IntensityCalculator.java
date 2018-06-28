@@ -80,29 +80,29 @@ public class IntensityCalculator {
         }
     }
 
-//    @Deprecated
-//    public static CumStat calculate(ImagePlus image) {
-//        // Initialising the pixel value store
-//        CumStat cs = new CumStat();
-//
-//        calculate(image,cs);
-//
-//        return cs;
-//
-//    }
-//
-//    @Deprecated
-//    public static void calculate(ImagePlus image, CumStat cs) {
-//        // Running through all pixels in the image, adding them to the CumStat object
-//        for (int t = 0; t < image.getNFrames(); t++) {
-//            for (int z = 0; z < image.getNSlices(); z++) {
-//                for (int y = 0; y < image.getHeight(); y++) {
-//                    for (int x = 0; x < image.getWidth(); x++) {
-//                        image.setPosition(1, z + 1, t + 1);
-//                        cs.addMeasure(image.getProcessor().getPixelValue(x, y));
-//                    }
-//                }
-//            }
-//        }
-//    }
+    @Deprecated
+    public static CumStat calculate(ImagePlus image) {
+        // Initialising the pixel value store
+        CumStat cs = new CumStat();
+
+        calculate(image,cs);
+
+        return cs;
+
+    }
+
+    @Deprecated
+    public static void calculate(ImagePlus image, CumStat cs) {
+        // Running through all pixels in the image, adding them to the CumStat object
+        for (int t = 0; t < image.getNFrames(); t++) {
+            for (int z = 0; z < image.getNSlices(); z++) {
+                for (int y = 0; y < image.getHeight(); y++) {
+                    for (int x = 0; x < image.getWidth(); x++) {
+                        image.setPosition(1, z + 1, t + 1);
+                        cs.addMeasure(image.getProcessor().getPixelValue(x, y));
+                    }
+                }
+            }
+        }
+    }
 }

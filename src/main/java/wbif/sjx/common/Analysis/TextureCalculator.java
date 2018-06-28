@@ -46,10 +46,8 @@ public class TextureCalculator {
     public void calculate(ImageStack image, Volume volume) {
         if (image.getBitDepth() != 8) image = convertTo8Bit(image);
 
-        // Getting image size
-        int height = image.getHeight();
-        int width = image.getWidth();
-        int nSlices = image.size();
+        // Getting object pixel range
+        double[][] extents = volume.getExtents(true,false);
 
         // Initialising new HashMap (acting as a sparse matrix) to store the co-occurrence matrix
         matrix = new LinkedHashMap<>();
@@ -58,7 +56,7 @@ public class TextureCalculator {
         indexer = new Indexer(256,256);
 
         // Normalising to the intensity range within the object
-        image = normaliseIntensity(image,volume);
+//        image = normaliseIntensity(image,volume);
 
         // Running through all specified positions,
         int count = 0;
@@ -67,7 +65,7 @@ public class TextureCalculator {
             int y = point.getY();
             int z = point.getZ();
 
-            if (x+xOffs >= 0 & x+xOffs < width & y+yOffs >= 0 & y+yOffs < height & z+zOffs >= 0 & z+zOffs < nSlices) {
+            if (volume.containsPoint(new Point<>(x,y,z)) && volume.containsPoint(new Point<>(x+xOffs,y+yOffs,z+zOffs))){
                 addValueToConfusionMatrix(image,x,y,z);
                 count = count + 2;
             }

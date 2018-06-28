@@ -558,6 +558,13 @@ public class Volume {
         }
     }
 
+    public boolean containsPoint(Point<Integer> point1) {
+        for (Point<Integer> point2:points) {
+            if (point2.equals(point1)) return true;
+        }
+        return false;
+    }
+
     @Override
     public int hashCode() {
         int hash = 1;

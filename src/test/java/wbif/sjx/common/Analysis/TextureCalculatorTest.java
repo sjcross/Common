@@ -177,7 +177,7 @@ public class TextureCalculatorTest {
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(3,0,0);
+        TextureCalculator calculator = new TextureCalculator(1,0,0);
 
         new ImageJ();
         // Iterating over each Volume, testing the PCC value
@@ -190,22 +190,113 @@ public class TextureCalculatorTest {
             double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.ASM.name());
             double actual = calculator.getASM();
 
-            System.out.println(ID+"_"+expected+"_"+actual);
+            assertEquals(expected,actual,tolerance);
+
+        }
+    }
+
+    @Test
+    public void testGetContrastWithVolume() throws Exception {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String calibratedUnits = "um";
+
+        // Loading test image
+        String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
+        ImagePlus ipl1 = IJ.openImage(pathToImage);
+
+        // Loading objects
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+
+        // Getting expected results
+        HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
+
+        // Initialising texture calculator
+        TextureCalculator calculator = new TextureCalculator(1,0,0);
+
+        new ImageJ();
+        // Iterating over each Volume, testing the PCC value
+        for (int ID:testObjects.keySet()) {
+            Volume testObject = testObjects.get(ID);
+
+            // Running the texture measurement
+            calculator.calculate(ipl1.getImageStack(),testObject);
+
+            double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.CONTRAST.name());
+            double actual = calculator.getContrast();
 
             assertEquals(expected,actual,tolerance);
 
         }
     }
 
-    @Test @Ignore
-    public void testGetContrastWithVolume() {
+    @Test
+    public void testGetCorrelationWithVolume() throws Exception {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String calibratedUnits = "um";
+
+        // Loading test image
+        String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
+        ImagePlus ipl1 = IJ.openImage(pathToImage);
+
+        // Loading objects
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+
+        // Getting expected results
+        HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
+
+        // Initialising texture calculator
+        TextureCalculator calculator = new TextureCalculator(1,0,0);
+
+        new ImageJ();
+        // Iterating over each Volume, testing the PCC value
+        for (int ID:testObjects.keySet()) {
+            Volume testObject = testObjects.get(ID);
+
+            // Running the texture measurement
+            calculator.calculate(ipl1.getImageStack(),testObject);
+
+            double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.CORRELATION.name());
+            double actual = calculator.getCorrelation();
+
+            assertEquals(expected,actual,tolerance);
+
+        }
     }
 
-    @Test @Ignore
-    public void testGetCorrelationWithVolume() {
-    }
+    @Test
+    public void testGetEntropyWithVolume() throws Exception {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String calibratedUnits = "um";
 
-    @Test @Ignore
-    public void testGetEntropyWithVolume() {
+        // Loading test image
+        String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
+        ImagePlus ipl1 = IJ.openImage(pathToImage);
+
+        // Loading objects
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+
+        // Getting expected results
+        HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
+
+        // Initialising texture calculator
+        TextureCalculator calculator = new TextureCalculator(1,0,0);
+
+        new ImageJ();
+        // Iterating over each Volume, testing the PCC value
+        for (int ID:testObjects.keySet()) {
+            Volume testObject = testObjects.get(ID);
+
+            // Running the texture measurement
+            calculator.calculate(ipl1.getImageStack(),testObject);
+
+            double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.ENTROPY.name());
+            double actual = calculator.getEntropy();
+
+            assertEquals(expected,actual,tolerance);
+
+        }
     }
 }
