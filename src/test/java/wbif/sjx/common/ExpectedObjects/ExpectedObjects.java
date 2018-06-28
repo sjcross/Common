@@ -42,6 +42,32 @@ public abstract class ExpectedObjects {
 
     }
 
+    public HashMap<Integer,Volume> getObjects(double dppXY, double dppZ, String calibratedUnits) {
+        // Initialising object store
+        HashMap<Integer,Volume> testObjects = new HashMap<>();
+
+        // Adding all provided coordinates to each object
+        List<Integer[]> coordinates = getCoordinates5D();
+        for (Integer[] coordinate:coordinates) {
+            int ID = coordinate[0];
+
+            int x = coordinate[2];
+            int y = coordinate[3];
+            int z = coordinate[5];
+            int t = coordinate[6];
+
+            ID = ID+(t*65536);
+
+            testObjects.putIfAbsent(ID,new Volume(dppXY,dppZ,calibratedUnits,is2D));
+            Volume testObject = testObjects.get(ID);
+            testObject.addCoord(x,y,z);
+
+        }
+
+        return testObjects;
+
+    }
+
     protected List<Integer[]> getCoordinates5D(String path) {
         try {
             String pathToCoordinates = URLDecoder.decode(this.getClass().getResource(path).getPath(),"UTF-8");
@@ -71,4 +97,5 @@ public abstract class ExpectedObjects {
         }
     }
 
+    abstract public HashMap<Integer, HashMap<String, Double>> getMeasurements();
 }

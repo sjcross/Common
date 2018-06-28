@@ -127,8 +127,8 @@ public class Volume {
     public void calculateSurface2D() {
         surface = new TreeSet<>();
 
-        double[] extents = getExtents2D(true);
-        int[][] coords = new int[(int) extents[1]+1][(int) extents[3]+1];
+        double[][] extents = getExtents2D(true);
+        int[][] coords = new int[(int) extents[0][1]+1][(int) extents[1][1]+1];
 
         // Adding pixels to a 2D array
         for (Point<Integer> point:points) {
@@ -146,7 +146,7 @@ public class Volume {
 
             // Points at the edge of the image are automatically classed as being edge pixels
             // THIS FIRST CONDITION CAN PROBABLY GO?
-            if (x == 0 | x == extents[1] | y == 0 | y == extents[3]) {
+            if (x == 0 | x == extents[0][1] | y == 0 | y == extents[1][1]) {
                 surface.add(new Point<>(x, y, 0));
                 continue;
             }
@@ -160,8 +160,8 @@ public class Volume {
     public void calculateSurface3D() {
         surface = new TreeSet<>();
 
-        double[] extents = getExtents(true,false);
-        int[][][] coords = new int[(int) extents[1]+1][(int) extents[3]+1][(int) extents[5]+1];
+        double[][] extents = getExtents(true,false);
+        int[][][] coords = new int[(int) extents[0][1]+1][(int) extents[1][1]+1][(int) extents[2][1]+1];
 
         // Adding pixels to a 3D array
         for (Point<Integer> point:points) {
@@ -182,7 +182,7 @@ public class Volume {
 
             if (x >= 0 && y >= 0 && z >= 0) {
                 // Points at the edge of the image are automatically classed as being edge pixels
-                if (x == 0 | x == extents[1] | y == 0 | y == extents[3] | z == 0 | z == extents[5]) {
+                if (x == 0 | x == extents[0][1] | y == 0 | y == extents[1][1] | z == 0 | z == extents[2][1]) {
                     surface.add(new Point<>(x, y, z));
                     continue;
                 }
@@ -395,36 +395,36 @@ public class Volume {
 
     }
 
-    public double[] getExtents(boolean pixelDistances, boolean matchXY) {
+    public double[][] getExtents(boolean pixelDistances, boolean matchXY) {
         //Minimum and maximum values for all dimensions [x_min, y_min, z_min; x_max, y_max, z_max]
-        double[] extents = new double[6];
+        double[][] extents = new double[3][2];
 
         double[] x = getX(pixelDistances);
         double[] y = getY(pixelDistances);
         double[] z = getZ(pixelDistances,matchXY);
 
-        extents[0] = new Min().evaluate(x);
-        extents[1] = new Max().evaluate(x);
-        extents[2] = new Min().evaluate(y);
-        extents[3] = new Max().evaluate(y);
-        extents[4] = new Min().evaluate(z);
-        extents[5] = new Max().evaluate(z);
+        extents[0][0] = new Min().evaluate(x);
+        extents[0][1] = new Max().evaluate(x);
+        extents[1][0] = new Min().evaluate(y);
+        extents[1][1] = new Max().evaluate(y);
+        extents[2][0] = new Min().evaluate(z);
+        extents[2][1] = new Max().evaluate(z);
 
         return extents;
 
     }
 
-    public double[] getExtents2D(boolean pixelDistances) {
+    public double[][] getExtents2D(boolean pixelDistances) {
         //Minimum and maximum values for all dimensions [x_min, y_min, z_min; x_max, y_max]
-        double[] extents = new double[4];
+        double[][] extents = new double[2][2];
 
         double[] x = getX(pixelDistances);
         double[] y = getY(pixelDistances);
 
-        extents[0] = new Min().evaluate(x);
-        extents[1] = new Max().evaluate(x);
-        extents[2] = new Min().evaluate(y);
-        extents[3] = new Max().evaluate(y);
+        extents[0][0] = new Min().evaluate(x);
+        extents[0][1] = new Max().evaluate(x);
+        extents[1][0] = new Min().evaluate(y);
+        extents[1][1] = new Max().evaluate(y);
 
         return extents;
 
@@ -433,11 +433,11 @@ public class Volume {
     public boolean hasVolume() {
         //True if all dimension (x,y,z) are > 0
 
-        double[] extents = getExtents(true,false);
+        double[][] extents = getExtents(true,false);
 
         boolean hasvol = false;
 
-        if (extents[1]-extents[0] > 0 & extents[3]-extents[2] > 0 & extents[5]-extents[4] > 0) {
+        if (extents[0][1]-extents[0][0] > 0 & extents[1][1]-extents[1][0] > 0 & extents[2][1]-extents[2][0] > 0) {
             hasvol = true;
         }
 
@@ -447,11 +447,11 @@ public class Volume {
     public boolean hasArea() {
         //True if all dimensions (x,y) are > 0
 
-        double[] extents = getExtents(true,false);
+        double[][] extents = getExtents(true,false);
 
         boolean hasarea = false;
 
-        if (extents[1]-extents[0] > 0 & extents[3]-extents[2] > 0) {
+        if (extents[0][1]-extents[0][0] > 0 & extents[1][1]-extents[1][0] > 0) {
             hasarea = true;
         }
 
@@ -556,6 +556,13 @@ public class Volume {
         } else {
             return points.size()*dppXY*dppXY*dppZ;
         }
+    }
+
+    public boolean containsPoint(Point<Integer> point1) {
+        for (Point<Integer> point2:points) {
+            if (point2.equals(point1)) return true;
+        }
+        return false;
     }
 
     @Override

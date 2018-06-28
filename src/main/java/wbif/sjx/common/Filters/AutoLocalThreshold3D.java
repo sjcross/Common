@@ -21,19 +21,6 @@ public class AutoLocalThreshold3D  implements PlugIn {
 
     private double lowerThreshold = Double.MIN_VALUE;
 
-    public static void main(String[] args) {
-        new ImageJ();
-        IJ.runMacro("waitForUser");
-
-        ImagePlus ipl = IJ.getImage();
-
-        AutoLocalThreshold3D autoLocalThreshold3D = new AutoLocalThreshold3D();
-        autoLocalThreshold3D.setLowerThreshold(300);
-        autoLocalThreshold3D.Phansalkar(ipl,20,0,1,0,0,true);
-        ipl.show();
-
-    }
-
     public void exec(ImagePlus ipl, String myMethod, int radiusXY, int radiusZ, double thrMult, double par1, double par2, boolean doIwhite) {
         switch(myMethod) {
             case BERNSEN:
