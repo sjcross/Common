@@ -1,5 +1,6 @@
 package wbif.sjx.common.ExpectedObjects;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class HorizontalCylinderR22 extends ExpectedObjects {
@@ -11,5 +12,10 @@ public class HorizontalCylinderR22 extends ExpectedObjects {
     @Override
     public boolean is2D() {
         return false;
+    }
+
+    @Override
+    public HashMap<Integer, HashMap<String, Double>> getMeasurements() {
+        return null;
     }
 }

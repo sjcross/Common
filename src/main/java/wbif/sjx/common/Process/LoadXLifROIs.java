@@ -24,13 +24,13 @@ public class LoadXLifROIs extends PlugInFrame {
         super("LoadXLifROIs");
     }
 
-    public static void main (String[] args) {
-        Class<?> clazz = LoadXLifROIs.class;
-        new ImageJ();
-
-        IJ.runPlugIn(clazz.getName(), "");
-
-    }
+//    public static void main (String[] args) {
+//        Class<?> clazz = LoadXLifROIs.class;
+//        new ImageJ();
+//
+//        IJ.runPlugIn(clazz.getName(), "");
+//
+//    }
 
     public void run(String arg) {
         try {

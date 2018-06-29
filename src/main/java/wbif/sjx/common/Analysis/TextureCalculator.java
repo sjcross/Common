@@ -2,10 +2,16 @@ package wbif.sjx.common.Analysis;
 
 import ij.IJ;
 import ij.ImagePlus;
+import ij.ImageStack;
 import ij.plugin.Duplicator;
 import ij.process.ImageConverter;
+import ij.process.ImageProcessor;
+import ij.process.TypeConverter;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.Indexer;
+import wbif.sjx.common.Object.Point;
+import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Process.IntensityMinMax;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -15,10 +21,21 @@ import java.util.LinkedHashMap;
  * Classification", IEEE Transactions on Systems, Man, and Cybernetics, 1973, SMC-3 (6): 610–621
  */
 public class TextureCalculator {
-    private LinkedHashMap<Integer,Double> matrix = new LinkedHashMap<>();
-    private int xOffs = 1;
-    private int yOffs = 0;
-    private int zOffs = 0;
+    private LinkedHashMap<Integer,Double> matrix;
+    private Indexer indexer;
+    private final int xOffs;
+    private final int yOffs;
+    private final int zOffs;
+
+
+    // CONSTRUCTOR
+
+    public TextureCalculator(int xOffs, int yOffs, int zOffs) {
+        this.xOffs = xOffs;
+        this.yOffs = yOffs;
+        this.zOffs = zOffs;
+
+    }
 
 
     // PUBLIC METHODS
@@ -26,100 +43,102 @@ public class TextureCalculator {
     /**
      * Calculates the co-occurance matrix on the specified pixels, using the specified offset
      * @param image
-     * @param xOffs
-     * @param yOffs
-     * @param zOffs
-     * @param positions ArrayList containing x,y,z positions of pixels in region of interest
+     * @param volume
      */
-    public void calculate(ImagePlus image, int xOffs, int yOffs, int zOffs, int c, int t, ArrayList<int[]> positions) {
-        if (image.getBitDepth() != 8) {
-            // Duplicating the image, so the original isn't affected
-            image = new Duplicator().run(image);
+    public void calculate(ImageStack image, Volume volume) {
+        if (image.getBitDepth() != 8) image = convertTo8Bit(image);
 
-            // The analysis requires discrete pixels values.  Therefore, 32-bit images are converted to 8-bit
-            CumStat cs = IntensityCalculator.calculate(image);
-            double min = cs.getMin();
-            double max = cs.getMax();
-
-            for (int tt = 1; tt <= image.getNFrames(); tt++) {
-                for (int zz = 1; zz <= image.getNSlices(); zz++) {
-                    image.setPosition(c, zz, tt);
-                    image.getProcessor().setMinAndMax(min, max);
-
-                }
-            }
-            new ImageConverter(image).convertToGray8();
-        }
-
-        // Setting the local values of xOffs and yOffs
-        this.xOffs = xOffs;
-        this.yOffs = yOffs;
-        this.zOffs = zOffs;
-
-        // Getting image size
-        int height = image.getHeight();
-        int width = image.getWidth();
-        int nSlices = image.getNSlices();
+        // Getting object pixel range
+        double[][] extents = volume.getExtents(true,false);
 
         // Initialising new HashMap (acting as a sparse matrix) to store the co-occurrence matrix
         matrix = new LinkedHashMap<>();
 
         // Indexer to getPixelValue index for addressing HashMap
-        Indexer indexer = new Indexer(256,256);
+        indexer = new Indexer(256,256);
 
         // Running through all specified positions,
-        for (int[] pos:positions) {
-            if (pos[0]>=0 & pos[0]<width & pos[1]>=0 & pos[1]<height & pos[2]>=0 & pos[2]<nSlices) {
-                // Getting current pixel value
-                image.setPosition(c, pos[2], t);
-                int v1 = image.getProcessor().getPixel(pos[0], pos[1]);
+        int count = 0;
+        for (Point<Integer> point:volume.getPoints()) {
+            int x = point.getX();
+            int y = point.getY();
+            int z = point.getZ();
 
-                // Getting tested pixel value
-                image.setPosition(c, pos[2] + zOffs, t);
-                int v2 = image.getProcessor().getPixel(pos[0] + xOffs, pos[1] + yOffs);
-
-                // Storing in the HashMap
-                int index1 = indexer.getIndex(new int[]{v1, v2});
-                matrix.computeIfAbsent(index1, k -> matrix.put(index1, 0d));
-                matrix.put(index1, matrix.get(index1) + 1);
-
+            if (volume.containsPoint(new Point<>(x,y,z)) && volume.containsPoint(new Point<>(x+xOffs,y+yOffs,z+zOffs))){
+                addValueToConfusionMatrix(image,x,y,z);
+                count = count + 2;
             }
         }
 
-      // Applying normalisation
-        int nPixels = positions.size();
-        matrix.replaceAll((k,v) -> v/nPixels);
+        // Applying normalisation
+        int finalCount = count;
+        matrix.replaceAll((k, v) -> v/ finalCount);
 
     }
 
     /**
      * Calculates the co-occurance matrix on the entire image using the specified offset
      * @param image
-     * @param xOffs
-     * @param yOffs
-     * @param zOffs
      */
-    public void calculate(ImagePlus image, int xOffs, int yOffs, int zOffs, int c, int t) {
-        // Creating an ArrayList of all pixel coordinates in the image.  These are the coordinates to be tested.  This
-        // isn't the most efficient way to do it, but it retains compatibility with the general method used to
-        // calculate for small regions
+    public void calculate(ImageStack image) {
+        if (image.getBitDepth() != 8) image = convertTo8Bit(image);
+
+        // Getting image size
         int height = image.getHeight();
         int width = image.getWidth();
-        int nSlices = image.getNSlices();
+        int nSlices = image.size();
 
-        ArrayList<int[]> positions = new ArrayList<>(height*width*nSlices);
+        // Initialising new HashMap (acting as a sparse matrix) to store the co-occurrence matrix
+        matrix = new LinkedHashMap<>();
 
-        int iter = 0;
-        for (int z = 0; z < image.getNSlices(); z++) {
+        // Indexer to getPixelValue index for addressing HashMap
+        indexer = new Indexer(256,256);
+
+        // Running through all specified positions,
+        int count = 0;
+        for (int z = 0; z < image.size(); z++) {
             for (int y = 0; y < image.getHeight(); y++) {
                 for (int x = 0; x < image.getWidth(); x++) {
-                    positions.add(iter++,new int[]{x,y,z});
-
+                    if (x+xOffs >= 0 & x+xOffs < width & y+yOffs >= 0 & y+yOffs < height & z+zOffs >= 0 & z+zOffs < nSlices) {
+                        addValueToConfusionMatrix(image,x,y,z);
+                        count = count + 2;
+                    }
                 }
             }
         }
 
-        calculate(image,xOffs,yOffs,zOffs,c,t,positions);
+        // Applying normalisation
+        int finalCount = count;
+        matrix.replaceAll((k, v) -> v/ finalCount);
+
+    }
+
+    ImageStack convertTo8Bit(ImageStack image) {
+        // Duplicating the image, so the original isn't affected
+        ImagePlus ipl = new ImagePlus("Temp",image.duplicate());
+
+        IntensityMinMax.run(ipl,true);
+        IJ.run(ipl, "8-bit", null);
+
+        return ipl.getImageStack();
+
+    }
+
+    void addValueToConfusionMatrix(ImageStack image, int x, int y, int z) {
+        // Getting current pixel value
+        int v1 = (int) image.getVoxel(x, y, z);
+
+        // Getting tested pixel value
+        int v2 = (int) image.getVoxel(x + xOffs, y + yOffs, z + zOffs);
+
+        // Storing in the HashMap
+        int index1 = indexer.getIndex(new int[]{v1, v2});
+        matrix.computeIfAbsent(index1, k -> matrix.put(index1, 0d));
+        matrix.put(index1, matrix.get(index1) + 1);
+
+        int index2 = indexer.getIndex(new int[]{v2, v1});
+        matrix.computeIfAbsent(index2, k -> matrix.put(index2, 0d));
+        matrix.put(index2, matrix.get(index2) + 1);
 
     }
 
@@ -206,7 +225,7 @@ public class TextureCalculator {
         double entropy = 0;
 
         for (double val:matrix.values()) {
-            entropy = entropy + val*Math.log(val);
+            entropy = entropy + val*Math.log(val)/Math.log(2);
         }
 
         return -entropy;
@@ -216,20 +235,23 @@ public class TextureCalculator {
 
     // GETTERS
 
-
     public LinkedHashMap<Integer, Double> getCoOccurrenceMatrix() {
         return matrix;
     }
 
-    public int getxOffs() {
+    public Indexer getIndexer() {
+        return indexer;
+    }
+
+    public int getXOffs() {
         return xOffs;
     }
 
-    public int getyOffs() {
+    public int getYOffs() {
         return yOffs;
     }
 
-    public int getzOffs() {
+    public int getZOffs() {
         return zOffs;
     }
 }
