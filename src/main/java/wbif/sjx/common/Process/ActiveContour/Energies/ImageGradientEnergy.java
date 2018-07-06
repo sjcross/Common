@@ -42,7 +42,6 @@ public class ImageGradientEnergy extends Energy {
                 im_y[c][r] = ipr_y.getPixelValue(c,r);
             }
         }
-
     }
 
     public double getEnergy(Vertex node) {
