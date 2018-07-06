@@ -1,11 +1,15 @@
 package wbif.sjx.common.Object;
 
+import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.*;
 
 import static org.junit.Assert.*;
 
 public class VolumeTest {
-    private double tolerance = 1E-10;
+    private double tolerance10 = 1E-10;
+    private double tolerance2 = 1E-2;
 
 
     // ADDING COORDINATES
@@ -29,6 +33,81 @@ public class VolumeTest {
     // COORDINATE TESTS
 
     @Test
+    public void testGetXCoords() {
+        Volume volume = new Volume(2.0,1.0,"PX", false);
+        volume.addCoord(1,2,3);
+        volume.addCoord(4,3,12);
+        volume.addCoord(2,1,2);
+        volume.addCoord(1,2,5);
+        volume.addCoord(1,2,8);
+        volume.addCoord(1,4,8);
+        volume.addCoord(2,4,8);
+        volume.addCoord(3,4,8);
+        volume.addCoord(2,4,2);
+        volume.addCoord(2,6,9);
+
+        ArrayList<Integer> actual = volume.getXCoords();
+        Collections.sort(actual);
+
+        ArrayList<Integer> expected = new ArrayList<Integer>(Arrays.asList(1,4,2,1,1,1,2,3,2,2));
+        Collections.sort(expected);
+
+        assertEquals(10,actual.size());
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void testGetYCoords() {
+        Volume volume = new Volume(2.0,1.0,"PX", false);
+        volume.addCoord(1,2,3);
+        volume.addCoord(4,3,12);
+        volume.addCoord(2,1,2);
+        volume.addCoord(1,2,5);
+        volume.addCoord(1,2,8);
+        volume.addCoord(1,4,8);
+        volume.addCoord(2,4,8);
+        volume.addCoord(3,4,8);
+        volume.addCoord(2,4,2);
+        volume.addCoord(2,6,9);
+
+        ArrayList<Integer> actual = volume.getYCoords();
+        Collections.sort(actual);
+
+        ArrayList<Integer> expected = new ArrayList<Integer>(Arrays.asList(2,3,1,2,2,4,4,4,4,6));
+        Collections.sort(expected);
+
+        assertEquals(10,actual.size());
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void testGetZCoords() {
+        Volume volume = new Volume(2.0,1.0,"PX", false);
+        volume.addCoord(1,2,3);
+        volume.addCoord(4,3,12);
+        volume.addCoord(2,1,2);
+        volume.addCoord(1,2,5);
+        volume.addCoord(1,2,8);
+        volume.addCoord(1,4,8);
+        volume.addCoord(2,4,8);
+        volume.addCoord(3,4,8);
+        volume.addCoord(2,4,2);
+        volume.addCoord(2,6,9);
+
+        ArrayList<Integer> actual = volume.getZCoords();
+        Collections.sort(actual);
+
+        ArrayList<Integer> expected = new ArrayList<Integer>(Arrays.asList(3,12,2,5,8,8,8,8,2,9));
+        Collections.sort(expected);
+
+        assertEquals(10,actual.size());
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
     public void testGetXNoVolume() {
         double dppXY = 0.02;
         double dppZ = 0.1;
@@ -39,7 +118,7 @@ public class VolumeTest {
         double[] actualX = volume.getX(true);
         double[] expectedX = new double[]{};
 
-        assertArrayEquals(expectedX,actualX,tolerance);
+        assertArrayEquals(expectedX,actualX, tolerance10);
         assertEquals(0,volume.getPoints().size());
 
     }
@@ -59,7 +138,7 @@ public class VolumeTest {
         double[] actualX = volume.getX(true);
         double[] expectedX = new double[]{10,10,11,13};
 
-        assertArrayEquals(expectedX,actualX,tolerance);
+        assertArrayEquals(expectedX,actualX, tolerance10);
 
     }
 
@@ -78,7 +157,7 @@ public class VolumeTest {
         double[] actualX = volume.getX(false);
         double[] expectedX = new double[]{0.2,0.2,0.22,0.26};
 
-        assertArrayEquals(expectedX,actualX,tolerance);
+        assertArrayEquals(expectedX,actualX, tolerance10);
 
     }
 
@@ -97,7 +176,7 @@ public class VolumeTest {
         double[] actualY = volume.getY(true);
         double[] expectedY = new double[]{5,5,5,7};
 
-        assertArrayEquals(expectedY,actualY,tolerance);
+        assertArrayEquals(expectedY,actualY, tolerance10);
 
     }
 
@@ -116,7 +195,7 @@ public class VolumeTest {
         double[] actualY = volume.getY(false);
         double[] expectedY = new double[]{0.1,0.1,0.1,0.14};
 
-        assertArrayEquals(expectedY,actualY,tolerance);
+        assertArrayEquals(expectedY,actualY, tolerance10);
 
     }
 
@@ -135,7 +214,7 @@ public class VolumeTest {
         double[] actualZ = volume.getZ(true,false);
         double[] expectedZ = new double[]{1,2,2,1};
 
-        assertArrayEquals(expectedZ,actualZ,tolerance);
+        assertArrayEquals(expectedZ,actualZ, tolerance10);
 
     }
 
@@ -154,7 +233,7 @@ public class VolumeTest {
         double[] actualZ = volume.getZ(true,true);
         double[] expectedZ = new double[]{5,10,10,5};
 
-        assertArrayEquals(expectedZ,actualZ,tolerance);
+        assertArrayEquals(expectedZ,actualZ, tolerance10);
 
     }
 
@@ -172,11 +251,11 @@ public class VolumeTest {
 
         double[] actualZ = volume.getZ(false,true);
         double[] expectedZ = new double[]{0.1,0.2,0.2,0.1};
-        assertArrayEquals(expectedZ,actualZ,tolerance);
+        assertArrayEquals(expectedZ,actualZ, tolerance10);
 
         // The result shouldn't be affected by the XY matching when using calibrated distances
         actualZ = volume.getZ(false,false);
-        assertArrayEquals(expectedZ,actualZ,tolerance);
+        assertArrayEquals(expectedZ,actualZ, tolerance10);
 
     }
 
@@ -191,7 +270,7 @@ public class VolumeTest {
         double actual = volume.getXYScaledZ(1);
         double expected = 5d;
 
-        assertEquals(expected,actual,tolerance);
+        assertEquals(expected,actual, tolerance10);
 
     }
 
@@ -210,7 +289,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(11,volume.getXMean(true),tolerance);
+        assertEquals(11,volume.getXMean(true), tolerance10);
 
     }
 
@@ -226,7 +305,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(0.22,volume.getXMean(false),tolerance);
+        assertEquals(0.22,volume.getXMean(false), tolerance10);
 
     }
 
@@ -242,7 +321,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(5.5,volume.getYMean(true),tolerance);
+        assertEquals(5.5,volume.getYMean(true), tolerance10);
 
     }
 
@@ -258,7 +337,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(0.11,volume.getYMean(false),tolerance);
+        assertEquals(0.11,volume.getYMean(false), tolerance10);
 
     }
 
@@ -274,7 +353,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(1.5,volume.getZMean(true,false),tolerance);
+        assertEquals(1.5,volume.getZMean(true,false), tolerance10);
 
     }
 
@@ -290,7 +369,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(7.5,volume.getZMean(true,true),tolerance);
+        assertEquals(7.5,volume.getZMean(true,true), tolerance10);
 
     }
 
@@ -306,8 +385,8 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(0.15,volume.getZMean(false,false),tolerance);
-        assertEquals(0.15,volume.getZMean(false,true),tolerance);
+        assertEquals(0.15,volume.getZMean(false,false), tolerance10);
+        assertEquals(0.15,volume.getZMean(false,true), tolerance10);
 
     }
 
@@ -326,7 +405,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(10.5,volume.getXMedian(true),tolerance);
+        assertEquals(10.5,volume.getXMedian(true), tolerance10);
     }
 
     @Test
@@ -341,7 +420,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(0.21,volume.getXMedian(false),tolerance);
+        assertEquals(0.21,volume.getXMedian(false), tolerance10);
 
     }
 
@@ -357,7 +436,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(5,volume.getYMedian(true),tolerance);
+        assertEquals(5,volume.getYMedian(true), tolerance10);
     }
 
     @Test
@@ -372,7 +451,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(0.1,volume.getYMedian(false),tolerance);
+        assertEquals(0.1,volume.getYMedian(false), tolerance10);
 
     }
 
@@ -388,7 +467,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(1.5,volume.getZMedian(true,false),tolerance);
+        assertEquals(1.5,volume.getZMedian(true,false), tolerance10);
 
     }
 
@@ -404,7 +483,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(7.5,volume.getZMedian(true,true),tolerance);
+        assertEquals(7.5,volume.getZMedian(true,true), tolerance10);
 
     }
 
@@ -420,8 +499,8 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(0.15,volume.getZMedian(false,false),tolerance);
-        assertEquals(0.15,volume.getZMedian(false,true),tolerance);
+        assertEquals(0.15,volume.getZMedian(false,false), tolerance10);
+        assertEquals(0.15,volume.getZMedian(false,true), tolerance10);
 
     }
 
@@ -438,7 +517,7 @@ public class VolumeTest {
         volume.addCoord(13,7,1);
         volume.addCoord(13,7,2);
 
-        assertEquals(11,volume.getXMedian(true),tolerance);
+        assertEquals(11,volume.getXMedian(true), tolerance10);
     }
 
     @Test
@@ -454,7 +533,7 @@ public class VolumeTest {
         volume.addCoord(13,7,1);
         volume.addCoord(13,7,2);
 
-        assertEquals(0.22,volume.getXMedian(false),tolerance);
+        assertEquals(0.22,volume.getXMedian(false), tolerance10);
 
     }
 
@@ -471,7 +550,7 @@ public class VolumeTest {
         volume.addCoord(13,7,1);
         volume.addCoord(13,7,2);
 
-        assertEquals(5,volume.getYMedian(true),tolerance);
+        assertEquals(5,volume.getYMedian(true), tolerance10);
     }
 
     @Test
@@ -487,7 +566,7 @@ public class VolumeTest {
         volume.addCoord(13,7,1);
         volume.addCoord(13,7,2);
 
-        assertEquals(0.1,volume.getYMedian(false),tolerance);
+        assertEquals(0.1,volume.getYMedian(false), tolerance10);
 
     }
 
@@ -504,7 +583,7 @@ public class VolumeTest {
         volume.addCoord(13,7,1);
         volume.addCoord(13,7,2);
 
-        assertEquals(2,volume.getZMedian(true,false),tolerance);
+        assertEquals(2,volume.getZMedian(true,false), tolerance10);
 
     }
 
@@ -521,7 +600,7 @@ public class VolumeTest {
         volume.addCoord(13,7,1);
         volume.addCoord(13,7,2);
 
-        assertEquals(10,volume.getZMedian(true,true),tolerance);
+        assertEquals(10,volume.getZMedian(true,true), tolerance10);
 
     }
 
@@ -538,8 +617,8 @@ public class VolumeTest {
         volume.addCoord(13,7,1);
         volume.addCoord(13,7,2);
 
-        assertEquals(0.2,volume.getZMedian(false,false),tolerance);
-        assertEquals(0.2,volume.getZMedian(false,true),tolerance);
+        assertEquals(0.2,volume.getZMedian(false,false), tolerance10);
+        assertEquals(0.2,volume.getZMedian(false,true), tolerance10);
 
     }
 
@@ -561,7 +640,7 @@ public class VolumeTest {
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(45);
 
-        assertEquals(expectedAngle,actualAngle,tolerance);
+        assertEquals(expectedAngle,actualAngle, tolerance10);
 
     }
 
@@ -580,7 +659,7 @@ public class VolumeTest {
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(135);
 
-        assertEquals(expectedAngle,actualAngle,tolerance);
+        assertEquals(expectedAngle,actualAngle, tolerance10);
 
     }
 
@@ -599,7 +678,7 @@ public class VolumeTest {
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(-135);
 
-        assertEquals(expectedAngle,actualAngle,tolerance);
+        assertEquals(expectedAngle,actualAngle, tolerance10);
 
     }
 
@@ -618,7 +697,7 @@ public class VolumeTest {
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(-45);
 
-        assertEquals(expectedAngle,actualAngle,tolerance);
+        assertEquals(expectedAngle,actualAngle, tolerance10);
 
     }
 
@@ -637,7 +716,7 @@ public class VolumeTest {
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(0);
 
-        assertEquals(expectedAngle,actualAngle,tolerance);
+        assertEquals(expectedAngle,actualAngle, tolerance10);
 
     }
 
@@ -656,7 +735,7 @@ public class VolumeTest {
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(90);
 
-        assertEquals(expectedAngle,actualAngle,tolerance);
+        assertEquals(expectedAngle,actualAngle, tolerance10);
 
     }
 
@@ -675,7 +754,7 @@ public class VolumeTest {
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(180);
 
-        assertEquals(expectedAngle,actualAngle,tolerance);
+        assertEquals(expectedAngle,actualAngle, tolerance10);
 
     }
 
@@ -694,7 +773,7 @@ public class VolumeTest {
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(-90);
 
-        assertEquals(expectedAngle,actualAngle,tolerance);
+        assertEquals(expectedAngle,actualAngle, tolerance10);
 
     }
 
@@ -712,7 +791,7 @@ public class VolumeTest {
         volume.addCoord(11,5,3);
         volume.addCoord(13,7,1);
 
-        assertEquals(2,volume.getHeight(true,false),tolerance);
+        assertEquals(2,volume.getHeight(true,false), tolerance10);
 
     }
 
@@ -728,7 +807,7 @@ public class VolumeTest {
         volume.addCoord(11,5,3);
         volume.addCoord(13,7,1);
 
-        assertEquals(10,volume.getHeight(true,true),tolerance);
+        assertEquals(10,volume.getHeight(true,true), tolerance10);
 
     }
 
@@ -744,8 +823,8 @@ public class VolumeTest {
         volume.addCoord(11,5,3);
         volume.addCoord(13,7,1);
 
-        assertEquals(0.2,volume.getHeight(false,true),tolerance);
-        assertEquals(0.2,volume.getHeight(false,false),tolerance);
+        assertEquals(0.2,volume.getHeight(false,true), tolerance10);
+        assertEquals(0.2,volume.getHeight(false,false), tolerance10);
 
     }
 
@@ -766,9 +845,9 @@ public class VolumeTest {
         double[][] actualExtents = volume.getExtents(true,false);
         double[][] expectedExtents = new double[][]{{10,13},{5,7},{1,3}};
 
-        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
-        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
-        assertArrayEquals(expectedExtents[2],actualExtents[2],tolerance);
+        assertArrayEquals(expectedExtents[0],actualExtents[0], tolerance10);
+        assertArrayEquals(expectedExtents[1],actualExtents[1], tolerance10);
+        assertArrayEquals(expectedExtents[2],actualExtents[2], tolerance10);
 
     }
 
@@ -787,9 +866,9 @@ public class VolumeTest {
         double[][] actualExtents = volume.getExtents(true,true);
         double[][] expectedExtents = new double[][]{{10,13},{5,7},{5,15}};
 
-        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
-        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
-        assertArrayEquals(expectedExtents[2],actualExtents[2],tolerance);
+        assertArrayEquals(expectedExtents[0],actualExtents[0], tolerance10);
+        assertArrayEquals(expectedExtents[1],actualExtents[1], tolerance10);
+        assertArrayEquals(expectedExtents[2],actualExtents[2], tolerance10);
 
     }
 
@@ -807,14 +886,14 @@ public class VolumeTest {
 
         double[][] expectedExtents = new double[][]{{0.2,0.26},{0.1,0.14},{0.1,0.3}};
         double[][] actualExtents = volume.getExtents(false,true);
-        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
-        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
-        assertArrayEquals(expectedExtents[2],actualExtents[2],tolerance);
+        assertArrayEquals(expectedExtents[0],actualExtents[0], tolerance10);
+        assertArrayEquals(expectedExtents[1],actualExtents[1], tolerance10);
+        assertArrayEquals(expectedExtents[2],actualExtents[2], tolerance10);
 
         actualExtents = volume.getExtents(false,false);
-        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
-        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
-        assertArrayEquals(expectedExtents[2],actualExtents[2],tolerance);
+        assertArrayEquals(expectedExtents[0],actualExtents[0], tolerance10);
+        assertArrayEquals(expectedExtents[1],actualExtents[1], tolerance10);
+        assertArrayEquals(expectedExtents[2],actualExtents[2], tolerance10);
 
     }
 
@@ -832,8 +911,8 @@ public class VolumeTest {
 
         double[][] expectedExtents = new double[][]{{10,13},{5,7}};
         double[][] actualExtents = volume.getExtents2D(true);
-        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
-        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
+        assertArrayEquals(expectedExtents[0],actualExtents[0], tolerance10);
+        assertArrayEquals(expectedExtents[1],actualExtents[1], tolerance10);
 
     }
 
@@ -851,8 +930,8 @@ public class VolumeTest {
 
         double[][] expectedExtents = new double[][]{{0.2,0.26},{0.1,0.14}};
         double[][] actualExtents = volume.getExtents2D(false);
-        assertArrayEquals(expectedExtents[0],actualExtents[0],tolerance);
-        assertArrayEquals(expectedExtents[1],actualExtents[1],tolerance);
+        assertArrayEquals(expectedExtents[0],actualExtents[0], tolerance10);
+        assertArrayEquals(expectedExtents[1],actualExtents[1], tolerance10);
 
     }
 
@@ -951,18 +1030,30 @@ public class VolumeTest {
     // VOLUME
 
     @Test
-    public void testContainsPoint() {
-        Volume volume1 = new Volume(2.0,1.0,"PX", false);
-        volume1.addCoord(1,2,3);
-        volume1.addCoord(4,3,12);
-        volume1.addCoord(2,1,2);
-        volume1.addCoord(1,2,5);
+    public void testContainsPointDoesContain() {
+        Volume volume = new Volume(2.0,1.0,"PX", false);
+        volume.addCoord(1,2,3);
+        volume.addCoord(4,3,12);
+        volume.addCoord(2,1,2);
+        volume.addCoord(1,2,5);
 
-        Point<Integer> point1 = new Point<>(1,2,3);
-        Point<Integer> point2 = new Point<>(2,2,3);
+        Point<Integer> point = new Point<>(1,2,3);
 
-        assertTrue(volume1.getPoints().contains(point1));
-        assertFalse(volume1.getPoints().contains(point2));
+        assertTrue(volume.getPoints().contains(point));
+
+    }
+
+    @Test
+    public void testContainsPointDoesntContain() {
+        Volume volume = new Volume(2.0,1.0,"PX", false);
+        volume.addCoord(1,2,3);
+        volume.addCoord(4,3,12);
+        volume.addCoord(2,1,2);
+        volume.addCoord(1,2,5);
+
+        Point<Integer> point = new Point<>(2,2,3);
+
+        assertFalse(volume.getPoints().contains(point));
 
     }
 
@@ -1006,7 +1097,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(20,volume.getContainedVolume(true),tolerance);
+        assertEquals(20,volume.getContainedVolume(true), tolerance10);
 
     }
 
@@ -1022,7 +1113,7 @@ public class VolumeTest {
         volume.addCoord(11,5,2);
         volume.addCoord(13,7,1);
 
-        assertEquals(0.00016,volume.getContainedVolume(false),tolerance);
+        assertEquals(0.00016,volume.getContainedVolume(false), tolerance10);
 
     }
 
@@ -1038,7 +1129,7 @@ public class VolumeTest {
         volume.addCoord(11,5,1);
         volume.addCoord(13,7,1);
 
-        assertEquals(20,volume.getContainedVolume(true),tolerance);
+        assertEquals(20,volume.getContainedVolume(true), tolerance10);
 
     }
 
@@ -1054,7 +1145,7 @@ public class VolumeTest {
         volume.addCoord(11,5,1);
         volume.addCoord(13,7,1);
 
-        assertEquals(0.00016,volume.getContainedVolume(false),tolerance);
+        assertEquals(0.00016,volume.getContainedVolume(false), tolerance10);
 
     }
 
@@ -1310,40 +1401,225 @@ public class VolumeTest {
 
     @Test
     public void testClearSurface() {
-        Volume volume1 = new Volume(2.0,1.0,"PX", false);
-        volume1.addCoord(1,2,3);
-        volume1.addCoord(4,3,12);
-        volume1.addCoord(2,1,2);
-        volume1.addCoord(1,2,5);
-        volume1.addCoord(1,2,8);
-        volume1.addCoord(1,4,8);
-        volume1.addCoord(2,4,8);
-        volume1.addCoord(3,4,8);
-        volume1.addCoord(2,4,2);
-        volume1.addCoord(2,6,9);
+        Volume volume = new Volume(2.0,1.0,"PX", false);
+        volume.addCoord(1,2,3);
+        volume.addCoord(4,3,12);
+        volume.addCoord(2,1,2);
+        volume.addCoord(1,2,5);
+        volume.addCoord(1,2,8);
+        volume.addCoord(1,4,8);
+        volume.addCoord(2,4,8);
+        volume.addCoord(3,4,8);
+        volume.addCoord(2,4,2);
+        volume.addCoord(2,6,9);
 
-        volume1.calculateSurface();
-        assertNotNull(volume1.surface);
+        volume.calculateSurface();
+        assertNotNull(volume.surface);
 
-        volume1.clearSurface();
-        assertNull(volume1.surface);
+        volume.clearSurface();
+        assertNull(volume.surface);
     }
 
     @Test
     public void testClearPoints() {
-        Volume volume1 = new Volume(2.0,1.0,"PX", false);
-        volume1.addCoord(1,2,3);
-        volume1.addCoord(4,3,12);
-        volume1.addCoord(2,1,2);
-        volume1.addCoord(1,2,5);
-        volume1.addCoord(1,2,8);
-        volume1.addCoord(1,4,8);
-        volume1.addCoord(2,4,8);
-        volume1.addCoord(3,4,8);
-        volume1.addCoord(2,4,2);
-        volume1.addCoord(2,6,9);
+        Volume volume = new Volume(2.0,1.0,"PX", false);
+        volume.addCoord(1,2,3);
+        volume.addCoord(4,3,12);
+        volume.addCoord(2,1,2);
+        volume.addCoord(1,2,5);
+        volume.addCoord(1,2,8);
+        volume.addCoord(1,4,8);
+        volume.addCoord(2,4,8);
+        volume.addCoord(3,4,8);
+        volume.addCoord(2,4,2);
+        volume.addCoord(2,6,9);
 
-        volume1.clearPoints();
-        assertEquals(0,volume1.points.size());
+        volume.clearPoints();
+        assertEquals(0,volume.points.size());
+    }
+
+
+    // MISSING TESTS
+    @Test @Ignore
+    public void testGetOverlappingPoints() {
+
+    }
+
+    @Test @Ignore
+    public void testGetOverlap() {
+
+    }
+
+    @Test @Ignore
+    public void testGetXSurfaceCoords() {
+
+    }
+
+    @Test @Ignore
+    public void testGetYSurfaceCoords() {
+
+    }
+
+    @Test @Ignore
+    public void testGetZSufaceCoords() {
+
+    }
+
+    @Test @Ignore
+    public void testGetXSurfacePixelDistances() {
+
+    }
+
+    @Test @Ignore
+    public void testGetYSurfacePixelDistances() {
+
+    }
+
+    @Test @Ignore
+    public void testGetZSurfacePixelDistances() {
+
+    }
+
+    @Test @Ignore
+    public void testGetXSurfaceCalibratedDistances() {
+
+    }
+
+    @Test @Ignore
+    public void testGetYSurfaceCalibratedDistances() {
+
+    }
+
+    @Test @Ignore
+    public void testGetZSurfaceCalibratedDistances() {
+
+    }
+
+    @Test @Ignore
+    public void testGetProjectedAreaPixelDistances() {
+
+    }
+
+    @Test @Ignore
+    public void testGetProjectedAreaCalibratedDistances() {
+
+    }
+
+    @Test
+    public void testGetCentroidSeparation2DPixelDistances() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume1 = new Volume(dppXY,dppZ,units, true);
+        volume1.addCoord(10,5,0);
+        volume1.addCoord(11,5,0);
+        volume1.addCoord(11,6,0);
+        volume1.addCoord(12,6,0);
+
+        Volume volume2 = new Volume(dppXY,dppZ,units, true);
+        volume2.addCoord(1,2,0);
+        volume2.addCoord(1,3,0);
+        volume2.addCoord(2,1,0);
+        volume2.addCoord(2,2,0);
+        volume2.addCoord(3,2,0);
+
+        double expected = 9.8433;
+        double actual = volume1.getCentroidSeparation(volume2,true);
+
+        assertEquals(expected,actual, tolerance2);
+
+    }
+
+    @Test
+    public void testGetCentroidSeparation2DCalibratedDistances() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume1 = new Volume(dppXY,dppZ,units, true);
+        volume1.addCoord(10,5,0);
+        volume1.addCoord(11,5,0);
+        volume1.addCoord(11,6,0);
+        volume1.addCoord(12,6,0);
+
+        Volume volume2 = new Volume(dppXY,dppZ,units, true);
+        volume2.addCoord(1,2,0);
+        volume2.addCoord(1,3,0);
+        volume2.addCoord(2,1,0);
+        volume2.addCoord(2,2,0);
+        volume2.addCoord(3,2,0);
+
+        double expected = 0.1878;
+        double actual = volume1.getCentroidSeparation(volume2,false);
+
+        assertEquals(expected,actual, tolerance2);
+
+    }
+
+    @Test
+    public void testGetCentroidSeparation3DPixelDistances() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume1 = new Volume(dppXY,dppZ,units, false);
+        volume1.addCoord(10,5,0);
+        volume1.addCoord(11,5,0);
+        volume1.addCoord(11,6,0);
+        volume1.addCoord(12,6,0);
+        volume1.addCoord(10,5,1);
+        volume1.addCoord(11,5,1);
+        volume1.addCoord(12,6,1);
+
+        Volume volume2 = new Volume(dppXY,dppZ,units, false);
+        volume2.addCoord(1,2,0);
+        volume2.addCoord(1,3,0);
+        volume2.addCoord(2,1,0);
+        volume2.addCoord(2,2,0);
+        volume2.addCoord(3,2,0);
+        volume2.addCoord(1,3,1);
+        volume2.addCoord(2,1,1);
+        volume2.addCoord(2,2,1);
+        volume2.addCoord(2,1,2);
+
+        double expected = 9.8986;
+        double actual = volume1.getCentroidSeparation(volume2,true);
+
+        assertEquals(expected,actual, tolerance2);
+
+    }
+
+    @Test
+    public void testGetCentroidSeparation3DCalibratedDistances() {
+        double dppXY = 0.02;
+        double dppZ = 0.1;
+        String units = "um";
+
+        Volume volume1 = new Volume(dppXY,dppZ,units, false);
+        volume1.addCoord(10,5,0);
+        volume1.addCoord(11,5,0);
+        volume1.addCoord(11,6,0);
+        volume1.addCoord(12,6,0);
+        volume1.addCoord(10,5,1);
+        volume1.addCoord(11,5,1);
+        volume1.addCoord(12,6,1);
+
+        Volume volume2 = new Volume(dppXY,dppZ,units, false);
+        volume2.addCoord(1,2,0);
+        volume2.addCoord(1,3,0);
+        volume2.addCoord(2,1,0);
+        volume2.addCoord(2,2,0);
+        volume2.addCoord(3,2,0);
+        volume2.addCoord(1,3,1);
+        volume2.addCoord(2,1,1);
+        volume2.addCoord(2,2,1);
+        volume2.addCoord(2,1,2);
+
+        double expected = 0.1980;
+        double actual = volume1.getCentroidSeparation(volume2,false);
+
+        assertEquals(expected,actual, tolerance2);
+
     }
 }
