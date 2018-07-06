@@ -8,7 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Common.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,23 +21,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Filters.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Common$VolumeTest.coverage" NAME="VolumeTest Coverage Results" MODIFIED="1524037637387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.Object.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Filters.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Common$All_in_Common.coverage" NAME="All in Common Coverage Results" MODIFIED="1529653217331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
-    </SUITE>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Common" />
@@ -45,8 +47,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="59" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
+            <state relative-caret-position="102">
+              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -55,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFoldernameExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
@@ -63,8 +65,8 @@
       <file leaf-file-name="Volume.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="514" lean-forward="true" selection-start-line="514" selection-end-line="514" />
+            <state relative-caret-position="2057">
+              <caret line="514" selection-start-line="514" selection-end-line="514" />
               <folding>
                 <element signature="docComment;class#Volume#0" />
                 <element signature="e#914#1080#0" />
@@ -121,104 +123,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VolumeTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VolumeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="1593" column="51" selection-start-line="1593" selection-start-column="51" selection-end-line="1593" selection-end-column="51" />
-              <folding>
-                <element signature="e#189#542#0" />
-                <element signature="e#664#1396#0" />
-                <element signature="e#1402#2134#0" />
-                <element signature="e#2140#2873#0" />
-                <element signature="e#574#970#0" />
-                <element signature="e#976#1470#0" />
-                <element signature="e#1476#1982#0" />
-                <element signature="e#1988#2478#0" />
-                <element signature="e#2484#2989#0" />
-                <element signature="e#2995#3504#0" />
-                <element signature="e#3510#4018#0" />
-                <element signature="e#4024#4728#0" />
-                <element signature="e#4734#5059#0" />
-                <element signature="e#5088#5485#0" />
-                <element signature="e#5491#5896#0" />
-                <element signature="e#5902#6300#0" />
-                <element signature="e#6306#6711#0" />
-                <element signature="e#6717#7134#0" />
-                <element signature="e#7140#7554#0" />
-                <element signature="e#7560#8037#0" />
-                <element signature="e#8068#8475#0" />
-                <element signature="e#8481#8895#0" />
-                <element signature="e#8901#9305#0" />
-                <element signature="e#9311#9724#0" />
-                <element signature="e#9730#10156#0" />
-                <element signature="e#10162#10585#0" />
-                <element signature="e#10591#11079#0" />
-                <element signature="e#11085#11522#0" />
-                <element signature="e#11528#11974#0" />
-                <element signature="e#11980#12416#0" />
-                <element signature="e#12422#12867#0" />
-                <element signature="e#12873#13329#0" />
-                <element signature="e#13335#13789#0" />
-                <element signature="e#13795#14313#0" />
-                <element signature="e#14354#14870#0" />
-                <element signature="e#14876#15392#0" />
-                <element signature="e#15398#15919#0" />
-                <element signature="e#15925#16445#0" />
-                <element signature="e#16451#16969#0" />
-                <element signature="e#16975#17494#0" />
-                <element signature="e#17500#18021#0" />
-                <element signature="e#18027#18548#0" />
-                <element signature="e#18555#18986#0" />
-                <element signature="e#18992#19407#0" />
-                <element signature="e#19413#19891#0" />
-                <element signature="e#19898#20630#0" />
-                <element signature="e#20636#21351#0" />
-                <element signature="e#21357#22356#0" />
-                <element signature="e#22362#22983#0" />
-                <element signature="e#22989#23633#0" />
-                <element signature="e#23667#23910#0" />
-                <element signature="e#23916#24285#0" />
-                <element signature="e#24291#24659#0" />
-                <element signature="e#24665#24904#0" />
-                <element signature="e#24910#25274#0" />
-                <element signature="e#25280#25644#0" />
-                <element signature="e#25695#26170#0" />
-                <element signature="e#26180#26655#0" />
-                <element signature="e#26136#26384#0" />
-                <element signature="e#26390#26771#0" />
-                <element signature="e#26777#27194#0" />
-                <element signature="e#27200#27628#0" />
-                <element signature="e#27634#28061#0" />
-                <element signature="e#28067#28505#0" />
-                <element signature="e#28535#29047#0" />
-                <element signature="e#29053#29952#0" />
-                <element signature="e#29958#30503#0" />
-                <element signature="e#30509#31022#0" />
-                <element signature="e#31028#31536#0" />
-                <element signature="e#31542#32049#0" />
-                <element signature="e#32079#32617#0" />
-                <element signature="e#32623#33592#0" />
-                <element signature="e#33598#34169#0" />
-                <element signature="e#34175#34714#0" />
-                <element signature="e#34720#35255#0" />
-                <element signature="e#35261#35794#0" />
-                <element signature="e#35831#36415#0" />
-                <element signature="e#36421#36936#0" />
-                <element signature="e#36980#37074#0" />
-                <element signature="e#37084#37157#0" />
-                <element signature="e#37267#37322#0" />
-                <element signature="e#37328#37383#0" />
-                <element signature="e#37389#37444#0" />
-                <element signature="e#37466#37536#0" />
-                <element signature="e#37542#37612#0" />
-                <element signature="e#37618#37688#0" />
-                <element signature="e#37697#37767#0" />
-                <element signature="e#37773#37843#0" />
-                <element signature="e#37849#37919#0" />
-                <element signature="e#37945#38020#0" />
-                <element signature="e#38026#38101#0" />
-              </folding>
+            <state relative-caret-position="235">
+              <caret line="1585" column="33" selection-start-line="1585" selection-start-column="33" selection-end-line="1585" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageGradientEnergy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -235,7 +153,7 @@
       <file leaf-file-name="TextureCalculatorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/TextureCalculatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2924">
+            <state relative-caret-position="7106">
               <caret line="430" selection-start-line="430" selection-end-line="430" />
             </state>
           </provider>
@@ -244,17 +162,24 @@
       <file leaf-file-name="TextureCalculator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="58" selection-start-line="58" selection-end-line="58" />
+            <state relative-caret-position="681">
+              <caret line="119" column="36" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IntensityMinMax.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IntensityMinMax.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+            <state relative-caret-position="1343">
+              <caret line="125" column="9" lean-forward="true" selection-start-line="125" selection-start-column="9" selection-end-line="125" selection-end-column="9" />
+              <folding>
+                <element signature="docComment;class#IntensityMinMax#0" />
+                <element signature="method#run#0;class#IntensityMinMax#0" />
+                <element signature="method#run#1;class#IntensityMinMax#0" />
+                <element signature="method#processStack#0;class#IntensityMinMax#0" />
+                <element signature="docComment;method#getWeightedChannelRange#0;class#IntensityMinMax#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -271,8 +196,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Spot</find>
-      <find>tostr</find>
       <find>1E-4</find>
       <find>new Im</find>
       <find>new Ima</find>
@@ -301,6 +224,8 @@
       <find>getcontain</find>
       <find>contains</find>
       <find>getoverlapp</find>
+      <find>Sys</find>
+      <find>IJ.run</find>
     </findStrings>
     <replaceStrings>
       <replace>Float</replace>
@@ -316,7 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/InstantaneousSpeedCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/InstantaneousVelocityCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" />
@@ -355,9 +279,7 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/LoadXLifROIs.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/TextureCalculatorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaMeasurementFileExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFileExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaMeasurementFoldernameExtractor.java" />
@@ -367,6 +289,9 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java" />
       </list>
     </option>
   </component>
@@ -377,10 +302,11 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="938" />
-    <option name="height" value="1088" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1862" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -391,9 +317,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -443,7 +368,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Object" type="462c0819:PsiDirectoryNode" />
+              <item name="Process" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Common" type="b2602c69:ProjectViewProjectNode" />
@@ -479,6 +404,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -528,7 +454,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.VolumeTest.testGetCentroidSeparation3DCalibratedDistances">
+  <component name="RunManager" selected="Maven.Common [install]">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -786,50 +712,50 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="750" height="870" extended-state="0" />
+    <frame x="1912" y="-8" width="1862" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" x="1920" y="0" width="1855" height="1080" id="TODO" order="6" type="FLOATING" weight="0.32987553" />
-      <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.32178217" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="9" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="1" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" visible="true" weight="0.27870968" />
-      <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.3283582" />
+      <window_info anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" weight="0.27804878" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32987553" />
-      <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20149253" />
+      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20097508" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.2521322" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info auto_hide="true" id="Favorites" order="6" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
       <window_info anchor="bottom" auto_hide="true" id="Debug" order="3" weight="0.39121953" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
-      <window_info id="Nl-Palette" order="2" />
-      <window_info anchor="right" id="Properties" order="6" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
-      <window_info anchor="right" id="Database" order="10" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.32178217" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
+      <window_info anchor="right" id="Database" order="10" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.3283582" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="Designer" order="4" />
-      <window_info auto_hide="true" id="Favorites" order="7" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" weight="0.25782093" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.32903588" />
       <window_info id="UI Designer" order="5" />
       <window_info anchor="right" id="Properties" order="6" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32987553" />
@@ -839,11 +765,13 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.32606325" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20842217" />
       <window_info anchor="bottom" id="Run with VisualVM" order="10" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info id="Nl-Palette" order="2" />
       <window_info anchor="right" id="Maven Projects" order="1" />
-      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20842217" />
+      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Database" order="10" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
@@ -851,9 +779,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info id="Structure" order="1" weight="0.2521322" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.32903588" />
-      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info auto_hide="true" id="Favorites" order="7" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39626557" />
     </layout-to-restore>
   </component>
@@ -870,13 +796,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousSpeedCalculatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/DirectionalityRatioCalculatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1028,12 +947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
           <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-          <folding>
-            <element signature="docComment;class#LongestChordCalculator#0" />
-            <element signature="e#653#762#0" />
-            <element signature="method#calculateAverageDistanceFromLC#0;class#LongestChordCalculator#0" />
-            <element signature="method#getLCLength#0;class#LongestChordCalculator#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1103,11 +1016,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="605">
           <caret line="119" column="1" lean-forward="true" selection-start-line="119" selection-start-column="1" selection-end-line="119" selection-end-column="1" />
-          <folding>
-            <element signature="method#calculatePCCWholeImage2D16bit#0;class#ColocalisationCalculatorTest#0" />
-            <element signature="method#calculatePCCWholeImage2D32bit#0;class#ColocalisationCalculatorTest#0" />
-            <element signature="method#calculatePCCWholeImage3D8bit#0;class#ColocalisationCalculatorTest#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1120,29 +1028,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/TextureCalculatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2924">
+        <state relative-caret-position="7106">
           <caret line="430" selection-start-line="430" selection-end-line="430" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="59" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -1165,7 +1052,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFoldernameExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
@@ -1178,8 +1065,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="514" lean-forward="true" selection-start-line="514" selection-end-line="514" />
+        <state relative-caret-position="2057">
+          <caret line="514" selection-start-line="514" selection-end-line="514" />
           <folding>
             <element signature="docComment;class#Volume#0" />
             <element signature="e#914#1080#0" />
@@ -1235,102 +1122,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="681">
+          <caret line="119" column="36" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1593" column="51" selection-start-line="1593" selection-start-column="51" selection-end-line="1593" selection-end-column="51" />
+        <state relative-caret-position="235">
+          <caret line="1585" column="33" selection-start-line="1585" selection-start-column="33" selection-end-line="1585" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="125" column="9" lean-forward="true" selection-start-line="125" selection-start-column="9" selection-end-line="125" selection-end-column="9" />
           <folding>
-            <element signature="e#189#542#0" />
-            <element signature="e#664#1396#0" />
-            <element signature="e#1402#2134#0" />
-            <element signature="e#2140#2873#0" />
-            <element signature="e#574#970#0" />
-            <element signature="e#976#1470#0" />
-            <element signature="e#1476#1982#0" />
-            <element signature="e#1988#2478#0" />
-            <element signature="e#2484#2989#0" />
-            <element signature="e#2995#3504#0" />
-            <element signature="e#3510#4018#0" />
-            <element signature="e#4024#4728#0" />
-            <element signature="e#4734#5059#0" />
-            <element signature="e#5088#5485#0" />
-            <element signature="e#5491#5896#0" />
-            <element signature="e#5902#6300#0" />
-            <element signature="e#6306#6711#0" />
-            <element signature="e#6717#7134#0" />
-            <element signature="e#7140#7554#0" />
-            <element signature="e#7560#8037#0" />
-            <element signature="e#8068#8475#0" />
-            <element signature="e#8481#8895#0" />
-            <element signature="e#8901#9305#0" />
-            <element signature="e#9311#9724#0" />
-            <element signature="e#9730#10156#0" />
-            <element signature="e#10162#10585#0" />
-            <element signature="e#10591#11079#0" />
-            <element signature="e#11085#11522#0" />
-            <element signature="e#11528#11974#0" />
-            <element signature="e#11980#12416#0" />
-            <element signature="e#12422#12867#0" />
-            <element signature="e#12873#13329#0" />
-            <element signature="e#13335#13789#0" />
-            <element signature="e#13795#14313#0" />
-            <element signature="e#14354#14870#0" />
-            <element signature="e#14876#15392#0" />
-            <element signature="e#15398#15919#0" />
-            <element signature="e#15925#16445#0" />
-            <element signature="e#16451#16969#0" />
-            <element signature="e#16975#17494#0" />
-            <element signature="e#17500#18021#0" />
-            <element signature="e#18027#18548#0" />
-            <element signature="e#18555#18986#0" />
-            <element signature="e#18992#19407#0" />
-            <element signature="e#19413#19891#0" />
-            <element signature="e#19898#20630#0" />
-            <element signature="e#20636#21351#0" />
-            <element signature="e#21357#22356#0" />
-            <element signature="e#22362#22983#0" />
-            <element signature="e#22989#23633#0" />
-            <element signature="e#23667#23910#0" />
-            <element signature="e#23916#24285#0" />
-            <element signature="e#24291#24659#0" />
-            <element signature="e#24665#24904#0" />
-            <element signature="e#24910#25274#0" />
-            <element signature="e#25280#25644#0" />
-            <element signature="e#25695#26170#0" />
-            <element signature="e#26180#26655#0" />
-            <element signature="e#26136#26384#0" />
-            <element signature="e#26390#26771#0" />
-            <element signature="e#26777#27194#0" />
-            <element signature="e#27200#27628#0" />
-            <element signature="e#27634#28061#0" />
-            <element signature="e#28067#28505#0" />
-            <element signature="e#28535#29047#0" />
-            <element signature="e#29053#29952#0" />
-            <element signature="e#29958#30503#0" />
-            <element signature="e#30509#31022#0" />
-            <element signature="e#31028#31536#0" />
-            <element signature="e#31542#32049#0" />
-            <element signature="e#32079#32617#0" />
-            <element signature="e#32623#33592#0" />
-            <element signature="e#33598#34169#0" />
-            <element signature="e#34175#34714#0" />
-            <element signature="e#34720#35255#0" />
-            <element signature="e#35261#35794#0" />
-            <element signature="e#35831#36415#0" />
-            <element signature="e#36421#36936#0" />
-            <element signature="e#36980#37074#0" />
-            <element signature="e#37084#37157#0" />
-            <element signature="e#37267#37322#0" />
-            <element signature="e#37328#37383#0" />
-            <element signature="e#37389#37444#0" />
-            <element signature="e#37466#37536#0" />
-            <element signature="e#37542#37612#0" />
-            <element signature="e#37618#37688#0" />
-            <element signature="e#37697#37767#0" />
-            <element signature="e#37773#37843#0" />
-            <element signature="e#37849#37919#0" />
-            <element signature="e#37945#38020#0" />
-            <element signature="e#38026#38101#0" />
+            <element signature="docComment;class#IntensityMinMax#0" />
+            <element signature="method#run#0;class#IntensityMinMax#0" />
+            <element signature="method#run#1;class#IntensityMinMax#0" />
+            <element signature="method#processStack#0;class#IntensityMinMax#0" />
+            <element signature="docComment;method#getWeightedChannelRange#0;class#IntensityMinMax#0" />
           </folding>
         </state>
       </provider>
