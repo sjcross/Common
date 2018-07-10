@@ -47,4 +47,57 @@ public class EllipseCalculator {
         }
     }
 
+    public double getXCentre() {
+        double a = e2d[0];
+        double b = e2d[1];
+        double c = e2d[2];
+        double d = e2d[3];
+        double f = e2d[4];
+        double g = e2d[5];
+
+        return (c*d-b*f)/(b*b-a*c);
+
+    }
+
+    public double getYCentre() {
+        double a = e2d[0];
+        double b = e2d[1];
+        double c = e2d[2];
+        double d = e2d[3];
+        double f = e2d[4];
+        double g = e2d[5];
+
+        return (a*f-b*d)/(b*b-a*c);
+
+    }
+
+    public double getSemiMajorAxis() {
+        double a = e2d[0];
+        double b = e2d[1];
+        double c = e2d[2];
+        double d = e2d[3];
+        double f = e2d[4];
+        double g = e2d[5];
+
+        double top = 2*(a*f*f + c*d*d + g*b*b - 2*b*d*f - a*c*g);
+        double bottom = (b*b-a*c)*(Math.sqrt((a-c)*(a-c)+4*b*b)-(a+c));
+
+        return Math.sqrt(top/bottom);
+
+    }
+
+    public double getSemiMinorAxis() {
+        double a = e2d[0];
+        double b = e2d[1];
+        double c = e2d[2];
+        double d = e2d[3];
+        double f = e2d[4];
+        double g = e2d[5];
+
+        double top = 2*(a*f*f+c*d*d+g*b*b-2*b*d*f-a*c*g);
+        double bottom = (b*b-a*c)*(-Math.sqrt((a-c)*(a-c)+4*b*b)-(a+c));
+
+        return Math.sqrt(top/bottom);
+
+    }
 }
