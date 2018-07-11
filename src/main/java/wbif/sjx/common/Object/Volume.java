@@ -515,6 +515,49 @@ public class Volume {
 
     }
 
+    public double getSurfaceSeparation(Volume volume2, boolean pixelDistances) {
+        double minDist = Double.MAX_VALUE;
+
+        // Getting coordinates for the surface points (6-way connectivity)
+        double[] x1 = getSurfaceX(pixelDistances);
+        double[] y1 = getSurfaceY(pixelDistances);
+        double[] z1 = getSurfaceZ(pixelDistances, true);
+        double[] z1Slice = getSurfaceZ(true, false);
+
+        double[] x2 = volume2.getSurfaceX(pixelDistances);
+        double[] y2 = volume2.getSurfaceY(pixelDistances);
+        double[] z2 = volume2.getSurfaceZ(pixelDistances, true);
+        double[] z2Slice = volume2.getSurfaceZ(true, false);
+
+        // Measuring point-to-point distances on both object surfaces
+        for (int j = 0; j < x2.length; j++) {
+            Point<Integer> currentPoint2 = new Point<>((int) x2[j], (int) y2[j], (int) z2Slice[j]);
+            boolean isInside = false;
+            for (int i = 0; i < x1.length; i++) {
+                double xDist = x2[j] - x1[i];
+                double yDist = y2[j] - y1[i];
+                double zDist = z2[j] - z1[i];
+                double dist = Math.sqrt(xDist * xDist + yDist * yDist + zDist * zDist);
+
+                if (dist < Math.abs(minDist)) {
+                    minDist = dist;
+                    isInside = containsPoint(currentPoint2);
+                    if (!isInside) {
+                        Point<Integer> currentPoint1 = new Point<>((int) x1[i], (int) y1[i], (int) z1Slice[i]);
+                        isInside = volume2.containsPoint(currentPoint1);
+                    }
+                }
+            }
+
+            // If this point is inside the parent the distance should be negative
+            if (isInside) minDist = -minDist;
+
+        }
+
+        return minDist;
+
+    }
+
     public ArrayList<Point<Integer>> getOverlappingPoints(Volume volume2) {
         TreeSet<Point<Integer>> points1 = getPoints();
         TreeSet<Point<Integer>> points2 = volume2.getPoints();
