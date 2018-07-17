@@ -541,10 +541,10 @@ public class Volume {
 
                 if (dist < Math.abs(minDist)) {
                     minDist = dist;
-                    isInside = containsPoint(currentPoint2);
+                    isInside = getPoints().contains(currentPoint2);
                     if (!isInside) {
                         Point<Integer> currentPoint1 = new Point<>((int) x1[i], (int) y1[i], (int) z1Slice[i]);
-                        isInside = volume2.containsPoint(currentPoint1);
+                        isInside = volume2.getPoints().contains(currentPoint1);
                     }
                 }
             }
@@ -602,10 +602,7 @@ public class Volume {
     }
 
     public boolean containsPoint(Point<Integer> point1) {
-        for (Point<Integer> point2:points) {
-            if (point2.equals(point1)) return true;
-        }
-        return false;
+        return getPoints().contains(point1);
     }
 
     @Override
