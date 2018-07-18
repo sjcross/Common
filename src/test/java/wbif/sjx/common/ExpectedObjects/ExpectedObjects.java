@@ -68,9 +68,9 @@ public abstract class ExpectedObjects {
 
     }
 
-    protected List<Integer[]> getCoordinates5D(String path) {
+    public static List<Integer[]> getCoordinates5D(String path) {
         try {
-            String pathToCoordinates = URLDecoder.decode(this.getClass().getResource(path).getPath(),"UTF-8");
+            String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
 
             BufferedReader reader = new BufferedReader(new FileReader(pathToCoordinates));
             CSVReader csvReader = new CSVReader(reader);
