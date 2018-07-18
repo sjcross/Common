@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/SingleTrack2D.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/TrackCollectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Common.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Tracks2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Tracks2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/MATLAB/Tracks2D_MSD.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/MATLAB/Tracks2D_MSD.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/MATLAB/UseMSDAnalyzer.m" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/MATLAB/UseMSDAnalyzer.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/TrackCollectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/TrackCollectionTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,17 +47,17 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+            <state relative-caret-position="170">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrackCollection.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TrackCollection.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="222" lean-forward="true" selection-start-line="222" selection-end-line="222" />
+            <state relative-caret-position="374">
+              <caret line="221" column="5" lean-forward="true" selection-start-line="221" selection-start-column="5" selection-end-line="221" selection-end-column="5" />
               <folding>
                 <element signature="docComment;class#TrackCollection#0" />
                 <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" />
@@ -74,6 +69,7 @@
                 <element signature="docComment;method#getAverageDirectionalPersistence#0;class#TrackCollection#0" />
                 <element signature="method#getAverageDirectionalPersistence#0;class#TrackCollection#0" />
                 <element signature="docComment;method#getAverageMSD#0;class#TrackCollection#0" />
+                <element signature="method#getAverageMSD#0;class#TrackCollection#0" />
                 <element signature="method#getAverageNearestNeighbourDistance#0;class#TrackCollection#0" />
                 <element signature="docComment;method#getNumberOfObjects#0;class#TrackCollection#0" />
                 <element signature="method#getNumberOfObjects#0;class#TrackCollection#0" />
@@ -93,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Tracks2D.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
-              <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
               <folding>
                 <element signature="method#getMeanMSD#0;class#Tracks2D#0" />
               </folding>
@@ -101,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrackCollectionTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TrackCollectionTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/TrackCollectionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+            <state relative-caret-position="221">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -113,12 +109,14 @@
       <file leaf-file-name="MSDCalculator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="221">
+              <caret line="50" column="77" lean-forward="true" selection-start-line="50" selection-start-column="77" selection-end-line="50" selection-end-column="77" />
               <folding>
                 <element signature="docComment;class#MSDCalculator#0" />
-                <element signature="docComment;method#getLinearFit#0;class#MSDCalculator#0" />
+                <element signature="method#calculate#0;class#MSDCalculator#0" />
+                <element signature="method#calculate#1;class#MSDCalculator#0" />
                 <element signature="method#getLinearFit#0;class#MSDCalculator#0" />
+                <element signature="docComment;method#getLinearFit#0;class#MSDCalculator#0" />
               </folding>
             </state>
           </provider>
@@ -127,8 +125,8 @@
       <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="32" column="63" lean-forward="true" selection-start-line="32" selection-start-column="63" selection-end-line="32" selection-end-column="63" />
+            <state relative-caret-position="427">
+              <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
             </state>
           </provider>
         </entry>
@@ -136,11 +134,13 @@
       <file leaf-file-name="MSDCalculatorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+            <state relative-caret-position="255">
+              <caret line="71" column="63" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
               <folding>
                 <element signature="docComment;class#MSDCalculatorTest#0" />
-                <element signature="method#testGetLinearFit#0;class#MSDCalculatorTest#0" />
+                <element signature="method#testCalculateNoProvidedCumStatSingleTrack#0;class#MSDCalculatorTest#0" />
+                <element signature="method#testCalculateProvidedCumStatManyTracks#0;class#MSDCalculatorTest#0" />
+                <element signature="method#testGetLinearFitSingleTrack#0;class#MSDCalculatorTest#0" />
               </folding>
             </state>
           </provider>
@@ -203,7 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/HCMetadata.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/Periodogram.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Periodogram.java" />
@@ -246,14 +245,15 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/SingleTrack2D.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Tracks2D.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/TrackCollectionTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" />
       </list>
     </option>
   </component>
@@ -443,7 +443,7 @@
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStatSingleTrack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MSDCalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
@@ -455,8 +455,8 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
       <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.MSDCalculatorTest" />
-      <option name="METHOD_NAME" value="testCalculateNoProvidedCumStatSingleTrack" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -466,7 +466,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="MSDCalculatorTest.testCalculateProvidedCumStatManyTracks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MSDCalculatorTest.testGetLinearFitSingleTrack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
@@ -478,30 +478,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
       <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.MSDCalculatorTest" />
-      <option name="METHOD_NAME" value="testCalculateProvidedCumStatManyTracks" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="TrackCollectionTest.testGetAverageMSD" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Object.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.Object" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.TrackCollectionTest" />
-      <option name="METHOD_NAME" value="testGetAverageMSD" />
+      <option name="METHOD_NAME" value="testGetLinearFitSingleTrack" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -577,15 +554,13 @@
     </configuration>
     <list>
       <item itemvalue="Maven.Common [install]" />
-      <item itemvalue="JUnit.MSDCalculatorTest.testCalculateNoProvidedCumStatSingleTrack" />
-      <item itemvalue="JUnit.MSDCalculatorTest.testCalculateProvidedCumStatManyTracks" />
-      <item itemvalue="JUnit.TrackCollectionTest.testGetAverageMSD" />
+      <item itemvalue="JUnit.MSDCalculatorTest" />
+      <item itemvalue="JUnit.MSDCalculatorTest.testGetLinearFitSingleTrack" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TrackCollectionTest.testGetAverageMSD" />
-        <item itemvalue="JUnit.MSDCalculatorTest.testCalculateProvidedCumStatManyTracks" />
-        <item itemvalue="JUnit.MSDCalculatorTest.testCalculateNoProvidedCumStatSingleTrack" />
+        <item itemvalue="JUnit.MSDCalculatorTest.testGetLinearFitSingleTrack" />
+        <item itemvalue="JUnit.MSDCalculatorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -603,18 +578,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MSDCalculatorTest_testCalculateProvidedCumStatManyTracks - 2018.07.18 at 13h 15m 33s.xml">
-      <configuration name="MSDCalculatorTest.testCalculateProvidedCumStatManyTracks" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MSDCalculatorTest_testCalculateProvidedCumStatManyTracks - 2018.07.18 at 13h 15m 48s.xml">
-      <configuration name="MSDCalculatorTest.testCalculateProvidedCumStatManyTracks" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStatSingleTrack - 2018.07.18 at 13h 16m 33s.xml">
-      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStatSingleTrack" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStatSingleTrack - 2018.07.18 at 13h 16m 55s.xml">
-      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStatSingleTrack" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MSDCalculatorTest_testCalculateProvidedCumStatManyTracks - 2018.07.18 at 13h 16m 59s.xml">
       <configuration name="MSDCalculatorTest.testCalculateProvidedCumStatManyTracks" configurationId="JUnit" />
     </history-entry>
@@ -633,6 +596,18 @@
     <history-entry file="TrackCollectionTest_testGetAverageMSD - 2018.07.18 at 13h 45m 20s.xml">
       <configuration name="TrackCollectionTest.testGetAverageMSD" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStatSingleTrackNonZeroStart - 2018.07.18 at 14h 15m 25s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStatSingleTrackNonZeroStart" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStatSingleTrackNonZeroStart - 2018.07.18 at 14h 15m 57s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStatSingleTrackNonZeroStart" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MSDCalculatorTest - 2018.07.18 at 14h 48m 29s.xml">
+      <configuration name="MSDCalculatorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MSDCalculatorTest_testGetLinearFitSingleTrack - 2018.07.18 at 15h 23m 52s.xml">
+      <configuration name="MSDCalculatorTest.testGetLinearFitSingleTrack" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -644,11 +619,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1862" height="1096" extended-state="6" />
+    <frame x="1912" y="-8" width="1862" height="1096" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" x="1920" y="0" width="1855" height="1080" id="TODO" internal_type="FLOATING" order="6" type="FLOATING" weight="0.32987553" />
-      <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.32178217" />
+      <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.3209756" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="1" />
@@ -1022,57 +998,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="docComment;class#MSDCalculator#0" />
-            <element signature="docComment;method#getLinearFit#0;class#MSDCalculator#0" />
-            <element signature="method#getLinearFit#0;class#MSDCalculator#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="32" column="63" lean-forward="true" selection-start-line="32" selection-start-column="63" selection-end-line="32" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Tracks2D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
           <folding>
             <element signature="method#getMeanMSD#0;class#Tracks2D#0" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/TrackCollectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="50" column="77" lean-forward="true" selection-start-line="50" selection-start-column="77" selection-end-line="50" selection-end-column="77" />
+          <folding>
+            <element signature="docComment;class#MSDCalculator#0" />
+            <element signature="method#calculate#0;class#MSDCalculator#0" />
+            <element signature="method#calculate#1;class#MSDCalculator#0" />
+            <element signature="method#getLinearFit#0;class#MSDCalculator#0" />
+            <element signature="docComment;method#getLinearFit#0;class#MSDCalculator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+        <state relative-caret-position="255">
+          <caret line="71" column="63" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
           <folding>
             <element signature="docComment;class#MSDCalculatorTest#0" />
-            <element signature="method#testGetLinearFit#0;class#MSDCalculatorTest#0" />
+            <element signature="method#testCalculateNoProvidedCumStatSingleTrack#0;class#MSDCalculatorTest#0" />
+            <element signature="method#testCalculateProvidedCumStatManyTracks#0;class#MSDCalculatorTest#0" />
+            <element signature="method#testGetLinearFitSingleTrack#0;class#MSDCalculatorTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="222" lean-forward="true" selection-start-line="222" selection-end-line="222" />
+        <state relative-caret-position="374">
+          <caret line="221" column="5" lean-forward="true" selection-start-line="221" selection-start-column="5" selection-end-line="221" selection-end-column="5" />
           <folding>
             <element signature="docComment;class#TrackCollection#0" />
             <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" />
@@ -1084,6 +1071,7 @@
             <element signature="docComment;method#getAverageDirectionalPersistence#0;class#TrackCollection#0" />
             <element signature="method#getAverageDirectionalPersistence#0;class#TrackCollection#0" />
             <element signature="docComment;method#getAverageMSD#0;class#TrackCollection#0" />
+            <element signature="method#getAverageMSD#0;class#TrackCollection#0" />
             <element signature="method#getAverageNearestNeighbourDistance#0;class#TrackCollection#0" />
             <element signature="docComment;method#getNumberOfObjects#0;class#TrackCollection#0" />
             <element signature="method#getNumberOfObjects#0;class#TrackCollection#0" />
@@ -1095,13 +1083,6 @@
             <element signature="method#getMeanPoint#0;class#TrackCollection#0" />
             <element signature="method#getMaximumInstantaneousVelocity#0;class#TrackCollection#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/TrackCollectionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
         </state>
       </provider>
     </entry>

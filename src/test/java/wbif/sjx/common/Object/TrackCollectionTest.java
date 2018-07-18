@@ -24,11 +24,11 @@ public class TrackCollectionTest {
         TrackCollection collection = new TrackCollection();
         collection.putAll(tracks);
 
-        double[][] actual = collection.getAverageMSD(true);
+        TreeMap<Integer,CumStat> actual = collection.getAverageMSD(true);
         TreeMap<Integer,Double> expected = Tracks2D.getMeanMSD();
 
-        for (int frame:expected.keySet()) {
-            assertEquals(expected.get(frame),actual[1][frame],expected.get(frame)*1E-4);
+        for (int df:expected.keySet()) {
+            assertEquals(expected.get(df),actual.get(df).getMean(),expected.get(df)*1E-4);
         }
     }
 }

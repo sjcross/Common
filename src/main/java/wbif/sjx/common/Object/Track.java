@@ -92,19 +92,23 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
 
     }
 
-    public CumStat[] getMSD(boolean pixelDistances) {
+    public TreeMap<Integer, CumStat> getMSD(boolean pixelDistances) {
         return MSDCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
 
     }
 
     public double[] getMSDLinearFit(boolean pixelDistances, int nPoints) {
-        CumStat[] cs = MSDCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+//        CumStat[] cs = MSDCalculator.calculate(getF(),getX(pixelDistances),getY(pixelDistances),getZ(pixelDistances));
+//
+//        double[] df = new double[cs.length];
+//        for (int i=0;i<cs.length;i++) {
+//            df[i] = i;
+//        }
+//        double[] MSD = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
 
-        double[] df = new double[cs.length];
-        for (int i=0;i<cs.length;i++) {
-            df[i] = i;
-        }
-        double[] MSD = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
+        TreeMap<Integer,CumStat> msd = getMSD(pixelDistances);
+        int[] df = msd.keySet().stream().mapToInt(v->v).toArray();
+        double[] MSD = msd.values().stream().mapToDouble(CumStat::getMean).toArray();
 
         return MSDCalculator.getLinearFit(df,MSD,nPoints);
 

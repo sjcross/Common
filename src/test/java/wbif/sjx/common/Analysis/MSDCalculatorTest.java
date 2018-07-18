@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -28,10 +29,10 @@ public class MSDCalculatorTest {
 
         Track track = SingleTrack2D.getTrack(dppXY,dppZ,units);
 
-        CumStat[] cs = MSDCalculator.calculate(track.getF(),track.getX(true),track.getY(true),track.getZ(true));
-
+        TreeMap<Integer,CumStat> cs = MSDCalculator.calculate(track.getF(),track.getX(true),track.getY(true),track.getZ(true));
         TreeMap<Integer,Double> actual = new TreeMap<>();
-        for (int i=0;i<cs.length;i++) actual.put(i,cs[i].getMean());
+        for (int df:cs.keySet()) actual.put(df,cs.get(df).getMean());
+
         TreeMap<Integer,Double> expected = SingleTrack2D.getMSD();
 
         for (int frame:expected.keySet()) {
@@ -53,15 +54,13 @@ public class MSDCalculatorTest {
             if (limits[3][1] > maxF) maxF = (int) limits[3][1];
         }
 
-        CumStat[] cs = new CumStat[maxF+1];
-        for (int i=0;i<cs.length;i++) cs[i] = new CumStat();
-
+        TreeMap<Integer,CumStat> cs = new TreeMap<>();
         for (Track track:tracks.values()) {
             MSDCalculator.calculate(cs, track.getF(),track.getX(true),track.getY(true),track.getZ(true));
         }
 
         TreeMap<Integer,Double> actual = new TreeMap<>();
-        for (int i=0;i<cs.length;i++) actual.put(i,cs[i].getMean());
+        for (int df:cs.keySet()) actual.put(df,cs.get(df).getMean());
         TreeMap<Integer,Double> expected = Tracks2D.getMeanMSD();
 
         for (int frame:expected.keySet()) {
@@ -70,6 +69,20 @@ public class MSDCalculatorTest {
     }
 
     @Test @Ignore
-    public void testGetLinearFit() throws Exception {
+    public void testGetLinearFitSingleTrack() throws Exception {
+        double dppXY = 1;
+        double dppZ = 1;
+        String units = "px";
+
+        Track track = SingleTrack2D.getTrack(dppXY,dppZ,units);
+
+        TreeMap<Integer,CumStat> msd = MSDCalculator.calculate(track.getF(),track.getX(true),track.getY(true),track.getZ(true));
+        double[] actual = MSDCalculator.getLinearFit(msd,81);
+        double[] expected = new double[]{6.622E2,0,81};
+
+        System.out.println(actual[0]+"_"+actual[1]);
+
+        assertArrayEquals(expected,actual,tolerance);
+
     }
 }
