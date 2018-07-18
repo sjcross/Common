@@ -1,22 +1,22 @@
 package wbif.sjx.common.ExpectedObjects;
 
 import util.opencsv.CSVReader;
-import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Track;
-import wbif.sjx.common.Object.Volume;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URLDecoder;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.TreeMap;
 
-public class Tracks2D {
-    public static LinkedHashMap<Integer,Track> getTracks(double dppXY, double dppZ, String units) {
-        LinkedHashMap<Integer,Track> tracks = new LinkedHashMap<>();
+public class SingleTrack2D {
+    public static Track getTrack(double dppXY, double dppZ, String units) {
+        Track track = new Track(dppXY,dppZ,units);
 
         // Adding all provided coordinates to each object
-        List<Integer[]> coordinates = ExpectedObjects.getCoordinates5D("/coordinates/Tracks2D.csv");
+        List<Integer[]> coordinates = ExpectedObjects.getCoordinates5D("/coordinates/SingleTrack2D.csv");
         for (Integer[] coordinate:coordinates) {
             int ID = coordinate[0];
 
@@ -25,21 +25,19 @@ public class Tracks2D {
             int z = coordinate[5];
             int t = coordinate[6];
 
-            tracks.putIfAbsent(ID,new Track(dppXY,dppZ,units));
-            Track track = tracks.get(ID);
             track.addTimepoint(x,y,z,t);
 
         }
 
-        return tracks;
+        return track;
 
     }
 
-    public static TreeMap<Integer,Double> getMeanMSD() {
+    public static TreeMap<Integer,Double> getMSD() {
         TreeMap<Integer,Double> msd = new TreeMap<>();
 
         try {
-            String pathToResults = URLDecoder.decode(Tracks2D.class.getResource("/MATLAB/Tracks2D_MSD.csv").getPath(),"UTF-8");
+            String pathToResults = URLDecoder.decode(SingleTrack2D.class.getResource("/MATLAB/SingleTrack2D_MSD.csv").getPath(),"UTF-8");
 
             BufferedReader reader = new BufferedReader(new FileReader(pathToResults));
             CSVReader csvReader = new CSVReader(reader);
