@@ -8,23 +8,22 @@ import wbif.sjx.common.MathFunc.CumStat;
  */
 public class MSDCalculator {
     public static CumStat[] calculate(CumStat[] cumStat, int[] f, double[] x, double[] y, double[] z) {
-        for (int i = 0; i < f[f.length - 1]; i++) { //Incrementing over all time steps
-            for (int j = 0; j < f.length; j++) {//Incrementing over all frames with the possibility for that time step
-                for (int k = j + 1; k < f.length; k++) {
-                    if (f[k] - f[j] == i) {
-                        double dx = x[k] - x[j];
-                        double dy = y[k] - y[j];
-                        double dz = z[k] - z[j];
+        for (int j = 0; j < f.length; j++) {//Incrementing over all frames with the possibility for that time step
+            for (int k = j; k < f.length; k++) {
+                int dt = f[k]-f[j];
+                double dx = x[k] - x[j];
+                double dy = y[k] - y[j];
+                double dz = z[k] - z[j];
 
-                        double val = dx * dx + dy * dy + dz * dz;
+                double val = dx * dx + dy * dy + dz * dz;
 
-                        cumStat[i].addMeasure(val);
-                    }
-                }
+                cumStat[dt].addMeasure(val);
+
             }
         }
 
         return cumStat;
+
     }
 
     public static CumStat[] calculate(int[] f, double[] x, double[] y, double[] z) {

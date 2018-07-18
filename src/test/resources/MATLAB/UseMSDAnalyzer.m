@@ -1,6 +1,6 @@
 clear
 
-data = csvread('C:\Users\steph\Documents\Java Projects\Common\src\test\resources\coordinates\Tracks2D.csv');
+data = csvread('C:\Users\sc13967\Documents\Java Projects\Common\src\test\resources\coordinates\Tracks2D.csv');
 tracks = {};
 un = unique(data(:,1));
 for i = 1:numel(un)
