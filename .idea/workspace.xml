@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Tracks2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Common.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,23 +23,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Filters.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Common$VolumeTest.coverage" NAME="VolumeTest Coverage Results" MODIFIED="1524037637387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.Object.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Filters.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Common$All_in_Common.coverage" NAME="All in Common Coverage Results" MODIFIED="1529653217331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
+    </SUITE>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Common" />
@@ -46,26 +49,123 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+            <state relative-caret-position="323">
+              <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OperaFoldernameExtractor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFoldernameExtractor.java">
+      <file leaf-file-name="TrackCollection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="374">
+              <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
+              <folding>
+                <element signature="docComment;class#TrackCollection#0" />
+                <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" />
+                <element signature="method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" />
+                <element signature="docComment;method#getAverageTotalPathLength#0;class#TrackCollection#0" />
+                <element signature="method#getAverageTotalPathLength#0;class#TrackCollection#0" />
+                <element signature="docComment;method#getAverageDirectionalityRatio#0;class#TrackCollection#0" />
+                <element signature="method#getAverageDirectionalityRatio#0;class#TrackCollection#0" />
+                <element signature="docComment;method#getAverageDirectionalPersistence#0;class#TrackCollection#0" />
+                <element signature="method#getAverageDirectionalPersistence#0;class#TrackCollection#0" />
+                <element signature="docComment;method#getAverageMSD#0;class#TrackCollection#0" />
+                <element signature="method#getAverageNearestNeighbourDistance#0;class#TrackCollection#0" />
+                <element signature="docComment;method#getNumberOfObjects#0;class#TrackCollection#0" />
+                <element signature="method#getNumberOfObjects#0;class#TrackCollection#0" />
+                <element signature="docComment;method#getHighestFrame#0;class#TrackCollection#0" />
+                <element signature="method#getHighestFrame#0;class#TrackCollection#0" />
+                <element signature="docComment;method#getSpatialLimits#0;class#TrackCollection#0" />
+                <element signature="method#getSpatialLimits#0;class#TrackCollection#0" />
+                <element signature="docComment;method#getMeanPoint#0;class#TrackCollection#0" />
+                <element signature="method#getMeanPoint#0;class#TrackCollection#0" />
+                <element signature="method#getMaximumInstantaneousVelocity#0;class#TrackCollection#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Volume.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tracks2D.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Tracks2D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
+              <folding>
+                <element signature="method#getMeanMSD#0;class#Tracks2D#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2703">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExpectedObjects.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Objects2D.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MSDCalculatorTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="41" column="43" lean-forward="true" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#MSDCalculatorTest#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MSDCalculator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-86">
+              <caret line="11" column="118" selection-start-line="11" selection-start-column="118" selection-end-line="11" selection-end-column="118" />
+              <folding>
+                <element signature="docComment;class#MSDCalculator#0" />
+                <element signature="docComment;method#getLinearFit#0;class#MSDCalculator#0" />
+                <element signature="method#getLinearFit#0;class#MSDCalculator#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VolumeTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="1594" selection-start-line="1594" selection-end-line="1596" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Volume.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="604" column="44" selection-start-line="604" selection-start-column="44" selection-end-line="604" selection-end-column="44" />
+            <state relative-caret-position="342">
+              <caret line="598" column="16" selection-start-line="598" selection-start-column="16" selection-end-line="598" selection-end-column="16" />
               <folding>
                 <element signature="docComment;class#Volume#0" />
                 <element signature="e#914#1080#0" />
@@ -110,51 +210,9 @@
                 <element signature="e#14710#14772#0" />
                 <element signature="e#14778#15200#0" />
                 <element signature="e#15206#15770#0" />
-                <element signature="e#18036#18613#0" />
-                <element signature="e#18619#18810#0" />
-                <element signature="e#18619#19076#0" />
-                <element signature="e#19082#19299#0" />
                 <element signature="e#19371#19372#0" expanded="true" />
                 <element signature="e#19422#19423#0" expanded="true" />
-                <element signature="e#19499#19864#0" />
-                <element signature="e#19870#20831#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImageGradientEnergy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EllipseCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-              <folding>
-                <element signature="method#EllipseCalculator#0;class#EllipseCalculator#0" />
-                <element signature="method#getEllipseFit#0;class#EllipseCalculator#0" />
-                <element signature="method#getEllipseThetaRads#0;class#EllipseCalculator#0" />
-                <element signature="method#getXCentre#0;class#EllipseCalculator#0" />
-                <element signature="method#getYCentre#0;class#EllipseCalculator#0" />
-                <element signature="method#getSemiMajorAxis#0;class#EllipseCalculator#0" />
-                <element signature="method#getSemiMinorAxis#0;class#EllipseCalculator#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TextureCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="66" column="22" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -164,8 +222,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -216,10 +274,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/InstantaneousVelocityCalculator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/InstantaneousVelocityCalculator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/PointTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CellVoyagerFilenameExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/NameExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/HCMetadata.java" />
@@ -243,7 +297,6 @@
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects3D.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/VerticalCylinderR5.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/HorizontalCylinderR22.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/ColocalisationCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ColocalisationCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/IntensityCalculator.java" />
@@ -264,9 +317,14 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Tracks2D.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java" />
       </list>
     </option>
   </component>
@@ -277,30 +335,21 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-8" />
-    <option name="width" value="1862" />
-    <option name="height" value="1096" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-7" />
+    <option name="width" value="939" />
+    <option name="height" value="1089" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
+    <navigator proportions="" version="1">
       <autoscrollFromSource ProjectPane="true" />
-      <sortByType />
-      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -360,6 +409,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="Object" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="Process" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -390,14 +448,30 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="ExpectedObjects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="Object" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -448,7 +522,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Common [install]">
+  <component name="RunManager" selected="JUnit.MSDCalculatorTest.testCalculateNoProvidedCumStat">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -456,6 +530,29 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wbif.sjx.common.Analysis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.MSDCalculatorTest" />
+      <option name="METHOD_NAME" value="testCalculateNoProvidedCumStat" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration name="VolumeTest.testGetCentroidSeparation2DCalibratedDistances" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
@@ -549,29 +646,6 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="VolumeTest.testGetZCoords" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Object.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.Object" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.VolumeTest" />
-      <option name="METHOD_NAME" value="testGetZCoords" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -637,19 +711,19 @@
     </configuration>
     <list>
       <item itemvalue="Maven.Common [install]" />
-      <item itemvalue="JUnit.VolumeTest.testGetZCoords" />
       <item itemvalue="JUnit.VolumeTest.testGetCentroidSeparation2DPixelDistances" />
       <item itemvalue="JUnit.VolumeTest.testGetCentroidSeparation2DCalibratedDistances" />
       <item itemvalue="JUnit.VolumeTest.testGetCentroidSeparation3DPixelDistances" />
       <item itemvalue="JUnit.VolumeTest.testGetCentroidSeparation3DCalibratedDistances" />
+      <item itemvalue="JUnit.MSDCalculatorTest.testCalculateNoProvidedCumStat" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MSDCalculatorTest.testCalculateNoProvidedCumStat" />
         <item itemvalue="JUnit.VolumeTest.testGetCentroidSeparation3DCalibratedDistances" />
         <item itemvalue="JUnit.VolumeTest.testGetCentroidSeparation3DPixelDistances" />
         <item itemvalue="JUnit.VolumeTest.testGetCentroidSeparation2DCalibratedDistances" />
         <item itemvalue="JUnit.VolumeTest.testGetCentroidSeparation2DPixelDistances" />
-        <item itemvalue="JUnit.VolumeTest.testGetZCoords" />
       </list>
     </recent_temporary>
   </component>
@@ -667,35 +741,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="VolumeTest_testGetZCoords - 2018.06.29 at 08h 26m 29s.xml">
-      <configuration name="VolumeTest.testGetZCoords" configurationId="JUnit" />
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStat - 2018.07.18 at 08h 07m 12s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VolumeTest_testGetCentroidSeparation2DPixelDistances - 2018.06.29 at 08h 37m 42s.xml">
-      <configuration name="VolumeTest.testGetCentroidSeparation2DPixelDistances" configurationId="JUnit" />
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStat - 2018.07.18 at 08h 07m 46s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VolumeTest_testGetCentroidSeparation2DPixelDistances - 2018.06.29 at 08h 38m 22s.xml">
-      <configuration name="VolumeTest.testGetCentroidSeparation2DPixelDistances" configurationId="JUnit" />
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStat - 2018.07.18 at 08h 08m 36s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VolumeTest_testGetCentroidSeparation2DCalibratedDistances - 2018.06.29 at 08h 39m 41s.xml">
-      <configuration name="VolumeTest.testGetCentroidSeparation2DCalibratedDistances" configurationId="JUnit" />
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStat - 2018.07.18 at 08h 09m 49s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VolumeTest_testGetCentroidSeparation3DPixelDistances - 2018.06.29 at 08h 43m 32s.xml">
-      <configuration name="VolumeTest.testGetCentroidSeparation3DPixelDistances" configurationId="JUnit" />
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStat - 2018.07.18 at 08h 10m 35s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VolumeTest_testGetCentroidSeparation3DPixelDistances - 2018.06.29 at 08h 46m 04s.xml">
-      <configuration name="VolumeTest.testGetCentroidSeparation3DPixelDistances" configurationId="JUnit" />
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStat - 2018.07.18 at 08h 11m 03s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VolumeTest_testGetCentroidSeparation3DPixelDistances - 2018.06.29 at 08h 46m 40s.xml">
-      <configuration name="VolumeTest.testGetCentroidSeparation3DPixelDistances" configurationId="JUnit" />
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStat - 2018.07.18 at 08h 12m 02s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VolumeTest_testGetCentroidSeparation3DPixelDistances - 2018.06.29 at 08h 47m 49s.xml">
-      <configuration name="VolumeTest.testGetCentroidSeparation3DPixelDistances" configurationId="JUnit" />
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStat - 2018.07.18 at 08h 13m 17s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VolumeTest_testGetCentroidSeparation3DPixelDistances - 2018.06.29 at 08h 48m 39s.xml">
-      <configuration name="VolumeTest.testGetCentroidSeparation3DPixelDistances" configurationId="JUnit" />
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStat - 2018.07.18 at 08h 13m 50s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VolumeTest_testGetCentroidSeparation3DCalibratedDistances - 2018.06.29 at 08h 49m 44s.xml">
-      <configuration name="VolumeTest.testGetCentroidSeparation3DCalibratedDistances" configurationId="JUnit" />
+    <history-entry file="MSDCalculatorTest_testCalculateNoProvidedCumStat - 2018.07.18 at 08h 14m 10s.xml">
+      <configuration name="MSDCalculatorTest.testCalculateNoProvidedCumStat" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -708,49 +782,48 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1862" height="1096" extended-state="6" />
+    <frame x="-7" y="-7" width="1488" height="878" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" x="1920" y="0" width="1855" height="1080" id="TODO" internal_type="FLOATING" order="6" type="FLOATING" weight="0.32987553" />
+      <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.32178217" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="1" />
-      <window_info active="true" anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" visible="true" weight="0.27707317" />
+      <window_info anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" weight="0.36633664" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32987553" />
+      <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
-      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20052083" />
+      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20013568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.2521322" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="bottom" auto_hide="true" id="Debug" order="3" weight="0.39121953" />
       <window_info auto_hide="true" id="Favorites" order="6" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
-      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.32178217" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
       <window_info id="Nl-Palette" order="2" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="9" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
       <window_info anchor="right" id="Database" order="10" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.3283582" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Properties" order="6" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="4" />
       <window_info auto_hide="true" id="Favorites" order="7" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
       <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" weight="0.25782093" />
       <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" weight="0.25782093" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="5" />
@@ -762,12 +835,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.32606325" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20842217" />
       <window_info anchor="bottom" id="Run with VisualVM" order="10" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info id="Nl-Palette" order="2" />
       <window_info anchor="right" id="Maven Projects" order="1" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20842217" />
       <window_info anchor="right" id="Database" order="10" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
@@ -775,7 +847,9 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info id="Structure" order="1" weight="0.2521322" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.32903588" />
+      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39626557" />
     </layout-to-restore>
   </component>
@@ -792,28 +866,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/github/quickhull3d/quickhull3d/1.0.0/quickhull3d-1.0.0.jar!/com/github/quickhull3d/QuickHull3D.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="41" column="64" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/VolumeCalculatorTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/EllipsoidCalculatorTest.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/net/imagej/ij/1.51h/ij-1.51h.jar!/ij/IJ.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -879,13 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5083">
-          <caret line="309" column="26" selection-start-line="309" selection-start-column="26" selection-end-line="309" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/ExtensionMatchesStringTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -921,8 +966,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Filters/DistanceMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -990,13 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27523">
-          <caret line="1624" column="1" selection-start-line="1624" selection-start-column="1" selection-end-line="1624" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1041,24 +1077,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
+        <state relative-caret-position="884">
           <caret line="66" column="22" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="604" column="44" selection-start-line="604" selection-start-column="44" selection-end-line="604" selection-end-column="44" />
+        <state relative-caret-position="342">
+          <caret line="598" column="16" selection-start-line="598" selection-start-column="16" selection-end-line="598" selection-end-column="16" />
           <folding>
             <element signature="docComment;class#Volume#0" />
             <element signature="e#914#1080#0" />
@@ -1103,14 +1132,105 @@
             <element signature="e#14710#14772#0" />
             <element signature="e#14778#15200#0" />
             <element signature="e#15206#15770#0" />
-            <element signature="e#18036#18613#0" />
-            <element signature="e#18619#18810#0" />
-            <element signature="e#18619#19076#0" />
-            <element signature="e#19082#19299#0" />
             <element signature="e#19371#19372#0" expanded="true" />
             <element signature="e#19422#19423#0" expanded="true" />
-            <element signature="e#19499#19864#0" />
-            <element signature="e#19870#20831#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
+          <folding>
+            <element signature="docComment;class#TrackCollection#0" />
+            <element signature="docComment;method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" />
+            <element signature="method#getAverageRollingEuclideanDistance#0;class#TrackCollection#0" />
+            <element signature="docComment;method#getAverageTotalPathLength#0;class#TrackCollection#0" />
+            <element signature="method#getAverageTotalPathLength#0;class#TrackCollection#0" />
+            <element signature="docComment;method#getAverageDirectionalityRatio#0;class#TrackCollection#0" />
+            <element signature="method#getAverageDirectionalityRatio#0;class#TrackCollection#0" />
+            <element signature="docComment;method#getAverageDirectionalPersistence#0;class#TrackCollection#0" />
+            <element signature="method#getAverageDirectionalPersistence#0;class#TrackCollection#0" />
+            <element signature="docComment;method#getAverageMSD#0;class#TrackCollection#0" />
+            <element signature="method#getAverageNearestNeighbourDistance#0;class#TrackCollection#0" />
+            <element signature="docComment;method#getNumberOfObjects#0;class#TrackCollection#0" />
+            <element signature="method#getNumberOfObjects#0;class#TrackCollection#0" />
+            <element signature="docComment;method#getHighestFrame#0;class#TrackCollection#0" />
+            <element signature="method#getHighestFrame#0;class#TrackCollection#0" />
+            <element signature="docComment;method#getSpatialLimits#0;class#TrackCollection#0" />
+            <element signature="method#getSpatialLimits#0;class#TrackCollection#0" />
+            <element signature="docComment;method#getMeanPoint#0;class#TrackCollection#0" />
+            <element signature="method#getMeanPoint#0;class#TrackCollection#0" />
+            <element signature="method#getMaximumInstantaneousVelocity#0;class#TrackCollection#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="1594" selection-start-line="1594" selection-end-line="1596" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2703">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-86">
+          <caret line="11" column="118" selection-start-line="11" selection-start-column="118" selection-end-line="11" selection-end-column="118" />
+          <folding>
+            <element signature="docComment;class#MSDCalculator#0" />
+            <element signature="docComment;method#getLinearFit#0;class#MSDCalculator#0" />
+            <element signature="method#getLinearFit#0;class#MSDCalculator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Tracks2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
+          <folding>
+            <element signature="method#getMeanMSD#0;class#Tracks2D#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="41" column="43" lean-forward="true" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#MSDCalculatorTest#0" />
           </folding>
         </state>
       </provider>
