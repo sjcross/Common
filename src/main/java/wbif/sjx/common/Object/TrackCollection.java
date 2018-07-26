@@ -202,7 +202,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Average MSD.  Values are stored as the average for each frame gap.
      * @return
      */
-    public double[][] getAverageMSD(boolean pixelDistances) {
+    public TreeMap<Integer,CumStat> getAverageMSD(boolean pixelDistances) {
         // Determining the longest duration.  This is also the largest possible frame gap.
         int longestDuration = 0;
         for (Track track:values()) {
@@ -212,26 +212,12 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         }
 
         // Creating the CumStat array
-        CumStat[] cs = new CumStat[longestDuration+1];
-        for (int i=0;i<cs.length;i++) {
-            cs[i] = new CumStat();
-        }
-
+        TreeMap<Integer,CumStat> msd = new TreeMap<>();
         for (Track track:values()) {
-            MSDCalculator.calculate(cs,track.getF(),track.getX(pixelDistances),track.getY(pixelDistances),track.getZ(pixelDistances));
+            MSDCalculator.calculate(msd,track.getF(),track.getX(pixelDistances),track.getY(pixelDistances),track.getZ(pixelDistances));
         }
 
-        // Getting the frame intervals
-        double[] df = new double[cs.length];
-        for (int i=0;i<cs.length;i++) {
-            df[i] = i;
-        }
-
-        // Getting the average and standard deviations
-        double[] averageMSD = Arrays.stream(cs).mapToDouble(CumStat::getMean).toArray();
-        double[] stdevMSD = Arrays.stream(cs).mapToDouble(CumStat::getStd).toArray();
-
-        return new double[][]{df,averageMSD,stdevMSD};
+        return msd;
 
     }
 

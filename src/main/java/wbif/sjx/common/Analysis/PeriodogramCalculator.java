@@ -85,6 +85,23 @@ public class PeriodogramCalculator {
 
     }
 
+    public static void main(String[] args) {
+        TreeMap<Double,Double> psd = new TreeMap<>();
+        psd.put(0.0,0.0016214310049436605);
+        psd.put(0.0625,2.68716758119196E-4);
+        psd.put(0.125,1.5263724725207836E-4);
+        psd.put(0.1875,7.81074956169333E-5);
+        psd.put(0.25,7.212855869321588E-6);
+        psd.put(0.3125,2.0692582111237256E-5);
+        psd.put(0.375,3.736835918830827E-5);
+        psd.put(0.4375,2.740466866844013E-5);
+        psd.put(0.5,3.042702786115774E-6);
+
+        int nPeaks = 3;
+
+        double[][] freq = getKeyFrequencies(psd,nPeaks);
+    }
+
     public static double[][] getKeyFrequencies(TreeMap<Double,Double> psd, int nPeaks) {
         double[][] peaks = new double[nPeaks][2];
 
@@ -98,11 +115,15 @@ public class PeriodogramCalculator {
 
             // Storing those values
             peaks[i][0] = corrFreq;
-            peaks[i][1] = psd.get(corrFreq);
 
-            // Removing that peak from the spectrum
-            flattenPeak(psd,corrFreq);
+            if (Double.isNaN(corrFreq)) {
+                peaks[i][1] = Double.NaN;
+            } else {
+                peaks[i][1] = psd.get(corrFreq);
 
+                // Removing that peak from the spectrum
+                flattenPeak(psd,corrFreq);
+            }
         }
 
         return peaks;
