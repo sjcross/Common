@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ConvexHullCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ConvexHullCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +46,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="323">
+              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
             </state>
           </provider>
         </entry>
@@ -84,8 +87,8 @@
       <file leaf-file-name="Volume.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="354" column="5" lean-forward="true" selection-start-line="354" selection-start-column="5" selection-end-line="354" selection-end-column="5" />
+            <state relative-caret-position="302">
+              <caret line="171" selection-start-line="171" selection-end-line="171" />
               <folding>
                 <element signature="docComment;class#Volume#0" />
                 <element signature="e#914#1080#0" />
@@ -102,9 +105,10 @@
                 <element signature="e#2864#3066#0" />
                 <element signature="e#3072#3274#0" />
                 <element signature="e#3359#3512#0" />
-                <element signature="e#3518#4544#0" />
-                <element signature="e#4073#4154#0" />
-                <element signature="e#4550#5897#0" />
+                <element signature="e#4554#5373#0" />
+                <element signature="e#4550#5369#0" />
+                <element signature="e#5379#5495#0" />
+                <element signature="e#5033#5086#0" />
                 <element signature="e#5903#6208#0" />
                 <element signature="e#6214#6519#0" />
                 <element signature="e#6525#6765#0" />
@@ -118,6 +122,7 @@
                 <element signature="e#10399#10573#0" />
                 <element signature="e#10399#10859#0" />
                 <element signature="e#10865#11146#0" />
+                <element signature="e#11152#11599#0" />
                 <element signature="e#11605#11896#0" />
                 <element signature="e#11902#12193#0" />
                 <element signature="e#12199#12598#0" />
@@ -129,18 +134,40 @@
                 <element signature="e#14710#14772#0" />
                 <element signature="e#14778#15200#0" />
                 <element signature="e#15206#15770#0" />
-                <element signature="e#19371#19372#0" expanded="true" />
-                <element signature="e#19422#19423#0" expanded="true" />
+                <element signature="e#15776#16247#0" />
+                <element signature="e#16253#18044#0" />
+                <element signature="e#18050#18627#0" />
+                <element signature="e#18633#18824#0" />
+                <element signature="e#18633#19090#0" />
+                <element signature="e#19096#19313#0" />
+                <element signature="e#19429#19794#0" />
+                <element signature="e#19800#20761#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PeriodogramCalculator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ConvexHullCalculator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ConvexHullCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1938#1939#0" expanded="true" />
+                <element signature="e#2007#2008#0" expanded="true" />
+                <element signature="e#3999#4000#0" expanded="true" />
+                <element signature="e#4037#4038#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PeriodogramCalculator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="119" column="41" selection-start-line="119" selection-start-column="41" selection-end-line="119" selection-end-column="41" />
+            <state relative-caret-position="-81">
+              <caret line="125" column="13" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -217,8 +244,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>new Ima</find>
-      <find>getstack</find>
       <find>get</find>
       <find>getimagest</find>
       <find>new ImageJ</find>
@@ -243,10 +268,12 @@
       <find>getcontain</find>
       <find>contains</find>
       <find>getoverlapp</find>
-      <find>Sys</find>
       <find>IJ.run</find>
       <find>roi</find>
       <find>Roi</find>
+      <find>surface = null</find>
+      <find>tol1</find>
+      <find>Sys</find>
     </findStrings>
     <replaceStrings>
       <replace>Float</replace>
@@ -268,7 +295,6 @@
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/PeriodogramCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/VolumeCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/VolumeCalculator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ConvexHullCalculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/EllipsoidCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GeneralOps.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java" />
@@ -301,18 +327,19 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/SingleTrack2D.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Tracks2D.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/MSDCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/TrackCollectionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/MSDCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/TrackCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ConvexHullCalculator.java" />
       </list>
     </option>
   </component>
@@ -323,7 +350,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -775,13 +802,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GeneralOps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/bonej/bonej-legacy-util/1.0.0/bonej-legacy-util-1.0.0.jar!/org/bonej/geometry/Ellipsoid.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -958,6 +978,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+          <folding>
+            <element signature="method#EllipseCalculator#0;class#EllipseCalculator#0" />
+            <element signature="method#getEllipseFit#0;class#EllipseCalculator#0" />
+            <element signature="method#getEllipseThetaRads#0;class#EllipseCalculator#0" />
+            <element signature="method#getXCentre#0;class#EllipseCalculator#0" />
+            <element signature="method#getYCentre#0;class#EllipseCalculator#0" />
+            <element signature="method#getSemiMajorAxis#0;class#EllipseCalculator#0" />
+            <element signature="method#getSemiMinorAxis#0;class#EllipseCalculator#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1003,13 +1032,6 @@
           <folding>
             <element signature="method#getMeanMSD#0;class#Tracks2D#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -1090,10 +1112,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-81">
+          <caret line="125" column="13" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="354" column="5" lean-forward="true" selection-start-line="354" selection-start-column="5" selection-end-line="354" selection-end-column="5" />
+        <state relative-caret-position="302">
+          <caret line="171" selection-start-line="171" selection-end-line="171" />
           <folding>
             <element signature="docComment;class#Volume#0" />
             <element signature="e#914#1080#0" />
@@ -1110,9 +1139,10 @@
             <element signature="e#2864#3066#0" />
             <element signature="e#3072#3274#0" />
             <element signature="e#3359#3512#0" />
-            <element signature="e#3518#4544#0" />
-            <element signature="e#4073#4154#0" />
-            <element signature="e#4550#5897#0" />
+            <element signature="e#4554#5373#0" />
+            <element signature="e#4550#5369#0" />
+            <element signature="e#5379#5495#0" />
+            <element signature="e#5033#5086#0" />
             <element signature="e#5903#6208#0" />
             <element signature="e#6214#6519#0" />
             <element signature="e#6525#6765#0" />
@@ -1126,6 +1156,7 @@
             <element signature="e#10399#10573#0" />
             <element signature="e#10399#10859#0" />
             <element signature="e#10865#11146#0" />
+            <element signature="e#11152#11599#0" />
             <element signature="e#11605#11896#0" />
             <element signature="e#11902#12193#0" />
             <element signature="e#12199#12598#0" />
@@ -1137,16 +1168,36 @@
             <element signature="e#14710#14772#0" />
             <element signature="e#14778#15200#0" />
             <element signature="e#15206#15770#0" />
-            <element signature="e#19371#19372#0" expanded="true" />
-            <element signature="e#19422#19423#0" expanded="true" />
+            <element signature="e#15776#16247#0" />
+            <element signature="e#16253#18044#0" />
+            <element signature="e#18050#18627#0" />
+            <element signature="e#18633#18824#0" />
+            <element signature="e#18633#19090#0" />
+            <element signature="e#19096#19313#0" />
+            <element signature="e#19429#19794#0" />
+            <element signature="e#19800#20761#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="119" column="41" selection-start-line="119" selection-start-column="41" selection-end-line="119" selection-end-column="41" />
+        <state relative-caret-position="323">
+          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ConvexHullCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1938#1939#0" expanded="true" />
+            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#3999#4000#0" expanded="true" />
+            <element signature="e#4037#4038#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
