@@ -1,4 +1,4 @@
-package wbif.sjx.common.Process;
+package wbif.sjx.common.MathFunc;
 
 /**
  * Created by sc13967 on 17/01/2018.
