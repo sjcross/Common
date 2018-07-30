@@ -52,15 +52,15 @@ public class KFunctionTest {
     }
 
     @Test
-    public void testGetLFunction2D() throws Exception {
+    public void testGetLFunction2DWithoutCorrection() throws Exception {
         ArrayList<Point<Double>> centroids = Blobs2D.getCentroids();
         assertNotNull(centroids);
 
         int nBins = 100;
 
-        KFunctionCalculator calculator = new KFunctionCalculator(centroids,nBins,true);
+        KFunctionCalculator calculator = new KFunctionCalculator(centroids,nBins,true,false);
         TreeMap<Double,Double> actual = calculator.getLFunction();
-        TreeMap<Double,Double> expected = Blobs2D.getLFunction();
+        TreeMap<Double,Double> expected = Blobs2D.getLFunctionWithoutCorrection();
 
         assertNotNull(expected);
 
@@ -68,6 +68,35 @@ public class KFunctionTest {
 
         for (Double expectedTs : expected.keySet()) {
             double actualTs = actualIterator.next();
+
+            assertEquals(expectedTs, actualTs, tolerance);
+            assertEquals(expected.get(expectedTs), actual.get(actualTs), tolerance);
+
+        }
+    }
+
+    @Test @Ignore
+    public void testGetLFunction2DWithCorrection() throws Exception {
+        // Don't currently have any data to compare this to, as I've yet to find software the explicitly implements
+        // the same correction approach.  CrimeStat has an additional log transform and also appears to use different
+        // equations.
+        ArrayList<Point<Double>> centroids = Blobs2D.getCentroids();
+        assertNotNull(centroids);
+
+        int nBins = 100;
+
+        KFunctionCalculator calculator = new KFunctionCalculator(centroids,nBins,true,true);
+        TreeMap<Double,Double> actual = calculator.getLFunction();
+        TreeMap<Double,Double> expected = Blobs2D.getLFunctionWithCorrection();
+
+        assertNotNull(expected);
+
+        Iterator<Double> actualIterator = actual.keySet().iterator();
+
+        for (Double expectedTs : expected.keySet()) {
+            double actualTs = actualIterator.next();
+
+            System.out.println(expectedTs+"_"+expected.get(expectedTs)+"_"+actual.get(actualTs));
 
             assertEquals(expectedTs, actualTs, tolerance);
             assertEquals(expected.get(expectedTs), actual.get(actualTs), tolerance);

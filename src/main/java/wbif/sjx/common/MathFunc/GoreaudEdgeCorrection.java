@@ -1,15 +1,20 @@
 package wbif.sjx.common.MathFunc;
 
+import wbif.sjx.common.Object.Point;
+
+import java.util.ArrayList;
+
 /**
  * Created by sc13967 on 17/01/2018.
  * This class calculates the edge correction from "On explicit formulas of edge effect correction for Ripley's
  * K-function" Goreaud, F. and Pelissier, R., Journal of Vegetation Science, 10 (1999) 433-438.
  */
 public class GoreaudEdgeCorrection {
-    private double minX;
-    private double maxX;
-    private double minY;
-    private double maxY;
+    private final double minX;
+    private final double maxX;
+    private final double minY;
+    private final double maxY;
+
 
     public GoreaudEdgeCorrection(double minX, double maxX, double minY, double maxY) {
         this.minX = minX;
@@ -58,35 +63,23 @@ public class GoreaudEdgeCorrection {
             }
         }
 
-        return alphaOut;
+        return (2*Math.PI)/(2*Math.PI-alphaOut);
 
     }
 
     public double[] getDistances(double x, double y) {
-        // d1 and d3 correspond to the shorter axis, d2 and d4 correspond to the longer axis
-        double d1; double d2; double d3; double d4;
-
-        if ((maxX-minX) > (maxY-minY)) {
-            // X is the longer rectangle axis
-            d1 = y-minY; // Distance to bottom
-            d2 = x-minX; // Distance to left
-            d3 = maxY-y; // Distance to top
-            d4 = maxX-x; // Distance to right
-
-        } else {
-            // Y is the longer rectangle axis
-            d1 = x-minX; // Distance to left
-            d2 = y-minY; // Distance to bottom
-            d3 = maxX-x; // Distance to right
-            d4 = maxY-y; // Distance to top
-
-        }
+        double d1 = y-minY; // Distance to bottom
+        double d2 = x-minX; // Distance to left
+        double d3 = maxY-y; // Distance to top
+        double d4 = maxX-x; // Distance to right
 
         // Ensuring d1 < d3 and d2 < d4
         double[] d13 = checkVariableOrder(d1,d3);
         double[] d24 = checkVariableOrder(d2,d4);
 
-        return new double[]{d13[0],d24[0],d13[1],d24[1]};
+        // Returning the coordinates in the correct order
+        if (d13[0] < d24[0]) return new double[]{d13[0],d24[0],d13[1],d24[1]};
+        return new double[]{d24[0],d13[0],d24[1],d13[1]};
 
     }
 
@@ -96,9 +89,8 @@ public class GoreaudEdgeCorrection {
      * @param v2
      * @return
      */
-    double[] checkVariableOrder(double v1, double v2) {
+    static double[] checkVariableOrder(double v1, double v2) {
         if (v1 <= v2) return new double[]{v1,v2};
-        System.out.println("Swapping variables");
         return new double[]{v2,v1};
     }
 }
