@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrectionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/KFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/GoreaudEdgeCorrection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/HoughTransform/Accumulators/CircleAccumulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/HoughTransform/Accumulators/CircleAccumulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Blobs2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Blobs2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java" afterDir="false" />
     </list>
@@ -23,23 +21,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Filters.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Common$VolumeTest.coverage" NAME="VolumeTest Coverage Results" MODIFIED="1524037637387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.Object.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Filters.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Common$All_in_Common.coverage" NAME="All in Common Coverage Results" MODIFIED="1529653217331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
+    </SUITE>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Common" />
@@ -55,91 +53,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Volume.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-              <folding>
-                <element signature="docComment;class#Volume#0" />
-                <element signature="e#914#1080#0" />
-                <element signature="e#1133#1301#0" />
-                <element signature="e#1357#1571#0" />
-                <element signature="e#1828#1930#0" />
-                <element signature="e#1936#1997#0" />
-                <element signature="e#2003#2062#0" />
-                <element signature="e#2204#2349#0" />
-                <element signature="e#2355#2499#0" />
-                <element signature="e#2505#2650#0" />
-                <element signature="e#2656#2858#0" />
-                <element signature="e#2864#3066#0" />
-                <element signature="e#3072#3274#0" />
-                <element signature="e#3359#3512#0" />
-                <element signature="e#3518#4102#0" />
-                <element signature="e#4108#4876#0" />
-                <element signature="e#4882#5006#0" />
-                <element signature="e#5012#5454#0" />
-                <element signature="e#5456#5509#0" />
-                <element signature="e#5604#5909#0" />
-                <element signature="e#5915#6220#0" />
-                <element signature="e#6226#6466#0" />
-                <element signature="e#6226#6967#0" />
-                <element signature="e#6973#7336#0" />
-                <element signature="e#7342#7705#0" />
-                <element signature="e#7711#7951#0" />
-                <element signature="e#7711#8511#0" />
-                <element signature="e#8581#9006#0" />
-                <element signature="e#9012#10094#0" />
-                <element signature="e#10100#10274#0" />
-                <element signature="e#10100#10560#0" />
-                <element signature="e#10566#10847#0" />
-                <element signature="e#10853#11300#0" />
-                <element signature="e#11306#11597#0" />
-                <element signature="e#11603#11894#0" />
-                <element signature="e#11900#12299#0" />
-                <element signature="e#12305#12549#0" />
-                <element signature="e#12555#13225#0" />
-                <element signature="e#13231#13734#0" />
-                <element signature="e#13740#14086#0" />
-                <element signature="e#14092#14405#0" />
-                <element signature="e#14411#14473#0" />
-                <element signature="e#14479#14901#0" />
-                <element signature="e#14907#15471#0" />
-                <element signature="e#15477#15948#0" />
-                <element signature="e#15954#17745#0" />
-                <element signature="e#17751#18328#0" />
-                <element signature="e#18334#18525#0" />
-                <element signature="e#18334#18791#0" />
-                <element signature="e#18797#19014#0" />
-                <element signature="e#19130#19495#0" />
-                <element signature="e#19501#20462#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GaussianFitter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GaussianFitter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="65" column="76" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KFunctionCalculator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KFunctionCalculator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="443">
+              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#calculateMaximumPointSeparation#0;class#KFunction#0" />
-                <element signature="method#calculateAreaVolume#0;class#KFunction#0" />
-                <element signature="method#calculateStepSize#0;class#KFunction#0" />
-                <element signature="e#2851#2852#0" expanded="true" />
-                <element signature="e#2883#2884#0" expanded="true" />
+                <element signature="method#calculateMaximumPointSeparation#0;class#KFunctionCalculator#0" />
+                <element signature="method#calculateRegionSize#0;class#KFunctionCalculator#0" />
+                <element signature="method#calculateStepSize#0;class#KFunctionCalculator#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoreaudEdgeCorrection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoreaudEdgeCorrectionTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrectionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -147,11 +89,13 @@
       <file leaf-file-name="KFunctionTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+            <state relative-caret-position="221">
+              <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
               <folding>
                 <element signature="method#testCalculateMaximumPointSeparation2D#0;class#KFunctionTest#0" />
                 <element signature="method#testCalculateRegionSize2D#0;class#KFunctionTest#0" />
+                <element signature="method#testCalculateStepSize2D#0;class#KFunctionTest#0" />
+                <element signature="method#testGetLFunction2D#0;class#KFunctionTest#0" />
               </folding>
             </state>
           </provider>
@@ -160,12 +104,11 @@
       <file leaf-file-name="Blobs2D.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Blobs2D.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+            <state relative-caret-position="272">
+              <caret line="56" column="56" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#199#200#0" expanded="true" />
-                <element signature="e#280#281#0" expanded="true" />
+                <element signature="method#getCentroids#0;class#Blobs2D#0" />
+                <element signature="method#getLFunction#0;class#Blobs2D#0" />
               </folding>
             </state>
           </provider>
@@ -176,8 +119,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -228,8 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/VolumeCalculator.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/EllipsoidCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GeneralOps.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects.java" />
@@ -275,10 +216,12 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Blobs2D.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/KFunction.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Blobs2D.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrectionTest.java" />
       </list>
     </option>
   </component>
@@ -290,7 +233,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="912" />
+    <option name="x" value="-8" />
     <option name="width" value="938" />
     <option name="height" value="1088" />
   </component>
@@ -303,6 +246,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -435,7 +379,6 @@
       </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -458,11 +401,8 @@
       <recent name="wbif.sjx.common.Analysis" />
       <recent name="wbif.sjx.common.MathFunc" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sc13967\Documents\Java Projects\Common\src\test\java\wbif\sjx\common\ExpectedObjects" />
-      <recent name="C:\Users\sc13967\Local Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Process" />
-      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour\Energies" />
-      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour" />
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="wbif.sjx.common.ExpectedObjects" />
@@ -471,8 +411,11 @@
       <recent name="wbif.sjx.common.Process.ActiveContour" />
       <recent name="wbif.sjx.common.Process.ActiveContour.Visualisation" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sc13967\Documents\Java Projects\Common\src\test\java\wbif\sjx\common\ExpectedObjects" />
+      <recent name="C:\Users\sc13967\Local Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Process" />
+      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour\Energies" />
+      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -487,7 +430,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.KFunctionTest">
+  <component name="RunManager" selected="JUnit.GoreaudEdgeCorrectionTest.testGetDistancesCloserToTopLeftWideRect">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -495,6 +438,29 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="GoreaudEdgeCorrectionTest.testGetDistancesCloserToTopLeftWideRect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wbif.sjx.common.MathFunc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="wbif.sjx.common.MathFunc" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.MathFunc.GoreaudEdgeCorrectionTest" />
+      <option name="METHOD_NAME" value="testGetDistancesCloserToTopLeftWideRect" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration name="KFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
@@ -510,29 +476,6 @@
       <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.MathFunc.KFunctionTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="KFunctionTest.testCalculateMaximumPointSeparation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Analysis.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.MathFunc" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.MathFunc.KFunctionTest" />
-      <option name="METHOD_NAME" value="testCalculateMaximumPointSeparation" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -565,11 +508,11 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="KFunctionTest.testCalculateVolume2D" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="KFunctionTest.testGetLFunction2D" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Analysis.*" />
+          <option name="PATTERN" value="wbif.sjx.common.MathFunc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -577,7 +520,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.MathFunc" />
       <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.MathFunc.KFunctionTest" />
-      <option name="METHOD_NAME" value="testCalculateVolume2D" />
+      <option name="METHOD_NAME" value="testGetLFunction2D" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -676,19 +619,19 @@
     </configuration>
     <list>
       <item itemvalue="Maven.Common [install]" />
-      <item itemvalue="JUnit.KFunctionTest.testCalculateMaximumPointSeparation" />
-      <item itemvalue="JUnit.KFunctionTest.testCalculateVolume2D" />
       <item itemvalue="JUnit.KFunctionTest.testCalculateStepSize2D" />
       <item itemvalue="JUnit.KFunctionTest.testKFunctionCalculator" />
       <item itemvalue="JUnit.KFunctionTest" />
+      <item itemvalue="JUnit.KFunctionTest.testGetLFunction2D" />
+      <item itemvalue="JUnit.GoreaudEdgeCorrectionTest.testGetDistancesCloserToTopLeftWideRect" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GoreaudEdgeCorrectionTest.testGetDistancesCloserToTopLeftWideRect" />
         <item itemvalue="JUnit.KFunctionTest" />
+        <item itemvalue="JUnit.KFunctionTest.testGetLFunction2D" />
         <item itemvalue="JUnit.KFunctionTest.testKFunctionCalculator" />
         <item itemvalue="JUnit.KFunctionTest.testCalculateStepSize2D" />
-        <item itemvalue="JUnit.KFunctionTest.testCalculateVolume2D" />
-        <item itemvalue="JUnit.KFunctionTest.testCalculateMaximumPointSeparation" />
       </list>
     </recent_temporary>
   </component>
@@ -706,35 +649,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="KFunctionTest_testCalculateMaximumPointSeparation - 2018.07.27 at 15h 29m 40s.xml">
-      <configuration name="KFunctionTest.testCalculateMaximumPointSeparation" configurationId="JUnit" />
+    <history-entry file="KFunctionTest_testGetLFunction2D - 2018.07.27 at 17h 11m 17s.xml">
+      <configuration name="KFunctionTest.testGetLFunction2D" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testCalculateMaximumPointSeparation - 2018.07.27 at 15h 32m 56s.xml">
-      <configuration name="KFunctionTest.testCalculateMaximumPointSeparation" configurationId="JUnit" />
+    <history-entry file="KFunctionTest_testGetLFunction2D - 2018.07.27 at 17h 11m 55s.xml">
+      <configuration name="KFunctionTest.testGetLFunction2D" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testCalculateVolume2D - 2018.07.27 at 15h 49m 40s.xml">
-      <configuration name="KFunctionTest.testCalculateVolume2D" configurationId="JUnit" />
+    <history-entry file="KFunctionTest_testGetLFunction2D - 2018.07.27 at 17h 12m 26s.xml">
+      <configuration name="KFunctionTest.testGetLFunction2D" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testCalculateVolume2D - 2018.07.27 at 15h 49m 57s.xml">
-      <configuration name="KFunctionTest.testCalculateVolume2D" configurationId="JUnit" />
+    <history-entry file="KFunctionTest_testGetLFunction2D - 2018.07.27 at 17h 13m 14s.xml">
+      <configuration name="KFunctionTest.testGetLFunction2D" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testCalculateStepSize2D - 2018.07.27 at 15h 58m 40s.xml">
-      <configuration name="KFunctionTest.testCalculateStepSize2D" configurationId="JUnit" />
+    <history-entry file="KFunctionTest_testGetLFunction2D - 2018.07.27 at 17h 16m 39s.xml">
+      <configuration name="KFunctionTest.testGetLFunction2D" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testCalculateStepSize2D - 2018.07.27 at 16h 10m 17s.xml">
-      <configuration name="KFunctionTest.testCalculateStepSize2D" configurationId="JUnit" />
+    <history-entry file="KFunctionTest_testGetLFunction2D - 2018.07.27 at 17h 17m 30s.xml">
+      <configuration name="KFunctionTest.testGetLFunction2D" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testKFunctionCalculator - 2018.07.27 at 16h 10m 23s.xml">
-      <configuration name="KFunctionTest.testKFunctionCalculator" configurationId="JUnit" />
+    <history-entry file="KFunctionTest_testGetLFunction2D - 2018.07.27 at 17h 18m 26s.xml">
+      <configuration name="KFunctionTest.testGetLFunction2D" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testCalculateStepSize2D - 2018.07.27 at 16h 12m 08s.xml">
-      <configuration name="KFunctionTest.testCalculateStepSize2D" configurationId="JUnit" />
+    <history-entry file="KFunctionTest_testGetLFunction2D - 2018.07.27 at 17h 19m 01s.xml">
+      <configuration name="KFunctionTest.testGetLFunction2D" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testCalculateStepSize2D - 2018.07.27 at 16h 12m 27s.xml">
-      <configuration name="KFunctionTest.testCalculateStepSize2D" configurationId="JUnit" />
+    <history-entry file="KFunctionTest_testGetLFunction2D - 2018.07.27 at 17h 19m 14s.xml">
+      <configuration name="KFunctionTest.testGetLFunction2D" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testKFunctionCalculator - 2018.07.27 at 16h 12m 31s.xml">
-      <configuration name="KFunctionTest.testKFunctionCalculator" configurationId="JUnit" />
+    <history-entry file="KFunctionTest - 2018.07.27 at 17h 19m 29s.xml">
+      <configuration name="KFunctionTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -747,50 +690,50 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-7" y="-7" width="1488" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" x="1920" y="0" width="1855" height="1080" id="TODO" internal_type="FLOATING" order="6" type="FLOATING" weight="0.32987553" />
       <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.3209756" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="1" />
-      <window_info active="true" anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" visible="true" weight="0.36487806" />
+      <window_info anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" weight="0.36386138" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32987553" />
+      <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
-      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.19895834" />
-      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.19877884" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.2521322" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="bottom" auto_hide="true" id="Debug" order="3" weight="0.39121953" />
       <window_info auto_hide="true" id="Favorites" order="6" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
-      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
-      <window_info id="Capture Tool" order="5" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Nl-Palette" order="2" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="9" />
-      <window_info anchor="right" id="Database" order="10" />
-      <window_info anchor="right" id="Properties" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.3283582" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info anchor="right" id="Database" order="10" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="Designer" order="4" />
+      <window_info auto_hide="true" id="Favorites" order="7" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" weight="0.25782093" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.32903588" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="5" />
       <window_info anchor="right" id="Properties" order="6" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32987553" />
@@ -800,13 +743,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.32606325" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20842217" />
       <window_info anchor="bottom" id="Run with VisualVM" order="10" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info id="Nl-Palette" order="2" />
       <window_info anchor="right" id="Maven Projects" order="1" />
-      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.20842217" />
       <window_info anchor="right" id="Database" order="10" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
@@ -814,7 +755,9 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info id="Structure" order="1" weight="0.2521322" />
-      <window_info auto_hide="true" id="Favorites" order="7" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" visible="true" weight="0.32903588" />
+      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39626557" />
     </layout-to-restore>
   </component>
@@ -831,20 +774,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/ExtensionMatchesStringTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Spot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/LongestChordCalculator.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/LongestChordCalculatorTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/VerticalCylinderR5.java" />
@@ -1201,18 +1130,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Blobs2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#199#200#0" expanded="true" />
-            <element signature="e#280#281#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -1220,29 +1137,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Blobs2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="56" column="56" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
+          <folding>
+            <element signature="method#getCentroids#0;class#Blobs2D#0" />
+            <element signature="method#getLFunction#0;class#Blobs2D#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        <state relative-caret-position="221">
+          <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
           <folding>
             <element signature="method#testCalculateMaximumPointSeparation2D#0;class#KFunctionTest#0" />
             <element signature="method#testCalculateRegionSize2D#0;class#KFunctionTest#0" />
+            <element signature="method#testCalculateStepSize2D#0;class#KFunctionTest#0" />
+            <element signature="method#testGetLFunction2D#0;class#KFunctionTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="443">
+          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#calculateMaximumPointSeparation#0;class#KFunction#0" />
-            <element signature="method#calculateAreaVolume#0;class#KFunction#0" />
-            <element signature="method#calculateStepSize#0;class#KFunction#0" />
-            <element signature="e#2851#2852#0" expanded="true" />
-            <element signature="e#2883#2884#0" expanded="true" />
+            <element signature="method#calculateMaximumPointSeparation#0;class#KFunctionCalculator#0" />
+            <element signature="method#calculateRegionSize#0;class#KFunctionCalculator#0" />
+            <element signature="method#calculateStepSize#0;class#KFunctionCalculator#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
         </state>
       </provider>
     </entry>

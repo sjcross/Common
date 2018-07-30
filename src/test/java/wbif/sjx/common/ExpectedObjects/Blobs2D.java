@@ -8,6 +8,7 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 public class Blobs2D extends ExpectedObjects {
     @Override
@@ -51,5 +52,33 @@ public class Blobs2D extends ExpectedObjects {
 
         return null;
 
+    }
+
+    public static TreeMap<Double,Double> getLFunction() {
+        try {
+            String path = "/MATLAB/K-function/Blobs_2D_whiteBG_8bit_Lfn.csv";
+            String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
+
+            BufferedReader reader = new BufferedReader(new FileReader(pathToCoordinates));
+            CSVReader csvReader = new CSVReader(reader);
+
+            TreeMap<Double,Double> results = new TreeMap<>();
+            String[] row = csvReader.readNext();
+            row = csvReader.readNext();
+            while (row != null) {
+                double ts = Double.parseDouble(row[1]);
+                double lVal = Double.parseDouble(row[2]);
+
+                results.put(ts,lVal);
+                row = csvReader.readNext();
+            }
+
+            return results;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

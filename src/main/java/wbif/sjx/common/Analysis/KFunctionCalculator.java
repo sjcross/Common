@@ -93,7 +93,7 @@ public class KFunctionCalculator {
         for (double ts:kFunction.keySet()) {
             double kVal = kFunction.get(ts);
             double lVal = Math.sqrt(kVal/Math.PI)-ts;
-            lFunction.put(ts,kVal);
+            lFunction.put(ts,lVal);
         }
 
         return lFunction;
