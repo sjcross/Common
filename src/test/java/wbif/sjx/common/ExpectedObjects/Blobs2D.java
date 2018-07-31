@@ -36,7 +36,6 @@ public class Blobs2D extends ExpectedObjects {
 
             ArrayList<Point<Double>> centroids = new ArrayList<>();
             String[] row = csvReader.readNext();
-            row = csvReader.readNext();
             while (row != null) {
                 double x = Double.parseDouble(row[0]);
                 double y = Double.parseDouble(row[1]);
@@ -57,7 +56,7 @@ public class Blobs2D extends ExpectedObjects {
 
     public static HashMap<Point<Double>,Double> getExpectedCorrections() throws FileNotFoundException {
         try {
-            String path = "/MATLAB/K-function/Blobs_2D_whiteBG_8bit_centroids.csv";
+            String path = "/MATLAB/K-function/Blobs_2D_whiteBG_8bit_corrections.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
 
             BufferedReader reader = new BufferedReader(new FileReader(pathToCoordinates));
@@ -65,7 +64,6 @@ public class Blobs2D extends ExpectedObjects {
 
             HashMap<Point<Double>,Double> corrections = new HashMap<>();
             String[] row = csvReader.readNext();
-            row = csvReader.readNext();
             while (row != null) {
                 double x = Double.parseDouble(row[0]);
                 double y = Double.parseDouble(row[1]);
@@ -95,7 +93,6 @@ public class Blobs2D extends ExpectedObjects {
 
             TreeMap<Double,Double> results = new TreeMap<>();
             String[] row = csvReader.readNext();
-            row = csvReader.readNext();
             while (row != null) {
                 double ts = Double.parseDouble(row[1]);
                 double lVal = Double.parseDouble(row[2]);
@@ -124,7 +121,6 @@ public class Blobs2D extends ExpectedObjects {
 
             TreeMap<Double,Double> results = new TreeMap<>();
             String[] row = csvReader.readNext();
-            row = csvReader.readNext();
             while (row != null) {
                 double ts = Double.parseDouble(row[1]);
                 double lVal = Double.parseDouble(row[2]);

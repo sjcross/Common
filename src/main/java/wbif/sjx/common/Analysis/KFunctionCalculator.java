@@ -9,11 +9,27 @@ import java.util.TreeMap;
 public class KFunctionCalculator {
     private final TreeMap<Double,Double> kFunction = new TreeMap<>();
 
+    public KFunctionCalculator(ArrayList<Point<Double>> points, int nBins, double minBin, double maxBin, boolean is2D, boolean edgeCorrection) {
+
+    }
+
     public KFunctionCalculator(ArrayList<Point<Double>> points, int nBins, boolean is2D, boolean edgeCorrection) {
+        double regionSize = calculateRegionSize(points,is2D);
+        double stepSize = calculateStepSize(regionSize,nBins,is2D);
+
+        for (int i=0;i<nBins;i++) {
+            double ts = stepSize * (i + 1);
+            kFunction.put(ts,0d);
+        }
+
+        calculate(points,nBins,is2D,edgeCorrection);
+
+    }
+
+    void calculate(ArrayList<Point<Double>> points, int nBins, boolean is2D, boolean edgeCorrection) {
         int N = points.size();
         double regionSize = calculateRegionSize(points,is2D);
         double areaFactor = regionSize/(N*N);
-        double stepSize = calculateStepSize(regionSize,nBins,is2D);
         double maxSep = calculateMaximumPointSeparation(points);
 
         GoreaudEdgeCorrection correctionCalculator = null;
@@ -22,8 +38,7 @@ public class KFunctionCalculator {
             correctionCalculator = new GoreaudEdgeCorrection(limits[0][0],limits[0][1],limits[1][0],limits[1][1]);
         }
 
-        for (int i=0;i<nBins;i++) {
-            double ts = stepSize*(i+1);
+        for (double ts:kFunction.keySet()) {
             double score = 0;
             for (Point<Double> point1 : points) {
                 double correction = edgeCorrection ? correctionCalculator.getFractionInsideRectangle(point1.getX(),point1.getY(),ts) : 1;
@@ -102,12 +117,15 @@ public class KFunctionCalculator {
         return kFunction;
     }
 
-    public TreeMap<Double,Double> getLFunction() {
+    public TreeMap<Double,Double> getLFunction(boolean is2D) {
         TreeMap<Double,Double> lFunction = new TreeMap<>();
 
         for (double ts:kFunction.keySet()) {
             double kVal = kFunction.get(ts);
-            double lVal = Math.sqrt(kVal/Math.PI)-ts;
+            double lVal;
+
+            if (is2D) lVal = Math.sqrt(kVal/Math.PI)-ts;
+            else lVal = Math.cbrt((3*kVal)/(4*Math.PI)) - ts;
             lFunction.put(ts,lVal);
         }
 

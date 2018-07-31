@@ -13,7 +13,7 @@ import java.util.TreeMap;
 import static org.junit.Assert.*;
 
 public class KFunctionTest {
-    private double tolerance = 1E-2;
+    private double tolerance = 1E-4;
 
     @Test
     public void testCalculateMaximumPointSeparation2D() throws Exception {
@@ -23,7 +23,7 @@ public class KFunctionTest {
         double actual = KFunctionCalculator.calculateMaximumPointSeparation(centroids);
         double expected = 593.26;
 
-        assertEquals(expected,actual,tolerance);
+        assertEquals(expected,actual,tolerance*expected);
 
     }
 
@@ -35,7 +35,7 @@ public class KFunctionTest {
         double actual = KFunctionCalculator.calculateRegionSize(centroids,true);
         double expected = 202463.61;
 
-        assertEquals(expected,actual,tolerance);
+        assertEquals(expected,actual,tolerance*expected);
 
     }
 
@@ -47,10 +47,14 @@ public class KFunctionTest {
         double actual = KFunctionCalculator.calculateStepSize(202463.61,100,true);
         double expected = 1.4999;
 
-        assertEquals(expected,actual,1E-4);
+        assertEquals(expected,actual,tolerance*expected);
 
     }
 
+    /**
+     * Compared to values from CrimeStat IV
+     * @throws Exception
+     */
     @Test
     public void testGetLFunction2DWithoutCorrection() throws Exception {
         ArrayList<Point<Double>> centroids = Blobs2D.getCentroids();
@@ -59,7 +63,7 @@ public class KFunctionTest {
         int nBins = 100;
 
         KFunctionCalculator calculator = new KFunctionCalculator(centroids,nBins,true,false);
-        TreeMap<Double,Double> actual = calculator.getLFunction();
+        TreeMap<Double,Double> actual = calculator.getLFunction(true);
         TreeMap<Double,Double> expected = Blobs2D.getLFunctionWithoutCorrection();
 
         assertNotNull(expected);
@@ -86,7 +90,7 @@ public class KFunctionTest {
         int nBins = 100;
 
         KFunctionCalculator calculator = new KFunctionCalculator(centroids,nBins,true,true);
-        TreeMap<Double,Double> actual = calculator.getLFunction();
+        TreeMap<Double,Double> actual = calculator.getLFunction(true);
         TreeMap<Double,Double> expected = Blobs2D.getLFunctionWithCorrection();
 
         assertNotNull(expected);
