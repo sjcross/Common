@@ -4,8 +4,8 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.gui.OvalRoi;
 import ij.gui.Overlay;
+import wbif.sjx.common.MathFunc.GoreaudEdgeCorrection;
 import wbif.sjx.common.MathFunc.MidpointCircle;
-import wbif.sjx.common.Process.GoreaudEdgeCorrection;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +22,7 @@ public class CircleAccumulator extends Accumulator {
     public CircleAccumulator(int[][] parameterRanges) {
         super(parameterRanges);
     }
+
 
     @Override
     public void addDetectedObjectsOverlay(ImagePlus ipl, ArrayList<double[]> objects) {

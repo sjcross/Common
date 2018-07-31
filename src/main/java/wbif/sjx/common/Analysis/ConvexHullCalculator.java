@@ -2,26 +2,16 @@
 //
 //import com.github.quickhull3d.Point3d;
 //import com.github.quickhull3d.QuickHull3D;
-//import org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D;
-//import org.apache.commons.math3.geometry.euclidean.threed.Plane;
 //import org.apache.commons.math3.geometry.euclidean.threed.PolyhedronsSet;
 //import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
-//import org.apache.commons.math3.geometry.partitioning.BSPTree;
 //import org.apache.commons.math3.geometry.partitioning.Region;
-//import org.apache.commons.math3.geometry.partitioning.RegionFactory;
 //import org.apache.commons.math3.linear.LUDecomposition;
 //import org.apache.commons.math3.linear.MatrixUtils;
 //import org.apache.commons.math3.linear.RealMatrix;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 //import wbif.sjx.common.MathFunc.GeneralOps;
 //import wbif.sjx.common.Object.Volume;
 //
-//import java.util.ArrayList;
 //import java.util.Arrays;
-//import java.util.LinkedList;
-//import java.util.List;
-//import java.util.logging.Level;
 //
 //public class ConvexHullCalculator {
 //    public static final int CENTROID = 0; //Fit hull around voxel centroids (hull volume < voxel volume)
@@ -32,14 +22,12 @@
 //    private QuickHull3D hull;
 //    private double hullSurfaceArea = Double.NaN;
 //    private double hullVolume = Double.NaN;
-//    private double tol1 = 1E-2;
-//    private double tol2 = 1E-8;
+//    private double tol = 1E-8;
 //
 //
-//    public ConvexHullCalculator(Volume volume, int fitMode, double tol1, double tol2) {
+//    public ConvexHullCalculator(Volume volume, int fitMode, double tol) {
 //        this.volume = volume;
-//        this.tol1 = tol1;
-//        this.tol2 = tol2;
+//        this.tol = tol;
 //
 //        switch (fitMode) {
 //            case CENTROID:
@@ -89,8 +77,7 @@
 //        }
 //
 //        hull = new QuickHull3D();
-//        hull.setExplicitDistanceTolerance(tol1);
-//        System.out.println(hull.getExplicitDistanceTolerance());
+////        hull.setExplicitDistanceTolerance(tol1);
 //
 //        // Certain point configurations (e.g. points in a line) will cause the fitting to fail
 //        try {
@@ -202,25 +189,23 @@
 //        for (int i=0;i<vertices.length;i++) {
 //            Point3d point3d = vertices[i];
 //            verts[i] = new Vector3D(point3d.x,point3d.y,(point3d.z*cal));
-//            System.out.println(point3d.x+"_"+point3d.y+"_"+(point3d.z*cal));
 //        }
 //
 //        // Getting a list of facets
 //        int[][] faces = hull.getFaces();
-//        for (int[] face:faces) System.out.println(face[0]+"_"+face[1]+"_"+face[2]);
 //
 //        // Creating the PolyhedronsSet
 //        if (faces.length == 0 || vertices.length == 0) return null;
 //
-//        PolyhedronsSet polyhedronsSet = new PolyhedronsSet(Arrays.asList(verts),Arrays.asList(faces),tol2);
+//        PolyhedronsSet polyhedronsSet = new PolyhedronsSet(Arrays.asList(verts),Arrays.asList(faces), tol);
 //
 //        // Testing which points are within the convex hull
-//        double[] extents = volume.getExtents(true,false);
+//        double[][] extents = volume.getExtents(true,false);
 //        Volume insideHull = new Volume(volume.getDistPerPxXY(),volume.getDistPerPxZ(),volume.getCalibratedUnits(),volume.is2D());
 //
-//        for (int x=(int) extents[0];x<=extents[1];x++) {
-//            for (int y=(int) extents[2];y<=extents[3];y++) {
-//                for (int z=(int) extents[4];z<=extents[5];z++) {
+//        for (int x=(int) extents[0][0];x<=extents[0][1];x++) {
+//            for (int y=(int) extents[1][0];y<=extents[1][1];y++) {
+//                for (int z=(int) extents[2][0];z<=extents[2][1];z++) {
 //                    Region.Location location = polyhedronsSet.checkPoint(new Vector3D(x,y,z));
 //                    switch (location) {
 //                        case INSIDE:

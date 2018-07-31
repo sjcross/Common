@@ -127,72 +127,57 @@ public class Volume {
     public void calculateSurface2D() {
         surface = new TreeSet<>();
 
-        double[][] extents = getExtents2D(true);
-        int[][] coords = new int[(int) extents[0][1]+1][(int) extents[1][1]+1];
-
-        // Adding pixels to a 2D array
+        // Iterating over each Point, adding it if it has fewer than 6 neighbours
         for (Point<Integer> point:points) {
-            int x = point.getX();
-            int y = point.getY();
+            int count = 0;
 
-            coords[x][y] = 1;
+            if (containsPoint(new Point<>(point.x-1,point.y,0))) count++;
+            if (containsPoint(new Point<>(point.x+1,point.y,0))) count++;
+            if (containsPoint(new Point<>(point.x,point.y-1,0))) count++;
+            if (containsPoint(new Point<>(point.x,point.y+1,0))) count++;
 
-        }
-
-        // Checking for neighbours
-        for (Point<Integer> point:points) {
-            int x = point.getX();
-            int y = point.getY();
-
-            // Points at the edge of the image are automatically classed as being edge pixels
-            // THIS FIRST CONDITION CAN PROBABLY GO?
-            if (x == 0 | x == extents[0][1] | y == 0 | y == extents[1][1]) {
-                surface.add(new Point<>(x, y, 0));
-                continue;
-            }
-
-            if (coords[x-1][y] + coords[x+1][y] + coords[x][y-1] + coords[x][y+1] < 4) {
-                surface.add(new Point<>(x,y,0));
-            }
+            if (count < 4) surface.add(point);
         }
     }
 
     public void calculateSurface3D() {
         surface = new TreeSet<>();
 
-        double[][] extents = getExtents(true,false);
-        int[][][] coords = new int[(int) extents[0][1]+1][(int) extents[1][1]+1][(int) extents[2][1]+1];
-
-        // Adding pixels to a 3D array
+        // Iterating over each Point, adding it if it has fewer than 6 neighbours
         for (Point<Integer> point:points) {
-            int x = point.getX();
-            int y = point.getY();
-            int z = point.getZ();
+            int count = 0;
 
-            // Ignore points outside smaller than zero
-            if (x >= 0 && y >= 0 && z>= 0) coords[x][y][z] = 1;
+            if (containsPoint(new Point<>(point.x-1,point.y,point.z))) count++;
+            if (containsPoint(new Point<>(point.x+1,point.y,point.z))) count++;
+            if (containsPoint(new Point<>(point.x,point.y-1,point.z))) count++;
+            if (containsPoint(new Point<>(point.x,point.y+1,point.z))) count++;
+            if (containsPoint(new Point<>(point.x,point.y,point.z-1))) count++;
+            if (containsPoint(new Point<>(point.x,point.y,point.z+1))) count++;
 
-        }
-
-        // Checking for neighbours
-        for (Point<Integer> point:points) {
-            int x = point.getX();
-            int y = point.getY();
-            int z = point.getZ();
-
-            if (x >= 0 && y >= 0 && z >= 0) {
-                // Points at the edge of the image are automatically classed as being edge pixels
-                if (x == 0 | x == extents[0][1] | y == 0 | y == extents[1][1] | z == 0 | z == extents[2][1]) {
-                    surface.add(new Point<>(x, y, z));
-                    continue;
-                }
-
-                if (coords[x - 1][y][z] + coords[x + 1][y][z] + coords[x][y - 1][z] + coords[x][y + 1][z] + coords[x][y][z - 1] + coords[x][y][z + 1] < 6) {
-                    surface.add(new Point<>(x, y, z));
-                }
-            }
+            if (count < 6) surface.add(point);
         }
     }
+
+    public TreeSet<Point<Integer>> getSurface() {
+        if (surface == null) calculateSurface();
+        return surface;
+    }
+
+    public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2) {
+        Volume volume1 = new Volume(dppXY,dppZ,calibratedUnits,is2D());
+        volume1.addCoord(point1.getX(),point1.getY(),point1.getZ());
+
+        Volume volume2 = new Volume(dppXY,dppZ,calibratedUnits,is2D());
+        volume2.addCoord(point2.getX(),point2.getY(),point2.getZ());
+
+        return volume1.getCentroidSeparation(volume2,true);
+
+    }
+
+//    public void shrinkObject(double shrinkLength) {
+//        // Calculating the distance of each point to the edge of the object
+//
+//    }
 
     public double[] getX(boolean pixelDistances) {
         if (pixelDistances)

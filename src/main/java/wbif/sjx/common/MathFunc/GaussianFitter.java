@@ -21,8 +21,6 @@ public class GaussianFitter {
      * @return double[] containing all fit parameters (x0,y0,sigmaX,sigmaY,A0,ABG,th)
      */
     public static double[] fitGaussian2D(ImageProcessor ipr, double[] pIn, double[][] limits, int maxEvaluations) {
-        int maxIterations = maxEvaluations;
-
         int width = ipr.getWidth();
         int height = ipr.getHeight();
 
@@ -55,7 +53,7 @@ public class GaussianFitter {
         lsqBuilder.start(start);
         lsqBuilder.model(model);
         lsqBuilder.target(target);
-        lsqBuilder.maxIterations(maxIterations);
+        lsqBuilder.maxIterations(maxEvaluations);
         lsqBuilder.maxEvaluations(maxEvaluations);
         if (limits != null) {
             ParameterValidator validator = new Validator(new Array2DRowRealMatrix(limits));

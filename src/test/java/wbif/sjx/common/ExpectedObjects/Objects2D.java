@@ -15,9 +15,6 @@ public class Objects2D extends ExpectedObjects {
     public List<Integer[]> getCoordinates5D() {
         return getCoordinates5D("/coordinates/Objects2D.csv");
     }
-//    public List<Integer[]> getCoordinates5D() {
-//        return getCoordinates5D("/coordinates/LabelledObjects2D_8bit_sq.csv");
-//    }
 
     @Override
     public boolean is2D() {
