@@ -1,11 +1,9 @@
 package wbif.sjx.common.MathFunc;
 
-import org.junit.Ignore;
 import org.junit.Test;
-import wbif.sjx.common.ExpectedObjects.Blobs2D;
+import wbif.sjx.common.ExpectedObjects.Clusters2D;
 import wbif.sjx.common.Object.Point;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 import static org.junit.Assert.*;
@@ -15,7 +13,7 @@ public class GoreaudEdgeCorrectionTest {
 
     @Test
     public void testGetFractionInsideRectangleR100() throws Exception {
-        HashMap<Point<Double>,Double> expected = Blobs2D.getExpectedCorrections();
+        HashMap<Point<Double>,Double> expected = Clusters2D.getExpectedCorrections();
 
         GoreaudEdgeCorrection goreaudEdgeCorrection = new GoreaudEdgeCorrection(39.5,479.5,20.5,480.6446);
 
@@ -184,6 +182,26 @@ public class GoreaudEdgeCorrectionTest {
         double[] expected = new double[]{dxRight,dxBottom,dxLeft,dxTop};
 
         assertArrayEquals(expected,actual,tolerance);
+
+    }
+
+    @Test
+    public void testSinglePoint() {
+        double minX = 12;
+        double maxX = 34;
+        double minY = 16;
+        double maxY = 32;
+        GoreaudEdgeCorrection correction = new GoreaudEdgeCorrection(minX,maxX,minY,maxY);
+        ExplicitEdgeCorrection explicitEdgeCorrection = new ExplicitEdgeCorrection(minX,maxX,minY,maxY);
+
+        double x = 14;
+        double y = 25;
+        double r = 4;
+
+        double g = correction.getFractionInsideRectangle(x,y,r);
+        double e = explicitEdgeCorrection.getFractionInsideRectangle(x,y,r);
+
+        System.out.println(g+"_"+e);
 
     }
 }

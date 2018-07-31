@@ -35,10 +35,14 @@ public class GoreaudEdgeCorrection {
         double alphaOut = 0;
 
         // The sample circle is entirely within the sample area
-        if (r<=d1 && r<=d2 && r<=d3 && r<=d4) alphaOut = 0;
+        if (r<=d1 && r<=d2 && r<=d3 && r<=d4) {
+            alphaOut = 0;
+        }
 
         // The sample circle is outside one side
-        if (r>d1 && r<=d2 && r<=d3 && r<=d4) alphaOut = 2*Math.acos(d1/r);
+        if (r>d1 && r<=d2 && r<=d3 && r<=d4) {
+            alphaOut = 2*Math.acos(d1/r);
+        }
 
         // The sample circle extends beyond opposite sides of the sample area only
         if (r>d1 && r>d2 && r<=d3 && r<=d4) {
@@ -50,7 +54,9 @@ public class GoreaudEdgeCorrection {
         }
 
         // The sample circle extends beyond a corner of the sample area only
-        if (r>d1 && r>d3 && r<=d2 && r<=d4) alphaOut = 2*Math.acos(d1/r)+2*Math.acos(d3/r);
+        if (r>d1 && r>d3 && r<=d2 && r<=d4) {
+            alphaOut = 2*Math.acos(d1/r)+2*Math.acos(d3/r);
+        }
 
         // The sample circle extends beyond three sides of the sample area
         if (r>d1 && r>d2 && r>d3 && r<=d4) {

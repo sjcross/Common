@@ -1,5 +1,6 @@
 package wbif.sjx.common.Analysis;
 
+import wbif.sjx.common.MathFunc.ExplicitEdgeCorrection;
 import wbif.sjx.common.MathFunc.GoreaudEdgeCorrection;
 import wbif.sjx.common.Object.Point;
 
@@ -10,6 +11,15 @@ public class KFunctionCalculator {
     private final TreeMap<Double,Double> kFunction = new TreeMap<>();
 
     public KFunctionCalculator(ArrayList<Point<Double>> points, int nBins, double minBin, double maxBin, boolean is2D, boolean edgeCorrection) {
+        // Calculating the steps
+        double step = (maxBin-minBin)/(nBins-1);
+
+        for (int i=0;i<nBins;i++) {
+            double ts = minBin+i*step;
+            kFunction.put(ts,0d);
+        }
+
+        calculate(points,nBins,is2D,edgeCorrection);
 
     }
 
@@ -48,7 +58,7 @@ public class KFunctionCalculator {
                     double dist = point1.calculateDistanceToPoint(point2);
 
                     // If the other point is within ts of the central point, increment the relevant counter
-                    if (dist < ts) score = score + correction;
+                    if (dist < ts) score = score + Math.log(correction) + 1;
 
                 }
             }
