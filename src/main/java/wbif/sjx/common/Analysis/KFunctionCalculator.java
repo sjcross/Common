@@ -51,12 +51,17 @@ public class KFunctionCalculator {
 
         if (edgeCorrection) {
             double[][] limits = calculateRegionLimits(points);
-            edgeCorrectionCalculator = new ExplicitEdgeCorrection(limits[0][0],limits[0][1],limits[1][0],limits[1][1]); }
+            if (is2D) {
+                edgeCorrectionCalculator = new ExplicitEdgeCorrection(limits[0][0], limits[0][1], limits[1][0], limits[1][1]);
+            } else {
+                edgeCorrectionCalculator = new ExplicitEdgeCorrection(limits[0][0], limits[0][1], limits[1][0], limits[1][1], limits[2][0], limits[2][1],false);
+            }
+        }
 
         for (double ts:kFunction.keySet()) {
             double score = 0;
             for (Point<Double> point1 : points) {
-                double goreaudCorrection = edgeCorrection ? edgeCorrectionCalculator.getCorrection(point1.getX(),point1.getY(),ts) : 1;
+                double goreaudCorrection = edgeCorrection ? edgeCorrectionCalculator.getCorrection(point1.getX(),point1.getY(),point1.getZ(),ts) : 1;
 
                 for (Point<Double> point2 : points) {
                     if (point1 == point2) continue;

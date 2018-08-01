@@ -14,6 +14,11 @@ public class GoreaudEdgeCorrection extends EdgeCorrection {
         super(minX, maxX, minY, maxY);
     }
 
+    public GoreaudEdgeCorrection(double minX, double maxX, double minY, double maxY, double minZ, double maxZ, boolean is2D) {
+        super(minX, maxX, minY, maxY, minZ, maxZ, is2D);
+    }
+
+
     public double getCorrection(double x, double y, double r) {
         // d1 and d3 correspond to the shorter axis, d2 and d4 correspond to the longer axis.  In each of those pairs,
         // the first value is the shorter distance (i.e. d1 < d3 and d2 < d4).
@@ -62,6 +67,12 @@ public class GoreaudEdgeCorrection extends EdgeCorrection {
 
         return Math.log((2*Math.PI)/(2*Math.PI-alphaOut))+1;
 
+    }
+
+    @Override
+    public double getCorrection(double x, double y, double z, double r) {
+        System.err.println("Goreaud correction doesn't currently work in 3D");
+        return 0;
     }
 
     public double[] getDistances(double x, double y) {

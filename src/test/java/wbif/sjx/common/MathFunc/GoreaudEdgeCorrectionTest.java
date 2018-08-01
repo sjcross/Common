@@ -187,23 +187,4 @@ public class GoreaudEdgeCorrectionTest {
 
     }
 
-    @Test
-    public void testSinglePoint() {
-        double minX = 12;
-        double maxX = 34;
-        double minY = 16;
-        double maxY = 32;
-        GoreaudEdgeCorrection correction = new GoreaudEdgeCorrection(minX,maxX,minY,maxY);
-        ExplicitEdgeCorrection explicitEdgeCorrection = new ExplicitEdgeCorrection(minX,maxX,minY,maxY);
-
-        double x = 14;
-        double y = 25;
-        double r = 4;
-
-        double g = correction.getCorrection(x,y,r);
-        double e = explicitEdgeCorrection.getCorrection(x,y,r);
-
-        System.out.println(g+"_"+e);
-
-    }
 }
