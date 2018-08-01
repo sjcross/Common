@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/ExplicitEdgeCorrection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Clusters3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Blobs2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Clusters2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/MATLAB/K-function/Blobs_2D_whiteBG_8bit_Lfn_WithCorrection.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/MATLAB/K-function/Blobs_2D_whiteBG_8bit_Lfn_WithoutCorrection.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/MATLAB/K-function/Blobs_2D_whiteBG_8bit_centroids.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/MATLAB/K-function/Blobs_2D_whiteBG_8bit_corrections.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/ExplicitEdgeCorrection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/ExplicitEdgeCorrection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/MATLAB/K-function/Clusters_2D_centroids.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/MATLAB/K-function/Clusters_2D_centroids.csv" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,23 +22,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Filters.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Common$VolumeTest.coverage" NAME="VolumeTest Coverage Results" MODIFIED="1524037637387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.Object.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Filters.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Common$All_in_Common.coverage" NAME="All in Common Coverage Results" MODIFIED="1529653217331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
+    </SUITE>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Common" />
@@ -54,54 +48,17 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="74" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
+            <state relative-caret-position="204">
+              <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GoreaudEdgeCorrection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java">
+      <file leaf-file-name="Circle.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar!/org/apache/commons/math3/geometry/spherical/twod/Circle.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-              <folding>
-                <element signature="docComment;class#GoreaudEdgeCorrection#0" />
-                <element signature="method#GoreaudEdgeCorrection#0;class#GoreaudEdgeCorrection#0" />
-                <element signature="e#800#910#0" />
-                <element signature="docComment;method#checkVariableOrder#0;class#GoreaudEdgeCorrection#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExplicitEdgeCorrection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/ExplicitEdgeCorrection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-              <folding>
-                <element signature="method#ExplicitEdgeCorrection#0;class#ExplicitEdgeCorrection#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GoreaudEdgeCorrectionTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrectionTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="176" lean-forward="true" selection-start-line="176" selection-end-line="176" />
-              <folding>
-                <element signature="method#testGetFractionInsideRectangleR100#0;class#GoreaudEdgeCorrectionTest#0" />
-                <element signature="method#testGetDistancesCloserToTopTopLeft#0;class#GoreaudEdgeCorrectionTest#0" />
-                <element signature="method#testGetDistancesCloserToLeftTopLeft#0;class#GoreaudEdgeCorrectionTest#0" />
-                <element signature="method#testGetDistancesCloserToTopTopRight#0;class#GoreaudEdgeCorrectionTest#0" />
-                <element signature="method#testGetDistancesCloserToRightTopRight#0;class#GoreaudEdgeCorrectionTest#0" />
-                <element signature="method#testGetDistancesCloserToBottomBottomLeft#0;class#GoreaudEdgeCorrectionTest#0" />
-                <element signature="method#testGetDistancesCloserToLeftBottomLeft#0;class#GoreaudEdgeCorrectionTest#0" />
-                <element signature="method#testGetDistancesCloserToBottomBottomRight#0;class#GoreaudEdgeCorrectionTest#0" />
-              </folding>
+            <state relative-caret-position="272">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -109,12 +66,8 @@
       <file leaf-file-name="KFunctionCalculator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
-              <folding>
-                <element signature="method#calculateMaximumPointSeparation#0;class#KFunctionCalculator#0" />
-                <element signature="method#calculateRegionLimits#0;class#KFunctionCalculator#0" />
-              </folding>
+            <state relative-caret-position="188">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
@@ -122,8 +75,8 @@
       <file leaf-file-name="KFunctionTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="169" selection-start-line="169" selection-end-line="169" />
+            <state relative-caret-position="120">
+              <caret line="178" lean-forward="true" selection-start-line="178" selection-end-line="178" />
               <folding>
                 <element signature="method#testCalculateMaximumPointSeparation2D#0;class#KFunctionTest#0" />
                 <element signature="method#testCalculateRegionSize2D#0;class#KFunctionTest#0" />
@@ -131,42 +84,16 @@
                 <element signature="docComment;method#testGetKFunction2DWithoutCorrection#0;class#KFunctionTest#0" />
                 <element signature="method#testGetKFunction2DWithoutCorrection#0;class#KFunctionTest#0" />
                 <element signature="docComment;method#testGetKFunction2DWithCorrection#0;class#KFunctionTest#0" />
-                <element signature="method#testGetKFunction2DWithoutCorrection#1;class#KFunctionTest#0" />
+                <element signature="method#testGetKFunction2DWithCorrection#0;class#KFunctionTest#0" />
                 <element signature="docComment;method#testGetLFunction2DWithoutCorrection#0;class#KFunctionTest#0" />
                 <element signature="method#testGetLFunction2DWithoutCorrection#0;class#KFunctionTest#0" />
-                <element signature="e#2535#2642#0" />
+                <element signature="docComment;method#testGetLFunction2DWithCorrection#0;class#KFunctionTest#0" />
+                <element signature="method#testGetLFunction2DWithCorrection#0;class#KFunctionTest#0" />
+                <element signature="e#4883#4990#0" />
+                <element signature="docComment;method#testGetKFunction3DWithoutCorrection#0;class#KFunctionTest#0" />
+                <element signature="method#testGetKFunction3DWithoutCorrection#0;class#KFunctionTest#0" />
+                <element signature="e#6162#6269#0" />
                 <element signature="docComment;method#testGetKFunction3DWithCorrection#0;class#KFunctionTest#0" />
-                <element signature="method#testGetKFunction3DWithCorrection#0;class#KFunctionTest#0" />
-                <element signature="e#3728#3835#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Clusters2D.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Clusters2D.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
-              <folding>
-                <element signature="method#getCentroids#0;class#Blobs2D#0" />
-                <element signature="method#getExpectedCorrections#0;class#Blobs2D#0" />
-                <element signature="method#getLFunctionWithoutCorrection#0;class#Clusters2D#0" />
-                <element signature="method#getLFunctionWithoutCorrection#0;class#Blobs2D#0" />
-                <element signature="method#getLFunctionWithCorrection#0;class#Blobs2D#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Clusters3D.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Clusters3D.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="81" column="33" lean-forward="true" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
-              <folding>
-                <element signature="method#getCentroids#0;class#Clusters3D#0" />
-                <element signature="method#getKFunctionWithCorrection#0;class#Clusters3D#0" />
               </folding>
             </state>
           </provider>
@@ -271,13 +198,13 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/EdgeCorrection.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/HoughTransform/Accumulators/CircleAccumulator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GeometricEdgeCorrection.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Blobs2D.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Clusters2D.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Clusters3D.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrectionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/ExplicitEdgeCorrection.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java" />
       </list>
@@ -290,10 +217,10 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
-    <option name="width" value="938" />
-    <option name="height" value="1088" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="width" value="939" />
+    <option name="height" value="1089" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -443,7 +370,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.KFunctionTest">
+  <component name="RunManager" selected="Maven.Common [install]">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -452,7 +379,24 @@
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="GoreaudEdgeCorrectionTest.testSinglePoint" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in Common" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Common" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="GoreaudEdgeCorrectionTest.testGetFractionInsideRectangleR100" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
@@ -464,7 +408,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.MathFunc" />
       <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.MathFunc.GoreaudEdgeCorrectionTest" />
-      <option name="METHOD_NAME" value="testSinglePoint" />
+      <option name="METHOD_NAME" value="testGetFractionInsideRectangleR100" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -511,29 +455,6 @@
       <option name="PACKAGE_NAME" value="wbif.sjx.common.MathFunc" />
       <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.MathFunc.KFunctionTest" />
       <option name="METHOD_NAME" value="testGetKFunction2DWithCorrection" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="KFunctionTest.testGetKFunction3DWithCorrection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.MathFunc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.MathFunc" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.MathFunc.KFunctionTest" />
-      <option name="METHOD_NAME" value="testGetKFunction3DWithCorrection" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -635,16 +556,16 @@
       <item itemvalue="JUnit.KFunctionTest.testGetKFunction2DWithCorrection" />
       <item itemvalue="JUnit.KFunctionTest.testGetLFunction2DWithCorrection" />
       <item itemvalue="JUnit.KFunctionTest" />
-      <item itemvalue="JUnit.GoreaudEdgeCorrectionTest.testSinglePoint" />
-      <item itemvalue="JUnit.KFunctionTest.testGetKFunction3DWithCorrection" />
+      <item itemvalue="JUnit.All in Common" />
+      <item itemvalue="JUnit.GoreaudEdgeCorrectionTest.testGetFractionInsideRectangleR100" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GoreaudEdgeCorrectionTest.testGetFractionInsideRectangleR100" />
+        <item itemvalue="JUnit.All in Common" />
         <item itemvalue="JUnit.KFunctionTest" />
         <item itemvalue="JUnit.KFunctionTest.testGetLFunction2DWithCorrection" />
         <item itemvalue="JUnit.KFunctionTest.testGetKFunction2DWithCorrection" />
-        <item itemvalue="JUnit.KFunctionTest.testGetKFunction3DWithCorrection" />
-        <item itemvalue="JUnit.GoreaudEdgeCorrectionTest.testSinglePoint" />
       </list>
     </recent_temporary>
   </component>
@@ -662,35 +583,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="KFunctionTest_testGetKFunction2DWithCorrection - 2018.07.31 at 16h 42m 19s.xml">
-      <configuration name="KFunctionTest.testGetKFunction2DWithCorrection" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="KFunctionTest_testGetKFunction2DWithCorrection - 2018.07.31 at 16h 43m 08s.xml">
-      <configuration name="KFunctionTest.testGetKFunction2DWithCorrection" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 16h 43m 15s.xml">
+    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 17h 57m 50s.xml">
       <configuration name="KFunctionTest.testGetLFunction2DWithCorrection" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 16h 43m 32s.xml">
+    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 17h 58m 41s.xml">
       <configuration name="KFunctionTest.testGetLFunction2DWithCorrection" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 16h 44m 44s.xml">
+    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 17h 59m 21s.xml">
       <configuration name="KFunctionTest.testGetLFunction2DWithCorrection" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 16h 44m 58s.xml">
+    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 17h 59m 45s.xml">
       <configuration name="KFunctionTest.testGetLFunction2DWithCorrection" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 16h 45m 10s.xml">
+    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 18h 00m 23s.xml">
       <configuration name="KFunctionTest.testGetLFunction2DWithCorrection" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 16h 45m 33s.xml">
+    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 18h 00m 53s.xml">
       <configuration name="KFunctionTest.testGetLFunction2DWithCorrection" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 16h 46m 20s.xml">
+    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 18h 01m 13s.xml">
       <configuration name="KFunctionTest.testGetLFunction2DWithCorrection" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 16h 46m 25s.xml">
+    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 18h 01m 23s.xml">
       <configuration name="KFunctionTest.testGetLFunction2DWithCorrection" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="KFunctionTest_testGetLFunction2DWithCorrection - 2018.07.31 at 18h 02m 20s.xml">
+      <configuration name="KFunctionTest.testGetLFunction2DWithCorrection" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GoreaudEdgeCorrectionTest_testGetFractionInsideRectangleR100 - 2018.07.31 at 18h 17m 41s.xml">
+      <configuration name="GoreaudEdgeCorrectionTest.testGetFractionInsideRectangleR100" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -703,41 +624,60 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
+    <frame x="-7" y="-7" width="1488" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" x="1920" y="0" width="1855" height="1080" id="TODO" internal_type="FLOATING" order="6" type="FLOATING" weight="0.32987553" />
       <window_info anchor="bottom" auto_hide="true" id="Messages" order="12" weight="0.3209756" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="1" />
-      <window_info active="true" anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" visible="true" weight="0.35317072" />
+      <window_info anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" weight="0.51856434" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32987553" />
+      <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
-      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.18958333" />
+      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.18995929" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.2521322" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="bottom" auto_hide="true" id="Debug" order="3" weight="0.39121953" />
       <window_info auto_hide="true" id="Favorites" order="6" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
-      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
-      <window_info id="Nl-Palette" order="2" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="9" />
-      <window_info anchor="right" id="Database" order="10" />
-      <window_info anchor="right" id="Properties" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info auto_hide="true" content_ui="combo" x="1938" y="39" width="333" height="964" id="Project" order="0" sideWeight="0.49275362" weight="0.18958333" />
+      <window_info auto_hide="true" id="Favorites" order="6" sideWeight="0.5072464" side_tool="true" weight="0.1897574" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.3283582" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32987553" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.2521322" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Maven Projects" order="1" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
+      <window_info anchor="bottom" auto_hide="true" id="Debug" order="3" weight="0.39121953" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
+      <window_info anchor="right" id="Database" order="10" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
+      <window_info anchor="bottom" x="1920" y="0" width="1855" height="1080" id="TODO" internal_type="FLOATING" order="6" type="FLOATING" weight="0.32987553" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" auto_hide="true" id="Find" order="1" weight="0.3279396" />
+      <window_info anchor="bottom" auto_hide="true" x="779" y="484" width="919" height="112" id="Run" order="2" weight="0.348659" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info id="Designer" order="3" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="4" />
@@ -1126,17 +1066,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GeometricEdgeCorrection.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="74" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Clusters3D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="81" column="33" lean-forward="true" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
+        <state relative-caret-position="578">
+          <caret line="71" column="70" selection-start-line="71" selection-start-column="70" selection-end-line="71" selection-end-column="70" />
           <folding>
             <element signature="method#getCentroids#0;class#Clusters3D#0" />
             <element signature="method#getKFunctionWithCorrection#0;class#Clusters3D#0" />
@@ -1146,22 +1079,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Clusters2D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="1598">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
           <folding>
-            <element signature="method#getCentroids#0;class#Blobs2D#0" />
-            <element signature="method#getExpectedCorrections#0;class#Blobs2D#0" />
             <element signature="method#getLFunctionWithoutCorrection#0;class#Clusters2D#0" />
-            <element signature="method#getLFunctionWithoutCorrection#0;class#Blobs2D#0" />
-            <element signature="method#getLFunctionWithCorrection#0;class#Blobs2D#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="-234">
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
           <folding>
             <element signature="docComment;class#GoreaudEdgeCorrection#0" />
             <element signature="method#GoreaudEdgeCorrection#0;class#GoreaudEdgeCorrection#0" />
@@ -1173,8 +1102,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/GoreaudEdgeCorrectionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="176" lean-forward="true" selection-start-line="176" selection-end-line="176" />
+        <state relative-caret-position="341">
+          <caret line="186" selection-start-line="186" selection-end-line="186" />
           <folding>
             <element signature="method#testGetFractionInsideRectangleR100#0;class#GoreaudEdgeCorrectionTest#0" />
             <element signature="method#testGetDistancesCloserToTopTopLeft#0;class#GoreaudEdgeCorrectionTest#0" />
@@ -1190,18 +1119,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/ExplicitEdgeCorrection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-          <folding>
-            <element signature="method#ExplicitEdgeCorrection#0;class#ExplicitEdgeCorrection#0" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/MathFunc/KFunctionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="169" selection-start-line="169" selection-end-line="169" />
+        <state relative-caret-position="120">
+          <caret line="178" lean-forward="true" selection-start-line="178" selection-end-line="178" />
           <folding>
             <element signature="method#testCalculateMaximumPointSeparation2D#0;class#KFunctionTest#0" />
             <element signature="method#testCalculateRegionSize2D#0;class#KFunctionTest#0" />
@@ -1209,25 +1142,24 @@
             <element signature="docComment;method#testGetKFunction2DWithoutCorrection#0;class#KFunctionTest#0" />
             <element signature="method#testGetKFunction2DWithoutCorrection#0;class#KFunctionTest#0" />
             <element signature="docComment;method#testGetKFunction2DWithCorrection#0;class#KFunctionTest#0" />
-            <element signature="method#testGetKFunction2DWithoutCorrection#1;class#KFunctionTest#0" />
+            <element signature="method#testGetKFunction2DWithCorrection#0;class#KFunctionTest#0" />
             <element signature="docComment;method#testGetLFunction2DWithoutCorrection#0;class#KFunctionTest#0" />
             <element signature="method#testGetLFunction2DWithoutCorrection#0;class#KFunctionTest#0" />
-            <element signature="e#2535#2642#0" />
+            <element signature="docComment;method#testGetLFunction2DWithCorrection#0;class#KFunctionTest#0" />
+            <element signature="method#testGetLFunction2DWithCorrection#0;class#KFunctionTest#0" />
+            <element signature="e#4883#4990#0" />
+            <element signature="docComment;method#testGetKFunction3DWithoutCorrection#0;class#KFunctionTest#0" />
+            <element signature="method#testGetKFunction3DWithoutCorrection#0;class#KFunctionTest#0" />
+            <element signature="e#6162#6269#0" />
             <element signature="docComment;method#testGetKFunction3DWithCorrection#0;class#KFunctionTest#0" />
-            <element signature="method#testGetKFunction3DWithCorrection#0;class#KFunctionTest#0" />
-            <element signature="e#3728#3835#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/KFunctionCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
-          <folding>
-            <element signature="method#calculateMaximumPointSeparation#0;class#KFunctionCalculator#0" />
-            <element signature="method#calculateRegionLimits#0;class#KFunctionCalculator#0" />
-          </folding>
+        <state relative-caret-position="188">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
         </state>
       </provider>
     </entry>

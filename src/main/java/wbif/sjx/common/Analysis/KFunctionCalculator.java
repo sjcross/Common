@@ -7,6 +7,11 @@ import wbif.sjx.common.Object.Point;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+/**
+ * Currently incomplete, this class calculates Ripley's K-function in 2D and 3D.  At present there is no edge correction
+ * in 3D.
+ */
+
 public class KFunctionCalculator {
     private final TreeMap<Double,Double> kFunction = new TreeMap<>();
 
@@ -42,23 +47,23 @@ public class KFunctionCalculator {
         double areaFactor = regionSize/(N*N);
         double maxSep = calculateMaximumPointSeparation(points);
 
-        GoreaudEdgeCorrection correctionCalculator = null;
+        GoreaudEdgeCorrection goreaudEdgeCorrection = null;
+
         if (edgeCorrection) {
             double[][] limits = calculateRegionLimits(points);
-            correctionCalculator = new GoreaudEdgeCorrection(limits[0][0],limits[0][1],limits[1][0],limits[1][1]);
-        }
+            goreaudEdgeCorrection = new GoreaudEdgeCorrection(limits[0][0],limits[0][1],limits[1][0],limits[1][1]); }
 
         for (double ts:kFunction.keySet()) {
             double score = 0;
             for (Point<Double> point1 : points) {
-                double correction = edgeCorrection ? correctionCalculator.getFractionInsideRectangle(point1.getX(),point1.getY(),ts) : 1;
+                double goreaudCorrection = edgeCorrection ? goreaudEdgeCorrection.getFractionInsideRectangle(point1.getX(),point1.getY(),ts) : 1;
 
                 for (Point<Double> point2 : points) {
                     if (point1 == point2) continue;
                     double dist = point1.calculateDistanceToPoint(point2);
 
                     // If the other point is within ts of the central point, increment the relevant counter
-                    if (dist < ts) score = score + Math.log(correction) + 1;
+                    if (dist < ts) score = score + Math.log(goreaudCorrection) + 1;
 
                 }
             }
