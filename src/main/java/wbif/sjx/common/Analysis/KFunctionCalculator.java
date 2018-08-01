@@ -1,7 +1,7 @@
 package wbif.sjx.common.Analysis;
 
-import wbif.sjx.common.MathFunc.ExplicitEdgeCorrection;
-import wbif.sjx.common.MathFunc.GoreaudEdgeCorrection;
+import wbif.sjx.common.MathFunc.EdgeCorrection.EdgeCorrection;
+import wbif.sjx.common.MathFunc.EdgeCorrection.ExplicitEdgeCorrection;
 import wbif.sjx.common.Object.Point;
 
 import java.util.ArrayList;
@@ -47,23 +47,23 @@ public class KFunctionCalculator {
         double areaFactor = regionSize/(N*N);
         double maxSep = calculateMaximumPointSeparation(points);
 
-        GoreaudEdgeCorrection goreaudEdgeCorrection = null;
+        EdgeCorrection edgeCorrectionCalculator = null;
 
         if (edgeCorrection) {
             double[][] limits = calculateRegionLimits(points);
-            goreaudEdgeCorrection = new GoreaudEdgeCorrection(limits[0][0],limits[0][1],limits[1][0],limits[1][1]); }
+            edgeCorrectionCalculator = new ExplicitEdgeCorrection(limits[0][0],limits[0][1],limits[1][0],limits[1][1]); }
 
         for (double ts:kFunction.keySet()) {
             double score = 0;
             for (Point<Double> point1 : points) {
-                double goreaudCorrection = edgeCorrection ? goreaudEdgeCorrection.getFractionInsideRectangle(point1.getX(),point1.getY(),ts) : 1;
+                double goreaudCorrection = edgeCorrection ? edgeCorrectionCalculator.getCorrection(point1.getX(),point1.getY(),ts) : 1;
 
                 for (Point<Double> point2 : points) {
                     if (point1 == point2) continue;
                     double dist = point1.calculateDistanceToPoint(point2);
 
                     // If the other point is within ts of the central point, increment the relevant counter
-                    if (dist < ts) score = score + Math.log(goreaudCorrection) + 1;
+                    if (dist < ts) score = score + goreaudCorrection;
 
                 }
             }

@@ -87,8 +87,7 @@ public class KFunctionTest {
     }
 
     /**
-     * Compared to values from RipleyGUI with a tolerance of 10% the expected value.  The tolerance is larger here
-     * because edge correction approaches differ between the two pieces of software.
+     * Compared to values from PPA with a tolerance of 2% the expected value.
      * @throws Exception
      */
     @Test
@@ -110,13 +109,14 @@ public class KFunctionTest {
             double actualTs = actualIterator.next();
 
             assertEquals(expectedTs, actualTs, tolerance);
-            assertEquals(expected.get(expectedTs), actual.get(actualTs), expected.get(expectedTs)*0.1);
+            assertEquals(expected.get(expectedTs), actual.get(actualTs), expected.get(expectedTs)*0.02);
 
         }
     }
 
     /**
-     * Compared to values from CrimeStat IV with a tolerance of 2% the expected value.
+     * Compared to values from RipleyGUI with a tolerance of 2% the expected value (or a maximum of 0.2, since this
+     * doesn't work too well close to zero).
      * @throws Exception
      */
     @Test
@@ -138,13 +138,14 @@ public class KFunctionTest {
             double actualTs = actualIterator.next();
 
             assertEquals(expectedTs, actualTs, tolerance);
-            assertEquals(expected.get(expectedTs), actual.get(actualTs), Math.abs(expected.get(expectedTs))*0.02);
+            assertEquals(expected.get(expectedTs), actual.get(actualTs), Math.max(Math.abs(expected.get(expectedTs))*0.02,0.2));
 
         }
     }
 
     /**
-     * Compared to values from CrimeStat IV with a tolerance of 2% the expected value.
+     * Compared to values from PPA with a tolerance of 10% the expected value.  The larger tolerance arises because of
+     * variations between the methods for calculating the edge correction.
      * @throws Exception
      */
     @Test

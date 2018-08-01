@@ -2,6 +2,8 @@ package wbif.sjx.common.MathFunc;
 
 import org.junit.Test;
 import wbif.sjx.common.ExpectedObjects.Clusters2D;
+import wbif.sjx.common.MathFunc.EdgeCorrection.ExplicitEdgeCorrection;
+import wbif.sjx.common.MathFunc.EdgeCorrection.GoreaudEdgeCorrection;
 import wbif.sjx.common.Object.Point;
 
 import java.util.HashMap;
@@ -18,7 +20,7 @@ public class GoreaudEdgeCorrectionTest {
         GoreaudEdgeCorrection goreaudEdgeCorrection = new GoreaudEdgeCorrection(39.5,479.5,20.5,480.6446);
 
         for (Point<Double> point:expected.keySet()) {
-            double actual= goreaudEdgeCorrection.getFractionInsideRectangle(point.getX(),point.getY(),100);
+            double actual= goreaudEdgeCorrection.getCorrection(point.getX(),point.getY(),100);
 
             assertEquals(expected.get(point),actual,tolerance);
 
@@ -198,8 +200,8 @@ public class GoreaudEdgeCorrectionTest {
         double y = 25;
         double r = 4;
 
-        double g = correction.getFractionInsideRectangle(x,y,r);
-        double e = explicitEdgeCorrection.getFractionInsideRectangle(x,y,r);
+        double g = correction.getCorrection(x,y,r);
+        double e = explicitEdgeCorrection.getCorrection(x,y,r);
 
         System.out.println(g+"_"+e);
 

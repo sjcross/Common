@@ -1,4 +1,4 @@
-package wbif.sjx.common.MathFunc;
+package wbif.sjx.common.MathFunc.EdgeCorrection;
 
 import wbif.sjx.common.Object.Point;
 
@@ -9,21 +9,12 @@ import java.util.ArrayList;
  * This class calculates the edge correction from "On explicit formulas of edge effect correction for Ripley's
  * K-function" Goreaud, F. and Pelissier, R., Journal of Vegetation Science, 10 (1999) 433-438.
  */
-public class GoreaudEdgeCorrection {
-    private final double minX;
-    private final double maxX;
-    private final double minY;
-    private final double maxY;
-
-
+public class GoreaudEdgeCorrection extends EdgeCorrection {
     public GoreaudEdgeCorrection(double minX, double maxX, double minY, double maxY) {
-        this.minX = minX;
-        this.maxX = maxX;
-        this.minY = minY;
-        this.maxY = maxY;
+        super(minX, maxX, minY, maxY);
     }
 
-    public double getFractionInsideRectangle(double x, double y, double r) {
+    public double getCorrection(double x, double y, double r) {
         // d1 and d3 correspond to the shorter axis, d2 and d4 correspond to the longer axis.  In each of those pairs,
         // the first value is the shorter distance (i.e. d1 < d3 and d2 < d4).
         double[] d = getDistances(x,y);
@@ -69,7 +60,7 @@ public class GoreaudEdgeCorrection {
             }
         }
 
-        return (2*Math.PI)/(2*Math.PI-alphaOut);
+        return Math.log((2*Math.PI)/(2*Math.PI-alphaOut))+1;
 
     }
 
