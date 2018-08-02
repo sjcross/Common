@@ -27,6 +27,8 @@ public class EllipseCalculator {
 
         e2d = FitEllipse.direct(coords);
 
+        double[] dims = FitEllipse.varToDimensions(e2d);
+
     }
 
     public double[] getEllipseFit() {
@@ -81,7 +83,11 @@ public class EllipseCalculator {
 
     }
 
-    public double getSemiMajorAxis() {
+    /**
+     * Returns the semi-major and semi-minor axes.  Note: There's no guarantee which order they will be in.
+     * @return
+     */
+    public double[] getSemiAxes() {
         double a = e2d[0];
         double b = e2d[1];
         double c = e2d[2];
@@ -90,26 +96,25 @@ public class EllipseCalculator {
         double f = e2d[5];
 
         double part1 = 2*(a*e*e+c*d*d-b*d*e+(b*b-4*a*c)*f);
-        double part2 = a+c+Math.sqrt((a-c)*(a-c)+b*b);
+        double part2a = a+c+Math.sqrt((a-c)*(a-c)+b*b);
+        double part2b = a+c-Math.sqrt((a-c)*(a-c)+b*b);
         double part3 = b*b-4*a*c;
 
-        return -Math.sqrt(part1*part2)/part3;
+        return new double[]{-Math.sqrt(part1*part2a)/part3, -Math.sqrt(part1*part2b)/part3};
+
+    }
+
+    public double getSemiMajorAxis() {
+        double[] semiAxes = getSemiAxes();
+
+        return Math.max(semiAxes[0],semiAxes[1]);
 
     }
 
     public double getSemiMinorAxis() {
-        double a = e2d[0];
-        double b = e2d[1];
-        double c = e2d[2];
-        double d = e2d[3];
-        double e = e2d[4];
-        double f = e2d[5];
+        double[] semiAxes = getSemiAxes();
 
-        double part1 = 2*(a*e*e+c*d*d-b*d*e+(b*b-4*a*c)*f);
-        double part2 = a+c-Math.sqrt((a-c)*(a-c)+b*b);
-        double part3 = b*b-4*a*c;
-
-        return -Math.sqrt(part1*part2)/part3;
+        return Math.min(semiAxes[0],semiAxes[1]);
 
     }
 
@@ -127,9 +132,13 @@ public class EllipseCalculator {
         double semiMajor = getSemiMajorAxis();
         double[] xRange = new double[]{xCent-semiMajor,xCent+semiMajor};
 
+        // If the semiaxes come off in reverse order (i.e. [0] semi-minor, [1] semi-major) reverse the sign
+        double[] semiAxes = getSemiAxes();
+        double mult = (semiAxes[0] < semiAxes[1]) ? -1 : 1;
+
         for (int x=(int) Math.floor(xCent-semiMajor);x<=xCent+semiMajor;x++) {
             for (int y=(int) Math.floor(yCent-semiMajor);y<=yCent+semiMajor;y++) {
-                if (e2d[0]*x*x + e2d[1]*x*y + e2d[2]*y*y +e2d[3]*x + e2d[4]*y + e2d[5] <= 0) {
+                if ((e2d[0]*x*x + e2d[1]*x*y + e2d[2]*y*y +e2d[3]*x + e2d[4]*y + e2d[5])*mult <= 0) {
                     insideEllipse.addCoord(x,y,0);
                 }
             }
