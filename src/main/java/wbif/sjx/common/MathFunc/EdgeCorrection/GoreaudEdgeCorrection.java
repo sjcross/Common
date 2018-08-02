@@ -1,4 +1,4 @@
-package wbif.sjx.common.MathFunc;
+package wbif.sjx.common.MathFunc.EdgeCorrection;
 
 import wbif.sjx.common.Object.Point;
 
@@ -9,21 +9,17 @@ import java.util.ArrayList;
  * This class calculates the edge correction from "On explicit formulas of edge effect correction for Ripley's
  * K-function" Goreaud, F. and Pelissier, R., Journal of Vegetation Science, 10 (1999) 433-438.
  */
-public class GoreaudEdgeCorrection {
-    private final double minX;
-    private final double maxX;
-    private final double minY;
-    private final double maxY;
-
-
+public class GoreaudEdgeCorrection extends EdgeCorrection {
     public GoreaudEdgeCorrection(double minX, double maxX, double minY, double maxY) {
-        this.minX = minX;
-        this.maxX = maxX;
-        this.minY = minY;
-        this.maxY = maxY;
+        super(minX, maxX, minY, maxY);
     }
 
-    public double getFractionInsideRectangle(double x, double y, double r) {
+    public GoreaudEdgeCorrection(double minX, double maxX, double minY, double maxY, double minZ, double maxZ, boolean is2D) {
+        super(minX, maxX, minY, maxY, minZ, maxZ, is2D);
+    }
+
+
+    public double getCorrection(double x, double y, double r) {
         // d1 and d3 correspond to the shorter axis, d2 and d4 correspond to the longer axis.  In each of those pairs,
         // the first value is the shorter distance (i.e. d1 < d3 and d2 < d4).
         double[] d = getDistances(x,y);
@@ -35,10 +31,14 @@ public class GoreaudEdgeCorrection {
         double alphaOut = 0;
 
         // The sample circle is entirely within the sample area
-        if (r<=d1 && r<=d2 && r<=d3 && r<=d4) alphaOut = 0;
+        if (r<=d1 && r<=d2 && r<=d3 && r<=d4) {
+            alphaOut = 0;
+        }
 
         // The sample circle is outside one side
-        if (r>d1 && r<=d2 && r<=d3 && r<=d4) alphaOut = 2*Math.acos(d1/r);
+        if (r>d1 && r<=d2 && r<=d3 && r<=d4) {
+            alphaOut = 2*Math.acos(d1/r);
+        }
 
         // The sample circle extends beyond opposite sides of the sample area only
         if (r>d1 && r>d2 && r<=d3 && r<=d4) {
@@ -50,7 +50,9 @@ public class GoreaudEdgeCorrection {
         }
 
         // The sample circle extends beyond a corner of the sample area only
-        if (r>d1 && r>d3 && r<=d2 && r<=d4) alphaOut = 2*Math.acos(d1/r)+2*Math.acos(d3/r);
+        if (r>d1 && r>d3 && r<=d2 && r<=d4) {
+            alphaOut = 2*Math.acos(d1/r)+2*Math.acos(d3/r);
+        }
 
         // The sample circle extends beyond three sides of the sample area
         if (r>d1 && r>d2 && r>d3 && r<=d4) {
@@ -63,8 +65,14 @@ public class GoreaudEdgeCorrection {
             }
         }
 
-        return (2*Math.PI)/(2*Math.PI-alphaOut);
+        return Math.log((2*Math.PI)/(2*Math.PI-alphaOut))+1;
 
+    }
+
+    @Override
+    public double getCorrection(double x, double y, double z, double r) {
+        System.err.println("Goreaud correction doesn't currently work in 3D");
+        return 0;
     }
 
     public double[] getDistances(double x, double y) {

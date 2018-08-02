@@ -1,15 +1,30 @@
 package wbif.sjx.common.Analysis;
 
-import wbif.sjx.common.MathFunc.GoreaudEdgeCorrection;
+import wbif.sjx.common.MathFunc.EdgeCorrection.EdgeCorrection;
+import wbif.sjx.common.MathFunc.EdgeCorrection.ExplicitEdgeCorrection;
 import wbif.sjx.common.Object.Point;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+/**
+ * Currently incomplete, this class calculates Ripley's K-function in 2D and 3D.  At present there is no edge correction
+ * in 3D.
+ */
+
 public class KFunctionCalculator {
     private final TreeMap<Double,Double> kFunction = new TreeMap<>();
 
     public KFunctionCalculator(ArrayList<Point<Double>> points, int nBins, double minBin, double maxBin, boolean is2D, boolean edgeCorrection) {
+        // Calculating the steps
+        double step = (maxBin-minBin)/(nBins-1);
+
+        for (int i=0;i<nBins;i++) {
+            double ts = minBin+i*step;
+            kFunction.put(ts,0d);
+        }
+
+        calculate(points,nBins,is2D,edgeCorrection);
 
     }
 
@@ -32,23 +47,28 @@ public class KFunctionCalculator {
         double areaFactor = regionSize/(N*N);
         double maxSep = calculateMaximumPointSeparation(points);
 
-        GoreaudEdgeCorrection correctionCalculator = null;
+        EdgeCorrection edgeCorrectionCalculator = null;
+
         if (edgeCorrection) {
             double[][] limits = calculateRegionLimits(points);
-            correctionCalculator = new GoreaudEdgeCorrection(limits[0][0],limits[0][1],limits[1][0],limits[1][1]);
+            if (is2D) {
+                edgeCorrectionCalculator = new ExplicitEdgeCorrection(limits[0][0], limits[0][1], limits[1][0], limits[1][1]);
+            } else {
+                edgeCorrectionCalculator = new ExplicitEdgeCorrection(limits[0][0], limits[0][1], limits[1][0], limits[1][1], limits[2][0], limits[2][1],false);
+            }
         }
 
         for (double ts:kFunction.keySet()) {
             double score = 0;
             for (Point<Double> point1 : points) {
-                double correction = edgeCorrection ? correctionCalculator.getFractionInsideRectangle(point1.getX(),point1.getY(),ts) : 1;
+                double goreaudCorrection = edgeCorrection ? edgeCorrectionCalculator.getCorrection(point1.getX(),point1.getY(),point1.getZ(),ts) : 1;
 
                 for (Point<Double> point2 : points) {
                     if (point1 == point2) continue;
                     double dist = point1.calculateDistanceToPoint(point2);
 
                     // If the other point is within ts of the central point, increment the relevant counter
-                    if (dist < ts) score = score + correction;
+                    if (dist < ts) score = score + goreaudCorrection;
 
                 }
             }

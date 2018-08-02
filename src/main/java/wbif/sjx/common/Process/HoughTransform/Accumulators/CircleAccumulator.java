@@ -4,11 +4,9 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.gui.OvalRoi;
 import ij.gui.Overlay;
-import wbif.sjx.common.MathFunc.GoreaudEdgeCorrection;
 import wbif.sjx.common.MathFunc.MidpointCircle;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by sc13967 on 13/01/2018.

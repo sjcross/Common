@@ -10,25 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
-public class Blobs2D extends ExpectedObjects {
-    @Override
-    public List<Integer[]> getCoordinates5D() {
-        return getCoordinates5D("/coordinates/Blobs_2D_whiteBG_8bit.csv");
-    }
-
-    @Override
-    public boolean is2D() {
-        return true;
-    }
-
-    @Override
-    public HashMap<Integer, HashMap<String, Double>> getMeasurements() {
-        return null;
-    }
-
+public class Clusters2D {
     public static ArrayList<Point<Double>> getCentroids() throws FileNotFoundException {
         try {
-            String path = "/MATLAB/K-function/Blobs_2D_whiteBG_8bit_centroids.csv";
+            String path = "/MATLAB/K-function/Clusters_2D_centroids.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
 
             BufferedReader reader = new BufferedReader(new FileReader(pathToCoordinates));
@@ -56,7 +41,7 @@ public class Blobs2D extends ExpectedObjects {
 
     public static HashMap<Point<Double>,Double> getExpectedCorrections() throws FileNotFoundException {
         try {
-            String path = "/MATLAB/K-function/Blobs_2D_whiteBG_8bit_corrections.csv";
+            String path = "/MATLAB/K-function/Clusters_2D_corrections.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
 
             BufferedReader reader = new BufferedReader(new FileReader(pathToCoordinates));
@@ -83,9 +68,65 @@ public class Blobs2D extends ExpectedObjects {
 
     }
 
+    public static TreeMap<Double,Double> getKFunctionWithoutCorrection() {
+        try {
+            String path = "/MATLAB/K-function/Clusters_2D_Kfn_WithoutCorrection.csv";
+            String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
+
+            BufferedReader reader = new BufferedReader(new FileReader(pathToCoordinates));
+            CSVReader csvReader = new CSVReader(reader);
+
+            TreeMap<Double,Double> results = new TreeMap<>();
+            String[] row = csvReader.readNext();
+            while (row != null) {
+                double ts = Double.parseDouble(row[1]);
+                double kVal = Double.parseDouble(row[2]);
+
+                results.put(ts,kVal);
+                row = csvReader.readNext();
+            }
+
+            return results;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
+    public static TreeMap<Double,Double> getKFunctionWithCorrection() {
+        try {
+            String path = "/MATLAB/K-function/Clusters_2D_Kfn_WithCorrection.csv";
+            String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
+
+            BufferedReader reader = new BufferedReader(new FileReader(pathToCoordinates));
+            CSVReader csvReader = new CSVReader(reader);
+
+            TreeMap<Double,Double> results = new TreeMap<>();
+            String[] row = csvReader.readNext();
+            while (row != null) {
+                double ts = Double.parseDouble(row[1]);
+                double kVal = Double.parseDouble(row[2]);
+
+                results.put(ts,kVal);
+                row = csvReader.readNext();
+            }
+
+            return results;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
     public static TreeMap<Double,Double> getLFunctionWithoutCorrection() {
         try {
-            String path = "/MATLAB/K-function/Blobs_2D_whiteBG_8bit_Lfn_WithoutCorrection.csv";
+            String path = "/MATLAB/K-function/Clusters_2D_Lfn_WithoutCorrection.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
 
             BufferedReader reader = new BufferedReader(new FileReader(pathToCoordinates));
@@ -113,7 +154,7 @@ public class Blobs2D extends ExpectedObjects {
 
     public static TreeMap<Double,Double> getLFunctionWithCorrection() {
         try {
-            String path = "/MATLAB/K-function/Blobs_2D_whiteBG_8bit_Lfn_WithCorrection.csv";
+            String path = "/MATLAB/K-function/Clusters_2D_Lfn_WithCorrection.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
 
             BufferedReader reader = new BufferedReader(new FileReader(pathToCoordinates));

@@ -1,11 +1,11 @@
 package wbif.sjx.common.MathFunc;
 
-import org.junit.Ignore;
 import org.junit.Test;
-import wbif.sjx.common.ExpectedObjects.Blobs2D;
+import wbif.sjx.common.ExpectedObjects.Clusters2D;
+import wbif.sjx.common.MathFunc.EdgeCorrection.ExplicitEdgeCorrection;
+import wbif.sjx.common.MathFunc.EdgeCorrection.GoreaudEdgeCorrection;
 import wbif.sjx.common.Object.Point;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 import static org.junit.Assert.*;
@@ -15,12 +15,12 @@ public class GoreaudEdgeCorrectionTest {
 
     @Test
     public void testGetFractionInsideRectangleR100() throws Exception {
-        HashMap<Point<Double>,Double> expected = Blobs2D.getExpectedCorrections();
+        HashMap<Point<Double>,Double> expected = Clusters2D.getExpectedCorrections();
 
         GoreaudEdgeCorrection goreaudEdgeCorrection = new GoreaudEdgeCorrection(39.5,479.5,20.5,480.6446);
 
         for (Point<Double> point:expected.keySet()) {
-            double actual= goreaudEdgeCorrection.getFractionInsideRectangle(point.getX(),point.getY(),100);
+            double actual= goreaudEdgeCorrection.getCorrection(point.getX(),point.getY(),100);
 
             assertEquals(expected.get(point),actual,tolerance);
 
@@ -186,4 +186,5 @@ public class GoreaudEdgeCorrectionTest {
         assertArrayEquals(expected,actual,tolerance);
 
     }
+
 }
