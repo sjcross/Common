@@ -205,8 +205,6 @@ public class KFunctionTest {
         for (Double expectedTs : expected.keySet()) {
             double actualTs = actualIterator.next();
 
-            System.out.println(expectedTs+"_"+expected.get(expectedTs)+"_"+actual.get(actualTs));
-
             assertEquals(expectedTs, actualTs, tolerance);
             assertEquals(expected.get(expectedTs), actual.get(actualTs), expected.get(expectedTs)*0.02);
 
@@ -236,8 +234,6 @@ public class KFunctionTest {
 
         for (Double expectedTs : expected.keySet()) {
             double actualTs = actualIterator.next();
-
-//            System.out.println(expectedTs+"_"+expected.get(expectedTs)+"_"+actual.get(actualTs));
 
             assertEquals(expectedTs, actualTs, tolerance);
             assertEquals(expected.get(expectedTs), actual.get(actualTs), expected.get(expectedTs)*0.15);
