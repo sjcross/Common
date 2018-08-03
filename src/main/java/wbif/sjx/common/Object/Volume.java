@@ -49,17 +49,18 @@ public class Volume {
 
     }
 
-    public void setPoints(TreeSet<Point<Integer>> points) {
+    public Volume setPoints(TreeSet<Point<Integer>> points) {
         this.points = points;
+        return this;
     }
 
     public void clearPoints() {
         points = new TreeSet<>();
     }
 
-    public void addCoord(int xIn, int yIn, int zIn) {
+    public Volume addCoord(int xIn, int yIn, int zIn) {
         points.add(new Point<>(xIn,yIn,zIn));
-
+        return this;
     }
 
     public double getDistPerPxXY() {
