@@ -19,7 +19,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Rolling Euclidean distance.  Values are stored per frame, relative to the start of that track.
      * @return
      */
-    public double[][] getAverageRollingEuclideanDistance(boolean pixelDistances, boolean relativeToTrackStart) {
+    public double[][] getAverageRollingEuclideanDistance(boolean relativeToTrackStart) {
         // Determining the first and last frames
         int firstFrame = Integer.MAX_VALUE;
         int lastFrame = 0;
@@ -42,7 +42,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             int[] f = track.getF();
-            TreeMap<Integer,Double> rollingEuclideanDistance = track.getRollingEuclideanDistance(pixelDistances);
+            TreeMap<Integer,Double> rollingEuclideanDistance = track.getRollingEuclideanDistance();
 
             for (int i=0;i<rollingEuclideanDistance.size();i++) {
                 int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
@@ -68,7 +68,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Rolling total path length.  Values are stored per frame, relative to the start of that track.
      * @return
      */
-    public double[][] getAverageTotalPathLength(boolean pixelDistances, boolean relativeToTrackStart) {
+    public double[][] getAverageTotalPathLength(boolean relativeToTrackStart) {
         // Determining the first and last frames
         int firstFrame = Integer.MAX_VALUE;
         int lastFrame = 0;
@@ -91,7 +91,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             int[] f = track.getF();
-            TreeMap<Integer,Double> rollingTotalPathLength = track.getRollingTotalPathLength(pixelDistances);
+            TreeMap<Integer,Double> rollingTotalPathLength = track.getRollingTotalPathLength();
 
             for (int i=0;i<rollingTotalPathLength.size();i++) {
                 int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
@@ -117,7 +117,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Rolling directionality ratio.  Values are stored per frame, relative to the start of that track.
      * @return
      */
-    public double[][] getAverageDirectionalityRatio(boolean pixelDistances, boolean relativeToTrackStart) {
+    public double[][] getAverageDirectionalityRatio(boolean relativeToTrackStart) {
         // Determining the first and last frames
         int firstFrame = Integer.MAX_VALUE;
         int lastFrame = 0;
@@ -140,7 +140,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             int[] f = track.getF();
-            TreeMap<Integer,Double> rollingDirectionalityRatio = track.getRollingDirectionalityRatio(pixelDistances);
+            TreeMap<Integer,Double> rollingDirectionalityRatio = track.getRollingDirectionalityRatio();
             for (int i=0;i<rollingDirectionalityRatio.size();i++) {
                 int pos = relativeToTrackStart ? f[i]-f[0] : f[i]-firstFrame;
                 cs[pos].addMeasure(rollingDirectionalityRatio.get(f[i]));
@@ -165,7 +165,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Average directional persistence.  Values are stored as the average for each frame gap.
      * @return
      */
-    public double[][] getAverageDirectionalPersistence(boolean pixelDistances) {
+    public double[][] getAverageDirectionalPersistence() {
         // Determining the longest duration.  This is also the largest possible frame gap.
         int longestDuration = 0;
         for (Track track:values()) {
@@ -181,7 +181,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         }
 
         for (Track track:values()) {
-            DirectionalPersistenceCalculator.calculate(cs,track.getF(),track.getX(pixelDistances),track.getY(pixelDistances),track.getZ(pixelDistances));
+            DirectionalPersistenceCalculator.calculate(cs,track.getF(),track.getX(),track.getY(),track.getZ());
         }
 
         // Getting the frame intervals
@@ -202,7 +202,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Average MSD.  Values are stored as the average for each frame gap.
      * @return
      */
-    public TreeMap<Integer,CumStat> getAverageMSD(boolean pixelDistances) {
+    public TreeMap<Integer,CumStat> getAverageMSD() {
         // Determining the longest duration.  This is also the largest possible frame gap.
         int longestDuration = 0;
         for (Track track:values()) {
@@ -214,14 +214,14 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         // Creating the CumStat array
         TreeMap<Integer,CumStat> msd = new TreeMap<>();
         for (Track track:values()) {
-            MSDCalculator.calculate(msd,track.getF(),track.getX(pixelDistances),track.getY(pixelDistances),track.getZ(pixelDistances));
+            MSDCalculator.calculate(msd,track.getF(),track.getX(),track.getY(),track.getZ());
         }
 
         return msd;
 
     }
 
-    public double[][] getAverageNearestNeighbourDistance(boolean pixelDistances) {
+    public double[][] getAverageNearestNeighbourDistance() {
         // Determining the first and last frames
         int firstFrame = Integer.MAX_VALUE;
         int lastFrame = 0;
@@ -244,7 +244,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
         for (Track track:values()) {
             int[] f = track.getF();
-            TreeMap<Integer,double[]> nearestNeighbourDistance = track.getNearestNeighbourDistance(this,pixelDistances);
+            TreeMap<Integer,double[]> nearestNeighbourDistance = track.getNearestNeighbourDistance(this);
 
             for (int i=0;i<nearestNeighbourDistance.size();i++) {
                 int pos = f[i]-firstFrame;
@@ -329,9 +329,9 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         double[][] limits = new double[][]{{Double.MAX_VALUE,Double.MIN_VALUE},{Double.MAX_VALUE,Double.MIN_VALUE},{Double.MAX_VALUE,Double.MIN_VALUE}};
 
         for (Track track:values()) {
-            double[] x = track.getX(pixelDistances);
-            double[] y = track.getY(pixelDistances);
-            double[] z = track.getZ(pixelDistances);
+            double[] x = track.getX();
+            double[] y = track.getY();
+            double[] z = track.getZ();
 
             for (int i=0;i<x.length;i++) {
                 limits[0][0] = Math.min(limits[0][0],x[i]);
@@ -375,7 +375,7 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         double maxVelocity = 0;
 
         for (Track track:values()) {
-            TreeMap<Integer,Double> velocities = track.getInstantaneousSpeed(true);
+            TreeMap<Integer,Double> velocities = track.getInstantaneousSpeed();
 
             for (double velocity:velocities.values()) {
                 maxVelocity = Math.max(maxVelocity,velocity);
