@@ -18,7 +18,7 @@ public class InstantaneousSpeedCalculatorTest {
         double[] y = new double[]{1,2,4.2,-3,5,3.2,11.4,-4.2,2.5};
         double[] z = new double[]{1,2,-5.3,-1,1.4,4.11,3.5,-2.1,7.9};
 
-        TreeMap<Integer,Double> measuredValues = new InstantaneousSpeedCalculator().calculate(f,x,y,z);
+        TreeMap<Integer,Double> measuredValues = new InstantaneousSpeedCalculator().calculate(x,y,z,f);
         TreeMap<Integer,Double> expectedValues = new TreeMap<>();
         expectedValues.put(1,0d);
         expectedValues.put(2,1.73);

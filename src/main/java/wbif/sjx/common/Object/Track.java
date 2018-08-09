@@ -5,9 +5,7 @@ import wbif.sjx.common.Analysis.*;
 import wbif.sjx.common.Analysis.SpatialCalculators.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /**
@@ -87,7 +85,7 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
     }
 
     public TreeMap<Integer, Double> getInstantaneousSpeed() {
-        return new InstantaneousSpeedCalculator().calculate(getF(),getX(),getY(),getZ());
+        return new InstantaneousSpeedCalculator().calculate(this);
 
     }
 
@@ -104,7 +102,7 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
     }
 
     public TreeMap<Integer, Double> getInstantaneousStepSizes() {
-        return new InstantaneousStepSizeCalculator().calculate(getF(), getX(),getY(),getZ());
+        return new InstantaneousStepSizeCalculator().calculate(this);
 
     }
 
@@ -140,7 +138,7 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
      * Returns a double[] containing the Euclidean distance at all time steps
      */
     public TreeMap<Integer, Double> getRollingEuclideanDistance() {
-        return new EuclideanDistanceCalculator().calculate(getF(),getX(),getY(),getZ());
+        return new EuclideanDistanceCalculator().calculate(this);
 
     }
 
@@ -148,12 +146,12 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
      * Returns a double[] containing the total path length up to each time step
      */
     public TreeMap<Integer, Double> getRollingTotalPathLength() {
-        return new CumulativePathLengthCalculator().calculate(getF(), getX(),getY(),getZ());
+        return new CumulativePathLengthCalculator().calculate(this);
 
     }
 
     public TreeMap<Integer, Double> getRollingDirectionalityRatio() {
-        return new DirectionalityRatioCalculator().calculate(getF(),getX(),getY(),getZ());
+        return new DirectionalityRatioCalculator().calculate(this);
 
     }
 
@@ -265,5 +263,44 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
 
     public String getUnits() {
         return units;
+    }
+
+
+    @Override
+    public int hashCode() {
+        int hash = 1;
+
+        hash = 31*hash + units.toUpperCase().hashCode();
+
+        for (Timepoint point:values()) hash = 31*hash + point.hashCode();
+
+        return hash;
+
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Track)) return false;
+
+        Track track2 = (Track) obj;
+
+        if (size() != track2.size()) return false;
+
+        if (!units.toUpperCase().equals(track2.getUnits().toUpperCase())) return false;
+
+        Iterator<Timepoint<Double>> iterator1 = values().iterator();
+        Iterator<Timepoint<Double>> iterator2 = track2.values().iterator();
+
+        while (iterator1.hasNext()) {
+            Timepoint<Double> timepoint1 = iterator1.next();
+            Timepoint<Double> timepoint2 = iterator2.next();
+
+            if (!timepoint1.equals(timepoint2)) return false;
+
+        }
+
+        return true;
+
     }
 }

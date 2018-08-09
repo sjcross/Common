@@ -3,10 +3,10 @@ package wbif.sjx.common.Analysis.SpatialCalculators;
 import java.util.TreeMap;
 
 /**
- * Created by steph on 15/04/2017.
+ * Created by Stephen on 15/04/2017.
  */
 public class InstantaneousSpeedCalculator implements SpatialCalculator {
-    public TreeMap<Integer,Double> calculate(int[] f, double[] x, double[] y, double[] z) {
+    public TreeMap<Integer,Double> calculate(double[] x, double[] y, double[] z, int[] f) {
         TreeMap<Integer,Double> speed = new TreeMap<>();
 
         speed.put(f[0],0d);
