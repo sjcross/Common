@@ -14,19 +14,24 @@ import java.util.stream.IntStream;
  * Created by sc13967 on 03/02/2017.
  */
 public class Track extends TreeMap<Integer,Timepoint<Double>> {
+    private final String units;
 
     // CONSTRUCTORS
-    public Track() {
-
+    public Track(String units) {
+        this.units = units;
     }
 
-    public Track(double[] x, double[] y, double[] z, int[] f) {
+    public Track(double[] x, double[] y, double[] z, int[] f, String units) {
+        this.units = units;
+
         for (int i=0;i<x.length;i++) {
             put(f[i],new Timepoint<Double>(x[i],y[i],z[i],f[i]));
         }
     }
 
-    public Track(ArrayList<Double> x, ArrayList<Double> y, ArrayList<Double> z, ArrayList<Integer> f) {
+    public Track(ArrayList<Double> x, ArrayList<Double> y, ArrayList<Double> z, ArrayList<Integer> f, String units) {
+        this.units = units;
+
         for (int i=0;i<x.size();i++) {
             put(f.get(i),new Timepoint<>(x.get(i),y.get(i),z.get(i),f.get(i)));
 
@@ -249,7 +254,7 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
         return values().stream().mapToInt(Timepoint::getF).toArray();
     }
 
-    public Point getPointAtFrame(int frame) {
+    public Point<Double> getPointAtFrame(int frame) {
         return get(frame);
 
     }
@@ -258,4 +263,7 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
         return values().stream().mapToDouble(Timepoint::getF).toArray();
     }
 
+    public String getUnits() {
+        return units;
+    }
 }

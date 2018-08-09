@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.TreeMap;
 
 public class SingleTrack2D {
-    public static Track getTrack(double dppXY, double dppZ, String units) {
-        Track track = new Track(dppXY,dppZ,units);
+    public static Track getTrack() {
+        Track track = new Track("px");
 
         // Adding all provided coordinates to each object
         List<Integer[]> coordinates = ExpectedObjects.getCoordinates5D("/coordinates/SingleTrack2D.csv");

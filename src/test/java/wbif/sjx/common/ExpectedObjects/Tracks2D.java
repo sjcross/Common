@@ -12,7 +12,7 @@ import java.net.URLDecoder;
 import java.util.*;
 
 public class Tracks2D {
-    public static LinkedHashMap<Integer,Track> getTracks(double dppXY, double dppZ, String units) {
+    public static LinkedHashMap<Integer,Track> getTracks() {
         LinkedHashMap<Integer,Track> tracks = new LinkedHashMap<>();
 
         // Adding all provided coordinates to each object
@@ -25,7 +25,7 @@ public class Tracks2D {
             int z = coordinate[5];
             int t = coordinate[6];
 
-            tracks.putIfAbsent(ID,new Track(dppXY,dppZ,units));
+            tracks.putIfAbsent(ID,new Track("px"));
             Track track = tracks.get(ID);
             track.addTimepoint(x,y,z,t);
 
