@@ -1,14 +1,16 @@
 package wbif.sjx.common.Analysis.SpatialCalculators;
 
+import wbif.sjx.common.Object.Track;
+
 import java.util.TreeMap;
 
 /**
- * Created by steph on 15/04/2017.
+ * Created by Stephen on 15/04/2017.
  */
 public class DirectionalityRatioCalculator implements SpatialCalculator {
-    public TreeMap<Integer,Double> calculate(int[] f, double[] x, double[] y, double[] z) {
-        TreeMap<Integer,Double> euclideanDistance = new EuclideanDistanceCalculator().calculate(f,x,y,z);
-        TreeMap<Integer,Double> totalLength = new CumulativePathLengthCalculator().calculate(f,x,y,z);
+    public TreeMap<Integer,Double> calculate(double[] x, double[] y, double[] z, int[] f) {
+        TreeMap<Integer,Double> euclideanDistance = new EuclideanDistanceCalculator().calculate(x,y,z,f);
+        TreeMap<Integer,Double> totalLength = new CumulativePathLengthCalculator().calculate(x,y,z,f);
 
         TreeMap<Integer,Double> directionalPersistance = new TreeMap<>();
         directionalPersistance.put(f[0],0d);

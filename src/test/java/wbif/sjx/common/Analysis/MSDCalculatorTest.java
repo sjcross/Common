@@ -23,13 +23,9 @@ public class MSDCalculatorTest {
 
     @Test
     public void testCalculateNoProvidedCumStatSingleTrack() throws Exception {
-        double dppXY = 1;
-        double dppZ = 1;
-        String units = "px";
+        Track track = SingleTrack2D.getTrack();
 
-        Track track = SingleTrack2D.getTrack(dppXY,dppZ,units);
-
-        TreeMap<Integer,CumStat> cs = MSDCalculator.calculate(track.getF(),track.getX(true),track.getY(true),track.getZ(true));
+        TreeMap<Integer,CumStat> cs = MSDCalculator.calculate(track.getF(),track.getX(),track.getY(),track.getZ());
         TreeMap<Integer,Double> actual = new TreeMap<>();
         for (int df:cs.keySet()) actual.put(df,cs.get(df).getMean());
 
@@ -42,21 +38,18 @@ public class MSDCalculatorTest {
 
     @Test
     public void testCalculateProvidedCumStatManyTracks() throws Exception {
-        double dppXY = 1;
-        double dppZ = 1;
-        String units = "px";
-
-        LinkedHashMap<Integer,Track> tracks = new Tracks2D().getTracks(dppXY,dppZ,units);
+        new Tracks2D();
+        LinkedHashMap<Integer,Track> tracks = Tracks2D.getTracks();
 
         int maxF = 0;
         for (Track track:tracks.values()) {
-            double[][] limits = track.getLimits(true);
+            double[][] limits = track.getLimits();
             if (limits[3][1] > maxF) maxF = (int) limits[3][1];
         }
 
         TreeMap<Integer,CumStat> cs = new TreeMap<>();
         for (Track track:tracks.values()) {
-            MSDCalculator.calculate(cs, track.getF(),track.getX(true),track.getY(true),track.getZ(true));
+            MSDCalculator.calculate(cs, track.getF(),track.getX(),track.getY(),track.getZ());
         }
 
         TreeMap<Integer,Double> actual = new TreeMap<>();
@@ -70,13 +63,9 @@ public class MSDCalculatorTest {
 
     @Test @Ignore
     public void testGetLinearFitSingleTrack() throws Exception {
-        double dppXY = 1;
-        double dppZ = 1;
-        String units = "px";
+        Track track = SingleTrack2D.getTrack();
 
-        Track track = SingleTrack2D.getTrack(dppXY,dppZ,units);
-
-        TreeMap<Integer,CumStat> msd = MSDCalculator.calculate(track.getF(),track.getX(true),track.getY(true),track.getZ(true));
+        TreeMap<Integer,CumStat> msd = MSDCalculator.calculate(track.getF(),track.getX(),track.getY(),track.getZ());
         double[] actual = MSDCalculator.getLinearFit(msd,81);
         double[] expected = new double[]{6.622E2,0,81};
 

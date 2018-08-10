@@ -15,15 +15,15 @@ public class NearestNeighbourCalculator {
      * @param testTracks
      * @return TreeMap (frame number keys) containing a double array with {trackID, nearest neighbour distance}
      */
-    public TreeMap<Integer,double[]> calculate(Track track, TrackCollection testTracks, boolean pixelDistances) {
+    public TreeMap<Integer,double[]> calculate(Track track, TrackCollection testTracks) {
         TreeMap<Integer,double[]> links = new TreeMap<>();
 
         // Iterating over all frames in this track
         for (int f:track.getF()) {
             // Getting coordinates for this track
-            double x1 = track.getX(f,pixelDistances);
-            double y1 = track.getY(f,pixelDistances);
-            double z1 = track.getZ(f,pixelDistances);
+            double x1 = track.getX(f);
+            double y1 = track.getY(f);
+            double z1 = track.getZ(f);
 
             double minDist = Double.MAX_VALUE;
             double nnID = -1;
@@ -39,9 +39,9 @@ public class NearestNeighbourCalculator {
                 if (!testTrack.containsKey(f)) continue;
 
                 // Getting coordinates for the comparison (test) track at the same frame
-                double x2 = testTrack.getX(f,pixelDistances);
-                double y2 = testTrack.getY(f,pixelDistances);
-                double z2 = testTrack.getZ(f,pixelDistances);
+                double x2 = testTrack.getX(f);
+                double y2 = testTrack.getY(f);
+                double z2 = testTrack.getZ(f);
 
                 // Calculating the distance
                 double distance = Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1));

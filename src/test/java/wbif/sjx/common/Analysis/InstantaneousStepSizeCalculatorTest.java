@@ -18,7 +18,7 @@ public class InstantaneousStepSizeCalculatorTest {
         double[] y = new double[]{12,54.2,43.7,99.6,34.6,12.2,-21,-12};
         double[] z = new double[]{-2.2,45.8,-2.4,24,12.1,44.5,76.6,34.6};
 
-        TreeMap<Integer,Double> measuredValues = new InstantaneousStepSizeCalculator().calculate(f,x,y,z);
+        TreeMap<Integer,Double> measuredValues = new InstantaneousStepSizeCalculator().calculate(x,y,z,f);
         TreeMap<Integer,Double> expectedValues = new TreeMap<>();
         expectedValues.put(0,0d);
         expectedValues.put(1,86.98);

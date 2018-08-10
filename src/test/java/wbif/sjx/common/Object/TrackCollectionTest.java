@@ -15,16 +15,12 @@ public class TrackCollectionTest {
 
     @Test
     public void testGetAverageMSD() {
-        double dppXY = 1;
-        double dppZ = 1;
-        String units = "px";
-
-        LinkedHashMap<Integer,Track> tracks = new Tracks2D().getTracks(dppXY,dppZ,units);
+        LinkedHashMap<Integer,Track> tracks = Tracks2D.getTracks();
 
         TrackCollection collection = new TrackCollection();
         collection.putAll(tracks);
 
-        TreeMap<Integer,CumStat> actual = collection.getAverageMSD(true);
+        TreeMap<Integer,CumStat> actual = collection.getAverageMSD();
         TreeMap<Integer,Double> expected = Tracks2D.getMeanMSD();
 
         for (int df:expected.keySet()) {
