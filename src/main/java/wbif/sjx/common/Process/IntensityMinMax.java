@@ -19,7 +19,7 @@ public class IntensityMinMax {
     }
 
     public static void run(ImagePlus ipl, boolean stack, double weight) {
-        if (stack) {
+        if (stack && ipl.getNDimensions() > 2) {
             processStack(ipl,weight);
         } else {
             processSingle(ipl,weight);
@@ -33,33 +33,13 @@ public class IntensityMinMax {
         ImageStatistics stats = ImageStatistics.getStatistics(ipl.getProcessor(), ImageStatistics.MIN_MAX, null);
 
         // Getting the minimum and maximum values
-        double min = Double.NaN; double max = Double.NaN;
-
-        if (weight == 0) {
-            min = stats.min;
-            max = stats.max;
-
-        } else {
-            boolean setMin = false;
-            boolean setMax = false;
-            int count = 0;
-            int sum = ipl.getWidth() * ipl.getHeight() * ipl.getNSlices() * ipl.getNFrames();
-            int[] hist = ipl.getBitDepth() == 16 ? stats.histogram16 : stats.histogram;
-            for (int i = 0; i < hist.length; i++) {
-                count = count + hist[i];
-                if (!setMin && count >= sum * weight) {
-                    min = i;
-                    setMin = true;
-                }
-                if (!setMax && count >= sum - sum * weight) {
-                    max = i;
-                    setMax = true;
-                }
-            }
-        }
+        double[] range = getWeightedChannelRange(ipl,1,weight);
+        double min = range[0];
+        double max = range[1];
 
         ipl.setDisplayRange(min,max);
         ipl.updateChannelAndDraw();
+        ipl.setPosition(1);
 
     }
 
@@ -84,7 +64,7 @@ public class IntensityMinMax {
         }
     }
 
-    static double[] getAbsoluteChannelRange(ImagePlus ipl, int channel) {
+    public static double[] getAbsoluteChannelRange(ImagePlus ipl, int channel) {
         double min = Double.MAX_VALUE;
         double max = -Double.MAX_VALUE;
 
@@ -110,7 +90,7 @@ public class IntensityMinMax {
      * @param weight
      * @return
      */
-    static double[] getWeightedChannelRange(ImagePlus ipl, int channel, double weight) {
+    public static double[] getWeightedChannelRange(ImagePlus ipl, int channel, double weight) {
         CumStat[] cs = new CumStat[(int) Math.pow(2,16)];
         for (int i=0;i<cs.length;i++) cs[i] = new CumStat();
 
