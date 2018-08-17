@@ -6,6 +6,11 @@ import ij.plugin.Duplicator;
 import ij.process.ImageStatistics;
 import wbif.sjx.common.MathFunc.CumStat;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
+
 /**
  * Created by steph on 15/04/2017.
  */
@@ -90,40 +95,60 @@ public class IntensityMinMax {
      * @param weight
      * @return
      */
-    public static double[] getWeightedChannelRange(ImagePlus ipl, int channel, double weight) {
-        CumStat[] cs = new CumStat[(int) Math.pow(2,16)];
-        for (int i=0;i<cs.length;i++) cs[i] = new CumStat();
+//    public static double[] getWeightedChannelRange(ImagePlus ipl, int channel, double weight) {
+//        CumStat[] cs = new CumStat[(int) Math.pow(2,16)];
+//        for (int i=0;i<cs.length;i++) cs[i] = new CumStat();
+//
+//        for (int slice = 0; slice < ipl.getNSlices(); slice++) {
+//            for (int frame = 0; frame < ipl.getNFrames(); frame++) {
+//                ipl.setPosition(channel+1,slice+1,frame+1);
+//
+//                ImageStatistics stats = ImageStatistics.getStatistics(ipl.getProcessor(), ImageStatistics.MIN_MAX, null);
+//                int[] hist = ipl.getBitDepth() == 16 ? stats.histogram16 : stats.histogram;
+//                for (int i=0;i<hist.length;i++) cs[i].addMeasure(hist[i]);
+//
+//            }
+//        }
+//
+//        // Getting the minimum and maximum values
+//        double min = Double.NaN; double max = Double.NaN;
+//        boolean setMin = false; boolean setMax = false;
+//        int count = 0;
+//        int sum = ipl.getWidth() * ipl.getHeight() * ipl.getNSlices() * ipl.getNFrames();
+//        for (int i = 0; i < cs.length; i++) {
+//            count = count + (int) cs[i].getSum();
+//            if (!setMin && count > sum * weight) {
+//                min = i;
+//                setMin = true;
+//            }
+//            if (!setMax && count >= sum - sum * weight) {
+//                max = i;
+//                setMax = true;
+//            }
+//        }
+//
+//        return new double[]{min,max};
+//
+//    }
 
+    public static double[] getWeightedChannelRange(ImagePlus ipl, int channel, double weight) {
+        // Arranging pixel values into ArrayList, then ordering by value
+        ArrayList<Float> pixels = new ArrayList<>();
         for (int slice = 0; slice < ipl.getNSlices(); slice++) {
             for (int frame = 0; frame < ipl.getNFrames(); frame++) {
-                ipl.setPosition(channel+1,slice+1,frame+1);
-
-                ImageStatistics stats = ImageStatistics.getStatistics(ipl.getProcessor(), ImageStatistics.MIN_MAX, null);
-                int[] hist = ipl.getBitDepth() == 16 ? stats.histogram16 : stats.histogram;
-                for (int i=0;i<hist.length;i++) cs[i].addMeasure(hist[i]);
-
+                ipl.setPosition(channel + 1, slice + 1, frame + 1);
+                float[][] floats = ipl.getProcessor().getFloatArray();
+                for (float[] f1:floats) for (float f2:f1) pixels.add(f2);
             }
         }
+        pixels.sort(Float::compareTo);
 
         // Getting the minimum and maximum values
-        double min = Double.NaN; double max = Double.NaN;
-        boolean setMin = false; boolean setMax = false;
-        int count = 0;
         int sum = ipl.getWidth() * ipl.getHeight() * ipl.getNSlices() * ipl.getNFrames();
-        for (int i = 0; i < cs.length; i++) {
-            count = count + (int) cs[i].getSum();
-            if (!setMin && count >= sum * weight) {
-                min = i;
-                setMin = true;
-            }
-            if (!setMax && count >= sum - sum * weight) {
-                max = i;
-                setMax = true;
-            }
-        }
+        double min = pixels.get((int) Math.round(sum * weight));
+        double max = pixels.get((int) Math.round(sum - sum * weight)-1);
 
         return new double[]{min,max};
 
     }
-
 }

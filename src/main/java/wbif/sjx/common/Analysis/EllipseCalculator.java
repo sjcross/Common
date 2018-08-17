@@ -5,11 +5,22 @@ import wbif.sjx.common.Object.Volume;
 
 public class EllipseCalculator {
     private final Volume volume;
-    private final double[] e2d;
+    private double[] e2d;
 
     public EllipseCalculator(Volume volume) throws RuntimeException {
         this.volume = volume;
 
+        fitEllipse(Double.MAX_VALUE);
+
+    }
+
+    public EllipseCalculator(Volume volume, double maxAxisLength) throws RuntimeException {
+        this.volume = volume;
+
+        fitEllipse(maxAxisLength);
+    }
+
+    private void fitEllipse(double maxAxisLength) {
         if (volume.getNVoxels() <= 2) {
             e2d = null;
             return;
@@ -27,7 +38,8 @@ public class EllipseCalculator {
 
         e2d = FitEllipse.direct(coords);
 
-        double[] dims = FitEllipse.varToDimensions(e2d);
+        // The following test prevents objects being created for ill-fit ellipses
+        if (getSemiMajorAxis() > maxAxisLength) e2d = null;
 
     }
 
@@ -37,6 +49,8 @@ public class EllipseCalculator {
     }
 
     public double getEllipseThetaRads() {
+        if (e2d == null) return Double.NaN;
+
         double a = e2d[0];
         double b = e2d[1];
         double c = e2d[2];
@@ -60,6 +74,8 @@ public class EllipseCalculator {
     }
 
     public double getXCentre() {
+        if (e2d == null) return Double.NaN;
+
         double a = e2d[0];
         double b = e2d[1];
         double c = e2d[2];
@@ -72,6 +88,8 @@ public class EllipseCalculator {
     }
 
     public double getYCentre() {
+        if (e2d == null) return Double.NaN;
+
         double a = e2d[0];
         double b = e2d[1];
         double c = e2d[2];
@@ -88,6 +106,8 @@ public class EllipseCalculator {
      * @return
      */
     public double[] getSemiAxes() {
+        if (e2d == null) return null;
+
         double a = e2d[0];
         double b = e2d[1];
         double c = e2d[2];
@@ -105,6 +125,8 @@ public class EllipseCalculator {
     }
 
     public double getSemiMajorAxis() {
+        if (e2d == null) return Double.NaN;
+
         double[] semiAxes = getSemiAxes();
 
         return Math.max(semiAxes[0],semiAxes[1]);
@@ -112,6 +134,8 @@ public class EllipseCalculator {
     }
 
     public double getSemiMinorAxis() {
+        if (e2d == null) return Double.NaN;
+
         double[] semiAxes = getSemiAxes();
 
         return Math.min(semiAxes[0],semiAxes[1]);
@@ -119,6 +143,8 @@ public class EllipseCalculator {
     }
 
     public Volume getContainedPoints() {
+        if (e2d == null) return null;
+
         double dppXY = volume.getDistPerPxXY();
         double dppZ = volume.getDistPerPxZ();
         double cal = dppXY/dppZ;
