@@ -36,7 +36,12 @@ public class EllipseCalculator {
             coords[i][1] = y[i];
         }
 
-        e2d = FitEllipse.direct(coords);
+        try {
+            e2d = FitEllipse.direct(coords);
+        } catch (RuntimeException e) {
+            e2d = null;
+            return;
+        }
 
         // The following test prevents objects being created for ill-fit ellipses
         if (getSemiMajorAxis() > maxAxisLength) e2d = null;
