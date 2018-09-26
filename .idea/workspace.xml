@@ -8,8 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Common.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,34 +19,75 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$VolumeTest.coverage" NAME="VolumeTest Coverage Results" MODIFIED="1524037637387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Object.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Filters.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.Analysis.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Common$All_in_Common.coverage" NAME="All in Common Coverage Results" MODIFIED="1533798419152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Filters.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Common$VolumeTest.coverage" NAME="VolumeTest Coverage Results" MODIFIED="1524037637387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Object.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$All_in_Common.coverage" NAME="All in Common Coverage Results" MODIFIED="1533798419152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Common" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="17" lean-forward="true" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+            <state relative-caret-position="306">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1054">
+              <caret line="222" selection-start-line="222" selection-end-line="222" />
+              <folding>
+                <element signature="docComment;class#Track#0" />
+                <element signature="method#Track#1;class#Track#0" />
+                <element signature="method#Track#2;class#Track#0" />
+                <element signature="docComment;method#getMeanPosition#0;class#Track#0" />
+                <element signature="method#getMeanPosition#0;class#Track#0" />
+                <element signature="method#getDirectionalPersistence#0;class#Track#0" />
+                <element signature="method#getMSD#0;class#Track#0" />
+                <element signature="method#getMSDLinearFit#0;class#Track#0" />
+                <element signature="e#1874#1994#0" />
+                <element signature="method#getInstantaneousSpeed#0;class#Track#0" />
+                <element signature="method#getInstantaneousXVelocity#0;class#Track#0" />
+                <element signature="method#getInstantaneousYVelocity#0;class#Track#0" />
+                <element signature="method#getInstantaneousZVelocity#0;class#Track#0" />
+                <element signature="method#getInstantaneousStepSizes#0;class#Track#0" />
+                <element signature="method#getEuclideanDistance#0;class#Track#0" />
+                <element signature="method#getTotalPathLength#0;class#Track#0" />
+                <element signature="method#getDirectionalityRatio#0;class#Track#0" />
+                <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" />
+                <element signature="method#getRollingEuclideanDistance#0;class#Track#0" />
+                <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" />
+                <element signature="method#getRollingTotalPathLength#0;class#Track#0" />
+                <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" />
+                <element signature="method#getNearestNeighbourDistance#0;class#Track#0" />
+                <element signature="method#getDuration#0;class#Track#0" />
+                <element signature="method#getLimits#0;class#Track#0" />
+                <element signature="method#getRollingIntensity#0;class#Track#0" />
+                <element signature="method#hasFrame#0;class#Track#0" />
+                <element signature="method#getPointAtFrame#0;class#Track#0" />
+                <element signature="method#hashCode#0;class#Track#0" />
+                <element signature="method#equals#0;class#Track#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EllipsoidCalculator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EllipsoidCalculator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1615">
-              <caret line="95" selection-start-line="95" selection-end-line="95" />
+            <state relative-caret-position="660">
+              <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,8 +116,8 @@
       <file leaf-file-name="EllipseCalculator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="39" column="35" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="35" />
+            <state relative-caret-position="748">
+              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="46" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -142,7 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFoldernameExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaBarcodeExtractor.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageGradientEnergy.java" />
@@ -193,6 +232,7 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java" />
       </list>
     </option>
   </component>
@@ -203,11 +243,11 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1860" />
-    <option name="height" value="1098" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -260,20 +300,12 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
+    <navigator proportions="" version="1">
       <autoscrollFromSource ProjectPane="true" />
-      <sortByType />
-      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -324,6 +356,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="Object" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="Process" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -360,9 +401,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -722,41 +761,41 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1488" height="878" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" visible="true" weight="0.28" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" visible="true" weight="0.2809406" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
       <window_info auto_hide="true" content_ui="combo" id="Project" order="0" weight="0.22447917" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39961013" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
+      <window_info id="Capture Tool" order="2" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3294347" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Nl-Palette" order="2" />
-      <window_info anchor="right" id="Properties" order="3" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="right" id="Database" order="10" />
       <window_info anchor="right" id="Coverage" order="11" side_tool="true" weight="0.3296875" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Properties" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -772,13 +811,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar!/org/apache/commons/math3/geometry/spherical/twod/Circle.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GeometricEdgeCorrection.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1011,13 +1043,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="293" selection-start-line="293" selection-end-line="293" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1064,9 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-          <folding>
-            <element signature="docComment;class#CumulativePathLengthCalculatorTest#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1081,15 +1103,63 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="61" column="1" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
-          <folding>
-            <element signature="docComment;class#DirectionalityRatioCalculatorTest#0" />
-            <element signature="method#testCalculate#0;class#DirectionalityRatioCalculatorTest#0" />
-            <element signature="method#testCalculateWithTrack#0;class#DirectionalityRatioCalculatorTest#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/ArrayList.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="222" selection-start-line="222" selection-end-line="222" />
+          <folding>
+            <element signature="docComment;class#Track#0" />
+            <element signature="method#Track#1;class#Track#0" />
+            <element signature="method#Track#2;class#Track#0" />
+            <element signature="docComment;method#getMeanPosition#0;class#Track#0" />
+            <element signature="method#getMeanPosition#0;class#Track#0" />
+            <element signature="method#getDirectionalPersistence#0;class#Track#0" />
+            <element signature="method#getMSD#0;class#Track#0" />
+            <element signature="method#getMSDLinearFit#0;class#Track#0" />
+            <element signature="e#1874#1994#0" />
+            <element signature="method#getInstantaneousSpeed#0;class#Track#0" />
+            <element signature="method#getInstantaneousXVelocity#0;class#Track#0" />
+            <element signature="method#getInstantaneousYVelocity#0;class#Track#0" />
+            <element signature="method#getInstantaneousZVelocity#0;class#Track#0" />
+            <element signature="method#getInstantaneousStepSizes#0;class#Track#0" />
+            <element signature="method#getEuclideanDistance#0;class#Track#0" />
+            <element signature="method#getTotalPathLength#0;class#Track#0" />
+            <element signature="method#getDirectionalityRatio#0;class#Track#0" />
+            <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" />
+            <element signature="method#getRollingEuclideanDistance#0;class#Track#0" />
+            <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" />
+            <element signature="method#getRollingTotalPathLength#0;class#Track#0" />
+            <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" />
+            <element signature="method#getNearestNeighbourDistance#0;class#Track#0" />
+            <element signature="method#getDuration#0;class#Track#0" />
+            <element signature="method#getLimits#0;class#Track#0" />
+            <element signature="method#getRollingIntensity#0;class#Track#0" />
+            <element signature="method#hasFrame#0;class#Track#0" />
+            <element signature="method#getPointAtFrame#0;class#Track#0" />
+            <element signature="method#hashCode#0;class#Track#0" />
+            <element signature="method#equals#0;class#Track#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/EllipsoidCalculatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -1097,39 +1167,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="46" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/bonej/bonej-legacy-util/1.0.0/bonej-legacy-util-1.0.0.jar!/org/bonej/geometry/Ellipsoid.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        <state relative-caret-position="660">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="39" column="35" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-          <folding>
-            <element signature="docComment;class#IntensityMinMax#0" />
-            <element signature="method#run#1;class#IntensityMinMax#0" />
-            <element signature="docComment;method#getWeightedChannelRange#0;class#IntensityMinMax#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="17" lean-forward="true" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
         </state>
       </provider>
     </entry>

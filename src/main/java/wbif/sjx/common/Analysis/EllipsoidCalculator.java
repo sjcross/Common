@@ -29,7 +29,7 @@ public class EllipsoidCalculator {
         this.volume = volume;
     }
 
-    public EllipsoidCalculator(Volume volume) {
+    public EllipsoidCalculator(Volume volume, double maxAxisLength) {
         this.volume = volume;
 
         //Fitting an ellipsoid using method from BoneJ
@@ -49,8 +49,11 @@ public class EllipsoidCalculator {
         double[] radii = (double[]) yury[1];
         double[][] eigenVectors = (double[][]) yury[2];
 
-        ell = new Ellipsoid(radii[0],radii[1],radii[2],centre[0],centre[1],centre[2],eigenVectors);
-
+        if (radii[0] > maxAxisLength || radii[1] > maxAxisLength || radii[2] > maxAxisLength) {
+            ell = null;
+        } else {
+            ell = new Ellipsoid(radii[0],radii[1],radii[2],centre[0],centre[1],centre[2],eigenVectors);
+        }
     }
 
     /**
@@ -58,7 +61,7 @@ public class EllipsoidCalculator {
      * @param volume
      * @param imageStack
      */
-    public EllipsoidCalculator(Volume volume, ImageStack imageStack) {
+    public EllipsoidCalculator(Volume volume, double maxAxisLength, ImageStack imageStack) {
         this.volume = volume;
 
         //Fitting an ellipsoid using method from BoneJ
@@ -90,26 +93,33 @@ public class EllipsoidCalculator {
         double[] radii = (double[]) yury[1];
         double[][] eigenVectors = (double[][]) yury[2];
 
-        ell = new Ellipsoid(radii[0],radii[1],radii[2],centre[0],centre[1],centre[2],eigenVectors);
-
+        if (radii[0] > maxAxisLength || radii[1] > maxAxisLength || radii[2] > maxAxisLength) {
+            ell = null;
+        } else {
+            ell = new Ellipsoid(radii[0],radii[1],radii[2],centre[0],centre[1],centre[2],eigenVectors);
+        }
     }
 
     public double[] getCentroid() {
+        if (ell == null) return null;
         return ell.getCentre();
 
     }
 
     public double[] getRadii() {
+        if (ell == null) return null;
         return ell.getRadii();
 
     }
 
     public double[][] getRotationMatrix() {
+        if (ell == null) return null;
         return ell.getRotation();
 
     }
 
     public double[] getOrientationRads() {
+        if (ell == null) return null;
         double[][] rot = ell.getRotation();
         double[] orien = new double[2];
 
@@ -130,6 +140,8 @@ public class EllipsoidCalculator {
      * @return
      */
     public double getSurfaceArea() {
+        if (ell == null) return Double.NaN;
+
         double p = 1.6075;
 
         double[] r = getRadii();
@@ -143,12 +155,15 @@ public class EllipsoidCalculator {
     }
 
     public double getVolume() {
+        if (ell == null) return Double.NaN;
         double[] r = getRadii();
         return (4d/3d)*Math.PI*r[0]*r[1]*r[2];
 
     }
 
     public double getSphericity() {
+        if (ell == null) return Double.NaN;
+
         double SA = getSurfaceArea();
         double V = getVolume();
 
@@ -160,6 +175,8 @@ public class EllipsoidCalculator {
     }
 
     public Volume getContainedPoints() {
+        if (ell == null) return null;
+
         double dppXY = volume.getDistPerPxXY();
         double dppZ = volume.getDistPerPxZ();
         double cal = dppXY/dppZ;
