@@ -134,17 +134,24 @@ public class IntensityMinMax {
     public static double[] getWeightedChannelRange(ImagePlus ipl, int channel, double weight) {
         // Arranging pixel values into ArrayList, then ordering by value
         ArrayList<Float> pixels = new ArrayList<>();
+        int sum = 0;
         for (int slice = 0; slice < ipl.getNSlices(); slice++) {
             for (int frame = 0; frame < ipl.getNFrames(); frame++) {
                 ipl.setPosition(channel + 1, slice + 1, frame + 1);
                 float[][] floats = ipl.getProcessor().getFloatArray();
-                for (float[] f1:floats) for (float f2:f1) pixels.add(f2);
+                for (float[] f1:floats) {
+                    for (float f2:f1) {
+                        if (!Float.isNaN(f2)) {
+                            pixels.add(f2);
+                            sum++;
+                        }
+                    }
+                }
             }
         }
         pixels.sort(Float::compareTo);
 
         // Getting the minimum and maximum values
-        int sum = ipl.getWidth() * ipl.getHeight() * ipl.getNSlices() * ipl.getNFrames();
         double min = pixels.get((int) Math.round(sum * weight));
         double max = pixels.get((int) Math.round(sum - sum * weight)-1);
 
