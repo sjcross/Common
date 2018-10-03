@@ -645,7 +645,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testCalculateAngle2DTopLeftQ() {
+    public void testCalculateAngle2DTopLeft() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -664,7 +664,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testCalculateAngle2DBottomLeftQ() {
+    public void testCalculateAngle2DBottomLeft() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -683,7 +683,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testCalculateAngle2DBottomRightQ() {
+    public void testCalculateAngle2DBottomRight() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
