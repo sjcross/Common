@@ -569,13 +569,23 @@ public class Volume {
      * @return
      */
     public double calculateAngle2D(Volume volume2) {
-        double x1 = getXMean(true);
-        double y1 = getYMean(true);
-        double x2 = volume2.getXMean(true);
-        double y2 = volume2.getYMean(true);
+        Point<Double> p1 = new Point<>(getXMean(true),getYMean(true),0d);
+        Point<Double> p2 = new Point<>(volume2.getXMean(true),volume2.getYMean(true),0d);
 
-        return Math.atan2((y2-y1),(x2-x1));
+        return p1.calculateAngle2D(p2);
 
+    }
+
+//    /**
+//     * Calculates the angle of the trajectory from this volume to a point.  Angle is in radians and is relative to the
+//     * positive x-axis.
+//     * @param point
+//     * @return
+//     */
+    public double calculateAngle2D(Point<Double> point) {
+        Point<Double> p1 = new Point<>(getXMean(true),getYMean(true),0d);
+
+        return p1.calculateAngle2D(point);
 
     }
 

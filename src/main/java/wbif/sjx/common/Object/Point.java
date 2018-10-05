@@ -53,6 +53,16 @@ public class Point<T extends Number> implements Comparable<Point<T>>, Serializab
 
     }
 
+    public double calculateAngle2D(Point<T> point) {
+        double x1 = x.doubleValue();
+        double x2 = point.getX().doubleValue();
+        double y1 = y.doubleValue();
+        double y2 = point.getY().doubleValue();
+
+        return Math.atan2((y2-y1),(x2-x1));
+
+    }
+
     @Override
     public int hashCode() {
         int hash = 1;
