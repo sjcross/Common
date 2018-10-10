@@ -576,12 +576,12 @@ public class Volume {
 
     }
 
-//    /**
-//     * Calculates the angle of the trajectory from this volume to a point.  Angle is in radians and is relative to the
-//     * positive x-axis.
-//     * @param point
-//     * @return
-//     */
+    /**
+     * Calculates the angle of the trajectory from this volume to a point.  Angle is in radians and is relative to the
+     * positive x-axis.
+     * @param point
+     * @return
+     */
     public double calculateAngle2D(Point<Double> point) {
         Point<Double> p1 = new Point<>(getXMean(true),getYMean(true),0d);
 
