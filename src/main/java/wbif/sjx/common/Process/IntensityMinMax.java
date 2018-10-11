@@ -151,11 +151,24 @@ public class IntensityMinMax {
         }
         pixels.sort(Float::compareTo);
 
-        // Getting the minimum and maximum values
-        double min = pixels.get((int) Math.round(sum * weight));
-        double max = pixels.get((int) Math.round(sum - sum * weight)-1);
+        // Getting the min and max bins
+        int minBin = (int) Math.round(sum * weight);
+        int maxBin = (int) Math.round(sum - sum * weight)-1;
 
-        return new double[]{min,max};
+        // If all the pixels are a single value this might go wrong.  If this is the case, returning the full range.
+        if (!pixels.contains(minBin) || !pixels.contains(maxBin)) {
+            switch (ipl.getBitDepth()) {
+                case 8:
+                    return new double[]{0,255};
+                case 16:
+                    return new double[]{0,65535};
+                case 32:
+                    return new double[]{0,1};
+            }
+        }
+
+        // Getting the minimum and maximum values
+        return new double[]{pixels.get(minBin),pixels.get(maxBin)};
 
     }
 }
