@@ -156,7 +156,7 @@ public class IntensityMinMax {
         int maxBin = (int) Math.round(sum - sum * weight)-1;
 
         // If all the pixels are a single value this might go wrong.  If this is the case, returning the full range.
-        if (!pixels.contains(minBin) || !pixels.contains(maxBin)) {
+        if (pixels.size() <= minBin || pixels.size() <= maxBin) {
             switch (ipl.getBitDepth()) {
                 case 8:
                     return new double[]{0,255};

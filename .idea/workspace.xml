@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Common.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -54,8 +51,8 @@
       <file leaf-file-name="IntensityMinMax.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="162" column="24" selection-start-line="162" selection-start-column="24" selection-end-line="162" selection-end-column="24" />
+            <state relative-caret-position="340">
+              <caret line="158" column="64" selection-start-line="158" selection-start-column="64" selection-end-line="158" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -1442,8 +1439,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="162" column="24" selection-start-line="162" selection-start-column="24" selection-end-line="162" selection-end-column="24" />
+        <state relative-caret-position="340">
+          <caret line="158" column="64" selection-start-line="158" selection-start-column="64" selection-end-line="158" selection-end-column="64" />
         </state>
       </provider>
     </entry>
