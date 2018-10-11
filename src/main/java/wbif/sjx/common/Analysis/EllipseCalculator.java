@@ -69,11 +69,11 @@ public class EllipseCalculator {
             return Math.PI/2;
 
         } else if (b != 0 & a > 0) {
-            return -Math.atan((c-a - Math.sqrt((a-c)*(a-c) + b*b)) / b);
+            return Math.atan((c-a - Math.sqrt((a-c)*(a-c) + b*b)) / b);
 
         } else {
             double val = -Math.atan((c-a - Math.sqrt((a-c)*(a-c) + b*b)) / b) + Math.PI / 2;
-            return ((val + Math.PI / 2) % Math.PI) - Math.PI / 2;
+            return -(((val + Math.PI / 2) % Math.PI) - Math.PI / 2);
 
         }
     }
