@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/GenericExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/GenericExtractor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,34 +20,43 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Filters.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Common$VolumeTest.coverage" NAME="VolumeTest Coverage Results" MODIFIED="1524037637387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>wbif.sjx.common.Object.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Filters.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Common$All_in_Common.coverage" NAME="All in Common Coverage Results" MODIFIED="1533798419152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
+    </SUITE>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Common" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="GenericExtractor.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenericExtractor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/GenericExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+            <state relative-caret-position="216">
+              <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#GenericExtractor#0;class#GenericExtractor#0" />
@@ -56,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/HCMetadata.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1020">
-              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
               <folding>
                 <element signature="docComment;class#HCMetadata#0" />
                 <element signature="e#1868#1896#0" />
@@ -73,7 +86,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/IncuCyteLongFilenameExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="629">
-              <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+              <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -91,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="30" column="53" lean-forward="true" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+              <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -109,7 +122,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFoldernameExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+              <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -118,25 +131,16 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="646">
-              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OperaFileExtractor.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OperaFileExtractor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFileExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OperaFilenameExtractor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFilenameExtractor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+            <state relative-caret-position="255">
+              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -262,11 +266,10 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1928" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="905" />
+    <option name="width" value="930" />
+    <option name="height" value="1088" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -324,9 +327,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -409,6 +409,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -460,7 +463,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Common [install]">
+  <component name="RunManager" selected="Maven.Common [quick install]">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -768,41 +771,41 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1096" extended-state="7" />
+    <frame x="-7" y="-7" width="1476" height="878" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" visible="true" weight="0.2809756" />
+      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" visible="true" weight="0.2809406" />
       <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info auto_hide="true" content_ui="combo" id="Project" order="0" weight="0.22328767" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
+      <window_info auto_hide="true" content_ui="combo" id="Project" order="0" weight="0.22298221" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39961013" />
-      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
-      <window_info id="Capture Tool" order="2" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3294347" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
       <window_info id="Nl-Palette" order="2" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Properties" order="3" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
       <window_info anchor="right" id="Database" order="10" />
       <window_info anchor="right" id="Coverage" order="11" side_tool="true" weight="0.3296875" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Properties" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -1026,38 +1029,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
           <caret line="222" selection-start-line="222" selection-end-line="222" />
-          <folding>
-            <element signature="docComment;class#Track#0" />
-            <element signature="method#Track#1;class#Track#0" />
-            <element signature="method#Track#2;class#Track#0" />
-            <element signature="docComment;method#getMeanPosition#0;class#Track#0" />
-            <element signature="method#getMeanPosition#0;class#Track#0" />
-            <element signature="method#getDirectionalPersistence#0;class#Track#0" />
-            <element signature="method#getMSD#0;class#Track#0" />
-            <element signature="method#getMSDLinearFit#0;class#Track#0" />
-            <element signature="e#1874#1994#0" />
-            <element signature="method#getInstantaneousSpeed#0;class#Track#0" />
-            <element signature="method#getInstantaneousXVelocity#0;class#Track#0" />
-            <element signature="method#getInstantaneousYVelocity#0;class#Track#0" />
-            <element signature="method#getInstantaneousZVelocity#0;class#Track#0" />
-            <element signature="method#getInstantaneousStepSizes#0;class#Track#0" />
-            <element signature="method#getEuclideanDistance#0;class#Track#0" />
-            <element signature="method#getTotalPathLength#0;class#Track#0" />
-            <element signature="method#getDirectionalityRatio#0;class#Track#0" />
-            <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" />
-            <element signature="method#getRollingEuclideanDistance#0;class#Track#0" />
-            <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" />
-            <element signature="method#getRollingTotalPathLength#0;class#Track#0" />
-            <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" />
-            <element signature="method#getNearestNeighbourDistance#0;class#Track#0" />
-            <element signature="method#getDuration#0;class#Track#0" />
-            <element signature="method#getLimits#0;class#Track#0" />
-            <element signature="method#getRollingIntensity#0;class#Track#0" />
-            <element signature="method#hasFrame#0;class#Track#0" />
-            <element signature="method#getPointAtFrame#0;class#Track#0" />
-            <element signature="method#hashCode#0;class#Track#0" />
-            <element signature="method#equals#0;class#Track#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1072,13 +1043,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="56" column="36" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
-          <folding>
-            <element signature="method#Point#0;class#Point#0" />
-            <element signature="method#setX#0;class#Point#0" />
-            <element signature="method#setY#0;class#Point#0" />
-            <element signature="method#setZ#0;class#Point#0" />
-            <element signature="method#calculateDistanceToPoint#0;class#Point#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1086,22 +1050,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="114" column="42" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
-          <folding>
-            <element signature="docComment;method#EllipsoidCalculator#0;class#EllipsoidCalculator#0" />
-            <element signature="method#EllipsoidCalculator#0;class#EllipsoidCalculator#0" />
-            <element signature="method#EllipsoidCalculator#1;class#EllipsoidCalculator#0" />
-            <element signature="docComment;method#EllipsoidCalculator#2;class#EllipsoidCalculator#0" />
-            <element signature="method#EllipsoidCalculator#2;class#EllipsoidCalculator#0" />
-            <element signature="method#getCentroid#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getRadii#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getRotationMatrix#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getOrientationRads#0;class#EllipsoidCalculator#0" />
-            <element signature="docComment;method#getSurfaceArea#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getSurfaceArea#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getVolume#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getSphericity#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getContainedPoints#0;class#EllipsoidCalculator#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1116,19 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="method#EllipseCalculator#0;class#EllipseCalculator#0" />
-            <element signature="method#EllipseCalculator#1;class#EllipseCalculator#0" />
-            <element signature="method#fitEllipse#0;class#EllipseCalculator#0" />
-            <element signature="method#getEllipseFit#0;class#EllipseCalculator#0" />
-            <element signature="method#getXCentre#0;class#EllipseCalculator#0" />
-            <element signature="method#getYCentre#0;class#EllipseCalculator#0" />
-            <element signature="docComment;method#getSemiAxes#0;class#EllipseCalculator#0" />
-            <element signature="method#getSemiAxes#0;class#EllipseCalculator#0" />
-            <element signature="method#getSemiMajorAxis#0;class#EllipseCalculator#0" />
-            <element signature="method#getSemiMinorAxis#0;class#EllipseCalculator#0" />
-            <element signature="method#getContainedPoints#0;class#EllipseCalculator#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1143,42 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="749">
           <caret line="643" selection-start-line="643" selection-end-line="643" />
-          <folding>
-            <element signature="e#275#628#0" />
-            <element signature="e#660#1392#0" />
-            <element signature="e#1398#2130#0" />
-            <element signature="e#2136#2869#0" />
-            <element signature="e#2875#3274#0" />
-            <element signature="e#3280#3777#0" />
-            <element signature="e#3783#4292#0" />
-            <element signature="e#4298#4791#0" />
-            <element signature="e#4797#5305#0" />
-            <element signature="e#5311#5823#0" />
-            <element signature="e#5829#6340#0" />
-            <element signature="e#6346#7056#0" />
-            <element signature="e#7062#7390#0" />
-            <element signature="e#7419#7819#0" />
-            <element signature="e#7825#8233#0" />
-            <element signature="e#8239#8640#0" />
-            <element signature="e#8646#9054#0" />
-            <element signature="e#9060#9480#0" />
-            <element signature="e#9486#9903#0" />
-            <element signature="e#9909#10392#0" />
-            <element signature="e#10423#10833#0" />
-            <element signature="e#10839#11256#0" />
-            <element signature="e#11262#11669#0" />
-            <element signature="e#11675#12091#0" />
-            <element signature="e#12097#12526#0" />
-            <element signature="e#12532#12958#0" />
-            <element signature="e#12964#13458#0" />
-            <element signature="e#13464#13904#0" />
-            <element signature="e#13910#14359#0" />
-            <element signature="e#14365#14804#0" />
-            <element signature="e#14810#15258#0" />
-            <element signature="e#15264#15723#0" />
-            <element signature="e#15729#16186#0" />
-            <element signature="e#16192#16716#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1186,83 +1085,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="749">
           <caret line="578" column="7" selection-start-line="578" selection-start-column="7" selection-end-line="583" selection-end-column="7" />
-          <folding>
-            <element signature="docComment;class#Volume#0" />
-            <element signature="e#914#1080#0" />
-            <element signature="e#1133#1301#0" />
-            <element signature="e#1357#1571#0" />
-            <element signature="e#1578#1652#0" />
-            <element signature="e#1658#1772#0" />
-            <element signature="e#1851#1975#0" />
-            <element signature="e#1981#2042#0" />
-            <element signature="e#2048#2107#0" />
-            <element signature="e#2249#2394#0" />
-            <element signature="e#2400#2544#0" />
-            <element signature="e#2550#2695#0" />
-            <element signature="e#2701#2903#0" />
-            <element signature="e#2909#3111#0" />
-            <element signature="e#3117#3319#0" />
-            <element signature="e#3404#3557#0" />
-            <element signature="e#3563#4147#0" />
-            <element signature="e#4153#4921#0" />
-            <element signature="e#4927#5051#0" />
-            <element signature="e#5057#5499#0" />
-            <element signature="e#5501#5554#0" />
-            <element signature="e#5649#5954#0" />
-            <element signature="e#5960#6265#0" />
-            <element signature="e#6271#6511#0" />
-            <element signature="e#6271#7012#0" />
-            <element signature="e#7018#7381#0" />
-            <element signature="e#7387#7750#0" />
-            <element signature="e#7756#7996#0" />
-            <element signature="e#7756#8556#0" />
-            <element signature="e#8626#9051#0" />
-            <element signature="e#9057#10139#0" />
-            <element signature="e#10145#10319#0" />
-            <element signature="e#10145#10605#0" />
-            <element signature="e#10611#10892#0" />
-            <element signature="e#10898#11345#0" />
-            <element signature="e#11351#11642#0" />
-            <element signature="e#11648#11939#0" />
-            <element signature="e#11945#12344#0" />
-            <element signature="e#12350#12594#0" />
-            <element signature="e#12600#13270#0" />
-            <element signature="e#13276#13779#0" />
-            <element signature="e#13785#14131#0" />
-            <element signature="e#14137#14450#0" />
-            <element signature="e#14456#14518#0" />
-            <element signature="e#14524#14946#0" />
-            <element signature="e#14952#15516#0" />
-            <element signature="e#15522#15993#0" />
-            <element signature="e#15999#17790#0" />
-            <element signature="e#17796#18373#0" />
-            <element signature="e#18379#18570#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFilenameExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/GenericExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GenericExtractor#0;class#GenericExtractor#0" />
-          </folding>
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1276,7 +1105,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/HCMetadata.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
           <folding>
             <element signature="docComment;class#HCMetadata#0" />
             <element signature="e#1868#1896#0" />
@@ -1291,7 +1120,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/IncuCyteLongFilenameExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
-          <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1305,7 +1134,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/CV7000FilenameExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="30" column="53" lean-forward="true" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+          <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -1319,21 +1148,39 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFoldernameExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+          <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/KeywordExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFileExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+        <state relative-caret-position="255">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/GenericExtractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#GenericExtractor#0;class#GenericExtractor#0" />
+          </folding>
         </state>
       </provider>
     </entry>
