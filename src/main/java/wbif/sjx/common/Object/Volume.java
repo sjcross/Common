@@ -544,11 +544,11 @@ public class Volume {
 
     }
 
-    public ArrayList<Point<Integer>> getOverlappingPoints(Volume volume2) {
+    public HashSet<Point<Integer>> getOverlappingPoints(Volume volume2) {
         TreeSet<Point<Integer>> points1 = getPoints();
         TreeSet<Point<Integer>> points2 = volume2.getPoints();
 
-        ArrayList<Point<Integer>> overlapping = new ArrayList<>();
+        HashSet<Point<Integer>> overlapping = new HashSet<>();
 
         for (Point<Integer> p1:points1) {
             for (Point<Integer> p2:points2) {

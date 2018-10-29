@@ -4,6 +4,7 @@ import wbif.sjx.common.Object.HCMetadata;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public class GenericExtractor implements NameExtractor {
     private static final String name = "Generic";
@@ -27,22 +28,27 @@ public class GenericExtractor implements NameExtractor {
 
     @Override
     public boolean extract(HCMetadata result, String str) {
-        Pattern fi_pattern = Pattern.compile(pattern);
-        Matcher fi_matcher = fi_pattern.matcher(str);
+        try {
+            Pattern fi_pattern = Pattern.compile(pattern);
+            Matcher fi_matcher = fi_pattern.matcher(str);
 
-        if (fi_matcher.find()) {
-            int nGroups = Math.min(fi_matcher.groupCount(),groups.length);
-            for (int i=0;i<nGroups;i++) {
-                String group = groups[i];
-                String value = fi_matcher.group(i+1);
-                result.put(group,value);
+            if (fi_matcher.find()) {
+                int nGroups = Math.min(fi_matcher.groupCount(), groups.length);
+
+                for (int i = 0; i < nGroups; i++) {
+                    String group = groups[i];
+                    String value = fi_matcher.group(i + 1);
+                    result.put(group, value);
+
+                }
+                return true;
+
+            } else {
+                return false;
 
             }
-            return true;
-
-        } else {
+        } catch (PatternSyntaxException e) {
             return false;
-
         }
     }
 }

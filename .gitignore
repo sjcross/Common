@@ -5,4 +5,5 @@ target/
 
 *.jar
 
+\.idea/workspace\.xml
 \.idea/libraries/
