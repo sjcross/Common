@@ -5,6 +5,8 @@ import ij.ImagePlus;
 import ij.plugin.Duplicator;
 import ij.process.ImageStatistics;
 import wbif.sjx.common.MathFunc.CumStat;
+import wbif.sjx.common.Object.Point;
+import wbif.sjx.common.Object.Volume;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +14,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /**
- * Created by steph on 15/04/2017.
+ * Created by Stephen on 15/04/2017.
  */
 public class IntensityMinMax {
     public static void run(ImagePlus ipl, boolean stack) {
@@ -132,26 +134,16 @@ public class IntensityMinMax {
 //    }
 
     public static double[] getWeightedChannelRange(ImagePlus ipl, int channel, double weight) {
-        // Arranging pixel values into ArrayList, then ordering by value
-        ArrayList<Float> pixels = new ArrayList<>();
-        int sum = 0;
-        for (int slice = 0; slice < ipl.getNSlices(); slice++) {
-            for (int frame = 0; frame < ipl.getNFrames(); frame++) {
-                ipl.setPosition(channel + 1, slice + 1, frame + 1);
-                float[][] floats = ipl.getProcessor().getFloatArray();
-                for (float[] f1:floats) {
-                    for (float f2:f1) {
-                        if (!Float.isNaN(f2)) {
-                            pixels.add(f2);
-                            sum++;
-                        }
-                    }
-                }
-            }
-        }
+        return getWeightedChannelRange(ipl,null,channel,0,weight);
+
+    }
+
+    public static double[] getWeightedChannelRange(ImagePlus ipl, Volume volume, int channel, int frame, double weight) {
+        ArrayList<Float> pixels = volume == null ? getPixels(ipl,channel) : getPixels(ipl,volume,channel,frame);
         pixels.sort(Float::compareTo);
 
         // Getting the min and max bins
+        int sum = pixels.size();
         int minBin = (int) Math.round(sum * weight);
         int maxBin = (int) Math.round(sum - sum * weight)-1;
 
@@ -169,6 +161,42 @@ public class IntensityMinMax {
 
         // Getting the minimum and maximum values
         return new double[]{pixels.get(minBin),pixels.get(maxBin)};
+
+    }
+
+    public static ArrayList<Float> getPixels(ImagePlus ipl, int channel) {
+        // Arranging pixel values into ArrayList, then ordering by value
+        ArrayList<Float> pixels = new ArrayList<>();
+
+        for (int slice = 0; slice < ipl.getNSlices(); slice++) {
+            for (int frame = 0; frame < ipl.getNFrames(); frame++) {
+                ipl.setPosition(channel + 1, slice + 1, frame + 1);
+                float[][] floats = ipl.getProcessor().getFloatArray();
+                for (float[] f1:floats) {
+                    for (float f2:f1) {
+                        if (!Float.isNaN(f2)) {
+                            pixels.add(f2);
+                        }
+                    }
+                }
+            }
+        }
+
+        return pixels;
+
+    }
+
+    public static ArrayList<Float> getPixels(ImagePlus ipl, Volume volume, int channel, int frame) {
+        // Arranging pixel values into ArrayList, then ordering by value
+        ArrayList<Float> pixels = new ArrayList<>();
+
+        TreeSet<Point<Integer>> points = volume.getPoints();
+        for (Point<Integer> point:points) {
+            ipl.setPosition(channel + 1, point.getZ() + 1, frame + 1);
+            pixels.add(ipl.getProcessor().getf(point.getX(),point.getY()));
+        }
+
+        return pixels;
 
     }
 }
