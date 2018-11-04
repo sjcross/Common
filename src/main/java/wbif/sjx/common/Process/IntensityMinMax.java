@@ -2,6 +2,7 @@ package wbif.sjx.common.Process;
 
 import ij.IJ;
 import ij.ImagePlus;
+import ij.ImageStack;
 import ij.plugin.Duplicator;
 import ij.process.ImageStatistics;
 import wbif.sjx.common.MathFunc.CumStat;
