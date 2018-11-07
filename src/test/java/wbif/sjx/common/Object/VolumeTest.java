@@ -1397,6 +1397,244 @@ public class VolumeTest {
     }
 
 
+    // OVERLAP TESTS
+
+    @Test
+    public void testGetOverlappingPointsWithOverlap() {
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
+        volume2.addCoord(2,2,3);
+        volume2.addCoord(4,3,12);
+        volume2.addCoord(2,2,2);
+        volume2.addCoord(1,2,5);
+
+        HashSet<Point<Integer>> actual = volume1.getOverlappingPoints(volume2);
+
+        HashSet<Point<Integer>> expected = new HashSet<>();
+        expected.add(new Point<>(4,3,12));
+        expected.add(new Point<>(1,2,5));
+
+        assertEquals(2,actual.size());
+        assertEquals(expected,actual);
+
+
+    }
+
+    @Test
+    public void testGetOverlappingPointsWithoutOverlap() {
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
+        volume2.addCoord(2,2,3);
+        volume2.addCoord(5,3,12);
+        volume2.addCoord(2,2,2);
+        volume2.addCoord(2,2,5);
+
+        HashSet<Point<Integer>> actual = volume1.getOverlappingPoints(volume2);
+
+        HashSet<Point<Integer>> expected = new HashSet<>();
+
+        assertEquals(0,actual.size());
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void testGetOverlappingPointsTotalOverlap() {
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
+        volume2.addCoord(1,2,3);
+        volume2.addCoord(4,3,12);
+        volume2.addCoord(2,1,2);
+        volume2.addCoord(1,2,5);
+
+        HashSet<Point<Integer>> actual = volume1.getOverlappingPoints(volume2);
+
+        HashSet<Point<Integer>> expected = new HashSet<>();
+        expected.add(new Point<>(1,2,3));
+        expected.add(new Point<>(4,3,12));
+        expected.add(new Point<>(2,1,2));
+        expected.add(new Point<>(1,2,5));
+
+        assertEquals(4,actual.size());
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void testGetOverlappingPointsWithOverlapMoreIn1() {
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+        volume1.addCoord(4,5,5);
+
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
+        volume2.addCoord(2,2,3);
+        volume2.addCoord(4,3,12);
+        volume2.addCoord(2,2,2);
+        volume2.addCoord(1,2,5);
+
+        HashSet<Point<Integer>> actual = volume1.getOverlappingPoints(volume2);
+
+        HashSet<Point<Integer>> expected = new HashSet<>();
+        expected.add(new Point<>(4,3,12));
+        expected.add(new Point<>(1,2,5));
+
+        assertEquals(2,actual.size());
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void testGetOverlappingPointsWithOverlapMoreIn2() {
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
+        volume2.addCoord(2,2,3);
+        volume2.addCoord(4,3,12);
+        volume2.addCoord(2,2,2);
+        volume2.addCoord(1,2,5);
+        volume2.addCoord(4,5,5);
+
+        HashSet<Point<Integer>> actual = volume1.getOverlappingPoints(volume2);
+
+        HashSet<Point<Integer>> expected = new HashSet<>();
+        expected.add(new Point<>(4,3,12));
+        expected.add(new Point<>(1,2,5));
+
+        assertEquals(2,actual.size());
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void testGetOverlapWithOverlap() {
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
+        volume2.addCoord(2,2,3);
+        volume2.addCoord(4,3,12);
+        volume2.addCoord(2,2,2);
+        volume2.addCoord(1,2,5);
+
+        int actual = volume1.getOverlap(volume2);
+        int expected = 2;
+
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void testGetOverlapWithoutOverlap() {
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
+        volume2.addCoord(2,2,3);
+        volume2.addCoord(5,3,12);
+        volume2.addCoord(2,2,2);
+        volume2.addCoord(2,2,5);
+
+        int actual = volume1.getOverlap(volume2);
+        int expected = 0;
+
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void testGetOverlapTotalOverlap() {
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
+        volume2.addCoord(1,2,3);
+        volume2.addCoord(4,3,12);
+        volume2.addCoord(2,1,2);
+        volume2.addCoord(1,2,5);
+
+        int actual = volume1.getOverlap(volume2);
+        int expected = 4;
+
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void testGetOverlapTotalOverlapMoreIn1() {
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+        volume1.addCoord(4,5,5);
+
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
+        volume2.addCoord(1,2,3);
+        volume2.addCoord(4,3,12);
+        volume2.addCoord(2,1,2);
+        volume2.addCoord(1,2,5);
+
+        int actual = volume1.getOverlap(volume2);
+        int expected = 4;
+
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void testGetOverlapTotalOverlapMoreIn2() {
+        Volume volume1 = new Volume(2.0,1.0,"PX", false);
+        volume1.addCoord(1,2,3);
+        volume1.addCoord(4,3,12);
+        volume1.addCoord(2,1,2);
+        volume1.addCoord(1,2,5);
+
+        Volume volume2 = new Volume(2.0,1.0,"PX", false);
+        volume2.addCoord(1,2,3);
+        volume2.addCoord(4,3,12);
+        volume2.addCoord(2,1,2);
+        volume2.addCoord(1,2,5);
+        volume2.addCoord(4,5,5);
+
+        int actual = volume1.getOverlap(volume2);
+        int expected = 4;
+
+        assertEquals(expected,actual);
+
+    }
+
+
     // MISCELLANEOUS METHODS
 
     @Test
@@ -1440,15 +1678,6 @@ public class VolumeTest {
 
 
     // MISSING TESTS
-    @Test @Ignore
-    public void testGetOverlappingPoints() {
-
-    }
-
-    @Test @Ignore
-    public void testGetOverlap() {
-
-    }
 
     @Test @Ignore
     public void testGetXSurfaceCoords() {

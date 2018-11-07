@@ -467,24 +467,21 @@ public class Volume {
     }
 
     public int getOverlap(Volume volume2) {
-        double[] x1 = getX(true);
-        double[] y1 = getY(true);
-        double[] z1 = getZ(true,false);
+        TreeSet<Point<Integer>> points1 = getPoints();
+        TreeSet<Point<Integer>> points2 = volume2.getPoints();
 
-        double[] x2 = volume2.getX(true);
-        double[] y2 = volume2.getY(true);
-        double[] z2 = volume2.getZ(true,false);
-        int ovl = 0;
+        HashSet<Point<Integer>> overlapping = new HashSet<>();
 
-        for(int i = 0; i < x1.length; ++i) {
-            for(int j = 0; j < x2.length; ++j) {
-                if(x1[i] == x2[j] & y1[i] == y2[j] & z1[i] == z2[j]) {
-                    ovl++;
-                }
-            }
+        int count = 0;
+
+        // Iterate over the object with the fewest points
+        if (points1.size() < points2.size()) {
+            for (Point<Integer> p1:points1) if (points2.contains(p1)) count++;
+        } else {
+            for (Point<Integer> p2:points2) if (points1.contains(p2)) count++;
         }
 
-        return ovl;
+        return count;
 
     }
 
@@ -549,13 +546,10 @@ public class Volume {
         TreeSet<Point<Integer>> points2 = volume2.getPoints();
 
         HashSet<Point<Integer>> overlapping = new HashSet<>();
-
-        for (Point<Integer> p1:points1) {
-            for (Point<Integer> p2:points2) {
-                if(p1.getX().equals(p2.getX()) && p1.getY().equals(p2.getY()) && p1.getZ().equals(p2.getZ())) {
-                    overlapping.add(p2);
-                }
-            }
+        if (points1.size() < points2.size()) {
+            for (Point<Integer> p1 : points1) if (points2.contains(p1)) overlapping.add(p1);
+        } else {
+            for (Point<Integer> p2 : points2) if (points1.contains(p2)) overlapping.add(p2);
         }
 
         return overlapping;
