@@ -44,7 +44,11 @@ public class EllipseCalculator {
         }
 
         // The following test prevents objects being created for ill-fit ellipses
-        if (getSemiMajorAxis() > maxAxisLength) e2d = null;
+        double semiMinor = getSemiMinorAxis();
+        double semiMajor = getSemiMajorAxis();
+        if (semiMajor > maxAxisLength) e2d = null;
+        if (semiMinor <= 0 || semiMajor <= 0) e2d = null;
+        if (Double.isNaN(semiMinor) || Double.isNaN(semiMajor)) e2d = null;
 
     }
 
