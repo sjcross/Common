@@ -133,7 +133,7 @@ public class CumStat {
     }
 
     public synchronized double getN() {
-        return n == 0 ? Double.NaN : n;
+        return n;
     }
 
     public synchronized double getMin() {
