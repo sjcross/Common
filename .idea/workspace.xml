@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sc_fiji_Fiji_Plugins_3_1_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Common.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/CumStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/CumStat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,11 +42,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="55" lean-forward="true" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+            <state relative-caret-position="187">
+              <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IntensityMinMax.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="134" column="112" selection-start-line="134" selection-start-column="112" selection-end-line="134" selection-end-column="112" />
+              <folding>
+                <element signature="docComment;class#IntensityMinMax#0" />
+                <element signature="method#run#0;class#IntensityMinMax#0" />
+                <element signature="method#run#1;class#IntensityMinMax#0" />
+                <element signature="method#processSingle#0;class#IntensityMinMax#0" />
+                <element signature="method#processStack#0;class#IntensityMinMax#0" />
+                <element signature="docComment;method#getWeightedChannelRangeFast#0;class#IntensityMinMax#0" />
+                <element signature="method#getWeightedChannelRangeFast#0;class#IntensityMinMax#0" />
+                <element signature="docComment;method#getWeightedChannelRangeFast#1;class#IntensityMinMax#0" />
+                <element signature="method#getWeightedChannelRangeFast#1;class#IntensityMinMax#0" />
+                <element signature="docComment;method#getWeightedChannelRangePrecise#0;class#IntensityMinMax#0" />
+                <element signature="method#getWeightedChannelRangePrecise#0;class#IntensityMinMax#0" />
+                <element signature="docComment;method#getWeightedChannelRangePrecise#1;class#IntensityMinMax#0" />
+                <element signature="method#getWeightedChannelRangePrecise#1;class#IntensityMinMax#0" />
+                <element signature="method#getAbsoluteRange#0;class#IntensityMinMax#0" />
+                <element signature="method#getAbsoluteRange#1;class#IntensityMinMax#0" />
+                <element signature="method#getPixels#0;class#IntensityMinMax#0" />
+                <element signature="method#getPixels#1;class#IntensityMinMax#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OperaFileExtractor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFileExtractor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#643#644#0" expanded="true" />
+                <element signature="e#670#671#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,11 +96,11 @@
       <file leaf-file-name="CumStat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/CumStat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
+            <state relative-caret-position="2040">
               <caret line="135" column="16" selection-start-line="135" selection-start-column="16" selection-end-line="135" selection-end-column="16" />
               <folding>
                 <element signature="e#3468#3469#0" expanded="true" />
-                <element signature="e#3514#3515#0" expanded="true" />
+                <element signature="e#3492#3493#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,7 +109,7 @@
       <file leaf-file-name="EllipseCalculator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
+            <state relative-caret-position="901">
               <caret line="54" column="36" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="36" />
               <folding>
                 <element signature="method#getEllipseFit#0;class#EllipseCalculator#0" />
@@ -288,7 +329,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/PeriodogramCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ConvexHullCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GaussianFitter.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java" />
@@ -332,13 +372,14 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFilenameExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/GenericExtractor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/CumStat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFileExtractor.java" />
       </list>
     </option>
   </component>
@@ -411,8 +452,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -505,6 +544,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -870,40 +911,40 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1476" height="878" extended-state="7" />
+    <frame x="-8" y="-8" width="1862" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" visible="true" weight="0.27846536" />
+      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" visible="true" weight="0.27804878" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info auto_hide="true" content_ui="combo" id="Project" order="0" weight="0.21956225" />
+      <window_info auto_hide="true" content_ui="combo" id="Project" order="0" weight="0.21939328" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39961013" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
+      <window_info id="Capture Tool" order="2" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3294347" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Debug with VisualVM" order="11" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Nl-Palette" order="2" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Run with VisualVM" order="10" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="right" id="Database" order="10" />
       <window_info anchor="right" id="Properties" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Coverage" order="11" side_tool="true" weight="0.3296875" />
     </layout>
   </component>
@@ -1194,13 +1235,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFileExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/GenericExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1226,13 +1260,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="119" column="36" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
         </state>
       </provider>
     </entry>
@@ -1377,7 +1404,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
+        <state relative-caret-position="901">
           <caret line="54" column="36" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="36" />
           <folding>
             <element signature="method#getEllipseFit#0;class#EllipseCalculator#0" />
@@ -1395,19 +1422,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/CumStat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
+        <state relative-caret-position="2040">
           <caret line="135" column="16" selection-start-line="135" selection-start-column="16" selection-end-line="135" selection-end-column="16" />
           <folding>
             <element signature="e#3468#3469#0" expanded="true" />
-            <element signature="e#3514#3515#0" expanded="true" />
+            <element signature="e#3492#3493#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="134" column="112" selection-start-line="134" selection-start-column="112" selection-end-line="134" selection-end-column="112" />
+          <folding>
+            <element signature="docComment;class#IntensityMinMax#0" />
+            <element signature="method#run#0;class#IntensityMinMax#0" />
+            <element signature="method#run#1;class#IntensityMinMax#0" />
+            <element signature="method#processSingle#0;class#IntensityMinMax#0" />
+            <element signature="method#processStack#0;class#IntensityMinMax#0" />
+            <element signature="docComment;method#getWeightedChannelRangeFast#0;class#IntensityMinMax#0" />
+            <element signature="method#getWeightedChannelRangeFast#0;class#IntensityMinMax#0" />
+            <element signature="docComment;method#getWeightedChannelRangeFast#1;class#IntensityMinMax#0" />
+            <element signature="method#getWeightedChannelRangeFast#1;class#IntensityMinMax#0" />
+            <element signature="docComment;method#getWeightedChannelRangePrecise#0;class#IntensityMinMax#0" />
+            <element signature="method#getWeightedChannelRangePrecise#0;class#IntensityMinMax#0" />
+            <element signature="docComment;method#getWeightedChannelRangePrecise#1;class#IntensityMinMax#0" />
+            <element signature="method#getWeightedChannelRangePrecise#1;class#IntensityMinMax#0" />
+            <element signature="method#getAbsoluteRange#0;class#IntensityMinMax#0" />
+            <element signature="method#getAbsoluteRange#1;class#IntensityMinMax#0" />
+            <element signature="method#getPixels#0;class#IntensityMinMax#0" />
+            <element signature="method#getPixels#1;class#IntensityMinMax#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="55" lean-forward="true" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+        <state relative-caret-position="187">
+          <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MetadataExtractors/OperaFileExtractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#643#644#0" expanded="true" />
+            <element signature="e#670#671#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

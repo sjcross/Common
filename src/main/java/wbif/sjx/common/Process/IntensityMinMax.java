@@ -2,7 +2,6 @@ package wbif.sjx.common.Process;
 
 import ij.ImagePlus;
 import ij.process.ImageStatistics;
-import org.apache.commons.lang.SystemUtils;
 import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Volume;
 
