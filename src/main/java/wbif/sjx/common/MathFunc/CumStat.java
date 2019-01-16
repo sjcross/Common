@@ -8,6 +8,7 @@ import java.util.Collection;
 public class CumStat {
     public static final int POPULATION = 1;
     public static final int SAMPLE = 2;
+
     private double xMean = 0;
     private double xVarPop = 0;
     private double xVarSamp = 0;
@@ -22,33 +23,39 @@ public class CumStat {
     }
 
     public CumStat(double[] vals) {
-        for (double val:vals) {
-            addMeasure(val);
-        }
+        for (double val:vals) addMeasure(val);
+    }
+
+    public CumStat(float[] vals) {
+        for (float val:vals) addMeasure(val);
     }
 
     public CumStat(double[] vals, boolean ignoreZeroes) {
-        for (double val:vals) {
-            addMeasure(val,ignoreZeroes);
-        }
+        for (double val:vals) addMeasure(val,ignoreZeroes);
+    }
+
+    public CumStat(float[] vals, boolean ignoreZeroes) {
+        for (float val:vals) addMeasure(val,ignoreZeroes);
     }
 
     public CumStat(double[] vals, double[] weights) {
-        for (int i=0;i<vals.length;i++) {
-            addMeasure(vals[i],weights[i]);
-        }
+        for (int i=0;i<vals.length;i++) addMeasure(vals[i],weights[i]);
+    }
+
+    public CumStat(float[] vals, double[] weights) {
+        for (int i=0;i<vals.length;i++) addMeasure(vals[i],weights[i]);
     }
 
     public CumStat(double[] vals, double[] weights, boolean ignoreZeroes) {
-        for (int i=0;i<vals.length;i++) {
-            addMeasure(vals[i],weights[i],ignoreZeroes);
-        }
+        for (int i=0;i<vals.length;i++) addMeasure(vals[i],weights[i],ignoreZeroes);
+    }
+
+    public CumStat(float[] vals, double[] weights, boolean ignoreZeroes) {
+        for (int i=0;i<vals.length;i++) addMeasure(vals[i],weights[i],ignoreZeroes);
     }
 
     public CumStat(Collection<Double> vals) {
-        for (double val:vals) {
-            addMeasure(val);
-        }
+        for (double val:vals) addMeasure(val);
     }
 
     public synchronized void addMeasure(double xIn) {
@@ -89,17 +96,19 @@ public class CumStat {
     }
 
     public synchronized void addMeasures(double[] xIn) {
-        for(int i = 0; i < xIn.length; ++i) {
-            addMeasure(xIn[i], 1);
-        }
+        for(int i = 0; i < xIn.length; ++i) addMeasure(xIn[i], 1);
+    }
 
+    public synchronized void addMeasures(float[] xIn) {
+        for(int i = 0; i < xIn.length; ++i) addMeasure(xIn[i], 1);
     }
 
     public synchronized void addMeasures(double[] xIn, double[] w) {
-        for(int i = 0; i < xIn.length; ++i) {
-            addMeasure(xIn[i], w[i]);
-        }
+        for(int i = 0; i < xIn.length; ++i) addMeasure(xIn[i], w[i]);
+    }
 
+    public synchronized void addMeasures(float[] xIn, float[] w) {
+        for(int i = 0; i < xIn.length; ++i) addMeasure(xIn[i], w[i]);
     }
 
     public synchronized double getMean() {
