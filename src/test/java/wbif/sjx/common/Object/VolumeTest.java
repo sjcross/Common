@@ -2,6 +2,7 @@ package wbif.sjx.common.Object;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import wbif.sjx.common.Exceptions.IntegerOverflowException;
 
 import java.util.*;
 
@@ -15,7 +16,7 @@ public class VolumeTest {
     // ADDING COORDINATES
 
     @Test
-    public void testAddCoordAlreadyExists() {
+    public void testAddCoordAlreadyExists() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -33,7 +34,7 @@ public class VolumeTest {
     // COORDINATE TESTS
 
     @Test
-    public void testGetXCoords() {
+    public void testGetXCoords() throws IntegerOverflowException {
         Volume volume = new Volume(2.0,1.0,"PX", false);
         volume.addCoord(1,2,3);
         volume.addCoord(4,3,12);
@@ -58,7 +59,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetYCoords() {
+    public void testGetYCoords() throws IntegerOverflowException {
         Volume volume = new Volume(2.0,1.0,"PX", false);
         volume.addCoord(1,2,3);
         volume.addCoord(4,3,12);
@@ -83,7 +84,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZCoords() {
+    public void testGetZCoords() throws IntegerOverflowException {
         Volume volume = new Volume(2.0,1.0,"PX", false);
         volume.addCoord(1,2,3);
         volume.addCoord(4,3,12);
@@ -124,7 +125,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetXPixelDistances() {
+    public void testGetXPixelDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -143,7 +144,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetXCalibratedDistances() {
+    public void testGetXCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -162,7 +163,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetYPixelDistances() {
+    public void testGetYPixelDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -181,7 +182,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetYCalibratedDistances() {
+    public void testGetYCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -200,7 +201,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZPixelDistancesDoesntMatchXY() {
+    public void testGetZPixelDistancesDoesntMatchXY() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -219,7 +220,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZPixelDistancesDoesMatchXY() {
+    public void testGetZPixelDistancesDoesMatchXY() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -238,7 +239,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZCalibratedDistances() {
+    public void testGetZCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -278,7 +279,7 @@ public class VolumeTest {
     // MEAN POSITION
 
     @Test
-    public void testGetXMeanPixelDistances() {
+    public void testGetXMeanPixelDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -294,7 +295,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetXMeanCalibratedDistances() {
+    public void testGetXMeanCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -310,7 +311,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetYMeanPixelDistances() {
+    public void testGetYMeanPixelDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -326,7 +327,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetYMeanCalibratedDistances() {
+    public void testGetYMeanCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -342,7 +343,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZMeanPixelDistancesDoesntMatchXY() {
+    public void testGetZMeanPixelDistancesDoesntMatchXY() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -358,7 +359,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZMeanPixelDistancesDoesMatchXY() {
+    public void testGetZMeanPixelDistancesDoesMatchXY() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -374,7 +375,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZMeanCalibratedDistances() {
+    public void testGetZMeanCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -394,7 +395,7 @@ public class VolumeTest {
     // MEDIAN POSITION
 
     @Test
-    public void testGetXMedianPixelDistancesEvenN() {
+    public void testGetXMedianPixelDistancesEvenN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -409,7 +410,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetXMedianCalibratedDistancesEvenN() {
+    public void testGetXMedianCalibratedDistancesEvenN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -425,7 +426,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetYMedianPixelDistancesEvenN() {
+    public void testGetYMedianPixelDistancesEvenN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -440,7 +441,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetYMedianCalibratedDistancesEvenN() {
+    public void testGetYMedianCalibratedDistancesEvenN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -456,7 +457,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZMedianPixelDistancesDoesntMatchXYEvenN() {
+    public void testGetZMedianPixelDistancesDoesntMatchXYEvenN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -472,7 +473,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZMedianPixelDistancesDoesMatchXYEvenN() {
+    public void testGetZMedianPixelDistancesDoesMatchXYEvenN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -488,7 +489,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZMedianCalibratedDistancesEvenN() {
+    public void testGetZMedianCalibratedDistancesEvenN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -505,7 +506,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetXMedianPixelDistancesOddN() {
+    public void testGetXMedianPixelDistancesOddN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -521,7 +522,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetXMedianCalibratedDistancesOddN() {
+    public void testGetXMedianCalibratedDistancesOddN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -538,7 +539,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetYMedianPixelDistancesOddN() {
+    public void testGetYMedianPixelDistancesOddN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -554,7 +555,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetYMedianCalibratedDistancesOddN() {
+    public void testGetYMedianCalibratedDistancesOddN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -571,7 +572,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZMedianPixelDistancesDoesntMatchXYOddN() {
+    public void testGetZMedianPixelDistancesDoesntMatchXYOddN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -588,7 +589,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZMedianPixelDistancesDoesMatchXYOddN() {
+    public void testGetZMedianPixelDistancesDoesMatchXYOddN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -605,7 +606,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetZMedianCalibratedDistancesOddN() {
+    public void testGetZMedianCalibratedDistancesOddN() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -626,7 +627,7 @@ public class VolumeTest {
     // ANGLE BETWEEN TWO VOLUMES
 
     @Test
-    public void testCalculateAngle2DTopRight() {
+    public void testCalculateAngle2DTopRight() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -645,7 +646,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testCalculateAngle2DTopLeft() {
+    public void testCalculateAngle2DTopLeft() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -664,7 +665,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testCalculateAngle2DBottomLeft() {
+    public void testCalculateAngle2DBottomLeft() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -683,7 +684,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testCalculateAngle2DBottomRight() {
+    public void testCalculateAngle2DBottomRight() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -702,7 +703,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testCalculateAngle2DPositiveXAxis() {
+    public void testCalculateAngle2DPositiveXAxis() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -721,7 +722,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testCalculateAngle2DPositiveYAxis() {
+    public void testCalculateAngle2DPositiveYAxis() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -740,7 +741,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testCalculateAngle2DNegativeXAxis() {
+    public void testCalculateAngle2DNegativeXAxis() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -759,7 +760,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testCalculateAngle2DNegativeYAxis() {
+    public void testCalculateAngle2DNegativeYAxis() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -780,7 +781,7 @@ public class VolumeTest {
 
     // HEIGHT
     @Test
-    public void testGetHeightPixelDistancesDoesntMatchXY() {
+    public void testGetHeightPixelDistancesDoesntMatchXY() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -796,7 +797,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetHeightPixelDistancesDoesMatchXY() {
+    public void testGetHeightPixelDistancesDoesMatchXY() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -812,7 +813,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetHeightCalibratedDistances() {
+    public void testGetHeightCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -831,7 +832,7 @@ public class VolumeTest {
 
     // EXTENTS
     @Test
-    public void testGetExtentsPixelDistancesDoesntMatchXY() {
+    public void testGetExtentsPixelDistancesDoesntMatchXY() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -852,7 +853,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetExtentsPixelDistancesDoesMatchXY() {
+    public void testGetExtentsPixelDistancesDoesMatchXY() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -873,7 +874,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetExtentsCalibratedDistances() {
+    public void testGetExtentsCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -898,7 +899,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetExtents2DPixelDistances() {
+    public void testGetExtents2DPixelDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -917,7 +918,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetExtents2DDistancesCalibratedDistances() {
+    public void testGetExtents2DDistancesCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -951,7 +952,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testHasVolume2D() {
+    public void testHasVolume2D() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -967,7 +968,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testHasVolume3D() {
+    public void testHasVolume3D() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -995,7 +996,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testHasArea2D() {
+    public void testHasArea2D() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1011,7 +1012,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testHasArea3D() {
+    public void testHasArea3D() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1030,7 +1031,7 @@ public class VolumeTest {
     // VOLUME
 
     @Test
-    public void testContainsPointDoesContain() {
+    public void testContainsPointDoesContain() throws IntegerOverflowException {
         Volume volume = new Volume(2.0,1.0,"PX", false);
         volume.addCoord(1,2,3);
         volume.addCoord(4,3,12);
@@ -1044,7 +1045,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testContainsPointDoesntContain() {
+    public void testContainsPointDoesntContain() throws IntegerOverflowException {
         Volume volume = new Volume(2.0,1.0,"PX", false);
         volume.addCoord(1,2,3);
         volume.addCoord(4,3,12);
@@ -1070,7 +1071,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetNVoxelsHasVolume() {
+    public void testGetNVoxelsHasVolume() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1086,7 +1087,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetContainedVolumePixelDistances() {
+    public void testGetContainedVolumePixelDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1102,7 +1103,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetContainedVolumeCalibratedDistances() {
+    public void testGetContainedVolumeCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1118,7 +1119,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetContainedVolumePixelDistancesFlatObject() {
+    public void testGetContainedVolumePixelDistancesFlatObject() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1134,7 +1135,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetContainedVolumeCalibratedDistancesFlatObject() {
+    public void testGetContainedVolumeCalibratedDistancesFlatObject() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1153,7 +1154,7 @@ public class VolumeTest {
     // HASHCODE TESTS
 
     @Test
-    public void testHashCodeDifferentValue() {
+    public void testHashCodeDifferentValue() throws IntegerOverflowException {
         Volume volume1 = new Volume(1.0,1.0,"Test", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1171,7 +1172,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testHashCodeDifferentPointOrder() {
+    public void testHashCodeDifferentPointOrder() throws IntegerOverflowException {
         // Verifying that the order of point placement doesn't matter
         Volume volume1 = new Volume(2.0,1.0,"Test", false);
         volume1.addCoord(1,2,3);
@@ -1198,7 +1199,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testHashCodeMissingPoint() {
+    public void testHashCodeMissingPoint() throws IntegerOverflowException {
         // Verifying that all points need to be present for equality
         Volume volume1 = new Volume(1.0,1.0,"Test", false);
         volume1.addCoord(1,2,3);
@@ -1216,7 +1217,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testHashCodeDifferentCalibration() {
+    public void testHashCodeDifferentCalibration() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1234,7 +1235,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testHashCodeDifferentUnitsCase() {
+    public void testHashCodeDifferentUnitsCase() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1252,7 +1253,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testHashCodeDifferentUnits() {
+    public void testHashCodeDifferentUnits() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1273,7 +1274,7 @@ public class VolumeTest {
     // EQUALITY TESTS
 
     @Test
-    public void testEqualsDifferentValue() {
+    public void testEqualsDifferentValue() throws IntegerOverflowException {
         Volume volume1 = new Volume(1.0,1.0,"Test", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1292,7 +1293,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testEqualsDifferentPointOrder() {// Verifying that the order of point placement doesn't matter
+    public void testEqualsDifferentPointOrder() throws IntegerOverflowException {// Verifying that the order of point placement doesn't matter
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1321,7 +1322,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testEqualsMissingPoint() {
+    public void testEqualsMissingPoint() throws IntegerOverflowException {
         // Verifying that all points need to be present for equality
         Volume volume1 = new Volume(1.0,1.0,"Test", false);
         volume1.addCoord(1,2,3);
@@ -1340,7 +1341,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testEqualsDifferentCalibration() {
+    public void testEqualsDifferentCalibration() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1359,7 +1360,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testEqualsDifferentUnitsCase() {
+    public void testEqualsDifferentUnitsCase() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1378,7 +1379,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testEqualsDifferentUnits() {
+    public void testEqualsDifferentUnits() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1400,7 +1401,7 @@ public class VolumeTest {
     // OVERLAP TESTS
 
     @Test
-    public void testGetOverlappingPointsWithOverlap() {
+    public void testGetOverlappingPointsWithOverlap() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1426,7 +1427,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetOverlappingPointsWithoutOverlap() {
+    public void testGetOverlappingPointsWithoutOverlap() throws IntegerOverflowException  {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1449,7 +1450,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetOverlappingPointsTotalOverlap() {
+    public void testGetOverlappingPointsTotalOverlap() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1476,7 +1477,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetOverlappingPointsWithOverlapMoreIn1() {
+    public void testGetOverlappingPointsWithOverlapMoreIn1() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1502,7 +1503,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetOverlappingPointsWithOverlapMoreIn2() {
+    public void testGetOverlappingPointsWithOverlapMoreIn2() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1528,7 +1529,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetOverlapWithOverlap() {
+    public void testGetOverlapWithOverlap() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1549,7 +1550,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetOverlapWithoutOverlap() {
+    public void testGetOverlapWithoutOverlap() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1570,7 +1571,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetOverlapTotalOverlap() {
+    public void testGetOverlapTotalOverlap() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1591,7 +1592,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetOverlapTotalOverlapMoreIn1() {
+    public void testGetOverlapTotalOverlapMoreIn1() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1613,7 +1614,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetOverlapTotalOverlapMoreIn2() {
+    public void testGetOverlapTotalOverlapMoreIn2() throws IntegerOverflowException {
         Volume volume1 = new Volume(2.0,1.0,"PX", false);
         volume1.addCoord(1,2,3);
         volume1.addCoord(4,3,12);
@@ -1638,7 +1639,7 @@ public class VolumeTest {
     // MISCELLANEOUS METHODS
 
     @Test
-    public void testClearSurface() {
+    public void testClearSurface() throws IntegerOverflowException {
         Volume volume = new Volume(2.0,1.0,"PX", false);
         volume.addCoord(1,2,3);
         volume.addCoord(4,3,12);
@@ -1659,7 +1660,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testClearPoints() {
+    public void testClearPoints() throws IntegerOverflowException {
         Volume volume = new Volume(2.0,1.0,"PX", false);
         volume.addCoord(1,2,3);
         volume.addCoord(4,3,12);
@@ -1735,7 +1736,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetCentroidSeparation2DPixelDistances() {
+    public void testGetCentroidSeparation2DPixelDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1761,7 +1762,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetCentroidSeparation2DCalibratedDistances() {
+    public void testGetCentroidSeparation2DCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1787,7 +1788,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetCentroidSeparation3DPixelDistances() {
+    public void testGetCentroidSeparation3DPixelDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1820,7 +1821,7 @@ public class VolumeTest {
     }
 
     @Test
-    public void testGetCentroidSeparation3DCalibratedDistances() {
+    public void testGetCentroidSeparation3DCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";

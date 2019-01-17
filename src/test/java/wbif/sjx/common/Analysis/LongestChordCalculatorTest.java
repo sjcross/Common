@@ -2,6 +2,7 @@ package wbif.sjx.common.Analysis;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.ExpectedObjects.HorizontalCylinderR22;
 import wbif.sjx.common.ExpectedObjects.VerticalCylinderR5;
 import wbif.sjx.common.MathFunc.CumStat;
@@ -18,7 +19,7 @@ public class LongestChordCalculatorTest {
     private double tolerance = 1E-2;
 
     @Test
-    public void calculateAverageDistanceFromLCHorizontalCylinderR22() {
+    public void calculateAverageDistanceFromLCHorizontalCylinderR22() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -39,7 +40,7 @@ public class LongestChordCalculatorTest {
     }
 
     @Test
-    public void calculateAverageDistanceFromLCVerticalCylinderR5Calibrated() {
+    public void calculateAverageDistanceFromLCVerticalCylinderR5Calibrated() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -60,7 +61,7 @@ public class LongestChordCalculatorTest {
     }
 
     @Test
-    public void calculateAverageDistanceFromLCVerticalCylinderR5Uncalibrated() {
+    public void calculateAverageDistanceFromLCVerticalCylinderR5Uncalibrated() throws IntegerOverflowException {
         double dppXY = 1;
         double dppZ = 1;
         String calibratedUnits = "um";
@@ -81,7 +82,7 @@ public class LongestChordCalculatorTest {
     }
 
     @Test
-    public void testCalculateLCHorizontalCylinderR22() {
+    public void testCalculateLCHorizontalCylinderR22() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -105,7 +106,7 @@ public class LongestChordCalculatorTest {
     }
 
     @Test
-    public void testCalculateLCVerticalCylinderR5Calibrated() {
+    public void testCalculateLCVerticalCylinderR5Calibrated() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -129,7 +130,7 @@ public class LongestChordCalculatorTest {
     }
 
     @Test
-    public void testCalculateLCVerticalCylinderR5Uncalibrated() {
+    public void testCalculateLCVerticalCylinderR5Uncalibrated() throws IntegerOverflowException {
         double dppXY = 1;
         double dppZ = 1;
         String calibratedUnits = "um";
@@ -153,7 +154,7 @@ public class LongestChordCalculatorTest {
     }
 
     @Test
-    public void testGetLCLengthHorizontalCylinderR22() {
+    public void testGetLCLengthHorizontalCylinderR22() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -170,7 +171,7 @@ public class LongestChordCalculatorTest {
     }
 
     @Test
-    public void testGetLCLengthVerticalCylinderR5Calibrated() {
+    public void testGetLCLengthVerticalCylinderR5Calibrated() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String calibratedUnits = "um";
@@ -187,7 +188,7 @@ public class LongestChordCalculatorTest {
     }
 
     @Test
-    public void testGetLCLengthVerticalCylinderR5Uncalibrated() {
+    public void testGetLCLengthVerticalCylinderR5Uncalibrated() throws IntegerOverflowException {
         double dppXY = 1;
         double dppZ = 1;
         String calibratedUnits = "um";

@@ -1,6 +1,7 @@
 package wbif.sjx.common.Analysis;
 
 import org.bonej.geometry.FitEllipse;
+import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Volume;
 
 public class EllipseCalculator {
@@ -151,7 +152,7 @@ public class EllipseCalculator {
 
     }
 
-    public Volume getContainedPoints() {
+    public Volume getContainedPoints() throws IntegerOverflowException {
         if (e2d == null) return null;
 
         double dppXY = volume.getDistPerPxXY();

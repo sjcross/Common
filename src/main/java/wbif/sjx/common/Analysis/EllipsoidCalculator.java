@@ -7,6 +7,7 @@ import org.apache.commons.math3.geometry.euclidean.threed.PolyhedronsSet;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import org.apache.commons.math3.geometry.partitioning.Region;
 import org.bonej.geometry.Ellipsoid;
+import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Volume;
 
 import java.util.Arrays;
@@ -174,7 +175,7 @@ public class EllipsoidCalculator {
 
     }
 
-    public Volume getContainedPoints() {
+    public Volume getContainedPoints() throws IntegerOverflowException {
         if (ell == null) return null;
 
         double dppXY = volume.getDistPerPxXY();
