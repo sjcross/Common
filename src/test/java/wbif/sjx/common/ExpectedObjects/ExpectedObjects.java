@@ -1,6 +1,7 @@
 package wbif.sjx.common.ExpectedObjects;
 
 import util.opencsv.CSVReader;
+import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Volume;
 
 import java.io.BufferedReader;
@@ -24,7 +25,7 @@ public abstract class ExpectedObjects {
         this.is2D = is2D();
     }
 
-    public Volume getObject(double dppXY, double dppZ, String calibratedUnits) {
+    public Volume getObject(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
         Volume volume = new Volume(dppXY,dppZ,calibratedUnits,is2D);
 
         // Adding all provided coordinates to each object
@@ -42,7 +43,7 @@ public abstract class ExpectedObjects {
 
     }
 
-    public HashMap<Integer,Volume> getObjects(double dppXY, double dppZ, String calibratedUnits) {
+    public HashMap<Integer,Volume> getObjects(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
         // Initialising object store
         HashMap<Integer,Volume> testObjects = new HashMap<>();
 

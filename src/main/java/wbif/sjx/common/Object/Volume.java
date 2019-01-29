@@ -5,6 +5,7 @@ package wbif.sjx.common.Object;
 
 import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.commons.math3.stat.descriptive.rank.Min;
+import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.MathFunc.ArrayFunc;
 import wbif.sjx.common.MathFunc.CumStat;
 
@@ -58,8 +59,9 @@ public class Volume {
         points = new TreeSet<>();
     }
 
-    public Volume addCoord(int xIn, int yIn, int zIn) {
+    public Volume addCoord(int xIn, int yIn, int zIn) throws IntegerOverflowException {
         points.add(new Point<>(xIn,yIn,zIn));
+        if (points.size() == Integer.MAX_VALUE) throw new IntegerOverflowException("Object too large (Integer overflow).");
         return this;
     }
 
@@ -165,14 +167,17 @@ public class Volume {
     }
 
     public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2) {
-        Volume volume1 = new Volume(dppXY,dppZ,calibratedUnits,is2D());
-        volume1.addCoord(point1.getX(),point1.getY(),point1.getZ());
+        try {
+            Volume volume1 = new Volume(dppXY,dppZ,calibratedUnits,is2D());
+            volume1.addCoord(point1.getX(),point1.getY(),point1.getZ());
 
-        Volume volume2 = new Volume(dppXY,dppZ,calibratedUnits,is2D());
-        volume2.addCoord(point2.getX(),point2.getY(),point2.getZ());
+            Volume volume2 = new Volume(dppXY,dppZ,calibratedUnits,is2D());
+            volume2.addCoord(point2.getX(),point2.getY(),point2.getZ());
 
-        return volume1.getCentroidSeparation(volume2,true);
-
+            return volume1.getCentroidSeparation(volume2,true);
+        } catch (IntegerOverflowException e) {
+            return Double.NaN;
+        }
     }
 
 //    public void shrinkObject(double shrinkLength) {
@@ -640,5 +645,6 @@ public class Volume {
         return true;
 
     }
+
 
 }
