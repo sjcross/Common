@@ -36,8 +36,8 @@ public class SurfaceSeparationCalculator {
 
                 if (dist < Math.abs(minDist)) {
                     minDist = dist;
-                    p1 = new Point<Integer>((int) x1[i],(int) y1[i],(int) z1[i]);
-                    p2 = new Point<Integer>((int) x2[i],(int) y2[i],(int) z2[i]);
+                    p1 = new Point<Integer>((int) x1[i],(int) y1[i],(int) z1Slice[i]);
+                    p2 = new Point<Integer>((int) x2[j],(int) y2[j],(int) z2Slice[j]);
 
                     isInside = v1.getPoints().contains(currentPoint2);
                     if (!isInside) {
