@@ -5,11 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" line="783" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Common.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java" afterDir="false" />
-    </list>
+    <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -348,7 +344,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1860" />
