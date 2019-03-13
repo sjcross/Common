@@ -49,9 +49,9 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-math3:3.6.1" level="project" />
     <orderEntry type="library" name="Maven: net.imagej:ij:1.52i" level="project" />
-    <orderEntry type="library" name="Maven: net.imagej:imagej-ops:0.43.1" level="project" />
-    <orderEntry type="library" name="Maven: net.imagej:imagej-common:0.28.0" level="project" />
-    <orderEntry type="library" name="Maven: org.scijava:scijava-table:0.2.0" level="project" />
+    <orderEntry type="library" name="Maven: net.imagej:imagej-ops:0.43.2" level="project" />
+    <orderEntry type="library" name="Maven: net.imagej:imagej-common:0.28.1" level="project" />
+    <orderEntry type="library" name="Maven: org.scijava:scijava-table:0.4.0" level="project" />
     <orderEntry type="library" name="Maven: edu.ucar:udunits:4.3.18" level="project" />
     <orderEntry type="library" name="Maven: net.imagej:imagej-mesh:0.7.1" level="project" />
     <orderEntry type="library" name="Maven: net.imglib2:imglib2:5.6.3" level="project" />
@@ -65,9 +65,9 @@
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: net.imglib2:imglib2-roi:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.scijava:parsington:1.0.4" level="project" />
-    <orderEntry type="library" name="Maven: org.scijava:scijava-common:2.76.1" level="project" />
+    <orderEntry type="library" name="Maven: org.scijava:scijava-common:2.77.0" level="project" />
     <orderEntry type="library" name="Maven: org.bushe:eventbus:1.4" level="project" />
-    <orderEntry type="library" name="Maven: org.scijava:scijava-search:0.5.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scijava:scijava-search:0.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.miglayout:miglayout:swing:3.7.4" level="project" />
     <orderEntry type="library" name="Maven: org.ocpsoft.prettytime:prettytime:4.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: org.scijava:scripting-javascript:0.4.4" level="project" />
