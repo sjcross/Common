@@ -1,5 +1,6 @@
 package wbif.sjx.common.Process;
 
+import ij.ImagePlus;
 import net.imagej.ImgPlus;
 import net.imagej.axis.Axes;
 import net.imagej.axis.DefaultLinearAxis;
@@ -19,6 +20,22 @@ public class ImgPlusTools <T extends RealType<T> & NativeType<T>> {
 
     }
 
+    public static <T> void copyAxes(ImgPlus<T> sourceImg, ImgPlus<T> targetImg) {
+        for (int i=0;i<sourceImg.numDimensions();i++) {
+            targetImg.setAxis(sourceImg.axis(i),i);
+        }
+    }
+
+    public static <T> void applyAxes(ImgPlus<T> sourceImg, ImagePlus targetImagePlus) {
+        int nChannels = (int) sourceImg.dimension(sourceImg.dimensionIndex(Axes.CHANNEL));
+        int nSlices = (int) sourceImg.dimension(sourceImg.dimensionIndex(Axes.Z));
+        int nFrames = (int) sourceImg.dimension(sourceImg.dimensionIndex(Axes.TIME));
+
+        targetImagePlus.setDimensions(nChannels,nSlices,nFrames);
+
+    }
+
+    @Deprecated
     public static <T> void applyCalibrationXYCZT(ImgPlus<T> sourceImg, ImgPlus<T> targetImg) {
         // Setting calibration from first image
         int axisIdx = sourceImg.dimensionIndex(Axes.X);
