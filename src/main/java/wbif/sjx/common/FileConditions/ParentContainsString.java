@@ -41,18 +41,19 @@ public class ParentContainsString implements FileCondition {
             String name = file.getParent();
 
             for (int i = 0; i < testStr.length; i++) {
-                if (mode == INC_COMPLETE) {
-                    if (name.equals(testStr[i])) cnd = true;
-
-                } else if (mode == INC_PARTIAL) {
-                    if (name.contains(testStr[i])) cnd = true;
-
-                } else if (mode == EXC_COMPLETE) {
-                    if (!name.equals(testStr[i])) cnd = true;
-
-                } else if (mode == EXC_PARTIAL) {
-                    if (!name.contains(testStr[i])) cnd = true;
-
+                switch (mode) {
+                    case INC_COMPLETE:
+                        if (name.equals(testStr[i])) cnd = true;
+                        break;
+                    case INC_PARTIAL:
+                        if (name.contains(testStr[i])) cnd = true;
+                        break;
+                    case EXC_COMPLETE:
+                        if (!name.equals(testStr[i])) cnd = true;
+                        break;
+                    case EXC_PARTIAL:
+                        if (!name.contains(testStr[i])) cnd = true;
+                        break;
                 }
             }
         }
