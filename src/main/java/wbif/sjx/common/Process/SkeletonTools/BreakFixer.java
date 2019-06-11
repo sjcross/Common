@@ -103,7 +103,7 @@ public class BreakFixer {
 
     }
 
-    public static void process(ImageProcessor iprOrig, int nPx, int distLim, int angleLim) {
+    public static void process(ImageProcessor iprOrig, int nPx, int distLim, double angleLim) {
         // If the image has a maximum intensity of 255, dividing by 255
         if (iprOrig.getStatistics().max == 255) iprOrig.multiply(1d/255d);
 
