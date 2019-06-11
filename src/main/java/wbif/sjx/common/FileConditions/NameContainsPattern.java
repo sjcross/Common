@@ -46,18 +46,19 @@ public class NameContainsPattern implements FileCondition {
             for (int i = 0; i < pattern.length; i++) {
                 Matcher matcher = pattern[i].matcher(name);
 
-                if (mode == INC_COMPLETE) {
-                    if (matcher.matches()) cnd = true;
-
-                } else if (mode == INC_PARTIAL) {
-                    if (matcher.find()) cnd = true;
-
-                } else if (mode == EXC_COMPLETE) {
-                    if (!matcher.matches()) cnd = true;
-
-                } else if (mode == EXC_PARTIAL) {
-                    if (!matcher.find()) cnd = true;
-
+                switch (mode) {
+                    case INC_COMPLETE:
+                        if (matcher.matches()) cnd = true;
+                        break;
+                    case INC_PARTIAL:
+                        if (matcher.find()) cnd = true;
+                        break;
+                    case EXC_COMPLETE:
+                        if (!matcher.matches()) cnd = true;
+                        break;
+                    case EXC_PARTIAL:
+                        if (!matcher.find()) cnd = true;
+                        break;
                 }
             }
         }

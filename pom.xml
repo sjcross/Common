@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.scijava</groupId>
         <artifactId>pom-scijava</artifactId>
-        <version>24.0.0</version>
+        <version>25.0.0</version>
         <relativePath />
     </parent>
 
     <groupId>wbif.sjx</groupId>
     <artifactId>Common</artifactId>
-    <version>1.4.25</version>
+    <version>1.4.32</version>
     <packaging>jar</packaging>
     <name>Common</name>
     <url>https://github.com/SJCross/Common</url>
@@ -132,12 +132,14 @@
         <dependency>
             <groupId>net.imagej</groupId>
             <artifactId>ij</artifactId>
-            <version>1.51h</version>
+        </dependency>
+        <dependency>
+            <groupId>net.imagej</groupId>
+            <artifactId>imagej-ops</artifactId>
         </dependency>
         <dependency>
             <groupId>sc.fiji</groupId>
             <artifactId>Fiji_Plugins</artifactId>
-            <version>3.1.1</version>
         </dependency>
 
         <dependency>
