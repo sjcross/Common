@@ -27,7 +27,7 @@ for r=minR:maxR
         end
     end
     
-    % Normalising the score based on the number of points in a circle at
+    % Normalising the angle based on the number of points in a circle at
     % this radius
     acc(:,:,r-minR+1) = acc(:,:,r-minR+1)./numel(x);
     
