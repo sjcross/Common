@@ -6,12 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Process/SkeletonTools/BreakFixerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/sc13967.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/sc13967.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/houghCircleTransform.m" beforeDir="false" afterPath="$PROJECT_DIR$/houghCircleTransform.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/BreakFixer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/BreakFixer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,8 +45,86 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-646">
-              <caret line="88" column="18" lean-forward="true" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
+            <state relative-caret-position="947">
+              <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2380">
+              <caret line="454" column="28" selection-start-line="454" selection-start-column="28" selection-end-line="454" selection-end-column="28" />
+              <folding>
+                <element signature="docComment;class#Volume#0" />
+                <element signature="e#1042#1208#0" />
+                <element signature="e#1261#1429#0" />
+                <element signature="e#1485#1699#0" />
+                <element signature="e#1706#1780#0" />
+                <element signature="e#1786#1900#0" />
+                <element signature="e#1979#2259#0" />
+                <element signature="e#2265#2326#0" />
+                <element signature="e#2332#2391#0" />
+                <element signature="e#2533#2678#0" />
+                <element signature="e#2684#2828#0" />
+                <element signature="e#2834#2979#0" />
+                <element signature="e#2985#3187#0" />
+                <element signature="e#3193#3395#0" />
+                <element signature="e#3401#3603#0" />
+                <element signature="e#3688#3841#0" />
+                <element signature="e#3739#3784#1" />
+                <element signature="e#3790#3835#1" />
+                <element signature="e#3847#4431#0" />
+                <element signature="e#4042#4425#1" />
+                <element signature="e#4437#5205#0" />
+                <element signature="e#4632#5199#1" />
+                <element signature="e#5211#5335#0" />
+                <element signature="e#5341#5939#0" />
+                <element signature="e#5469#5855#0" />
+                <element signature="e#5891#5933#0" />
+                <element signature="e#5941#5994#0" />
+                <element signature="e#6089#6394#0" />
+                <element signature="e#6400#6705#0" />
+                <element signature="e#6711#6951#0" />
+                <element signature="e#6711#7452#0" />
+                <element signature="e#7458#7821#0" />
+                <element signature="e#7827#8190#0" />
+                <element signature="e#8196#8436#0" />
+                <element signature="e#8196#8996#0" />
+                <element signature="e#9066#9491#0" />
+                <element signature="e#9497#10579#0" />
+                <element signature="e#9975#10337#1" />
+                <element signature="e#10343#10573#1" />
+                <element signature="e#10585#10759#0" />
+                <element signature="e#10585#11045#0" />
+                <element signature="e#11051#11332#0" />
+                <element signature="e#11338#11785#0" />
+                <element signature="e#11791#12082#0" />
+                <element signature="e#12088#12379#0" />
+                <element signature="e#12385#12784#0" />
+                <element signature="e#12790#13034#0" />
+                <element signature="e#13716#14219#0" />
+                <element signature="e#14577#14890#0" />
+                <element signature="e#14819#14858#1" />
+                <element signature="e#14964#15386#0" />
+                <element signature="e#15178#15255#1" />
+                <element signature="e#15392#15958#0" />
+                <element signature="e#15742#15832#1" />
+                <element signature="e#15838#15928#1" />
+                <element signature="e#16441#16676#0" />
+                <element signature="e#16682#17229#0" />
+                <element signature="e#16979#17083#1" />
+                <element signature="e#17089#17193#1" />
+                <element signature="e#17235#17426#0" />
+                <element signature="e#17235#17691#0" />
+                <element signature="e#17697#17886#0" />
+                <element signature="e#17697#18069#0" />
+                <element signature="e#18408#18773#0" />
+                <element signature="e#18686#18744#1" />
+                <element signature="e#18779#19740#0" />
+                <element signature="e#19536#19711#1" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,27 +132,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/BreakFixer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-442">
-              <caret line="95" column="43" lean-forward="true" selection-start-line="95" selection-start-column="43" selection-end-line="95" selection-end-column="43" />
-              <folding>
-                <element signature="method#getDist#0;class#BreakFixer#0" />
-                <element signature="e#8466#8467#0" expanded="true" />
-                <element signature="e#8498#8499#0" expanded="true" />
-                <element signature="e#8533#8534#0" expanded="true" />
-                <element signature="e#8567#8568#0" expanded="true" />
-                <element signature="e#8596#8597#0" expanded="true" />
-                <element signature="e#8628#8629#0" expanded="true" />
-                <element signature="e#8663#8664#0" expanded="true" />
-                <element signature="e#8697#8698#0" expanded="true" />
-                <element signature="e#8733#8734#0" expanded="true" />
-                <element signature="e#8769#8770#0" expanded="true" />
-                <element signature="e#8815#8816#0" expanded="true" />
-                <element signature="e#8857#8858#0" expanded="true" />
-                <element signature="e#9739#9740#0" expanded="true" />
-                <element signature="e#9770#9771#0" expanded="true" />
-                <element signature="e#9818#9819#0" expanded="true" />
-                <element signature="e#9858#9859#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="32" column="115" selection-start-line="32" selection-start-column="115" selection-end-line="32" selection-end-column="115" />
             </state>
           </provider>
         </entry>
@@ -87,7 +141,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
+            <state relative-caret-position="425">
               <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
               <folding>
                 <element signature="method#Point#0;class#Point#0" />
@@ -114,7 +168,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Process/SkeletonTools/BreakFixerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
+            <state relative-caret-position="1870">
               <caret line="116" column="47" selection-start-line="116" selection-start-column="47" selection-end-line="116" selection-end-column="47" />
               <folding>
                 <element signature="method#getEndPoints#0;class#BreakFixerTest#0" />
@@ -261,77 +315,7 @@
       <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Object" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -562,13 +546,13 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Maven.Common [install]" />
-      <item itemvalue="Maven.Common [quick install]" />
+      <item itemvalue="Application.BreakFixer" />
       <item itemvalue="JUnit.BreakFixerTest.getEndAnglem90" />
       <item itemvalue="JUnit.BreakFixerTest.getEndAngle135" />
       <item itemvalue="JUnit.BreakFixerTest.getEndAngle180" />
       <item itemvalue="JUnit.BreakFixerTest.getEndAnglem135" />
-      <item itemvalue="Application.BreakFixer" />
+      <item itemvalue="Maven.Common [install]" />
+      <item itemvalue="Maven.Common [quick install]" />
     </list>
     <recent_temporary>
       <list>
@@ -599,6 +583,8 @@
       <workItem from="1556183404700" duration="1193000" />
       <workItem from="1557240703129" duration="595000" />
       <workItem from="1557243504786" duration="2452000" />
+      <workItem from="1561365296131" duration="599000" />
+      <workItem from="1561459920533" duration="604000" />
     </task>
     <servers />
   </component>
@@ -635,7 +621,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30795000" />
+    <option name="totallyTimeSpent" value="32600000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -650,7 +636,7 @@
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2228145" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.27949283" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24972437" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -658,19 +644,19 @@
       <window_info id="Designer" order="5" />
       <window_info id="UI Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Messages" weight="0.32902583" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32902583" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32703778" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" weight="0.32604373" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39960238" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32902583" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -751,12 +737,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
-          <folding>
-            <element signature="docComment;class#CellVoyagerFilenameExtractor#0" />
-            <element signature="method#getName#0;class#CellVoyagerFilenameExtractor#0" />
-            <element signature="method#getPattern#0;class#CellVoyagerFilenameExtractor#0" />
-            <element signature="method#extract#0;class#CellVoyagerFilenameExtractor#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -907,13 +887,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8347">
-          <caret line="510" column="8" selection-start-line="510" selection-start-column="8" selection-end-line="510" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -960,22 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="58" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="docComment;method#EllipsoidCalculator#0;class#EllipsoidCalculator#0" />
-            <element signature="method#EllipsoidCalculator#0;class#EllipsoidCalculator#0" />
-            <element signature="method#EllipsoidCalculator#1;class#EllipsoidCalculator#0" />
-            <element signature="docComment;method#EllipsoidCalculator#2;class#EllipsoidCalculator#0" />
-            <element signature="method#EllipsoidCalculator#2;class#EllipsoidCalculator#0" />
-            <element signature="method#getCentroid#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getRadii#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getRotationMatrix#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getOrientationRads#0;class#EllipsoidCalculator#0" />
-            <element signature="docComment;method#getSurfaceArea#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getSurfaceArea#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getVolume#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getSphericity#0;class#EllipsoidCalculator#0" />
-            <element signature="method#getContainedPoints#0;class#EllipsoidCalculator#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1026,9 +983,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="49" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="method#getEdgeLength#0;class#Vertex#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1050,10 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-          <folding>
-            <element signature="method#testHashCode#0;class#PointTest#0" />
-            <element signature="method#testEquals#0;class#PointTest#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1078,9 +1028,99 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="947">
+          <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2380">
+          <caret line="454" column="28" selection-start-line="454" selection-start-column="28" selection-end-line="454" selection-end-column="28" />
+          <folding>
+            <element signature="docComment;class#Volume#0" />
+            <element signature="e#1042#1208#0" />
+            <element signature="e#1261#1429#0" />
+            <element signature="e#1485#1699#0" />
+            <element signature="e#1706#1780#0" />
+            <element signature="e#1786#1900#0" />
+            <element signature="e#1979#2259#0" />
+            <element signature="e#2265#2326#0" />
+            <element signature="e#2332#2391#0" />
+            <element signature="e#2533#2678#0" />
+            <element signature="e#2684#2828#0" />
+            <element signature="e#2834#2979#0" />
+            <element signature="e#2985#3187#0" />
+            <element signature="e#3193#3395#0" />
+            <element signature="e#3401#3603#0" />
+            <element signature="e#3688#3841#0" />
+            <element signature="e#3739#3784#1" />
+            <element signature="e#3790#3835#1" />
+            <element signature="e#3847#4431#0" />
+            <element signature="e#4042#4425#1" />
+            <element signature="e#4437#5205#0" />
+            <element signature="e#4632#5199#1" />
+            <element signature="e#5211#5335#0" />
+            <element signature="e#5341#5939#0" />
+            <element signature="e#5469#5855#0" />
+            <element signature="e#5891#5933#0" />
+            <element signature="e#5941#5994#0" />
+            <element signature="e#6089#6394#0" />
+            <element signature="e#6400#6705#0" />
+            <element signature="e#6711#6951#0" />
+            <element signature="e#6711#7452#0" />
+            <element signature="e#7458#7821#0" />
+            <element signature="e#7827#8190#0" />
+            <element signature="e#8196#8436#0" />
+            <element signature="e#8196#8996#0" />
+            <element signature="e#9066#9491#0" />
+            <element signature="e#9497#10579#0" />
+            <element signature="e#9975#10337#1" />
+            <element signature="e#10343#10573#1" />
+            <element signature="e#10585#10759#0" />
+            <element signature="e#10585#11045#0" />
+            <element signature="e#11051#11332#0" />
+            <element signature="e#11338#11785#0" />
+            <element signature="e#11791#12082#0" />
+            <element signature="e#12088#12379#0" />
+            <element signature="e#12385#12784#0" />
+            <element signature="e#12790#13034#0" />
+            <element signature="e#13716#14219#0" />
+            <element signature="e#14577#14890#0" />
+            <element signature="e#14819#14858#1" />
+            <element signature="e#14964#15386#0" />
+            <element signature="e#15178#15255#1" />
+            <element signature="e#15392#15958#0" />
+            <element signature="e#15742#15832#1" />
+            <element signature="e#15838#15928#1" />
+            <element signature="e#16441#16676#0" />
+            <element signature="e#16682#17229#0" />
+            <element signature="e#16979#17083#1" />
+            <element signature="e#17089#17193#1" />
+            <element signature="e#17235#17426#0" />
+            <element signature="e#17235#17691#0" />
+            <element signature="e#17697#17886#0" />
+            <element signature="e#17697#18069#0" />
+            <element signature="e#18408#18773#0" />
+            <element signature="e#18686#18744#1" />
+            <element signature="e#18779#19740#0" />
+            <element signature="e#19536#19711#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/BreakFixer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="32" column="115" selection-start-line="32" selection-start-column="115" selection-end-line="32" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
+        <state relative-caret-position="425">
           <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
           <folding>
             <element signature="method#Point#0;class#Point#0" />
@@ -1105,46 +1145,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Process/SkeletonTools/BreakFixerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
+        <state relative-caret-position="1870">
           <caret line="116" column="47" selection-start-line="116" selection-start-column="47" selection-end-line="116" selection-end-column="47" />
           <folding>
             <element signature="method#getEndPoints#0;class#BreakFixerTest#0" />
             <element signature="method#getDist#0;class#BreakFixerTest#0" />
             <element signature="method#process#0;class#BreakFixerTest#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/SkeletonTools/BreakFixer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="95" column="43" lean-forward="true" selection-start-line="95" selection-start-column="43" selection-end-line="95" selection-end-column="43" />
-          <folding>
-            <element signature="method#getDist#0;class#BreakFixer#0" />
-            <element signature="e#8466#8467#0" expanded="true" />
-            <element signature="e#8498#8499#0" expanded="true" />
-            <element signature="e#8533#8534#0" expanded="true" />
-            <element signature="e#8567#8568#0" expanded="true" />
-            <element signature="e#8596#8597#0" expanded="true" />
-            <element signature="e#8628#8629#0" expanded="true" />
-            <element signature="e#8663#8664#0" expanded="true" />
-            <element signature="e#8697#8698#0" expanded="true" />
-            <element signature="e#8733#8734#0" expanded="true" />
-            <element signature="e#8769#8770#0" expanded="true" />
-            <element signature="e#8815#8816#0" expanded="true" />
-            <element signature="e#8857#8858#0" expanded="true" />
-            <element signature="e#9739#9740#0" expanded="true" />
-            <element signature="e#9770#9771#0" expanded="true" />
-            <element signature="e#9818#9819#0" expanded="true" />
-            <element signature="e#9858#9859#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
-          <caret line="88" column="18" lean-forward="true" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
         </state>
       </provider>
     </entry>

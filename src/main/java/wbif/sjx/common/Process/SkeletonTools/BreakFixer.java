@@ -13,13 +13,10 @@ import wbif.sjx.common.Object.Point;
 import java.util.ArrayList;
 
 public class BreakFixer {
-    public static void main(String[] args) {
-        new ImageJ();
-        ImagePlus ipl = IJ.openImage("C:\\Users\\sc13967\\Desktop\\ridges.tif");
-        BreakFixer.process(ipl.getProcessor(),3,10,45,false);
-        ipl.show();
+    private double angleWeight = 1;
+    private double distanceWeight = 1;
+    private double endWeight = 20; // We want to heavily favour linking to another end point
 
-    }
 
     static ArrayList<int[]> getEndPoints(ImageProcessor iprConn, int x, int y, int nPx) {
         // Getting the current point and nPx adjacent points.  A line will be fit to these.
@@ -187,7 +184,12 @@ public class BreakFixer {
 
     }
 
-    public static void process(ImageProcessor iprOrig, int nPx, int distLim, double angleLim, boolean endToEndOnly) {
+    public void process(ImageProcessor iprOrig, int nPx, int distLim, double angleLim, boolean endToEndOnly) {
+        process(iprOrig,nPx,distLim,angleLim,endToEndOnly,angleWeight,distanceWeight,endWeight);
+
+    }
+
+    public static void process(ImageProcessor iprOrig, int nPx, int distLim, double angleLim, boolean endToEndOnly, double angleWeight, double distanceWeight, double endWeight) {
         // Inverting image, so the the logic is skeleton (255) and background (0)
         iprOrig.invert();
 
@@ -230,7 +232,7 @@ public class BreakFixer {
                 int yy = 0;
                 for (Link link:links) {
                     if (link.getAngle() < minScore) {
-                        minScore = link.getScore();
+                        minScore = link.getScore(angleWeight,distanceWeight,endWeight);
                         xx = link.getX();
                         yy = link.getY();
                     }
@@ -255,6 +257,30 @@ public class BreakFixer {
         iprOrig.invert();
 
     }
+
+    public double getAngleWeight() {
+        return angleWeight;
+    }
+
+    public void setAngleWeight(double angleWeight) {
+        this.angleWeight = angleWeight;
+    }
+
+    public double getDistanceWeight() {
+        return distanceWeight;
+    }
+
+    public void setDistanceWeight(double distanceWeight) {
+        this.distanceWeight = distanceWeight;
+    }
+
+    public double getEndWeight() {
+        return endWeight;
+    }
+
+    public void setEndWeight(double endWeight) {
+        this.endWeight = endWeight;
+    }
 }
 
 class Link {
@@ -263,10 +289,6 @@ class Link {
     private double angle;
     private double distance;
     private boolean isEnd;
-
-    private double angleWeight = 1;
-    private double distanceWeight = 1;
-    private double endWeight = 20; // We want to heavily favour linking to another end point
 
     public Link(int x, int y, double angle, double distance, boolean isEnd) {
         this.x = x;
@@ -277,13 +299,8 @@ class Link {
 
     }
 
-    public double getScore() {
-        double endVal = isEnd ? -endWeight : 0;
-        return Math.abs(angle)*angleWeight + distance*distanceWeight + endVal;
-
-    }
-
     public double getScore(double angleWeight, double distanceWeight, double endWeight) {
+        System.out.println(angleWeight+"_"+distanceWeight+"_"+endWeight);
         double endVal = isEnd ? -endWeight : 0;
         return Math.abs(angle)*angleWeight + distance*distanceWeight + endVal;
     }
