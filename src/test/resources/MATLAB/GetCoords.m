@@ -1,10 +1,10 @@
 clear
 
-pnameIn = 'C:\Users\steph\Documents\Java Projects\Common\src\test\resources\images\KFunction\';
-fnameIn = 'Blobs_2D_whiteBG_8bit.tif';
+pnameIn = 'F:\Java Projects\Common\src\test\resources\coordinates\';
+fnameIn = 'BigBinaryBlob_2D_whiteBG.tif';
 
-pnameOut = 'C:\Users\steph\Documents\Java Projects\Common\src\test\resources\coordinates\';
-fnameOut = 'Blobs_2D_whiteBG_8bit.csv';
+pnameOut = 'F:\Java Projects\Common\src\test\resources\coordinates\';
+fnameOut = 'BigBinaryBlob_2D_whiteBG.csv';
 
 nZ = 1;
 nT = 1;
