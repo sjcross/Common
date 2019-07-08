@@ -371,7 +371,11 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
 
     }
 
-    public double getMaximumInstantaneousVelocity() {
+    /**
+     * Returns the maximum instantaneous speed value from the track collection
+     * @return
+     */
+    public double getMaximumInstantaneousSpeed() {
         double maxVelocity = 0;
 
         for (Track track:values()) {
@@ -383,6 +387,25 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
         }
 
         return maxVelocity;
+
+    }
+
+    /**
+     * Returns the length of the track with the longest path
+     * @return
+     */
+    public double getMaximumTotalPathLength(TrackCollection tracks) {
+        double maxTotalPathLength = 0;
+
+        for (Track track:tracks.values()) {
+            TreeMap<Integer,Double> lengths = track.getRollingTotalPathLength();
+
+            for (double length:lengths.values()) {
+                maxTotalPathLength = Math.max(maxTotalPathLength, length);
+            }
+        }
+
+        return maxTotalPathLength;
 
     }
 }
