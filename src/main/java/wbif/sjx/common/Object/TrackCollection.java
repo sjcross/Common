@@ -394,15 +394,17 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
      * Returns the length of the track with the longest path
      * @return
      */
-    public double getMaximumTotalPathLength(TrackCollection tracks) {
+    public double getMaximumTotalPathLength() {
         double maxTotalPathLength = 0;
 
-        for (Track track:tracks.values()) {
+        for (Track track:values()) {
             TreeMap<Integer,Double> lengths = track.getRollingTotalPathLength();
 
-            for (double length:lengths.values()) {
-                maxTotalPathLength = Math.max(maxTotalPathLength, length);
-            }
+            maxTotalPathLength = Math.max(maxTotalPathLength, lengths.lastKey().doubleValue());
+
+//            for (double length:lengths.values()) {
+//                maxTotalPathLength = Math.max(maxTotalPathLength, length);
+//            }
         }
 
         return maxTotalPathLength;
