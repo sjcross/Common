@@ -176,7 +176,7 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(1,0,0);
 
-        // Iterating over each Volume, testing the PCC value
+        // Iterating over each Volume2, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
@@ -210,7 +210,7 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(1,0,0);
 
-        // Iterating over each Volume, testing the PCC value
+        // Iterating over each Volume2, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
@@ -244,7 +244,7 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(1,0,0);
 
-        // Iterating over each Volume, testing the PCC value
+        // Iterating over each Volume2, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
@@ -278,7 +278,7 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(1,0,0);
 
-        // Iterating over each Volume, testing the PCC value
+        // Iterating over each Volume2, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
@@ -312,7 +312,7 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(3,0,0);
 
-        // Iterating over each Volume, testing the PCC value
+        // Iterating over each Volume2, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
@@ -346,7 +346,7 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(3,0,0);
 
-        // Iterating over each Volume, testing the PCC value
+        // Iterating over each Volume2, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
@@ -380,7 +380,7 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(3,0,0);
 
-        // Iterating over each Volume, testing the PCC value
+        // Iterating over each Volume2, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
@@ -414,7 +414,7 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(3,0,0);
 
-        // Iterating over each Volume, testing the PCC value
+        // Iterating over each Volume2, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 

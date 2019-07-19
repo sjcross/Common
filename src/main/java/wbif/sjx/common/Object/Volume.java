@@ -49,76 +49,81 @@ public class Volume {
     public TreeSet<Point<Integer>> getPoints() {
         return points;
 
-    }
+    } // Copied
 
     public Volume setPoints(TreeSet<Point<Integer>> points) {
         this.points = points;
         return this;
-    }
+    } // Copied
 
     public void clearPoints() {
         points = new TreeSet<>();
-    }
+    } // Copied
 
     public Volume addCoord(int xIn, int yIn, int zIn) throws IntegerOverflowException {
         points.add(new Point<>(xIn,yIn,zIn));
         if (points.size() == Integer.MAX_VALUE) throw new IntegerOverflowException("Object too large (Integer overflow).");
         return this;
-    }
+    } // Copied
 
     public double getDistPerPxXY() {
         return dppXY;
 
-    }
+    } // Copied
 
     public double getDistPerPxZ() {
         return dppZ;
 
-    }
+    } // Copied
 
     public String getCalibratedUnits() {
         return calibratedUnits;
-    }
+    } // Copied
 
     public boolean is2D() {
         return twoD;
-    }
+    } // Copied
 
-    public ArrayList<Integer> getXCoords() {
+    public ArrayList<Integer> getXCoords() { // Copied
         return points.stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     public ArrayList<Integer> getYCoords() {
         return points.stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
-    }
+    } // Copied
 
     public ArrayList<Integer> getZCoords() {
         return points.stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
 
-    }
+    } // Copied
+
+    public TreeSet<Point<Integer>> getSurface() {
+        if (surface == null) calculateSurface();
+        return surface;
+    } // Copied
 
     public ArrayList<Integer> getSurfaceXCoords() {
         if (surface == null) calculateSurface();
         return surface.stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
 
-    }
+    } // Copied
 
     public ArrayList<Integer> getSurfaceYCoords() {
         if (surface == null) calculateSurface();
         return surface.stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
 
-    }
+    } // Copied
 
     public ArrayList<Integer> getSurfaceZCoords() {
         if (surface == null) calculateSurface();
         return surface.stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
 
-    }
+    } // Copied
 
     public double getXYScaledZ(double z) {
         return z*dppZ/dppXY;
-    }
+    } // Copied
 
     public void calculateSurface() {
         if (twoD) {
@@ -160,11 +165,6 @@ public class Volume {
 
             if (count < 6) surface.add(point);
         }
-    }
-
-    public TreeSet<Point<Integer>> getSurface() {
-        if (surface == null) calculateSurface();
-        return surface;
     }
 
     public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2, boolean pixelDistances) {

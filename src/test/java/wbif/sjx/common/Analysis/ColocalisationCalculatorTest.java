@@ -34,7 +34,7 @@ public class ColocalisationCalculatorTest {
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
 
-        // Iterating over each Volume, testing the PCC value
+        // Iterating over each Volume2, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 

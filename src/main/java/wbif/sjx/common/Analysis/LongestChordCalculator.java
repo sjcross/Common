@@ -26,7 +26,7 @@ public class LongestChordCalculator {
         //Reference for use as orientation descriptor: "Computer-Assisted Microscopy: The Measurement and Analysis of
         //Images", John C. Russ, Springer, 6 Dec 2012
 
-        // Iterating over all point combinations on the Volume surface
+        // Iterating over all point combinations on the Volume2 surface
         double[] x = volume.getSurfaceX(true);
         double[] y = volume.getSurfaceY(true);
         double[] z = volume.getSurfaceZ(true,false);
