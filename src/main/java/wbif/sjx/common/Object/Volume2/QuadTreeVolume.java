@@ -2,8 +2,8 @@
 
 package wbif.sjx.common.Object.Volume2;
 
-import jdjf.quadTree.QuadTree;
 import wbif.sjx.common.Object.Point;
+import wbif.sjx.common.Object.QuadTree.QuadTree;
 
 import java.util.HashMap;
 import java.util.TreeSet;
@@ -26,7 +26,7 @@ public class QuadTreeVolume extends Volume2 {
         quadTrees.putIfAbsent(z,new QuadTree(width,height));
 
         // Adding this point
-        quadTrees.get(z).addPoint(x,y);
+        quadTrees.get(z).add(x,y);
 
         return this;
 
@@ -42,7 +42,10 @@ public class QuadTreeVolume extends Volume2 {
             QuadTree quadTree = quadTrees.get(z);
 
             // Adding each point
-            for (java.awt.Point point:quadTree.getPoints()) points.add(new Point<Integer>(point.x,point.y,z));
+            for (Point<Integer> point:quadTree.getPoints()) {
+                point.setZ(z);
+                points.add(point);
+            }
 
         }
 
@@ -81,7 +84,10 @@ public class QuadTreeVolume extends Volume2 {
             QuadTree quadTree = surfaceQuadTrees.get(z);
 
             // Adding each point
-            for (java.awt.Point point:quadTree.getPoints()) points.add(new Point<Integer>(point.x,point.y,z));
+            for (Point<Integer> point:quadTree.getPoints()) {
+                point.setZ(z);
+                points.add(point);
+            }
 
         }
 
