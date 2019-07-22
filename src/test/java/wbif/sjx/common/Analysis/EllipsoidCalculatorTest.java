@@ -3,7 +3,8 @@ package wbif.sjx.common.Analysis;
 import org.bonej.geometry.Ellipsoid;
 import org.junit.Ignore;
 import org.junit.Test;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume2.PointVolume;
+import wbif.sjx.common.Object.Volume2.Volume2;
 
 import static org.junit.Assert.*;
 
@@ -30,7 +31,7 @@ public class EllipsoidCalculatorTest {
         Ellipsoid ellipsoid = new Ellipsoid(r1,r2,r3,x,y,z,eigenVectors);
 
         // Initialising the calculator
-        Volume volume = new Volume(dppXY,dppZ,units,false);
+        Volume2 volume = new PointVolume(1,1,1,dppXY,dppZ,units);
         EllipsoidCalculator calculator = new EllipsoidCalculator(ellipsoid,volume);
 
         // Testing the measured value
@@ -61,7 +62,7 @@ public class EllipsoidCalculatorTest {
         Ellipsoid ellipsoid = new Ellipsoid(r1,r2,r3,x,y,z,eigenVectors);
 
         // Initialising the calculator
-        Volume volume = new Volume(dppXY,dppZ,units,false);
+        Volume2 volume = new PointVolume(1,1,1,dppXY,dppZ,units);
         EllipsoidCalculator calculator = new EllipsoidCalculator(ellipsoid,volume);
 
         // Testing the measured value
@@ -100,7 +101,7 @@ public class EllipsoidCalculatorTest {
         Ellipsoid ellipsoid = new Ellipsoid(r1,r2,r3,x,y,z,eigenVectors);
 
         // Initialising the calculator
-        Volume volume = new Volume(dppXY,dppZ,units,false);
+        Volume2 volume = new PointVolume(1,1,1,dppXY,dppZ,units);
         EllipsoidCalculator calculator = new EllipsoidCalculator(ellipsoid,volume);
 
         // Testing the measured value
@@ -131,7 +132,7 @@ public class EllipsoidCalculatorTest {
         Ellipsoid ellipsoid = new Ellipsoid(r1,r2,r3,x,y,z,eigenVectors);
 
         // Initialising the calculator
-        Volume volume = new Volume(dppXY,dppZ,units,false);
+        Volume2 volume = new PointVolume(1,1,1,dppXY,dppZ,units);
         EllipsoidCalculator calculator = new EllipsoidCalculator(ellipsoid,volume);
 
         // Testing the measured value
@@ -162,7 +163,7 @@ public class EllipsoidCalculatorTest {
         Ellipsoid ellipsoid = new Ellipsoid(r1,r2,r3,x,y,z,eigenVectors);
 
         // Initialising the calculator
-        Volume volume = new Volume(dppXY,dppZ,units,false);
+        Volume2 volume = new PointVolume(1,1,1,dppXY,dppZ,units);
         EllipsoidCalculator calculator = new EllipsoidCalculator(ellipsoid,volume);
 
         // Testing the measured value

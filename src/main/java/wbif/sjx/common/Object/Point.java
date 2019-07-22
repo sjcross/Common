@@ -3,9 +3,9 @@ package wbif.sjx.common.Object;
 import java.io.Serializable;
 
 public class Point<T extends Number> implements Comparable<Point<T>>, Serializable {
-    protected T x;
-    protected T y;
-    protected T z;
+    public T x;
+    public T y;
+    public T z;
 
     public Point(T x, T y, T z) {
         this.x = x;

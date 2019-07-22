@@ -4,7 +4,7 @@ import ij.ImagePlus;
 import ij.ImageStack;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume2.Volume2;
 
 /**
  * Created by sc13967 on 12/05/2017.
@@ -13,7 +13,7 @@ public class IntensityCalculator {
 
     // ANALYSIS OVER A SPECIFIED VOLUME
 
-    public static CumStat calculate(ImageStack image, Volume volume) {
+    public static CumStat calculate(ImageStack image, Volume2 volume) {
         // Initialising the pixel value store
         CumStat cs = new CumStat();
 
@@ -23,7 +23,7 @@ public class IntensityCalculator {
 
     }
 
-    public static void calculate(ImageStack image, CumStat cs, Volume volume) {
+    public static void calculate(ImageStack image, CumStat cs, Volume2 volume) {
         // Running through all pixels in the volume, adding them to the CumStat object
         for (Point<Integer> point:volume.getPoints()) {
             cs.addMeasure(image.getVoxel(point.getX(),point.getY(),point.getZ()));

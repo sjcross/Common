@@ -2,7 +2,7 @@ package wbif.sjx.common.ExpectedObjects;
 
 import util.opencsv.CSVReader;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume2.PointVolume;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,16 +17,11 @@ import java.util.List;
  * Created by sc13967 on 21/06/2018.
  */
 public abstract class ExpectedObjects {
-    private boolean is2D;
     public abstract List<Integer[]> getCoordinates5D();
     public abstract boolean is2D();
 
-    public ExpectedObjects() {
-        this.is2D = is2D();
-    }
-
-    public Volume getObject(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
-        Volume volume = new Volume(dppXY,dppZ,calibratedUnits,is2D);
+    public PointVolume getObject(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
+        PointVolume volume = new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits);
 
         // Adding all provided coordinates to each object
         List<Integer[]> coordinates = getCoordinates5D();
@@ -35,7 +30,7 @@ public abstract class ExpectedObjects {
             int y = coordinate[3];
             int z = coordinate[5];
 
-            volume.addCoord(x,y,z);
+            volume.add(x,y,z);
 
         }
 
@@ -43,9 +38,9 @@ public abstract class ExpectedObjects {
 
     }
 
-    public HashMap<Integer,Volume> getObjects(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
+    public HashMap<Integer,PointVolume> getObjects(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
         // Initialising object store
-        HashMap<Integer,Volume> testObjects = new HashMap<>();
+        HashMap<Integer,PointVolume> testObjects = new HashMap<>();
 
         // Adding all provided coordinates to each object
         List<Integer[]> coordinates = getCoordinates5D();
@@ -59,9 +54,9 @@ public abstract class ExpectedObjects {
 
             ID = ID+(t*65536);
 
-            testObjects.putIfAbsent(ID,new Volume(dppXY,dppZ,calibratedUnits,is2D));
-            Volume testObject = testObjects.get(ID);
-            testObject.addCoord(x,y,z);
+            testObjects.putIfAbsent(ID,new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits));
+            PointVolume testObject = testObjects.get(ID);
+            testObject.add(x,y,z);
 
         }
 

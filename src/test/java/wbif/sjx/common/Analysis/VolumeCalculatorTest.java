@@ -2,7 +2,8 @@
 //
 //import org.junit.Ignore;
 //import org.junit.Test;
-//import wbif.sjx.common.Object.Volume2;
+//import wbif.sjx.common.Object.Volume2.PointVolume;
+//import wbif.sjx.common.Object.Volume2.Volume2;
 //
 //import static org.junit.Assert.*;
 //
@@ -50,15 +51,15 @@
 //        String units = "um";
 //
 //        // Creating a basic cube volume
-//        Volume2 volume = new Volume2(dppXY,dppZ,units,false);
-//        volume.addCoord(10,20,5);
-//        volume.addCoord(12,20,5);
-//        volume.addCoord(12,22,5);
-//        volume.addCoord(10,22,5);
-//        volume.addCoord(10,20,7);
-//        volume.addCoord(12,20,7);
-//        volume.addCoord(12,22,7);
-//        volume.addCoord(10,22,7);
+//        Volume2 volume = new PointVolume(15,30,8,dppXY,dppZ,units);
+//        volume.add(10,20,5);
+//        volume.add(12,20,5);
+//        volume.add(12,22,5);
+//        volume.add(10,22,5);
+//        volume.add(10,20,7);
+//        volume.add(12,20,7);
+//        volume.add(12,22,7);
+//        volume.add(10,22,7);
 //
 //        // Creating the VolumeCalculator
 //        VolumeCalculator volumeCalculator = new VolumeCalculator(volume,VolumeCalculator.CENTROID);
@@ -68,33 +69,33 @@
 //
 //        // Creating expected object
 //        Volume2 expected = new Volume2(dppXY,dppZ,units,false);
-//        expected.addCoord(10,20,5);
-//        expected.addCoord(11,20,5);
-//        expected.addCoord(12,20,5);
-//        expected.addCoord(10,21,5);
-//        expected.addCoord(11,21,5);
-//        expected.addCoord(12,21,5);
-//        expected.addCoord(12,22,5);
-//        expected.addCoord(11,22,5);
-//        expected.addCoord(10,22,5);
-//        expected.addCoord(10,20,6);
-//        expected.addCoord(11,20,6);
-//        expected.addCoord(12,20,6);
-//        expected.addCoord(10,21,6);
-//        expected.addCoord(11,21,6);
-//        expected.addCoord(12,21,6);
-//        expected.addCoord(12,22,6);
-//        expected.addCoord(11,22,6);
-//        expected.addCoord(10,22,6);
-//        expected.addCoord(10,20,7);
-//        expected.addCoord(11,20,7);
-//        expected.addCoord(12,20,7);
-//        expected.addCoord(10,21,7);
-//        expected.addCoord(11,21,7);
-//        expected.addCoord(12,21,7);
-//        expected.addCoord(12,22,7);
-//        expected.addCoord(11,22,7);
-//        expected.addCoord(10,22,7);
+//        expected.add(10,20,5);
+//        expected.add(11,20,5);
+//        expected.add(12,20,5);
+//        expected.add(10,21,5);
+//        expected.add(11,21,5);
+//        expected.add(12,21,5);
+//        expected.add(12,22,5);
+//        expected.add(11,22,5);
+//        expected.add(10,22,5);
+//        expected.add(10,20,6);
+//        expected.add(11,20,6);
+//        expected.add(12,20,6);
+//        expected.add(10,21,6);
+//        expected.add(11,21,6);
+//        expected.add(12,21,6);
+//        expected.add(12,22,6);
+//        expected.add(11,22,6);
+//        expected.add(10,22,6);
+//        expected.add(10,20,7);
+//        expected.add(11,20,7);
+//        expected.add(12,20,7);
+//        expected.add(10,21,7);
+//        expected.add(11,21,7);
+//        expected.add(12,21,7);
+//        expected.add(12,22,7);
+//        expected.add(11,22,7);
+//        expected.add(10,22,7);
 //
 //        assertEquals(expected,actual);
 //

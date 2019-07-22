@@ -2,20 +2,20 @@ package wbif.sjx.common.Analysis;
 
 import org.bonej.geometry.FitEllipse;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume2.Volume2;
 
 public class EllipseCalculator {
-    private final Volume volume;
+    private final Volume2 volume;
     private double[] e2d;
 
-    public EllipseCalculator(Volume volume) throws RuntimeException {
+    public EllipseCalculator(Volume2 volume) throws RuntimeException {
         this.volume = volume;
 
         fitEllipse(Double.MAX_VALUE);
 
     }
 
-    public EllipseCalculator(Volume volume, double maxAxisLength) throws RuntimeException {
+    public EllipseCalculator(Volume2 volume, double maxAxisLength) throws RuntimeException {
         this.volume = volume;
 
         fitEllipse(maxAxisLength);
@@ -152,16 +152,16 @@ public class EllipseCalculator {
 
     }
 
-    public Volume getContainedPoints() throws IntegerOverflowException {
+    public Volume2 getContainedPoints() throws IntegerOverflowException {
         if (e2d == null) return null;
 
-        double dppXY = volume.getDistPerPxXY();
-        double dppZ = volume.getDistPerPxZ();
+        double dppXY = volume.getDppXY();
+        double dppZ = volume.getDppZ();
         double cal = dppXY/dppZ;
         String units = volume.getCalibratedUnits();
         boolean is2D = volume.is2D();
 
-        Volume insideEllipse = new Volume(dppXY,dppZ,units,is2D);
+        Volume2 insideEllipse = volume.createNewObject();
 
         double xCent = getXCentre();
         double yCent = getYCentre();
@@ -175,7 +175,7 @@ public class EllipseCalculator {
         for (int x=(int) Math.floor(xCent-semiMajor);x<=xCent+semiMajor;x++) {
             for (int y=(int) Math.floor(yCent-semiMajor);y<=yCent+semiMajor;y++) {
                 if ((e2d[0]*x*x + e2d[1]*x*y + e2d[2]*y*y +e2d[3]*x + e2d[4]*y + e2d[5])*mult <= 0) {
-                    insideEllipse.addCoord(x,y,0);
+                    insideEllipse.add(x,y,0);
                 }
             }
         }

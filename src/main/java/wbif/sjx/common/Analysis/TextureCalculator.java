@@ -3,17 +3,12 @@ package wbif.sjx.common.Analysis;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
-import ij.plugin.Duplicator;
-import ij.process.ImageConverter;
-import ij.process.ImageProcessor;
-import ij.process.TypeConverter;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.Indexer;
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume2.Volume2;
 import wbif.sjx.common.Process.IntensityMinMax;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 /**
@@ -45,7 +40,7 @@ public class TextureCalculator {
      * @param image
      * @param volume
      */
-    public void calculate(ImageStack image, Volume volume) {
+    public void calculate(ImageStack image, Volume2 volume) {
         if (image.getBitDepth() != 8) image = convertTo8Bit(image);
 
         // Getting object pixel range

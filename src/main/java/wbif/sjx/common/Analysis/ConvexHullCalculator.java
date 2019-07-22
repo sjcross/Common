@@ -210,7 +210,7 @@
 //                    switch (location) {
 //                        case INSIDE:
 //                        case BOUNDARY:
-//                            insideHull.addCoord(x,y,z);
+//                            insideHull.add(x,y,z);
 //                            break;
 //                    }
 //                }

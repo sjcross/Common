@@ -1,9 +1,7 @@
 package wbif.sjx.common.ExpectedObjects;
 
 import util.opencsv.CSVReader;
-import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Track;
-import wbif.sjx.common.Object.Volume;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

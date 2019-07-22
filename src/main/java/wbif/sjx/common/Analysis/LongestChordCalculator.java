@@ -4,18 +4,18 @@ import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.GeneralOps;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume2.PointVolume;
 
 /**
  * Created by sc13967 on 20/06/2018.
  */
 public class LongestChordCalculator {
     private double tolerance = 1E-10;
-    private final Volume volume;
+    private final PointVolume volume;
 
     private final double[][] LC; //Longest chord
 
-    public LongestChordCalculator(Volume volume) {
+    public LongestChordCalculator(PointVolume volume) {
         this.volume = volume;
 
         LC = calculateLC();
@@ -26,7 +26,7 @@ public class LongestChordCalculator {
         //Reference for use as orientation descriptor: "Computer-Assisted Microscopy: The Measurement and Analysis of
         //Images", John C. Russ, Springer, 6 Dec 2012
 
-        // Iterating over all point combinations on the Volume2 surface
+        // Iterating over all point combinations on the Volume surface
         double[] x = volume.getSurfaceX(true);
         double[] y = volume.getSurfaceY(true);
         double[] z = volume.getSurfaceZ(true,false);

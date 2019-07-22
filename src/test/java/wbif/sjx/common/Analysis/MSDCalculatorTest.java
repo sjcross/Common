@@ -69,8 +69,6 @@ public class MSDCalculatorTest {
         double[] actual = MSDCalculator.getLinearFit(msd,81);
         double[] expected = new double[]{6.622E2,0,81};
 
-        System.out.println(actual[0]+"_"+actual[1]);
-
         assertArrayEquals(expected,actual,tolerance);
 
     }

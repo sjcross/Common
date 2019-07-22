@@ -3,7 +3,7 @@ package wbif.sjx.common.Process;
 import ij.ImagePlus;
 import ij.process.ImageStatistics;
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume2.Volume2;
 
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -112,7 +112,7 @@ public class IntensityMinMax {
      * @param intensityClipFraction
      * @return
      */
-    public static double[] getWeightedChannelRangeFast(ImagePlus ipl, Volume volume, int channel, int frame, double intensityClipFraction) {
+    public static double[] getWeightedChannelRangeFast(ImagePlus ipl, Volume2 volume, int channel, int frame, double intensityClipFraction) {
         double[] minMax = volume == null ? getAbsoluteRange(ipl,channel) : getAbsoluteRange(ipl,volume,channel,frame);
         double range = minMax[1]-minMax[0];
 
@@ -148,7 +148,7 @@ public class IntensityMinMax {
      * @param pixelClipFraction
      * @return
      */
-    public static double[] getWeightedChannelRangePrecise(ImagePlus ipl, Volume volume, int channel, int frame, double pixelClipFraction) {
+    public static double[] getWeightedChannelRangePrecise(ImagePlus ipl, Volume2 volume, int channel, int frame, double pixelClipFraction) {
         ArrayList<Float> pixels = volume == null ? getPixels(ipl,channel) : getPixels(ipl,volume,channel,frame);
         pixels.sort(Float::compareTo);
 
@@ -193,7 +193,7 @@ public class IntensityMinMax {
 
     }
 
-    public static double[] getAbsoluteRange(ImagePlus ipl, Volume volume, int channel, int frame) {
+    public static double[] getAbsoluteRange(ImagePlus ipl, Volume2 volume, int channel, int frame) {
         float minI = Float.MAX_VALUE;
         float maxI = -Float.MAX_VALUE;
 
@@ -233,7 +233,7 @@ public class IntensityMinMax {
 
     }
 
-    public static ArrayList<Float> getPixels(ImagePlus ipl, Volume volume, int channel, int frame) {
+    public static ArrayList<Float> getPixels(ImagePlus ipl, Volume2 volume, int channel, int frame) {
         // Arranging pixel values into ArrayList, then ordering by value
         ArrayList<Float> pixels = new ArrayList<>();
 

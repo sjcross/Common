@@ -1,7 +1,7 @@
 // TODO: Change getProjectedArea to use HashSet for coordinate indices
 // TODO: Should get calculateSurface methods to work for negative values too (not just ignore them)
 
-package wbif.sjx.common.Object;
+package wbif.sjx.common.Object.Volume2;
 
 import org.apache.commons.math3.stat.descriptive.rank.Max;
 import org.apache.commons.math3.stat.descriptive.rank.Min;
@@ -9,6 +9,7 @@ import wbif.sjx.common.Analysis.Volume.SurfaceSeparationCalculator;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.MathFunc.ArrayFunc;
 import wbif.sjx.common.MathFunc.CumStat;
+import wbif.sjx.common.Object.Point;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,14 +17,9 @@ import java.util.stream.Collectors;
 /**
  * Created by sc13967 on 28/07/2017.
  */
-public class Volume {
-    protected final double dppXY; //Calibration in xy (fixed once declared in constructor)
-    protected final double dppZ; //Calibration in z (fixed once declared in constructor)
-    protected final String calibratedUnits;
-    protected final boolean twoD;
-
+public class PointVolume extends Volume2 {
     protected TreeSet<Point<Integer>> points = new TreeSet<>();
-    protected TreeSet<Point<Integer>> surface = null;
+    protected TreeSet<Point<Integer>> surface = new TreeSet<>();
 
     /**
      * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
@@ -37,12 +33,13 @@ public class Volume {
      */
     private Point<Double> medianCentroid = null;
 
+    public PointVolume(Volume2 volume) {
+        super(volume);
+    }
 
-    public Volume(double dppXY, double dppZ, String calibratedUnits, boolean twoD) {
-        this.dppXY = dppXY;
-        this.dppZ = dppZ;
-        this.calibratedUnits = calibratedUnits;
-        this.twoD = twoD;
+    public PointVolume(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) {
+        super(width, height, nSlices, dppXY, dppZ, calibratedUnits);
+
     }
 
 
@@ -51,7 +48,7 @@ public class Volume {
 
     } // Copied
 
-    public Volume setPoints(TreeSet<Point<Integer>> points) {
+    public PointVolume setPoints(TreeSet<Point<Integer>> points) {
         this.points = points;
         return this;
     } // Copied
@@ -60,11 +57,18 @@ public class Volume {
         points = new TreeSet<>();
     } // Copied
 
-    public Volume addCoord(int xIn, int yIn, int zIn) throws IntegerOverflowException {
+    public PointVolume add(int xIn, int yIn, int zIn) throws IntegerOverflowException {
         points.add(new Point<>(xIn,yIn,zIn));
         if (points.size() == Integer.MAX_VALUE) throw new IntegerOverflowException("Object too large (Integer overflow).");
         return this;
     } // Copied
+
+    @Override
+    public Volume2 add(Point<Integer> point) throws IntegerOverflowException {
+        points.add(point);
+        if (points.size() == Integer.MAX_VALUE) throw new IntegerOverflowException("Object too large (Integer overflow).");
+        return this;
+    }
 
     public double getDistPerPxXY() {
         return dppXY;
@@ -81,8 +85,18 @@ public class Volume {
     } // Copied
 
     public boolean is2D() {
-        return twoD;
+        return nSlices == 1;
     } // Copied
+
+    @Override
+    public Point<Double> getMeanCentroid() {
+        return null;
+    }
+
+    @Override
+    public Point<Double> getMedianCentroid() {
+        return null;
+    }
 
     public ArrayList<Integer> getXCoords() { // Copied
         return points.stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
@@ -99,24 +113,24 @@ public class Volume {
     } // Copied
 
     public TreeSet<Point<Integer>> getSurface() {
-        if (surface == null) calculateSurface();
+        if (surface.size() == 0) calculateSurface();
         return surface;
     } // Copied
 
     public ArrayList<Integer> getSurfaceXCoords() {
-        if (surface == null) calculateSurface();
+        if (surface.size() == 0) calculateSurface();
         return surface.stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
 
     } // Copied
 
     public ArrayList<Integer> getSurfaceYCoords() {
-        if (surface == null) calculateSurface();
+        if (surface.size() == 0) calculateSurface();
         return surface.stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
 
     } // Copied
 
     public ArrayList<Integer> getSurfaceZCoords() {
-        if (surface == null) calculateSurface();
+        if (surface.size() == 0) calculateSurface();
         return surface.stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
 
     } // Copied
@@ -126,7 +140,7 @@ public class Volume {
     } // Copied
 
     public void calculateSurface() {
-        if (twoD) {
+        if (is2D()) {
             calculateSurface2D();
         } else {
             calculateSurface3D();
@@ -169,11 +183,11 @@ public class Volume {
 
     public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2, boolean pixelDistances) {
         try {
-            Volume volume1 = new Volume(dppXY,dppZ,calibratedUnits,is2D());
-            volume1.addCoord(point1.getX(),point1.getY(),point1.getZ());
+            PointVolume volume1 = new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits);
+            volume1.add(point1.getX(),point1.getY(),point1.getZ());
 
-            Volume volume2 = new Volume(dppXY,dppZ,calibratedUnits,is2D());
-            volume2.addCoord(point2.getX(),point2.getY(),point2.getZ());
+            PointVolume volume2 = new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits);
+            volume2.add(point2.getX(),point2.getY(),point2.getZ());
 
             return volume1.getCentroidSeparation(volume2,pixelDistances);
 
@@ -224,7 +238,7 @@ public class Volume {
     } // Copied
 
     public double[] getSurfaceX(boolean pixelDistances) {
-        if (surface == null) calculateSurface();
+        if (surface.size() == 0) calculateSurface();
         if (pixelDistances)
             return surface.stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
         else
@@ -233,7 +247,7 @@ public class Volume {
     } // Copied
 
     public double[] getSurfaceY(boolean pixelDistances) {
-        if (surface == null) calculateSurface();
+        if (surface.size() == 0) calculateSurface();
         if (pixelDistances)
             return surface.stream().map(Point::getY).mapToDouble(Integer::doubleValue).toArray();
         else
@@ -249,7 +263,7 @@ public class Volume {
      * @return
      */
     public double[] getSurfaceZ(boolean pixelDistances, boolean matchXY) {
-        if (surface == null) calculateSurface();
+        if (surface.size() == 0) calculateSurface();
         if (pixelDistances)
             if (matchXY)
                 return surface.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v -> v* dppZ / dppXY).toArray();
@@ -473,7 +487,7 @@ public class Volume {
 
     } // Copied
 
-    public int getOverlap(Volume volume2) {
+    public int getOverlap(PointVolume volume2) {
         TreeSet<Point<Integer>> points1 = getPoints();
         TreeSet<Point<Integer>> points2 = volume2.getPoints();
 
@@ -492,7 +506,7 @@ public class Volume {
 
     } // Copied
 
-    public double getCentroidSeparation(Volume volume2, boolean pixelDistances) {
+    public double getCentroidSeparation(PointVolume volume2, boolean pixelDistances) {
         double x1 = getXMean(pixelDistances);
         double y1 = getYMean(pixelDistances);
         double z1 = getZMean(pixelDistances,true);
@@ -505,22 +519,27 @@ public class Volume {
 
     } // Copied
 
-    public double getSurfaceSeparation(Volume volume2, boolean pixelDistances) {
+    public double getSurfaceSeparation(PointVolume volume2, boolean pixelDistances) {
         SurfaceSeparationCalculator calculator = new SurfaceSeparationCalculator(this,volume2,pixelDistances);
 
         return calculator.getMinDist();
 
     } // Copied
 
-    public HashSet<Point<Integer>> getOverlappingPoints(Volume volume2) {
+    public Volume2 getOverlappingPoints(PointVolume volume2) {
         TreeSet<Point<Integer>> points1 = getPoints();
         TreeSet<Point<Integer>> points2 = volume2.getPoints();
 
-        HashSet<Point<Integer>> overlapping = new HashSet<>();
-        if (points1.size() < points2.size()) {
-            for (Point<Integer> p1 : points1) if (points2.contains(p1)) overlapping.add(p1);
-        } else {
-            for (Point<Integer> p2 : points2) if (points1.contains(p2)) overlapping.add(p2);
+        Volume2 overlapping = new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits);
+
+        try {
+            if (points1.size() < points2.size()) {
+                for (Point<Integer> p1 : points1) if (points2.contains(p1)) overlapping.add(p1);
+            } else {
+                for (Point<Integer> p2 : points2) if (points1.contains(p2)) overlapping.add(p2);
+            }
+        } catch (IntegerOverflowException e) {
+            // These points are a subset of the input PointVolume objects, so if they don't overflow these can't either
         }
 
         return overlapping;
@@ -533,14 +552,13 @@ public class Volume {
      * @param volume2
      * @return
      */
-    public double calculateAngle2D(Volume volume2) {
+    public double calculateAngle2D(PointVolume volume2) {
         Point<Double> p1 = new Point<>(getXMean(true),getYMean(true),0d);
         Point<Double> p2 = new Point<>(volume2.getXMean(true),volume2.getYMean(true),0d);
 
         return p1.calculateAngle2D(p2);
 
     } // Copied
-
     /**
      * Calculates the angle of the trajectory from this volume to a point.  Angle is in radians and is relative to the
      * positive x-axis.
@@ -567,6 +585,11 @@ public class Volume {
     } // Copied
 
     @Override
+    public Volume2 createNewObject() {
+        return new PointVolume(this);
+    }
+
+    @Override
     public int hashCode() {
         int hash = 1;
 
@@ -585,9 +608,9 @@ public class Volume {
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;
-        if (!(obj instanceof Volume)) return false;
+        if (!(obj instanceof PointVolume)) return false;
 
-        Volume volume2 = (Volume) obj;
+        PointVolume volume2 = (PointVolume) obj;
         TreeSet<Point<Integer>> points1 = getPoints();
         TreeSet<Point<Integer>> points2 = volume2.getPoints();
 

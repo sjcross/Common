@@ -161,12 +161,6 @@
             <version>1.0.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>QuadTree</groupId>
-            <artifactId>QuadTree</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
         <!--<dependency>-->
             <!--<groupId>com.github.quickhull3d</groupId>-->
             <!--<artifactId>quickhull3d</artifactId>-->
