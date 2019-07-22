@@ -4,13 +4,12 @@ package wbif.sjx.common.Object.Volume2;
 
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.QuadTree.QuadTree;
+import wbif.sjx.common.Object.QuadTree.OctTree;
 
-import java.util.HashMap;
 import java.util.TreeSet;
 
-public class QuadTreeVolume extends Volume2 {
-    private final HashMap<Integer, QuadTree> quadTrees = new HashMap<Integer, QuadTree>();
+public class OctTreeVolume extends Volume2 {
+    private final OctTree octTree;
 
     /**
      * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
@@ -24,61 +23,43 @@ public class QuadTreeVolume extends Volume2 {
      */
     private Point<Double> medianCentroid = null;
 
-    public QuadTreeVolume(Volume2 volume) {
+    public OctTreeVolume(Volume2 volume) {
         super(volume);
+
+        octTree = new OctTree(width, height, nSlices);
     }
 
-    public QuadTreeVolume(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) {
+    public OctTreeVolume(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) {
         super(width, height, nSlices, dppXY, dppZ, calibratedUnits);
 
+        octTree = new OctTree(width, height, nSlices);
     }
 
     @Override
     public Volume2 add(int x, int y, int z) {
-        quadTrees.putIfAbsent(z,new QuadTree(width,height));
-
-        // Get relevant QuadTree
-        QuadTree quadTree = quadTrees.get(z);
-
         // Adding this point
-        quadTree.add(x, y);
-
-//        quadTree.optimise();
-
+        octTree.add(x, y, z);
+        
+//        octTree.optimise();
+        
         return this;
 
     }
 
     @Override
     public Volume2 add(Point<Integer> point) throws IntegerOverflowException {
-        // Get relevant QuadTree
-        quadTrees.putIfAbsent(point.z,new QuadTree(width,height));
-
         // Adding this point
-        quadTrees.get(point.z).add(point.x,point.y);
-
+        octTree.add(point.getX(), point.getY(), point.getZ());
+        
+//        octTree.optimise();
+        
         return this;
 
     }
 
     @Override
     public TreeSet<Point<Integer>> getPoints() {
-        TreeSet<Point<Integer>> points = new TreeSet<>();
-
-        // Iterating over each slice
-        for (int z:quadTrees.keySet()) {
-            // Getting the QuadTree for this slice
-            QuadTree quadTree = quadTrees.get(z);
-
-            // Adding each point
-            for (Point<Integer> point:quadTree.getPoints()) {
-                point.setZ(z);
-                points.add(point);
-            }
-
-        }
-
-        return points;
+        return octTree.getPoints();
 
     }
 
@@ -87,7 +68,7 @@ public class QuadTreeVolume extends Volume2 {
         // Clearing all current points
         clearPoints();
 
-        // Iterating over each point, adding it to the quadtree
+        // Iterating over each point, adding it to the octtree
         for (Point<Integer> point:points) {
             add(point.getX(),point.getY(),point.getZ());
         }
@@ -98,11 +79,11 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public void clearPoints() {
-        for (QuadTree quadTree:quadTrees.values()) quadTree.clear();
+        octTree.clear();
     }
-
+    
     void calculateMeanCentroid() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume calculateMeanCentroid needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume calculateMeanCentroid needs implementing");
     }
 
     @Override
@@ -112,7 +93,7 @@ public class QuadTreeVolume extends Volume2 {
     }
 
     void calculateMedianCentroid() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume calculateMedianCentroid needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume calculateMedianCentroid needs implementing");
     }
 
     @Override
@@ -123,88 +104,71 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public double getHeight(boolean pixelDistances, boolean matchXY) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getHeight needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume getHeight needs implementing");
         return 0;
     }
 
     @Override
     public double[][] getExtents(boolean pixelDistances, boolean matchXY) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getExtents needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume getExtents needs implementing");
         return new double[0][];
     }
 
     @Override
     public boolean hasVolume() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume hasVolume needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume hasVolume needs implementing");
         return false;
     }
 
     @Override
     public boolean hasArea() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume hasArea needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume hasArea needs implementing");
         return false;
     }
 
     @Override
     public int getNVoxels() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getNVoxels needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume getNVoxels needs implementing");
         return 0;
     }
 
     @Override
     public double getProjectedArea(boolean pixelDistances) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getProjectedArea needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume getProjectedArea needs implementing");
         return 0;
     }
 
     @Override
     public int getOverlap(PointVolume volume2) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getOverlap needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume getOverlap needs implementing");
         return 0;
     }
 
     @Override
     public Volume2 getOverlappingPoints(PointVolume volume2) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getOverlappingPoints needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume getOverlappingPoints needs implementing");
         return null;
     }
 
     @Override
     public boolean containsPoint(Point<Integer> point1) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume containsPoint needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume containsPoint needs implementing");
         return false;
     }
 
     @Override
     public Volume2 createNewObject() {
-        return new QuadTreeVolume(this);
+        return new OctTreeVolume(this);
     }
 
     public void calculateSurface() {
-        if (is2D()) {
-            // Get the sole QuadTree
-            QuadTree quadTree = quadTrees.values().iterator().next();
-
-            // Set the surface list to the edge points of the QuadTree
-            surface = quadTree.getEdgePoints();
-        } else {
-            clearSurface();
-
-            // For each slice
-            for (int z:quadTrees.keySet()) {
-                QuadTree silceQT       = quadTrees.get(z);
-                QuadTree belowSliceQT  = quadTrees.get(z-1);
-                QuadTree aboveSliceQT  = quadTrees.get(z+1);
-
-                // Add all the edge points for the slices QuadTree factoring in the neighbouring slices
-                silceQT.getEdgePoints3D(surface, belowSliceQT, aboveSliceQT);
-            }
-        }
+        surface = octTree.getEdgePoints();
+        
     }
 
     @Override
     public int hashCode() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume hashCode needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume hashCode needs implementing");
 
         int hash = 1;
 
@@ -222,7 +186,7 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public boolean equals(Object obj) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume equals needs implementing");
+        System.out.println("wbif.sjx.common.Object.OctTreeVolume equals needs implementing");
 
 //        if (obj == this) return true;
 //        if (!(obj instanceof Volume)) return false;

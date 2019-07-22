@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
  */
 public class PointVolume extends Volume2 {
     protected TreeSet<Point<Integer>> points = new TreeSet<>();
-    protected TreeSet<Point<Integer>> surface = new TreeSet<>();
 
     /**
      * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
@@ -84,10 +83,6 @@ public class PointVolume extends Volume2 {
         return calibratedUnits;
     } // Copied
 
-    public boolean is2D() {
-        return nSlices == 1;
-    } // Copied
-
     @Override
     public Point<Double> getMeanCentroid() {
         return null;
@@ -112,11 +107,6 @@ public class PointVolume extends Volume2 {
 
     } // Copied
 
-    public TreeSet<Point<Integer>> getSurface() {
-        if (surface.size() == 0) calculateSurface();
-        return surface;
-    } // Copied
-
     public ArrayList<Integer> getSurfaceXCoords() {
         if (surface.size() == 0) calculateSurface();
         return surface.stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
@@ -139,6 +129,7 @@ public class PointVolume extends Volume2 {
         return z*dppZ/dppXY;
     } // Copied
 
+    @Override
     public void calculateSurface() {
         if (is2D()) {
             calculateSurface2D();
@@ -274,10 +265,6 @@ public class PointVolume extends Volume2 {
         else
             return surface.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v->v* dppZ).toArray();
 
-    } // Copied
-
-    public void clearSurface() {
-        surface = null;
     } // Copied
 
     public void calculateMeanCentroid() {

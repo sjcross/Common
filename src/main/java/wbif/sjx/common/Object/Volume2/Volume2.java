@@ -16,6 +16,8 @@ public abstract class Volume2 {
     protected final int height;
     protected final int nSlices;
 
+    protected TreeSet<Point<Integer>> surface = null;
+
     public Volume2(Volume2 volume) {
         this.width = volume.getWidth();
         this.height = volume.getHeight();
@@ -49,11 +51,7 @@ public abstract class Volume2 {
 
     public abstract void clearPoints();
 
-    public abstract TreeSet<Point<Integer>> getSurface();
-
-    public abstract void clearSurface();
-
-    public abstract boolean is2D();
+    public abstract void calculateSurface();
 
     public abstract Point<Double> getMeanCentroid();
 
@@ -82,6 +80,22 @@ public abstract class Volume2 {
 
 
     // PUBLIC METHODS
+
+
+    public boolean is2D() {
+        return nSlices == 1;
+
+    }
+
+    public TreeSet<Point<Integer>> getSurface() {
+        if (surface == null) calculateSurface();
+        return surface;
+
+    }
+
+    public void clearSurface() {
+        surface = null;
+    }
 
     public double getXYScaledZ(double z) {
         return z*dppZ/dppXY;
@@ -303,7 +317,6 @@ public abstract class Volume2 {
             return getNVoxels()*dppXY*dppXY*dppZ;
         }
     }
-
 
     // GETTERS AND SETTERS
 
