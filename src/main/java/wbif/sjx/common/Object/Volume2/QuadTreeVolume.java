@@ -26,6 +26,8 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public Volume2 add(int x, int y, int z) {
+        if (z >= nSlices) throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
+
         quadTrees.putIfAbsent(z,new QuadTree(width,height));
 
         // Get relevant QuadTree
@@ -42,6 +44,9 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public Volume2 add(Point<Integer> point) throws IntegerOverflowException {
+        int z = point.z;
+        if (z >= nSlices) throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
+
         // Get relevant QuadTree
         quadTrees.putIfAbsent(point.z,new QuadTree(width,height));
 
@@ -187,8 +192,12 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public int getNVoxels() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getNVoxels needs implementing");
-        return 0;
+        int nVoxels = 0;
+
+        for (QuadTree quadTree:quadTrees.values()) nVoxels += quadTree.getPointCount();
+
+        return nVoxels;
+
     }
 
     @Override
@@ -211,10 +220,9 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public boolean containsPoint(Point<Integer> point1) {
-        // Get the relevant QuadTree
-        QuadTree quadTree = quadTrees.get(point1.z);
+        if (!quadTrees.containsKey(point1.z)) return false;
+        return quadTrees.get(point1.z).contains(point1.x,point1.y);
 
-        return quadTree != null && quadTree.contains(point1.x, point1.y);
     }
 
     @Override

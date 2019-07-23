@@ -49,27 +49,33 @@ public class PointVolume extends Volume2 {
     } // Copied
 
     @Override
-    public PointVolume add(int xIn, int yIn, int zIn) throws IntegerOverflowException {
-        points.add(new Point<>(xIn,yIn,zIn));
+    public PointVolume add(int x, int y, int z) throws IntegerOverflowException {
+        if (x < 0 || x >= width)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (x: " + x + ")");
+        if (y < 0 || y >= height) throw new IndexOutOfBoundsException("Coordinate out of bounds! (y: " + y + ")");
+        if (z >= nSlices) throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
+
+        points.add(new Point<>(x,y,z));
         if (points.size() == Integer.MAX_VALUE) throw new IntegerOverflowException("Object too large (Integer overflow).");
+
         return this;
+
     } // Copied
 
     @Override
     public Volume2 add(Point<Integer> point) throws IntegerOverflowException {
+        int x = point.x;
+        int y = point.y;
+        int z = point.z;
+
+        if (x < 0 || x >= width)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (x: " + x + ")");
+        if (y < 0 || y >= height) throw new IndexOutOfBoundsException("Coordinate out of bounds! (y: " + y + ")");
+        if (z >= nSlices) throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
+
         points.add(point);
         if (points.size() == Integer.MAX_VALUE) throw new IntegerOverflowException("Object too large (Integer overflow).");
+
         return this;
-    }
 
-    @Override
-    public Point<Double> getMeanCentroid() {
-        return null;
-    }
-
-    @Override
-    public Point<Double> getMedianCentroid() {
-        return null;
     }
 
     @Override

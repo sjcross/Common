@@ -652,11 +652,11 @@ public class QuadTreeVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
-        volume1.add(0,0,0);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,11,5,dppXY,dppZ,units);
+        volume1.add(5,5,0);
 
-        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
-        volume2.add(-5,5,0);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,11,5,dppXY,dppZ,units);
+        volume2.add(0,10,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(135);
@@ -671,11 +671,11 @@ public class QuadTreeVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
-        volume1.add(0,0,0);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,11,5,dppXY,dppZ,units);
+        volume1.add(5,5,0);
 
-        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
-        volume2.add(-5,-5,0);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,11,5,dppXY,dppZ,units);
+        volume2.add(0,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(-135);
@@ -690,11 +690,11 @@ public class QuadTreeVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
-        volume1.add(0,0,0);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,11,5,dppXY,dppZ,units);
+        volume1.add(5,5,0);
 
-        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
-        volume2.add(5,-5,0);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,11,5,dppXY,dppZ,units);
+        volume2.add(10,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(-45);
@@ -747,11 +747,11 @@ public class QuadTreeVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
-        volume1.add(0,0,0);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,11,5,dppXY,dppZ,units);
+        volume1.add(5,5,0);
 
-        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
-        volume2.add(-5,0,0);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,11,5,dppXY,dppZ,units);
+        volume2.add(0,5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(180);
@@ -766,11 +766,11 @@ public class QuadTreeVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
-        volume1.add(0,0,0);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,11,5,dppXY,dppZ,units);
+        volume1.add(5,5,0);
 
-        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
-        volume2.add(0,-5,0);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,11,5,dppXY,dppZ,units);
+        volume2.add(5,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(-90);
@@ -1003,7 +1003,7 @@ public class QuadTreeVolumeTest {
 
         Point<Integer> point = new Point<>(1,2,3);
 
-        assertTrue(volume.getPoints().contains(point));
+        assertTrue(volume.containsPoint(point));
 
     }
 
@@ -1017,7 +1017,7 @@ public class QuadTreeVolumeTest {
 
         Point<Integer> point = new Point<>(2,2,3);
 
-        assertFalse(volume.getPoints().contains(point));
+        assertFalse(volume.containsPoint(point));
 
     }
 
@@ -1126,7 +1126,7 @@ public class QuadTreeVolumeTest {
 
         QuadTreeVolume volume2 = new QuadTreeVolume(5,4,13,1.0,1.0,"Test");
         volume2.add(1,2,3);
-        volume2.add(-4,3,12);
+        volume2.add(0,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
@@ -1246,7 +1246,7 @@ public class QuadTreeVolumeTest {
 
         QuadTreeVolume volume2 = new QuadTreeVolume(5,4,13,1.0,1.0,"Test");
         volume2.add(1,2,3);
-        volume2.add(-4,3,12);
+        volume2.add(0,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
@@ -1632,11 +1632,6 @@ public class QuadTreeVolumeTest {
         volume.add(3,4,8);
         volume.add(2,4,2);
         volume.add(2,6,9);
-
-        Iterator<Point<Integer>> iterator = volume.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
 
         volume.clearPoints();
         assertEquals(0,volume.getNVoxels());

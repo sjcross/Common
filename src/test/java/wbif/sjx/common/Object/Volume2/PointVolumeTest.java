@@ -652,11 +652,11 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume1.add(0,0,0);
+        PointVolume volume1 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        volume1.add(5,5,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume2.add(-5,5,0);
+        PointVolume volume2 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        volume2.add(0,10,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(135);
@@ -671,11 +671,11 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume1.add(0,0,0);
+        PointVolume volume1 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        volume1.add(5,5,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume2.add(-5,-5,0);
+        PointVolume volume2 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        volume2.add(0,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(-135);
@@ -690,11 +690,11 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume1.add(0,0,0);
+        PointVolume volume1 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        volume1.add(5,5,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume2.add(5,-5,0);
+        PointVolume volume2 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        volume2.add(10,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(-45);
@@ -747,11 +747,11 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume1.add(0,0,0);
+        PointVolume volume1 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        volume1.add(5,5,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume2.add(-5,0,0);
+        PointVolume volume2 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        volume2.add(0,5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(180);
@@ -766,11 +766,11 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume1.add(0,0,0);
+        PointVolume volume1 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        volume1.add(5,5,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume2.add(0,-5,0);
+        PointVolume volume2 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        volume2.add(5,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
         double expectedAngle = Math.toRadians(-90);
@@ -1126,7 +1126,7 @@ public class PointVolumeTest {
 
         PointVolume volume2 = new PointVolume(5,4,13,1.0,1.0,"Test");
         volume2.add(1,2,3);
-        volume2.add(-4,3,12);
+        volume2.add(0,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
@@ -1246,7 +1246,7 @@ public class PointVolumeTest {
 
         PointVolume volume2 = new PointVolume(5,4,13,1.0,1.0,"Test");
         volume2.add(1,2,3);
-        volume2.add(-4,3,12);
+        volume2.add(0,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
@@ -1600,7 +1600,7 @@ public class PointVolumeTest {
 
     @Test
     public void testClearSurface() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,5,15,2.0,1.0,"PX");
+        PointVolume volume = new PointVolume(10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1621,7 +1621,7 @@ public class PointVolumeTest {
 
     @Test
     public void testClearPoints() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,5,15,2.0,1.0,"PX");
+        PointVolume volume = new PointVolume(10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
