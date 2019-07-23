@@ -343,4 +343,36 @@ public abstract class Volume2 {
     public int getnSlices() {
         return nSlices;
     }
+
+    // VOLUME FACTORY
+
+    public static Volume2 newVolume(Volumes type, int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits)
+    {
+        return type.factory.newVolume(width, height, nSlices, dppXY, dppZ, calibratedUnits);
+    }
+
+    private interface VolumeFactory
+    {
+        Volume2 newVolume(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits);
+    }
+
+    public enum Volumes
+    {
+        POINTSET(PointVolume::new),
+        QUADTREE(QuadTreeVolume::new),
+        OCTTREE(OctTreeVolume::new),
+        OPTIMAL((width, height, nSlices, dppXY, dppZ, calibratedUnits) ->
+        {
+            // ...
+
+            return null;
+        });
+
+        private final VolumeFactory factory;
+
+        Volumes(VolumeFactory factory)
+        {
+            this.factory = factory;
+        }
+    }
 }
