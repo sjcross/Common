@@ -9,7 +9,7 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 
-public class PointVolumeTest {
+public class QuadTreeVolumeTest {
     private double tolerance10 = 1E-10;
     private double tolerance2 = 1E-2;
 
@@ -22,7 +22,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(10,10,1,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(10,10,1,dppXY,dppZ,units);
         volume.add(0,0,0);
         volume.add(0,0,0);
         volume.add(1,0,0);
@@ -36,7 +36,7 @@ public class PointVolumeTest {
 
     @Test
     public void testGetXCoords() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,10,13,2.0,1.0,"PX");
+        QuadTreeVolume volume = new QuadTreeVolume(10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -61,7 +61,7 @@ public class PointVolumeTest {
 
     @Test
     public void testGetYCoords() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,10,13,2.0,1.0,"PX");
+        QuadTreeVolume volume = new QuadTreeVolume(10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -86,7 +86,7 @@ public class PointVolumeTest {
 
     @Test
     public void testGetZCoords() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,10,13,2.0,1.0,"PX");
+        QuadTreeVolume volume = new QuadTreeVolume(10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -110,12 +110,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetXNoPointVolume() {
+    public void testGetXNoQuadTreeVolume() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(10,10,13,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(10,10,13,dppXY,dppZ,units);
 
         double[] actualX = volume.getX(true);
         double[] expectedX = new double[]{};
@@ -131,7 +131,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -150,7 +150,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -169,7 +169,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -188,7 +188,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -207,7 +207,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -226,7 +226,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -245,7 +245,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -267,7 +267,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
 
         double actual = volume.getXYScaledZ(1);
         double expected = 5d;
@@ -285,7 +285,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -301,7 +301,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -317,7 +317,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -333,7 +333,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -349,7 +349,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -365,7 +365,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -381,7 +381,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -401,7 +401,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -416,7 +416,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -432,7 +432,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -447,7 +447,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -463,7 +463,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -479,7 +479,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -495,7 +495,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -512,7 +512,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -528,7 +528,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -545,7 +545,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -561,7 +561,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -578,7 +578,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -595,7 +595,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -612,7 +612,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -633,10 +633,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,20,1,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,20,1,dppXY,dppZ,units);
         volume2.add(10,10,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -652,10 +652,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume2.add(-5,5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -671,10 +671,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume2.add(-5,-5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -690,10 +690,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume2.add(5,-5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -709,10 +709,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume2.add(5,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -728,10 +728,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume2.add(0,5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -747,10 +747,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume2.add(-5,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -766,10 +766,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume2.add(0,-5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -787,7 +787,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -803,7 +803,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -819,7 +819,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -838,7 +838,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -859,7 +859,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -880,7 +880,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -903,24 +903,24 @@ public class PointVolumeTest {
     // AREA VOLUME CHECKS
 
     @Test
-    public void testHasPointVolumeNoPointVolume() {
+    public void testHasQuadTreeVolumeNoQuadTreeVolume() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
 
         assertFalse(volume.hasVolume());
 
     }
 
     @Test
-    public void testHasPointVolume2D() throws IntegerOverflowException {
+    public void testHasQuadTreeVolume2D() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,1);
         volume.add(11,5,1);
@@ -931,12 +931,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testHasPointVolume3D() throws IntegerOverflowException {
+    public void testHasQuadTreeVolume3D() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -947,12 +947,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testHasAreaNoPointVolume() {
+    public void testHasAreaNoQuadTreeVolume() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
 
         assertFalse(volume.hasArea());
 
@@ -964,7 +964,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,1);
         volume.add(11,5,1);
@@ -980,7 +980,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -995,7 +995,7 @@ public class PointVolumeTest {
 
     @Test
     public void testContainsPointDoesContain() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,5,15,2.0,1.0,"PX");
+        QuadTreeVolume volume = new QuadTreeVolume(10,5,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1009,7 +1009,7 @@ public class PointVolumeTest {
 
     @Test
     public void testContainsPointDoesntContain() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,5,15,2.0,1.0,"PX");
+        QuadTreeVolume volume = new QuadTreeVolume(10,5,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1022,24 +1022,24 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetNVoxelsNoPointVolume() {
+    public void testGetNVoxelsNoQuadTreeVolume() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
 
         assertEquals(0,volume.getNVoxels());
 
     }
 
     @Test
-    public void testGetNVoxelsHasPointVolume() throws IntegerOverflowException {
+    public void testGetNVoxelsHasQuadTreeVolume() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -1050,12 +1050,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetContainedPointVolumePixelDistances() throws IntegerOverflowException {
+    public void testGetContainedQuadTreeVolumePixelDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -1066,12 +1066,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetContainedPointVolumeCalibratedDistances() throws IntegerOverflowException {
+    public void testGetContainedQuadTreeVolumeCalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -1082,12 +1082,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetContainedPointVolumePixelDistancesFlatObject() throws IntegerOverflowException {
+    public void testGetContainedQuadTreeVolumePixelDistancesFlatObject() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,6,1);
         volume.add(11,5,1);
@@ -1098,12 +1098,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetContainedPointVolumeCalibratedDistancesFlatObject() throws IntegerOverflowException {
+    public void testGetContainedQuadTreeVolumeCalibratedDistancesFlatObject() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,6,1);
         volume.add(11,5,1);
@@ -1118,13 +1118,13 @@ public class PointVolumeTest {
 
     @Test
     public void testHashCodeDifferentValue() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        QuadTreeVolume volume1 = new QuadTreeVolume(5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        QuadTreeVolume volume2 = new QuadTreeVolume(5,4,13,1.0,1.0,"Test");
         volume2.add(1,2,3);
         volume2.add(-4,3,12);
         volume2.add(2,1,2);
@@ -1137,19 +1137,19 @@ public class PointVolumeTest {
     @Test
     public void testHashCodeDifferentPointOrder() throws IntegerOverflowException {
         // Verifying that the order of point placement doesn't matter
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"Test");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"Test");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"Test");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
-        PointVolume volume3 = new PointVolume(10,10,20,2.0,1.0,"Test");
+        QuadTreeVolume volume3 = new QuadTreeVolume(10,10,20,2.0,1.0,"Test");
         volume3.add(2,1,2);
         volume3.add(1,2,3);
         volume3.add(4,3,12);
@@ -1164,13 +1164,13 @@ public class PointVolumeTest {
     @Test
     public void testHashCodeMissingPoint() throws IntegerOverflowException {
         // Verifying that all points need to be present for equality
-        PointVolume volume1 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        QuadTreeVolume volume1 = new QuadTreeVolume(5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        QuadTreeVolume volume2 = new QuadTreeVolume(5,4,13,1.0,1.0,"Test");
         volume2.add(2,1,2);
         volume2.add(4,3,12);
         volume2.add(1,2,5);
@@ -1181,13 +1181,13 @@ public class PointVolumeTest {
 
     @Test
     public void testHashCodeDifferentCalibration() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.1,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.1,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1199,13 +1199,13 @@ public class PointVolumeTest {
 
     @Test
     public void testHashCodeDifferentUnitsCase() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"px");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"px");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1217,13 +1217,13 @@ public class PointVolumeTest {
 
     @Test
     public void testHashCodeDifferentUnits() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"um");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"um");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1238,13 +1238,13 @@ public class PointVolumeTest {
 
     @Test
     public void testEqualsDifferentValue() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        QuadTreeVolume volume1 = new QuadTreeVolume(5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        QuadTreeVolume volume2 = new QuadTreeVolume(5,4,13,1.0,1.0,"Test");
         volume2.add(1,2,3);
         volume2.add(-4,3,12);
         volume2.add(2,1,2);
@@ -1257,19 +1257,19 @@ public class PointVolumeTest {
 
     @Test
     public void testEqualsDifferentPointOrder() throws IntegerOverflowException {// Verifying that the order of point placement doesn't matter
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
-        PointVolume volume3 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume3 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume3.add(2,1,2);
         volume3.add(1,2,3);
         volume3.add(4,3,12);
@@ -1287,13 +1287,13 @@ public class PointVolumeTest {
     @Test
     public void testEqualsMissingPoint() throws IntegerOverflowException {
         // Verifying that all points need to be present for equality
-        PointVolume volume1 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        QuadTreeVolume volume1 = new QuadTreeVolume(5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        QuadTreeVolume volume2 = new QuadTreeVolume(5,4,13,1.0,1.0,"Test");
         volume2.add(2,1,2);
         volume2.add(4,3,12);
         volume2.add(1,2,5);
@@ -1305,13 +1305,13 @@ public class PointVolumeTest {
 
     @Test
     public void testEqualsDifferentCalibration() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.1,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.1,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1324,13 +1324,13 @@ public class PointVolumeTest {
 
     @Test
     public void testEqualsDifferentUnitsCase() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"px");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"px");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1343,13 +1343,13 @@ public class PointVolumeTest {
 
     @Test
     public void testEqualsDifferentUnits() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"um");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"um");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1365,13 +1365,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlappingPointsWithOverlap() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
@@ -1391,13 +1391,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlappingPointsWithoutOverlap() throws IntegerOverflowException  {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(5,3,12);
         volume2.add(2,2,2);
@@ -1411,13 +1411,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlappingPointsTotalOverlap() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1438,14 +1438,14 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlappingPointsWithOverlapMoreIn1() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
         volume1.add(4,5,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
@@ -1464,13 +1464,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlappingPointsWithOverlapMoreIn2() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
@@ -1490,13 +1490,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlapWithOverlap() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
@@ -1511,13 +1511,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlapWithoutOverlap() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(5,3,12);
         volume2.add(2,2,2);
@@ -1532,13 +1532,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlapTotalOverlap() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1553,14 +1553,14 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlapTotalOverlapMoreIn1() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
         volume1.add(4,5,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1575,13 +1575,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlapTotalOverlapMoreIn2() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume1 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        QuadTreeVolume volume2 = new QuadTreeVolume(10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1600,7 +1600,7 @@ public class PointVolumeTest {
 
     @Test
     public void testClearSurface() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,5,15,2.0,1.0,"PX");
+        QuadTreeVolume volume = new QuadTreeVolume(10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1621,7 +1621,7 @@ public class PointVolumeTest {
 
     @Test
     public void testClearPoints() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,5,15,2.0,1.0,"PX");
+        QuadTreeVolume volume = new QuadTreeVolume(10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1632,6 +1632,11 @@ public class PointVolumeTest {
         volume.add(3,4,8);
         volume.add(2,4,2);
         volume.add(2,6,9);
+
+        Iterator<Point<Integer>> iterator = volume.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
 
         volume.clearPoints();
         assertEquals(0,volume.getNVoxels());
@@ -1701,13 +1706,13 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,20,1,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
         volume1.add(12,6,0);
 
-        PointVolume volume2 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,20,1,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);
@@ -1727,13 +1732,13 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,20,1,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
         volume1.add(12,6,0);
 
-        PointVolume volume2 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,20,1,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);
@@ -1753,7 +1758,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
@@ -1762,7 +1767,7 @@ public class PointVolumeTest {
         volume1.add(11,5,1);
         volume1.add(12,6,1);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);
@@ -1786,7 +1791,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume1 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
@@ -1795,7 +1800,7 @@ public class PointVolumeTest {
         volume1.add(11,5,1);
         volume1.add(12,6,1);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        QuadTreeVolume volume2 = new QuadTreeVolume(20,10,5,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);

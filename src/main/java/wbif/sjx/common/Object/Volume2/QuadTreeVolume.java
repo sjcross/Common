@@ -6,23 +6,12 @@ import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.QuadTree.QuadTree;
 
-import java.util.HashMap;
-import java.util.TreeSet;
+import java.util.*;
+import java.util.function.Consumer;
 
 public class QuadTreeVolume extends Volume2 {
-    private final HashMap<Integer, QuadTree> quadTrees = new HashMap<Integer, QuadTree>();
+    private final TreeMap<Integer, QuadTree> quadTrees = new TreeMap<>();
 
-    /**
-     * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
-     * pixel or calibrated distances.
-     */
-    private Point<Double> meanCentroid = null;
-
-    /**
-     * Median coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
-     * pixel or calibrated distances.
-     */
-    private Point<Double> medianCentroid = null;
 
     public QuadTreeVolume(Volume2 volume) {
         super(volume);
@@ -101,24 +90,37 @@ public class QuadTreeVolume extends Volume2 {
         for (QuadTree quadTree:quadTrees.values()) quadTree.clear();
     }
 
-    void calculateMeanCentroid() {
+    @Override
+    public void calculateSurface() {
+        if (is2D()) {
+            // Get the sole QuadTree
+            QuadTree quadTree = quadTrees.values().iterator().next();
+
+            // Set the surface list to the edge points of the QuadTree
+            surface = quadTree.getEdgePoints();
+        } else {
+            clearSurface();
+
+            // For each slice
+            for (int z:quadTrees.keySet()) {
+                QuadTree silceQT       = quadTrees.get(z);
+                QuadTree belowSliceQT  = quadTrees.get(z-1);
+                QuadTree aboveSliceQT  = quadTrees.get(z+1);
+
+                // Add all the edge points for the slices QuadTree factoring in the neighbouring slices
+                silceQT.getEdgePoints3D(surface, belowSliceQT, aboveSliceQT);
+            }
+        }
+    }
+
+    @Override
+    public void calculateMeanCentroid() {
         System.out.println("wbif.sjx.common.Object.QuadTreeVolume calculateMeanCentroid needs implementing");
     }
 
     @Override
-    public Point<Double> getMeanCentroid() {
-        if (meanCentroid == null) calculateMeanCentroid();
-        return meanCentroid;
-    }
-
-    void calculateMedianCentroid() {
+    public void calculateMedianCentroid() {
         System.out.println("wbif.sjx.common.Object.QuadTreeVolume calculateMedianCentroid needs implementing");
-    }
-
-    @Override
-    public Point<Double> getMedianCentroid() {
-        if (medianCentroid == null) calculateMedianCentroid();
-        return medianCentroid;
     }
 
     @Override
@@ -158,13 +160,13 @@ public class QuadTreeVolume extends Volume2 {
     }
 
     @Override
-    public int getOverlap(PointVolume volume2) {
+    public int getOverlap(Volume2 volume2) {
         System.out.println("wbif.sjx.common.Object.QuadTreeVolume getOverlap needs implementing");
         return 0;
     }
 
     @Override
-    public Volume2 getOverlappingPoints(PointVolume volume2) {
+    public Volume2 getOverlappingPoints(Volume2 volume2) {
         System.out.println("wbif.sjx.common.Object.QuadTreeVolume getOverlappingPoints needs implementing");
         return null;
     }
@@ -180,26 +182,20 @@ public class QuadTreeVolume extends Volume2 {
         return new QuadTreeVolume(this);
     }
 
-    public void calculateSurface() {
-        if (is2D()) {
-            // Get the sole QuadTree
-            QuadTree quadTree = quadTrees.values().iterator().next();
+    @Override
+    public Iterator<Point<Integer>> iterator() {
+        return new QuadTreeVolumeIterator();
+    }
 
-            // Set the surface list to the edge points of the QuadTree
-            surface = quadTree.getEdgePoints();
-        } else {
-            clearSurface();
+    @Override
+    public void forEach(Consumer<? super Point<Integer>> action) {
+        System.out.println("wbif.sjx.common.Object.QuadTreeVolume forEach needs implementing");
+    }
 
-            // For each slice
-            for (int z:quadTrees.keySet()) {
-                QuadTree silceQT       = quadTrees.get(z);
-                QuadTree belowSliceQT  = quadTrees.get(z-1);
-                QuadTree aboveSliceQT  = quadTrees.get(z+1);
-
-                // Add all the edge points for the slices QuadTree factoring in the neighbouring slices
-                silceQT.getEdgePoints3D(surface, belowSliceQT, aboveSliceQT);
-            }
-        }
+    @Override
+    public Spliterator<Point<Integer>> spliterator() {
+        System.out.println("wbif.sjx.common.Object.QuadTreeVolume spliterator needs implementing");
+        return null;
     }
 
     @Override
@@ -250,5 +246,62 @@ public class QuadTreeVolume extends Volume2 {
 
         return true;
 
+    }
+
+    private class QuadTreeVolumeIterator implements Iterator<Point<Integer>> {
+        private Iterator<Integer> sliceIterator = quadTrees.keySet().iterator();
+        private Iterator<Point<Integer>> quadTreeIterator = null;
+        private int z = 0;
+
+        public QuadTreeVolumeIterator() {
+            if (!sliceIterator.hasNext()) return;
+            this.z = sliceIterator.next();
+            quadTreeIterator = quadTrees.get(z).iterator();
+
+        }
+
+        @Override
+        public boolean hasNext() {
+            // Check if this current slice has another point
+            if (quadTreeIterator.hasNext()) return true;
+
+            // If the current slice doesn't have another point, check if there is another slice
+            if (!sliceIterator.hasNext()) return false;
+
+            // Now we've got to access the next slice without incrementing the slice iterator
+            Iterator<Integer> tempZIterator = quadTrees.keySet().iterator();
+            while (tempZIterator.hasNext()) {
+                int tempZ = tempZIterator.next();
+                if (tempZ != z) continue;
+
+                tempZ = tempZIterator.next();
+                return quadTrees.get(tempZ).iterator().hasNext();
+
+            }
+
+            // Shouldn't get this far
+            return false;
+
+        }
+
+        @Override
+        public Point<Integer> next() {
+            // If the current slice has another point, return this with the appropriate slice index
+            if (quadTreeIterator.hasNext()) {
+                Point<Integer> slicePoint = quadTreeIterator.next();
+                return new Point<>(slicePoint.getX(),slicePoint.getY(),z);
+            }
+
+            if (sliceIterator.hasNext()) {
+                this.z = sliceIterator.next();
+                this.quadTreeIterator = quadTrees.get(z).iterator();
+                Point<Integer> slicePoint = quadTreeIterator.next();
+                return new Point<>(slicePoint.getX(),slicePoint.getY(),z);
+
+            }
+
+            return null;
+
+        }
     }
 }

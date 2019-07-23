@@ -4,12 +4,15 @@ package wbif.sjx.common.Object.Volume2;
 
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.QuadTree.OctTree;
+import wbif.sjx.common.Object.QuadTree.OcTree;
 
+import java.util.Iterator;
+import java.util.Spliterator;
 import java.util.TreeSet;
+import java.util.function.Consumer;
 
 public class OctTreeVolume extends Volume2 {
-    private final OctTree octTree;
+    private final OcTree ocTree;
 
     /**
      * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
@@ -26,19 +29,19 @@ public class OctTreeVolume extends Volume2 {
     public OctTreeVolume(Volume2 volume) {
         super(volume);
 
-        octTree = new OctTree(width, height, nSlices);
+        ocTree = new OcTree(width, height, nSlices);
     }
 
     public OctTreeVolume(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) {
         super(width, height, nSlices, dppXY, dppZ, calibratedUnits);
 
-        octTree = new OctTree(width, height, nSlices);
+        ocTree = new OcTree(width, height, nSlices);
     }
 
     @Override
     public Volume2 add(int x, int y, int z) {
         // Adding this point
-        octTree.add(x, y, z);
+        ocTree.add(x, y, z);
         
 //        octTree.optimise();
         
@@ -49,7 +52,7 @@ public class OctTreeVolume extends Volume2 {
     @Override
     public Volume2 add(Point<Integer> point) throws IntegerOverflowException {
         // Adding this point
-        octTree.add(point.getX(), point.getY(), point.getZ());
+        ocTree.add(point.getX(), point.getY(), point.getZ());
         
 //        octTree.optimise();
         
@@ -59,7 +62,7 @@ public class OctTreeVolume extends Volume2 {
 
     @Override
     public TreeSet<Point<Integer>> getPoints() {
-        return octTree.getPoints();
+        return ocTree.getPoints();
 
     }
 
@@ -79,10 +82,11 @@ public class OctTreeVolume extends Volume2 {
 
     @Override
     public void clearPoints() {
-        octTree.clear();
+        ocTree.clear();
     }
-    
-    void calculateMeanCentroid() {
+
+    @Override
+    public void calculateMeanCentroid() {
         System.out.println("wbif.sjx.common.Object.OctTreeVolume calculateMeanCentroid needs implementing");
     }
 
@@ -92,7 +96,8 @@ public class OctTreeVolume extends Volume2 {
         return meanCentroid;
     }
 
-    void calculateMedianCentroid() {
+    @Override
+    public void calculateMedianCentroid() {
         System.out.println("wbif.sjx.common.Object.OctTreeVolume calculateMedianCentroid needs implementing");
     }
 
@@ -139,13 +144,13 @@ public class OctTreeVolume extends Volume2 {
     }
 
     @Override
-    public int getOverlap(PointVolume volume2) {
+    public int getOverlap(Volume2 volume2) {
         System.out.println("wbif.sjx.common.Object.OctTreeVolume getOverlap needs implementing");
         return 0;
     }
 
     @Override
-    public Volume2 getOverlappingPoints(PointVolume volume2) {
+    public Volume2 getOverlappingPoints(Volume2 volume2) {
         System.out.println("wbif.sjx.common.Object.OctTreeVolume getOverlappingPoints needs implementing");
         return null;
     }
@@ -162,7 +167,7 @@ public class OctTreeVolume extends Volume2 {
     }
 
     public void calculateSurface() {
-        surface = octTree.getEdgePoints();
+        surface = ocTree.getEdgePoints();
         
     }
 
@@ -214,5 +219,20 @@ public class OctTreeVolume extends Volume2 {
 
         return true;
 
+    }
+
+    @Override
+    public Iterator<Point<Integer>> iterator() {
+        return null;
+    }
+
+    @Override
+    public void forEach(Consumer<? super Point<Integer>> action) {
+
+    }
+
+    @Override
+    public Spliterator<Point<Integer>> spliterator() {
+        return null;
     }
 }

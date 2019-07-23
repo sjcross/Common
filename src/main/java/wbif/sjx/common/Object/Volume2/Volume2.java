@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-public abstract class Volume2 {
+public abstract class Volume2 implements Iterable<Point<Integer>> {
     protected final double dppXY; //Calibration in xy
     protected final double dppZ; //Calibration in z
     protected final String calibratedUnits;
@@ -17,6 +17,19 @@ public abstract class Volume2 {
     protected final int nSlices;
 
     protected TreeSet<Point<Integer>> surface = null;
+
+    /**
+     * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
+     * pixel or calibrated distances.
+     */
+    protected Point<Double> meanCentroid = null;
+
+    /**
+     * Median coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
+     * pixel or calibrated distances.
+     */
+    protected Point<Double> medianCentroid = null;
+
 
     public Volume2(Volume2 volume) {
         this.width = volume.getWidth();
@@ -53,9 +66,9 @@ public abstract class Volume2 {
 
     public abstract void calculateSurface();
 
-    public abstract Point<Double> getMeanCentroid();
+    public abstract void calculateMeanCentroid();
 
-    public abstract Point<Double> getMedianCentroid();
+    public abstract void calculateMedianCentroid();
 
     public abstract double getHeight(boolean pixelDistances, boolean matchXY);
 
@@ -69,10 +82,10 @@ public abstract class Volume2 {
 
     public abstract double getProjectedArea(boolean pixelDistances);
 
-    public abstract int getOverlap(PointVolume volume2);
+    public abstract int getOverlap(Volume2 volume2);
 
     /////// THIS RETURNS A DIFFERENT STRUCTURE TO ORIGINAL (VOLUME CLASS) METHOD
-    public abstract Volume2 getOverlappingPoints(PointVolume volume2);
+    public abstract Volume2 getOverlappingPoints(Volume2 volume2);
 
     public abstract boolean containsPoint(Point<Integer> point1);
 
@@ -202,20 +215,25 @@ public abstract class Volume2 {
 
     }
 
-//    public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2, boolean pixelDistances) {
-//        try {
-//            Volume volume1 = new Volume(dppXY,dppZ,calibratedUnits,is2D());
-//            volume1.add(point1.getX(),point1.getY(),point1.getZ());
-//
-//            Volume volume2 = new Volume(dppXY,dppZ,calibratedUnits,is2D());
-//            volume2.add(point2.getX(),point2.getY(),point2.getZ());
-//
-//            return volume1.getCentroidSeparation(volume2,pixelDistances);
-//
-//        } catch (IntegerOverflowException e) {
-//            return Double.NaN;
-//        }
-//    }
+    public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2, boolean pixelDistances) {
+        try {
+            Volume2 volume1 = new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits);
+            volume1.add(point1.getX(),point1.getY(),point1.getZ());
+
+            Volume2 volume2 = new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits);
+            volume2.add(point2.getX(),point2.getY(),point2.getZ());
+
+            return volume1.getCentroidSeparation(volume2,pixelDistances);
+
+        } catch (IntegerOverflowException e) {
+            return Double.NaN;
+        }
+    }
+
+    public Point<Double> getMeanCentroid() {
+        if (meanCentroid == null) calculateMeanCentroid();
+        return meanCentroid;
+    }
 
     public double getXMean(boolean pixelDistances) {
         if (pixelDistances) return getMeanCentroid().getX();
@@ -240,6 +258,11 @@ public abstract class Volume2 {
 
     }
 
+    public Point<Double> getMedianCentroid() {
+        if (medianCentroid == null) calculateMedianCentroid();
+        return medianCentroid;
+    }
+
     public double getXMedian(boolean pixelDistances) {
         if (pixelDistances) return getMedianCentroid().getX();
 
@@ -262,7 +285,7 @@ public abstract class Volume2 {
 
     }
 
-    public double getCentroidSeparation(PointVolume volume2, boolean pixelDistances) {
+    public double getCentroidSeparation(Volume2 volume2, boolean pixelDistances) {
         double x1 = getXMean(pixelDistances);
         double y1 = getYMean(pixelDistances);
         double z1 = getZMean(pixelDistances,true);
@@ -275,7 +298,7 @@ public abstract class Volume2 {
 
     }
 
-    public double getSurfaceSeparation(PointVolume volume2, boolean pixelDistances) {
+    public double getSurfaceSeparation(Volume2 volume2, boolean pixelDistances) {
         System.out.println("wbif.sjx.common.Object.Volume2 getSurfaceSeparation needs implementing.  Possibly make use of point iterator when implemented - rather than getting array of all coordiantes");
 //        SurfaceSeparationCalculator calculator = new SurfaceSeparationCalculator(this,volume2,pixelDistances);
 //
@@ -289,7 +312,7 @@ public abstract class Volume2 {
      * @param volume2
      * @return
      */
-    public double calculateAngle2D(PointVolume volume2) {
+    public double calculateAngle2D(Volume2 volume2) {
         Point<Double> p1 = new Point<>(getXMean(true),getYMean(true),0d);
         Point<Double> p2 = new Point<>(volume2.getXMean(true),volume2.getYMean(true),0d);
 
@@ -318,6 +341,7 @@ public abstract class Volume2 {
         }
     }
 
+
     // GETTERS AND SETTERS
 
     public double getDppXY() {
@@ -343,6 +367,7 @@ public abstract class Volume2 {
     public int getnSlices() {
         return nSlices;
     }
+
 
     // VOLUME FACTORY
 

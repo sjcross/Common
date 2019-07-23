@@ -12,6 +12,7 @@ import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.Object.Point;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
@@ -19,18 +20,6 @@ import java.util.stream.Collectors;
  */
 public class PointVolume extends Volume2 {
     protected TreeSet<Point<Integer>> points = new TreeSet<>();
-
-    /**
-     * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
-     * pixel or calibrated distances.
-     */
-    private Point<Double> meanCentroid = null;
-
-    /**
-     * Median coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
-     * pixel or calibrated distances.
-     */
-    private Point<Double> medianCentroid = null;
 
     public PointVolume(Volume2 volume) {
         super(volume);
@@ -42,20 +31,24 @@ public class PointVolume extends Volume2 {
     }
 
 
+    @Override
     public TreeSet<Point<Integer>> getPoints() {
         return points;
 
     } // Copied
 
+    @Override
     public PointVolume setPoints(TreeSet<Point<Integer>> points) {
         this.points = points;
         return this;
     } // Copied
 
+    @Override
     public void clearPoints() {
         points = new TreeSet<>();
     } // Copied
 
+    @Override
     public PointVolume add(int xIn, int yIn, int zIn) throws IntegerOverflowException {
         points.add(new Point<>(xIn,yIn,zIn));
         if (points.size() == Integer.MAX_VALUE) throw new IntegerOverflowException("Object too large (Integer overflow).");
@@ -69,20 +62,6 @@ public class PointVolume extends Volume2 {
         return this;
     }
 
-    public double getDistPerPxXY() {
-        return dppXY;
-
-    } // Copied
-
-    public double getDistPerPxZ() {
-        return dppZ;
-
-    } // Copied
-
-    public String getCalibratedUnits() {
-        return calibratedUnits;
-    } // Copied
-
     @Override
     public Point<Double> getMeanCentroid() {
         return null;
@@ -92,42 +71,6 @@ public class PointVolume extends Volume2 {
     public Point<Double> getMedianCentroid() {
         return null;
     }
-
-    public ArrayList<Integer> getXCoords() { // Copied
-        return points.stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
-
-    }
-
-    public ArrayList<Integer> getYCoords() {
-        return points.stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
-    } // Copied
-
-    public ArrayList<Integer> getZCoords() {
-        return points.stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
-
-    } // Copied
-
-    public ArrayList<Integer> getSurfaceXCoords() {
-        if (surface.size() == 0) calculateSurface();
-        return surface.stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
-
-    } // Copied
-
-    public ArrayList<Integer> getSurfaceYCoords() {
-        if (surface.size() == 0) calculateSurface();
-        return surface.stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
-
-    } // Copied
-
-    public ArrayList<Integer> getSurfaceZCoords() {
-        if (surface.size() == 0) calculateSurface();
-        return surface.stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
-
-    } // Copied
-
-    public double getXYScaledZ(double z) {
-        return z*dppZ/dppXY;
-    } // Copied
 
     @Override
     public void calculateSurface() {
@@ -172,101 +115,7 @@ public class PointVolume extends Volume2 {
         }
     } // Not needed
 
-    public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2, boolean pixelDistances) {
-        try {
-            PointVolume volume1 = new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits);
-            volume1.add(point1.getX(),point1.getY(),point1.getZ());
-
-            PointVolume volume2 = new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits);
-            volume2.add(point2.getX(),point2.getY(),point2.getZ());
-
-            return volume1.getCentroidSeparation(volume2,pixelDistances);
-
-        } catch (IntegerOverflowException e) {
-            return Double.NaN;
-        }
-    } // Copied
-
-//    public void shrinkObject(double shrinkLength) {
-//        // Calculating the distance of each point to the edge of the object
-//
-//    }
-
-    public double[] getX(boolean pixelDistances) {
-        if (pixelDistances)
-            return points.stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
-        else
-            return points.stream().map(Point::getX).mapToDouble(Integer::doubleValue).map(v->v* dppXY).toArray();
-
-    } // Copied
-
-    public double[] getY(boolean pixelDistances) {
-        if (pixelDistances)
-            return points.stream().map(Point::getY).mapToDouble(Integer::doubleValue).toArray();
-        else
-            return points.stream().map(Point::getY).mapToDouble(Integer::doubleValue).map(v->v* dppXY).toArray();
-
-    } // Copied
-
-    /**
-     *
-     * @param pixelDistances
-     * @param matchXY Get Z-coordinates in equivalent pixel distances to XY (e.g. for Z-coordinates at twice the XY
-     *                spacing, Z of 1 will be returned as 2).
-     * @return
-     */
-    public double[] getZ(boolean pixelDistances, boolean matchXY) {
-        if (pixelDistances)
-            if (matchXY)
-                return points.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v -> v* dppZ / dppXY).toArray();
-
-            else
-                return points.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).toArray();
-
-        else
-            return points.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v->v* dppZ).toArray();
-
-    } // Copied
-
-    public double[] getSurfaceX(boolean pixelDistances) {
-        if (surface.size() == 0) calculateSurface();
-        if (pixelDistances)
-            return surface.stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
-        else
-            return surface.stream().map(Point::getX).mapToDouble(Integer::doubleValue).map(v->v* dppXY).toArray();
-
-    } // Copied
-
-    public double[] getSurfaceY(boolean pixelDistances) {
-        if (surface.size() == 0) calculateSurface();
-        if (pixelDistances)
-            return surface.stream().map(Point::getY).mapToDouble(Integer::doubleValue).toArray();
-        else
-            return surface.stream().map(Point::getY).mapToDouble(Integer::doubleValue).map(v->v* dppXY).toArray();
-
-    } // Copied
-
-    /**
-     *
-     * @param pixelDistances
-     * @param matchXY Get Z-coordinates in equivalent pixel distances to XY (e.g. for Z-coordinates at twice the XY
-     *                spacing, Z of 1 will be returned as 2).
-     * @return
-     */
-    public double[] getSurfaceZ(boolean pixelDistances, boolean matchXY) {
-        if (surface.size() == 0) calculateSurface();
-        if (pixelDistances)
-            if (matchXY)
-                return surface.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v -> v* dppZ / dppXY).toArray();
-
-            else
-                return surface.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).toArray();
-
-        else
-            return surface.stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v->v* dppZ).toArray();
-
-    } // Copied
-
+    @Override
     public void calculateMeanCentroid() {
         CumStat csX = new CumStat();
         CumStat csY = new CumStat();
@@ -280,7 +129,8 @@ public class PointVolume extends Volume2 {
 
     } // Copied
 
-    private void calculateMedianCentroid() {
+    @Override
+    public void calculateMedianCentroid() {
         // Getting coordinates
         ArrayList<Integer> xCoords = getXCoords();
         ArrayList<Integer> yCoords = getYCoords();
@@ -311,74 +161,7 @@ public class PointVolume extends Volume2 {
         }
     } // Copied
 
-    /**
-     * Returns the previously-calculated mean x centroid.  If no centroid was previously calculated, it is calculated.
-     * @param pixelDistances
-     * @return
-     */
-    public double getXMean(boolean pixelDistances) {
-        // Checking if the centroid has previously been calculated
-        if (meanCentroid == null) calculateMeanCentroid();
-
-        if (pixelDistances) return meanCentroid.getX();
-
-        return meanCentroid.getX()*dppXY;
-
-    } // Copied
-
-    public double getYMean(boolean pixelDistances) {
-        // Checking if the centroid has previously been calculated
-        if (meanCentroid == null) calculateMeanCentroid();
-
-        if (pixelDistances) return meanCentroid.getY();
-
-        return meanCentroid.getY()*dppXY;
-
-    } // Copied
-
-    public double getZMean(boolean pixelDistances, boolean matchXY) {
-        // Checking if the centroid has previously been calculated
-        if (meanCentroid == null) calculateMeanCentroid();
-
-        // matchXY is ignored if using calibrated distances
-        if (pixelDistances && !matchXY) return meanCentroid.getZ();
-        if (pixelDistances && matchXY) return meanCentroid.getZ()*dppZ/dppXY;
-
-        return meanCentroid.getZ()*dppZ;
-
-    } // Copied
-
-    public double getXMedian(boolean pixelDistances) {
-        // Checking if the centroid has previously been calculated
-        if (medianCentroid == null) calculateMedianCentroid();
-
-        if (pixelDistances) return medianCentroid.getX();
-
-        return medianCentroid.getX()*dppXY;
-
-    } // Copied
-
-    public double getYMedian(boolean pixelDistances) {
-        // Checking if the centroid has previously been calculated
-        if (medianCentroid == null) calculateMedianCentroid();
-
-        if (pixelDistances) return medianCentroid.getY();
-
-        return medianCentroid.getY()*dppXY;
-
-    } // Copied
-
-    public double getZMedian(boolean pixelDistances, boolean matchXY) {
-        // Checking if the centroid has previously been calculated
-        if (medianCentroid == null) calculateMedianCentroid();
-
-        if (pixelDistances && !matchXY) return medianCentroid.getZ();
-        if (pixelDistances && matchXY) return medianCentroid.getZ()*dppZ/dppXY;
-
-        return medianCentroid.getZ()*dppZ;
-
-    } // Copied
-
+    @Override
     public double getHeight(boolean pixelDistances, boolean matchXY) {
         double[] z = getZ(pixelDistances,matchXY);
 
@@ -389,6 +172,7 @@ public class PointVolume extends Volume2 {
 
     } // Copied
 
+    @Override
     public double[][] getExtents(boolean pixelDistances, boolean matchXY) {
         //Minimum and maximum values for all dimensions [x_min, y_min, z_min; x_max, y_max, z_max]
         double[][] extents = new double[3][2];
@@ -408,22 +192,7 @@ public class PointVolume extends Volume2 {
 
     } // Copied
 
-    public double[][] getExtents2D(boolean pixelDistances) {
-        //Minimum and maximum values for all dimensions [x_min, y_min, z_min; x_max, y_max]
-        double[][] extents = new double[2][2];
-
-        double[] x = getX(pixelDistances);
-        double[] y = getY(pixelDistances);
-
-        extents[0][0] = new Min().evaluate(x);
-        extents[0][1] = new Max().evaluate(x);
-        extents[1][0] = new Min().evaluate(y);
-        extents[1][1] = new Max().evaluate(y);
-
-        return extents;
-
-    } // Remove?
-
+    @Override
     public boolean hasVolume() {
         //True if all dimension (x,y,z) are > 0
 
@@ -438,6 +207,7 @@ public class PointVolume extends Volume2 {
         return hasvol;
     } // Copied
 
+    @Override
     public boolean hasArea() {
         //True if all dimensions (x,y) are > 0
 
@@ -453,11 +223,13 @@ public class PointVolume extends Volume2 {
 
     } // Copied
 
+    @Override
     public int getNVoxels() {
         return points.size();
 
     } // Copied
 
+    @Override
     public double getProjectedArea(boolean pixelDistances) {
         double[] x = getX(true);
         double[] y = getY(true);
@@ -474,7 +246,8 @@ public class PointVolume extends Volume2 {
 
     } // Copied
 
-    public int getOverlap(PointVolume volume2) {
+    @Override
+    public int getOverlap(Volume2 volume2) {
         TreeSet<Point<Integer>> points1 = getPoints();
         TreeSet<Point<Integer>> points2 = volume2.getPoints();
 
@@ -493,27 +266,8 @@ public class PointVolume extends Volume2 {
 
     } // Copied
 
-    public double getCentroidSeparation(PointVolume volume2, boolean pixelDistances) {
-        double x1 = getXMean(pixelDistances);
-        double y1 = getYMean(pixelDistances);
-        double z1 = getZMean(pixelDistances,true);
-
-        double x2 = volume2.getXMean(pixelDistances);
-        double y2 = volume2.getYMean(pixelDistances);
-        double z2 = volume2.getZMean(pixelDistances,true);
-
-        return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1));
-
-    } // Copied
-
-    public double getSurfaceSeparation(PointVolume volume2, boolean pixelDistances) {
-        SurfaceSeparationCalculator calculator = new SurfaceSeparationCalculator(this,volume2,pixelDistances);
-
-        return calculator.getMinDist();
-
-    } // Copied
-
-    public Volume2 getOverlappingPoints(PointVolume volume2) {
+    @Override
+    public Volume2 getOverlappingPoints(Volume2 volume2) {
         TreeSet<Point<Integer>> points1 = getPoints();
         TreeSet<Point<Integer>> points2 = volume2.getPoints();
 
@@ -533,40 +287,7 @@ public class PointVolume extends Volume2 {
 
     } // Copied
 
-    /**
-     * Calculates the angle of the trajectory from this volume to volume2.  Angle is in radians and is relative to the
-     * positive x-axis.
-     * @param volume2
-     * @return
-     */
-    public double calculateAngle2D(PointVolume volume2) {
-        Point<Double> p1 = new Point<>(getXMean(true),getYMean(true),0d);
-        Point<Double> p2 = new Point<>(volume2.getXMean(true),volume2.getYMean(true),0d);
-
-        return p1.calculateAngle2D(p2);
-
-    } // Copied
-    /**
-     * Calculates the angle of the trajectory from this volume to a point.  Angle is in radians and is relative to the
-     * positive x-axis.
-     * @param point
-     * @return
-     */
-    public double calculateAngle2D(Point<Double> point) {
-        Point<Double> p1 = new Point<>(getXMean(true),getYMean(true),0d);
-
-        return p1.calculateAngle2D(point);
-
-    } // Copied
-
-    public double getContainedVolume(boolean pixelDistances) {
-        if (pixelDistances) {
-            return points.size()*dppZ/dppXY;
-        } else {
-            return points.size()*dppXY*dppXY*dppZ;
-        }
-    } // Copied
-
+    @Override
     public boolean containsPoint(Point<Integer> point1) {
         return getPoints().contains(point1);
     } // Copied
@@ -574,6 +295,21 @@ public class PointVolume extends Volume2 {
     @Override
     public Volume2 createNewObject() {
         return new PointVolume(this);
+    }
+
+    @Override
+    public Iterator<Point<Integer>> iterator() {
+        return points.iterator();
+    }
+
+    @Override
+    public void forEach(Consumer<? super Point<Integer>> action) {
+        points.forEach(action);
+    }
+
+    @Override
+    public Spliterator<Point<Integer>> spliterator() {
+        return points.spliterator();
     }
 
     @Override
@@ -603,8 +339,8 @@ public class PointVolume extends Volume2 {
 
         if (points1.size() != points2.size()) return false;
 
-        if (dppXY != volume2.getDistPerPxXY()) return false;
-        if (dppZ != volume2.getDistPerPxZ()) return false;
+        if (dppXY != volume2.getDppXY()) return false;
+        if (dppZ != volume2.getDppZ()) return false;
         if (!calibratedUnits.toUpperCase().equals(volume2.getCalibratedUnits().toUpperCase())) return false;
 
         Iterator<Point<Integer>> iterator1 = points1.iterator();
@@ -621,5 +357,4 @@ public class PointVolume extends Volume2 {
         return true;
 
     }
-
 }

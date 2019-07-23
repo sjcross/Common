@@ -7,7 +7,7 @@ import java.util.TreeSet;
 /**
  * Created by JDJFisher on 19/07/2019.
  */
-public class OctTree
+public class OcTree
 {
     private static final int CHUNK_SIZE = 2048;
 
@@ -20,7 +20,7 @@ public class OctTree
     private OTNode root;
 
     // empty constructor
-    public OctTree(int width, int height, int depth)
+    public OcTree(int width, int height, int depth)
     {
         this.width = width;
         this.height = height;
@@ -36,7 +36,7 @@ public class OctTree
     }
 
     // pixel constructor
-    public OctTree(boolean[] pixels, int width, int height, int depth)
+    public OcTree(boolean[] pixels, int width, int height, int depth)
     {
         this(width, height, depth);
 
@@ -70,7 +70,7 @@ public class OctTree
     }
 
     // point constructor
-    public OctTree(TreeSet<Point<Integer>> points, int width, int height, int depth)
+    public OcTree(TreeSet<Point<Integer>> points, int width, int height, int depth)
     {
         this(width, height, depth);
 
@@ -83,7 +83,7 @@ public class OctTree
     }
 
     // copy constructor
-    public OctTree(OctTree ot)
+    public OcTree(OcTree ot)
     {
         this.width = ot.width;
         this.height = ot.height;
@@ -598,7 +598,7 @@ public class OctTree
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        OctTree ot = (OctTree) o;
+        OcTree ot = (OcTree) o;
 
         return width == ot.width &&
                height == ot.height &&
