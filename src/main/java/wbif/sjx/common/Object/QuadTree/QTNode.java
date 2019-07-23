@@ -5,8 +5,8 @@ package wbif.sjx.common.Object.QuadTree;
  */
 public class QTNode
 {
-    protected boolean coloured;
-    protected QTNode nw, ne, sw, se;
+    public boolean coloured;
+    public QTNode nw, ne, sw, se;
 
     public QTNode()
     {

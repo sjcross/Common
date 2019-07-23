@@ -5,8 +5,8 @@ package wbif.sjx.common.Object.QuadTree;
  */
 public class OTNode
 {
-    protected boolean coloured;
-    protected OTNode lnw, lne, lsw, lse, unw, une, usw, use;
+    public boolean coloured;
+    public OTNode lnw, lne, lsw, lse, unw, une, usw, use;
 
     public OTNode()
     {

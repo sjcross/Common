@@ -385,7 +385,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
     {
         POINTSET(PointVolume::new),
         QUADTREE(QuadTreeVolume::new),
-        OCTTREE(OctTreeVolume::new),
+        OCTREE(OcTreeVolume::new),
         OPTIMAL((width, height, nSlices, dppXY, dppZ, calibratedUnits) ->
         {
             // ...

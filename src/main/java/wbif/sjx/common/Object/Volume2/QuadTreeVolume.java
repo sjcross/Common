@@ -3,7 +3,9 @@
 package wbif.sjx.common.Object.Volume2;
 
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
+import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.Object.Point;
+import wbif.sjx.common.Object.QuadTree.QTNode;
 import wbif.sjx.common.Object.QuadTree.QuadTree;
 
 import java.util.*;
@@ -114,8 +116,44 @@ public class QuadTreeVolume extends Volume2 {
     }
 
     @Override
-    public void calculateMeanCentroid() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume calculateMeanCentroid needs implementing");
+    public void calculateMeanCentroid()
+    {
+        CumStat csX = new CumStat();
+        CumStat csY = new CumStat();
+        CumStat csZ = new CumStat();
+
+        for (int z:quadTrees.keySet())
+        {
+            QuadTree quadTree = quadTrees.get(z);
+
+            meanQuadTreeTraversal(quadTree.getRoot(), csX, csY, quadTree.getSize(), 0, 0);
+
+            csZ.addMeasure(z, quadTree.getPointCount());
+        }
+
+        meanCentroid = new Point<>(csX.getMean(),csY.getMean(),csZ.getMean());
+    }
+
+    private static void meanQuadTreeTraversal(QTNode node, CumStat csX, CumStat csY, int size, int minX, int minY)
+    {
+        if (node.isDivided())
+        {
+            final int halfSize = size / 2;
+            final int midX = minX + halfSize;
+            final int midY = minY + halfSize;
+
+            meanQuadTreeTraversal(node.nw, csX, csY, halfSize, minX, minY);
+            meanQuadTreeTraversal(node.ne, csX, csY, halfSize, midX, minY);
+            meanQuadTreeTraversal(node.sw, csX, csY, halfSize, minX, midY);
+            meanQuadTreeTraversal(node.se, csX, csY, halfSize, midX, midY);
+        }
+        else if (node.coloured)
+        {
+            final int halfSize = size / 2;
+
+            csX.addMeasure(minX + halfSize, size);
+            csY.addMeasure(minY + halfSize, size);
+        }
     }
 
     @Override
@@ -173,8 +211,10 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public boolean containsPoint(Point<Integer> point1) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume containsPoint needs implementing");
-        return false;
+        // Get the relevant QuadTree
+        QuadTree quadTree = quadTrees.get(point1.z);
+
+        return quadTree != null && quadTree.contains(point1.x, point1.y);
     }
 
     @Override
@@ -200,17 +240,12 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public int hashCode() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume hashCode needs implementing");
-
         int hash = 1;
 
-//        hash = 31*hash + ((Number) dppXY).hashCode();
-//        hash = 31*hash + ((Number) dppZ).hashCode();
-//        hash = 31*hash + calibratedUnits.toUpperCase().hashCode();
-//
-//        for (Point<Integer> point:points) {
-//            hash = 31*hash + point.hashCode();
-//        }
+        hash = 31*hash + ((Number) dppXY).hashCode();
+        hash = 31*hash + ((Number) dppZ).hashCode();
+        hash = 31*hash + calibratedUnits.toUpperCase().hashCode();
+        hash = 31*hash + quadTrees.hashCode();
 
         return hash;
 

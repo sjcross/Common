@@ -231,7 +231,7 @@ public class OcTree
         }
     }
 
-    // optimise the OctTree by merging sub-sectors encoding a uniform value
+    // optimise the OcTree by merging sub-sectors encoding a uniform value
     public void optimise()
     {
         optimise(root);
