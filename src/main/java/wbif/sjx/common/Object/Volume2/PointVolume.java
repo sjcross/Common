@@ -3,9 +3,6 @@
 
 package wbif.sjx.common.Object.Volume2;
 
-import org.apache.commons.math3.stat.descriptive.rank.Max;
-import org.apache.commons.math3.stat.descriptive.rank.Min;
-import wbif.sjx.common.Analysis.Volume.SurfaceSeparationCalculator;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.MathFunc.ArrayFunc;
 import wbif.sjx.common.MathFunc.CumStat;
@@ -13,7 +10,6 @@ import wbif.sjx.common.Object.Point;
 
 import java.util.*;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 /**
  * Created by sc13967 on 28/07/2017.
@@ -94,10 +90,10 @@ public class PointVolume extends Volume2 {
         for (Point<Integer> point:points) {
             int count = 0;
 
-            if (containsPoint(new Point<>(point.x-1,point.y,0))) count++;
-            if (containsPoint(new Point<>(point.x+1,point.y,0))) count++;
-            if (containsPoint(new Point<>(point.x,point.y-1,0))) count++;
-            if (containsPoint(new Point<>(point.x,point.y+1,0))) count++;
+            if (contains(new Point<>(point.x-1,point.y,0))) count++;
+            if (contains(new Point<>(point.x+1,point.y,0))) count++;
+            if (contains(new Point<>(point.x,point.y-1,0))) count++;
+            if (contains(new Point<>(point.x,point.y+1,0))) count++;
 
             if (count < 4) surface.add(point);
         }
@@ -110,12 +106,12 @@ public class PointVolume extends Volume2 {
         for (Point<Integer> point:points) {
             int count = 0;
 
-            if (containsPoint(new Point<>(point.x-1,point.y,point.z))) count++;
-            if (containsPoint(new Point<>(point.x+1,point.y,point.z))) count++;
-            if (containsPoint(new Point<>(point.x,point.y-1,point.z))) count++;
-            if (containsPoint(new Point<>(point.x,point.y+1,point.z))) count++;
-            if (containsPoint(new Point<>(point.x,point.y,point.z-1))) count++;
-            if (containsPoint(new Point<>(point.x,point.y,point.z+1))) count++;
+            if (contains(new Point<>(point.x-1,point.y,point.z))) count++;
+            if (contains(new Point<>(point.x+1,point.y,point.z))) count++;
+            if (contains(new Point<>(point.x,point.y-1,point.z))) count++;
+            if (contains(new Point<>(point.x,point.y+1,point.z))) count++;
+            if (contains(new Point<>(point.x,point.y,point.z-1))) count++;
+            if (contains(new Point<>(point.x,point.y,point.z+1))) count++;
 
             if (count < 6) surface.add(point);
         }
@@ -159,7 +155,7 @@ public class PointVolume extends Volume2 {
     } // Copied
 
     @Override
-    public boolean containsPoint(Point<Integer> point1) {
+    public boolean contains(Point<Integer> point1) {
         return getPoints().contains(point1);
     } // Copied
 

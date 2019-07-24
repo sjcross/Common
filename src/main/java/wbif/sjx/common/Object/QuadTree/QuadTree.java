@@ -1,5 +1,6 @@
 package wbif.sjx.common.Object.QuadTree;
 
+import com.drew.lang.annotations.Nullable;
 import wbif.sjx.common.Object.Point;
 
 import java.awt.*;
@@ -344,12 +345,12 @@ public class QuadTree implements Iterable<Point<Integer>>
         }
     }
 
-    public void getEdgePoints3D(TreeSet<Point<Integer>> points, QuadTree below, QuadTree above)
+    public void getEdgePoints3D(TreeSet<Point<Integer>> points, @Nullable QuadTree below, @Nullable QuadTree above, int z)
     {
-        getEdgePoints3D(root, points, below, above, size, 0, 0);
+        getEdgePoints3D(root, points, below, above, z, size, 0, 0);
     }
 
-    private void getEdgePoints3D(QTNode node, TreeSet<Point<Integer>> points, QuadTree a, QuadTree b, int size, int minX, int minY)
+    private void getEdgePoints3D(QTNode node, TreeSet<Point<Integer>> points, QuadTree a, QuadTree b, int z, int size, int minX, int minY)
     {
         if (node.isDivided())
         {
@@ -357,10 +358,10 @@ public class QuadTree implements Iterable<Point<Integer>>
             final int midX = minX + halfSize;
             final int midY = minY + halfSize;
 
-            getEdgePoints3D(node.nw, points, a, b, halfSize, minX, minY);
-            getEdgePoints3D(node.ne, points, a, b, halfSize, midX, minY);
-            getEdgePoints3D(node.sw, points, a, b, halfSize, minX, midY);
-            getEdgePoints3D(node.se, points, a, b, halfSize, midX, midY);
+            getEdgePoints3D(node.nw, points, a, b, z, halfSize, minX, minY);
+            getEdgePoints3D(node.ne, points, a, b, z, halfSize, midX, minY);
+            getEdgePoints3D(node.sw, points, a, b, z, halfSize, minX, midY);
+            getEdgePoints3D(node.se, points, a, b, z, halfSize, midX, midY);
         }
         else if (node.coloured)
         {
@@ -373,7 +374,7 @@ public class QuadTree implements Iterable<Point<Integer>>
                 {
                     for (int x = minX; x <= maxX; x++)
                     {
-                        points.add(new Point<>(x, y, 0));
+                        points.add(new Point<>(x, y, z));
                     }
                 }
             }
@@ -383,12 +384,12 @@ public class QuadTree implements Iterable<Point<Integer>>
                 {
                     if (minY - 1 <= 0 || !contains(x, minY - 1) || !a.contains(x, maxY) || !b.contains(x, minY))
                     {
-                        points.add(new Point<>(x, minY, 0));
+                        points.add(new Point<>(x, minY, z));
                     }
 
                     if (maxY + 1 >= height || !contains(x, maxY + 1) || !a.contains(x, maxY) || !b.contains(x, maxY))
                     {
-                        points.add(new Point<>(x, maxY, 0));
+                        points.add(new Point<>(x, maxY, z));
                     }
                 }
 
@@ -396,12 +397,12 @@ public class QuadTree implements Iterable<Point<Integer>>
                 {
                     if (minX - 1 <= 0 || !contains(minX - 1, y) || !a.contains(minX, y) || !b.contains(minX, y))
                     {
-                        points.add(new Point<>(minX, y, 0));
+                        points.add(new Point<>(minX, y, z));
                     }
 
                     if (maxX + 1 >= width || !contains(maxX + 1, y) || !a.contains(maxX, y) || !b.contains(maxX, y))
                     {
-                        points.add(new Point<>(maxX, y, 0));
+                        points.add(new Point<>(maxX, y, z));
                     }
                 }
             }

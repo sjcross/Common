@@ -59,7 +59,7 @@ public class TextureCalculator {
             int y = point.getY();
             int z = point.getZ();
 
-            if (volume.containsPoint(new Point<>(x,y,z)) && volume.containsPoint(new Point<>(x+xOffs,y+yOffs,z+zOffs))){
+            if (volume.contains(new Point<>(x,y,z)) && volume.contains(new Point<>(x+xOffs,y+yOffs,z+zOffs))){
                 addValueToConfusionMatrix(image,x,y,z);
                 count = count + 2;
             }

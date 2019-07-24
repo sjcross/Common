@@ -771,7 +771,7 @@ public class PointVolumeTest {
 
         Point<Integer> point = new Point<>(1,2,3);
 
-        assertTrue(volume.containsPoint(point));
+        assertTrue(volume.contains(point));
 
     }
 
@@ -785,7 +785,7 @@ public class PointVolumeTest {
 
         Point<Integer> point = new Point<>(2,2,3);
 
-        assertFalse(volume.containsPoint(point));
+        assertFalse(volume.contains(point));
 
     }
 
@@ -1154,7 +1154,7 @@ public class PointVolumeTest {
         expected.add(new Point<>(1,2,5));
 
         assertEquals(2,actual.size());
-        for (Point<Integer> point:expected) assertTrue(actual.containsPoint(point));
+        for (Point<Integer> point:expected) assertTrue(actual.contains(point));
 
 
     }
@@ -1206,7 +1206,7 @@ public class PointVolumeTest {
         expected.add(new Point<>(1,2,5));
 
         assertEquals(4,actual.size());
-        for (Point<Integer> point:expected) assertTrue(actual.containsPoint(point));
+        for (Point<Integer> point:expected) assertTrue(actual.contains(point));
 
     }
 
@@ -1234,7 +1234,7 @@ public class PointVolumeTest {
         expected.add(new Point<>(1,2,5));
 
         assertEquals(2,actual.size());
-        for (Point<Integer> point:expected) assertTrue(actual.containsPoint(point));
+        for (Point<Integer> point:expected) assertTrue(actual.contains(point));
 
     }
 
@@ -1262,7 +1262,7 @@ public class PointVolumeTest {
         expected.add(new Point<>(1,2,5));
 
         assertEquals(2,actual.size());
-        for (Point<Integer> point:expected) assertTrue(actual.containsPoint(point));
+        for (Point<Integer> point:expected) assertTrue(actual.contains(point));
 
     }
 
@@ -1418,6 +1418,48 @@ public class PointVolumeTest {
 
     // MISSING TESTS
 
+    @Test
+    public void testGetSurface() throws IntegerOverflowException {
+        PointVolume volume = new PointVolume(10,10,8,2.0,1.0,"PX");
+        volume.add(5,7,3);
+        volume.add(5,8,3);
+        volume.add(5,9,3);
+        volume.add(6,7,3);
+        volume.add(6,8,3);
+        volume.add(6,9,3);
+        volume.add(7,7,3);
+        volume.add(7,8,3);
+        volume.add(7,9,3);
+        volume.add(5,7,4);
+        volume.add(5,8,4);
+        volume.add(5,9,4);
+        volume.add(6,7,4);
+        volume.add(6,8,4);
+        volume.add(6,9,4);
+        volume.add(7,7,4);
+        volume.add(7,8,4);
+        volume.add(7,9,4);
+        volume.add(5,7,5);
+        volume.add(5,8,5);
+        volume.add(5,9,5);
+        volume.add(6,7,5);
+        volume.add(6,8,5);
+        volume.add(6,9,5);
+        volume.add(7,7,5);
+        volume.add(7,8,5);
+        volume.add(7,9,5);
+
+        TreeSet<Point<Integer>> surface = volume.getSurface();
+
+        assertEquals(26,surface.size());
+        assertFalse(surface.contains(new Point<>(6,8,4)));
+        assertTrue(surface.contains(new Point<>(5,7,3)));
+        assertTrue(surface.contains(new Point<>(7,7,4)));
+        assertTrue(surface.contains(new Point<>(5,8,5)));
+        assertTrue(surface.contains(new Point<>(7,9,5)));
+
+    }
+
     @Test @Ignore
     public void testGetXSurfaceCoords() {
 
@@ -1463,13 +1505,43 @@ public class PointVolumeTest {
 
     }
 
-    @Test @Ignore
-    public void testGetProjectedAreaPixelDistances() {
+    @Test
+    public void testGetProjectedAreaPixelDistances() throws IntegerOverflowException {
+        PointVolume volume = new PointVolume(10,7,15,2.0,1.0,"PX");
+        volume.add(1,2,3);
+        volume.add(4,3,12);
+        volume.add(2,1,2);
+        volume.add(1,2,5);
+        volume.add(1,2,8);
+        volume.add(1,4,8);
+        volume.add(2,4,8);
+        volume.add(3,4,8);
+        volume.add(2,4,2);
+        volume.add(2,6,9);
+
+        double actual = volume.getProjectedArea(true);
+
+        assertEquals(7,actual,tolerance10);
 
     }
 
-    @Test @Ignore
-    public void testGetProjectedAreaCalibratedDistances() {
+    @Test
+    public void testGetProjectedAreaCalibratedDistances() throws IntegerOverflowException {
+        PointVolume volume = new PointVolume(10,7,15,2.0,1.0,"PX");
+        volume.add(1,2,3);
+        volume.add(4,3,12);
+        volume.add(2,1,2);
+        volume.add(1,2,5);
+        volume.add(1,2,8);
+        volume.add(1,4,8);
+        volume.add(2,4,8);
+        volume.add(3,4,8);
+        volume.add(2,4,2);
+        volume.add(2,6,9);
+
+        double actual = volume.getProjectedArea(false);
+
+        assertEquals(28,actual,tolerance10);
 
     }
 

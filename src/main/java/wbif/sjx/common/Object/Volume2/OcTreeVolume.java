@@ -130,7 +130,7 @@ public class OcTreeVolume extends Volume2 {
     }
 
     @Override
-    public boolean containsPoint(Point<Integer> point1) {
+    public boolean contains(Point<Integer> point1) {
         return ocTree.contains(point1.x, point1.y, point1.z);
     }
 

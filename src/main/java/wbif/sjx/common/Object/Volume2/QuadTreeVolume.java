@@ -105,8 +105,9 @@ public class QuadTreeVolume extends Volume2 {
 
             // Set the surface list to the edge points of the QuadTree
             surface = quadTree.getEdgePoints();
+
         } else {
-            clearSurface();
+            surface = new TreeSet<>();
 
             // For each slice
             for (int z:quadTrees.keySet()) {
@@ -115,7 +116,8 @@ public class QuadTreeVolume extends Volume2 {
                 QuadTree aboveSliceQT  = quadTrees.get(z+1);
 
                 // Add all the edge points for the slices QuadTree factoring in the neighbouring slices
-                silceQT.getEdgePoints3D(surface, belowSliceQT, aboveSliceQT);
+                silceQT.getEdgePoints3D(surface, belowSliceQT, aboveSliceQT, z);
+
             }
         }
     }
@@ -192,12 +194,27 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public double getProjectedArea(boolean pixelDistances) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getProjectedArea needs implementing");
-        return 0;
+        double count = 0;
+
+        // Iterating over each coordinate in XY
+        for (int x=0;x<width;x++) {
+            for (int y=0;y<height;y++) {
+                // Iterating over each z-position.  As soon as a match is found, we can move to the next coordinate.
+                for (QuadTree quadTree:quadTrees.values()) {
+                    if (quadTree.contains(x,y)) {
+                        count++;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return pixelDistances ? count : count*dppXY*dppXY;
+
     }
 
     @Override
-    public boolean containsPoint(Point<Integer> point1) {
+    public boolean contains(Point<Integer> point1) {
         if (!quadTrees.containsKey(point1.z)) return false;
         return quadTrees.get(point1.z).contains(point1.x,point1.y);
 
@@ -211,17 +228,6 @@ public class QuadTreeVolume extends Volume2 {
     @Override
     public Iterator<Point<Integer>> iterator() {
         return new QuadTreeVolumeIterator();
-    }
-
-    @Override
-    public void forEach(Consumer<? super Point<Integer>> action) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume forEach needs implementing");
-    }
-
-    @Override
-    public Spliterator<Point<Integer>> spliterator() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume spliterator needs implementing");
-        return null;
     }
 
     @Override

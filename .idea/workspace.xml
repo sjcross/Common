@@ -7,8 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ConvexHullCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ConvexHullCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QuadTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QuadTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/OcTreeVolume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/OcTreeVolume.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/PointVolume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/PointVolume.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/QuadTreeVolume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/QuadTreeVolume.java" afterDir="false" />
@@ -18,7 +18,6 @@
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,11 +50,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="PointVolume.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/PointVolume.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+            <state relative-caret-position="629">
+              <caret line="119" column="13" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
               <folding>
                 <element signature="docComment;class#PointVolume#0" />
                 <element signature="method#PointVolume#1;class#PointVolume#0" />
@@ -67,98 +66,302 @@
                 <element signature="method#calculateSurface2D#0;class#PointVolume#0" />
                 <element signature="method#calculateSurface3D#0;class#PointVolume#0" />
                 <element signature="method#calculateMeanCentroid#0;class#PointVolume#0" />
-                <element signature="method#getNVoxels#0;class#PointVolume#0" />
+                <element signature="method#size#0;class#PointVolume#0" />
                 <element signature="method#getProjectedArea#0;class#PointVolume#0" />
+                <element signature="method#hashCode#0;class#PointVolume#0" />
                 <element signature="method#equals#0;class#PointVolume#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Volume2.java" pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/Volume2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-453">
-              <caret line="187" column="4" selection-start-line="187" selection-start-column="4" selection-end-line="187" selection-end-column="4" />
+            <state relative-caret-position="308">
+              <caret line="88" column="23" lean-forward="true" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="23" />
               <folding>
                 <element signature="e#605#771#0" />
                 <element signature="e#827#1125#0" />
                 <element signature="e#1131#1433#0" />
-                <element signature="e#2159#2218#0" />
-                <element signature="e#2224#2349#0" />
-                <element signature="e#2507#2673#0" />
-                <element signature="e#2679#2844#0" />
-                <element signature="e#2850#3016#0" />
-                <element signature="e#3022#3353#0" />
-                <element signature="e#3359#3690#0" />
-                <element signature="e#3696#3936#0" />
-                <element signature="e#3696#4468#0" />
-                <element signature="e#4474#4648#0" />
-                <element signature="e#4654#4828#0" />
-                <element signature="e#4834#5008#0" />
-                <element signature="e#5014#5354#0" />
-                <element signature="e#5360#5700#0" />
-                <element signature="e#5706#5946#0" />
-                <element signature="e#5706#6488#0" />
-                <element signature="e#6293#6921#0" />
-                <element signature="e#6927#7061#0" />
-                <element signature="e#7067#7231#0" />
-                <element signature="e#7237#7401#0" />
-                <element signature="e#7407#7742#0" />
-                <element signature="e#7748#8210#0" />
-                <element signature="e#8216#9341#0" />
-                <element signature="e#9347#9704#0" />
-                <element signature="e#9710#10033#0" />
-                <element signature="e#10039#10511#0" />
-                <element signature="e#10517#10980#0" />
-                <element signature="e#10799#10911#0" />
-                <element signature="e#10986#11177#0" />
-                <element signature="e#10986#11443#0" />
-                <element signature="e#11449#11638#0" />
-                <element signature="e#11449#11821#0" />
-                <element signature="e#11827#12451#0" />
-                <element signature="e#12457#12800#0" />
-                <element signature="e#12806#13021#0" />
-                <element signature="e#13455#13692#0" />
-                <element signature="e#13698#13855#0" />
-                <element signature="e#13861#14285#0" />
-                <element signature="e#14013#14135#0" />
+                <element signature="e#2386#2387#0" expanded="true" />
+                <element signature="e#2416#2417#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuadTreeVolume.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/QuadTreeVolume.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+            <state relative-caret-position="325">
+              <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
               <folding>
-                <element signature="e#531#532#0" expanded="true" />
-                <element signature="e#560#561#0" expanded="true" />
                 <element signature="method#QuadTreeVolume#1;class#QuadTreeVolume#0" />
                 <element signature="method#add#0;class#QuadTreeVolume#0" />
                 <element signature="method#add#1;class#QuadTreeVolume#0" />
                 <element signature="method#getPoints#0;class#QuadTreeVolume#0" />
+                <element signature="e#1821#2110#1" />
+                <element signature="e#2018#2099#1" />
                 <element signature="method#setPoints#0;class#QuadTreeVolume#0" />
-                <element signature="method#calculateSurface#0;class#QuadTreeVolume#0" />
+                <element signature="e#2389#2457#1" />
                 <element signature="method#calculateMeanCentroid#0;class#QuadTreeVolume#0" />
+                <element signature="e#3645#3856#1" />
                 <element signature="method#meanQuadTreeTraversal#0;class#QuadTreeVolume#0" />
+                <element signature="e#4103#4554#1" />
+                <element signature="e#4595#4752#1" />
                 <element signature="method#getHeight#0;class#QuadTreeVolume#0" />
-                <element signature="method#getNVoxels#0;class#QuadTreeVolume#0" />
-                <element signature="method#getProjectedArea#0;class#QuadTreeVolume#0" />
-                <element signature="method#containsPoint#0;class#QuadTreeVolume#0" />
-                <element signature="e#7104#7105#0" expanded="true" />
-                <element signature="e#7151#7152#0" expanded="true" />
-                <element signature="method#forEach#0;class#QuadTreeVolume#0" />
-                <element signature="method#spliterator#0;class#QuadTreeVolume#0" />
+                <element signature="e#5059#5205#1" />
+                <element signature="method#size#0;class#QuadTreeVolume#0" />
                 <element signature="method#hashCode#0;class#QuadTreeVolume#0" />
                 <element signature="method#equals#0;class#QuadTreeVolume#0" />
                 <element signature="class#QuadTreeVolumeIterator#0;class#QuadTreeVolume#0" />
-                <element signature="method#QuadTreeIterator#0;class#QuadTreeIterator#0;class#QuadTreeVolume#0" />
+                <element signature="method#QuadTreeVolumeIterator#0;class#QuadTreeVolumeIterator#0;class#QuadTreeVolume#0" />
                 <element signature="method#hasNext#0;class#QuadTreeVolumeIterator#0;class#QuadTreeVolume#0" />
-                <element signature="method#next#0;class#QuadTreeIterator#0;class#QuadTreeVolume#0" />
+                <element signature="method#next#0;class#QuadTreeVolumeIterator#0;class#QuadTreeVolume#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/QuadTreeVolumeTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="1421" selection-start-line="1421" selection-end-line="1461" selection-end-column="5" />
+              <folding>
+                <element signature="e#388#763#0" />
+                <element signature="e#795#1527#0" />
+                <element signature="e#1533#2265#0" />
+                <element signature="e#2271#3004#0" />
+                <element signature="e#3010#3423#0" />
+                <element signature="e#3429#3955#0" />
+                <element signature="e#3961#4499#0" />
+                <element signature="e#4505#5027#0" />
+                <element signature="e#5033#5570#0" />
+                <element signature="e#5576#6117#0" />
+                <element signature="e#6123#6663#0" />
+                <element signature="e#6669#7408#0" />
+                <element signature="e#7414#7759#0" />
+                <element signature="e#7788#8217#0" />
+                <element signature="e#8223#8660#0" />
+                <element signature="e#8666#9096#0" />
+                <element signature="e#9102#9539#0" />
+                <element signature="e#9545#9994#0" />
+                <element signature="e#10000#10446#0" />
+                <element signature="e#10452#10964#0" />
+                <element signature="e#11005#11580#0" />
+                <element signature="e#11586#12160#0" />
+                <element signature="e#12166#12743#0" />
+                <element signature="e#12749#13327#0" />
+                <element signature="e#13333#13910#0" />
+                <element signature="e#13916#14494#0" />
+                <element signature="e#14500#15079#0" />
+                <element signature="e#15085#15664#0" />
+                <element signature="e#15671#16134#0" />
+                <element signature="e#16140#16587#0" />
+                <element signature="e#16593#17106#0" />
+                <element signature="e#17113#17883#0" />
+                <element signature="e#17889#18642#0" />
+                <element signature="e#18648#19694#0" />
+                <element signature="e#19728#19996#0" />
+                <element signature="e#20002#20400#0" />
+                <element signature="e#20406#20803#0" />
+                <element signature="e#20809#21065#0" />
+                <element signature="e#21071#21464#0" />
+                <element signature="e#21470#21863#0" />
+                <element signature="e#21885#22258#0" />
+                <element signature="e#22264#22640#0" />
+                <element signature="e#22646#22905#0" />
+                <element signature="e#22911#23315#0" />
+                <element signature="e#23321#23770#0" />
+                <element signature="e#23776#24236#0" />
+                <element signature="e#24242#24701#0" />
+                <element signature="e#24707#25177#0" />
+                <element signature="e#25207#25742#0" />
+                <element signature="e#25748#26673#0" />
+                <element signature="e#26679#27253#0" />
+                <element signature="e#27259#27800#0" />
+                <element signature="e#27806#28342#0" />
+                <element signature="e#28348#28883#0" />
+                <element signature="e#28913#29474#0" />
+                <element signature="e#29480#30475#0" />
+                <element signature="e#30481#31081#0" />
+                <element signature="e#31087#31654#0" />
+                <element signature="e#31660#32223#0" />
+                <element signature="e#32229#32790#0" />
+                <element signature="e#32819#33685#0" />
+                <element signature="e#33691#34334#0" />
+                <element signature="e#34340#35290#0" />
+                <element signature="e#35296#36196#0" />
+                <element signature="e#36202#37102#0" />
+                <element signature="e#37108#37694#0" />
+                <element signature="e#37700#38289#0" />
+                <element signature="e#38295#38882#0" />
+                <element signature="e#38888#39510#0" />
+                <element signature="e#39516#40138#0" />
+                <element signature="e#41474#41968#0" />
+                <element signature="e#41997#42059#0" />
+                <element signature="e#42065#42127#0" />
+                <element signature="e#42133#42194#0" />
+                <element signature="e#42200#42270#0" />
+                <element signature="e#42276#42346#0" />
+                <element signature="e#42352#42422#0" />
+                <element signature="e#42428#42503#0" />
+                <element signature="e#42509#42584#0" />
+                <element signature="e#42590#42665#0" />
+                <element signature="e#42396#42824#0" />
+                <element signature="e#42939#43456#0" />
+                <element signature="e#42838#43601#0" />
+                <element signature="e#43607#44376#0" />
+                <element signature="e#44382#45344#0" />
+                <element signature="e#45350#46318#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/PointVolumeTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="59">
+              <caret line="1421" column="21" lean-forward="true" selection-start-line="1421" selection-start-column="21" selection-end-line="1421" selection-end-column="21" />
+              <folding>
+                <element signature="e#385#754#0" />
+                <element signature="e#786#1512#0" />
+                <element signature="e#1518#2244#0" />
+                <element signature="e#2250#2977#0" />
+                <element signature="e#2983#3387#0" />
+                <element signature="e#3393#3913#0" />
+                <element signature="e#3919#4451#0" />
+                <element signature="e#4457#4973#0" />
+                <element signature="e#4979#5510#0" />
+                <element signature="e#5516#6051#0" />
+                <element signature="e#6057#6591#0" />
+                <element signature="e#6597#7330#0" />
+                <element signature="e#7336#7675#0" />
+                <element signature="e#7704#8127#0" />
+                <element signature="e#8133#8564#0" />
+                <element signature="e#8570#8994#0" />
+                <element signature="e#9000#9431#0" />
+                <element signature="e#9437#9880#0" />
+                <element signature="e#9886#10326#0" />
+                <element signature="e#10332#10838#0" />
+                <element signature="e#10879#11442#0" />
+                <element signature="e#11448#12010#0" />
+                <element signature="e#12016#12581#0" />
+                <element signature="e#12587#13153#0" />
+                <element signature="e#13159#13724#0" />
+                <element signature="e#13730#14296#0" />
+                <element signature="e#14302#14869#0" />
+                <element signature="e#14875#15442#0" />
+                <element signature="e#15449#15906#0" />
+                <element signature="e#15912#16353#0" />
+                <element signature="e#16359#16866#0" />
+                <element signature="e#16873#17637#0" />
+                <element signature="e#17643#18390#0" />
+                <element signature="e#18396#19436#0" />
+                <element signature="e#19470#19734#0" />
+                <element signature="e#19740#20137#0" />
+                <element signature="e#20143#20539#0" />
+                <element signature="e#20545#20800#0" />
+                <element signature="e#20806#21193#0" />
+                <element signature="e#21199#21586#0" />
+                <element signature="e#21608#21975#0" />
+                <element signature="e#21981#22351#0" />
+                <element signature="e#22357#22615#0" />
+                <element signature="e#22621#23024#0" />
+                <element signature="e#23030#23478#0" />
+                <element signature="e#23484#23943#0" />
+                <element signature="e#23949#24407#0" />
+                <element signature="e#24413#24882#0" />
+                <element signature="e#24912#25435#0" />
+                <element signature="e#25441#26348#0" />
+                <element signature="e#26354#26916#0" />
+                <element signature="e#26922#27451#0" />
+                <element signature="e#27457#27981#0" />
+                <element signature="e#27987#28510#0" />
+                <element signature="e#28540#29089#0" />
+                <element signature="e#29095#30072#0" />
+                <element signature="e#30078#30666#0" />
+                <element signature="e#30672#31227#0" />
+                <element signature="e#31233#31784#0" />
+                <element signature="e#31790#32339#0" />
+                <element signature="e#32368#33219#0" />
+                <element signature="e#33225#33853#0" />
+                <element signature="e#33859#34794#0" />
+                <element signature="e#34800#35685#0" />
+                <element signature="e#35691#36576#0" />
+                <element signature="e#36582#37156#0" />
+                <element signature="e#37162#37739#0" />
+                <element signature="e#37745#38320#0" />
+                <element signature="e#38326#38936#0" />
+                <element signature="e#38942#39552#0" />
+                <element signature="e#39589#40151#0" />
+                <element signature="e#40157#40645#0" />
+                <element signature="e#40674#40736#0" />
+                <element signature="e#40742#40804#0" />
+                <element signature="e#40810#40871#0" />
+                <element signature="e#40877#40947#0" />
+                <element signature="e#40953#41023#0" />
+                <element signature="e#41029#41099#0" />
+                <element signature="e#41105#41180#0" />
+                <element signature="e#41186#41261#0" />
+                <element signature="e#41267#41342#0" />
+                <element signature="e#41348#41887#0" />
+                <element signature="e#41893#42439#0" />
+                <element signature="e#42445#43196#0" />
+                <element signature="e#43202#43959#0" />
+                <element signature="e#43965#44915#0" />
+                <element signature="e#44921#45877#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QuadTree.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="750">
+              <caret line="407" column="13" lean-forward="true" selection-start-line="407" selection-start-column="13" selection-end-line="407" selection-end-column="13" />
+              <folding>
+                <element signature="docComment;class#QuadTree#0" />
+                <element signature="e#454#819#0" />
+                <element signature="e#825#1628#0" />
+                <element signature="e#1634#1889#0" />
+                <element signature="e#1895#2127#0" />
+                <element signature="e#2133#2540#0" />
+                <element signature="e#2546#3535#0" />
+                <element signature="e#3766#4144#0" />
+                <element signature="e#4150#5105#0" />
+                <element signature="e#5254#5918#0" />
+                <element signature="e#5924#6164#0" />
+                <element signature="e#6170#7182#0" />
+                <element signature="e#7188#7413#0" />
+                <element signature="e#7419#8436#0" />
+                <element signature="e#8442#8632#0" />
+                <element signature="e#8638#10124#0" />
+                <element signature="e#12490#12819#0" />
+                <element signature="e#12825#13866#0" />
+                <element signature="e#13872#14301#0" />
+                <element signature="e#14307#14393#0" />
+                <element signature="e#14399#14663#0" />
+                <element signature="e#14669#14764#0" />
+                <element signature="e#14770#15196#0" />
+                <element signature="e#15272#15371#0" />
+                <element signature="e#15754#16141#0" />
+                <element signature="e#16147#16467#0" />
+                <element signature="e#16586#17926#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QTNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -176,9 +379,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PointVolume volume2 = new PointVolume(dppXY,dppZ,units, true);</find>
-      <find>PointVolume volume1 = new PointVolume(dppXY,dppZ,units, true);</find>
-      <find>HashMap&lt;Integer,PointVolume&gt; testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);</find>
       <find>System.out.pr</find>
       <find>surfa</find>
       <find>Sys</find>
@@ -206,6 +406,9 @@
       <find>getpoint</find>
       <find>median</find>
       <find>getPoint</find>
+      <find>QuadTree</find>
+      <find>quadTree</find>
+      <find>getsu</find>
     </findStrings>
     <replaceStrings>
       <replace>Float</replace>
@@ -226,6 +429,8 @@
       <replace>PointVolume volume1 = new PointVolume(20,20,1,dppXY,dppZ,units);</replace>
       <replace>HashMap&lt;Integer,PointVolume&gt; testObjects = new Objects2D().getObjects(ipl1.getWidth(), ipl1.getHeight(), ipl1.getNSlices(),dppXY,dppZ,calibratedUnits);</replace>
       <replace>QuadTreeVolume</replace>
+      <replace>Quadtree</replace>
+      <replace>quadtree</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\steph\Documents\Java Projects\Common\src\test\java</dir>
@@ -281,13 +486,13 @@
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/LongestChordCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/Obj.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/OctTreeVolume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QuadTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/PointVolume.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/OcTreeVolume.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/Volume2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QuadTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/QuadTreeVolume.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/QuadTreeVolumeTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/PointVolumeTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/Volume2.java" />
       </list>
     </option>
   </component>
@@ -299,10 +504,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="82" />
-    <option name="y" value="-10" />
-    <option name="width" value="1845" />
-    <option name="height" value="1099" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
+    <option name="width" value="1874" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -313,9 +518,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -491,6 +694,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -549,18 +753,53 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.QuadTreeVolumeTest.testClearSurface">
-    <configuration default="true" type="Applet" factoryName="Applet">
+  <component name="RunManager" selected="JUnit.PointVolumeTest.testGetSurface">
+    <configuration default="true" type="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <option name="WIDTH" value="0" />
-      <method>
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PointVolumeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wbif.sjx.common.Object.Volume2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume2" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume2.PointVolumeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PointVolumeTest.testGetSurface" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wbif.sjx.common.Object.Volume2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume2" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume2.PointVolumeTest" />
+      <option name="METHOD_NAME" value="testGetSurface" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
@@ -572,20 +811,14 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume2" />
       <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume2.QuadTreeVolumeTest" />
-      <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="QuadTreeVolumeTest.testClearSurface" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
@@ -595,22 +828,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume2" />
       <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume2.QuadTreeVolumeTest" />
       <option name="METHOD_NAME" value="testClearSurface" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="QuadTreeVolumeTest.testEqualsDifferentPointOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QuadTreeVolumeTest.testGetSurface" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
@@ -618,83 +846,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume2" />
       <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume2.QuadTreeVolumeTest" />
-      <option name="METHOD_NAME" value="testEqualsDifferentPointOrder" />
+      <option name="METHOD_NAME" value="testGetSurface" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="QuadTreeVolumeTest.testEqualsDifferentUnitsCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Object.Volume2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume2" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume2.QuadTreeVolumeTest" />
-      <option name="METHOD_NAME" value="testEqualsDifferentUnitsCase" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="QuadTreeVolumeTest.testHashCodeDifferentUnitsCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Object.Volume2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume2" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume2.QuadTreeVolumeTest" />
-      <option name="METHOD_NAME" value="testHashCodeDifferentUnitsCase" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-      <method>
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
@@ -722,6 +888,7 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
+      <method v="2" />
     </configuration>
     <configuration name="Common [quick install]" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
@@ -748,48 +915,34 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
+    <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-      <method>
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.QuadTreeVolumeTest" />
+      <item itemvalue="JUnit.QuadTreeVolumeTest.testClearSurface" />
       <item itemvalue="Maven.Common [install]" />
       <item itemvalue="Maven.Common [quick install]" />
-      <item itemvalue="JUnit.QuadTreeVolumeTest" />
-      <item itemvalue="JUnit.QuadTreeVolumeTest.testHashCodeDifferentUnitsCase" />
-      <item itemvalue="JUnit.QuadTreeVolumeTest.testEqualsDifferentPointOrder" />
-      <item itemvalue="JUnit.QuadTreeVolumeTest.testEqualsDifferentUnitsCase" />
-      <item itemvalue="JUnit.QuadTreeVolumeTest.testClearSurface" />
+      <item itemvalue="JUnit.PointVolumeTest" />
+      <item itemvalue="JUnit.QuadTreeVolumeTest.testGetSurface" />
+      <item itemvalue="JUnit.PointVolumeTest.testGetSurface" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PointVolumeTest.testGetSurface" />
+        <item itemvalue="JUnit.QuadTreeVolumeTest.testGetSurface" />
         <item itemvalue="JUnit.QuadTreeVolumeTest.testClearSurface" />
         <item itemvalue="JUnit.QuadTreeVolumeTest" />
-        <item itemvalue="JUnit.QuadTreeVolumeTest.testEqualsDifferentUnitsCase" />
-        <item itemvalue="JUnit.QuadTreeVolumeTest.testEqualsDifferentPointOrder" />
-        <item itemvalue="JUnit.QuadTreeVolumeTest.testHashCodeDifferentUnitsCase" />
+        <item itemvalue="JUnit.PointVolumeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -816,43 +969,44 @@
       <workItem from="1561459920533" duration="1208000" />
       <workItem from="1562058556100" duration="598000" />
       <workItem from="1562146878623" duration="1932000" />
+      <workItem from="1563961959907" duration="1322000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="QuadTreeVolumeTest - 2019.07.24 at 08h 22m 53s.xml">
-      <configuration name="QuadTreeVolumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Common - 2019.07.24 at 08h 31m 11s.xml">
-      <configuration name="All in Common" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadTreeVolumeTest - 2019.07.24 at 08h 32m 17s.xml">
-      <configuration name="QuadTreeVolumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadTreeVolumeTest_testHashCodeDifferentPointOrder - 2019.07.24 at 08h 33m 39s.xml">
-      <configuration name="QuadTreeVolumeTest.testHashCodeDifferentPointOrder" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadTreeVolumeTest_testHashCodeDifferentUnitsCase - 2019.07.24 at 08h 33m 46s.xml">
-      <configuration name="QuadTreeVolumeTest.testHashCodeDifferentUnitsCase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadTreeVolumeTest_testEqualsDifferentPointOrder - 2019.07.24 at 08h 35m 12s.xml">
-      <configuration name="QuadTreeVolumeTest.testEqualsDifferentPointOrder" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadTreeVolumeTest_testEqualsDifferentUnitsCase - 2019.07.24 at 08h 35m 18s.xml">
-      <configuration name="QuadTreeVolumeTest.testEqualsDifferentUnitsCase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadTreeVolumeTest_testEqualsDifferentUnitsCase - 2019.07.24 at 08h 36m 40s.xml">
-      <configuration name="QuadTreeVolumeTest.testEqualsDifferentUnitsCase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadTreeVolumeTest - 2019.07.24 at 08h 36m 59s.xml">
-      <configuration name="QuadTreeVolumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadTreeVolumeTest_testClearSurface - 2019.07.24 at 08h 37m 39s.xml">
+    <history-entry file="QuadTreeVolumeTest_testClearSurface - 2019.07.24 at 11h 04m 30s.xml">
       <configuration name="QuadTreeVolumeTest.testClearSurface" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="QuadTreeVolumeTest_testClearSurface - 2019.07.24 at 11h 05m 42s.xml">
+      <configuration name="QuadTreeVolumeTest.testClearSurface" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="QuadTreeVolumeTest_testClearSurface - 2019.07.24 at 11h 06m 26s.xml">
+      <configuration name="QuadTreeVolumeTest.testClearSurface" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="QuadTreeVolumeTest_testClearSurface - 2019.07.24 at 11h 06m 44s.xml">
+      <configuration name="QuadTreeVolumeTest.testClearSurface" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="QuadTreeVolumeTest_testClearSurface - 2019.07.24 at 11h 07m 53s.xml">
+      <configuration name="QuadTreeVolumeTest.testClearSurface" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="QuadTreeVolumeTest_testClearSurface - 2019.07.24 at 11h 09m 36s.xml">
+      <configuration name="QuadTreeVolumeTest.testClearSurface" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="QuadTreeVolumeTest_testGetSurface - 2019.07.24 at 11h 12m 14s.xml">
+      <configuration name="QuadTreeVolumeTest.testGetSurface" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="QuadTreeVolumeTest_testGetSurface - 2019.07.24 at 11h 13m 00s.xml">
+      <configuration name="QuadTreeVolumeTest.testGetSurface" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="QuadTreeVolumeTest_testGetSurface - 2019.07.24 at 11h 14m 01s.xml">
+      <configuration name="QuadTreeVolumeTest.testGetSurface" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PointVolumeTest_testGetSurface - 2019.07.24 at 11h 14m 41s.xml">
+      <configuration name="PointVolumeTest.testGetSurface" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35734000" />
+    <option name="totallyTimeSpent" value="37632000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -864,108 +1018,79 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="-7" width="1476" height="878" extended-state="6" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.3283767" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info id="Image Layers" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2639405" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2653899" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3283767" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2855568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24972437" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="6" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39960238" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27906978" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Nl-Palette" order="2" />
-      <window_info anchor="right" id="Maven" order="9" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.24972437" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32902583" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25745526" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39960238" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.3280318" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Properties" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39960238" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info id="Image Layers" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="9" />
       <window_info anchor="right" id="Database" order="10" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32902583" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Properties" order="6" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="UI Designer" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.41387856" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.3283767" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info id="Designer" order="5" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="right" id="Maven" order="9" />
-      <window_info id="Designer" order="5" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info id="Image Layers" order="4" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32703778" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="UI Designer" order="6" />
-      <window_info anchor="right" id="Properties" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32902583" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info id="Nl-Palette" order="2" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2228145" />
-      <window_info anchor="right" id="Database" order="10" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24972437" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32902583" />
+      <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32703778" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="right" id="Maven" order="9" />
+      <window_info anchor="right" id="Database" order="10" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1031,13 +1156,7 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/QuadTree/QuadTree/1.0-SNAPSHOT/QuadTree-1.0-SNAPSHOT.jar!/Main.class" />
     <entry file="jar://$MAVEN_REPOSITORY$/QuadTree/QuadTree/1.0-SNAPSHOT/QuadTree-1.0-SNAPSHOT.jar!/QuadTree/QuadTree.class" />
-    <entry file="jar://$MAVEN_REPOSITORY$/QuadTree/QuadTree/1.0-SNAPSHOT/QuadTree-1.0-SNAPSHOT.jar!/jdjf/quadTree/QuadTree.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/QuadTree/QuadTree/1.0-SNAPSHOT/QuadTree-1.0-SNAPSHOT.jar!/jdjf/quadTree/QuadTree.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/CurvatureCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1401,89 +1520,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QTNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/OctTreeVolume.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="143" column="5" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
-          <folding>
-            <element signature="docComment;field#meanCentroid#0;class#OctTreeVolume#0" />
-            <element signature="docComment;field#medianCentroid#0;class#OctTreeVolume#0" />
-            <element signature="method#OctTreeVolume#0;class#OctTreeVolume#0" />
-            <element signature="method#OctTreeVolume#1;class#OctTreeVolume#0" />
-            <element signature="method#add#0;class#OctTreeVolume#0" />
-            <element signature="method#add#1;class#OctTreeVolume#0" />
-            <element signature="method#getPoints#0;class#OctTreeVolume#0" />
-            <element signature="method#setPoints#0;class#OctTreeVolume#0" />
-            <element signature="method#calculateMeanCentroid#0;class#OctTreeVolume#0" />
-            <element signature="method#getMeanCentroid#0;class#OctTreeVolume#0" />
-            <element signature="method#calculateMedianCentroid#0;class#OctTreeVolume#0" />
-            <element signature="method#getMedianCentroid#0;class#OctTreeVolume#0" />
-            <element signature="method#getHeight#0;class#OctTreeVolume#0" />
-            <element signature="method#getExtents#0;class#OctTreeVolume#0" />
-            <element signature="method#hasVolume#0;class#OctTreeVolume#0" />
-            <element signature="method#hasArea#0;class#OctTreeVolume#0" />
-            <element signature="method#getNVoxels#0;class#OctTreeVolume#0" />
-            <element signature="method#getProjectedArea#0;class#OctTreeVolume#0" />
-            <element signature="method#getOverlap#0;class#OctTreeVolume#0" />
-            <element signature="method#getOverlappingPoints#0;class#OctTreeVolume#0" />
-            <element signature="method#containsPoint#0;class#OctTreeVolume#0" />
-            <element signature="method#calculateSurface#0;class#OctTreeVolume#0" />
-            <element signature="method#hashCode#0;class#OctTreeVolume#0" />
-            <element signature="e#4853#4908#0" />
-            <element signature="method#equals#0;class#OctTreeVolume#0" />
-            <element signature="e#5322#5361#0" />
-            <element signature="method#forEach#0;class#OctTreeVolume#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QuadTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-          <folding>
-            <element signature="docComment;class#QuadTree#0" />
-            <element signature="e#454#819#0" />
-            <element signature="e#825#1628#0" />
-            <element signature="e#1634#1889#0" />
-            <element signature="e#1895#2127#0" />
-            <element signature="e#2133#2540#0" />
-            <element signature="e#2546#3535#0" />
-            <element signature="e#3766#4144#0" />
-            <element signature="e#4150#5105#0" />
-            <element signature="e#5254#5918#0" />
-            <element signature="e#5924#6164#0" />
-            <element signature="e#6170#7182#0" />
-            <element signature="e#7188#7413#0" />
-            <element signature="e#7419#8436#0" />
-            <element signature="e#8442#8632#0" />
-            <element signature="e#8638#10124#0" />
-            <element signature="e#10130#10298#0" />
-            <element signature="e#10304#12484#0" />
-            <element signature="e#12490#12819#0" />
-            <element signature="e#12825#13866#0" />
-            <element signature="e#13872#14301#0" />
-            <element signature="e#14307#14393#0" />
-            <element signature="e#14399#14663#0" />
-            <element signature="e#14669#14764#0" />
-            <element signature="e#14770#15196#0" />
-            <element signature="e#15272#15371#0" />
-            <element signature="e#15754#16141#0" />
-            <element signature="e#16147#16467#0" />
-            <element signature="e#16586#17409#0" />
-            <element signature="e#16941#17119#0" />
-            <element signature="e#17129#17403#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/OctTreeVolume.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/OcTreeVolume.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -1507,137 +1544,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/QuadTreeVolume.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-          <folding>
-            <element signature="e#531#532#0" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
-            <element signature="method#QuadTreeVolume#1;class#QuadTreeVolume#0" />
-            <element signature="method#add#0;class#QuadTreeVolume#0" />
-            <element signature="method#add#1;class#QuadTreeVolume#0" />
-            <element signature="method#getPoints#0;class#QuadTreeVolume#0" />
-            <element signature="method#setPoints#0;class#QuadTreeVolume#0" />
-            <element signature="method#calculateSurface#0;class#QuadTreeVolume#0" />
-            <element signature="method#calculateMeanCentroid#0;class#QuadTreeVolume#0" />
-            <element signature="method#meanQuadTreeTraversal#0;class#QuadTreeVolume#0" />
-            <element signature="method#getHeight#0;class#QuadTreeVolume#0" />
-            <element signature="method#getNVoxels#0;class#QuadTreeVolume#0" />
-            <element signature="method#getProjectedArea#0;class#QuadTreeVolume#0" />
-            <element signature="method#containsPoint#0;class#QuadTreeVolume#0" />
-            <element signature="e#7104#7105#0" expanded="true" />
-            <element signature="e#7151#7152#0" expanded="true" />
-            <element signature="method#forEach#0;class#QuadTreeVolume#0" />
-            <element signature="method#spliterator#0;class#QuadTreeVolume#0" />
-            <element signature="method#hashCode#0;class#QuadTreeVolume#0" />
-            <element signature="method#equals#0;class#QuadTreeVolume#0" />
-            <element signature="class#QuadTreeVolumeIterator#0;class#QuadTreeVolume#0" />
-            <element signature="method#QuadTreeIterator#0;class#QuadTreeIterator#0;class#QuadTreeVolume#0" />
-            <element signature="method#hasNext#0;class#QuadTreeVolumeIterator#0;class#QuadTreeVolume#0" />
-            <element signature="method#next#0;class#QuadTreeIterator#0;class#QuadTreeVolume#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/QuadTreeVolumeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="123" column="36" selection-start-line="123" selection-start-column="36" selection-end-line="123" selection-end-column="36" />
-          <folding>
-            <element signature="e#388#775#0" />
-            <element signature="e#807#1539#0" />
-            <element signature="e#1545#2277#0" />
-            <element signature="e#2283#3016#0" />
-            <element signature="e#3453#3979#0" />
-            <element signature="e#3985#4523#0" />
-            <element signature="e#4529#5051#0" />
-            <element signature="e#5057#5594#0" />
-            <element signature="e#5600#6141#0" />
-            <element signature="e#6147#6687#0" />
-            <element signature="e#6693#7432#0" />
-            <element signature="e#7438#7783#0" />
-            <element signature="e#7812#8241#0" />
-            <element signature="e#8247#8684#0" />
-            <element signature="e#8690#9120#0" />
-            <element signature="e#9126#9563#0" />
-            <element signature="e#9569#10018#0" />
-            <element signature="e#10024#10470#0" />
-            <element signature="e#10476#10988#0" />
-            <element signature="e#17724#18299#0" />
-            <element signature="e#18305#18879#0" />
-            <element signature="e#18885#19462#0" />
-            <element signature="e#19468#20046#0" />
-            <element signature="e#20052#20629#0" />
-            <element signature="e#20635#21213#0" />
-            <element signature="e#21219#21798#0" />
-            <element signature="e#21804#22383#0" />
-            <element signature="e#22390#22853#0" />
-            <element signature="e#22859#23306#0" />
-            <element signature="e#23312#23825#0" />
-            <element signature="e#23832#24602#0" />
-            <element signature="e#24608#25361#0" />
-            <element signature="e#25367#26413#0" />
-            <element signature="e#26447#26723#0" />
-            <element signature="e#26729#27135#0" />
-            <element signature="e#27141#27546#0" />
-            <element signature="e#27552#27816#0" />
-            <element signature="e#27822#28215#0" />
-            <element signature="e#28221#28614#0" />
-            <element signature="e#28636#29014#0" />
-            <element signature="e#29020#29401#0" />
-            <element signature="e#29407#29680#0" />
-            <element signature="e#29686#30104#0" />
-            <element signature="e#30110#30567#0" />
-            <element signature="e#30573#31041#0" />
-            <element signature="e#31047#31514#0" />
-            <element signature="e#31520#31998#0" />
-            <element signature="e#32028#32563#0" />
-            <element signature="e#32569#33494#0" />
-            <element signature="e#33500#34074#0" />
-            <element signature="e#34080#34621#0" />
-            <element signature="e#34627#35163#0" />
-            <element signature="e#35169#35704#0" />
-            <element signature="e#35734#36295#0" />
-            <element signature="e#36301#37296#0" />
-            <element signature="e#37302#37902#0" />
-            <element signature="e#37908#38475#0" />
-            <element signature="e#38481#39044#0" />
-            <element signature="e#39050#39611#0" />
-            <element signature="e#39640#40462#0" />
-            <element signature="e#40468#41062#0" />
-            <element signature="e#41068#41974#0" />
-            <element signature="e#41980#42836#0" />
-            <element signature="e#42842#43698#0" />
-            <element signature="e#43704#44290#0" />
-            <element signature="e#44296#44885#0" />
-            <element signature="e#44891#45478#0" />
-            <element signature="e#45484#46106#0" />
-            <element signature="e#46112#46734#0" />
-            <element signature="e#47345#47845#0" />
-            <element signature="e#47874#47936#0" />
-            <element signature="e#47942#48004#0" />
-            <element signature="e#48010#48071#0" />
-            <element signature="e#48077#48147#0" />
-            <element signature="e#48153#48223#0" />
-            <element signature="e#48229#48299#0" />
-            <element signature="e#48305#48380#0" />
-            <element signature="e#48386#48461#0" />
-            <element signature="e#48467#48542#0" />
-            <element signature="e#48548#48623#0" />
-            <element signature="e#48629#48709#0" />
-            <element signature="e#48715#49478#0" />
-            <element signature="e#49484#50253#0" />
-            <element signature="e#50259#51221#0" />
-            <element signature="e#51227#52195#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/PointVolume.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+        <state relative-caret-position="629">
+          <caret line="119" column="13" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
           <folding>
             <element signature="docComment;class#PointVolume#0" />
             <element signature="method#PointVolume#1;class#PointVolume#0" />
@@ -1649,155 +1559,289 @@
             <element signature="method#calculateSurface2D#0;class#PointVolume#0" />
             <element signature="method#calculateSurface3D#0;class#PointVolume#0" />
             <element signature="method#calculateMeanCentroid#0;class#PointVolume#0" />
-            <element signature="method#getNVoxels#0;class#PointVolume#0" />
+            <element signature="method#size#0;class#PointVolume#0" />
             <element signature="method#getProjectedArea#0;class#PointVolume#0" />
+            <element signature="method#hashCode#0;class#PointVolume#0" />
             <element signature="method#equals#0;class#PointVolume#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/PointVolumeTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QTNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="125" column="5" lean-forward="true" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
+        <state relative-caret-position="238">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QuadTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="407" column="13" lean-forward="true" selection-start-line="407" selection-start-column="13" selection-end-line="407" selection-end-column="13" />
           <folding>
-            <element signature="e#385#766#0" />
-            <element signature="e#798#1524#0" />
-            <element signature="e#1530#2256#0" />
-            <element signature="e#2262#2989#0" />
-            <element signature="e#3417#3937#0" />
-            <element signature="e#3943#4475#0" />
-            <element signature="e#4481#4997#0" />
-            <element signature="e#5003#5534#0" />
-            <element signature="e#5540#6075#0" />
-            <element signature="e#6081#6615#0" />
-            <element signature="e#6621#7354#0" />
-            <element signature="e#7360#7699#0" />
-            <element signature="e#7728#8151#0" />
-            <element signature="e#8157#8588#0" />
-            <element signature="e#8594#9018#0" />
-            <element signature="e#9024#9455#0" />
-            <element signature="e#9461#9904#0" />
-            <element signature="e#9910#10350#0" />
-            <element signature="e#10356#10862#0" />
-            <element signature="e#17514#18077#0" />
-            <element signature="e#18083#18645#0" />
-            <element signature="e#18651#19216#0" />
-            <element signature="e#19222#19788#0" />
-            <element signature="e#19794#20359#0" />
-            <element signature="e#20365#20931#0" />
-            <element signature="e#20937#21504#0" />
-            <element signature="e#21510#22077#0" />
-            <element signature="e#22084#22541#0" />
-            <element signature="e#22547#22988#0" />
-            <element signature="e#22994#23501#0" />
-            <element signature="e#23508#24272#0" />
-            <element signature="e#24278#25025#0" />
-            <element signature="e#25031#26071#0" />
-            <element signature="e#26105#26369#0" />
-            <element signature="e#26375#26772#0" />
-            <element signature="e#26778#27174#0" />
-            <element signature="e#27180#27435#0" />
-            <element signature="e#27441#27828#0" />
-            <element signature="e#27834#28221#0" />
-            <element signature="e#28243#28622#0" />
-            <element signature="e#28628#29010#0" />
-            <element signature="e#29016#29280#0" />
-            <element signature="e#29286#29695#0" />
-            <element signature="e#29701#30149#0" />
-            <element signature="e#30155#30614#0" />
-            <element signature="e#30620#31078#0" />
-            <element signature="e#31084#31553#0" />
-            <element signature="e#31583#32106#0" />
-            <element signature="e#32112#33019#0" />
-            <element signature="e#33025#33587#0" />
-            <element signature="e#33593#34122#0" />
-            <element signature="e#34128#34652#0" />
-            <element signature="e#34658#35181#0" />
-            <element signature="e#35211#35760#0" />
-            <element signature="e#35766#36743#0" />
-            <element signature="e#36749#37337#0" />
-            <element signature="e#37343#37898#0" />
-            <element signature="e#37904#38455#0" />
-            <element signature="e#38461#39010#0" />
-            <element signature="e#39039#39849#0" />
-            <element signature="e#39855#40437#0" />
-            <element signature="e#40443#41337#0" />
-            <element signature="e#41343#42187#0" />
-            <element signature="e#42193#43037#0" />
-            <element signature="e#43043#43617#0" />
-            <element signature="e#43623#44200#0" />
-            <element signature="e#44206#44781#0" />
-            <element signature="e#44787#45397#0" />
-            <element signature="e#45403#46013#0" />
-            <element signature="e#46050#46612#0" />
-            <element signature="e#46618#47112#0" />
-            <element signature="e#47141#47203#0" />
-            <element signature="e#47209#47271#0" />
-            <element signature="e#47277#47338#0" />
-            <element signature="e#47344#47414#0" />
-            <element signature="e#47420#47490#0" />
-            <element signature="e#47496#47566#0" />
-            <element signature="e#47572#47647#0" />
-            <element signature="e#47653#47728#0" />
-            <element signature="e#47734#47809#0" />
-            <element signature="e#47815#47890#0" />
-            <element signature="e#47896#47976#0" />
-            <element signature="e#47982#48733#0" />
-            <element signature="e#48739#49496#0" />
-            <element signature="e#49502#50452#0" />
-            <element signature="e#50458#51414#0" />
+            <element signature="docComment;class#QuadTree#0" />
+            <element signature="e#454#819#0" />
+            <element signature="e#825#1628#0" />
+            <element signature="e#1634#1889#0" />
+            <element signature="e#1895#2127#0" />
+            <element signature="e#2133#2540#0" />
+            <element signature="e#2546#3535#0" />
+            <element signature="e#3766#4144#0" />
+            <element signature="e#4150#5105#0" />
+            <element signature="e#5254#5918#0" />
+            <element signature="e#5924#6164#0" />
+            <element signature="e#6170#7182#0" />
+            <element signature="e#7188#7413#0" />
+            <element signature="e#7419#8436#0" />
+            <element signature="e#8442#8632#0" />
+            <element signature="e#8638#10124#0" />
+            <element signature="e#12490#12819#0" />
+            <element signature="e#12825#13866#0" />
+            <element signature="e#13872#14301#0" />
+            <element signature="e#14307#14393#0" />
+            <element signature="e#14399#14663#0" />
+            <element signature="e#14669#14764#0" />
+            <element signature="e#14770#15196#0" />
+            <element signature="e#15272#15371#0" />
+            <element signature="e#15754#16141#0" />
+            <element signature="e#16147#16467#0" />
+            <element signature="e#16586#17926#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/QuadTreeVolume.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
+          <folding>
+            <element signature="method#QuadTreeVolume#1;class#QuadTreeVolume#0" />
+            <element signature="method#add#0;class#QuadTreeVolume#0" />
+            <element signature="method#add#1;class#QuadTreeVolume#0" />
+            <element signature="method#getPoints#0;class#QuadTreeVolume#0" />
+            <element signature="e#1821#2110#1" />
+            <element signature="e#2018#2099#1" />
+            <element signature="method#setPoints#0;class#QuadTreeVolume#0" />
+            <element signature="e#2389#2457#1" />
+            <element signature="method#calculateMeanCentroid#0;class#QuadTreeVolume#0" />
+            <element signature="e#3645#3856#1" />
+            <element signature="method#meanQuadTreeTraversal#0;class#QuadTreeVolume#0" />
+            <element signature="e#4103#4554#1" />
+            <element signature="e#4595#4752#1" />
+            <element signature="method#getHeight#0;class#QuadTreeVolume#0" />
+            <element signature="e#5059#5205#1" />
+            <element signature="method#size#0;class#QuadTreeVolume#0" />
+            <element signature="method#hashCode#0;class#QuadTreeVolume#0" />
+            <element signature="method#equals#0;class#QuadTreeVolume#0" />
+            <element signature="class#QuadTreeVolumeIterator#0;class#QuadTreeVolume#0" />
+            <element signature="method#QuadTreeVolumeIterator#0;class#QuadTreeVolumeIterator#0;class#QuadTreeVolume#0" />
+            <element signature="method#hasNext#0;class#QuadTreeVolumeIterator#0;class#QuadTreeVolume#0" />
+            <element signature="method#next#0;class#QuadTreeVolumeIterator#0;class#QuadTreeVolume#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/Volume2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-453">
-          <caret line="187" column="4" selection-start-line="187" selection-start-column="4" selection-end-line="187" selection-end-column="4" />
+        <state relative-caret-position="308">
+          <caret line="88" column="23" lean-forward="true" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="23" />
           <folding>
             <element signature="e#605#771#0" />
             <element signature="e#827#1125#0" />
             <element signature="e#1131#1433#0" />
-            <element signature="e#2159#2218#0" />
-            <element signature="e#2224#2349#0" />
-            <element signature="e#2507#2673#0" />
-            <element signature="e#2679#2844#0" />
-            <element signature="e#2850#3016#0" />
-            <element signature="e#3022#3353#0" />
-            <element signature="e#3359#3690#0" />
-            <element signature="e#3696#3936#0" />
-            <element signature="e#3696#4468#0" />
-            <element signature="e#4474#4648#0" />
-            <element signature="e#4654#4828#0" />
-            <element signature="e#4834#5008#0" />
-            <element signature="e#5014#5354#0" />
-            <element signature="e#5360#5700#0" />
-            <element signature="e#5706#5946#0" />
-            <element signature="e#5706#6488#0" />
-            <element signature="e#6293#6921#0" />
-            <element signature="e#6927#7061#0" />
-            <element signature="e#7067#7231#0" />
-            <element signature="e#7237#7401#0" />
-            <element signature="e#7407#7742#0" />
-            <element signature="e#7748#8210#0" />
-            <element signature="e#8216#9341#0" />
-            <element signature="e#9347#9704#0" />
-            <element signature="e#9710#10033#0" />
-            <element signature="e#10039#10511#0" />
-            <element signature="e#10517#10980#0" />
-            <element signature="e#10799#10911#0" />
-            <element signature="e#10986#11177#0" />
-            <element signature="e#10986#11443#0" />
-            <element signature="e#11449#11638#0" />
-            <element signature="e#11449#11821#0" />
-            <element signature="e#11827#12451#0" />
-            <element signature="e#12457#12800#0" />
-            <element signature="e#12806#13021#0" />
-            <element signature="e#13455#13692#0" />
-            <element signature="e#13698#13855#0" />
-            <element signature="e#13861#14285#0" />
-            <element signature="e#14013#14135#0" />
+            <element signature="e#2386#2387#0" expanded="true" />
+            <element signature="e#2416#2417#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/QuadTreeVolumeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="1421" selection-start-line="1421" selection-end-line="1461" selection-end-column="5" />
+          <folding>
+            <element signature="e#388#763#0" />
+            <element signature="e#795#1527#0" />
+            <element signature="e#1533#2265#0" />
+            <element signature="e#2271#3004#0" />
+            <element signature="e#3010#3423#0" />
+            <element signature="e#3429#3955#0" />
+            <element signature="e#3961#4499#0" />
+            <element signature="e#4505#5027#0" />
+            <element signature="e#5033#5570#0" />
+            <element signature="e#5576#6117#0" />
+            <element signature="e#6123#6663#0" />
+            <element signature="e#6669#7408#0" />
+            <element signature="e#7414#7759#0" />
+            <element signature="e#7788#8217#0" />
+            <element signature="e#8223#8660#0" />
+            <element signature="e#8666#9096#0" />
+            <element signature="e#9102#9539#0" />
+            <element signature="e#9545#9994#0" />
+            <element signature="e#10000#10446#0" />
+            <element signature="e#10452#10964#0" />
+            <element signature="e#11005#11580#0" />
+            <element signature="e#11586#12160#0" />
+            <element signature="e#12166#12743#0" />
+            <element signature="e#12749#13327#0" />
+            <element signature="e#13333#13910#0" />
+            <element signature="e#13916#14494#0" />
+            <element signature="e#14500#15079#0" />
+            <element signature="e#15085#15664#0" />
+            <element signature="e#15671#16134#0" />
+            <element signature="e#16140#16587#0" />
+            <element signature="e#16593#17106#0" />
+            <element signature="e#17113#17883#0" />
+            <element signature="e#17889#18642#0" />
+            <element signature="e#18648#19694#0" />
+            <element signature="e#19728#19996#0" />
+            <element signature="e#20002#20400#0" />
+            <element signature="e#20406#20803#0" />
+            <element signature="e#20809#21065#0" />
+            <element signature="e#21071#21464#0" />
+            <element signature="e#21470#21863#0" />
+            <element signature="e#21885#22258#0" />
+            <element signature="e#22264#22640#0" />
+            <element signature="e#22646#22905#0" />
+            <element signature="e#22911#23315#0" />
+            <element signature="e#23321#23770#0" />
+            <element signature="e#23776#24236#0" />
+            <element signature="e#24242#24701#0" />
+            <element signature="e#24707#25177#0" />
+            <element signature="e#25207#25742#0" />
+            <element signature="e#25748#26673#0" />
+            <element signature="e#26679#27253#0" />
+            <element signature="e#27259#27800#0" />
+            <element signature="e#27806#28342#0" />
+            <element signature="e#28348#28883#0" />
+            <element signature="e#28913#29474#0" />
+            <element signature="e#29480#30475#0" />
+            <element signature="e#30481#31081#0" />
+            <element signature="e#31087#31654#0" />
+            <element signature="e#31660#32223#0" />
+            <element signature="e#32229#32790#0" />
+            <element signature="e#32819#33685#0" />
+            <element signature="e#33691#34334#0" />
+            <element signature="e#34340#35290#0" />
+            <element signature="e#35296#36196#0" />
+            <element signature="e#36202#37102#0" />
+            <element signature="e#37108#37694#0" />
+            <element signature="e#37700#38289#0" />
+            <element signature="e#38295#38882#0" />
+            <element signature="e#38888#39510#0" />
+            <element signature="e#39516#40138#0" />
+            <element signature="e#41474#41968#0" />
+            <element signature="e#41997#42059#0" />
+            <element signature="e#42065#42127#0" />
+            <element signature="e#42133#42194#0" />
+            <element signature="e#42200#42270#0" />
+            <element signature="e#42276#42346#0" />
+            <element signature="e#42352#42422#0" />
+            <element signature="e#42428#42503#0" />
+            <element signature="e#42509#42584#0" />
+            <element signature="e#42590#42665#0" />
+            <element signature="e#42396#42824#0" />
+            <element signature="e#42939#43456#0" />
+            <element signature="e#42838#43601#0" />
+            <element signature="e#43607#44376#0" />
+            <element signature="e#44382#45344#0" />
+            <element signature="e#45350#46318#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/PointVolumeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="1421" column="21" lean-forward="true" selection-start-line="1421" selection-start-column="21" selection-end-line="1421" selection-end-column="21" />
+          <folding>
+            <element signature="e#385#754#0" />
+            <element signature="e#786#1512#0" />
+            <element signature="e#1518#2244#0" />
+            <element signature="e#2250#2977#0" />
+            <element signature="e#2983#3387#0" />
+            <element signature="e#3393#3913#0" />
+            <element signature="e#3919#4451#0" />
+            <element signature="e#4457#4973#0" />
+            <element signature="e#4979#5510#0" />
+            <element signature="e#5516#6051#0" />
+            <element signature="e#6057#6591#0" />
+            <element signature="e#6597#7330#0" />
+            <element signature="e#7336#7675#0" />
+            <element signature="e#7704#8127#0" />
+            <element signature="e#8133#8564#0" />
+            <element signature="e#8570#8994#0" />
+            <element signature="e#9000#9431#0" />
+            <element signature="e#9437#9880#0" />
+            <element signature="e#9886#10326#0" />
+            <element signature="e#10332#10838#0" />
+            <element signature="e#10879#11442#0" />
+            <element signature="e#11448#12010#0" />
+            <element signature="e#12016#12581#0" />
+            <element signature="e#12587#13153#0" />
+            <element signature="e#13159#13724#0" />
+            <element signature="e#13730#14296#0" />
+            <element signature="e#14302#14869#0" />
+            <element signature="e#14875#15442#0" />
+            <element signature="e#15449#15906#0" />
+            <element signature="e#15912#16353#0" />
+            <element signature="e#16359#16866#0" />
+            <element signature="e#16873#17637#0" />
+            <element signature="e#17643#18390#0" />
+            <element signature="e#18396#19436#0" />
+            <element signature="e#19470#19734#0" />
+            <element signature="e#19740#20137#0" />
+            <element signature="e#20143#20539#0" />
+            <element signature="e#20545#20800#0" />
+            <element signature="e#20806#21193#0" />
+            <element signature="e#21199#21586#0" />
+            <element signature="e#21608#21975#0" />
+            <element signature="e#21981#22351#0" />
+            <element signature="e#22357#22615#0" />
+            <element signature="e#22621#23024#0" />
+            <element signature="e#23030#23478#0" />
+            <element signature="e#23484#23943#0" />
+            <element signature="e#23949#24407#0" />
+            <element signature="e#24413#24882#0" />
+            <element signature="e#24912#25435#0" />
+            <element signature="e#25441#26348#0" />
+            <element signature="e#26354#26916#0" />
+            <element signature="e#26922#27451#0" />
+            <element signature="e#27457#27981#0" />
+            <element signature="e#27987#28510#0" />
+            <element signature="e#28540#29089#0" />
+            <element signature="e#29095#30072#0" />
+            <element signature="e#30078#30666#0" />
+            <element signature="e#30672#31227#0" />
+            <element signature="e#31233#31784#0" />
+            <element signature="e#31790#32339#0" />
+            <element signature="e#32368#33219#0" />
+            <element signature="e#33225#33853#0" />
+            <element signature="e#33859#34794#0" />
+            <element signature="e#34800#35685#0" />
+            <element signature="e#35691#36576#0" />
+            <element signature="e#36582#37156#0" />
+            <element signature="e#37162#37739#0" />
+            <element signature="e#37745#38320#0" />
+            <element signature="e#38326#38936#0" />
+            <element signature="e#38942#39552#0" />
+            <element signature="e#39589#40151#0" />
+            <element signature="e#40157#40645#0" />
+            <element signature="e#40674#40736#0" />
+            <element signature="e#40742#40804#0" />
+            <element signature="e#40810#40871#0" />
+            <element signature="e#40877#40947#0" />
+            <element signature="e#40953#41023#0" />
+            <element signature="e#41029#41099#0" />
+            <element signature="e#41105#41180#0" />
+            <element signature="e#41186#41261#0" />
+            <element signature="e#41267#41342#0" />
+            <element signature="e#41348#41887#0" />
+            <element signature="e#41893#42439#0" />
+            <element signature="e#42445#43196#0" />
+            <element signature="e#43202#43959#0" />
+            <element signature="e#43965#44915#0" />
+            <element signature="e#44921#45877#0" />
           </folding>
         </state>
       </provider>

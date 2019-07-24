@@ -67,7 +67,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     public abstract double getProjectedArea(boolean pixelDistances);
 
-    public abstract boolean containsPoint(Point<Integer> point1);
+    public abstract boolean contains(Point<Integer> point1);
 
     public abstract Volume2 createNewObject();
 
@@ -386,9 +386,9 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
         try {
             if (size() < volume2.size()) {
-                for (Point<Integer> p1 : this) if (volume2.containsPoint(p1)) overlapping.add(p1);
+                for (Point<Integer> p1 : this) if (volume2.contains(p1)) overlapping.add(p1);
             } else {
-                for (Point<Integer> p2 : volume2) if (containsPoint(p2)) overlapping.add(p2);
+                for (Point<Integer> p2 : volume2) if (contains(p2)) overlapping.add(p2);
             }
         } catch (IntegerOverflowException e) {
             // These points are a subset of the input PointVolume objects, so if they don't overflow these can't either
@@ -402,9 +402,9 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
         int count = 0;
 
         if (size() < volume2.size()) {
-            for (Point<Integer> p1 : this) if (volume2.containsPoint(p1)) count++;
+            for (Point<Integer> p1 : this) if (volume2.contains(p1)) count++;
         } else {
-            for (Point<Integer> p2 : volume2) if (containsPoint(p2)) count++;
+            for (Point<Integer> p2 : volume2) if (contains(p2)) count++;
         }
 
         return count;
