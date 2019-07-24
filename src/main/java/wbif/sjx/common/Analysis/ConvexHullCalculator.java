@@ -41,7 +41,7 @@
 //    }
 //
 //    public boolean canFitHull() {
-//        return (volume.hasVolume() & volume.getNVoxels() > 4);
+//        return (volume.hasVolume() & volume.size() > 4);
 //    }
 //
 //    private void fitConvexHull(int fitMode) {

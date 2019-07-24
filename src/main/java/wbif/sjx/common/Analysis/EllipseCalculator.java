@@ -22,7 +22,7 @@ public class EllipseCalculator {
     }
 
     private void fitEllipse(double maxAxisLength) {
-        if (volume.getNVoxels() <= 2) {
+        if (volume.size() <= 2) {
             e2d = null;
             return;
         }

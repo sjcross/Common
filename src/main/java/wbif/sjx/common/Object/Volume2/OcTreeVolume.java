@@ -18,17 +18,6 @@ import java.util.function.Consumer;
 public class OcTreeVolume extends Volume2 {
     private final OcTree ocTree;
 
-    /**
-     * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
-     * pixel or calibrated distances.
-     */
-    private Point<Double> meanCentroid = null;
-
-    /**
-     * Median coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
-     * pixel or calibrated distances.
-     */
-    private Point<Double> medianCentroid = null;
 
     public OcTreeVolume(Volume2 volume) {
         super(volume);
@@ -130,68 +119,14 @@ public class OcTreeVolume extends Volume2 {
     }
 
     @Override
-    public Point<Double> getMeanCentroid() {
-        if (meanCentroid == null) calculateMeanCentroid();
-        return meanCentroid;
-    }
-
-    @Override
-    public void calculateMedianCentroid() {
-        System.out.println("wbif.sjx.common.Object.OcTreeVolume calculateMedianCentroid needs implementing");
-    }
-
-    @Override
-    public Point<Double> getMedianCentroid() {
-        if (medianCentroid == null) calculateMedianCentroid();
-        return medianCentroid;
-    }
-
-    @Override
-    public double getHeight(boolean pixelDistances, boolean matchXY) {
-        System.out.println("wbif.sjx.common.Object.OcTreeVolume getHeight needs implementing");
-        return 0;
-    }
-
-    @Override
-    public double[][] getExtents(boolean pixelDistances, boolean matchXY) {
-        System.out.println("wbif.sjx.common.Object.OcTreeVolume getExtents needs implementing");
-        return new double[0][];
-    }
-
-    @Override
-    public boolean hasVolume() {
-        System.out.println("wbif.sjx.common.Object.OcTreeVolume hasVolume needs implementing");
-        return false;
-    }
-
-    @Override
-    public boolean hasArea() {
-        System.out.println("wbif.sjx.common.Object.OcTreeVolume hasArea needs implementing");
-        return false;
-    }
-
-    @Override
-    public int getNVoxels() {
-        System.out.println("wbif.sjx.common.Object.OcTreeVolume getNVoxels needs implementing");
-        return 0;
+    public int size() {
+        return ocTree.getPointCount();
     }
 
     @Override
     public double getProjectedArea(boolean pixelDistances) {
         System.out.println("wbif.sjx.common.Object.OcTreeVolume getProjectedArea needs implementing");
         return 0;
-    }
-
-    @Override
-    public int getOverlap(Volume2 volume2) {
-        System.out.println("wbif.sjx.common.Object.OcTreeVolume getOverlap needs implementing");
-        return 0;
-    }
-
-    @Override
-    public Volume2 getOverlappingPoints(Volume2 volume2) {
-        System.out.println("wbif.sjx.common.Object.OcTreeVolume getOverlappingPoints needs implementing");
-        return null;
     }
 
     @Override

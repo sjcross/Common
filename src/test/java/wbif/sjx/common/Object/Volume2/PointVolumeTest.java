@@ -27,7 +27,7 @@ public class PointVolumeTest {
         volume.add(0,0,0);
         volume.add(1,0,0);
 
-        assertEquals(2,volume.getPoints().size());
+        assertEquals(2,volume.size());
 
     }
 
@@ -121,7 +121,7 @@ public class PointVolumeTest {
         double[] expectedX = new double[]{};
 
         assertArrayEquals(expectedX,actualX, tolerance10);
-        assertEquals(0,volume.getPoints().size());
+        assertEquals(0,volume.size());
 
     }
 
@@ -389,238 +389,6 @@ public class PointVolumeTest {
 
         assertEquals(0.15,volume.getZMean(false,false), tolerance10);
         assertEquals(0.15,volume.getZMean(false,true), tolerance10);
-
-    }
-
-
-    // MEDIAN POSITION
-
-    @Test
-    public void testGetXMedianPixelDistancesEvenN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-
-        assertEquals(10.5,volume.getXMedian(true), tolerance10);
-    }
-
-    @Test
-    public void testGetXMedianCalibratedDistancesEvenN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-
-        assertEquals(0.21,volume.getXMedian(false), tolerance10);
-
-    }
-
-    @Test
-    public void testGetYMedianPixelDistancesEvenN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-
-        assertEquals(5,volume.getYMedian(true), tolerance10);
-    }
-
-    @Test
-    public void testGetYMedianCalibratedDistancesEvenN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-
-        assertEquals(0.1,volume.getYMedian(false), tolerance10);
-
-    }
-
-    @Test
-    public void testGetZMedianPixelDistancesDoesntMatchXYEvenN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-
-        assertEquals(1.5,volume.getZMedian(true,false), tolerance10);
-
-    }
-
-    @Test
-    public void testGetZMedianPixelDistancesDoesMatchXYEvenN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-
-        assertEquals(7.5,volume.getZMedian(true,true), tolerance10);
-
-    }
-
-    @Test
-    public void testGetZMedianCalibratedDistancesEvenN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-
-        assertEquals(0.15,volume.getZMedian(false,false), tolerance10);
-        assertEquals(0.15,volume.getZMedian(false,true), tolerance10);
-
-    }
-
-    @Test
-    public void testGetXMedianPixelDistancesOddN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-        volume.add(13,7,2);
-
-        assertEquals(11,volume.getXMedian(true), tolerance10);
-    }
-
-    @Test
-    public void testGetXMedianCalibratedDistancesOddN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-        volume.add(13,7,2);
-
-        assertEquals(0.22,volume.getXMedian(false), tolerance10);
-
-    }
-
-    @Test
-    public void testGetYMedianPixelDistancesOddN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-        volume.add(13,7,2);
-
-        assertEquals(5,volume.getYMedian(true), tolerance10);
-    }
-
-    @Test
-    public void testGetYMedianCalibratedDistancesOddN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-        volume.add(13,7,2);
-
-        assertEquals(0.1,volume.getYMedian(false), tolerance10);
-
-    }
-
-    @Test
-    public void testGetZMedianPixelDistancesDoesntMatchXYOddN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-        volume.add(13,7,2);
-
-        assertEquals(2,volume.getZMedian(true,false), tolerance10);
-
-    }
-
-    @Test
-    public void testGetZMedianPixelDistancesDoesMatchXYOddN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-        volume.add(13,7,2);
-
-        assertEquals(10,volume.getZMedian(true,true), tolerance10);
-
-    }
-
-    @Test
-    public void testGetZMedianCalibratedDistancesOddN() throws IntegerOverflowException {
-        double dppXY = 0.02;
-        double dppZ = 0.1;
-        String units = "um";
-
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
-        volume.add(10,5,1);
-        volume.add(10,5,2);
-        volume.add(11,5,2);
-        volume.add(13,7,1);
-        volume.add(13,7,2);
-
-        assertEquals(0.2,volume.getZMedian(false,false), tolerance10);
-        assertEquals(0.2,volume.getZMedian(false,true), tolerance10);
 
     }
 
@@ -1003,7 +771,7 @@ public class PointVolumeTest {
 
         Point<Integer> point = new Point<>(1,2,3);
 
-        assertTrue(volume.getPoints().contains(point));
+        assertTrue(volume.containsPoint(point));
 
     }
 
@@ -1017,7 +785,7 @@ public class PointVolumeTest {
 
         Point<Integer> point = new Point<>(2,2,3);
 
-        assertFalse(volume.getPoints().contains(point));
+        assertFalse(volume.containsPoint(point));
 
     }
 
@@ -1029,7 +797,7 @@ public class PointVolumeTest {
 
         PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
 
-        assertEquals(0,volume.getNVoxels());
+        assertEquals(0,volume.size());
 
     }
 
@@ -1045,7 +813,7 @@ public class PointVolumeTest {
         volume.add(11,5,2);
         volume.add(13,7,1);
 
-        assertEquals(4,volume.getNVoxels());
+        assertEquals(4,volume.size());
 
     }
 
@@ -1379,11 +1147,13 @@ public class PointVolumeTest {
 
         Volume2 actual = volume1.getOverlappingPoints(volume2);
 
+        assertTrue(actual instanceof PointVolume);
+
         HashSet<Point<Integer>> expected = new HashSet<>();
         expected.add(new Point<>(4,3,12));
         expected.add(new Point<>(1,2,5));
 
-        assertEquals(2,actual.getNVoxels());
+        assertEquals(2,actual.size());
         for (Point<Integer> point:expected) assertTrue(actual.containsPoint(point));
 
 
@@ -1405,7 +1175,9 @@ public class PointVolumeTest {
 
         Volume2 actual = volume1.getOverlappingPoints(volume2);
 
-        assertEquals(0,actual.getNVoxels());
+        assertTrue(actual instanceof PointVolume);
+
+        assertEquals(0,actual.size());
 
     }
 
@@ -1425,13 +1197,15 @@ public class PointVolumeTest {
 
         Volume2 actual = volume1.getOverlappingPoints(volume2);
 
+        assertTrue(actual instanceof PointVolume);
+
         HashSet<Point<Integer>> expected = new HashSet<>();
         expected.add(new Point<>(1,2,3));
         expected.add(new Point<>(4,3,12));
         expected.add(new Point<>(2,1,2));
         expected.add(new Point<>(1,2,5));
 
-        assertEquals(4,actual.getNVoxels());
+        assertEquals(4,actual.size());
         for (Point<Integer> point:expected) assertTrue(actual.containsPoint(point));
 
     }
@@ -1453,11 +1227,13 @@ public class PointVolumeTest {
 
         Volume2 actual = volume1.getOverlappingPoints(volume2);
 
+        assertTrue(actual instanceof PointVolume);
+
         HashSet<Point<Integer>> expected = new HashSet<>();
         expected.add(new Point<>(4,3,12));
         expected.add(new Point<>(1,2,5));
 
-        assertEquals(2,actual.getNVoxels());
+        assertEquals(2,actual.size());
         for (Point<Integer> point:expected) assertTrue(actual.containsPoint(point));
 
     }
@@ -1479,11 +1255,13 @@ public class PointVolumeTest {
 
         Volume2 actual = volume1.getOverlappingPoints(volume2);
 
+        assertTrue(actual instanceof PointVolume);
+
         HashSet<Point<Integer>> expected = new HashSet<>();
         expected.add(new Point<>(4,3,12));
         expected.add(new Point<>(1,2,5));
 
-        assertEquals(2,actual.getNVoxels());
+        assertEquals(2,actual.size());
         for (Point<Integer> point:expected) assertTrue(actual.containsPoint(point));
 
     }
@@ -1634,7 +1412,7 @@ public class PointVolumeTest {
         volume.add(2,6,9);
 
         volume.clearPoints();
-        assertEquals(0,volume.getNVoxels());
+        assertEquals(0,volume.size());
     }
 
 

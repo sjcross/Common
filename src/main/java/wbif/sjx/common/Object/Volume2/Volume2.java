@@ -24,12 +24,6 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
      */
     protected Point<Double> meanCentroid = null;
 
-    /**
-     * Median coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
-     * pixel or calibrated distances.
-     */
-    protected Point<Double> medianCentroid = null;
-
 
     public Volume2(Volume2 volume) {
         this.width = volume.getWidth();
@@ -58,6 +52,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     public abstract Volume2 add(Point<Integer> point) throws IntegerOverflowException ;
 
+    @Deprecated
     public abstract TreeSet<Point<Integer>> getPoints();
 
     public abstract Volume2 setPoints(TreeSet<Point<Integer>> points);
@@ -68,24 +63,9 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     public abstract void calculateMeanCentroid();
 
-    public abstract void calculateMedianCentroid();
-
-    public abstract double getHeight(boolean pixelDistances, boolean matchXY);
-
-    public abstract double[][] getExtents(boolean pixelDistances, boolean matchXY);
-
-    public abstract boolean hasVolume();
-
-    public abstract boolean hasArea();
-
-    public abstract int getNVoxels();
+    public abstract int size();
 
     public abstract double getProjectedArea(boolean pixelDistances);
-
-    public abstract int getOverlap(Volume2 volume2);
-
-    /////// THIS RETURNS A DIFFERENT STRUCTURE TO ORIGINAL (VOLUME CLASS) METHOD
-    public abstract Volume2 getOverlappingPoints(Volume2 volume2);
 
     public abstract boolean containsPoint(Point<Integer> point1);
 
@@ -93,7 +73,6 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
 
     // PUBLIC METHODS
-
 
     public boolean is2D() {
         return nSlices == 1;
@@ -114,20 +93,24 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
         return z*dppZ/dppXY;
     }
 
+    @Deprecated
     public ArrayList<Integer> getXCoords() {
         return getPoints().stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
+    @Deprecated
     public ArrayList<Integer> getYCoords() {
         return getPoints().stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
     }
 
+    @Deprecated
     public ArrayList<Integer> getZCoords() {
         return getPoints().stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
+    @Deprecated
     public double[] getX(boolean pixelDistances) {
         if (pixelDistances)
             return getPoints().stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
@@ -136,6 +119,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     }
 
+    @Deprecated
     public double[] getY(boolean pixelDistances) {
         if (pixelDistances)
             return getPoints().stream().map(Point::getY).mapToDouble(Integer::doubleValue).toArray();
@@ -151,6 +135,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
      *                spacing, Z of 1 will be returned as 2).
      * @return
      */
+    @Deprecated
     public double[] getZ(boolean pixelDistances, boolean matchXY) {
         if (pixelDistances)
             if (matchXY)
@@ -164,21 +149,25 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     }
 
+    @Deprecated
     public ArrayList<Integer> getSurfaceXCoords() {
         return getSurface().stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
+    @Deprecated
     public ArrayList<Integer> getSurfaceYCoords() {
         return getSurface().stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
+    @Deprecated
     public ArrayList<Integer> getSurfaceZCoords() {
         return getSurface().stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
+    @Deprecated
     public double[] getSurfaceX(boolean pixelDistances) {
         if (pixelDistances)
             return getSurface().stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
@@ -187,6 +176,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     }
 
+    @Deprecated
     public double[] getSurfaceY(boolean pixelDistances) {
         if (pixelDistances)
             return getSurface().stream().map(Point::getY).mapToDouble(Integer::doubleValue).toArray();
@@ -202,6 +192,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
      *                spacing, Z of 1 will be returned as 2).
      * @return
      */
+    @Deprecated
     public double[] getSurfaceZ(boolean pixelDistances, boolean matchXY) {
         if (pixelDistances)
             if (matchXY)
@@ -258,32 +249,89 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     }
 
-    public Point<Double> getMedianCentroid() {
-        if (medianCentroid == null) calculateMedianCentroid();
-        return medianCentroid;
-    }
+    public double getHeight(boolean pixelDistances, boolean matchXY) {
+        double minZ = Double.MAX_VALUE;
+        double maxZ = Double.MIN_VALUE;
 
-    public double getXMedian(boolean pixelDistances) {
-        if (pixelDistances) return getMedianCentroid().getX();
+        // Getting XY ranges
+        for (Point<Integer> point:this) {
+            minZ = Math.min(minZ,point.z);
+            maxZ = Math.max(maxZ,point.z);
+        }
 
-        return getMedianCentroid().getX()*dppXY;
+        double height = maxZ-minZ;
 
-    }
-
-    public double getYMedian(boolean pixelDistances) {
-        if (pixelDistances) return getMedianCentroid().getY();
-
-        return getMedianCentroid().getY()*dppXY;
+        if (pixelDistances) return matchXY ? getXYScaledZ(height) : height;
+        return height*dppZ;
 
     }
 
-    public double getZMedian(boolean pixelDistances, boolean matchXY) {
-        if (pixelDistances && !matchXY) return getMedianCentroid().getZ();
-        if (pixelDistances && matchXY) return getMedianCentroid().getZ()*dppZ/dppXY;
+    public double[][] getExtents(boolean pixelDistances, boolean matchXY) {
+        double minX = Double.MAX_VALUE;
+        double maxX = Double.MIN_VALUE;
+        double minY = Double.MAX_VALUE;
+        double maxY = Double.MIN_VALUE;
+        double minZ = Double.MAX_VALUE;
+        double maxZ = Double.MIN_VALUE;
 
-        return getMedianCentroid().getZ()*dppZ;
+        // Getting XY ranges
+        for (Point<Integer> point:this) {
+            minX = Math.min(minX,point.x);
+            maxX = Math.max(maxX,point.x);
+            minY = Math.min(minY,point.y);
+            maxY = Math.max(maxY,point.y);
+            minZ = Math.min(minZ,point.z);
+            maxZ = Math.max(maxZ,point.z);
+        }
+
+        // Getting XY ranges
+        if (pixelDistances) {
+            if (matchXY) {
+                minZ = getXYScaledZ(minZ);
+                maxZ = getXYScaledZ(maxZ);
+            }
+        } else {
+            minX = minX*dppXY;
+            maxX = maxX*dppXY;
+            minY = minY*dppXY;
+            maxY = maxY*dppXY;
+            minZ = minZ*dppZ;
+            maxZ = maxZ*dppZ;
+        }
+
+        return new double[][]{{minX,maxX},{minY,maxY},{minZ,maxZ}};
 
     }
+
+    public boolean hasVolume() {
+        //True if all dimension (x,y,z) are > 0
+
+        double[][] extents = getExtents(true,false);
+
+        boolean hasvol = false;
+
+        if (extents[0][1]-extents[0][0] > 0 & extents[1][1]-extents[1][0] > 0 & extents[2][1]-extents[2][0] > 0) {
+            hasvol = true;
+        }
+
+        return hasvol;
+
+    } // Copied
+
+    public boolean hasArea() {
+        //True if all dimensions (x,y) are > 0
+
+        double[][] extents = getExtents(true,false);
+
+        boolean hasarea = false;
+
+        if (extents[0][1]-extents[0][0] > 0 & extents[1][1]-extents[1][0] > 0) {
+            hasarea = true;
+        }
+
+        return hasarea;
+
+    } // Copied
 
     public double getCentroidSeparation(Volume2 volume2, boolean pixelDistances) {
         double x1 = getXMean(pixelDistances);
@@ -333,11 +381,41 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     }
 
+    public Volume2 getOverlappingPoints(Volume2 volume2) {
+        Volume2 overlapping = createNewObject();
+
+        try {
+            if (size() < volume2.size()) {
+                for (Point<Integer> p1 : this) if (volume2.containsPoint(p1)) overlapping.add(p1);
+            } else {
+                for (Point<Integer> p2 : volume2) if (containsPoint(p2)) overlapping.add(p2);
+            }
+        } catch (IntegerOverflowException e) {
+            // These points are a subset of the input PointVolume objects, so if they don't overflow these can't either
+        }
+
+        return overlapping;
+
+    } // Copied
+
+    public int getOverlap(Volume2 volume2) {
+        int count = 0;
+
+        if (size() < volume2.size()) {
+            for (Point<Integer> p1 : this) if (volume2.containsPoint(p1)) count++;
+        } else {
+            for (Point<Integer> p2 : volume2) if (containsPoint(p2)) count++;
+        }
+
+        return count;
+
+    } // Copied
+
     public double getContainedVolume(boolean pixelDistances) {
         if (pixelDistances) {
-            return getNVoxels()*dppZ/dppXY;
+            return size()*dppZ/dppXY;
         } else {
-            return getNVoxels()*dppXY*dppXY*dppZ;
+            return size()*dppXY*dppXY*dppZ;
         }
     }
 

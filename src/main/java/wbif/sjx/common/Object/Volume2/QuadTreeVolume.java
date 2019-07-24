@@ -162,36 +162,26 @@ public class QuadTreeVolume extends Volume2 {
     }
 
     @Override
-    public void calculateMedianCentroid() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume calculateMedianCentroid needs implementing");
-    }
-
-    @Override
     public double getHeight(boolean pixelDistances, boolean matchXY) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getHeight needs implementing");
-        return 0;
+        // With QuadTrees we can get the height more efficiently by just looking at the slices used
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
+        for (int z:quadTrees.keySet()) {
+            if (quadTrees.get(z).getPointCount() == 0) continue;
+            min = Math.min(min,z);
+            max = Math.max(max,z);
+        }
+
+        int height = max-min;
+
+        if (pixelDistances) return matchXY ? getXYScaledZ(height) : height;
+        return height*dppZ;
+
     }
 
     @Override
-    public double[][] getExtents(boolean pixelDistances, boolean matchXY) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getExtents needs implementing");
-        return new double[0][];
-    }
-
-    @Override
-    public boolean hasVolume() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume hasVolume needs implementing");
-        return false;
-    }
-
-    @Override
-    public boolean hasArea() {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume hasArea needs implementing");
-        return false;
-    }
-
-    @Override
-    public int getNVoxels() {
+    public int size() {
         int nVoxels = 0;
 
         for (QuadTree quadTree:quadTrees.values()) nVoxels += quadTree.getPointCount();
@@ -204,18 +194,6 @@ public class QuadTreeVolume extends Volume2 {
     public double getProjectedArea(boolean pixelDistances) {
         System.out.println("wbif.sjx.common.Object.QuadTreeVolume getProjectedArea needs implementing");
         return 0;
-    }
-
-    @Override
-    public int getOverlap(Volume2 volume2) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getOverlap needs implementing");
-        return 0;
-    }
-
-    @Override
-    public Volume2 getOverlappingPoints(Volume2 volume2) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume getOverlappingPoints needs implementing");
-        return null;
     }
 
     @Override
@@ -253,7 +231,8 @@ public class QuadTreeVolume extends Volume2 {
         hash = 31*hash + ((Number) dppXY).hashCode();
         hash = 31*hash + ((Number) dppZ).hashCode();
         hash = 31*hash + calibratedUnits.toUpperCase().hashCode();
-        hash = 31*hash + quadTrees.hashCode();
+
+        for (Point<Integer> point:this) hash = 31*hash + point.hashCode();
 
         return hash;
 
@@ -261,31 +240,21 @@ public class QuadTreeVolume extends Volume2 {
 
     @Override
     public boolean equals(Object obj) {
-        System.out.println("wbif.sjx.common.Object.QuadTreeVolume equals needs implementing");
+        if (obj == this) return true;
+        if (!(obj instanceof QuadTreeVolume)) return false;
 
-//        if (obj == this) return true;
-//        if (!(obj instanceof Volume)) return false;
-//
-//        Volume volume2 = (Volume) obj;
-//        TreeSet<Point<Integer>> points1 = getPoints();
-//        TreeSet<Point<Integer>> points2 = volume2.getPoints();
-//
-//        if (points1.size() != points2.size()) return false;
-//
-//        if (dppXY != volume2.getDistPerPxXY()) return false;
-//        if (dppZ != volume2.getDistPerPxZ()) return false;
-//        if (!calibratedUnits.toUpperCase().equals(volume2.getCalibratedUnits().toUpperCase())) return false;
-//
-//        Iterator<Point<Integer>> iterator1 = points1.iterator();
-//        Iterator<Point<Integer>> iterator2 = points2.iterator();
-//
-//        while (iterator1.hasNext()) {
-//            Point<Integer> point1 = iterator1.next();
-//            Point<Integer> point2 = iterator2.next();
-//
-//            if (!point1.equals(point2)) return false;
-//
-//        }
+        QuadTreeVolume volume2 = (QuadTreeVolume) obj;
+        if (size() != volume2.size()) return false;
+
+        if (dppXY != volume2.getDppXY()) return false;
+        if (dppZ != volume2.getDppZ()) return false;
+        if (!calibratedUnits.toUpperCase().equals(volume2.getCalibratedUnits().toUpperCase())) return false;
+
+        Iterator<Point<Integer>> iterator2 = volume2.iterator();
+
+        for (Point<Integer> point1:this) {
+            if (!point1.equals(iterator2.next())) return false;
+        }
 
         return true;
 
@@ -305,6 +274,9 @@ public class QuadTreeVolume extends Volume2 {
 
         @Override
         public boolean hasNext() {
+            // Check we have an iterator
+            if (quadTreeIterator == null) return false;
+
             // Check if this current slice has another point
             if (quadTreeIterator.hasNext()) return true;
 
