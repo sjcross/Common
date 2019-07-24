@@ -75,6 +75,11 @@ public class PointVolume extends Volume2 {
     }
 
     @Override
+    public void finalise() {
+
+    }
+
+    @Override
     public void calculateSurface() {
         if (is2D()) {
             calculateSurface2D();

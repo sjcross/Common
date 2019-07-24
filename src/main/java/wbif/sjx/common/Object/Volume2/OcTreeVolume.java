@@ -54,6 +54,11 @@ public class OcTreeVolume extends Volume2 {
     }
 
     @Override
+    public void finalise() {
+
+    }
+
+    @Override
     public TreeSet<Point<Integer>> getPoints() {
         return ocTree.getPoints();
 

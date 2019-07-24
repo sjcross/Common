@@ -51,6 +51,9 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
     public abstract Volume2 add(int x, int y, int z);
 
     public abstract Volume2 add(Point<Integer> point);
+
+    public abstract void finalise();
+
     @Deprecated
     public abstract TreeSet<Point<Integer>> getPoints();
 

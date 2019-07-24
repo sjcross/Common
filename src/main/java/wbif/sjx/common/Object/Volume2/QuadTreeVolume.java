@@ -58,6 +58,11 @@ public class QuadTreeVolume extends Volume2 {
     }
 
     @Override
+    public void finalise() {
+        for (QuadTree quadTree:quadTrees.values()) quadTree.optimise();
+    }
+
+    @Override
     public TreeSet<Point<Integer>> getPoints() {
         TreeSet<Point<Integer>> points = new TreeSet<>();
 
