@@ -76,7 +76,6 @@ public class QuadTreeVolume extends Volume2 {
                 point.setZ(z);
                 points.add(point);
             }
-
         }
 
         return points;

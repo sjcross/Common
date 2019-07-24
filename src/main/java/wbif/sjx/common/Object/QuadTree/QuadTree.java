@@ -147,6 +147,7 @@ public class QuadTree implements Iterable<Point<Integer>>
         if (y < 0 || y >= height) throw new IndexOutOfBoundsException("Coordinate out of bounds! (y: " + y + ")");
 
         set(root, x, y, b, size, 0, 0);
+
     }
 
     private void set(QTNode node, int x, int y, boolean b, int size, int minX, int minY)

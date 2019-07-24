@@ -3,8 +3,10 @@ package wbif.sjx.common.Object.Volume2;
 import org.junit.Ignore;
 import org.junit.Test;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
+import wbif.sjx.common.ExpectedObjects.BigBlob2D;
 import wbif.sjx.common.Object.Point;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 import static org.junit.Assert.*;
@@ -1660,6 +1662,29 @@ public class PointVolumeTest {
         double actual = volume1.getCentroidSeparation(volume2,false);
 
         assertEquals(expected,actual, tolerance2);
+
+    }
+
+    @Test @Ignore
+    public void testPerformance() {
+        List<Integer[]> coords = new BigBlob2D().getCoordinates5D();
+
+        PointVolume pointVolume = new PointVolume(512,512,10,1,1,"px");
+
+        long t1 = System.nanoTime();
+        for (int z=0;z<10;z++) {
+            for (Integer[] coord : coords) pointVolume.add(coord[0], coord[1], z);
+        }
+        long t2 = System.nanoTime();
+        pointVolume.finalise();
+        long t3 = System.nanoTime();
+        for (Point<Integer> point:pointVolume);
+        long t4 = System.nanoTime();
+
+        DecimalFormat df = new DecimalFormat("0.0000");
+        System.out.println("Add points "+df.format((t2-t1)/1E6)+" ms");
+        System.out.println("Optimise "+df.format((t3-t2)/1E6)+" ms");
+        System.out.println("Iterate "+df.format((t4-t3)/1E6)+" ms");
 
     }
 }
