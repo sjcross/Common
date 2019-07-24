@@ -14,6 +14,10 @@ public class Point<T extends Number> implements Comparable<Point<T>>, Serializab
 
     }
 
+    public Point(Point<T> point) {
+        this(point.x, point.y, point.z);
+    }
+
     public T getX() {
         return x;
     }
@@ -115,5 +119,10 @@ public class Point<T extends Number> implements Comparable<Point<T>>, Serializab
 
         return 0;
 
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName() + " xyz = (" + x + ", " + y + ", " + z + ')';
     }
 }

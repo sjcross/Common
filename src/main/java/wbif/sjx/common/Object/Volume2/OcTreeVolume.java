@@ -55,7 +55,7 @@ public class OcTreeVolume extends Volume2 {
 
     @Override
     public void finalise() {
-
+        ocTree.optimise();
     }
 
     @Override

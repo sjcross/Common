@@ -2,12 +2,14 @@ package wbif.sjx.common.Object.QuadTree;
 
 import wbif.sjx.common.Object.Point;
 
+import java.util.Iterator;
+import java.util.Stack;
 import java.util.TreeSet;
 
 /**
  * Created by JDJFisher on 19/07/2019.
  */
-public class OcTree
+public class OcTree implements Iterable<Point<Integer>>
 {
     private static final int CHUNK_SIZE = 2048;
 
@@ -619,5 +621,219 @@ public class OcTree
         result = 31 * result + nodes;
         result = 31 * result + (root != null ? root.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public Iterator<Point<Integer>> iterator()
+    {
+        return new OcTreeIterator();
+    }
+
+//    private class OcTreeIterator implements Iterator<Point<Integer>>
+//    {
+//        private Point<Integer> nextPoint = new Point<>(0,0,0);
+//
+//        public OcTreeIterator()
+//        {
+//            findNextPoint();
+//        }
+//
+//        @Override
+//        public boolean hasNext()
+//        {
+//            return nextPoint != null;
+//        }
+//
+//        @Override
+//        public Point<Integer> next()
+//        {
+//            // Create a copy of the next point, which will be output at the end of this method
+//            Point<Integer> outputPoint = new Point<>(nextPoint);
+//
+//            // Prepare the next point
+//            findNextPoint();
+//
+//            return outputPoint;
+//        }
+//
+//        private void findNextPoint()
+//        {
+//            // Picking up where we left off, but moving to the next pixel
+//            int x = nextPoint.x + 1;
+//            int y = nextPoint.y;
+//            int z = nextPoint.z;
+//
+//            while (z < depth)
+//            {
+//                while (y < height)
+//                {
+//                    while (x < width)
+//                    {
+//                        if (contains(x, y, z))
+//                        {
+//                            nextPoint = new Point<>(x, y, z);
+//                            return;
+//                        }
+//                        x++;
+//                    }
+//                    x = 0;
+//                    y++;
+//                }
+//                y = x = 0;
+//                z++;
+//            }
+//
+//            // If we get to the end it means there are no more points, so set nextPoint to null
+//            nextPoint = null;
+//        }
+//    }
+
+    private class OcTreeIterator implements Iterator<Point<Integer>>
+    {
+        private final Stack<OTNode>  nodeStack;
+        private final Stack<Integer> sizeStack;
+        private final Stack<Integer> minXStack;
+        private final Stack<Integer> minYStack;
+        private final Stack<Integer> minZStack;
+
+        private int x, y, z;
+        private int minX, minY, minZ;
+        private int maxX, maxY, maxZ;
+
+        public OcTreeIterator()
+        {
+            nodeStack = new Stack<>();
+            sizeStack = new Stack<>();
+            minXStack = new Stack<>();
+            minYStack = new Stack<>();
+            minZStack = new Stack<>();
+
+            nodeStack.push(root);
+            sizeStack.push(size);
+            minXStack.push(0);
+            minYStack.push(0);
+            minZStack.push(0);
+
+            findNextColouredLeaf();
+        }
+
+        @Override
+        public boolean hasNext()
+        {
+            return !nodeStack.empty();
+        }
+
+        @Override
+        public Point<Integer> next()
+        {
+            Point<Integer> currentPoint = new Point<>(x, y, z);
+
+            findNextPoint();
+
+            return currentPoint;
+        }
+
+        private void findNextPoint()
+        {
+            x++;
+
+            if (x > maxX)
+            {
+                x = minX;
+                y++;
+
+                if (y > maxY)
+                {
+                    x = minX;
+                    y = minY;
+                    z++;
+
+                    if (z < maxZ)
+                    {
+                        findNextColouredLeaf();
+                    }
+                }
+            }
+        }
+
+        private void findNextColouredLeaf()
+        {
+            while (!nodeStack.empty())
+            {
+                final OTNode node = nodeStack.pop();
+                final int size = sizeStack.pop();
+                minX = minXStack.pop();
+                minY = minYStack.pop();
+                minZ = minZStack.pop();
+
+                if (node.isDivided())
+                {
+                    final int halfSize = size / 2;
+                    final int midX = minX + halfSize;
+                    final int midY = minY + halfSize;
+                    final int midZ = minZ + halfSize;
+
+                    nodeStack.push(node.lnw);
+                    sizeStack.push(halfSize);
+                    minXStack.push(minX);
+                    minYStack.push(minY);
+                    minZStack.push(minZ);
+
+                    nodeStack.push(node.lne);
+                    sizeStack.push(halfSize);
+                    minXStack.push(midX);
+                    minYStack.push(minY);
+                    minZStack.push(minZ);
+
+                    nodeStack.push(node.lsw);
+                    sizeStack.push(halfSize);
+                    minXStack.push(minX);
+                    minYStack.push(midY);
+                    minZStack.push(minZ);
+
+                    nodeStack.push(node.lse);
+                    sizeStack.push(halfSize);
+                    minXStack.push(midX);
+                    minYStack.push(midY);
+                    minZStack.push(minZ);
+
+                    nodeStack.push(node.unw);
+                    sizeStack.push(halfSize);
+                    minXStack.push(minX);
+                    minYStack.push(minY);
+                    minZStack.push(midZ);
+
+                    nodeStack.push(node.une);
+                    sizeStack.push(halfSize);
+                    minXStack.push(midX);
+                    minYStack.push(minY);
+                    minZStack.push(midZ);
+
+                    nodeStack.push(node.usw);
+                    sizeStack.push(halfSize);
+                    minXStack.push(minX);
+                    minYStack.push(midY);
+                    minZStack.push(midZ);
+
+                    nodeStack.push(node.use);
+                    sizeStack.push(halfSize);
+                    minXStack.push(midX);
+                    minYStack.push(midY);
+                    minZStack.push(midZ);
+                }
+                else if (node.coloured)
+                {
+                    maxX = minX + size - 1;
+                    maxY = minY + size - 1;
+                    maxZ = minZ + size - 1;
+
+                    x = minX;
+                    y = minY;
+                    z = minZ;
+
+                    return;
+                }
+            }
+        }
     }
 }

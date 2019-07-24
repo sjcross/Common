@@ -4,6 +4,7 @@ import com.drew.lang.annotations.Nullable;
 import wbif.sjx.common.Object.Point;
 
 import java.awt.*;
+import java.util.Stack;
 import java.util.TreeSet;
 import java.util.Iterator;
 
@@ -596,56 +597,164 @@ public class QuadTree implements Iterable<Point<Integer>>
         return new QuadTreeIterator();
     }
 
+//    private class QuadTreeIterator implements Iterator<Point<Integer>>
+//    {
+//
+//        private Point<Integer> nextPoint = new Point<>(0,0,0);
+//
+//        public QuadTreeIterator()
+//        {
+//            findNextPoint();
+//        }
+//
+//        @Override
+//        public boolean hasNext()
+//        {
+//            return nextPoint != null;
+//        }
+//
+//        @Override
+//        public Point<Integer> next()
+//        {
+//            // Create a copy of the next point, which will be output at the end of this method
+//            Point<Integer> outputPoint = new Point<>(nextPoint);
+//
+//            // Prepare the next point
+//            findNextPoint();
+//
+//            return outputPoint;
+//        }
+//
+//        private void findNextPoint()
+//        {
+//            // Picking up where we left off, but moving to the next pixel
+//            int x = nextPoint.x + 1;
+//            int y = nextPoint.y;
+//
+//            while (y < height)
+//            {
+//                while (x < width)
+//                {
+//                    if (contains(x, y))
+//                    {
+//                        nextPoint = new Point<>(x, y, 0);
+//                        return;
+//                    }
+//                    x++;
+//                }
+//                x = 0;
+//                y++;
+//            }
+//
+//            // If we get to the end it means there are no more points, so set nextPoint to null
+//            nextPoint = null;
+//        }
+//    }
+
     private class QuadTreeIterator implements Iterator<Point<Integer>>
     {
+        private final Stack<QTNode>  nodeStack;
+        private final Stack<Integer> sizeStack;
+        private final Stack<Integer> minXStack;
+        private final Stack<Integer> minYStack;
 
-        private Point<Integer> nextPoint = new Point<>(0,0,0);
+        private int x, y;
+        private int minX, minY;
+        private int maxX, maxY;
 
         public QuadTreeIterator()
         {
-            findNextPoint();
+            nodeStack = new Stack<>();
+            sizeStack = new Stack<>();
+            minXStack = new Stack<>();
+            minYStack = new Stack<>();
+
+            nodeStack.push(root);
+            sizeStack.push(size);
+            minXStack.push(0);
+            minYStack.push(0);
+
+            findNextColouredLeaf();
         }
 
         @Override
         public boolean hasNext()
         {
-            return nextPoint != null;
+            return !nodeStack.empty();
         }
 
         @Override
         public Point<Integer> next()
         {
-            // Create a copy of the next point, which will be output at the end of this method
-            Point<Integer> outputPoint = new Point<>(nextPoint.x,nextPoint.y,0);
+            Point<Integer> currentPoint = new Point<>(x, y, 0);
 
-            // Prepare the next point
             findNextPoint();
 
-            return outputPoint;
-
+            return currentPoint;
         }
 
         private void findNextPoint()
         {
-            // Picking up where we left off, but moving to the next pixel
-            int x = nextPoint.x+1;
-            int y = nextPoint.y;
+            x++;
 
-            while (y < height) {
-                while (x < width) {
-                    if (contains(x,y)) {
-                        nextPoint = new Point<>(x,y,0);
-                        return;
-                    }
-                    x++;
-                }
-                x = 0;
+            if (x > maxX)
+            {
+                x = minX;
                 y++;
+
+                if (y > maxY)
+                {
+                    findNextColouredLeaf();
+                }
             }
+        }
 
-            // If we get to the end it means there are no more points, so set nextPoint to null
-            nextPoint = null;
+        private void findNextColouredLeaf()
+        {
+            while (!nodeStack.empty())
+            {
+                final QTNode node = nodeStack.pop();
+                final int size = sizeStack.pop();
+                minX = minXStack.pop();
+                minY = minYStack.pop();
 
+                if (node.isDivided())
+                {
+                    final int halfSize = size / 2;
+                    final int midX = minX + halfSize;
+                    final int midY = minY + halfSize;
+
+                    nodeStack.push(node.nw);
+                    sizeStack.push(halfSize);
+                    minXStack.push(minX);
+                    minYStack.push(minY);
+
+                    nodeStack.push(node.ne);
+                    sizeStack.push(halfSize);
+                    minXStack.push(midX);
+                    minYStack.push(minY);
+
+                    nodeStack.push(node.sw);
+                    sizeStack.push(halfSize);
+                    minXStack.push(minX);
+                    minYStack.push(midY);
+
+                    nodeStack.push(node.se);
+                    sizeStack.push(halfSize);
+                    minXStack.push(midX);
+                    minYStack.push(midY);
+                }
+                else if (node.coloured)
+                {
+                    maxX = minX + size - 1;
+                    maxY = minY + size - 1;
+
+                    x = minX;
+                    y = minY;
+
+                    return;
+                }
+            }
         }
     }
 }
