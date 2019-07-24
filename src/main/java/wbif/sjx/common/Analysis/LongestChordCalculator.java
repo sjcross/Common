@@ -5,17 +5,18 @@ import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.GeneralOps;
 import wbif.sjx.common.Object.Volume2.PointVolume;
+import wbif.sjx.common.Object.Volume2.Volume2;
 
 /**
  * Created by sc13967 on 20/06/2018.
  */
 public class LongestChordCalculator {
     private double tolerance = 1E-10;
-    private final PointVolume volume;
+    private final Volume2 volume;
 
     private final double[][] LC; //Longest chord
 
-    public LongestChordCalculator(PointVolume volume) {
+    public LongestChordCalculator(Volume2 volume) {
         this.volume = volume;
 
         LC = calculateLC();

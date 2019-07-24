@@ -2,14 +2,14 @@ package wbif.sjx.common.Analysis.Volume;
 
 import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Volume;
-import wbif.sjx.common.Object.Volume2.PointVolume;
+import wbif.sjx.common.Object.Volume2.Volume2;
 
 public class SurfaceSeparationCalculator {
     private final double minDist;
     private final Point<Integer> p1;
     private final Point<Integer> p2;
 
-    public SurfaceSeparationCalculator(PointVolume v1, PointVolume v2, boolean pixelDistances) {
+    public SurfaceSeparationCalculator(Volume2 v1, Volume2 v2, boolean pixelDistances) {
         double minDist = Double.MAX_VALUE;
         Point<Integer> p1 = null;
         Point<Integer> p2 = null;

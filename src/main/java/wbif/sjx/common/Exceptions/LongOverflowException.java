@@ -1,6 +1,6 @@
 package wbif.sjx.common.Exceptions;
 
-public class LongOverflowException extends Exception {
+public class LongOverflowException extends RuntimeException {
     public LongOverflowException(String errorMessage) {
         super(errorMessage);
     }

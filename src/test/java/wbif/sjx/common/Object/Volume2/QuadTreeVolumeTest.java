@@ -1420,7 +1420,7 @@ public class QuadTreeVolumeTest {
     // MISSING TESTS
 
     @Test
-    public void testGetSurface() {
+    public void testGetSurface() throws IntegerOverflowException {
         QuadTreeVolume volume = new QuadTreeVolume(10,10,8,2.0,1.0,"PX");
         volume.add(5,7,3);
         volume.add(5,8,3);

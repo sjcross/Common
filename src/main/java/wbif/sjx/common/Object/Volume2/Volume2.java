@@ -48,10 +48,9 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     // ABSTRACT METHODS
 
-    public abstract Volume2 add(int x, int y, int z) throws IntegerOverflowException ;
+    public abstract Volume2 add(int x, int y, int z);
 
-    public abstract Volume2 add(Point<Integer> point) throws IntegerOverflowException ;
-
+    public abstract Volume2 add(Point<Integer> point);
     @Deprecated
     public abstract TreeSet<Point<Integer>> getPoints();
 

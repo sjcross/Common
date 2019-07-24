@@ -43,7 +43,7 @@ public class QuadTreeVolume extends Volume2 {
     }
 
     @Override
-    public Volume2 add(Point<Integer> point) throws IntegerOverflowException {
+    public Volume2 add(Point<Integer> point) {
         int z = point.z;
         if (z >= nSlices) throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
 

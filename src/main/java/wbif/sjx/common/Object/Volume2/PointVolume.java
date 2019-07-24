@@ -45,7 +45,7 @@ public class PointVolume extends Volume2 {
     } // Copied
 
     @Override
-    public PointVolume add(int x, int y, int z) throws IntegerOverflowException {
+    public PointVolume add(int x, int y, int z) {
         if (x < 0 || x >= width)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (x: " + x + ")");
         if (y < 0 || y >= height) throw new IndexOutOfBoundsException("Coordinate out of bounds! (y: " + y + ")");
         if (z >= nSlices) throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
@@ -58,7 +58,7 @@ public class PointVolume extends Volume2 {
     } // Copied
 
     @Override
-    public Volume2 add(Point<Integer> point) throws IntegerOverflowException {
+    public Volume2 add(Point<Integer> point) {
         int x = point.x;
         int y = point.y;
         int z = point.z;
