@@ -102,7 +102,7 @@ public class OcTree implements Iterable<Point<Integer>>
     {
         if (x < 0 || x >= width)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (x: " + x + ")");
         if (y < 0 || y >= height) throw new IndexOutOfBoundsException("Coordinate out of bounds! (y: " + y + ")");
-        if (z < 0 || z >= depth)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + y + ")");
+        if (z < 0 || z >= depth)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
 
         return contains(root, x, y, z, size, 0, 0, 0);
     }
@@ -172,7 +172,7 @@ public class OcTree implements Iterable<Point<Integer>>
     {
         if (x < 0 || x >= width)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (x: " + x + ")");
         if (y < 0 || y >= height) throw new IndexOutOfBoundsException("Coordinate out of bounds! (y: " + y + ")");
-        if (z < 0 || z >= depth)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + y + ")");
+        if (z < 0 || z >= depth)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
 
         set(root, x, y, z, b, size, 0, 0, 0);
     }
@@ -629,65 +629,6 @@ public class OcTree implements Iterable<Point<Integer>>
         return new OcTreeIterator();
     }
 
-//    private class OcTreeIterator implements Iterator<Point<Integer>>
-//    {
-//        private Point<Integer> nextPoint = new Point<>(0,0,0);
-//
-//        public OcTreeIterator()
-//        {
-//            findNextPoint();
-//        }
-//
-//        @Override
-//        public boolean hasNext()
-//        {
-//            return nextPoint != null;
-//        }
-//
-//        @Override
-//        public Point<Integer> next()
-//        {
-//            // Create a copy of the next point, which will be output at the end of this method
-//            Point<Integer> outputPoint = new Point<>(nextPoint);
-//
-//            // Prepare the next point
-//            findNextPoint();
-//
-//            return outputPoint;
-//        }
-//
-//        private void findNextPoint()
-//        {
-//            // Picking up where we left off, but moving to the next pixel
-//            int x = nextPoint.x + 1;
-//            int y = nextPoint.y;
-//            int z = nextPoint.z;
-//
-//            while (z < depth)
-//            {
-//                while (y < height)
-//                {
-//                    while (x < width)
-//                    {
-//                        if (contains(x, y, z))
-//                        {
-//                            nextPoint = new Point<>(x, y, z);
-//                            return;
-//                        }
-//                        x++;
-//                    }
-//                    x = 0;
-//                    y++;
-//                }
-//                y = x = 0;
-//                z++;
-//            }
-//
-//            // If we get to the end it means there are no more points, so set nextPoint to null
-//            nextPoint = null;
-//        }
-//    }
-
     private class OcTreeIterator implements Iterator<Point<Integer>>
     {
         private final Stack<OTNode>  nodeStack;
@@ -748,7 +689,7 @@ public class OcTree implements Iterable<Point<Integer>>
                     y = minY;
                     z++;
 
-                    if (z < maxZ)
+                    if (z > maxZ)
                     {
                         findNextColouredLeaf();
                     }
@@ -836,4 +777,63 @@ public class OcTree implements Iterable<Point<Integer>>
             }
         }
     }
+
+//    private class OcTreeIterator implements Iterator<Point<Integer>>
+//    {
+//        private Point<Integer> nextPoint = new Point<>(0,0,0);
+//
+//        public OcTreeIterator()
+//        {
+//            findNextPoint();
+//        }
+//
+//        @Override
+//        public boolean hasNext()
+//        {
+//            return nextPoint != null;
+//        }
+//
+//        @Override
+//        public Point<Integer> next()
+//        {
+//            // Create a copy of the next point, which will be output at the end of this method
+//            Point<Integer> outputPoint = new Point<>(nextPoint);
+//
+//            // Prepare the next point
+//            findNextPoint();
+//
+//            return outputPoint;
+//        }
+//
+//        private void findNextPoint()
+//        {
+//            // Picking up where we left off, but moving to the next pixel
+//            int x = nextPoint.x + 1;
+//            int y = nextPoint.y;
+//            int z = nextPoint.z;
+//
+//            while (z < depth)
+//            {
+//                while (y < height)
+//                {
+//                    while (x < width)
+//                    {
+//                        if (contains(x, y, z))
+//                        {
+//                            nextPoint = new Point<>(x, y, z);
+//                            return;
+//                        }
+//                        x++;
+//                    }
+//                    x = 0;
+//                    y++;
+//                }
+//                y = x = 0;
+//                z++;
+//            }
+//
+//            // If we get to the end it means there are no more points, so set nextPoint to null
+//            nextPoint = null;
+//        }
+//    }
 }

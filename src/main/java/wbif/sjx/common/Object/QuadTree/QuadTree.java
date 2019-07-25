@@ -597,60 +597,6 @@ public class QuadTree implements Iterable<Point<Integer>>
         return new QuadTreeIterator();
     }
 
-//    private class QuadTreeIterator implements Iterator<Point<Integer>>
-//    {
-//
-//        private Point<Integer> nextPoint = new Point<>(0,0,0);
-//
-//        public QuadTreeIterator()
-//        {
-//            findNextPoint();
-//        }
-//
-//        @Override
-//        public boolean hasNext()
-//        {
-//            return nextPoint != null;
-//        }
-//
-//        @Override
-//        public Point<Integer> next()
-//        {
-//            // Create a copy of the next point, which will be output at the end of this method
-//            Point<Integer> outputPoint = new Point<>(nextPoint);
-//
-//            // Prepare the next point
-//            findNextPoint();
-//
-//            return outputPoint;
-//        }
-//
-//        private void findNextPoint()
-//        {
-//            // Picking up where we left off, but moving to the next pixel
-//            int x = nextPoint.x + 1;
-//            int y = nextPoint.y;
-//
-//            while (y < height)
-//            {
-//                while (x < width)
-//                {
-//                    if (contains(x, y))
-//                    {
-//                        nextPoint = new Point<>(x, y, 0);
-//                        return;
-//                    }
-//                    x++;
-//                }
-//                x = 0;
-//                y++;
-//            }
-//
-//            // If we get to the end it means there are no more points, so set nextPoint to null
-//            nextPoint = null;
-//        }
-//    }
-
     private class QuadTreeIterator implements Iterator<Point<Integer>>
     {
         private final Stack<QTNode>  nodeStack;
@@ -757,4 +703,58 @@ public class QuadTree implements Iterable<Point<Integer>>
             }
         }
     }
+
+//    private class QuadTreeIterator implements Iterator<Point<Integer>>
+//    {
+//
+//        private Point<Integer> nextPoint = new Point<>(0,0,0);
+//
+//        public QuadTreeIterator()
+//        {
+//            findNextPoint();
+//        }
+//
+//        @Override
+//        public boolean hasNext()
+//        {
+//            return nextPoint != null;
+//        }
+//
+//        @Override
+//        public Point<Integer> next()
+//        {
+//            // Create a copy of the next point, which will be output at the end of this method
+//            Point<Integer> outputPoint = new Point<>(nextPoint);
+//
+//            // Prepare the next point
+//            findNextPoint();
+//
+//            return outputPoint;
+//        }
+//
+//        private void findNextPoint()
+//        {
+//            // Picking up where we left off, but moving to the next pixel
+//            int x = nextPoint.x + 1;
+//            int y = nextPoint.y;
+//
+//            while (y < height)
+//            {
+//                while (x < width)
+//                {
+//                    if (contains(x, y))
+//                    {
+//                        nextPoint = new Point<>(x, y, 0);
+//                        return;
+//                    }
+//                    x++;
+//                }
+//                x = 0;
+//                y++;
+//            }
+//
+//            // If we get to the end it means there are no more points, so set nextPoint to null
+//            nextPoint = null;
+//        }
+//    }
 }

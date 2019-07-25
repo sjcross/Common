@@ -130,8 +130,14 @@ public class OcTreeVolume extends Volume2 {
 
     @Override
     public double getProjectedArea(boolean pixelDistances) {
-        System.out.println("wbif.sjx.common.Object.OcTreeVolume getProjectedArea needs implementing");
-        return 0;
+        TreeSet<Point> projectedPoints = new TreeSet<>();
+
+        for (Point<Integer> point:this) {
+            point.setZ(0);
+            projectedPoints.add(point);
+        }
+
+        return pixelDistances ? projectedPoints.size() : projectedPoints.size()*dppXY*dppXY;
     }
 
     @Override
@@ -156,7 +162,8 @@ public class OcTreeVolume extends Volume2 {
         hash = 31*hash + ((Number) dppXY).hashCode();
         hash = 31*hash + ((Number) dppZ).hashCode();
         hash = 31*hash + calibratedUnits.toUpperCase().hashCode();
-        hash = 31*hash + ocTree.hashCode();
+
+        for (Point<Integer> point:this) hash = 31*hash + point.hashCode();
 
         return hash;
 
@@ -164,31 +171,21 @@ public class OcTreeVolume extends Volume2 {
 
     @Override
     public boolean equals(Object obj) {
-        System.out.println("wbif.sjx.common.Object.OcTreeVolume equals needs implementing");
+        if (obj == this) return true;
+        if (!(obj instanceof OcTreeVolume)) return false;
 
-//        if (obj == this) return true;
-//        if (!(obj instanceof Volume)) return false;
-//
-//        Volume volume2 = (Volume) obj;
-//        TreeSet<Point<Integer>> points1 = getPoints();
-//        TreeSet<Point<Integer>> points2 = volume2.getPoints();
-//
-//        if (points1.size() != points2.size()) return false;
-//
-//        if (dppXY != volume2.getDistPerPxXY()) return false;
-//        if (dppZ != volume2.getDistPerPxZ()) return false;
-//        if (!calibratedUnits.toUpperCase().equals(volume2.getCalibratedUnits().toUpperCase())) return false;
-//
-//        Iterator<Point<Integer>> iterator1 = points1.iterator();
-//        Iterator<Point<Integer>> iterator2 = points2.iterator();
-//
-//        while (iterator1.hasNext()) {
-//            Point<Integer> point1 = iterator1.next();
-//            Point<Integer> point2 = iterator2.next();
-//
-//            if (!point1.equals(point2)) return false;
-//
-//        }
+        OcTreeVolume volume2 = (OcTreeVolume) obj;
+        if (size() != volume2.size()) return false;
+
+        if (dppXY != volume2.getDppXY()) return false;
+        if (dppZ != volume2.getDppZ()) return false;
+        if (!calibratedUnits.toUpperCase().equals(volume2.getCalibratedUnits().toUpperCase())) return false;
+
+        Iterator<Point<Integer>> iterator2 = volume2.iterator();
+
+        for (Point<Integer> point1:this) {
+            if (!point1.equals(iterator2.next())) return false;
+        }
 
         return true;
 
@@ -196,16 +193,6 @@ public class OcTreeVolume extends Volume2 {
 
     @Override
     public Iterator<Point<Integer>> iterator() {
-        return null;
-    }
-
-    @Override
-    public void forEach(Consumer<? super Point<Integer>> action) {
-
-    }
-
-    @Override
-    public Spliterator<Point<Integer>> spliterator() {
-        return null;
+        return ocTree.iterator();
     }
 }
