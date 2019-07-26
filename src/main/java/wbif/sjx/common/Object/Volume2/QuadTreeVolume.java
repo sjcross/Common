@@ -13,6 +13,8 @@ import java.util.function.Consumer;
 
 public class QuadTreeVolume extends Volume2 {
     private final TreeMap<Integer, QuadTree> quadTrees = new TreeMap<>();
+    protected TreeSet<Point<Integer>> surface = null;
+    protected Point<Double> meanCentroid = null;
 
 
     public QuadTreeVolume(Volume2 volume) {
@@ -102,7 +104,12 @@ public class QuadTreeVolume extends Volume2 {
     }
 
     @Override
-    public void calculateSurface() {
+    public TreeSet<Point<Integer>> getSurface() {
+        if (surface == null) calculateSurface();
+        return surface;
+    }
+
+    void calculateSurface() {
         if (is2D()) {
             // Get the sole QuadTree
             QuadTree quadTree = quadTrees.values().iterator().next();
@@ -127,7 +134,17 @@ public class QuadTreeVolume extends Volume2 {
     }
 
     @Override
-    public void calculateMeanCentroid()
+    public void clearSurface() {
+        surface = null;
+    }
+
+    @Override
+    public Point<Double> getMeanCentroid() {
+        if (meanCentroid == null) calculateMeanCentroid();
+        return meanCentroid;
+    }
+
+    void calculateMeanCentroid()
     {
         CumStat csX = new CumStat();
         CumStat csY = new CumStat();

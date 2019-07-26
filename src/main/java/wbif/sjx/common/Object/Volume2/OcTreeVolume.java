@@ -17,6 +17,8 @@ import java.util.function.Consumer;
 
 public class OcTreeVolume extends Volume2 {
     private final OcTree ocTree;
+    protected TreeSet<Point<Integer>> surface = null;
+    protected Point<Double> meanCentroid = null;
 
 
     public OcTreeVolume(Volume2 volume) {
@@ -84,7 +86,27 @@ public class OcTreeVolume extends Volume2 {
     }
 
     @Override
-    public void calculateMeanCentroid()
+    public TreeSet<Point<Integer>> getSurface() {
+        if (surface == null) calculateSurface();
+        return surface;
+    }
+
+    void calculateSurface() {
+        surface = ocTree.getEdgePoints();
+    }
+
+    @Override
+    public void clearSurface() {
+        surface = null;
+    }
+
+    @Override
+    public Point<Double> getMeanCentroid() {
+        if (meanCentroid == null) calculateMeanCentroid();
+        return meanCentroid;
+    }
+
+    void calculateMeanCentroid()
     {
         CumStat csX = new CumStat();
         CumStat csY = new CumStat();
@@ -148,11 +170,6 @@ public class OcTreeVolume extends Volume2 {
     @Override
     public Volume2 createNewObject() {
         return new OcTreeVolume(this);
-    }
-
-    public void calculateSurface() {
-        surface = ocTree.getEdgePoints();
-        
     }
 
     @Override

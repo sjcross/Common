@@ -16,6 +16,8 @@ import java.util.function.Consumer;
  */
 public class PointVolume extends Volume2 {
     protected TreeSet<Point<Integer>> points = new TreeSet<>();
+    protected TreeSet<Point<Integer>> surface = null;
+    protected Point<Double> meanCentroid = null;
 
     public PointVolume(Volume2 volume) {
         super(volume);
@@ -43,6 +45,59 @@ public class PointVolume extends Volume2 {
     public void clearPoints() {
         points = new TreeSet<>();
     } // Copied
+
+    @Override
+    public TreeSet<Point<Integer>> getSurface() {
+        if (surface == null) calculateSurface();
+        return surface;
+    }
+
+    @Override
+    public void clearSurface() {
+        surface = null;
+    }
+
+    void calculateSurface() {
+        if (is2D()) {
+            calculateSurface2D();
+        } else {
+            calculateSurface3D();
+        }
+    } // Copied
+
+    void calculateSurface2D() {
+        surface = new TreeSet<>();
+
+        // Iterating over each Point, adding it if it has fewer than 6 neighbours
+        for (Point<Integer> point:points) {
+            int count = 0;
+
+            if (contains(new Point<>(point.x-1,point.y,0))) count++;
+            if (contains(new Point<>(point.x+1,point.y,0))) count++;
+            if (contains(new Point<>(point.x,point.y-1,0))) count++;
+            if (contains(new Point<>(point.x,point.y+1,0))) count++;
+
+            if (count < 4) surface.add(point);
+        }
+    } // Not needed
+
+    void calculateSurface3D() {
+        surface = new TreeSet<>();
+
+        // Iterating over each Point, adding it if it has fewer than 6 neighbours
+        for (Point<Integer> point:points) {
+            int count = 0;
+
+            if (contains(new Point<>(point.x-1,point.y,point.z))) count++;
+            if (contains(new Point<>(point.x+1,point.y,point.z))) count++;
+            if (contains(new Point<>(point.x,point.y-1,point.z))) count++;
+            if (contains(new Point<>(point.x,point.y+1,point.z))) count++;
+            if (contains(new Point<>(point.x,point.y,point.z-1))) count++;
+            if (contains(new Point<>(point.x,point.y,point.z+1))) count++;
+
+            if (count < 6) surface.add(point);
+        }
+    } // Not needed
 
     @Override
     public PointVolume add(int x, int y, int z) {
@@ -79,51 +134,12 @@ public class PointVolume extends Volume2 {
 
     }
 
-    @Override
-    public void calculateSurface() {
-        if (is2D()) {
-            calculateSurface2D();
-        } else {
-            calculateSurface3D();
-        }
-    } // Copied
+    public Point<Double> getMeanCentroid() {
+        if (meanCentroid == null) calculateMeanCentroid();
+        return meanCentroid;
+    }
 
-    public void calculateSurface2D() {
-        surface = new TreeSet<>();
-
-        // Iterating over each Point, adding it if it has fewer than 6 neighbours
-        for (Point<Integer> point:points) {
-            int count = 0;
-
-            if (contains(new Point<>(point.x-1,point.y,0))) count++;
-            if (contains(new Point<>(point.x+1,point.y,0))) count++;
-            if (contains(new Point<>(point.x,point.y-1,0))) count++;
-            if (contains(new Point<>(point.x,point.y+1,0))) count++;
-
-            if (count < 4) surface.add(point);
-        }
-    } // Not needed
-
-    public void calculateSurface3D() {
-        surface = new TreeSet<>();
-
-        // Iterating over each Point, adding it if it has fewer than 6 neighbours
-        for (Point<Integer> point:points) {
-            int count = 0;
-
-            if (contains(new Point<>(point.x-1,point.y,point.z))) count++;
-            if (contains(new Point<>(point.x+1,point.y,point.z))) count++;
-            if (contains(new Point<>(point.x,point.y-1,point.z))) count++;
-            if (contains(new Point<>(point.x,point.y+1,point.z))) count++;
-            if (contains(new Point<>(point.x,point.y,point.z-1))) count++;
-            if (contains(new Point<>(point.x,point.y,point.z+1))) count++;
-
-            if (count < 6) surface.add(point);
-        }
-    } // Not needed
-
-    @Override
-    public void calculateMeanCentroid() {
+    void calculateMeanCentroid() {
         CumStat csX = new CumStat();
         CumStat csY = new CumStat();
         CumStat csZ = new CumStat();

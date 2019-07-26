@@ -16,14 +16,6 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
     protected final int height;
     protected final int nSlices;
 
-    protected TreeSet<Point<Integer>> surface = null;
-
-    /**
-     * Mean coordinates (XYZ) stored as pixel values.  Additional public methods (e.g. getXMean) have the option for
-     * pixel or calibrated distances.
-     */
-    protected Point<Double> meanCentroid = null;
-
 
     public Volume2(Volume2 volume) {
         this.width = volume.getWidth();
@@ -61,9 +53,11 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     public abstract void clearPoints();
 
-    public abstract void calculateSurface();
+    public abstract TreeSet<Point<Integer>> getSurface();
 
-    public abstract void calculateMeanCentroid();
+    public abstract void clearSurface();
+
+    public abstract Point<Double> getMeanCentroid();
 
     public abstract int size();
 
@@ -79,16 +73,6 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
     public boolean is2D() {
         return nSlices == 1;
 
-    }
-
-    public TreeSet<Point<Integer>> getSurface() {
-        if (surface == null) calculateSurface();
-        return surface;
-
-    }
-
-    public void clearSurface() {
-        surface = null;
     }
 
     public double getXYScaledZ(double z) {
@@ -221,11 +205,6 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
         } catch (IntegerOverflowException e) {
             return Double.NaN;
         }
-    }
-
-    public Point<Double> getMeanCentroid() {
-        if (meanCentroid == null) calculateMeanCentroid();
-        return meanCentroid;
     }
 
     public double getXMean(boolean pixelDistances) {
