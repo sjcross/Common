@@ -661,7 +661,7 @@ public class OcTree implements Iterable<Point<Integer>>
         @Override
         public boolean hasNext()
         {
-            return !nodeStack.empty();
+            return !nodeStack.empty() || z <= maxZ;
         }
 
         @Override
