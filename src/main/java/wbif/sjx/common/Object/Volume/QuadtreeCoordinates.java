@@ -154,7 +154,7 @@ public class QuadtreeCoordinates implements CoordinateStore {
     public long getNumberOfElements() {
         long nElements = 0;
 
-        for (QuadTree quadTree:quadTrees.values()) nElements += quadTree.getNodeCount();
+        for (QuadTree quadTree:quadTrees.values()) nElements += quadTree.getPointCount();
 
         return nElements;
 

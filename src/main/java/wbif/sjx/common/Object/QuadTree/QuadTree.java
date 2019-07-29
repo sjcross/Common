@@ -3,8 +3,11 @@ package wbif.sjx.common.Object.QuadTree;
 import com.drew.lang.annotations.Nullable;
 import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Volume.CoordinateStore;
+import wbif.sjx.common.Object.Volume.OctreeCoordinates;
 import wbif.sjx.common.Object.Volume.PointCoordinates;
+import wbif.sjx.common.Object.Volume.QuadtreeCoordinates;
 
+import java.util.HashSet;
 import java.util.Stack;
 import java.util.TreeSet;
 import java.util.Iterator;
@@ -354,7 +357,7 @@ public class QuadTree implements Iterable<Point<Integer>>
         getEdgePoints3D(root, points, below, above, z, size, 0, 0);
     }
 
-    private void getEdgePoints3D(QTNode node, CoordinateStore points, QuadTree a, QuadTree b, int z, int size, int minX, int minY)
+    private void getEdgePoints3D(QTNode node, CoordinateStore points, QuadTree b, QuadTree a, int z, int size, int minX, int minY)
     {
         if (node.isDivided())
         {
@@ -362,10 +365,10 @@ public class QuadTree implements Iterable<Point<Integer>>
             final int midX = minX + halfSize;
             final int midY = minY + halfSize;
 
-            getEdgePoints3D(node.nw, points, a, b, z, halfSize, minX, minY);
-            getEdgePoints3D(node.ne, points, a, b, z, halfSize, midX, minY);
-            getEdgePoints3D(node.sw, points, a, b, z, halfSize, minX, midY);
-            getEdgePoints3D(node.se, points, a, b, z, halfSize, midX, midY);
+            getEdgePoints3D(node.nw, points, b, a, z, halfSize, minX, minY);
+            getEdgePoints3D(node.ne, points, b, a, z, halfSize, midX, minY);
+            getEdgePoints3D(node.sw, points, b, a, z, halfSize, minX, midY);
+            getEdgePoints3D(node.se, points, b, a, z, halfSize, midX, midY);
         }
         else if (node.coloured)
         {
@@ -386,7 +389,7 @@ public class QuadTree implements Iterable<Point<Integer>>
             {
                 for (int x = minX; x <= maxX; x++)
                 {
-                    if (minY - 1 <= 0 || !contains(x, minY - 1) || !a.contains(x, maxY) || !b.contains(x, minY))
+                    if (minY - 1 <= 0 || !contains(x, minY - 1) || !a.contains(x, minY) || !b.contains(x, minY))
                     {
                         points.add(new Point<>(x, minY, z));
                     }
