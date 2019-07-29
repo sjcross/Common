@@ -2,8 +2,9 @@ package wbif.sjx.common.Object.QuadTree;
 
 import com.drew.lang.annotations.Nullable;
 import wbif.sjx.common.Object.Point;
+import wbif.sjx.common.Object.Volume.CoordinateStore;
+import wbif.sjx.common.Object.Volume.PointCoordinates;
 
-import java.awt.*;
 import java.util.Stack;
 import java.util.TreeSet;
 import java.util.Iterator;
@@ -292,16 +293,17 @@ public class QuadTree implements Iterable<Point<Integer>>
         }
     }
 
-    public TreeSet<Point<Integer>> getEdgePoints()
+    public CoordinateStore getEdgePoints()
     {
-        TreeSet<Point<Integer>> points = new TreeSet<>();
+        PointCoordinates points = new PointCoordinates();
 
         getEdgePoints(root, points, size, 0, 0);
 
         return points;
+
     }
 
-    private void getEdgePoints(QTNode node, TreeSet<Point<Integer>> points, int size, int minX, int minY)
+    private void getEdgePoints(QTNode node, CoordinateStore points, int size, int minX, int minY)
     {
         if (node.isDivided())
         {
@@ -347,12 +349,12 @@ public class QuadTree implements Iterable<Point<Integer>>
         }
     }
 
-    public void getEdgePoints3D(TreeSet<Point<Integer>> points, @Nullable QuadTree below, @Nullable QuadTree above, int z)
+    public void getEdgePoints3D(CoordinateStore points, @Nullable QuadTree below, @Nullable QuadTree above, int z)
     {
         getEdgePoints3D(root, points, below, above, z, size, 0, 0);
     }
 
-    private void getEdgePoints3D(QTNode node, TreeSet<Point<Integer>> points, QuadTree a, QuadTree b, int z, int size, int minX, int minY)
+    private void getEdgePoints3D(QTNode node, CoordinateStore points, QuadTree a, QuadTree b, int z, int size, int minX, int minY)
     {
         if (node.isDivided())
         {

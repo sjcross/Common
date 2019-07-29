@@ -3,12 +3,12 @@ package wbif.sjx.common.Analysis;
 import ij.ImageStack;
 import org.bonej.geometry.Ellipsoid;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
-import wbif.sjx.common.Object.Volume2.Volume2;
+import wbif.sjx.common.Object.Volume.Volume;
 
 import static org.bonej.geometry.FitEllipsoid.yuryPetrov;
 
 public class EllipsoidCalculator {
-    private final Volume2 volume;
+    private final Volume volume;
     private final Ellipsoid ell;
 
 
@@ -17,12 +17,12 @@ public class EllipsoidCalculator {
      * @param ell
      * @param volume
      */
-    EllipsoidCalculator(Ellipsoid ell, Volume2 volume) {
+    EllipsoidCalculator(Ellipsoid ell, Volume volume) {
         this.ell = ell;
         this.volume = volume;
     }
 
-    public EllipsoidCalculator(Volume2 volume, double maxAxisLength) {
+    public EllipsoidCalculator(Volume volume, double maxAxisLength) {
         this.volume = volume;
 
         //Fitting an ellipsoid using method from BoneJ
@@ -54,7 +54,7 @@ public class EllipsoidCalculator {
      * @param volume
      * @param imageStack
      */
-    public EllipsoidCalculator(Volume2 volume, double maxAxisLength, ImageStack imageStack) {
+    public EllipsoidCalculator(Volume volume, double maxAxisLength, ImageStack imageStack) {
         this.volume = volume;
 
         //Fitting an ellipsoid using method from BoneJ
@@ -167,7 +167,7 @@ public class EllipsoidCalculator {
 
     }
 
-    public Volume2 getContainedPoints() throws IntegerOverflowException {
+    public Volume getContainedPoints() throws IntegerOverflowException {
         if (ell == null) return null;
 
         double dppXY = volume.getDppXY();
@@ -176,7 +176,7 @@ public class EllipsoidCalculator {
         String units = volume.getCalibratedUnits();
         boolean is2D = volume.is2D();
 
-        Volume2 insideEllipsoid = volume.createNewObject();
+        Volume insideEllipsoid = new Volume(volume);
 
         // Testing which points are within the convex hull
         double[] xRange = ell.getXMinAndMax();

@@ -2,8 +2,8 @@
 //
 //import org.junit.Ignore;
 //import org.junit.Test;
-//import wbif.sjx.common.Object.Volume2.PointVolume;
-//import wbif.sjx.common.Object.Volume2.Volume2;
+//import wbif.sjx.common.Object.Volume.Volume;
+//import wbif.sjx.common.Object.Volume.Volume;
 //
 //import static org.junit.Assert.*;
 //
@@ -51,7 +51,7 @@
 //        String units = "um";
 //
 //        // Creating a basic cube volume
-//        Volume2 volume = new PointVolume(15,30,8,dppXY,dppZ,units);
+//        Volume volume = new Volume(Volume.VolumeType.POINTLIST,15,30,8,dppXY,dppZ,units);
 //        volume.add(10,20,5);
 //        volume.add(12,20,5);
 //        volume.add(12,22,5);
@@ -65,10 +65,10 @@
 //        VolumeCalculator volumeCalculator = new VolumeCalculator(volume,VolumeCalculator.CENTROID);
 //
 //        // Getting contained points
-//        Volume2 actual = volumeCalculator.getContainedPoints();
+//        Volume actual = volumeCalculator.getContainedPoints();
 //
 //        // Creating expected object
-//        Volume2 expected = new Volume2(dppXY,dppZ,units,false);
+//        Volume expected = new Volume(Volume.VolumeType.POINTLIST,dppXY,dppZ,units,false);
 //        expected.add(10,20,5);
 //        expected.add(11,20,5);
 //        expected.add(12,20,5);

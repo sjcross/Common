@@ -2,10 +2,10 @@ package wbif.sjx.common.Analysis;
 
 import ij.ImageStack;
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.Volume2.Volume2;
+import wbif.sjx.common.Object.Volume.Volume;
 
 public class ColocalisationCalculator {
-    public static double calculatePCC(ImageStack image1, ImageStack image2, Volume2 volume) {
+    public static double calculatePCC(ImageStack image1, ImageStack image2, Volume volume) {
         // Getting the mean intensities for the two channels
         double meanI1 = IntensityCalculator.calculate(image1,volume).getMean();
         double meanI2 = IntensityCalculator.calculate(image2,volume).getMean();

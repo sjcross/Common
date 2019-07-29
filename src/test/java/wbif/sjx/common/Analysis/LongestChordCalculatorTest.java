@@ -5,7 +5,7 @@ import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.ExpectedObjects.HorizontalCylinderR22;
 import wbif.sjx.common.ExpectedObjects.VerticalCylinderR5;
 import wbif.sjx.common.MathFunc.CumStat;
-import wbif.sjx.common.Object.Volume2.PointVolume;
+import wbif.sjx.common.Object.Volume.Volume;
 
 import java.util.Arrays;
 
@@ -22,7 +22,7 @@ public class LongestChordCalculatorTest {
         double dppZ = 0.1;
         String calibratedUnits = "um";
 
-        PointVolume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,calibratedUnits);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -43,7 +43,7 @@ public class LongestChordCalculatorTest {
         double dppZ = 0.1;
         String calibratedUnits = "um";
 
-        PointVolume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -64,7 +64,7 @@ public class LongestChordCalculatorTest {
         double dppZ = 1;
         String calibratedUnits = "um";
 
-        PointVolume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -85,7 +85,7 @@ public class LongestChordCalculatorTest {
         double dppZ = 0.1;
         String calibratedUnits = "um";
 
-        PointVolume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,calibratedUnits);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -109,7 +109,7 @@ public class LongestChordCalculatorTest {
         double dppZ = 0.1;
         String calibratedUnits = "um";
 
-        PointVolume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -133,7 +133,7 @@ public class LongestChordCalculatorTest {
         double dppZ = 1;
         String calibratedUnits = "um";
 
-        PointVolume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -157,7 +157,7 @@ public class LongestChordCalculatorTest {
         double dppZ = 0.1;
         String calibratedUnits = "um";
 
-        PointVolume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,calibratedUnits);
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
         double actual = calculator.getLCLength();
@@ -173,7 +173,7 @@ public class LongestChordCalculatorTest {
         double dppZ = 0.1;
         String calibratedUnits = "um";
 
-        PointVolume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -190,7 +190,7 @@ public class LongestChordCalculatorTest {
         double dppZ = 1;
         String calibratedUnits = "um";
 
-        PointVolume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 

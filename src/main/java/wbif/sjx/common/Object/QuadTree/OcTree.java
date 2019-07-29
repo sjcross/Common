@@ -1,6 +1,8 @@
 package wbif.sjx.common.Object.QuadTree;
 
 import wbif.sjx.common.Object.Point;
+import wbif.sjx.common.Object.Volume.CoordinateStore;
+import wbif.sjx.common.Object.Volume.PointCoordinates;
 
 import java.util.Iterator;
 import java.util.Stack;
@@ -268,51 +270,6 @@ public class OcTree implements Iterable<Point<Integer>>
         }
     }
 
-    // export the QuadTress points into an list of points
-    public TreeSet<Point<Integer>> getPoints()
-    {
-        TreeSet<Point<Integer>> points = new TreeSet<>();
-
-        getPoints(root, points, size, 0, 0, 0);
-
-        return points;
-    }
-
-    private void getPoints(OTNode node, TreeSet<Point<Integer>> points, int size, int minX, int minY, int minZ)
-    {
-        // if this quadrant encodes no data, search the sub-quadrants for data
-        if (node.isDivided())
-        {
-            final int halfSize = size / 2;
-            final int midX = minX + halfSize;
-            final int midY = minY + halfSize;
-            final int midZ = minZ + halfSize;
-
-            getPoints(node.lnw, points, halfSize, minX, minY, minZ);
-            getPoints(node.lne, points, halfSize, midX, minY, minZ);
-            getPoints(node.lsw, points, halfSize, minX, midY, minZ);
-            getPoints(node.lse, points, halfSize, midX, midY, minZ);
-            getPoints(node.unw, points, halfSize, minX, minY, midZ);
-            getPoints(node.une, points, halfSize, midX, minY, midZ);
-            getPoints(node.usw, points, halfSize, minX, midY, midZ);
-            getPoints(node.use, points, halfSize, midX, midY, midZ);
-        }
-        // if the leaf is coloured, add all the points in the quadrant to the list
-        else if (node.coloured)
-        {
-            for (int z = minZ; z < minZ + size && z < depth; z++)
-            {
-                for (int y = minY; y < minY + size && y < height; y++)
-                {
-                    for (int x = minX; x < minX + size && x < width; x++)
-                    {
-                        points.add(new Point<>(x, y, z));
-                    }
-                }
-            }
-        }
-    }
-
     // export the QuadTress points into an array of pixels
     public boolean[] getPixels()
     {
@@ -358,16 +315,16 @@ public class OcTree implements Iterable<Point<Integer>>
         }
     }
 
-    public TreeSet<Point<Integer>> getEdgePoints()
+    public CoordinateStore getEdgePoints()
     {
-        TreeSet<Point<Integer>> points = new TreeSet<>();
+        PointCoordinates points = new PointCoordinates();
 
         getEdgePoints(root, points, size, 0, 0, 0);
 
         return points;
     }
 
-    private void getEdgePoints(OTNode node, TreeSet<Point<Integer>> points, int size, int minX, int minY, int minZ)
+    private void getEdgePoints(OTNode node, PointCoordinates points, int size, int minX, int minY, int minZ)
     {
         if (node.isDivided())
         {
@@ -656,6 +613,7 @@ public class OcTree implements Iterable<Point<Integer>>
             minZStack.push(0);
 
             findNextColouredLeaf();
+
         }
 
         @Override
@@ -777,63 +735,4 @@ public class OcTree implements Iterable<Point<Integer>>
             }
         }
     }
-
-//    private class OcTreeIterator implements Iterator<Point<Integer>>
-//    {
-//        private Point<Integer> nextPoint = new Point<>(0,0,0);
-//
-//        public OcTreeIterator()
-//        {
-//            findNextPoint();
-//        }
-//
-//        @Override
-//        public boolean hasNext()
-//        {
-//            return nextPoint != null;
-//        }
-//
-//        @Override
-//        public Point<Integer> next()
-//        {
-//            // Create a copy of the next point, which will be output at the end of this method
-//            Point<Integer> outputPoint = new Point<>(nextPoint);
-//
-//            // Prepare the next point
-//            findNextPoint();
-//
-//            return outputPoint;
-//        }
-//
-//        private void findNextPoint()
-//        {
-//            // Picking up where we left off, but moving to the next pixel
-//            int x = nextPoint.x + 1;
-//            int y = nextPoint.y;
-//            int z = nextPoint.z;
-//
-//            while (z < depth)
-//            {
-//                while (y < height)
-//                {
-//                    while (x < width)
-//                    {
-//                        if (contains(x, y, z))
-//                        {
-//                            nextPoint = new Point<>(x, y, z);
-//                            return;
-//                        }
-//                        x++;
-//                    }
-//                    x = 0;
-//                    y++;
-//                }
-//                y = x = 0;
-//                z++;
-//            }
-//
-//            // If we get to the end it means there are no more points, so set nextPoint to null
-//            nextPoint = null;
-//        }
-//    }
 }

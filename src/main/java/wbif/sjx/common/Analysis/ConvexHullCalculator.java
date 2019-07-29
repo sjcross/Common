@@ -9,7 +9,7 @@
 //import org.apache.commons.math3.linear.MatrixUtils;
 //import org.apache.commons.math3.linear.RealMatrix;
 //import wbif.sjx.common.MathFunc.GeneralOps;
-//import wbif.sjx.common.Object.Volume2;
+//import wbif.sjx.common.Object.Volume;
 //
 //import java.util.Arrays;
 //
@@ -17,7 +17,7 @@
 //    public static final int CENTROID = 0; //Fit hull around voxel centroids (hull volume < voxel volume)
 //    public static final int CORNER = 1; //Fit hull around voxel corners (hull volume > voxel volume)
 //
-//    private Volume2 volume;
+//    private Volume volume;
 //    private Point3d[] pts;
 //    private QuickHull3D hull;
 //    private double hullSurfaceArea = Double.NaN;
@@ -25,7 +25,7 @@
 //    private double tol = 1E-8;
 //
 //
-//    public ConvexHullCalculator(Volume2 volume, int fitMode, double tol) {
+//    public ConvexHullCalculator(Volume volume, int fitMode, double tol) {
 //        this.volume = volume;
 //        this.tol = tol;
 //
@@ -179,7 +179,7 @@
 //
 //    }
 //
-//    public Volume2 getContainedPoints() {
+//    public Volume getContainedPoints() {
 //        if (!canFitHull()) return null;
 //
 //        // Getting a list of vertices
@@ -201,7 +201,7 @@
 //
 //        // Testing which points are within the convex hull
 //        double[][] extents = volume.getExtents(true,false);
-//        Volume2 insideHull = new Volume2(volume.getDistPerPxXY(),volume.getDistPerPxZ(),volume.getCalibratedUnits(),volume.is2D());
+//        Volume insideHull = new Volume(Volume.VolumeType.POINTLIST,volume.getDistPerPxXY(),volume.getDistPerPxZ(),volume.getCalibratedUnits(),volume.is2D());
 //
 //        for (int x=(int) extents[0][0];x<=extents[0][1];x++) {
 //            for (int y=(int) extents[1][0];y<=extents[1][1];y++) {

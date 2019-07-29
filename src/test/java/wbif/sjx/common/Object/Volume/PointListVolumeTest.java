@@ -1,17 +1,15 @@
-package wbif.sjx.common.Object.Volume2;
+package wbif.sjx.common.Object.Volume;
 
 import org.junit.Ignore;
 import org.junit.Test;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
-import wbif.sjx.common.ExpectedObjects.BigBlob2D;
 import wbif.sjx.common.Object.Point;
 
-import java.text.DecimalFormat;
 import java.util.*;
 
 import static org.junit.Assert.*;
 
-public class PointVolumeTest {
+public class PointListVolumeTest {
     private double tolerance10 = 1E-10;
     private double tolerance2 = 1E-2;
 
@@ -24,7 +22,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(10,10,1,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,10,1,dppXY,dppZ,units);
         volume.add(0,0,0);
         volume.add(0,0,0);
         volume.add(1,0,0);
@@ -38,7 +36,7 @@ public class PointVolumeTest {
 
     @Test
     public void testGetXCoords() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,10,13,2.0,1.0,"PX");
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -63,7 +61,7 @@ public class PointVolumeTest {
 
     @Test
     public void testGetYCoords() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,10,13,2.0,1.0,"PX");
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -88,7 +86,7 @@ public class PointVolumeTest {
 
     @Test
     public void testGetZCoords() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,10,13,2.0,1.0,"PX");
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -112,12 +110,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetXNoPointVolume() {
+    public void testGetXNoVolume2() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(10,10,13,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,10,13,dppXY,dppZ,units);
 
         double[] actualX = volume.getX(true);
         double[] expectedX = new double[]{};
@@ -133,7 +131,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -152,7 +150,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -171,7 +169,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -190,7 +188,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -209,7 +207,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -228,7 +226,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -247,7 +245,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -269,7 +267,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
 
         double actual = volume.getXYScaledZ(1);
         double expected = 5d;
@@ -287,7 +285,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -303,7 +301,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -319,7 +317,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -335,7 +333,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -351,7 +349,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -367,7 +365,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -383,7 +381,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -403,10 +401,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,20,1,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,20,1,dppXY,dppZ,units);
         volume2.add(10,10,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -422,10 +420,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,11,5,dppXY,dppZ,units);
         volume1.add(5,5,0);
 
-        PointVolume volume2 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,11,5,dppXY,dppZ,units);
         volume2.add(0,10,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -441,10 +439,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,11,5,dppXY,dppZ,units);
         volume1.add(5,5,0);
 
-        PointVolume volume2 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,11,5,dppXY,dppZ,units);
         volume2.add(0,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -460,10 +458,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,11,5,dppXY,dppZ,units);
         volume1.add(5,5,0);
 
-        PointVolume volume2 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,11,5,dppXY,dppZ,units);
         volume2.add(10,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -479,10 +477,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume2.add(5,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -498,10 +496,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume2.add(0,5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -517,10 +515,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,11,5,dppXY,dppZ,units);
         volume1.add(5,5,0);
 
-        PointVolume volume2 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,11,5,dppXY,dppZ,units);
         volume2.add(0,5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -536,10 +534,10 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,11,5,dppXY,dppZ,units);
         volume1.add(5,5,0);
 
-        PointVolume volume2 = new PointVolume(20,11,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,11,5,dppXY,dppZ,units);
         volume2.add(5,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -557,7 +555,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -573,7 +571,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -589,7 +587,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -608,7 +606,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -629,7 +627,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -650,7 +648,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -673,24 +671,24 @@ public class PointVolumeTest {
     // AREA VOLUME CHECKS
 
     @Test
-    public void testHasPointVolumeNoPointVolume() {
+    public void testHasVolume2NoVolume2() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
 
         assertFalse(volume.hasVolume());
 
     }
 
     @Test
-    public void testHasPointVolume2D() throws IntegerOverflowException {
+    public void testHasVolume22D() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,1);
         volume.add(11,5,1);
@@ -701,12 +699,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testHasPointVolume3D() throws IntegerOverflowException {
+    public void testHasVolume23D() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -717,12 +715,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testHasAreaNoPointVolume() {
+    public void testHasAreaNoVolume2() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
 
         assertFalse(volume.hasArea());
 
@@ -734,7 +732,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,1);
         volume.add(11,5,1);
@@ -750,7 +748,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -765,7 +763,7 @@ public class PointVolumeTest {
 
     @Test
     public void testContainsPointDoesContain() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,5,15,2.0,1.0,"PX");
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,5,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -779,7 +777,7 @@ public class PointVolumeTest {
 
     @Test
     public void testContainsPointDoesntContain() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,5,15,2.0,1.0,"PX");
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,5,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -792,24 +790,24 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetNVoxelsNoPointVolume() {
+    public void testGetNVoxelsNoVolume2() {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
 
         assertEquals(0,volume.size());
 
     }
 
     @Test
-    public void testGetNVoxelsHasPointVolume() throws IntegerOverflowException {
+    public void testGetNVoxelsHasVolume2() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -820,12 +818,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetContainedPointVolumePixelDistances() throws IntegerOverflowException {
+    public void testGetContainedVolume2PixelDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -836,12 +834,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetContainedPointVolumeCalibratedDistances() throws IntegerOverflowException {
+    public void testGetContainedVolume2CalibratedDistances() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -852,12 +850,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetContainedPointVolumePixelDistancesFlatObject() throws IntegerOverflowException {
+    public void testGetContainedVolume2PixelDistancesFlatObject() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,6,1);
         volume.add(11,5,1);
@@ -868,12 +866,12 @@ public class PointVolumeTest {
     }
 
     @Test
-    public void testGetContainedPointVolumeCalibratedDistancesFlatObject() throws IntegerOverflowException {
+    public void testGetContainedVolume2CalibratedDistancesFlatObject() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,6,1);
         volume.add(11,5,1);
@@ -888,13 +886,13 @@ public class PointVolumeTest {
 
     @Test
     public void testHashCodeDifferentValue() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,5,4,13,1.0,1.0,"Test");
         volume2.add(1,2,3);
         volume2.add(0,3,12);
         volume2.add(2,1,2);
@@ -907,19 +905,19 @@ public class PointVolumeTest {
     @Test
     public void testHashCodeDifferentPointOrder() throws IntegerOverflowException {
         // Verifying that the order of point placement doesn't matter
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"Test");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"Test");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"Test");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
-        PointVolume volume3 = new PointVolume(10,10,20,2.0,1.0,"Test");
+        Volume volume3 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"Test");
         volume3.add(2,1,2);
         volume3.add(1,2,3);
         volume3.add(4,3,12);
@@ -934,13 +932,13 @@ public class PointVolumeTest {
     @Test
     public void testHashCodeMissingPoint() throws IntegerOverflowException {
         // Verifying that all points need to be present for equality
-        PointVolume volume1 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,5,4,13,1.0,1.0,"Test");
         volume2.add(2,1,2);
         volume2.add(4,3,12);
         volume2.add(1,2,5);
@@ -951,13 +949,13 @@ public class PointVolumeTest {
 
     @Test
     public void testHashCodeDifferentCalibration() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.1,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.1,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -969,13 +967,13 @@ public class PointVolumeTest {
 
     @Test
     public void testHashCodeDifferentUnitsCase() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"px");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"px");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -987,13 +985,13 @@ public class PointVolumeTest {
 
     @Test
     public void testHashCodeDifferentUnits() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"um");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"um");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1008,13 +1006,13 @@ public class PointVolumeTest {
 
     @Test
     public void testEqualsDifferentValue() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,5,4,13,1.0,1.0,"Test");
         volume2.add(1,2,3);
         volume2.add(0,3,12);
         volume2.add(2,1,2);
@@ -1027,19 +1025,19 @@ public class PointVolumeTest {
 
     @Test
     public void testEqualsDifferentPointOrder() throws IntegerOverflowException {// Verifying that the order of point placement doesn't matter
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
-        PointVolume volume3 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume3 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume3.add(2,1,2);
         volume3.add(1,2,3);
         volume3.add(4,3,12);
@@ -1057,13 +1055,13 @@ public class PointVolumeTest {
     @Test
     public void testEqualsMissingPoint() throws IntegerOverflowException {
         // Verifying that all points need to be present for equality
-        PointVolume volume1 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(5,4,13,1.0,1.0,"Test");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,5,4,13,1.0,1.0,"Test");
         volume2.add(2,1,2);
         volume2.add(4,3,12);
         volume2.add(1,2,5);
@@ -1075,13 +1073,13 @@ public class PointVolumeTest {
 
     @Test
     public void testEqualsDifferentCalibration() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.1,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.1,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1094,13 +1092,13 @@ public class PointVolumeTest {
 
     @Test
     public void testEqualsDifferentUnitsCase() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"px");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"px");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1113,13 +1111,13 @@ public class PointVolumeTest {
 
     @Test
     public void testEqualsDifferentUnits() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"um");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"um");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1135,21 +1133,21 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlappingPointsWithOverlap() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
         volume2.add(1,2,5);
 
-        Volume2 actual = volume1.getOverlappingPoints(volume2);
+        Volume actual = volume1.getOverlappingPoints(volume2);
 
-        assertTrue(actual instanceof PointVolume);
+        assertTrue(actual instanceof Volume);
 
         HashSet<Point<Integer>> expected = new HashSet<>();
         expected.add(new Point<>(4,3,12));
@@ -1163,21 +1161,21 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlappingPointsWithoutOverlap() throws IntegerOverflowException  {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(5,3,12);
         volume2.add(2,2,2);
         volume2.add(2,2,5);
 
-        Volume2 actual = volume1.getOverlappingPoints(volume2);
+        Volume actual = volume1.getOverlappingPoints(volume2);
 
-        assertTrue(actual instanceof PointVolume);
+        assertTrue(actual instanceof Volume);
 
         assertEquals(0,actual.size());
 
@@ -1185,21 +1183,21 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlappingPointsTotalOverlap() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
-        Volume2 actual = volume1.getOverlappingPoints(volume2);
+        Volume actual = volume1.getOverlappingPoints(volume2);
 
-        assertTrue(actual instanceof PointVolume);
+        assertTrue(actual instanceof Volume);
 
         HashSet<Point<Integer>> expected = new HashSet<>();
         expected.add(new Point<>(1,2,3));
@@ -1214,22 +1212,22 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlappingPointsWithOverlapMoreIn1() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
         volume1.add(4,5,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
         volume2.add(1,2,5);
 
-        Volume2 actual = volume1.getOverlappingPoints(volume2);
+        Volume actual = volume1.getOverlappingPoints(volume2);
 
-        assertTrue(actual instanceof PointVolume);
+        assertTrue(actual instanceof Volume);
 
         HashSet<Point<Integer>> expected = new HashSet<>();
         expected.add(new Point<>(4,3,12));
@@ -1242,22 +1240,22 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlappingPointsWithOverlapMoreIn2() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
         volume2.add(1,2,5);
         volume2.add(4,5,5);
 
-        Volume2 actual = volume1.getOverlappingPoints(volume2);
+        Volume actual = volume1.getOverlappingPoints(volume2);
 
-        assertTrue(actual instanceof PointVolume);
+        assertTrue(actual instanceof Volume);
 
         HashSet<Point<Integer>> expected = new HashSet<>();
         expected.add(new Point<>(4,3,12));
@@ -1270,13 +1268,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlapWithOverlap() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
@@ -1291,13 +1289,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlapWithoutOverlap() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(5,3,12);
         volume2.add(2,2,2);
@@ -1312,13 +1310,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlapTotalOverlap() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1333,14 +1331,14 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlapTotalOverlapMoreIn1() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
         volume1.add(4,5,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1355,13 +1353,13 @@ public class PointVolumeTest {
 
     @Test
     public void testGetOverlapTotalOverlapMoreIn2() throws IntegerOverflowException {
-        PointVolume volume1 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        PointVolume volume2 = new PointVolume(10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1380,7 +1378,7 @@ public class PointVolumeTest {
 
     @Test
     public void testClearSurface() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,7,15,2.0,1.0,"PX");
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1392,16 +1390,16 @@ public class PointVolumeTest {
         volume.add(2,4,2);
         volume.add(2,6,9);
 
-        volume.calculateSurface();
-        assertNotNull(volume.surface);
+        assertNotNull(volume.getSurface());
 
         volume.clearSurface();
         assertNull(volume.surface);
+
     }
 
     @Test
     public void testClearPoints() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,7,15,2.0,1.0,"PX");
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1422,7 +1420,7 @@ public class PointVolumeTest {
 
     @Test
     public void testGetSurface() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,10,8,2.0,1.0,"PX");
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,10,8,2.0,1.0,"PX");
         volume.add(5,7,3);
         volume.add(5,8,3);
         volume.add(5,9,3);
@@ -1451,7 +1449,7 @@ public class PointVolumeTest {
         volume.add(7,8,5);
         volume.add(7,9,5);
 
-        TreeSet<Point<Integer>> surface = volume.getSurface();
+        Volume surface = volume.getSurface();
 
         assertEquals(26,surface.size());
         assertFalse(surface.contains(new Point<>(6,8,4)));
@@ -1509,7 +1507,7 @@ public class PointVolumeTest {
 
     @Test
     public void testGetProjectedAreaPixelDistances() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,7,15,2.0,1.0,"PX");
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1529,7 +1527,7 @@ public class PointVolumeTest {
 
     @Test
     public void testGetProjectedAreaCalibratedDistances() throws IntegerOverflowException {
-        PointVolume volume = new PointVolume(10,7,15,2.0,1.0,"PX");
+        Volume volume = new Volume(Volume.VolumeType.POINTLIST,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1553,13 +1551,13 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,20,1,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
         volume1.add(12,6,0);
 
-        PointVolume volume2 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,20,1,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);
@@ -1579,13 +1577,13 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,20,1,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
         volume1.add(12,6,0);
 
-        PointVolume volume2 = new PointVolume(20,20,1,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,20,1,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);
@@ -1605,7 +1603,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
@@ -1614,7 +1612,7 @@ public class PointVolumeTest {
         volume1.add(11,5,1);
         volume1.add(12,6,1);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);
@@ -1638,7 +1636,7 @@ public class PointVolumeTest {
         double dppZ = 0.1;
         String units = "um";
 
-        PointVolume volume1 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
@@ -1647,7 +1645,7 @@ public class PointVolumeTest {
         volume1.add(11,5,1);
         volume1.add(12,6,1);
 
-        PointVolume volume2 = new PointVolume(20,10,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(Volume.VolumeType.POINTLIST,20,10,5,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);
@@ -1662,29 +1660,6 @@ public class PointVolumeTest {
         double actual = volume1.getCentroidSeparation(volume2,false);
 
         assertEquals(expected,actual, tolerance2);
-
-    }
-
-    @Test @Ignore
-    public void testPerformance() {
-        List<Integer[]> coords = new BigBlob2D().getCoordinates5D();
-
-        PointVolume pointVolume = new PointVolume(512,512,10,1,1,"px");
-
-        long t1 = System.nanoTime();
-        for (int z=0;z<10;z++) {
-            for (Integer[] coord : coords) pointVolume.add(coord[0], coord[1], z);
-        }
-        long t2 = System.nanoTime();
-        pointVolume.finalise();
-        long t3 = System.nanoTime();
-        for (Point<Integer> point:pointVolume);
-        long t4 = System.nanoTime();
-
-        DecimalFormat df = new DecimalFormat("0.0000");
-        System.out.println("Add points "+df.format((t2-t1)/1E6)+" ms");
-        System.out.println("Optimise "+df.format((t3-t2)/1E6)+" ms");
-        System.out.println("Iterate "+df.format((t4-t3)/1E6)+" ms");
 
     }
 }

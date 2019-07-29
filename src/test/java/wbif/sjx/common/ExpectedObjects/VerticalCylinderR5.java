@@ -1,7 +1,7 @@
 package wbif.sjx.common.ExpectedObjects;
 
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
-import wbif.sjx.common.Object.Volume2.PointVolume;
+import wbif.sjx.common.Object.Volume.Volume;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +12,7 @@ public class VerticalCylinderR5 extends ExpectedObjects {
         return getCoordinates5D("/coordinates/VerticalBinaryCylinder3D_R5_whiteBG_8bit.csv");
     }
 
-    public PointVolume getObject(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
+    public Volume getObject(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
         return super.getObject(21,41,15, dppXY, dppZ, calibratedUnits);
     }
 

@@ -1,4 +1,4 @@
-package wbif.sjx.common.Object.Volume2;
+package wbif.sjx.common.Object.Volume;
 
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Point;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-public abstract class Volume2 implements Iterable<Point<Integer>> {
+public class Volume {
     protected final double dppXY; //Calibration in xy
     protected final double dppZ; //Calibration in z
     protected final String calibratedUnits;
@@ -16,8 +16,29 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
     protected final int height;
     protected final int nSlices;
 
+    protected CoordinateStore coordinateStore;
+    protected Volume surface = null;
+    protected Volume projected = null;
+    protected Point<Double> meanCentroid = null;
 
-    public Volume2(Volume2 volume) {
+    public enum VolumeType {POINTLIST, QUADTREE, OCTREE};
+    private VolumeType volumeType;
+
+
+    public Volume(Volume volume) {
+        this.width = volume.getWidth();
+        this.height = volume.getHeight();
+        this.nSlices = volume.nSlices;
+        this.dppXY = volume.getDppXY();
+        this.dppZ = volume.getDppZ();
+        this.calibratedUnits = volume.getCalibratedUnits();
+        this.volumeType = volume.volumeType;
+
+        coordinateStore = createCoordinateStore(volumeType);
+
+    }
+
+    public Volume(VolumeType volumeType, Volume volume) {
         this.width = volume.getWidth();
         this.height = volume.getHeight();
         this.nSlices = volume.nSlices;
@@ -25,47 +46,117 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
         this.dppZ = volume.getDppZ();
         this.calibratedUnits = volume.getCalibratedUnits();
 
+        coordinateStore = createCoordinateStore(volumeType);
+
     }
 
-    public Volume2(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) {
+    public Volume(VolumeType volumeType, int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) {
         this.width = width;
         this.height = height;
         this.nSlices = nSlices;
         this.dppXY = dppXY;
         this.dppZ = dppZ;
         this.calibratedUnits = calibratedUnits;
+        this.volumeType = volumeType;
 
+        coordinateStore = createCoordinateStore(this.volumeType);
+
+    }
+
+    CoordinateStore createCoordinateStore(VolumeType type) {
+        switch (type) {
+            case OCTREE:
+                return new OctreeCoordinates(width,height,nSlices);
+            case POINTLIST:
+            default:
+                return new PointCoordinates();
+            case QUADTREE:
+                return new QuadtreeCoordinates(width,height);
+        }
+    }
+
+
+    public void clearSurface() {
+        surface = null;
     }
 
 
     // ABSTRACT METHODS
 
-    public abstract Volume2 add(int x, int y, int z);
+    public void add(int x, int y, int z) {
+        if (x < 0 || x >= width)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (x: " + x + ")");
+        if (y < 0 || y >= height) throw new IndexOutOfBoundsException("Coordinate out of bounds! (y: " + y + ")");
+        if (z >= nSlices) throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
 
-    public abstract Volume2 add(Point<Integer> point);
+        coordinateStore.add(x,y,z);
 
-    public abstract void finalise();
+    }
+
+    public void add(Point<Integer> point) {
+        add(point.x,point.y,point.z);
+
+    }
+
+    public void finalise() {
+        coordinateStore.finalise();
+    }
 
     @Deprecated
-    public abstract TreeSet<Point<Integer>> getPoints();
+    public TreeSet<Point<Integer>> getPoints() {
+        return new TreeSet<>(coordinateStore);
 
-    public abstract Volume2 setPoints(TreeSet<Point<Integer>> points);
+    }
 
-    public abstract void clearPoints();
+    public Volume getSurface() {
+        if (surface == null) {
+            surface = new Volume(VolumeType.POINTLIST,this);
+            surface.setCoordinateStore(coordinateStore.calculateSurface(is2D()));
+        }
 
-    public abstract TreeSet<Point<Integer>> getSurface();
+        return surface;
 
-    public abstract void clearSurface();
+    }
 
-    public abstract Point<Double> getMeanCentroid();
+    public Volume getProjected() {
+        if (projected == null) {
+            projected = new Volume(VolumeType.POINTLIST,width,height,1,dppXY,dppZ,calibratedUnits);
+            projected.setCoordinateStore(coordinateStore.calculateProjected());
+        }
 
-    public abstract int size();
+        return projected;
 
-    public abstract double getProjectedArea(boolean pixelDistances);
+    }
 
-    public abstract boolean contains(Point<Integer> point1);
+    public double getProjectedArea(boolean pixelDistances) {
+        int size = getProjected().size();
+        return pixelDistances ? size : size*dppXY*dppXY;
 
-    public abstract Volume2 createNewObject();
+    }
+
+    public void setPoints(TreeSet<Point<Integer>> points) {
+        for (Point<Integer> point:points) add(point);
+    }
+
+    public void clearPoints() {
+        coordinateStore.clear();
+    }
+
+    public Point<Double> getMeanCentroid() {
+        if (meanCentroid == null) meanCentroid = coordinateStore.calculateMeanCentroid();
+        return meanCentroid;
+    }
+
+    public int size() {
+        return coordinateStore.size();
+    }
+
+    public boolean contains(Point<Integer> point1) {
+        return coordinateStore.contains(point1);
+    }
+
+    public long getNumberOfElements() {
+        return coordinateStore.getNumberOfElements();
+    }
 
 
     // PUBLIC METHODS
@@ -137,38 +228,37 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     @Deprecated
     public ArrayList<Integer> getSurfaceXCoords() {
-        return getSurface().stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
+        return getSurface().getPoints().stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     @Deprecated
     public ArrayList<Integer> getSurfaceYCoords() {
-        return getSurface().stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
+        return getSurface().getPoints().stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     @Deprecated
     public ArrayList<Integer> getSurfaceZCoords() {
-        return getSurface().stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
+        return getSurface().getPoints().stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     @Deprecated
     public double[] getSurfaceX(boolean pixelDistances) {
         if (pixelDistances)
-            return getSurface().stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
+            return getSurface().getPoints().stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
         else
-            return getSurface().stream().map(Point::getX).mapToDouble(Integer::doubleValue).map(v->v* dppXY).toArray();
+            return getSurface().getPoints().stream().map(Point::getX).mapToDouble(Integer::doubleValue).map(v->v* dppXY).toArray();
 
     }
 
     @Deprecated
     public double[] getSurfaceY(boolean pixelDistances) {
         if (pixelDistances)
-            return getSurface().stream().map(Point::getY).mapToDouble(Integer::doubleValue).toArray();
+            return getSurface().getPoints().stream().map(Point::getY).mapToDouble(Integer::doubleValue).toArray();
         else
-            return getSurface().stream().map(Point::getY).mapToDouble(Integer::doubleValue).map(v->v* dppXY).toArray();
-
+            return getSurface().getPoints().stream().map(Point::getY).mapToDouble(Integer::doubleValue).map(v->v* dppXY).toArray();
     }
 
     /**
@@ -182,22 +272,22 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
     public double[] getSurfaceZ(boolean pixelDistances, boolean matchXY) {
         if (pixelDistances)
             if (matchXY)
-                return getSurface().stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v -> v* dppZ / dppXY).toArray();
+                return getSurface().getPoints().stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v -> v* dppZ / dppXY).toArray();
 
             else
-                return getSurface().stream().map(Point::getZ).mapToDouble(Integer::doubleValue).toArray();
+                return getSurface().getPoints().stream().map(Point::getZ).mapToDouble(Integer::doubleValue).toArray();
 
         else
-            return getSurface().stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v->v* dppZ).toArray();
+            return getSurface().getPoints().stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v->v* dppZ).toArray();
 
     }
 
     public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2, boolean pixelDistances) {
         try {
-            Volume2 volume1 = new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits);
+            Volume volume1 = new Volume(VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,calibratedUnits);
             volume1.add(point1.getX(),point1.getY(),point1.getZ());
 
-            Volume2 volume2 = new PointVolume(width,height,nSlices,dppXY,dppZ,calibratedUnits);
+            Volume volume2 = new Volume(VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,calibratedUnits);
             volume2.add(point2.getX(),point2.getY(),point2.getZ());
 
             return volume1.getCentroidSeparation(volume2,pixelDistances);
@@ -235,7 +325,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
         double maxZ = Double.MIN_VALUE;
 
         // Getting XY ranges
-        for (Point<Integer> point:this) {
+        for (Point<Integer> point:coordinateStore) {
             minZ = Math.min(minZ,point.z);
             maxZ = Math.max(maxZ,point.z);
         }
@@ -248,6 +338,8 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
     }
 
     public double[][] getExtents(boolean pixelDistances, boolean matchXY) {
+        if (size() == 0) return new double[][]{{0,0},{0,0},{0,0}};
+
         double minX = Double.MAX_VALUE;
         double maxX = Double.MIN_VALUE;
         double minY = Double.MAX_VALUE;
@@ -256,7 +348,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
         double maxZ = Double.MIN_VALUE;
 
         // Getting XY ranges
-        for (Point<Integer> point:this) {
+        for (Point<Integer> point:coordinateStore) {
             minX = Math.min(minX,point.x);
             maxX = Math.max(maxX,point.x);
             minY = Math.min(minY,point.y);
@@ -314,7 +406,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     } // Copied
 
-    public double getCentroidSeparation(Volume2 volume2, boolean pixelDistances) {
+    public double getCentroidSeparation(Volume volume2, boolean pixelDistances) {
         double x1 = getXMean(pixelDistances);
         double y1 = getYMean(pixelDistances);
         double z1 = getZMean(pixelDistances,true);
@@ -327,8 +419,8 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     }
 
-    public double getSurfaceSeparation(Volume2 volume2, boolean pixelDistances) {
-        System.out.println("wbif.sjx.common.Object.Volume2 getSurfaceSeparation needs implementing.  Possibly make use of point iterator when implemented - rather than getting array of all coordiantes");
+    public double getSurfaceSeparation(Volume volume2, boolean pixelDistances) {
+        System.out.println("wbif.sjx.common.Object.Volume getSurfaceSeparation needs implementing.  Possibly make use of point iterator when implemented - rather than getting array of all coordiantes");
 //        SurfaceSeparationCalculator calculator = new SurfaceSeparationCalculator(this,volume2,pixelDistances);
 //
 //        return calculator.getMinDist();
@@ -341,7 +433,7 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
      * @param volume2
      * @return
      */
-    public double calculateAngle2D(Volume2 volume2) {
+    public double calculateAngle2D(Volume volume2) {
         Point<Double> p1 = new Point<>(getXMean(true),getYMean(true),0d);
         Point<Double> p2 = new Point<>(volume2.getXMean(true),volume2.getYMean(true),0d);
 
@@ -362,30 +454,30 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
 
     }
 
-    public Volume2 getOverlappingPoints(Volume2 volume2) {
-        Volume2 overlapping = createNewObject();
+    public Volume getOverlappingPoints(Volume volume2) {
+        Volume overlapping = new Volume(Volume.VolumeType.POINTLIST,this);
 
         try {
             if (size() < volume2.size()) {
-                for (Point<Integer> p1 : this) if (volume2.contains(p1)) overlapping.add(p1);
+                for (Point<Integer> p1 : coordinateStore) if (volume2.contains(p1)) overlapping.add(p1);
             } else {
-                for (Point<Integer> p2 : volume2) if (contains(p2)) overlapping.add(p2);
+                for (Point<Integer> p2 : volume2.coordinateStore) if (contains(p2)) overlapping.add(p2);
             }
         } catch (IntegerOverflowException e) {
-            // These points are a subset of the input PointVolume objects, so if they don't overflow these can't either
+            // These points are a subset of the input Volume objects, so if they don't overflow these can't either
         }
 
         return overlapping;
 
     } // Copied
 
-    public int getOverlap(Volume2 volume2) {
+    public int getOverlap(Volume volume2) {
         int count = 0;
 
         if (size() < volume2.size()) {
-            for (Point<Integer> p1 : this) if (volume2.contains(p1)) count++;
+            for (Point<Integer> p1 : coordinateStore) if (volume2.contains(p1)) count++;
         } else {
-            for (Point<Integer> p2 : volume2) if (contains(p2)) count++;
+            for (Point<Integer> p2 : volume2.coordinateStore) if (contains(p2)) count++;
         }
 
         return count;
@@ -400,6 +492,32 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
         }
     }
 
+    @Override
+    public int hashCode() {
+        int hash = coordinateStore.hashCode();
+
+        hash = 31*hash + ((Number) dppXY).hashCode();
+        hash = 31*hash + ((Number) dppZ).hashCode();
+        hash = 31*hash + calibratedUnits.toUpperCase().hashCode();
+
+        return hash;
+
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Volume)) return false;
+
+        Volume volume = (Volume) obj;
+
+        if (dppXY != volume.getDppXY()) return false;
+        if (dppZ != volume.getDppZ()) return false;
+        if (!calibratedUnits.toUpperCase().equals(volume.getCalibratedUnits().toUpperCase())) return false;
+
+        return coordinateStore.equals(volume.coordinateStore);
+
+    }
 
     // GETTERS AND SETTERS
 
@@ -427,36 +545,12 @@ public abstract class Volume2 implements Iterable<Point<Integer>> {
         return nSlices;
     }
 
-
-    // VOLUME FACTORY
-
-    public static Volume2 newVolume(Volumes type, int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits)
-    {
-        return type.factory.newVolume(width, height, nSlices, dppXY, dppZ, calibratedUnits);
+    public CoordinateStore getCoordinateStore() {
+        return coordinateStore;
     }
 
-    private interface VolumeFactory
-    {
-        Volume2 newVolume(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits);
+    public void setCoordinateStore(CoordinateStore coordinateStore) {
+        this.coordinateStore = coordinateStore;
     }
 
-    public enum Volumes
-    {
-        POINTSET(PointVolume::new),
-        QUADTREE(QuadTreeVolume::new),
-        OCTREE(OcTreeVolume::new),
-        OPTIMAL((width, height, nSlices, dppXY, dppZ, calibratedUnits) ->
-        {
-            // ...
-
-            return null;
-        });
-
-        private final VolumeFactory factory;
-
-        Volumes(VolumeFactory factory)
-        {
-            this.factory = factory;
-        }
-    }
 }

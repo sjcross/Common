@@ -2,20 +2,20 @@ package wbif.sjx.common.Analysis;
 
 import org.bonej.geometry.FitEllipse;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
-import wbif.sjx.common.Object.Volume2.Volume2;
+import wbif.sjx.common.Object.Volume.Volume;
 
 public class EllipseCalculator {
-    private final Volume2 volume;
+    private final Volume volume;
     private double[] e2d;
 
-    public EllipseCalculator(Volume2 volume) throws RuntimeException {
+    public EllipseCalculator(Volume volume) throws RuntimeException {
         this.volume = volume;
 
         fitEllipse(Double.MAX_VALUE);
 
     }
 
-    public EllipseCalculator(Volume2 volume, double maxAxisLength) throws RuntimeException {
+    public EllipseCalculator(Volume volume, double maxAxisLength) throws RuntimeException {
         this.volume = volume;
 
         fitEllipse(maxAxisLength);
@@ -152,7 +152,7 @@ public class EllipseCalculator {
 
     }
 
-    public Volume2 getContainedPoints() throws IntegerOverflowException {
+    public Volume getContainedPoints() throws IntegerOverflowException {
         if (e2d == null) return null;
 
         double dppXY = volume.getDppXY();
@@ -161,7 +161,7 @@ public class EllipseCalculator {
         String units = volume.getCalibratedUnits();
         boolean is2D = volume.is2D();
 
-        Volume2 insideEllipse = volume.createNewObject();
+        Volume insideEllipse = new Volume(volume);
 
         double xCent = getXCentre();
         double yCent = getYCentre();

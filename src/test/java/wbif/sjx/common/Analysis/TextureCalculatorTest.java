@@ -8,7 +8,7 @@ import ij.IJ;
 import ij.ImagePlus;
 import org.junit.Test;
 import wbif.sjx.common.ExpectedObjects.Objects2D;
-import wbif.sjx.common.Object.Volume2.PointVolume;
+import wbif.sjx.common.Object.Volume.Volume;
 
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -167,7 +167,7 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,PointVolume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -175,9 +175,9 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(1,0,0);
 
-        // Iterating over each Volume2, testing the PCC value
+        // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
-            PointVolume testObject = testObjects.get(ID);
+            Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
             calculator.calculate(ipl1.getImageStack(),testObject);
@@ -201,7 +201,7 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,PointVolume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -209,9 +209,9 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(1,0,0);
 
-        // Iterating over each Volume2, testing the PCC value
+        // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
-            PointVolume testObject = testObjects.get(ID);
+            Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
             calculator.calculate(ipl1.getImageStack(),testObject);
@@ -235,7 +235,7 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,PointVolume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -243,9 +243,9 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(1,0,0);
 
-        // Iterating over each Volume2, testing the PCC value
+        // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
-            PointVolume testObject = testObjects.get(ID);
+            Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
             calculator.calculate(ipl1.getImageStack(),testObject);
@@ -269,7 +269,7 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,PointVolume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -277,9 +277,9 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(1,0,0);
 
-        // Iterating over each Volume2, testing the PCC value
+        // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
-            PointVolume testObject = testObjects.get(ID);
+            Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
             calculator.calculate(ipl1.getImageStack(),testObject);
@@ -303,7 +303,7 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,PointVolume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -311,9 +311,9 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(3,0,0);
 
-        // Iterating over each Volume2, testing the PCC value
+        // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
-            PointVolume testObject = testObjects.get(ID);
+            Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
             calculator.calculate(ipl1.getImageStack(),testObject);
@@ -337,7 +337,7 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,PointVolume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -345,9 +345,9 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(3,0,0);
 
-        // Iterating over each Volume2, testing the PCC value
+        // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
-            PointVolume testObject = testObjects.get(ID);
+            Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
             calculator.calculate(ipl1.getImageStack(),testObject);
@@ -371,7 +371,7 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,PointVolume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -379,9 +379,9 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(3,0,0);
 
-        // Iterating over each Volume2, testing the PCC value
+        // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
-            PointVolume testObject = testObjects.get(ID);
+            Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
             calculator.calculate(ipl1.getImageStack(),testObject);
@@ -405,7 +405,7 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,PointVolume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -413,9 +413,9 @@ public class TextureCalculatorTest {
         // Initialising texture calculator
         TextureCalculator calculator = new TextureCalculator(3,0,0);
 
-        // Iterating over each Volume2, testing the PCC value
+        // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
-            PointVolume testObject = testObjects.get(ID);
+            Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
             calculator.calculate(ipl1.getImageStack(),testObject);
