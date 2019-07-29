@@ -114,8 +114,20 @@ public class Volume {
 
     public Volume getProjected() {
         if (projected == null) {
-            projected = new Volume(VolumeType.POINTLIST,width,height,1,dppXY,dppZ,calibratedUnits);
+            VolumeType outputType;
+            // Octree is now best represented by quadtree.  Pointlist can stay as pointlist.
+            switch (getVolumeType()) {
+                case OCTREE:
+                case QUADTREE:
+                    outputType = VolumeType.QUADTREE;
+                case POINTLIST:
+                default:
+                    outputType = VolumeType.POINTLIST;
+            }
+
+            projected = new Volume(outputType,width,height,1,dppXY,dppZ,calibratedUnits);
             projected.setCoordinateStore(coordinateStore.calculateProjected());
+
         }
 
         return projected;
@@ -450,7 +462,7 @@ public class Volume {
     }
 
     public Volume getOverlappingPoints(Volume volume2) {
-        Volume overlapping = new Volume(VolumeType.POINTLIST,this);
+        Volume overlapping = new Volume(getVolumeType(),this);
 
         try {
             if (size() < volume2.size()) {
