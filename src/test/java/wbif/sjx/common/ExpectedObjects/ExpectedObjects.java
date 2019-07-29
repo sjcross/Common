@@ -3,6 +3,7 @@ package wbif.sjx.common.ExpectedObjects;
 import util.opencsv.CSVReader;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Volume.Volume;
+import wbif.sjx.common.Object.Volume.VolumeType;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,7 +22,7 @@ public abstract class ExpectedObjects {
     public abstract boolean is2D();
 
     public Volume getObject(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
-        Volume volume = new Volume(Volume.VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,calibratedUnits);
+        Volume volume = new Volume(VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,calibratedUnits);
 
         // Adding all provided coordinates to each object
         List<Integer[]> coordinates = getCoordinates5D();
@@ -54,7 +55,7 @@ public abstract class ExpectedObjects {
 
             ID = ID+(t*65536);
 
-            testObjects.putIfAbsent(ID,new Volume(Volume.VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,calibratedUnits));
+            testObjects.putIfAbsent(ID,new Volume(VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,calibratedUnits));
             Volume testObject = testObjects.get(ID);
             testObject.add(x,y,z);
 

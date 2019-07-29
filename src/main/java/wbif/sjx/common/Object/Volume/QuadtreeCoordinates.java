@@ -100,6 +100,11 @@ public class QuadtreeCoordinates implements CoordinateStore {
 
     }
 
+    @Override
+    public VolumeType getVolumeType() {
+        return VolumeType.QUADTREE;
+    }
+
     CoordinateStore calculateSurface2D() {
         // Get the sole QuadTree
         QuadTree quadTree = quadTrees.values().iterator().next();

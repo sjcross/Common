@@ -96,6 +96,11 @@ public class OctreeCoordinates implements CoordinateStore {
 
     }
 
+    @Override
+    public VolumeType getVolumeType() {
+        return VolumeType.OCTREE;
+    }
+
     CoordinateStore calculateSurface2D() {
         System.out.println("Need to implement 2D surface in OctreeVolume");
         return null;

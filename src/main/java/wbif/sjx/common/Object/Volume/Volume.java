@@ -21,9 +21,6 @@ public class Volume {
     protected Volume projected = null;
     protected Point<Double> meanCentroid = null;
 
-    public enum VolumeType {POINTLIST, QUADTREE, OCTREE};
-    private VolumeType volumeType;
-
 
     public Volume(Volume volume) {
         this.width = volume.getWidth();
@@ -32,9 +29,8 @@ public class Volume {
         this.dppXY = volume.getDppXY();
         this.dppZ = volume.getDppZ();
         this.calibratedUnits = volume.getCalibratedUnits();
-        this.volumeType = volume.volumeType;
 
-        coordinateStore = createCoordinateStore(volumeType);
+        coordinateStore = createCoordinateStore(volume.getVolumeType());
 
     }
 
@@ -57,9 +53,8 @@ public class Volume {
         this.dppXY = dppXY;
         this.dppZ = dppZ;
         this.calibratedUnits = calibratedUnits;
-        this.volumeType = volumeType;
 
-        coordinateStore = createCoordinateStore(this.volumeType);
+        coordinateStore = createCoordinateStore(volumeType);
 
     }
 
@@ -455,7 +450,7 @@ public class Volume {
     }
 
     public Volume getOverlappingPoints(Volume volume2) {
-        Volume overlapping = new Volume(Volume.VolumeType.POINTLIST,this);
+        Volume overlapping = new Volume(VolumeType.POINTLIST,this);
 
         try {
             if (size() < volume2.size()) {
@@ -549,7 +544,13 @@ public class Volume {
         return coordinateStore;
     }
 
-    public void setCoordinateStore(CoordinateStore coordinateStore) {
+    public VolumeType getVolumeType() {
+        return coordinateStore.getVolumeType();
+    }
+
+    public void setCoordinateStore(CoordinateStore coordinateStore)
+
+    {
         this.coordinateStore = coordinateStore;
     }
 

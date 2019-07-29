@@ -10,6 +10,7 @@ public interface CoordinateStore extends Collection<Point<Integer>> {
     public void finalise();
     public long getNumberOfElements();
     public CoordinateStore calculateSurface(boolean is2D);
+    public VolumeType getVolumeType();
 
     public default boolean removeAll(Collection<?> c) {
         Collection<Point<Integer>> points = (Collection<Point<Integer>>) c;

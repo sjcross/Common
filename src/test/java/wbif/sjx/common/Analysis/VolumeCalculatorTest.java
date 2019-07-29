@@ -51,7 +51,7 @@
 //        String units = "um";
 //
 //        // Creating a basic cube volume
-//        Volume volume = new Volume(Volume.VolumeType.POINTLIST,15,30,8,dppXY,dppZ,units);
+//        Volume volume = new Volume(VolumeType.POINTLIST,15,30,8,dppXY,dppZ,units);
 //        volume.add(10,20,5);
 //        volume.add(12,20,5);
 //        volume.add(12,22,5);
@@ -68,7 +68,7 @@
 //        Volume actual = volumeCalculator.getContainedPoints();
 //
 //        // Creating expected object
-//        Volume expected = new Volume(Volume.VolumeType.POINTLIST,dppXY,dppZ,units,false);
+//        Volume expected = new Volume(VolumeType.POINTLIST,dppXY,dppZ,units,false);
 //        expected.add(10,20,5);
 //        expected.add(11,20,5);
 //        expected.add(12,20,5);

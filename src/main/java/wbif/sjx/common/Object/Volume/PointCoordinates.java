@@ -74,6 +74,11 @@ public class PointCoordinates implements CoordinateStore {
 
     }
 
+    @Override
+    public VolumeType getVolumeType() {
+        return VolumeType.POINTLIST;
+    }
+
     CoordinateStore calculateSurface2D() {
         PointCoordinates surface = new PointCoordinates();
 
