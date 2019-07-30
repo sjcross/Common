@@ -102,12 +102,12 @@ public class OctreeCoordinates implements CoordinateStore {
     }
 
     CoordinateStore calculateSurface2D() {
-        System.out.println("Need to implement 2D surface in OctreeVolume");
-        return null;
+        return ocTree.getEdgePoints(true);
+
     }
 
     CoordinateStore calculateSurface3D() {
-        return ocTree.getEdgePoints();
+        return ocTree.getEdgePoints(false);
 
     }
 
