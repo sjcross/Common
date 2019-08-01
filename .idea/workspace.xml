@@ -1,357 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/HoughTransform/PixelArrays/BytePixelArray.java" line="25" mnemonic="2" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
+    <list default="true" id="9185974d-5e2e-42ae-8262-abe1358b3569" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/sc13967.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/CumStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/CumStat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/QuadtreeCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/QuadtreeCoordinates.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Common$wbif_sjx_common_in_Common.coverage" NAME="wbif.sjx.common in Common Coverage Results" MODIFIED="1499596603615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$VolumeTest.coverage" NAME="VolumeTest Coverage Results" MODIFIED="1524037637387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Object.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$Phansalkar3D.coverage" NAME="Phansalkar3D Coverage Results" MODIFIED="1510676153409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Filters.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$LongestChordCalculatorTest.coverage" NAME="LongestChordCalculatorTest Coverage Results" MODIFIED="1529653189640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Analysis.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1530255978292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Common$All_in_Common.coverage" NAME="All in Common Coverage Results" MODIFIED="1533798419152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Common$ActiveContour.coverage" NAME="ActiveContour Coverage Results" MODIFIED="1516111976998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>wbif.sjx.common.Process.ActiveContour.*</FILTER>
-    </SUITE>
-  </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Common" />
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QuadTree.java">
+    <leaf>
+      <file leaf-file-name="ColocalisationCalculator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ColocalisationCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4882">
-              <caret line="356" column="35" selection-start-line="356" selection-start-column="35" selection-end-line="356" selection-end-column="35" />
-              <folding>
-                <element signature="e#3768#3769#0" expanded="true" />
-                <element signature="e#3799#3800#0" expanded="true" />
-                <element signature="e#3884#3885#0" expanded="true" />
-                <element signature="e#3916#3917#0" expanded="true" />
-                <element signature="e#5375#5376#0" expanded="true" />
-                <element signature="e#5405#5406#0" expanded="true" />
-                <element signature="e#15407#15408#0" expanded="true" />
-                <element signature="e#15441#15442#0" expanded="true" />
-                <element signature="e#15579#15580#0" expanded="true" />
-                <element signature="e#15607#15608#0" expanded="true" />
-                <element signature="e#15641#15642#0" expanded="true" />
-                <element signature="e#15670#15671#0" expanded="true" />
-                <element signature="e#15702#15703#0" expanded="true" />
-                <element signature="e#15729#15730#0" expanded="true" />
-                <element signature="e#15767#15768#0" expanded="true" />
-                <element signature="e#15796#15797#0" expanded="true" />
-                <element signature="e#15833#15834#0" expanded="true" />
-                <element signature="e#15861#15862#0" expanded="true" />
-                <element signature="e#15896#15897#0" expanded="true" />
-                <element signature="e#15923#15924#0" expanded="true" />
-                <element signature="e#16710#16711#0" expanded="true" />
-                <element signature="e#16755#16756#0" expanded="true" />
-                <element signature="e#17557#17558#0" expanded="true" />
-                <element signature="e#17619#17620#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="103" selection-start-line="103" selection-end-line="103" />
-              <folding>
-                <element signature="e#1053#1434#0" />
-                <element signature="e#1440#1826#0" />
-                <element signature="e#1832#2206#0" />
-                <element signature="e#1911#2200#0" />
-                <element signature="e#2303#2722#0" />
-                <element signature="e#2728#2812#0" />
-                <element signature="e#2890#3004#0" />
-                <element signature="e#3553#3715#0" />
-                <element signature="e#3914#4079#0" />
-                <element signature="e#4389#4448#0" />
-                <element signature="e#4533#4699#0" />
-                <element signature="e#4705#4870#0" />
-                <element signature="e#4876#5042#0" />
-                <element signature="e#5048#5379#0" />
-                <element signature="e#5385#5716#0" />
-                <element signature="e#5722#5962#0" />
-                <element signature="e#5722#6494#0" />
-                <element signature="e#6500#6686#0" />
-                <element signature="e#6692#6878#0" />
-                <element signature="e#6884#7070#0" />
-                <element signature="e#7076#7440#0" />
-                <element signature="e#7446#7809#0" />
-                <element signature="e#7815#8055#0" />
-                <element signature="e#7815#8633#0" />
-                <element signature="e#8639#9297#0" />
-                <element signature="e#8767#9213#0" />
-                <element signature="e#9249#9291#0" />
-                <element signature="e#9303#9467#0" />
-                <element signature="e#9473#9637#0" />
-                <element signature="e#9643#9978#0" />
-                <element signature="e#9984#10457#0" />
-                <element signature="e#10212#10309#1" />
-                <element signature="e#10463#11667#0" />
-                <element signature="e#10924#11193#1" />
-                <element signature="e#11252#11390#1" />
-                <element signature="e#11279#11380#1" />
-                <element signature="e#11396#11591#1" />
-                <element signature="e#11673#12030#0" />
-                <element signature="e#11951#11989#1" />
-                <element signature="e#12036#12359#0" />
-                <element signature="e#12278#12317#1" />
-                <element signature="e#12365#12836#0" />
-                <element signature="e#12842#13303#0" />
-                <element signature="e#13122#13234#0" />
-                <element signature="e#13309#13500#0" />
-                <element signature="e#13309#13765#0" />
-                <element signature="e#13771#13960#0" />
-                <element signature="e#13771#14143#0" />
-                <element signature="e#14283#14582#0" />
-                <element signature="e#14326#14446#1" />
-                <element signature="e#14452#14572#1" />
-                <element signature="e#14796#15143#0" />
-                <element signature="e#14897#14997#1" />
-                <element signature="e#15003#15103#1" />
-                <element signature="e#15149#15352#0" />
-                <element signature="e#15236#15285#1" />
-                <element signature="e#15291#15346#1" />
-                <element signature="e#15358#15646#0" />
-                <element signature="e#15652#16116#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QTNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/OcTree.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/BigBlob2D.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-              <folding>
-                <element signature="e#201#202#0" expanded="true" />
-                <element signature="e#285#286#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JUnit4 Test Class" />
-        <option value="Interface" />
-        <option value="Class" />
-        <option value="Enum" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>Volume</find>
-      <find>PointVo</find>
-      <find>Volume2</find>
-      <find>PointVolume volume = new PointVolume(</find>
-      <find>PointVolume volume2 = new PointVolume(</find>
-      <find>PointVolume volume3 = new PointVolume(</find>
-      <find>PointVolume</find>
-      <find>PointV</find>
-      <find>remov</find>
-      <find>calculatesu</find>
-      <find>projec</find>
-      <find>PointLIST</find>
-      <find>equa</find>
-      <find>add</find>
-      <find>contains</find>
-      <find>clear</find>
-      <find>surfa</find>
-      <find>geted</find>
-      <find>getsu</find>
-      <find>size</find>
-      <find>iterator</find>
-      <find>QUADTREE</find>
-      <find>getpo</find>
-      <find>surface</find>
-      <find>getnumber</find>
-      <find>.</find>
-      <find>Volume.VolumeType</find>
-      <find>create</find>
-      <find>new Vol</find>
-      <find>getVolu</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>Float</replace>
-      <replace>Short</replace>
-      <replace>);</replace>
-      <replace>false</replace>
-      <replace>tolerance</replace>
-      <replace>Timepoint</replace>
-      <replace>Track</replace>
-      <replace>addTimepoint</replace>
-      <replace>T</replace>
-      <replace>Volume</replace>
-      <replace>PointVolume</replace>
-      <replace>add</replace>
-      <replace>PointVolume volume3 = new PointVolume(2.0,1.0,&quot;PX&quot;, false);</replace>
-      <replace>PointVolume volume2 = new PointVolume(20,20,1,dppXY,dppZ,units);</replace>
-      <replace>PointVolume volume1 = new PointVolume(20,20,1,dppXY,dppZ,units);</replace>
-      <replace>HashMap&lt;Integer,PointVolume&gt; testObjects = new Objects2D().getObjects(ipl1.getWidth(), ipl1.getHeight(), ipl1.getNSlices(),dppXY,dppZ,calibratedUnits);</replace>
-      <replace>QuadTreeVolume</replace>
-      <replace>Quadtree</replace>
-      <replace>quadtree</replace>
-      <replace>Volume2 volume = new Volume2(Volume2.VolumeType.POINTLIST,</replace>
-      <replace>Volume2 volume2 = new Volume2(Volume2.VolumeType.POINTLIST,</replace>
-      <replace>Volume2 volume3 = new Volume2(Volume2.VolumeType.POINTLIST,</replace>
-      <replace>Volume2</replace>
-      <replace>QUADTREE</replace>
-      <replace>OCTREE</replace>
-      <replace>new Volume2(Volume2.VolumeType.POINTLIST,</replace>
-      <replace>VolumeType</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>C:\Users\steph\Documents\Java Projects\Common\src\test\java</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/BigBlob2D.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/VolumeCalculatorTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/HorizontalCylinderR22.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/ColocalisationCalculatorTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/TextureCalculatorTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/VerticalCylinderR5.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/LongestChordCalculatorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/OctTreeVolume.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/LongestChordCalculator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Exceptions/IntegerOverflowException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Exceptions/LongOverflowException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/PerformanceAnalyser.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/Volume3.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/OcTreeVolume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/OcTreeVolumeTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/PointVolumeTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/QuadTreeVolumeTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume2/Volume2Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/Volume2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/CoordinateStore.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/QuadTreeVolume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/PointVolume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/Obj.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume/QuadtreeVolumeTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/QuadTreeVolume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/OcTreeVolume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/QuadtreeVolume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/PointVolume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/OctreeVolume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QuadTree.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/OcTree.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume/OctreeVolumeTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/VolumeType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/CoordinateStore.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/PointCoordinates.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/QuadtreeCoordinates.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/OctreeCoordinates.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume/QuadtreeCoordinatesTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume/PointListVolumeTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume/OctreeCoordinatesTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/EllipsoidCalculatorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java" />
-      </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="54" />
-    <option name="y" value="-8" />
-    <option name="width" value="1874" />
-    <option name="height" value="1096" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="85" />
+    <option name="width" value="929" />
+    <option name="height" value="1088" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
-      <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -394,178 +92,12 @@
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="Analysis" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
-              <item name="SpatialCalculators" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
-              <item name="Volume" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Object" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Object" type="462c0819:PsiDirectoryNode" />
-              <item name="QuadTree" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Object" type="462c0819:PsiDirectoryNode" />
-              <item name="Volume" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Process" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="ExpectedObjects" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Object" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="coordinates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../QuadTrees" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="wbif.sjx.common.Object.Volume2" />
-      <recent name="wbif.sjx.common.Process.SkeletonTools" />
-      <recent name="wbif.sjx.common.Object" />
-      <recent name="wbif.sjx.common.MathFunc" />
-      <recent name="wbif.sjx.common.Analysis" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="wbif.sjx.common.Analysis" />
-      <recent name="wbif.sjx.common.MathFunc" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="wbif.sjx.common.Object.Volume" />
-      <recent name="wbif.sjx.common.Object.Volume2" />
-      <recent name="wbif.sjx.common.ExpectedObjects" />
-      <recent name="wbif.sjx.common.MetadataExtractors" />
-      <recent name="wbif.sjx.common" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sc13967\Documents\Java Projects\Common\src\test\java\wbif\sjx\common\ExpectedObjects" />
-      <recent name="C:\Users\sc13967\Local Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Process" />
-      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour\Energies" />
-      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -579,483 +111,97 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Common [quick install]">
-    <configuration default="true" type="Applet">
-      <option name="HEIGHT" value="0" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="WIDTH" value="0" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in Common" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OctreeCoordinatesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Object.Volume.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume.OctreeCoordinatesTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OctreeCoordinatesTest.testGetXNoVolume" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Object.Volume.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume.OctreeCoordinatesTest" />
-      <option name="METHOD_NAME" value="testGetXNoVolume" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="QuadtreeCoordinatesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Object.Volume.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume.QuadtreeCoordinatesTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="QuadtreeCoordinatesTest.testEqualsDifferentUnitsCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Object.Volume.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.Object.Volume" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Object.Volume.QuadtreeCoordinatesTest" />
-      <option name="METHOD_NAME" value="testEqualsDifferentUnitsCase" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
-    <configuration name="Common [install]" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="clean" />
-                <option value="install" />
-              </list>
-            </option>
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <configuration name="Common [quick install]" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="clean" />
-                <option value="install" />
-                <option value="-DskipTests" />
-              </list>
-            </option>
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="TestNG">
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
-    <list>
-      <item itemvalue="JUnit.QuadtreeCoordinatesTest" />
-      <item itemvalue="JUnit.QuadtreeCoordinatesTest.testEqualsDifferentUnitsCase" />
-      <item itemvalue="JUnit.OctreeCoordinatesTest" />
-      <item itemvalue="JUnit.OctreeCoordinatesTest.testGetXNoVolume" />
-      <item itemvalue="JUnit.All in Common" />
-      <item itemvalue="Maven.Common [install]" />
-      <item itemvalue="Maven.Common [quick install]" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.All in Common" />
-        <item itemvalue="JUnit.OctreeCoordinatesTest.testGetXNoVolume" />
-        <item itemvalue="JUnit.OctreeCoordinatesTest" />
-        <item itemvalue="JUnit.QuadtreeCoordinatesTest" />
-        <item itemvalue="JUnit.QuadtreeCoordinatesTest.testEqualsDifferentUnitsCase" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="" />
-      <created>1515584553535</created>
+      <changelist id="9185974d-5e2e-42ae-8262-abe1358b3569" name="Default" comment="" />
+      <created>1564597000138</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1515584553535</updated>
-      <workItem from="1552383632172" duration="6219000" />
-      <workItem from="1553853233698" duration="17000" />
-      <workItem from="1554114290806" duration="265000" />
-      <workItem from="1554114576170" duration="1637000" />
-      <workItem from="1554375473395" duration="630000" />
-      <workItem from="1556113542318" duration="1282000" />
-      <workItem from="1556183404700" duration="1193000" />
-      <workItem from="1557240703129" duration="595000" />
-      <workItem from="1557243504786" duration="2452000" />
-      <workItem from="1561365296131" duration="599000" />
-      <workItem from="1561459920533" duration="1208000" />
-      <workItem from="1562058556100" duration="598000" />
-      <workItem from="1562146878623" duration="1932000" />
-      <workItem from="1563961959907" duration="1322000" />
-      <workItem from="1563963359973" duration="2362000" />
-      <workItem from="1563967940025" duration="726000" />
-      <workItem from="1563972720158" duration="2486000" />
+      <updated>1564597000138</updated>
     </task>
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="QuadtreeVolumeTest_testEqualsDifferentUnitsCase - 2019.07.29 at 08h 07m 01s.xml">
-      <configuration name="QuadtreeVolumeTest.testEqualsDifferentUnitsCase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadtreeVolumeTest_testEqualsDifferentUnitsCase - 2019.07.29 at 08h 07m 19s.xml">
-      <configuration name="QuadtreeVolumeTest.testEqualsDifferentUnitsCase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadtreeVolumeTest_testEqualsDifferentUnitsCase - 2019.07.29 at 08h 09m 59s.xml">
-      <configuration name="QuadtreeVolumeTest.testEqualsDifferentUnitsCase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="QuadtreeVolumeTest - 2019.07.29 at 08h 10m 06s.xml">
-      <configuration name="QuadtreeVolumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OctreeVolumeTest - 2019.07.29 at 08h 25m 04s.xml">
-      <configuration name="OctreeVolumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OctreeVolumeTest - 2019.07.29 at 08h 25m 30s.xml">
-      <configuration name="OctreeVolumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OctreeVolumeTest_testGetXNoVolume - 2019.07.29 at 08h 26m 45s.xml">
-      <configuration name="OctreeVolumeTest.testGetXNoVolume" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OctreeVolumeTest_testGetXNoVolume - 2019.07.29 at 08h 27m 19s.xml">
-      <configuration name="OctreeVolumeTest.testGetXNoVolume" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OctreeVolumeTest_testGetXNoVolume - 2019.07.29 at 08h 29m 16s.xml">
-      <configuration name="OctreeVolumeTest.testGetXNoVolume" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Common - 2019.07.29 at 08h 37m 31s.xml">
-      <configuration name="All in Common" configurationId="JUnit" />
-    </history-entry>
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45304000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="67" y="-7" width="1476" height="878" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23594266" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="Nl-Palette" order="7" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32961586" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.20178926" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3283767" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.249658" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Properties" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2228145" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.24972437" />
-      <window_info id="Nl-Palette" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info id="UI Designer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32902583" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32703778" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Properties" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="right" id="Maven" order="9" />
-      <window_info anchor="right" id="Database" order="10" />
-    </layout-to-restore>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/QuadTree/QuadTree/1.0-SNAPSHOT/QuadTree-1.0-SNAPSHOT.jar!/QuadTree/QuadTree.class" />
-    <entry file="jar://$MAVEN_REPOSITORY$/QuadTree/QuadTree/1.0-SNAPSHOT/QuadTree-1.0-SNAPSHOT.jar!/jdjf/quadTree/QuadTree.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="152" column="53" selection-start-line="152" selection-start-column="53" selection-end-line="152" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/IntensityCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1200">
-          <caret line="13" column="39" lean-forward="true" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2975">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="imports" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Clusters2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/IntensityMinMax.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="114" column="141" selection-start-line="114" selection-start-column="141" selection-end-line="114" selection-end-column="141" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/VolumeCalculatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="63" column="29" lean-forward="true" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/Objects2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/ColocalisationCalculatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/CumulativePathLengthCalculatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/DirectionalityRatioCalculatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/TextureCalculatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" column="43" lean-forward="true" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/OctreeTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/HorizontalCylinderR22.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/VerticalCylinderR5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/LongestChordCalculatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/OctTreeVolume.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QTNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Exceptions/IntegerOverflowException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="62" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Exceptions/LongOverflowException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ColocalisationCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1063,360 +209,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/ConvexHullCalculator.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/CurvatureCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/PerformanceAnalyser.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/BigBlob2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#201#202#0" expanded="true" />
-            <element signature="e#285#286#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/Volume3.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Collection.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="154" column="36" selection-start-line="154" selection-start-column="36" selection-end-line="154" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="179" lean-forward="true" selection-start-line="179" selection-end-line="179" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/LongestChordCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume2/Obj.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume/PointVolumeTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/OcTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/VolumeType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/CoordinateStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/PointCoordinates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="78" column="35" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
-          <folding>
-            <element signature="docComment;class#PointCoordinates#0" />
-            <element signature="method#add#0;class#PointCoordinates#0" />
-            <element signature="method#finalise#0;class#PointCoordinates#0" />
-            <element signature="method#calculateSurface#0;class#PointCoordinates#0" />
-            <element signature="e#1768#1769#0" expanded="true" />
-            <element signature="e#1795#1796#0" expanded="true" />
-            <element signature="method#calculateSurface2D#0;class#PointCoordinates#0" />
-            <element signature="method#calculateSurface3D#0;class#PointCoordinates#0" />
-            <element signature="method#size#0;class#PointCoordinates#0" />
-            <element signature="method#getNumberOfElements#0;class#PointCoordinates#0" />
-            <element signature="method#hashCode#0;class#PointCoordinates#0" />
-            <element signature="method#equals#0;class#PointCoordinates#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/OctreeCoordinates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
-          <folding>
-            <element signature="e#348#392#0" />
-            <element signature="e#623#776#0" />
-            <element signature="e#886#1057#0" />
-            <element signature="e#1296#1422#0" />
-            <element signature="e#1578#1691#0" />
-            <element signature="e#2147#2148#0" expanded="true" />
-            <element signature="e#2174#2175#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/QuadtreeCoordinates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="104" column="34" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
-          <folding>
-            <element signature="e#2432#2433#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume/QuadtreeCoordinatesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5881">
-          <caret line="1650" column="60" selection-start-line="1650" selection-start-column="60" selection-end-line="1650" selection-end-column="60" />
-          <folding>
-            <element signature="e#1459#1468#0" expanded="true" />
-            <element signature="e#2201#2210#0" expanded="true" />
-            <element signature="e#2943#2952#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume/PointListVolumeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4177">
-          <caret line="1647" column="60" selection-start-line="1647" selection-start-column="60" selection-end-line="1647" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume/OctreeCoordinatesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4930">
-          <caret line="1651" column="60" selection-start-line="1651" selection-start-column="60" selection-end-line="1651" selection-end-column="60" />
-          <folding>
-            <element signature="e#1453#1462#0" expanded="true" />
-            <element signature="e#2193#2202#0" expanded="true" />
-            <element signature="e#2933#2942#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/EllipsoidCalculatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="103" column="38" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/QuadTree/QuadTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4882">
-          <caret line="356" column="35" selection-start-line="356" selection-start-column="35" selection-end-line="356" selection-end-column="35" />
-          <folding>
-            <element signature="e#3768#3769#0" expanded="true" />
-            <element signature="e#3799#3800#0" expanded="true" />
-            <element signature="e#3884#3885#0" expanded="true" />
-            <element signature="e#3916#3917#0" expanded="true" />
-            <element signature="e#5375#5376#0" expanded="true" />
-            <element signature="e#5405#5406#0" expanded="true" />
-            <element signature="e#15407#15408#0" expanded="true" />
-            <element signature="e#15441#15442#0" expanded="true" />
-            <element signature="e#15579#15580#0" expanded="true" />
-            <element signature="e#15607#15608#0" expanded="true" />
-            <element signature="e#15641#15642#0" expanded="true" />
-            <element signature="e#15670#15671#0" expanded="true" />
-            <element signature="e#15702#15703#0" expanded="true" />
-            <element signature="e#15729#15730#0" expanded="true" />
-            <element signature="e#15767#15768#0" expanded="true" />
-            <element signature="e#15796#15797#0" expanded="true" />
-            <element signature="e#15833#15834#0" expanded="true" />
-            <element signature="e#15861#15862#0" expanded="true" />
-            <element signature="e#15896#15897#0" expanded="true" />
-            <element signature="e#15923#15924#0" expanded="true" />
-            <element signature="e#16710#16711#0" expanded="true" />
-            <element signature="e#16755#16756#0" expanded="true" />
-            <element signature="e#17557#17558#0" expanded="true" />
-            <element signature="e#17619#17620#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
-          <folding>
-            <element signature="e#1053#1434#0" />
-            <element signature="e#1440#1826#0" />
-            <element signature="e#1832#2206#0" />
-            <element signature="e#1911#2200#0" />
-            <element signature="e#2303#2722#0" />
-            <element signature="e#2728#2812#0" />
-            <element signature="e#2890#3004#0" />
-            <element signature="e#3553#3715#0" />
-            <element signature="e#3914#4079#0" />
-            <element signature="e#4389#4448#0" />
-            <element signature="e#4533#4699#0" />
-            <element signature="e#4705#4870#0" />
-            <element signature="e#4876#5042#0" />
-            <element signature="e#5048#5379#0" />
-            <element signature="e#5385#5716#0" />
-            <element signature="e#5722#5962#0" />
-            <element signature="e#5722#6494#0" />
-            <element signature="e#6500#6686#0" />
-            <element signature="e#6692#6878#0" />
-            <element signature="e#6884#7070#0" />
-            <element signature="e#7076#7440#0" />
-            <element signature="e#7446#7809#0" />
-            <element signature="e#7815#8055#0" />
-            <element signature="e#7815#8633#0" />
-            <element signature="e#8639#9297#0" />
-            <element signature="e#8767#9213#0" />
-            <element signature="e#9249#9291#0" />
-            <element signature="e#9303#9467#0" />
-            <element signature="e#9473#9637#0" />
-            <element signature="e#9643#9978#0" />
-            <element signature="e#9984#10457#0" />
-            <element signature="e#10212#10309#1" />
-            <element signature="e#10463#11667#0" />
-            <element signature="e#10924#11193#1" />
-            <element signature="e#11252#11390#1" />
-            <element signature="e#11279#11380#1" />
-            <element signature="e#11396#11591#1" />
-            <element signature="e#11673#12030#0" />
-            <element signature="e#11951#11989#1" />
-            <element signature="e#12036#12359#0" />
-            <element signature="e#12278#12317#1" />
-            <element signature="e#12365#12836#0" />
-            <element signature="e#12842#13303#0" />
-            <element signature="e#13122#13234#0" />
-            <element signature="e#13309#13500#0" />
-            <element signature="e#13309#13765#0" />
-            <element signature="e#13771#13960#0" />
-            <element signature="e#13771#14143#0" />
-            <element signature="e#14283#14582#0" />
-            <element signature="e#14326#14446#1" />
-            <element signature="e#14452#14572#1" />
-            <element signature="e#14796#15143#0" />
-            <element signature="e#14897#14997#1" />
-            <element signature="e#15003#15103#1" />
-            <element signature="e#15149#15352#0" />
-            <element signature="e#15236#15285#1" />
-            <element signature="e#15291#15346#1" />
-            <element signature="e#15358#15646#0" />
-            <element signature="e#15652#16116#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>groovy-2.4.9</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>Common</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: ch.qos.logback:logback-classic:1.1.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

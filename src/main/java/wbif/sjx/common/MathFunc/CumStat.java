@@ -17,7 +17,7 @@ public class CumStat {
     private double S = 0;
     private double xSum = 0;
     private double xMin = Double.MAX_VALUE;
-    private double xMax = Double.MIN_VALUE;
+    private double xMax = -Double.MAX_VALUE;
 
     public CumStat() {
     }
