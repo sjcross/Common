@@ -315,16 +315,16 @@ public class OcTree implements Iterable<Point<Integer>>
         }
     }
 
-    public CoordinateStore getEdgePoints()
+    public CoordinateStore getEdgePoints(boolean is2D)
     {
         PointCoordinates points = new PointCoordinates();
 
-        getEdgePoints(root, points, size, 0, 0, 0);
+        getEdgePoints(root, points, is2D, size, 0, 0, 0);
 
         return points;
     }
 
-    private void getEdgePoints(OTNode node, PointCoordinates points, int size, int minX, int minY, int minZ)
+    private void getEdgePoints(OTNode node, PointCoordinates points, boolean is2d, int size, int minX, int minY, int minZ)
     {
         if (node.isDivided())
         {
@@ -333,51 +333,73 @@ public class OcTree implements Iterable<Point<Integer>>
             final int midY = minY + halfSize;
             final int midZ = minZ + halfSize;
 
-            getEdgePoints(node.lnw, points, halfSize, minX, minY, minZ);
-            getEdgePoints(node.lne, points, halfSize, midX, minY, minZ);
-            getEdgePoints(node.lsw, points, halfSize, minX, midY, minZ);
-            getEdgePoints(node.lse, points, halfSize, midX, midY, minZ);
-            getEdgePoints(node.unw, points, halfSize, minX, minY, midZ);
-            getEdgePoints(node.une, points, halfSize, midX, minY, midZ);
-            getEdgePoints(node.usw, points, halfSize, minX, midY, midZ);
-            getEdgePoints(node.use, points, halfSize, midX, midY, midZ);
+            getEdgePoints(node.lnw, points, is2d, halfSize, minX, minY, minZ);
+            getEdgePoints(node.lne, points, is2d, halfSize, midX, minY, minZ);
+            getEdgePoints(node.lsw, points, is2d, halfSize, minX, midY, minZ);
+            getEdgePoints(node.lse, points, is2d, halfSize, midX, midY, minZ);
+            getEdgePoints(node.unw, points, is2d, halfSize, minX, minY, midZ);
+            getEdgePoints(node.une, points, is2d, halfSize, midX, minY, midZ);
+            getEdgePoints(node.usw, points, is2d, halfSize, minX, midY, midZ);
+            getEdgePoints(node.use, points, is2d, halfSize, midX, midY, midZ);
         }
         else if (node.coloured)
         {
+
             final int maxX = minX + size - 1;
             final int maxY = minY + size - 1;
             final int maxZ = minZ + size - 1;
 
+            for (int z = minZ; z <= maxZ; z++)
+            {
+                if (minX - 1 <= 0 || !contains(minX - 1, minY, z) ||
+                    minY - 1 <= 0 || !contains(minX, minY - 1, z))
+                {
+                    points.add(new Point<>(minX, minY, z));
+                }
+
+                if (maxX + 1 >= width || !contains(maxX + 1, minY, z) ||
+                    minY - 1 <= 0 || !contains(maxX, minY - 1, z))
+                {
+                    points.add(new Point<>(maxX, minY, z));
+                }
+
+                if (minX - 1 <= 0 || !contains(minX - 1, maxY, z) ||
+                    maxY + 1 >= height || !contains(minX, maxY + 1, z))
+                {
+                    points.add(new Point<>(minX, maxY, z));
+                }
+
+                if (maxX + 1 >= width || !contains(maxX + 1, maxY, z) ||
+                    maxY + 1 >= height || !contains(maxX, maxY + 1, z))
+                {
+                    points.add(new Point<>(maxX, maxY, z));
+                }
+            }
+
+            if (is2d) return;
+
             for (int x = minX; x <= maxX; x++)
             {
-                if (
-                    minY - 1 <= 0 || !contains(x, minY - 1, minZ) ||
-                    minZ - 1 <= 0 || !contains(x, minY, minZ - 1)
-                   )
+                if (minY - 1 <= 0 || !contains(x, minY - 1, minZ) ||
+                    minZ - 1 <= 0 || !contains(x, minY, minZ - 1))
                 {
                     points.add(new Point<>(x, minY, minZ));
                 }
 
-                if (
-                    maxY + 1 >= height || !contains(x, maxY + 1, minZ) ||
-                    minZ - 1 <= 0      || !contains(x, maxY, minZ - 1)
-                   )
+                if (maxY + 1 >= height || !contains(x, maxY + 1, minZ) ||
+                    minZ - 1 <= 0 || !contains(x, maxY, minZ - 1))
                 {
                     points.add(new Point<>(x, maxY, minZ));
                 }
 
-                if (
-                    minY - 1 <= 0     || !contains(x, minY - 1, maxZ) ||
-                    maxZ + 1 >= depth || !contains(x, minY, maxZ + 1)
-                   )
+                if (minY - 1 <= 0 || !contains(x, minY - 1, maxZ) ||
+                    maxZ + 1 >= depth || !contains(x, minY, maxZ + 1))
                 {
                     points.add(new Point<>(x, minY, maxZ));
                 }
 
-                if (
-                    maxY + 1 >= height || !contains(x, maxY + 1, maxZ) ||
-                    maxZ + 1 >= depth  || !contains(x, maxY, maxZ + 1)
-                   )
+                if (maxY + 1 >= height || !contains(x, maxY + 1, maxZ) ||
+                    maxZ + 1 >= depth || !contains(x, maxY, maxZ + 1))
                 {
                     points.add(new Point<>(x, maxY, maxZ));
                 }
@@ -385,71 +407,28 @@ public class OcTree implements Iterable<Point<Integer>>
 
             for (int y = minY; y <= maxY; y++)
             {
-                if (
-                    minX - 1 <= 0 || !contains(minX - 1, y, minZ) ||
-                    minZ - 1 <= 0 || !contains(minX, y, minZ - 1)
-                   )
+                if (minX - 1 <= 0 || !contains(minX - 1, y, minZ) ||
+                        minZ - 1 <= 0 || !contains(minX, y, minZ - 1))
                 {
                     points.add(new Point<>(minX, y, minZ));
                 }
 
-                if (
-                    maxX + 1 >= width || !contains(maxX + 1, y, minZ) ||
-                    minZ - 1 <= 0     || !contains(maxX, y, minZ - 1)
-                   )
+                if (maxX + 1 >= width || !contains(maxX + 1, y, minZ) ||
+                        minZ - 1 <= 0 || !contains(maxX, y, minZ - 1))
                 {
                     points.add(new Point<>(maxX, y, minZ));
                 }
 
-                if (
-                    minX - 1 <= 0     || !contains(minX - 1, y, maxZ) ||
-                    maxZ + 1 >= depth || !contains(minX, y, maxZ + 1)
-                   )
+                if (minX - 1 <= 0 || !contains(minX - 1, y, maxZ) ||
+                        maxZ + 1 >= depth || !contains(minX, y, maxZ + 1))
                 {
                     points.add(new Point<>(minX, y, maxZ));
                 }
 
-                if (
-                    maxX + 1 >= width || !contains(maxX + 1, y, maxZ) ||
-                    maxZ + 1 >= depth || !contains(maxX, y, maxZ + 1)
-                   )
+                if (maxX + 1 >= width || !contains(maxX + 1, y, maxZ) ||
+                        maxZ + 1 >= depth || !contains(maxX, y, maxZ + 1))
                 {
                     points.add(new Point<>(maxX, y, maxZ));
-                }
-            }
-
-            for (int z = minZ; z <= maxZ; z++)
-            {
-                if (
-                    minX - 1 <= 0 || !contains(minX - 1, minY, z) ||
-                    minY - 1 <= 0 || !contains(minX, minY - 1, z)
-                   )
-                {
-                    points.add(new Point<>(minX, minY, z));
-                }
-
-                if (
-                    maxX + 1 >= width || !contains(maxX + 1, minY, z) ||
-                    minY - 1 <= 0     || !contains(maxX, minY - 1, z)
-                   )
-                {
-                    points.add(new Point<>(maxX, minY, z));
-                }
-
-                if (
-                    minX - 1 <= 0      || !contains(minX - 1, maxY, z) ||
-                    maxY + 1 >= height || !contains(minX, maxY + 1, z)
-                   )
-                {
-                    points.add(new Point<>(minX, maxY, z));
-                }
-
-                if (
-                    maxX + 1 >= width  || !contains(maxX + 1, maxY, z) ||
-                    maxY + 1 >= height || !contains(maxX, maxY + 1, z)
-                   )
-                {
-                    points.add(new Point<>(maxX, maxY, z));
                 }
             }
         }
@@ -611,6 +590,8 @@ public class OcTree implements Iterable<Point<Integer>>
             minXStack.push(0);
             minYStack.push(0);
             minZStack.push(0);
+
+            maxX = maxY = maxZ = Integer.MIN_VALUE;
 
             findNextColouredLeaf();
 
