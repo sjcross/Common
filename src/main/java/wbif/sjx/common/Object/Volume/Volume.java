@@ -61,12 +61,12 @@ public class Volume {
     CoordinateStore createCoordinateStore(VolumeType type) {
         switch (type) {
             case OCTREE:
-                return new OctreeCoordinates(width,height,nSlices);
+                return new OctreeCoordinates();
+            case QUADTREE:
+                return new QuadtreeCoordinates();
             case POINTLIST:
             default:
                 return new PointCoordinates();
-            case QUADTREE:
-                return new QuadtreeCoordinates(width,height);
         }
     }
 

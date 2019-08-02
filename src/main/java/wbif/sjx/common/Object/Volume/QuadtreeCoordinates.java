@@ -12,29 +12,23 @@ import java.util.*;
  * Created by sc13967 on 28/07/2017.
  */
 public class QuadtreeCoordinates implements CoordinateStore {
-    private final TreeMap<Integer, QuadTree> quadTrees = new TreeMap<>();
-    private final int width;
-    private final int height;
+    private final TreeMap<Integer, QuadTree> quadTrees;
 
-    public QuadtreeCoordinates(int width, int height) {
-        this.width = width;
-        this.height = height;
+    public QuadtreeCoordinates() {
+        quadTrees = new TreeMap<>();
     }
-
 
     // Adding and removing points
 
     @Override
     public boolean add(int x, int y, int z) {
-        quadTrees.putIfAbsent(z,new QuadTree(width,height));
+        quadTrees.putIfAbsent(z,new QuadTree());
 
         // Get relevant QuadTree
         QuadTree quadTree = quadTrees.get(z);
 
         // Adding this point
         quadTree.add(x, y);
-
-//        quadTree.optimise();
 
         return true;
 

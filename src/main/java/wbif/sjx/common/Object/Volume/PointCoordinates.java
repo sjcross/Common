@@ -12,7 +12,11 @@ import java.util.function.Consumer;
  * Created by sc13967 on 28/07/2017.
  */
 public class PointCoordinates implements CoordinateStore {
-    protected TreeSet<Point<Integer>> points = new TreeSet<>();
+    protected final TreeSet<Point<Integer>> points;
+
+    public PointCoordinates() {
+        points = new TreeSet<>();
+    }
 
     // Adding and removing points
 
@@ -56,7 +60,7 @@ public class PointCoordinates implements CoordinateStore {
 
     @Override
     public void clear() {
-        points = new TreeSet<>();
+        points.clear();
     }
 
     @Override
@@ -82,7 +86,7 @@ public class PointCoordinates implements CoordinateStore {
     CoordinateStore calculateSurface2D() {
         PointCoordinates surface = new PointCoordinates();
 
-        // Iterating over each Point, adding it if it has fewer than 6 neighbours
+        // Iterating over each Point, adding it if it has fewer than 4 neighbours
         for (Point<Integer> point:points) {
             int count = 0;
 

@@ -13,17 +13,9 @@ import java.util.*;
  */
 public class OctreeCoordinates implements CoordinateStore {
     private final OcTree ocTree;
-    private final int width;
-    private final int height;
-    private final int nSlices;
 
-    public OctreeCoordinates(int width, int height, int nSlices) {
-        this.width = width;
-        this.height = height;
-        this.nSlices = nSlices;
-
-        ocTree = new OcTree(width,height,nSlices);
-
+    public OctreeCoordinates() {
+        ocTree = new OcTree();
     }
 
     // Adding and removing points
@@ -32,8 +24,6 @@ public class OctreeCoordinates implements CoordinateStore {
     public boolean add(int x, int y, int z) {
         // Adding this point
         ocTree.add(x, y, z);
-
-//        ocTree.optimise();
 
         return true;
 

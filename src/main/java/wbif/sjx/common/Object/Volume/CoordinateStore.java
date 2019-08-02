@@ -42,6 +42,7 @@ public interface CoordinateStore extends Collection<Point<Integer>> {
 
     }
 
+    @Override
     public default Object[] toArray() {
         Point[] array = new Point[size()];
 
