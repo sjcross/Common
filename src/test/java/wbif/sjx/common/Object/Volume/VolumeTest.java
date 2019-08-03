@@ -2,20 +2,34 @@ package wbif.sjx.common.Object.Volume;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Point;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
-public class QuadtreeCoordinatesTest {
-    private double tolerance10 = 1E-10;
-    private double tolerance2 = 1E-2;
+@RunWith(Parameterized.class)
+public class VolumeTest
+{
+    private final double tolerance10 = 1E-10;
+    private final double tolerance2 = 1E-2;
+    private final VolumeType volumeType;
 
+    // PARAMETERIZED CONFIG
+
+    @Parameterized.Parameters(name = "{0}")
+    public static Iterable<VolumeType> data()
+    {
+        return Arrays.asList(VolumeType.values());
+    }
+
+    public VolumeTest(VolumeType volumeType)
+    {
+        this.volumeType = volumeType;
+    }
 
     // ADDING COORDINATES
 
@@ -25,7 +39,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,10,10,1,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,10,10,1,dppXY,dppZ,units);
         volume.add(0,0,0);
         volume.add(0,0,0);
         volume.add(1,0,0);
@@ -39,7 +53,7 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetXCoords() throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.QUADTREE,10,10,13,2.0,1.0,"PX");
+        Volume volume = new Volume(volumeType,10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -64,7 +78,7 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetYCoords() throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.QUADTREE,10,10,13,2.0,1.0,"PX");
+        Volume volume = new Volume(volumeType,10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -89,7 +103,7 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetZCoords() throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.QUADTREE,10,10,13,2.0,1.0,"PX");
+        Volume volume = new Volume(volumeType,10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -118,7 +132,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,10,10,13,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,10,10,13,dppXY,dppZ,units);
 
         double[] actualX = volume.getX(true);
         double[] expectedX = new double[]{};
@@ -134,7 +148,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -153,7 +167,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -172,7 +186,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -191,7 +205,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -210,7 +224,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -229,7 +243,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -248,7 +262,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -270,7 +284,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
 
         double actual = volume.getXYScaledZ(1);
         double expected = 5d;
@@ -288,7 +302,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -304,7 +318,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -320,7 +334,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -336,7 +350,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -352,7 +366,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -368,7 +382,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -384,7 +398,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -404,10 +418,10 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,20,1,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,20,1,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,20,1,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,20,1,dppXY,dppZ,units);
         volume2.add(10,10,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -423,10 +437,10 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,11,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,11,5,dppXY,dppZ,units);
         volume1.add(5,5,0);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,11,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,11,5,dppXY,dppZ,units);
         volume2.add(0,10,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -442,10 +456,10 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,11,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,11,5,dppXY,dppZ,units);
         volume1.add(5,5,0);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,11,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,11,5,dppXY,dppZ,units);
         volume2.add(0,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -461,10 +475,10 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,11,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,11,5,dppXY,dppZ,units);
         volume1.add(5,5,0);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,11,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,11,5,dppXY,dppZ,units);
         volume2.add(10,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -480,10 +494,10 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume2.add(5,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -499,10 +513,10 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume1.add(0,0,0);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume2.add(0,5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -518,10 +532,10 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,11,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,11,5,dppXY,dppZ,units);
         volume1.add(5,5,0);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,11,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,11,5,dppXY,dppZ,units);
         volume2.add(0,5,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -537,10 +551,10 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,11,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,11,5,dppXY,dppZ,units);
         volume1.add(5,5,0);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,11,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,11,5,dppXY,dppZ,units);
         volume2.add(5,0,0);
 
         double actualAngle = volume1.calculateAngle2D(volume2);
@@ -558,7 +572,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -574,7 +588,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -590,7 +604,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -609,7 +623,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -630,7 +644,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -651,7 +665,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,3);
@@ -679,7 +693,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
 
         assertFalse(volume.hasVolume());
 
@@ -691,7 +705,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,1);
         volume.add(11,5,1);
@@ -707,7 +721,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -723,7 +737,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
 
         assertFalse(volume.hasArea());
 
@@ -735,7 +749,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,1);
         volume.add(11,5,1);
@@ -751,7 +765,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -766,7 +780,7 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testContainsPointDoesContain() throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.QUADTREE,10,5,15,2.0,1.0,"PX");
+        Volume volume = new Volume(volumeType,10,5,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -780,7 +794,7 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testContainsPointDoesntContain() throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.QUADTREE,10,5,15,2.0,1.0,"PX");
+        Volume volume = new Volume(volumeType,10,5,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -798,7 +812,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
 
         assertEquals(0,volume.size());
 
@@ -810,7 +824,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -826,7 +840,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -842,7 +856,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,5,2);
         volume.add(11,5,2);
@@ -858,7 +872,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,6,1);
         volume.add(11,5,1);
@@ -874,7 +888,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume.add(10,5,1);
         volume.add(10,6,1);
         volume.add(11,5,1);
@@ -889,13 +903,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testHashCodeDifferentValue() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,5,4,13,1.0,1.0,"Test");
+        Volume volume1 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,5,4,13,1.0,1.0,"Test");
+        Volume volume2 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume2.add(1,2,3);
         volume2.add(0,3,12);
         volume2.add(2,1,2);
@@ -908,19 +922,19 @@ public class QuadtreeCoordinatesTest {
     @Test
     public void testHashCodeDifferentPointOrder() throws IntegerOverflowException {
         // Verifying that the order of point placement doesn't matter
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"Test");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"Test");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"Test");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
-        Volume volume3 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"Test");
+        Volume volume3 = new Volume(volumeType,10,10,20,2.0,1.0,"Test");
         volume3.add(2,1,2);
         volume3.add(1,2,3);
         volume3.add(4,3,12);
@@ -935,13 +949,13 @@ public class QuadtreeCoordinatesTest {
     @Test
     public void testHashCodeMissingPoint() throws IntegerOverflowException {
         // Verifying that all points need to be present for equality
-        Volume volume1 = new Volume(VolumeType.QUADTREE,5,4,13,1.0,1.0,"Test");
+        Volume volume1 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,5,4,13,1.0,1.0,"Test");
+        Volume volume2 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume2.add(2,1,2);
         volume2.add(4,3,12);
         volume2.add(1,2,5);
@@ -952,13 +966,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testHashCodeDifferentCalibration() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.1,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.1,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -970,13 +984,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testHashCodeDifferentUnitsCase() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"px");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"px");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -988,13 +1002,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testHashCodeDifferentUnits() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"um");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"um");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1009,13 +1023,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testEqualsDifferentValue() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,5,4,13,1.0,1.0,"Test");
+        Volume volume1 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,5,4,13,1.0,1.0,"Test");
+        Volume volume2 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume2.add(1,2,3);
         volume2.add(0,3,12);
         volume2.add(2,1,2);
@@ -1028,19 +1042,19 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testEqualsDifferentPointOrder() throws IntegerOverflowException {// Verifying that the order of point placement doesn't matter
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
         volume2.add(1,2,5);
 
-        Volume volume3 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume3 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume3.add(2,1,2);
         volume3.add(1,2,3);
         volume3.add(4,3,12);
@@ -1058,13 +1072,13 @@ public class QuadtreeCoordinatesTest {
     @Test
     public void testEqualsMissingPoint() throws IntegerOverflowException {
         // Verifying that all points need to be present for equality
-        Volume volume1 = new Volume(VolumeType.QUADTREE,5,4,13,1.0,1.0,"Test");
+        Volume volume1 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,5,4,13,1.0,1.0,"Test");
+        Volume volume2 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume2.add(2,1,2);
         volume2.add(4,3,12);
         volume2.add(1,2,5);
@@ -1076,13 +1090,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testEqualsDifferentCalibration() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.1,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.1,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1095,13 +1109,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testEqualsDifferentUnitsCase() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"px");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1114,13 +1128,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testEqualsDifferentUnits() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"um");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"um");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1136,13 +1150,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetOverlappingPointsWithOverlap() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
@@ -1164,13 +1178,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetOverlappingPointsWithoutOverlap() throws IntegerOverflowException  {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(5,3,12);
         volume2.add(2,2,2);
@@ -1186,13 +1200,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetOverlappingPointsTotalOverlap() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1215,14 +1229,14 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetOverlappingPointsWithOverlapMoreIn1() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
         volume1.add(4,5,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
@@ -1243,13 +1257,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetOverlappingPointsWithOverlapMoreIn2() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
@@ -1271,13 +1285,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetOverlapWithOverlap() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(4,3,12);
         volume2.add(2,2,2);
@@ -1292,13 +1306,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetOverlapWithoutOverlap() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(2,2,3);
         volume2.add(5,3,12);
         volume2.add(2,2,2);
@@ -1313,13 +1327,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetOverlapTotalOverlap() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1334,14 +1348,14 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetOverlapTotalOverlapMoreIn1() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
         volume1.add(4,5,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1356,13 +1370,13 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetOverlapTotalOverlapMoreIn2() throws IntegerOverflowException {
-        Volume volume1 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
         volume1.add(2,1,2);
         volume1.add(1,2,5);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,10,10,20,2.0,1.0,"PX");
+        Volume volume2 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume2.add(1,2,3);
         volume2.add(4,3,12);
         volume2.add(2,1,2);
@@ -1381,7 +1395,7 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testClearSurface() throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.QUADTREE,10,7,15,2.0,1.0,"PX");
+        Volume volume = new Volume(volumeType,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1402,7 +1416,7 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testClearPoints() throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.QUADTREE,10,7,15,2.0,1.0,"PX");
+        Volume volume = new Volume(volumeType,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1423,7 +1437,7 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetSurface() throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.QUADTREE,10,10,8,2.0,1.0,"PX");
+        Volume volume = new Volume(volumeType,10,10,8,2.0,1.0,"PX");
         volume.add(5,7,3);
         volume.add(5,8,3);
         volume.add(5,9,3);
@@ -1510,7 +1524,7 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetProjectedAreaPixelDistances() throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.QUADTREE,10,7,15,2.0,1.0,"PX");
+        Volume volume = new Volume(volumeType,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1530,7 +1544,7 @@ public class QuadtreeCoordinatesTest {
 
     @Test
     public void testGetProjectedAreaCalibratedDistances() throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.QUADTREE,10,7,15,2.0,1.0,"PX");
+        Volume volume = new Volume(volumeType,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
         volume.add(2,1,2);
@@ -1554,13 +1568,13 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,20,1,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,20,1,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
         volume1.add(12,6,0);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,20,1,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,20,1,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);
@@ -1580,13 +1594,13 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,20,1,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,20,1,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
         volume1.add(12,6,0);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,20,1,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,20,1,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);
@@ -1606,7 +1620,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
@@ -1615,7 +1629,7 @@ public class QuadtreeCoordinatesTest {
         volume1.add(11,5,1);
         volume1.add(12,6,1);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);
@@ -1639,7 +1653,7 @@ public class QuadtreeCoordinatesTest {
         double dppZ = 0.1;
         String units = "um";
 
-        Volume volume1 = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume1 = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume1.add(10,5,0);
         volume1.add(11,5,0);
         volume1.add(11,6,0);
@@ -1648,7 +1662,7 @@ public class QuadtreeCoordinatesTest {
         volume1.add(11,5,1);
         volume1.add(12,6,1);
 
-        Volume volume2 = new Volume(VolumeType.QUADTREE,20,10,5,dppXY,dppZ,units);
+        Volume volume2 = new Volume(volumeType,20,10,5,dppXY,dppZ,units);
         volume2.add(1,2,0);
         volume2.add(1,3,0);
         volume2.add(2,1,0);

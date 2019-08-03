@@ -279,14 +279,16 @@ public class OcTree extends AbstractSet<Point<Integer>>
             getEdgePoints(node.lne, points, is2d, halfSize, midX, minY, minZ);
             getEdgePoints(node.lsw, points, is2d, halfSize, minX, midY, minZ);
             getEdgePoints(node.lse, points, is2d, halfSize, midX, midY, minZ);
-            getEdgePoints(node.unw, points, is2d, halfSize, minX, minY, midZ);
-            getEdgePoints(node.une, points, is2d, halfSize, midX, minY, midZ);
-            getEdgePoints(node.usw, points, is2d, halfSize, minX, midY, midZ);
-            getEdgePoints(node.use, points, is2d, halfSize, midX, midY, midZ);
+
+            if (is2d) return;
+
+            getEdgePoints(node.unw, points, false, halfSize, minX, minY, midZ);
+            getEdgePoints(node.une, points, false, halfSize, midX, minY, midZ);
+            getEdgePoints(node.usw, points, false, halfSize, minX, midY, midZ);
+            getEdgePoints(node.use, points, false, halfSize, midX, midY, midZ);
         }
         else if (node.coloured)
         {
-
             final int maxX = minX + size - 1;
             final int maxY = minY + size - 1;
             final int maxZ = minZ + size - 1;

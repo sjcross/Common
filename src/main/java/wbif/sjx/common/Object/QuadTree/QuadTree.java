@@ -1,6 +1,6 @@
 package wbif.sjx.common.Object.QuadTree;
 
-import com.sun.istack.internal.Nullable;
+import com.drew.lang.annotations.Nullable;
 import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Volume.CoordinateStore;
 import wbif.sjx.common.Object.Volume.PointCoordinates;
