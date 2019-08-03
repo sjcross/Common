@@ -1,5 +1,4 @@
 // TODO: Change getProjectedArea to use HashSet for coordinate indices
-// TODO: Should get calculateSurface methods to work for negative values too (not just ignore them)
 
 package wbif.sjx.common.Object.Volume;
 
@@ -11,11 +10,16 @@ import java.util.*;
 /**
  * Created by sc13967 on 28/07/2017.
  */
-public class QuadtreeCoordinates implements CoordinateStore {
-    private final TreeMap<Integer, QuadTree> quadTrees;
+public class QuadtreeCoordinates extends CoordinateStore {
+    private final Map<Integer, QuadTree> quadTrees;
 
     public QuadtreeCoordinates() {
         quadTrees = new TreeMap<>();
+    }
+
+    @Override
+    public VolumeType getVolumeType() {
+        return VolumeType.QUADTREE;
     }
 
     // Adding and removing points
@@ -31,7 +35,6 @@ public class QuadtreeCoordinates implements CoordinateStore {
         quadTree.add(x, y);
 
         return true;
-
     }
 
     @Override
@@ -40,22 +43,11 @@ public class QuadtreeCoordinates implements CoordinateStore {
     }
 
     @Override
-    public boolean addAll(Collection<? extends Point<Integer>> c) {
-        return false;
-    }
-
-    @Override
     public boolean contains(Object o) {
         Point<Integer> point = (Point<Integer>) o;
 
         if (!quadTrees.containsKey(point.z)) return false;
         return quadTrees.get(point.z).contains(point.x,point.y);
-
-    }
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        return false;
     }
 
     @Override
@@ -66,12 +58,6 @@ public class QuadtreeCoordinates implements CoordinateStore {
         quadTrees.get(point.z).remove(point.x,point.y);
 
         return true;
-
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        return false;
     }
 
     @Override
@@ -87,28 +73,15 @@ public class QuadtreeCoordinates implements CoordinateStore {
 
     // Creating coordinate subsets
 
-    @Override
-    public CoordinateStore calculateSurface(boolean is2D) {
-        if (is2D) return calculateSurface2D();
-        else return calculateSurface3D();
-
-    }
-
-    @Override
-    public VolumeType getVolumeType() {
-        return VolumeType.QUADTREE;
-    }
-
-    CoordinateStore calculateSurface2D() {
+    protected CoordinateStore calculateSurface2D() {
         // Get the sole QuadTree
         QuadTree quadTree = quadTrees.values().iterator().next();
 
         // Set the surface list to the edge points of the QuadTree
         return quadTree.getEdgePoints();
-
     }
 
-    CoordinateStore calculateSurface3D() {
+    protected CoordinateStore calculateSurface3D() {
         PointCoordinates surface = new PointCoordinates();
 
         // For each slice
@@ -123,7 +96,6 @@ public class QuadtreeCoordinates implements CoordinateStore {
         }
 
         return surface;
-
     }
 
 
@@ -133,15 +105,9 @@ public class QuadtreeCoordinates implements CoordinateStore {
     public int size() {
         int nVoxels = 0;
 
-        for (QuadTree quadTree:quadTrees.values()) nVoxels += quadTree.getPointCount();
+        for (QuadTree quadTree:quadTrees.values()) nVoxels += quadTree.size();
 
         return nVoxels;
-
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size() == 0;
     }
 
     @Override
@@ -151,7 +117,6 @@ public class QuadtreeCoordinates implements CoordinateStore {
         for (QuadTree quadTree:quadTrees.values()) nElements += quadTree.getNodeCount();
 
         return nElements;
-
     }
 
 
@@ -162,47 +127,8 @@ public class QuadtreeCoordinates implements CoordinateStore {
         return new QuadTreeVolumeIterator();
     }
 
-    @Override
-    public <T> T[] toArray(T[] a) {
-        return null;
-    }
-
 
     // Miscellaneous
-
-    @Override
-    public int hashCode() {
-        int hash = 1;
-
-        for (Point<Integer> point:this) hash = 31*hash + point.hashCode();
-
-        return hash;
-
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (!(obj instanceof QuadtreeCoordinates)) return false;
-
-        QuadtreeCoordinates volume2 = (QuadtreeCoordinates) obj;
-        if (size() != volume2.size()) return false;
-
-        Iterator<Point<Integer>> iterator1 = iterator();
-        Iterator<Point<Integer>> iterator2 = volume2.iterator();
-
-        while (iterator1.hasNext()) {
-            Point<Integer> point1 = iterator1.next();
-            Point<Integer> point2 = iterator2.next();
-
-            if (!point1.equals(point2)) return false;
-
-        }
-
-        return true;
-
-    }
-
 
     private class QuadTreeVolumeIterator implements Iterator<Point<Integer>> {
         private Iterator<Integer> sliceIterator = quadTrees.keySet().iterator();
