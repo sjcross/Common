@@ -38,7 +38,6 @@ public class ImageEnergy extends Energy {
                 im[c][r] = ipr.getPixelValue(c,r);
             }
         }
-
     }
 
     public double getEnergy(Vertex node) {
@@ -49,18 +48,10 @@ public class ImageEnergy extends Energy {
 
         double term;
 
-        if (x >= 0 & x < w & y >= 0 & y < h) {
-            term = Math.pow(im[x][y],2);
+        if (x >= 0 & x < w & y >= 0 & y < h) term = Math.pow(im[x][y],2);
+        else term = Double.POSITIVE_INFINITY;
 
-        } else {
-            term = Double.POSITIVE_INFINITY;
-
-        }
-
-        double energy = weight*term;
-
-        return energy;
+        return weight*term;
 
     }
-
 }
