@@ -5,9 +5,12 @@ import ij.ImageJ;
 import ij.ImagePlus;
 import ij.gui.Overlay;
 import ij.gui.Roi;
+import ij.plugin.Duplicator;
 import wbif.sjx.common.Process.ActiveContour.Energies.*;
 import wbif.sjx.common.Process.ActiveContour.Minimisers.GreedyMinimiser;
 import wbif.sjx.common.Process.ActiveContour.PhysicalModel.NodeCollection;
+import wbif.sjx.common.Process.ActiveContour.Visualisation.GridOverlay;
+import wbif.sjx.common.Process.IntensityMinMax;
 
 import java.awt.*;
 
@@ -41,19 +44,26 @@ public class ActiveContour {
 
         //Assigning energies
         EnergyCollection energies = new EnergyCollection();
-        energies.add(new ElasticEnergy(1));
+        energies.add(new ElasticEnergy(100));
         energies.add(new BendingEnergy(1));
-        energies.add(new PathEnergy(100,ipl));
+        energies.add(new PathEnergy(1,ipl));
 
         GreedyMinimiser greedy = new GreedyMinimiser(energies);
         greedy.setWidth(10);
         greedy.setSequence(GreedyMinimiser.RANDOM);
 
+        GridOverlay gridOverlay = new GridOverlay();
+        gridOverlay.setNodeRadius(2);
+
+        ipl.deleteRoi();
+        ImagePlus dispIpl = new Duplicator().run(ipl);
+        IntensityMinMax.run(dispIpl,true);
+        dispIpl.show();
+
         for (int i=0;i<1000;i++) {
             greedy.evaluateGreedy(nodes);
-
             if (!nodes.anyNodesMoved()) break;
-
+            gridOverlay.drawOverlay(nodes, dispIpl);
         }
 
         Roi newRoi = nodes.getROI();
