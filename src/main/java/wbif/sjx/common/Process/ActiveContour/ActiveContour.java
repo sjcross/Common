@@ -62,7 +62,7 @@ public class ActiveContour {
 
         for (int i=0;i<1000;i++) {
             greedy.evaluateGreedy(nodes);
-            if (!nodes.anyNodesMoved()) break;
+            if (nodes.getAverageDistanceMoved() < 0.01) break;
             gridOverlay.drawOverlay(nodes, dispIpl);
         }
 

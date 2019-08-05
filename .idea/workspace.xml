@@ -8,6 +8,10 @@
     <list default="true" id="9b315326-c91a-49be-a3d0-58e65eca7365" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Minimisers/GreedyMinimiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Minimisers/GreedyMinimiser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/NodeCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/NodeCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/Vertex.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+            <state relative-caret-position="476">
+              <caret line="67" selection-start-line="67" selection-end-line="67" />
             </state>
           </provider>
         </entry>
@@ -55,7 +59,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/PathEnergy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="556">
               <caret line="72" selection-start-line="72" selection-end-line="72" />
             </state>
           </provider>
@@ -64,8 +68,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/NodeCollection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="95" selection-start-line="95" selection-end-line="95" />
+            <state relative-caret-position="743">
+              <caret line="101" column="41" selection-start-line="101" selection-start-column="41" selection-end-line="101" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/Vertex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="794">
+              <caret line="155" column="72" selection-start-line="155" selection-start-column="72" selection-end-line="155" selection-end-column="72" />
+              <folding>
+                <element signature="method#Vertex#0;class#Vertex#0" />
+                <element signature="method#Vertex#1;class#Vertex#0" />
+                <element signature="method#setX#0;class#Vertex#0" />
+                <element signature="method#setY#0;class#Vertex#0" />
+                <element signature="method#setXY#0;class#Vertex#0" />
+                <element signature="method#setFixedX#0;class#Vertex#0" />
+                <element signature="method#setFixedY#0;class#Vertex#0" />
+                <element signature="method#setTopNeighbour#0;class#Vertex#0" />
+                <element signature="method#setBottomNeighbour#0;class#Vertex#0" />
+                <element signature="method#setLeftNeighbour#0;class#Vertex#0" />
+                <element signature="method#setRightNeighbour#0;class#Vertex#0" />
+                <element signature="method#setSpecial#0;class#Vertex#0" />
+                <element signature="method#getX#0;class#Vertex#0" />
+                <element signature="method#getY#0;class#Vertex#0" />
+                <element signature="method#getTopNeighbour#0;class#Vertex#0" />
+                <element signature="method#getBottomNeighbour#0;class#Vertex#0" />
+                <element signature="method#getLeftNeighbour#0;class#Vertex#0" />
+                <element signature="method#getRightNeighbour#0;class#Vertex#0" />
+                <element signature="method#getFixedX#0;class#Vertex#0" />
+                <element signature="method#getFixedY#0;class#Vertex#0" />
+                <element signature="method#getSpecial#0;class#Vertex#0" />
+                <element signature="method#isSpecial#0;class#Vertex#0" />
+                <element signature="e#2776#2819#1" />
+                <element signature="e#3005#3006#0" expanded="true" />
+                <element signature="e#3055#3056#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Minimisers/GreedyMinimiser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
+            <state relative-caret-position="833">
+              <caret line="72" selection-start-line="72" selection-end-line="72" />
             </state>
           </provider>
         </entry>
@@ -100,7 +140,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageEnergy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
+            <state relative-caret-position="782">
               <caret line="52" selection-start-line="52" selection-end-line="52" />
             </state>
           </provider>
@@ -176,9 +216,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/EuclideanDistanceCalculator.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/CumulativePathLengthCalculatorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/InstantaneousSpeedCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/InstantaneousStepSizeCalculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousStepSizeCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/EuclideanDistanceCalculatorTest.java" />
@@ -223,9 +260,12 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/HoughTransform/Transforms/CircleHoughTransform.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/HoughTransform/Transforms/GenericHoughTransform.java" />
         <option value="$PROJECT_DIR$/.travis.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageEnergy.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/PathEnergy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/NodeCollection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/Vertex.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Minimisers/GreedyMinimiser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
@@ -252,6 +292,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -353,7 +394,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -626,6 +666,7 @@
       <workItem from="1562058556100" duration="598000" />
       <workItem from="1562146878623" duration="1932000" />
       <workItem from="1564654955328" duration="10914000" />
+      <workItem from="1565008106598" duration="1595000" />
     </task>
     <servers />
   </component>
@@ -662,7 +703,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47128000" />
+    <option name="totallyTimeSpent" value="48723000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -677,7 +718,7 @@
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1988273" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20095949" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24972437" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -687,7 +728,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32902583" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3081511" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3081511" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39960238" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -753,13 +794,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/FileCondition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1119,20 +1153,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Visualisation/GridOverlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Minimisers/GreedyMinimiser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/EnergyCollection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1140,31 +1160,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/NodeCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/ImageEnergy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
+        <state relative-caret-position="782">
           <caret line="52" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Visualisation/GridOverlay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+        <state relative-caret-position="204">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/PathEnergy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="556">
           <caret line="72" selection-start-line="72" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/Vertex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="794">
+          <caret line="155" column="72" selection-start-line="155" selection-start-column="72" selection-end-line="155" selection-end-column="72" />
+          <folding>
+            <element signature="method#Vertex#0;class#Vertex#0" />
+            <element signature="method#Vertex#1;class#Vertex#0" />
+            <element signature="method#setX#0;class#Vertex#0" />
+            <element signature="method#setY#0;class#Vertex#0" />
+            <element signature="method#setXY#0;class#Vertex#0" />
+            <element signature="method#setFixedX#0;class#Vertex#0" />
+            <element signature="method#setFixedY#0;class#Vertex#0" />
+            <element signature="method#setTopNeighbour#0;class#Vertex#0" />
+            <element signature="method#setBottomNeighbour#0;class#Vertex#0" />
+            <element signature="method#setLeftNeighbour#0;class#Vertex#0" />
+            <element signature="method#setRightNeighbour#0;class#Vertex#0" />
+            <element signature="method#setSpecial#0;class#Vertex#0" />
+            <element signature="method#getX#0;class#Vertex#0" />
+            <element signature="method#getY#0;class#Vertex#0" />
+            <element signature="method#getTopNeighbour#0;class#Vertex#0" />
+            <element signature="method#getBottomNeighbour#0;class#Vertex#0" />
+            <element signature="method#getLeftNeighbour#0;class#Vertex#0" />
+            <element signature="method#getRightNeighbour#0;class#Vertex#0" />
+            <element signature="method#getFixedX#0;class#Vertex#0" />
+            <element signature="method#getFixedY#0;class#Vertex#0" />
+            <element signature="method#getSpecial#0;class#Vertex#0" />
+            <element signature="method#isSpecial#0;class#Vertex#0" />
+            <element signature="e#2776#2819#1" />
+            <element signature="e#3005#3006#0" expanded="true" />
+            <element signature="e#3055#3056#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/NodeCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="101" column="41" selection-start-line="101" selection-start-column="41" selection-end-line="101" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Minimisers/GreedyMinimiser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>

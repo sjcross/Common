@@ -2,6 +2,7 @@ package wbif.sjx.common.Process.ActiveContour.PhysicalModel;
 
 import ij.gui.PolygonRoi;
 import ij.gui.Roi;
+import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -98,16 +99,12 @@ public class NodeCollection extends HashSet<Vertex> {
 
     }
 
-    /**
-     * Checks if any Nodes are listed as having moved at the last step.  If they haven't it returns false.
-     * @return
-     */
-    public boolean anyNodesMoved() {
-        for (Vertex node:this) {
-            if (node.hasMoved()) return true;
-        }
+    public double getAverageDistanceMoved() {
+        CumStat cumStat = new CumStat();
 
-        return false;
+        for (Vertex vertex:this) cumStat.addMeasure(vertex.getDistanceMoved());
+
+        return cumStat.getMean();
 
     }
 }

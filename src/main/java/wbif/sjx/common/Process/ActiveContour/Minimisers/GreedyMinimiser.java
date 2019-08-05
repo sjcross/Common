@@ -69,7 +69,7 @@ public class GreedyMinimiser {
         //Placing the node at the optimal location
         node.setXY(cs_x.getMean(),cs_y.getMean());
         node.setEnergy(min_energy);
-        node.setMoved(!(x == node.getX() && y == node.getY()));
+        node.setDistanceMoved(x,y,node.getX(),node.getY());
 
     }
 
