@@ -17,7 +17,7 @@ public class Vertex {
     private double energy = 0;
     private int ID; // Specific to that node
     private int special = 0; //No special state
-    private boolean moved = false; // Condition that can be used to check if the Vertex moved last time
+    private double distanceMoved = Double.MAX_VALUE; // Condition that can be used to check if the Vertex moved last time
 
     public Vertex(double x, double y) {
         this.x = x;
@@ -148,12 +148,16 @@ public class Vertex {
 
     }
 
-    public boolean hasMoved() {
-        return moved;
+    public double getDistanceMoved() {
+        return distanceMoved;
     }
 
-    public void setMoved(boolean moved) {
-        this.moved = moved;
+    public void setDistanceMoved(double x1, double y1, double x2, double y2) {
+        this.distanceMoved = Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+    }
+
+    public void setDistanceMoved(double distanceMoved) {
+        this.distanceMoved = distanceMoved;
     }
 
     public double getEnergy() {
