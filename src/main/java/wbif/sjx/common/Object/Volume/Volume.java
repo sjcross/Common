@@ -1,9 +1,11 @@
 package wbif.sjx.common.Object.Volume;
 
+import wbif.sjx.common.Analysis.Volume.SurfaceSeparationCalculator;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Point;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
@@ -427,11 +429,10 @@ public class Volume {
     }
 
     public double getSurfaceSeparation(Volume volume2, boolean pixelDistances) {
-        System.out.println("wbif.sjx.common.Object.Volume getSurfaceSeparation needs implementing.  Possibly make use of point iterator when implemented - rather than getting array of all coordiantes");
-//        SurfaceSeparationCalculator calculator = new SurfaceSeparationCalculator(this,volume2,pixelDistances);
-//
-//        return calculator.getMinDist();
-        return 0;
+        SurfaceSeparationCalculator calculator = new SurfaceSeparationCalculator(this,volume2,pixelDistances);
+
+        return calculator.getMinDist();
+
     }
 
     /**
@@ -482,9 +483,23 @@ public class Volume {
         int count = 0;
 
         if (size() < volume2.size()) {
-            for (Point<Integer> p1 : coordinateStore) if (volume2.contains(p1)) count++;
+            System.out.println("11111");
+            for (Point<Integer> p1 : coordinateStore) {
+                System.out.println(p1.x+"_"+p1.y+"_"+p1.z);
+                if (volume2.contains(p1)) {
+                    System.out.println("    ADD");
+                    count++;
+                }
+            }
         } else {
-            for (Point<Integer> p2 : volume2.coordinateStore) if (contains(p2)) count++;
+            System.out.println("22222");
+            for (Point<Integer> p2 : volume2.coordinateStore) {
+                System.out.println(p2.x+"_"+p2.y+"_"+p2.z);
+                if (contains(p2)) {
+                    System.out.println("    ADD");
+                    count++;
+                }
+            }
         }
 
         return count;
@@ -566,4 +581,44 @@ public class Volume {
         this.coordinateStore = coordinateStore;
     }
 
+    public Iterator<Point<Double>> getCalibratedIterator(boolean pixelDistances, boolean matchXY) {
+        return new VolumeIterator(pixelDistances,matchXY);
+    }
+
+    public Iterator<Point<Integer>> getCoordinateIterator() {
+        return coordinateStore.iterator();
+    }
+
+    private class VolumeIterator implements Iterator<Point<Double>> {
+        private Iterator<Point<Integer>> iterator;
+        private boolean pixelDistances;
+        private boolean matchXY;
+
+        public VolumeIterator(boolean pixelDistances, boolean matchXY) {
+            this.pixelDistances = pixelDistances;
+            this.iterator = coordinateStore.iterator();
+            this.matchXY = matchXY;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return iterator.hasNext();
+        }
+
+        @Override
+        public Point<Double> next() {
+            Point<Integer> nextPoint = iterator.next();
+            int x = nextPoint.x;
+            int y = nextPoint.y;
+            int z = nextPoint.z;
+
+            if (pixelDistances && matchXY) {
+                return new Point<>((double) x, (double) y, (double) z * dppZ / dppXY);
+            } else if (pixelDistances &! matchXY) {
+                return new Point<>((double) x, (double) y, (double) z);
+            } else {
+                return new Point<>((double) x*dppXY, (double) y*dppXY, (double) z*dppZ);
+            }
+        }
+    }
 }
