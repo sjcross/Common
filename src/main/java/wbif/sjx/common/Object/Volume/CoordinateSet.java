@@ -5,20 +5,20 @@ import wbif.sjx.common.Object.Point;
 
 import java.util.AbstractSet;
 
-public abstract class CoordinateStore extends AbstractSet<Point<Integer>> {
+public abstract class CoordinateSet extends AbstractSet<Point<Integer>> {
     public abstract boolean add(int x, int y, int z);
     public abstract void finalise();
     public abstract long getNumberOfElements();
     public abstract VolumeType getVolumeType();
-    protected abstract CoordinateStore calculateSurface2D();
-    protected abstract CoordinateStore calculateSurface3D();
+    protected abstract CoordinateSet calculateSurface2D();
+    protected abstract CoordinateSet calculateSurface3D();
 
-    public CoordinateStore calculateSurface(boolean is2D) {
+    public CoordinateSet calculateSurface(boolean is2D) {
         return is2D ? calculateSurface2D() : calculateSurface3D();
 
     }
 
-    public CoordinateStore calculateProjected() {
+    public CoordinateSet calculateProjected() {
         PointCoordinates projected = new PointCoordinates();
 
         for (Point<Integer> point:this) projected.add(point.x,point.y,0);

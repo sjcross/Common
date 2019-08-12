@@ -18,7 +18,7 @@ public class Volume {
     protected final int height;
     protected final int nSlices;
 
-    protected CoordinateStore coordinateStore;
+    protected CoordinateSet coordinateSet;
     protected Volume surface = null;
     protected Volume projected = null;
     protected Point<Double> meanCentroid = null;
@@ -32,7 +32,7 @@ public class Volume {
         this.dppZ = volume.getDppZ();
         this.calibratedUnits = volume.getCalibratedUnits();
 
-        coordinateStore = createCoordinateStore(volume.getVolumeType());
+        coordinateSet = createCoordinateStore(volume.getVolumeType());
 
     }
 
@@ -44,7 +44,7 @@ public class Volume {
         this.dppZ = volume.getDppZ();
         this.calibratedUnits = volume.getCalibratedUnits();
 
-        coordinateStore = createCoordinateStore(volumeType);
+        coordinateSet = createCoordinateStore(volumeType);
 
     }
 
@@ -56,11 +56,11 @@ public class Volume {
         this.dppZ = dppZ;
         this.calibratedUnits = calibratedUnits;
 
-        coordinateStore = createCoordinateStore(volumeType);
+        coordinateSet = createCoordinateStore(volumeType);
 
     }
 
-    CoordinateStore createCoordinateStore(VolumeType type) {
+    CoordinateSet createCoordinateStore(VolumeType type) {
         switch (type) {
             case OCTREE:
                 return new OctreeCoordinates();
@@ -85,7 +85,7 @@ public class Volume {
         if (y < 0 || y >= height) throw new IndexOutOfBoundsException("Coordinate out of bounds! (y: " + y + ")");
         if (z >= nSlices) throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
 
-        coordinateStore.add(x,y,z);
+        coordinateSet.add(x,y,z);
 
     }
 
@@ -95,19 +95,19 @@ public class Volume {
     }
 
     public void finalise() {
-        coordinateStore.finalise();
+        coordinateSet.finalise();
     }
 
     @Deprecated
     public TreeSet<Point<Integer>> getPoints() {
-        return new TreeSet<>(coordinateStore);
+        return new TreeSet<>(coordinateSet);
 
     }
 
     public Volume getSurface() {
         if (surface == null) {
             surface = new Volume(VolumeType.POINTLIST,this);
-            surface.setCoordinateStore(coordinateStore.calculateSurface(is2D()));
+            surface.setCoordinateSet(coordinateSet.calculateSurface(is2D()));
         }
 
         return surface;
@@ -128,7 +128,7 @@ public class Volume {
             }
 
             projected = new Volume(outputType,width,height,1,dppXY,dppZ,calibratedUnits);
-            projected.setCoordinateStore(coordinateStore.calculateProjected());
+            projected.setCoordinateSet(coordinateSet.calculateProjected());
 
         }
 
@@ -147,24 +147,24 @@ public class Volume {
     }
 
     public void clearPoints() {
-        coordinateStore.clear();
+        coordinateSet.clear();
     }
 
     public Point<Double> getMeanCentroid() {
-        if (meanCentroid == null) meanCentroid = coordinateStore.calculateMeanCentroid();
+        if (meanCentroid == null) meanCentroid = coordinateSet.calculateMeanCentroid();
         return meanCentroid;
     }
 
     public int size() {
-        return coordinateStore.size();
+        return coordinateSet.size();
     }
 
     public boolean contains(Point<Integer> point1) {
-        return coordinateStore.contains(point1);
+        return coordinateSet.contains(point1);
     }
 
     public long getNumberOfElements() {
-        return coordinateStore.getNumberOfElements();
+        return coordinateSet.getNumberOfElements();
     }
 
 
@@ -334,7 +334,7 @@ public class Volume {
         double maxZ = Double.MIN_VALUE;
 
         // Getting XY ranges
-        for (Point<Integer> point:coordinateStore) {
+        for (Point<Integer> point: coordinateSet) {
             minZ = Math.min(minZ,point.z);
             maxZ = Math.max(maxZ,point.z);
         }
@@ -357,7 +357,7 @@ public class Volume {
         double maxZ = Double.MIN_VALUE;
 
         // Getting XY ranges
-        for (Point<Integer> point:coordinateStore) {
+        for (Point<Integer> point: coordinateSet) {
             minX = Math.min(minX,point.x);
             maxX = Math.max(maxX,point.x);
             minY = Math.min(minY,point.y);
@@ -467,9 +467,9 @@ public class Volume {
 
         try {
             if (size() < volume2.size()) {
-                for (Point<Integer> p1 : coordinateStore) if (volume2.contains(p1)) overlapping.add(p1);
+                for (Point<Integer> p1 : coordinateSet) if (volume2.contains(p1)) overlapping.add(p1);
             } else {
-                for (Point<Integer> p2 : volume2.coordinateStore) if (contains(p2)) overlapping.add(p2);
+                for (Point<Integer> p2 : volume2.coordinateSet) if (contains(p2)) overlapping.add(p2);
             }
         } catch (IntegerOverflowException e) {
             // These points are a subset of the input Volume objects, so if they don't overflow these can't either
@@ -483,23 +483,9 @@ public class Volume {
         int count = 0;
 
         if (size() < volume2.size()) {
-            System.out.println("11111");
-            for (Point<Integer> p1 : coordinateStore) {
-                System.out.println(p1.x+"_"+p1.y+"_"+p1.z);
-                if (volume2.contains(p1)) {
-                    System.out.println("    ADD");
-                    count++;
-                }
-            }
+            for (Point<Integer> p1 : coordinateSet) if (volume2.contains(p1)) count++;
         } else {
-            System.out.println("22222");
-            for (Point<Integer> p2 : volume2.coordinateStore) {
-                System.out.println(p2.x+"_"+p2.y+"_"+p2.z);
-                if (contains(p2)) {
-                    System.out.println("    ADD");
-                    count++;
-                }
-            }
+            for (Point<Integer> p2 : volume2.coordinateSet) if (contains(p2)) count++;
         }
 
         return count;
@@ -516,7 +502,7 @@ public class Volume {
 
     @Override
     public int hashCode() {
-        int hash = coordinateStore.hashCode();
+        int hash = coordinateSet.hashCode();
 
         hash = 31*hash + ((Number) dppXY).hashCode();
         hash = 31*hash + ((Number) dppZ).hashCode();
@@ -537,7 +523,7 @@ public class Volume {
         if (dppZ != volume.getDppZ()) return false;
         if (!calibratedUnits.toUpperCase().equals(volume.getCalibratedUnits().toUpperCase())) return false;
 
-        return coordinateStore.equals(volume.coordinateStore);
+        return coordinateSet.equals(volume.coordinateSet);
 
     }
 
@@ -567,18 +553,18 @@ public class Volume {
         return nSlices;
     }
 
-    public CoordinateStore getCoordinateStore() {
-        return coordinateStore;
+    public CoordinateSet getCoordinateSet() {
+        return coordinateSet;
     }
 
     public VolumeType getVolumeType() {
-        return coordinateStore.getVolumeType();
+        return coordinateSet.getVolumeType();
     }
 
-    public void setCoordinateStore(CoordinateStore coordinateStore)
+    public void setCoordinateSet(CoordinateSet coordinateSet)
 
     {
-        this.coordinateStore = coordinateStore;
+        this.coordinateSet = coordinateSet;
     }
 
     public Iterator<Point<Double>> getCalibratedIterator(boolean pixelDistances, boolean matchXY) {
@@ -586,7 +572,7 @@ public class Volume {
     }
 
     public Iterator<Point<Integer>> getCoordinateIterator() {
-        return coordinateStore.iterator();
+        return coordinateSet.iterator();
     }
 
     private class VolumeIterator implements Iterator<Point<Double>> {
@@ -596,7 +582,7 @@ public class Volume {
 
         public VolumeIterator(boolean pixelDistances, boolean matchXY) {
             this.pixelDistances = pixelDistances;
-            this.iterator = coordinateStore.iterator();
+            this.iterator = coordinateSet.iterator();
             this.matchXY = matchXY;
         }
 

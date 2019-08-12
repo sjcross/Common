@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Created by sc13967 on 28/07/2017.
  */
-public class OctreeCoordinates extends CoordinateStore {
+public class OctreeCoordinates extends CoordinateSet {
     private final OcTree ocTree;
 
     public OctreeCoordinates() {
@@ -64,11 +64,11 @@ public class OctreeCoordinates extends CoordinateStore {
 
     // Creating coordinate subsets
 
-    protected CoordinateStore calculateSurface2D() {
+    protected CoordinateSet calculateSurface2D() {
         return ocTree.getEdgePoints(true);
     }
 
-    protected CoordinateStore calculateSurface3D() {
+    protected CoordinateSet calculateSurface3D() {
         return ocTree.getEdgePoints(false);
     }
 

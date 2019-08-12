@@ -1,7 +1,7 @@
 package wbif.sjx.common.Object.QuadTree;
 
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.Volume.CoordinateStore;
+import wbif.sjx.common.Object.Volume.CoordinateSet;
 import wbif.sjx.common.Object.Volume.PointCoordinates;
 
 import java.util.AbstractSet;
@@ -257,16 +257,16 @@ public class OcTree extends AbstractSet<Point<Integer>>
         }
     }
 
-    public CoordinateStore getEdgePoints(boolean is2D)
+    public CoordinateSet getEdgePoints(boolean is2D)
     {
-        CoordinateStore points = new PointCoordinates();
+        CoordinateSet points = new PointCoordinates();
 
         getEdgePoints(root, points, is2D, rootSize, rootMinX, rootMinY, rootMinZ);
 
         return points;
     }
 
-    private void getEdgePoints(OTNode node, CoordinateStore points, boolean is2d, int size, int minX, int minY, int minZ)
+    private void getEdgePoints(OTNode node, CoordinateSet points, boolean is2d, int size, int minX, int minY, int minZ)
     {
         if (node.isDivided())
         {

@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Created by sc13967 on 28/07/2017.
  */
-public class QuadtreeCoordinates extends CoordinateStore {
+public class QuadtreeCoordinates extends CoordinateSet {
     private final Map<Integer, QuadTree> quadTrees;
 
     public QuadtreeCoordinates() {
@@ -73,7 +73,7 @@ public class QuadtreeCoordinates extends CoordinateStore {
 
     // Creating coordinate subsets
 
-    protected CoordinateStore calculateSurface2D() {
+    protected CoordinateSet calculateSurface2D() {
         // Get the sole QuadTree
         QuadTree quadTree = quadTrees.values().iterator().next();
 
@@ -81,7 +81,7 @@ public class QuadtreeCoordinates extends CoordinateStore {
         return quadTree.getEdgePoints();
     }
 
-    protected CoordinateStore calculateSurface3D() {
+    protected CoordinateSet calculateSurface3D() {
         PointCoordinates surface = new PointCoordinates();
 
         // For each slice

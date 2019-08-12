@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 /**
  * Created by sc13967 on 28/07/2017.
  */
-public class PointCoordinates extends CoordinateStore {
+public class PointCoordinates extends CoordinateSet {
     private final TreeSet<Point<Integer>> points;
 
     @Override
@@ -58,7 +58,7 @@ public class PointCoordinates extends CoordinateStore {
 
 
     @Override
-    protected CoordinateStore calculateSurface2D() {
+    protected CoordinateSet calculateSurface2D() {
         PointCoordinates surface = new PointCoordinates();
 
         // Iterating over each Point, adding it if it has fewer than 4 neighbours
@@ -78,7 +78,7 @@ public class PointCoordinates extends CoordinateStore {
     }
 
     @Override
-    protected CoordinateStore calculateSurface3D() {
+    protected CoordinateSet calculateSurface3D() {
         PointCoordinates surface = new PointCoordinates();
 
         // Iterating over each Point, adding it if it has fewer than 6 neighbours
