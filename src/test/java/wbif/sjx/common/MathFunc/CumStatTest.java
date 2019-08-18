@@ -1,8 +1,7 @@
 package wbif.sjx.common.MathFunc;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by steph on 29/05/2017.
@@ -37,18 +36,18 @@ public class CumStatTest {
         double expectedVarPop = 6214.59;
 
         // Checking results (where relevant to 2 decimal places)
-        assertEquals("Calculation of mean",expectedMean,cs.getMean(),0.01);
-        assertEquals("Calculation of minimum",expectedMin,cs.getMin(),0);
-        assertEquals("Calculation of maximum",expectedMax,cs.getMax(),0);
-        assertEquals("Calculation of sum",expectedSum,cs.getSum(),0.01);
-        assertEquals("Calculation of N",expectedN,cs.getN(),0);
-        assertEquals("Calculation of weight sum",expectedWeightSum,cs.getWeight(),0);
-        assertEquals("Calculation of sample standard deviation (default)",expectedStdSamp,cs.getStd(),0.01);
-        assertEquals("Calculation of sample standard deviation",expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population standard deviation",expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
-        assertEquals("Calculation of sample variance (default)",expectedVarSamp,cs.getVar(),0.01);
-        assertEquals("Calculation of sample variance",expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population variance",expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
+        assertEquals(expectedMean,cs.getMean(),0.01);
+        assertEquals(expectedMin,cs.getMin(),0);
+        assertEquals(expectedMax,cs.getMax(),0);
+        assertEquals(expectedSum,cs.getSum(),0.01);
+        assertEquals(expectedN,cs.getN(),0);
+        assertEquals(expectedWeightSum,cs.getWeight(),0);
+        assertEquals(expectedStdSamp,cs.getStd(),0.01);
+        assertEquals(expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
+        assertEquals(expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
+        assertEquals(expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
 
     }
 
@@ -81,18 +80,18 @@ public class CumStatTest {
         double expectedVarPop = 772.94;
 
         // Checking results (where relevant to 2 decimal places)
-        assertEquals("Calculation of mean",expectedMean,cs.getMean(),0.01);
-        assertEquals("Calculation of minimum",expectedMin,cs.getMin(),0);
-        assertEquals("Calculation of maximum",expectedMax,cs.getMax(),0);
-        assertEquals("Calculation of sum",expectedSum,cs.getSum(),0.01);
-        assertEquals("Calculation of N",expectedN,cs.getN(),0);
-        assertEquals("Calculation of weight sum",expectedWeightSum,cs.getWeight(),0);
-        assertEquals("Calculation of sample standard deviation (default)",expectedStdSamp,cs.getStd(),0.01);
-        assertEquals("Calculation of sample standard deviation",expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population standard deviation",expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
-        assertEquals("Calculation of sample variance (default)",expectedVarSamp,cs.getVar(),0.01);
-        assertEquals("Calculation of sample variance",expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population variance",expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
+        assertEquals(expectedMean,cs.getMean(),0.01);
+        assertEquals(expectedMin,cs.getMin(),0);
+        assertEquals(expectedMax,cs.getMax(),0);
+        assertEquals(expectedSum,cs.getSum(),0.01);
+        assertEquals(expectedN,cs.getN(),0);
+        assertEquals(expectedWeightSum,cs.getWeight(),0);
+        assertEquals(expectedStdSamp,cs.getStd(),0.01);
+        assertEquals(expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
+        assertEquals(expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
+        assertEquals(expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
 
     }
 
@@ -127,18 +126,18 @@ public class CumStatTest {
         double expectedVarPop = 5852.88;
 
         // Checking results (where relevant to 2 decimal places)
-        assertEquals("Calculation of mean",expectedMean,cs.getMean(),0.01);
-        assertEquals("Calculation of minimum",expectedMin,cs.getMin(),0);
-        assertEquals("Calculation of maximum",expectedMax,cs.getMax(),0);
-        assertEquals("Calculation of sum",expectedSum,cs.getSum(),0.01);
-        assertEquals("Calculation of N",expectedN,cs.getN(),0);
-        assertEquals("Calculation of weight sum",expectedWeightSum,cs.getWeight(),0);
-        assertEquals("Calculation of sample standard deviation (default)",expectedStdSamp,cs.getStd(),0.01);
-        assertEquals("Calculation of sample standard deviation",expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population standard deviation",expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
-        assertEquals("Calculation of sample variance (default)",expectedVarSamp,cs.getVar(),0.01);
-        assertEquals("Calculation of sample variance",expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population variance",expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
+        assertEquals(expectedMean,cs.getMean(),0.01);
+        assertEquals(expectedMin,cs.getMin(),0);
+        assertEquals(expectedMax,cs.getMax(),0);
+        assertEquals(expectedSum,cs.getSum(),0.01);
+        assertEquals(expectedN,cs.getN(),0);
+        assertEquals(expectedWeightSum,cs.getWeight(),0);
+        assertEquals(expectedStdSamp,cs.getStd(),0.01);
+        assertEquals(expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
+        assertEquals(expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
+        assertEquals(expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
 
     }
 
@@ -173,18 +172,18 @@ public class CumStatTest {
         double expectedVarPop = 531.74;
 
         // Checking results (where relevant to 2 decimal places)
-        assertEquals("Calculation of mean",expectedMean,cs.getMean(),0.01);
-        assertEquals("Calculation of minimum",expectedMin,cs.getMin(),0);
-        assertEquals("Calculation of maximum",expectedMax,cs.getMax(),0);
-        assertEquals("Calculation of sum",expectedSum,cs.getSum(),0.01);
-        assertEquals("Calculation of N",expectedN,cs.getN(),0);
-        assertEquals("Calculation of weight sum",expectedWeightSum,cs.getWeight(),0);
-        assertEquals("Calculation of sample standard deviation (default)",expectedStdSamp,cs.getStd(),0.01);
-        assertEquals("Calculation of sample standard deviation",expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population standard deviation",expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
-        assertEquals("Calculation of sample variance (default)",expectedVarSamp,cs.getVar(),0.01);
-        assertEquals("Calculation of sample variance",expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population variance",expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
+        assertEquals(expectedMean,cs.getMean(),0.01);
+        assertEquals(expectedMin,cs.getMin(),0);
+        assertEquals(expectedMax,cs.getMax(),0);
+        assertEquals(expectedSum,cs.getSum(),0.01);
+        assertEquals(expectedN,cs.getN(),0);
+        assertEquals(expectedWeightSum,cs.getWeight(),0);
+        assertEquals(expectedStdSamp,cs.getStd(),0.01);
+        assertEquals(expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
+        assertEquals(expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
+        assertEquals(expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
     }
 
     /**
@@ -218,18 +217,18 @@ public class CumStatTest {
         double expectedVarPop = 224.60;
 
         // Checking results (where relevant to 2 decimal places)
-        assertEquals("Calculation of mean",expectedMean,cs.getMean(),0.01);
-        assertEquals("Calculation of minimum",expectedMin,cs.getMin(),0);
-        assertEquals("Calculation of maximum",expectedMax,cs.getMax(),0);
-        assertEquals("Calculation of sum",expectedSum,cs.getSum(),0.01);
-        assertEquals("Calculation of N",expectedN,cs.getN(),0);
-        assertEquals("Calculation of weight sum",expectedWeightSum,cs.getWeight(),0);
-        assertEquals("Calculation of sample standard deviation (default)",expectedStdSamp,cs.getStd(),0.01);
-        assertEquals("Calculation of sample standard deviation",expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population standard deviation",expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
-        assertEquals("Calculation of sample variance (default)",expectedVarSamp,cs.getVar(),0.01);
-        assertEquals("Calculation of sample variance",expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population variance",expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
+        assertEquals(expectedMean,cs.getMean(),0.01);
+        assertEquals(expectedMin,cs.getMin(),0);
+        assertEquals(expectedMax,cs.getMax(),0);
+        assertEquals(expectedSum,cs.getSum(),0.01);
+        assertEquals(expectedN,cs.getN(),0);
+        assertEquals(expectedWeightSum,cs.getWeight(),0);
+        assertEquals(expectedStdSamp,cs.getStd(),0.01);
+        assertEquals(expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
+        assertEquals(expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
+        assertEquals(expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
 
     }
 
@@ -259,18 +258,18 @@ public class CumStatTest {
         double expectedVarPop = 214.62;
 
         // Checking results (where relevant to 2 decimal places)
-        assertEquals("Calculation of mean",expectedMean,cs.getMean(),0.01);
-        assertEquals("Calculation of minimum",expectedMin,cs.getMin(),0);
-        assertEquals("Calculation of maximum",expectedMax,cs.getMax(),0);
-        assertEquals("Calculation of sum",expectedSum,cs.getSum(),0.01);
-        assertEquals("Calculation of N",expectedN,cs.getN(),0);
-        assertEquals("Calculation of weight sum",expectedWeightSum,cs.getWeight(),0);
-        assertEquals("Calculation of sample standard deviation (default)",expectedStdSamp,cs.getStd(),0.01);
-        assertEquals("Calculation of sample standard deviation",expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population standard deviation",expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
-        assertEquals("Calculation of sample variance (default)",expectedVarSamp,cs.getVar(),0.01);
-        assertEquals("Calculation of sample variance",expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population variance",expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
+        assertEquals(expectedMean,cs.getMean(),0.01);
+        assertEquals(expectedMin,cs.getMin(),0);
+        assertEquals(expectedMax,cs.getMax(),0);
+        assertEquals(expectedSum,cs.getSum(),0.01);
+        assertEquals(expectedN,cs.getN(),0);
+        assertEquals(expectedWeightSum,cs.getWeight(),0);
+        assertEquals(expectedStdSamp,cs.getStd(),0.01);
+        assertEquals(expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
+        assertEquals(expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
+        assertEquals(expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
 
     }
 
@@ -301,18 +300,18 @@ public class CumStatTest {
         double expectedVarPop = 224.60;
 
         // Checking results (where relevant to 2 decimal places)
-        assertEquals("Calculation of mean",expectedMean,cs.getMean(),0.01);
-        assertEquals("Calculation of minimum",expectedMin,cs.getMin(),0);
-        assertEquals("Calculation of maximum",expectedMax,cs.getMax(),0);
-        assertEquals("Calculation of sum",expectedSum,cs.getSum(),0.01);
-        assertEquals("Calculation of N",expectedN,cs.getN(),0);
-        assertEquals("Calculation of weight sum",expectedWeightSum,cs.getWeight(),0);
-        assertEquals("Calculation of sample standard deviation (default)",expectedStdSamp,cs.getStd(),0.01);
-        assertEquals("Calculation of sample standard deviation",expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population standard deviation",expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
-        assertEquals("Calculation of sample variance (default)",expectedVarSamp,cs.getVar(),0.01);
-        assertEquals("Calculation of sample variance",expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
-        assertEquals("Calculation of population variance",expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
+        assertEquals(expectedMean,cs.getMean(),0.01);
+        assertEquals(expectedMin,cs.getMin(),0);
+        assertEquals(expectedMax,cs.getMax(),0);
+        assertEquals(expectedSum,cs.getSum(),0.01);
+        assertEquals(expectedN,cs.getN(),0);
+        assertEquals(expectedWeightSum,cs.getWeight(),0);
+        assertEquals(expectedStdSamp,cs.getStd(),0.01);
+        assertEquals(expectedStdSamp,cs.getStd(CumStat.SAMPLE),0.01);
+        assertEquals(expectedStdPop,cs.getStd(CumStat.POPULATION),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(),0.01);
+        assertEquals(expectedVarSamp,cs.getVar(CumStat.SAMPLE),0.01);
+        assertEquals(expectedVarPop,cs.getVar(CumStat.POPULATION),0.01);
 
     }
 

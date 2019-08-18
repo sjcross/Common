@@ -1,11 +1,10 @@
 package wbif.sjx.common.MetadataExtractors;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.Object.HCMetadata;
 
-import java.rmi.MarshalException;
-
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CV7000FilenameExtractorTest {
 

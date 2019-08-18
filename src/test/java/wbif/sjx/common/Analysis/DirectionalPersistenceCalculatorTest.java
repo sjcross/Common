@@ -1,11 +1,11 @@
 package wbif.sjx.common.Analysis;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
  * Created by steph on 04/06/2017.

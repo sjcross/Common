@@ -1,41 +1,41 @@
 //package wbif.sjx.common.Analysis;
 //
-//import org.junit.Ignore;
-//import org.junit.Test;
+//import org.junit.jupiter.api.Disabled;
+//import org.junit.jupiter.api.Test;
 //import wbif.sjx.common.Object.Volume.Volume;
 //import wbif.sjx.common.Object.Volume.Volume;
 //
-//import static org.junit.Assert.*;
+//import static org.junit.jupiter.api.Assertions.*;
 //
 ///**
 // * Created by sc13967 on 18/06/2018.
 // */
 //public class VolumeCalculatorTest {
-//    @Test @Ignore
+//    @Test @Disabled
 //    public void canFitHull() throws Exception {
 //    }
 //
-//    @Test @Ignore
+//    @Test @Disabled
 //    public void getHullVertices() throws Exception {
 //    }
 //
-//    @Test @Ignore
+//    @Test @Disabled
 //    public void getHullFaces() throws Exception {
 //    }
 //
-//    @Test @Ignore
+//    @Test @Disabled
 //    public void getHullSurfaceArea() throws Exception {
 //    }
 //
-//    @Test @Ignore
+//    @Test @Disabled
 //    public void getHullVolume() throws Exception {
 //    }
 //
-//    @Test @Ignore
+//    @Test @Disabled
 //    public void getSphericity() throws Exception {
 //    }
 //
-//    @Test @Ignore
+//    @Test @Disabled
 //    public void getSolidity() throws Exception {
 //    }
 //
@@ -44,7 +44,7 @@
 //     * this cube aren't tested.
 //     * @throws Exception
 //     */
-//    @Test @Ignore
+//    @Test @Disabled
 //    public void getContainedPointsCube() throws Exception {
 //        double dppXY = 0.02;
 //        double dppZ = 0.1;

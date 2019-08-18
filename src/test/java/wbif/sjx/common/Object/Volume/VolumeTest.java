@@ -1,40 +1,25 @@
 package wbif.sjx.common.Object.Volume;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Point;
 
 import java.util.*;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(Parameterized.class)
-public class VolumeTest
-{
+public class VolumeTest {
     private final double tolerance10 = 1E-10;
     private final double tolerance2 = 1E-2;
-    private final VolumeType volumeType;
 
-    // PARAMETERIZED CONFIG
-
-    @Parameterized.Parameters(name = "{0}")
-    public static Iterable<VolumeType> data()
-    {
-        return Arrays.asList(VolumeType.values());
-    }
-
-    public VolumeTest(VolumeType volumeType)
-    {
-        this.volumeType = volumeType;
-    }
 
     // ADDING COORDINATES
 
-    @Test
-    public void testAddCoordAlreadyExists() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testAddCoordAlreadyExists(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -51,8 +36,9 @@ public class VolumeTest
 
     // COORDINATE TESTS
 
-    @Test
-    public void testGetXCoords() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetXCoords(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume = new Volume(volumeType,10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
@@ -76,8 +62,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetYCoords() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetYCoords(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume = new Volume(volumeType,10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
@@ -101,8 +88,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetZCoords() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetZCoords(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume = new Volume(volumeType,10,10,13,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
@@ -126,8 +114,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetXNoVolume2() {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetXNoVolume2(VolumeType volumeType) {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -142,8 +131,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetXPixelDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetXPixelDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -161,8 +151,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetXCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetXCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -180,8 +171,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetYPixelDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetYPixelDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -199,8 +191,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetYCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetYCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -218,8 +211,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetZPixelDistancesDoesntMatchXY() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetZPixelDistancesDoesntMatchXY(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -237,8 +231,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetZPixelDistancesDoesMatchXY() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetZPixelDistancesDoesMatchXY(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -256,8 +251,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetZCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetZCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -278,8 +274,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetXYScaledZ() {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetXYScaledZ(VolumeType volumeType) {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -296,8 +293,9 @@ public class VolumeTest
 
     // MEAN POSITION
 
-    @Test
-    public void testGetXMeanPixelDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetXMeanPixelDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -312,8 +310,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetXMeanCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetXMeanCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -328,8 +327,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetYMeanPixelDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetYMeanPixelDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -344,8 +344,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetYMeanCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetYMeanCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -360,8 +361,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetZMeanPixelDistancesDoesntMatchXY() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetZMeanPixelDistancesDoesntMatchXY(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -376,8 +378,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetZMeanPixelDistancesDoesMatchXY() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetZMeanPixelDistancesDoesMatchXY(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -392,8 +395,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetZMeanCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetZMeanCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -412,8 +416,9 @@ public class VolumeTest
 
     // ANGLE BETWEEN TWO VOLUMES
 
-    @Test
-    public void testCalculateAngle2DTopRight() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testCalculateAngle2DTopRight(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -431,8 +436,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testCalculateAngle2DTopLeft() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testCalculateAngle2DTopLeft(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -450,8 +456,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testCalculateAngle2DBottomLeft() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testCalculateAngle2DBottomLeft(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -469,8 +476,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testCalculateAngle2DBottomRight() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testCalculateAngle2DBottomRight(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -488,8 +496,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testCalculateAngle2DPositiveXAxis() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testCalculateAngle2DPositiveXAxis(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -507,8 +516,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testCalculateAngle2DPositiveYAxis() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testCalculateAngle2DPositiveYAxis(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -526,8 +536,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testCalculateAngle2DNegativeXAxis() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testCalculateAngle2DNegativeXAxis(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -545,8 +556,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testCalculateAngle2DNegativeYAxis() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testCalculateAngle2DNegativeYAxis(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -566,8 +578,9 @@ public class VolumeTest
 
 
     // HEIGHT
-    @Test
-    public void testGetHeightPixelDistancesDoesntMatchXY() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetHeightPixelDistancesDoesntMatchXY(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -582,8 +595,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetHeightPixelDistancesDoesMatchXY() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetHeightPixelDistancesDoesMatchXY(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -598,8 +612,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetHeightCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetHeightCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -617,8 +632,9 @@ public class VolumeTest
 
 
     // EXTENTS
-    @Test
-    public void testGetExtentsPixelDistancesDoesntMatchXY() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetExtentsPixelDistancesDoesntMatchXY(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -638,8 +654,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetExtentsPixelDistancesDoesMatchXY() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetExtentsPixelDistancesDoesMatchXY(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -659,8 +676,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetExtentsCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetExtentsCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -687,8 +705,9 @@ public class VolumeTest
 
     // AREA VOLUME CHECKS
 
-    @Test
-    public void testHasVolume2NoVolume2() {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHasVolume2NoVolume2(VolumeType volumeType) {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -699,8 +718,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testHasVolume22D() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHasVolume22D(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -715,8 +735,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testHasVolume23D() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHasVolume23D(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -731,8 +752,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testHasAreaNoVolume2() {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHasAreaNoVolume2(VolumeType volumeType) {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -743,8 +765,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testHasArea2D() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHasArea2D(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -759,8 +782,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testHasArea3D() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHasArea3D(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -778,8 +802,9 @@ public class VolumeTest
 
     // VOLUME
 
-    @Test
-    public void testContainsPointDoesContain() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testContainsPointDoesContain(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume = new Volume(volumeType,10,5,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
@@ -792,8 +817,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testContainsPointDoesntContain() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testContainsPointDoesntContain(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume = new Volume(volumeType,10,5,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
@@ -806,8 +832,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetNVoxelsNoVolume2() {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetNVoxelsNoVolume2(VolumeType volumeType) {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -818,8 +845,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetNVoxelsHasVolume2() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetNVoxelsHasVolume2(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -834,8 +862,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetContainedVolume2PixelDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetContainedVolume2PixelDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -850,8 +879,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetContainedVolume2CalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetContainedVolume2CalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -866,8 +896,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetContainedVolume2PixelDistancesFlatObject() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetContainedVolume2PixelDistancesFlatObject(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -882,8 +913,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetContainedVolume2CalibratedDistancesFlatObject() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetContainedVolume2CalibratedDistancesFlatObject(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -901,8 +933,9 @@ public class VolumeTest
 
     // HASHCODE TESTS
 
-    @Test
-    public void testHashCodeDifferentValue() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHashCodeDifferentValue(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -919,8 +952,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testHashCodeDifferentPointOrder() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHashCodeDifferentPointOrder(VolumeType volumeType) throws IntegerOverflowException {
         // Verifying that the order of point placement doesn't matter
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"Test");
         volume1.add(1,2,3);
@@ -946,8 +980,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testHashCodeMissingPoint() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHashCodeMissingPoint(VolumeType volumeType) throws IntegerOverflowException {
         // Verifying that all points need to be present for equality
         Volume volume1 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
@@ -964,8 +999,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testHashCodeDifferentCalibration() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHashCodeDifferentCalibration(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -982,8 +1018,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testHashCodeDifferentUnitsCase() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHashCodeDifferentUnitsCase(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1000,8 +1037,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testHashCodeDifferentUnits() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testHashCodeDifferentUnits(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1021,8 +1059,9 @@ public class VolumeTest
 
     // EQUALITY TESTS
 
-    @Test
-    public void testEqualsDifferentValue() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testEqualsDifferentValue(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1040,8 +1079,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testEqualsDifferentPointOrder() throws IntegerOverflowException {// Verifying that the order of point placement doesn't matter
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testEqualsDifferentPointOrder(VolumeType volumeType) throws IntegerOverflowException {// Verifying that the order of point placement doesn't matter
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1069,8 +1109,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testEqualsMissingPoint() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testEqualsMissingPoint(VolumeType volumeType) throws IntegerOverflowException {
         // Verifying that all points need to be present for equality
         Volume volume1 = new Volume(volumeType,5,4,13,1.0,1.0,"Test");
         volume1.add(1,2,3);
@@ -1088,8 +1129,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testEqualsDifferentCalibration() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testEqualsDifferentCalibration(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1107,8 +1149,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testEqualsDifferentUnitsCase() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testEqualsDifferentUnitsCase(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1126,8 +1169,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testEqualsDifferentUnits() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testEqualsDifferentUnits(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1148,8 +1192,9 @@ public class VolumeTest
 
     // OVERLAP TESTS
 
-    @Test
-    public void testGetOverlappingPointsWithOverlap() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetOverlappingPointsWithOverlap(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1176,8 +1221,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetOverlappingPointsWithoutOverlap() throws IntegerOverflowException  {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetOverlappingPointsWithoutOverlap(VolumeType volumeType) throws IntegerOverflowException  {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1198,8 +1244,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetOverlappingPointsTotalOverlap() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetOverlappingPointsTotalOverlap(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1227,8 +1274,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetOverlappingPointsWithOverlapMoreIn1() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetOverlappingPointsWithOverlapMoreIn1(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1255,8 +1303,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetOverlappingPointsWithOverlapMoreIn2() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetOverlappingPointsWithOverlapMoreIn2(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1283,8 +1332,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetOverlapWithOverlap() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetOverlapWithOverlap(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1304,8 +1354,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetOverlapWithoutOverlap() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetOverlapWithoutOverlap(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1325,8 +1376,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetOverlapTotalOverlap() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetOverlapTotalOverlap(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1346,8 +1398,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetOverlapTotalOverlapMoreIn1() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetOverlapTotalOverlapMoreIn1(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1368,8 +1421,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetOverlapTotalOverlapMoreIn2() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetOverlapTotalOverlapMoreIn2(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume1 = new Volume(volumeType,10,10,20,2.0,1.0,"PX");
         volume1.add(1,2,3);
         volume1.add(4,3,12);
@@ -1393,8 +1447,9 @@ public class VolumeTest
 
     // MISCELLANEOUS METHODS
 
-    @Test
-    public void testClearSurface() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testClearSurface(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume = new Volume(volumeType,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
@@ -1414,8 +1469,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testClearPoints() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testClearPoints(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume = new Volume(volumeType,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
@@ -1435,8 +1491,9 @@ public class VolumeTest
 
     // MISSING TESTS
 
-    @Test
-    public void testGetSurface() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetSurface(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume = new Volume(volumeType,10,10,8,2.0,1.0,"PX");
         volume.add(5,7,3);
         volume.add(5,8,3);
@@ -1477,53 +1534,72 @@ public class VolumeTest
 
     }
 
-    @Test @Ignore
+    @Disabled
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
     public void testGetXSurfaceCoords() {
 
     }
 
-    @Test @Ignore
+    @Disabled
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
     public void testGetYSurfaceCoords() {
 
     }
 
-    @Test @Ignore
+    @Disabled
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
     public void testGetZSufaceCoords() {
 
     }
 
-    @Test @Ignore
+    @Disabled
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
     public void testGetXSurfacePixelDistances() {
 
     }
 
-    @Test @Ignore
+    @Disabled
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
     public void testGetYSurfacePixelDistances() {
 
     }
 
-    @Test @Ignore
+    @Disabled
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
     public void testGetZSurfacePixelDistances() {
 
     }
 
-    @Test @Ignore
+    @Disabled
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
     public void testGetXSurfaceCalibratedDistances() {
 
     }
 
-    @Test @Ignore
+    @Disabled
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
     public void testGetYSurfaceCalibratedDistances() {
 
     }
 
-    @Test @Ignore
+    @Disabled
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
     public void testGetZSurfaceCalibratedDistances() {
 
     }
 
-    @Test
-    public void testGetProjectedAreaPixelDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetProjectedAreaPixelDistances(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume = new Volume(volumeType,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
@@ -1542,8 +1618,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetProjectedAreaCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetProjectedAreaCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         Volume volume = new Volume(volumeType,10,7,15,2.0,1.0,"PX");
         volume.add(1,2,3);
         volume.add(4,3,12);
@@ -1562,8 +1639,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetCentroidSeparation2DPixelDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetCentroidSeparation2DPixelDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1588,8 +1666,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetCentroidSeparation2DCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetCentroidSeparation2DCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1614,8 +1693,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetCentroidSeparation3DPixelDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetCentroidSeparation3DPixelDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -1647,8 +1727,9 @@ public class VolumeTest
 
     }
 
-    @Test
-    public void testGetCentroidSeparation3DCalibratedDistances() throws IntegerOverflowException {
+    @ParameterizedTest
+    @EnumSource(VolumeType.class)
+    public void testGetCentroidSeparation3DCalibratedDistances(VolumeType volumeType) throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";

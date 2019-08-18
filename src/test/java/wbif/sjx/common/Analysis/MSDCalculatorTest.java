@@ -1,19 +1,18 @@
 package wbif.sjx.common.Analysis;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.ExpectedObjects.SingleTrack2D;
 import wbif.sjx.common.ExpectedObjects.Tracks2D;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.Object.Track;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 /**
  * Created by steph on 09/07/2017.
@@ -61,7 +60,8 @@ public class MSDCalculatorTest {
         }
     }
 
-    @Test @Ignore
+    @Disabled
+    @Test
     public void testGetLinearFitSingleTrack() throws Exception {
         Track track = SingleTrack2D.getTrack();
 

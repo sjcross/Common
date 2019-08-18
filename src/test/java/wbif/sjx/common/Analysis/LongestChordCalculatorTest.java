@@ -1,6 +1,6 @@
 package wbif.sjx.common.Analysis;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.ExpectedObjects.HorizontalCylinderR22;
 import wbif.sjx.common.ExpectedObjects.VerticalCylinderR5;
@@ -9,9 +9,8 @@ import wbif.sjx.common.Object.Volume.Volume;
 
 import java.util.Arrays;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LongestChordCalculatorTest {
     private double tolerance = 1E-2;

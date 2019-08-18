@@ -1,15 +1,13 @@
 package wbif.sjx.common.Object;
 
-import org.junit.Test;
-import wbif.sjx.common.Analysis.MSDCalculator;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.ExpectedObjects.Tracks2D;
 import wbif.sjx.common.MathFunc.CumStat;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TrackCollectionTest {
 

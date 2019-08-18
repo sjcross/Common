@@ -1,12 +1,13 @@
 package wbif.sjx.common.Analysis;
 
+import org.junit.jupiter.api.Disabled;
 import org.bonej.geometry.Ellipsoid;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.Object.Volume.Volume;
 import wbif.sjx.common.Object.Volume.VolumeType;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EllipsoidCalculatorTest {
     private double tolerance = 1E-2;
@@ -73,11 +74,11 @@ public class EllipsoidCalculatorTest {
 
     }
 
-    @Test @Ignore
+    @Test @Disabled
     public void getRotationMatrix() {
     }
 
-    @Test @Ignore
+    @Test @Disabled
     public void getOrientationRads() {
     }
 
@@ -174,7 +175,7 @@ public class EllipsoidCalculatorTest {
 
     }
 
-    @Test @Ignore
+    @Test @Disabled
     public void getContainedPoints() {
     }
 }

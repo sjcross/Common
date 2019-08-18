@@ -1,13 +1,12 @@
 package wbif.sjx.common.Analysis;
 
 import org.apache.commons.math3.complex.Complex;
-import org.junit.Test;
-import sun.reflect.generics.tree.Tree;
+import org.junit.jupiter.api.Test;
 
-import java.util.NavigableMap;
 import java.util.TreeMap;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by sc13967 on 22/05/2018.

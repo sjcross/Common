@@ -6,14 +6,14 @@ package wbif.sjx.common.Analysis;
 
 import ij.IJ;
 import ij.ImagePlus;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.ExpectedObjects.Objects2D;
 import wbif.sjx.common.Object.Volume.Volume;
 
 import java.net.URLDecoder;
 import java.util.HashMap;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TextureCalculatorTest {
     private double tolerance = 1E-4;
