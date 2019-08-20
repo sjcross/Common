@@ -1,5 +1,6 @@
 package wbif.sjx.common.Object.Volume;
 
+import wbif.sjx.common.Analysis.Volume.PointSurfaceSeparatorCalculator;
 import wbif.sjx.common.Analysis.Volume.SurfaceSeparationCalculator;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Point;
@@ -429,10 +430,13 @@ public class Volume {
     }
 
     public double getSurfaceSeparation(Volume volume2, boolean pixelDistances) {
-        SurfaceSeparationCalculator calculator = new SurfaceSeparationCalculator(this,volume2,pixelDistances);
+        SurfaceSeparationCalculator calculator = new SurfaceSeparationCalculator(this,volume2);
+        return calculator.getMinDist(pixelDistances);
+    }
 
-        return calculator.getMinDist();
-
+    public double getPointSurfaceSeparation(Point<Double> point, boolean pixelDistances) {
+        PointSurfaceSeparatorCalculator calculator = new PointSurfaceSeparatorCalculator(this,point);
+        return calculator.getMinDist(pixelDistances);
     }
 
     /**

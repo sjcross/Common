@@ -6,11 +6,13 @@ import wbif.sjx.common.Object.Volume.Volume;
 import java.util.Iterator;
 
 public class SurfaceSeparationCalculator {
+    private final double dppXY;
     private final double minDist;
     private final Point<Integer> p1;
     private final Point<Integer> p2;
 
-    public SurfaceSeparationCalculator(Volume v1, Volume v2, boolean pixelDistances) {
+    public SurfaceSeparationCalculator(Volume v1, Volume v2) {
+        this.dppXY = v1.getDppXY();
         double minDist = Double.MAX_VALUE;
         Point<Integer> p1 = null;
         Point<Integer> p2 = null;
@@ -25,7 +27,7 @@ public class SurfaceSeparationCalculator {
             while (iterator1.hasNext()) {
                 Point<Integer> pp1 = iterator1.next();
 
-                double dist = v1.calculatePointPointSeparation(pp1,pp2,pixelDistances);
+                double dist = v1.calculatePointPointSeparation(pp1,pp2,true);
 
                 if (dist < Math.abs(minDist)) {
                     minDist = dist;
@@ -51,8 +53,8 @@ public class SurfaceSeparationCalculator {
 
     }
 
-    public double getMinDist() {
-        return minDist;
+    public double getMinDist(boolean pixelDistances) {
+        return pixelDistances ? minDist : minDist*dppXY;
     }
 
     public Point<Integer> getP1() {
