@@ -1,18 +1,10 @@
 package wbif.sjx.common.Analysis;
 
-import ij.IJ;
-import ij.ImagePlus;
 import ij.ImageStack;
-import org.apache.commons.math3.geometry.euclidean.threed.PolyhedronsSet;
-import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
-import org.apache.commons.math3.geometry.partitioning.Region;
 import org.bonej.geometry.Ellipsoid;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume.Volume;
 
-import java.util.Arrays;
-
-import static org.bonej.geometry.FitEllipsoid.inertia;
 import static org.bonej.geometry.FitEllipsoid.yuryPetrov;
 
 public class EllipsoidCalculator {
@@ -178,13 +170,13 @@ public class EllipsoidCalculator {
     public Volume getContainedPoints() throws IntegerOverflowException {
         if (ell == null) return null;
 
-        double dppXY = volume.getDistPerPxXY();
-        double dppZ = volume.getDistPerPxZ();
+        double dppXY = volume.getDppXY();
+        double dppZ = volume.getDppZ();
         double cal = dppXY/dppZ;
         String units = volume.getCalibratedUnits();
         boolean is2D = volume.is2D();
 
-        Volume insideEllipsoid = new Volume(dppXY,dppZ,units,is2D);
+        Volume insideEllipsoid = new Volume(volume);
 
         // Testing which points are within the convex hull
         double[] xRange = ell.getXMinAndMax();
@@ -195,7 +187,7 @@ public class EllipsoidCalculator {
             for (int y=(int) yRange[0];y<=yRange[1];y++) {
                 for (int z=(int) zRange[0];z<=zRange[1];z++) {
                     if (ell.contains(x,y,z/cal)) {
-                        insideEllipsoid.addCoord(x, y, z);
+                        insideEllipsoid.add(x, y, z);
                     }
                 }
             }

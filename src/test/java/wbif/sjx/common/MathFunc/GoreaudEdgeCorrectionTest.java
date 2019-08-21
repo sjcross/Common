@@ -1,14 +1,14 @@
 package wbif.sjx.common.MathFunc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.ExpectedObjects.Clusters2D;
-import wbif.sjx.common.MathFunc.EdgeCorrection.ExplicitEdgeCorrection;
 import wbif.sjx.common.MathFunc.EdgeCorrection.GoreaudEdgeCorrection;
 import wbif.sjx.common.Object.Point;
 
 import java.util.HashMap;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GoreaudEdgeCorrectionTest {
     private double tolerance = 1E-2;

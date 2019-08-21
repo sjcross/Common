@@ -1,19 +1,16 @@
 package wbif.sjx.common.Analysis;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.ExpectedObjects.HorizontalCylinderR22;
 import wbif.sjx.common.ExpectedObjects.VerticalCylinderR5;
 import wbif.sjx.common.MathFunc.CumStat;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume.Volume;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LongestChordCalculatorTest {
     private double tolerance = 1E-2;
@@ -160,7 +157,6 @@ public class LongestChordCalculatorTest {
         String calibratedUnits = "um";
 
         Volume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,calibratedUnits);
-
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
         double actual = calculator.getLCLength();

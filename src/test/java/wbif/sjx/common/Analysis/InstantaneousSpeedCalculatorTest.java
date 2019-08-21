@@ -1,11 +1,11 @@
 package wbif.sjx.common.Analysis;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.Analysis.SpatialCalculators.InstantaneousSpeedCalculator;
 
 import java.util.TreeMap;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by steph on 09/07/2017.

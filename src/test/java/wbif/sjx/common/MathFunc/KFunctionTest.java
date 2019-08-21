@@ -1,7 +1,6 @@
 package wbif.sjx.common.MathFunc;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.Analysis.KFunctionCalculator;
 import wbif.sjx.common.ExpectedObjects.Clusters2D;
 import wbif.sjx.common.ExpectedObjects.Clusters3D;
@@ -11,7 +10,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TreeMap;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class KFunctionTest {
     private double tolerance = 1E-4;

@@ -1,16 +1,16 @@
 package wbif.sjx.common.Process.SkeletonTools;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BreakFixerTest {
     private double tolerance = 1E-10;
 
-    @Test @Ignore
+    @Test @Disabled
     public void getEndPoints() {
     }
 
@@ -126,11 +126,11 @@ public class BreakFixerTest {
 
     }
 
-    @Test @Ignore
+    @Test @Disabled
     public void getDist() {
     }
 
-    @Test @Ignore
+    @Test @Disabled
     public void process() {
     }
 }

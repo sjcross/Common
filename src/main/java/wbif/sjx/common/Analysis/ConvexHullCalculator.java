@@ -41,7 +41,7 @@
 //    }
 //
 //    public boolean canFitHull() {
-//        return (volume.hasVolume() & volume.getNVoxels() > 4);
+//        return (volume.hasVolume() & volume.size() > 4);
 //    }
 //
 //    private void fitConvexHull(int fitMode) {
@@ -201,7 +201,7 @@
 //
 //        // Testing which points are within the convex hull
 //        double[][] extents = volume.getExtents(true,false);
-//        Volume insideHull = new Volume(volume.getDistPerPxXY(),volume.getDistPerPxZ(),volume.getCalibratedUnits(),volume.is2D());
+//        Volume insideHull = new Volume(VolumeType.POINTLIST,volume.getDistPerPxXY(),volume.getDistPerPxZ(),volume.getCalibratedUnits(),volume.is2D());
 //
 //        for (int x=(int) extents[0][0];x<=extents[0][1];x++) {
 //            for (int y=(int) extents[1][0];y<=extents[1][1];y++) {
@@ -210,7 +210,7 @@
 //                    switch (location) {
 //                        case INSIDE:
 //                        case BOUNDARY:
-//                            insideHull.addCoord(x,y,z);
+//                            insideHull.add(x,y,z);
 //                            break;
 //                    }
 //                }
