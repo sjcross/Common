@@ -3,15 +3,19 @@ package wbif.sjx.common.Object;
 import java.io.Serializable;
 
 public class Point<T extends Number> implements Comparable<Point<T>>, Serializable {
-    protected T x;
-    protected T y;
-    protected T z;
+    public T x;
+    public T y;
+    public T z;
 
     public Point(T x, T y, T z) {
         this.x = x;
         this.y = y;
         this.z = z;
 
+    }
+
+    public Point(Point<T> point) {
+        this(point.x, point.y, point.z);
     }
 
     public T getX() {
@@ -115,5 +119,10 @@ public class Point<T extends Number> implements Comparable<Point<T>>, Serializab
 
         return 0;
 
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName() + " xyz = (" + x + ", " + y + ", " + z + ')';
     }
 }

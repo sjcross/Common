@@ -1,19 +1,19 @@
 package wbif.sjx.common.Analysis;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import wbif.sjx.common.ExpectedObjects.SingleTrack2D;
 import wbif.sjx.common.ExpectedObjects.Tracks2D;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.Object.Track;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 /**
  * Created by steph on 09/07/2017.
@@ -61,17 +61,17 @@ public class MSDCalculatorTest {
         }
     }
 
-    @Test @Ignore
+    @Test
+    @Disabled
+    @Ignore
     public void testGetLinearFitSingleTrack() throws Exception {
-        Track track = SingleTrack2D.getTrack();
-
-        TreeMap<Integer,CumStat> msd = MSDCalculator.calculate(track.getF(),track.getX(),track.getY(),track.getZ());
-        double[] actual = MSDCalculator.getLinearFit(msd,81);
-        double[] expected = new double[]{6.622E2,0,81};
-
-        System.out.println(actual[0]+"_"+actual[1]);
-
-        assertArrayEquals(expected,actual,tolerance);
+//        Track track = SingleTrack2D.getTrack();
+//
+//        TreeMap<Integer,CumStat> msd = MSDCalculator.calculate(track.getF(),track.getX(),track.getY(),track.getZ());
+//        double[] actual = MSDCalculator.getLinearFit(msd,81);
+//        double[] expected = new double[]{6.622E2,0,81};
+//
+//        assertArrayEquals(expected,actual,tolerance);
 
     }
 }

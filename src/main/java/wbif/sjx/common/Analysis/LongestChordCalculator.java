@@ -4,7 +4,7 @@ import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.GeneralOps;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume.Volume;
 
 /**
  * Created by sc13967 on 20/06/2018.

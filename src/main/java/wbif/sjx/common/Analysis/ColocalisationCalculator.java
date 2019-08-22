@@ -1,10 +1,8 @@
 package wbif.sjx.common.Analysis;
 
-import ij.ImagePlus;
 import ij.ImageStack;
-import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume.Volume;
 
 public class ColocalisationCalculator {
     public static double calculatePCC(ImageStack image1, ImageStack image2, Volume volume) {

@@ -3,7 +3,7 @@ package wbif.sjx.common.Process;
 import ij.ImagePlus;
 import ij.process.ImageStatistics;
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume.Volume;
 
 import java.util.ArrayList;
 import java.util.TreeSet;

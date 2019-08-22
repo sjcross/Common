@@ -3,17 +3,12 @@ package wbif.sjx.common.Analysis;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
-import ij.plugin.Duplicator;
-import ij.process.ImageConverter;
-import ij.process.ImageProcessor;
-import ij.process.TypeConverter;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.MathFunc.Indexer;
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume.Volume;
 import wbif.sjx.common.Process.IntensityMinMax;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 /**
@@ -64,7 +59,7 @@ public class TextureCalculator {
             int y = point.getY();
             int z = point.getZ();
 
-            if (volume.containsPoint(new Point<>(x,y,z)) && volume.containsPoint(new Point<>(x+xOffs,y+yOffs,z+zOffs))){
+            if (volume.contains(new Point<>(x,y,z)) && volume.contains(new Point<>(x+xOffs,y+yOffs,z+zOffs))){
                 addValueToConfusionMatrix(image,x,y,z);
                 count = count + 2;
             }

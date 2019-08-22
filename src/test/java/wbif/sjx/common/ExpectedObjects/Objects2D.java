@@ -1,5 +1,8 @@
 package wbif.sjx.common.ExpectedObjects;
 
+import wbif.sjx.common.Exceptions.IntegerOverflowException;
+import wbif.sjx.common.Object.Volume.Volume;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,6 +17,14 @@ public class Objects2D extends ExpectedObjects {
     @Override
     public List<Integer[]> getCoordinates5D() {
         return getCoordinates5D("/coordinates/Objects2D.csv");
+    }
+
+    public Volume getObject(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
+        return super.getObject(58,76,1, dppXY, dppZ, calibratedUnits);
+    }
+
+    public HashMap<Integer, Volume> getObjects(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
+        return super.getObjects(58,76,1, dppXY, dppZ, calibratedUnits);
     }
 
     @Override

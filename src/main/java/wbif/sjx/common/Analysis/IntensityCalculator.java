@@ -4,7 +4,7 @@ import ij.ImagePlus;
 import ij.ImageStack;
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.Object.Point;
-import wbif.sjx.common.Object.Volume;
+import wbif.sjx.common.Object.Volume.Volume;
 
 /**
  * Created by sc13967 on 12/05/2017.

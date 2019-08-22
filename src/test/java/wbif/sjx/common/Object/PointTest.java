@@ -1,8 +1,9 @@
 package wbif.sjx.common.Object;
 
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PointTest {
     private double tolerance = 1E-2;
