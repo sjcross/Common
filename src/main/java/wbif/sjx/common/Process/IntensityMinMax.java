@@ -16,37 +16,37 @@ public class IntensityMinMax {
     public static final int PROCESS_PRECISE = 1;
 
     public static void run(ImagePlus ipl, boolean stack) {
-        if (stack && ipl.getNDimensions() > 2) processStack(ipl,0,PROCESS_FAST);
-        else processSingle(ipl,0,PROCESS_FAST);
+        if (stack && ipl.getNDimensions() > 2) processStack(ipl,0,0,PROCESS_FAST);
+        else processSingle(ipl,0,0,PROCESS_FAST);
 
         ipl.updateChannelAndDraw();
 
     }
 
-    public static void run(ImagePlus ipl, boolean stack, double clippingFraction, int mode) {
+    public static void run(ImagePlus ipl, boolean stack, double minClip, double maxClip, int mode) {
         if (stack && ipl.getNDimensions() > 2) {
-            processStack(ipl,clippingFraction, mode);
+            processStack(ipl,minClip,maxClip,mode);
         } else {
-            processSingle(ipl,clippingFraction, mode);
+            processSingle(ipl,minClip,maxClip,mode);
         }
 
         ipl.updateChannelAndDraw();
 
     }
 
-    static void processSingle(ImagePlus ipl, double weight, int mode) {
+    static void processSingle(ImagePlus ipl, double minClip, double maxClip, int mode) {
         ImageStatistics stats = ImageStatistics.getStatistics(ipl.getProcessor(), ImageStatistics.MIN_MAX, null);
 
         // Getting the minimum and maximum values
         double[] range = null;
         switch (mode) {
             case PROCESS_FAST:
-                range = getWeightedChannelRangeFast(ipl,1,weight);
+                range = getWeightedChannelRangeFast(ipl,1,minClip,maxClip);
                 break;
 
             case PROCESS_PRECISE:
             default:
-                range = getWeightedChannelRangePrecise(ipl,1,weight);
+                range = getWeightedChannelRangePrecise(ipl,1,minClip,maxClip);
                 break;
         }
 
@@ -59,20 +59,20 @@ public class IntensityMinMax {
 
     }
 
-    static void processStack(ImagePlus ipl, double weight, int mode) {
+    static void processStack(ImagePlus ipl, double minClip, double maxClip, int mode) {
         for (int channel = 0; channel < ipl.getNChannels(); channel++) {
             double[] range;
-            if (weight == 0) {
+            if (minClip == 0 && maxClip == 0) {
                 range = getAbsoluteRange(ipl,channel);
             } else {
                 switch (mode) {
                     case PROCESS_FAST:
-                        range = getWeightedChannelRangeFast(ipl,1,weight);
+                        range = getWeightedChannelRangeFast(ipl,1,minClip,maxClip);
                         break;
 
                     case PROCESS_PRECISE:
                     default:
-                        range = getWeightedChannelRangePrecise(ipl,1,weight);
+                        range = getWeightedChannelRangePrecise(ipl,1,minClip,maxClip);
                         break;
                 }
             }
@@ -95,11 +95,12 @@ public class IntensityMinMax {
      * consider the full histogram.
      * @param ipl
      * @param channel
-     * @param intensityClipFraction
+     * @param minClip
+     * @param maxClip
      * @return
      */
-    public static double[] getWeightedChannelRangeFast(ImagePlus ipl, int channel, double intensityClipFraction) {
-        return getWeightedChannelRangeFast(ipl,null,channel,0,intensityClipFraction);
+    public static double[] getWeightedChannelRangeFast(ImagePlus ipl, int channel, double minClip, double maxClip) {
+        return getWeightedChannelRangeFast(ipl,null,channel,0,minClip,maxClip);
 
     }
 
@@ -109,15 +110,16 @@ public class IntensityMinMax {
      * consider the full histogram.
      * @param ipl
      * @param channel
-     * @param intensityClipFraction
+     * @param minClip
+     * @param maxClip
      * @return
      */
-    public static double[] getWeightedChannelRangeFast(ImagePlus ipl, Volume volume, int channel, int frame, double intensityClipFraction) {
+    public static double[] getWeightedChannelRangeFast(ImagePlus ipl, Volume volume, int channel, int frame, double minClip, double maxClip) {
         double[] minMax = volume == null ? getAbsoluteRange(ipl,channel) : getAbsoluteRange(ipl,volume,channel,frame);
         double range = minMax[1]-minMax[0];
 
-        double minI = minMax[0] + range*intensityClipFraction;
-        double maxI = minMax[1] - range*intensityClipFraction;
+        double minI = minMax[0] + range*minClip;
+        double maxI = minMax[1] - range*maxClip;
 
         return new double[]{minI,maxI};
 
@@ -129,11 +131,12 @@ public class IntensityMinMax {
      * the clipping fraction is calculated as the fraction of pixels which are clipped.
      * @param ipl
      * @param channel
-     * @param pixelClipFraction
+     * @param minClip
+     * @param maxClip
      * @return
      */
-    public static double[] getWeightedChannelRangePrecise(ImagePlus ipl, int channel, double pixelClipFraction) {
-        return getWeightedChannelRangePrecise(ipl,null,channel,0,pixelClipFraction);
+    public static double[] getWeightedChannelRangePrecise(ImagePlus ipl, int channel, double minClip, double maxClip) {
+        return getWeightedChannelRangePrecise(ipl,null,channel,0,minClip,maxClip);
 
     }
 
@@ -145,17 +148,18 @@ public class IntensityMinMax {
      * @param volume
      * @param channel
      * @param frame
-     * @param pixelClipFraction
+     * @param minClip
+     * @param maxClip
      * @return
      */
-    public static double[] getWeightedChannelRangePrecise(ImagePlus ipl, Volume volume, int channel, int frame, double pixelClipFraction) {
+    public static double[] getWeightedChannelRangePrecise(ImagePlus ipl, Volume volume, int channel, int frame, double minClip, double maxClip) {
         ArrayList<Float> pixels = volume == null ? getPixels(ipl,channel) : getPixels(ipl,volume,channel,frame);
         pixels.sort(Float::compareTo);
 
         // Getting the min and max bins
         int sum = pixels.size();
-        int minBin = (int) Math.round(sum * pixelClipFraction);
-        int maxBin = (int) Math.round(sum - sum * pixelClipFraction)-1;
+        int minBin = (int) Math.round(sum * minClip);
+        int maxBin = (int) Math.round(sum - sum * maxClip)-1;
 
         // If all the pixels are a single value this might go wrong.  If this is the case, returning the full range.
         if (pixels.size() <= minBin || pixels.size() <= maxBin) {
