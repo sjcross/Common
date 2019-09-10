@@ -85,7 +85,7 @@ public class Point<T extends Number> implements Comparable<Point<T>>, Serializab
         if (!(obj instanceof Point)) return false;
 
         Point point = (Point) obj;
-        return x.equals(point.x )&& y.equals(point.y) && z.equals(point.z);
+        return x.equals(point.x) && y.equals(point.y) && z.equals(point.z);
 
     }
 

@@ -11,7 +11,7 @@ import java.util.function.Consumer;
  * Created by sc13967 on 28/07/2017.
  */
 public class PointCoordinates extends CoordinateSet {
-    private final TreeSet<Point<Integer>> points;
+    private final HashSet<Point<Integer>> points;
 
     @Override
     public VolumeType getVolumeType() {
@@ -19,7 +19,7 @@ public class PointCoordinates extends CoordinateSet {
     }
 
     public PointCoordinates() {
-        points = new TreeSet<>();
+        points = new HashSet<>();
     }
 
     // Adding and removing points
