@@ -1,5 +1,8 @@
 package wbif.sjx.common.MathFunc;
 
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
 import ij.process.ImageProcessor;
 import org.apache.commons.math3.exception.TooManyEvaluationsException;
 import org.apache.commons.math3.fitting.leastsquares.*;
@@ -14,6 +17,49 @@ import org.apache.commons.math3.util.Pair;
  * Created by sc13967 on 05/06/2017.
  */
 public class GaussianFitter {
+//    public static void main(String[] args) {
+//        new ImageJ();
+//
+//        ImagePlus iplReal = IJ.openImage("C:\\Users\\sc13967\\Desktop\\Crop.tif");
+//        ImagePlus iplGauss = IJ.createImage("Gauss",iplReal.getWidth(),iplReal.getHeight(),1,8);
+//        ImageProcessor iprReal = iplReal.getProcessor();
+//
+////        double x0, double y0, double sx, double sy, double A0, double ABG, double th
+//        double[] pIn = new double[]{5.0,5.0,5.0,5.0,20.0,7.0,1.0};
+//        double[][] limits = new double[][]{{0.0,11.0},
+//                {0.0,11.0},{1.0E-50,1.7976931348623157E308},
+//                {1.0E-50,1.7976931348623157E308},
+//                {-1.7976931348623157E308,1.7976931348623157E308},
+//                {-1.7976931348623157E308,1.7976931348623157E308},
+//                {0.0,6.283185307179586}};
+//        int maxEvaluations = 1000;
+//
+//        double[] output = fitGaussian2D(iprReal,pIn,limits,maxEvaluations);
+////        double[] output = pIn;
+//
+//        if (output == null) {
+//            System.err.println("No fit");
+//            return;
+//        }
+//
+//        GaussianDistribution2D fitDistribution2D = new GaussianDistribution2D(output[0],output[1],output[2],output[3],output[4],output[5],output[6]);
+//
+//        for (int xPos=0;xPos<iprReal.getWidth();xPos++) {
+//            for (int yPos=0;yPos<iprReal.getHeight();yPos++) {
+//                double realVal = iprReal.get(xPos,yPos);
+//                double fitVal = fitDistribution2D.getValues(xPos,yPos)[0];
+//
+//                iplGauss.getProcessor().setf(xPos,yPos,(float) fitVal);
+//
+//            }
+//        }
+//
+//        iplReal.duplicate().show();
+//        iplGauss.duplicate().show();
+//        IJ.runMacro("waitForUser");
+//
+//    }
+
     /**
      *
      * @param ipr
