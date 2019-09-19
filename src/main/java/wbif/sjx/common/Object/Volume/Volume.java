@@ -74,11 +74,6 @@ public class Volume {
     }
 
 
-    public void clearSurface() {
-        surface = null;
-    }
-
-
     // ABSTRACT METHODS
 
     public void add(int x, int y, int z) {
@@ -145,10 +140,6 @@ public class Volume {
 
     public void setPoints(TreeSet<Point<Integer>> points) {
         for (Point<Integer> point:points) add(point);
-    }
-
-    public void clearPoints() {
-        coordinateSet.clear();
     }
 
     public Point<Double> getMeanCentroid() {
@@ -502,6 +493,29 @@ public class Volume {
         } else {
             return size()*dppXY*dppXY*dppZ;
         }
+    }
+
+    public void clearAllCoordinates() {
+        coordinateSet.clear();
+        surface = null;
+        projected = null;
+        meanCentroid = null;
+    }
+
+    public void clearSurface() {
+        surface = null;
+    }
+
+    public void clearPoints() {
+        coordinateSet.clear();
+    }
+
+    public void clearProjected() {
+        projected = null;
+    }
+
+    public void clearCentroid() {
+        meanCentroid = null;
     }
 
     @Override
