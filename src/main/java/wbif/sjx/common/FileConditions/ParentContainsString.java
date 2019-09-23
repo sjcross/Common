@@ -8,15 +8,15 @@ import java.io.File;
  */
 public class ParentContainsString implements FileCondition {
     private String[] testStr;
-    private int mode;
+    private Mode mode;
 
     public ParentContainsString(String testStr) {
         this.testStr = new String[]{testStr};
-        this.mode = INC_PARTIAL;
+        this.mode = Mode.INC_PARTIAL;
 
     }
 
-    public ParentContainsString(String testStr, int mode) {
+    public ParentContainsString(String testStr, Mode mode) {
         this.testStr = new String[]{testStr};
         this.mode = mode;
 
@@ -24,41 +24,46 @@ public class ParentContainsString implements FileCondition {
 
     public ParentContainsString(String[] testStr) {
         this.testStr = testStr;
-        this.mode = INC_PARTIAL;
+        this.mode = Mode.INC_PARTIAL;
 
     }
 
-    public ParentContainsString(String[] testStr, int mode) {
+    public ParentContainsString(String[] testStr, Mode mode) {
         this.testStr = testStr;
         this.mode = mode;
 
     }
 
     public boolean test(File file) {
-        boolean cnd = false;
-
         if (file != null) {
             String name = file.getParent();
 
             for (int i = 0; i < testStr.length; i++) {
                 switch (mode) {
                     case INC_COMPLETE:
-                        if (name.equals(testStr[i])) cnd = true;
+                        if (name.equals(testStr[i])) return true;
                         break;
                     case INC_PARTIAL:
-                        if (name.contains(testStr[i])) cnd = true;
+                        if (name.contains(testStr[i])) return true;
                         break;
                     case EXC_COMPLETE:
-                        if (!name.equals(testStr[i])) cnd = true;
+                        if (name.equals(testStr[i])) return false;
                         break;
                     case EXC_PARTIAL:
-                        if (!name.contains(testStr[i])) cnd = true;
+                        if (name.contains(testStr[i])) return false;
                         break;
                 }
             }
         }
 
-        return cnd;
-
+        switch (mode) {
+            case INC_COMPLETE:
+            case INC_PARTIAL:
+            default:
+                return false;
+            case EXC_COMPLETE:
+            case EXC_PARTIAL:
+                return true;
+        }
     }
 }

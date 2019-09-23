@@ -8,15 +8,15 @@ import java.io.File;
  */
 public class NameContainsString implements FileCondition {
     private String[] testStr;
-    private int mode;
+    private Mode mode;
 
     public NameContainsString(String testStr) {
         this.testStr = new String[]{testStr};
-        this.mode = INC_PARTIAL;
+        this.mode = Mode.INC_PARTIAL;
 
     }
 
-    public NameContainsString(String testStr, int mode) {
+    public NameContainsString(String testStr, Mode mode) {
         this.testStr = new String[]{testStr};
         this.mode = mode;
 
@@ -24,37 +24,43 @@ public class NameContainsString implements FileCondition {
 
     public NameContainsString(String[] testStr) {
         this.testStr = testStr;
-        this.mode = INC_PARTIAL;
+        this.mode = Mode.INC_PARTIAL;
 
     }
 
-    public NameContainsString(String[] testStr, int mode) {
+    public NameContainsString(String[] testStr, Mode mode) {
         this.testStr = testStr;
         this.mode = mode;
 
     }
 
     public boolean test(String string) {
-        boolean cnd = false;
-
-        for (int i = 0; i < testStr.length; i++) {
+        for (String s : testStr) {
             switch (mode) {
                 case INC_COMPLETE:
-                    if (string.equals(testStr[i])) cnd = true;
+                    if (string.equals(s)) return true;
                     break;
                 case INC_PARTIAL:
-                    if (string.contains(testStr[i])) cnd = true;
+                    if (string.contains(s)) return true;
                     break;
                 case EXC_COMPLETE:
-                    if (!string.equals(testStr[i])) cnd = true;
+                    if (string.equals(s)) return false;
                     break;
                 case EXC_PARTIAL:
-                    if (!string.contains(testStr[i])) cnd = true;
+                    if (string.contains(s)) return false;
                     break;
             }
         }
 
-        return cnd;
+        switch (mode) {
+            case INC_COMPLETE:
+            case INC_PARTIAL:
+            default:
+                return false;
+            case EXC_COMPLETE:
+            case EXC_PARTIAL:
+                return true;
+        }
 
     }
 
