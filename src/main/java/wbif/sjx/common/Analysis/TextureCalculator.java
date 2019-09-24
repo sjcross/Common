@@ -9,6 +9,7 @@ import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Volume.Volume;
 import wbif.sjx.common.Process.IntensityMinMax;
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 /**
@@ -43,9 +44,6 @@ public class TextureCalculator {
     public void calculate(ImageStack image, Volume volume) {
         if (image.getBitDepth() != 8) image = convertTo8Bit(image);
 
-        // Getting object pixel range
-        double[][] extents = volume.getExtents(true,false);
-
         // Initialising new HashMap (acting as a sparse matrix) to store the co-occurrence matrix
         matrix = new LinkedHashMap<>();
 
@@ -59,7 +57,7 @@ public class TextureCalculator {
             int y = point.getY();
             int z = point.getZ();
 
-            if (volume.contains(new Point<>(x,y,z)) && volume.contains(new Point<>(x+xOffs,y+yOffs,z+zOffs))){
+            if (volume.contains(new Point<>(x+xOffs,y+yOffs,z+zOffs))) {
                 addValueToConfusionMatrix(image,x,y,z);
                 count = count + 2;
             }
@@ -128,11 +126,12 @@ public class TextureCalculator {
 
         // Storing in the HashMap
         int index1 = indexer.getIndex(new int[]{v1, v2});
-        matrix.computeIfAbsent(index1, k -> matrix.put(index1, 0d));
-        matrix.put(index1, matrix.get(index1) + 1);
-
         int index2 = indexer.getIndex(new int[]{v2, v1});
-        matrix.computeIfAbsent(index2, k -> matrix.put(index2, 0d));
+        if (!matrix.containsKey(index1)) {
+            matrix.put(index1,0d);
+            matrix.put(indexer.getIndex(new int[]{v2, v1}),0d);
+        }
+        matrix.put(index1, matrix.get(index1) + 1);
         matrix.put(index2, matrix.get(index2) + 1);
 
     }

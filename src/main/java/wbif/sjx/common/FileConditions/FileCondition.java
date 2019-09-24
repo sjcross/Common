@@ -6,11 +6,12 @@ import java.io.File;
  * Created by sc13967 on 24/10/2016.
  */
 public interface FileCondition {
-    int INC_COMPLETE = 0; //Including complete match for test string
-    int INC_PARTIAL = 1; //Including partial match for test string
-    int EXC_COMPLETE = 2; //Excluding complete match for test string
-    int EXC_PARTIAL = 3; //Excluding partial match for test string
-
+ public enum Mode {
+     INC_COMPLETE,  //Including complete match for test string
+     INC_PARTIAL,   //Including partial match for test string
+     EXC_COMPLETE,  //Excluding complete match for test string
+     EXC_PARTIAL;   //Excluding partial match for test string
+ }
     boolean test(File file);
 
 }
