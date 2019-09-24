@@ -15,66 +15,135 @@
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Common$ExtensionMatchesStringTest_testConstructorSingleWithMode.ic" NAME="ExtensionMatchesStringTest.testConstructorSingleWithMode Coverage Results" MODIFIED="1569268046950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.FileConditions.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$ExtensionMatchesStringTest.ic" NAME="ExtensionMatchesStringTest Coverage Results" MODIFIED="1569268835353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.FileConditions.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$NameContainsStringTest.ic" NAME="NameContainsStringTest Coverage Results" MODIFIED="1569270233661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.FileConditions.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$NameContainsPatternTest.ic" NAME="NameContainsPatternTest Coverage Results" MODIFIED="1569269269146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>wbif.sjx.common.FileConditions.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Common$All_in_Common.ic" NAME="All in Common Coverage Results" MODIFIED="1569308765722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="1" />
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+            <state relative-caret-position="170">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsPattern.java">
+      <file leaf-file-name="ExtensionMatchesStringTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/ExtensionMatchesStringTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+            <state relative-caret-position="494">
+              <caret line="125" selection-start-line="125" selection-end-line="203" selection-end-column="5" />
+              <folding>
+                <element signature="docComment;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testConstructorSingleNoMode#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testConstructorSingleWithMode#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testConstructorMultiNoMode#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testConstructorMultiWithMode#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testTestIncludesCompleteTrue#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testTestIncludesCompleteFalse#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testTestIncludesPartialTrue#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testTestIncludesPartialFalse#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testTestExcludesCompleteTrue#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testTestExcludesCompleteFalse#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testTestExcludesPartialTrue#0;class#ExtensionMatchesStringTest#0" />
+                <element signature="method#testTestExcludesPartialFalse#0;class#ExtensionMatchesStringTest#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="NameContainsStringTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsStringTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+              <folding>
+                <element signature="method#testConstructorSingleNoMode#0;class#NameContainsStringTest#0" />
+                <element signature="method#testConstructorSingleWithMode#0;class#NameContainsStringTest#0" />
+                <element signature="method#testConstructorMultiNoMode#0;class#NameContainsStringTest#0" />
+                <element signature="method#testConstructorMultiWithMode#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestIncludesCompleteTrue#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestIncludesCompleteFalse1#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestIncludesCompleteFalse2#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestIncludesCompleteEmpty#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestIncludesPartialTrue#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestIncludesPartialFalse#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestIncludesPartialEmpty#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestExcludesCompleteTrue#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestExcludesCompleteFalse#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestExcludesCompleteEmpty#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestExcludesPartialTrue#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestExcludesPartialFalse#0;class#NameContainsStringTest#0" />
+                <element signature="method#testTestExcludesPartialEmpty#0;class#NameContainsStringTest#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NameContainsPatternTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsPatternTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+              <folding>
+                <element signature="docComment;class#NameContainsPatternTest#0" />
+                <element signature="method#testConstructorSingleNoMode#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testConstructorSingleWithMode#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testConstructorMultiNoMode#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testConstructorMultiWithMode#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleIncPartialTrue#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleIncPartialFalse#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleIncPartialEmpty#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleIncCompleteTrue#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleIncCompleteFalse#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleIncCompleteEmpty#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleExcCompleteTrue#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleExcCompleteFalse#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleExcCompleteEmpty#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleExcPartialTrue#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleExcPartialFalse#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestSingleExcPartialEmpty#0;class#NameContainsPatternTest#0" />
+                <element signature="method#testTestMultiIncPartial#0;class#NameContainsPatternTest#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NameContainsString.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsString.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/ParentContainsString.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsExtractorTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="38" column="67" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/ExtensionMatchesString.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+            <state relative-caret-position="153">
+              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+              <folding>
+                <element signature="docComment;class#NameContainsString#0" />
+                <element signature="method#NameContainsString#1;class#NameContainsString#0" />
+                <element signature="method#NameContainsString#2;class#NameContainsString#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,8 +161,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>set</find>
-      <find>pixel</find>
       <find>getunit</find>
       <find>Point</find>
       <find>Volume</find>
@@ -122,6 +189,8 @@
       <find>getExtents</find>
       <find>indexer</find>
       <find>exte</find>
+      <find>argline</find>
+      <find>testFileTrue</find>
     </findStrings>
     <replaceStrings>
       <replace>Float</replace>
@@ -142,6 +211,7 @@
       <replace>assertArrayEquals(</replace>
       <replace>@Disabled</replace>
       <replace>import org.junit.jupiter.api.Disabled;</replace>
+      <replace>testFile</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -150,9 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/VolumeTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Filters/DoG.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Filters/CombingCorrector.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/VolumeSurfaceSeparationCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume.java" />
@@ -191,16 +258,19 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/GaussianFitter.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Calibrated.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/TextureCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/FileCondition.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/ExtensionMatchesStringTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsExtractorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsPattern.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/ExtensionMatchesString.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsString.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/ParentContainsString.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/ExtensionMatchesString.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/ExtensionMatchesStringTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsPattern.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsExtractorTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsStringTest.groovy" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsString.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsStringTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsPatternTest.java" />
       </list>
     </option>
   </component>
@@ -211,11 +281,11 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="1912" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="505" />
+    <option name="y" value="-10" />
+    <option name="width" value="925" />
+    <option name="height" value="1090" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -225,6 +295,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -265,53 +336,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="FileConditions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="MathFunc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Object" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Object" type="462c0819:PsiDirectoryNode" />
-              <item name="Volume" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Process" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Common" type="b2602c69:ProjectViewProjectNode" />
@@ -347,7 +372,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -355,7 +379,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Groovy JUnit" value="groovy.util.GroovyTestCase" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrackAnalysis" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -364,23 +389,29 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.testRunning" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="wbif.sjx.common.FileConditions" />
       <recent name="wbif.sjx.common.Process.SkeletonTools" />
       <recent name="wbif.sjx.common.Object" />
       <recent name="wbif.sjx.common.MathFunc" />
       <recent name="wbif.sjx.common.Analysis" />
-      <recent name="wbif.sjx.common.MetadataExtractors" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="wbif.sjx.common.Analysis" />
       <recent name="wbif.sjx.common.MathFunc" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sc13967\Documents\Java Projects\Common\src\test\java\wbif\sjx\common\ExpectedObjects" />
+      <recent name="C:\Users\sc13967\Local Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Process" />
+      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour\Energies" />
+      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="wbif.sjx.common.ExpectedObjects" />
@@ -390,13 +421,8 @@
       <recent name="wbif.sjx.common.Process.ActiveContour.Visualisation" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
+      <recent name="groovy.util.GroovyTestCase" />
       <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sc13967\Documents\Java Projects\Common\src\test\java\wbif\sjx\common\ExpectedObjects" />
-      <recent name="C:\Users\sc13967\Local Documents\Java Projects\Common\src\main\java\wbif\sjx\common\Process" />
-      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour\Energies" />
-      <recent name="C:\Users\sc13967\Documents\Java_Projects\Common\src\main\java\wbif\sjx\common\Process\ActiveContour" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -411,22 +437,39 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Common [install]">
-    <configuration default="true" type="Applet">
+  <component name="RunManager" selected="JUnit.All in Common">
+    <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <option name="WIDTH" value="0" />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExtensionMatchesStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in Common" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Common" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="NameContainsStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
@@ -434,16 +477,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.FileConditions" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.FileConditions.ExtensionMatchesStringTest" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.FileConditions.NameContainsStringTest" />
+      <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
-    <configuration name="ExtensionMatchesStringTest.testTestIncludesCompleteFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NameContainsStringTest.testTestExcludesCompleteEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
@@ -451,17 +500,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.FileConditions" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.FileConditions.ExtensionMatchesStringTest" />
-      <option name="METHOD_NAME" value="testTestIncludesCompleteFalse(java.nio.file.Path)" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.FileConditions.NameContainsStringTest" />
+      <option name="METHOD_NAME" value="testTestExcludesCompleteEmpty(java.nio.file.Path)" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
-    <configuration name="ExtensionMatchesStringTest.testTestIncludesPartialTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NameContainsStringTest.testTestIncludesCompleteEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
@@ -469,17 +523,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.FileConditions" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.FileConditions.ExtensionMatchesStringTest" />
-      <option name="METHOD_NAME" value="testTestIncludesPartialTrue(java.nio.file.Path)" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.FileConditions.NameContainsStringTest" />
+      <option name="METHOD_NAME" value="testTestIncludesCompleteEmpty(java.nio.file.Path)" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
-    <configuration name="NameContainsExtractorTest.testTestSingleIncComplete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NameContainsStringTest.testTestIncludesPartialEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
@@ -487,38 +546,37 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="wbif.sjx.common.FileConditions" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.FileConditions.NameContainsExtractorTest" />
-      <option name="METHOD_NAME" value="testTestSingleIncComplete(java.nio.file.Path)" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.FileConditions.NameContainsStringTest" />
+      <option name="METHOD_NAME" value="testTestIncludesPartialEmpty(java.nio.file.Path)" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TextureCalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="wbif.sjx.common.Analysis.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.TextureCalculatorTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
@@ -546,7 +604,6 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
-      <method v="2" />
     </configuration>
     <configuration name="Common [quick install]" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
@@ -573,34 +630,48 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
-      <method v="2" />
     </configuration>
-    <configuration default="true" type="TestNG">
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Maven.Common [install]" />
       <item itemvalue="Maven.Common [quick install]" />
-      <item itemvalue="JUnit.TextureCalculatorTest" />
-      <item itemvalue="JUnit.ExtensionMatchesStringTest" />
-      <item itemvalue="JUnit.ExtensionMatchesStringTest.testTestIncludesCompleteFalse" />
-      <item itemvalue="JUnit.ExtensionMatchesStringTest.testTestIncludesPartialTrue" />
-      <item itemvalue="JUnit.NameContainsExtractorTest.testTestSingleIncComplete" />
+      <item itemvalue="JUnit.NameContainsStringTest.testTestIncludesCompleteEmpty" />
+      <item itemvalue="JUnit.NameContainsStringTest.testTestIncludesPartialEmpty" />
+      <item itemvalue="JUnit.NameContainsStringTest.testTestExcludesCompleteEmpty" />
+      <item itemvalue="JUnit.NameContainsStringTest" />
+      <item itemvalue="JUnit.All in Common" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.NameContainsExtractorTest.testTestSingleIncComplete" />
-        <item itemvalue="JUnit.ExtensionMatchesStringTest.testTestIncludesPartialTrue" />
-        <item itemvalue="JUnit.ExtensionMatchesStringTest" />
-        <item itemvalue="JUnit.ExtensionMatchesStringTest.testTestIncludesCompleteFalse" />
-        <item itemvalue="JUnit.TextureCalculatorTest" />
+        <item itemvalue="JUnit.All in Common" />
+        <item itemvalue="JUnit.NameContainsStringTest" />
+        <item itemvalue="JUnit.NameContainsStringTest.testTestExcludesCompleteEmpty" />
+        <item itemvalue="JUnit.NameContainsStringTest.testTestIncludesPartialEmpty" />
+        <item itemvalue="JUnit.NameContainsStringTest.testTestIncludesCompleteEmpty" />
       </list>
     </recent_temporary>
   </component>
@@ -636,35 +707,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TextureCalculatorTest - 2019.09.20 at 14h 01m 55s.xml">
-      <configuration name="TextureCalculatorTest" configurationId="JUnit" />
+    <history-entry file="NameContainsStringTest_testTestIncludesCompleteFalse - 2019.09.23 at 21h 18m 03s.xml">
+      <configuration name="NameContainsStringTest.testTestIncludesCompleteFalse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExtensionMatchesStringTest - 2019.09.23 at 11h 37m 01s.xml">
-      <configuration name="ExtensionMatchesStringTest" configurationId="JUnit" />
+    <history-entry file="NameContainsStringTest_testTestIncludesCompleteFalse2 - 2019.09.23 at 21h 19m 29s.xml">
+      <configuration name="NameContainsStringTest.testTestIncludesCompleteFalse2" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExtensionMatchesStringTest_testTestIncludesCompleteFalse - 2019.09.23 at 11h 42m 03s.xml">
-      <configuration name="ExtensionMatchesStringTest.testTestIncludesCompleteFalse" configurationId="JUnit" />
+    <history-entry file="NameContainsStringTest_testTestExcludesCompleteTrue - 2019.09.24 at 07h 52m 20s.xml">
+      <configuration name="NameContainsStringTest.testTestExcludesCompleteTrue" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExtensionMatchesStringTest - 2019.09.23 at 11h 42m 54s.xml">
-      <configuration name="ExtensionMatchesStringTest" configurationId="JUnit" />
+    <history-entry file="NameContainsStringTest_testTestExcludesCompleteFalse - 2019.09.24 at 07h 52m 47s.xml">
+      <configuration name="NameContainsStringTest.testTestExcludesCompleteFalse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExtensionMatchesStringTest - 2019.09.23 at 11h 43m 13s.xml">
-      <configuration name="ExtensionMatchesStringTest" configurationId="JUnit" />
+    <history-entry file="NameContainsStringTest_testTestExcludesPartialFalse - 2019.09.24 at 07h 53m 27s.xml">
+      <configuration name="NameContainsStringTest.testTestExcludesPartialFalse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExtensionMatchesStringTest_testTestIncludesPartialTrue - 2019.09.23 at 11h 45m 15s.xml">
-      <configuration name="ExtensionMatchesStringTest.testTestIncludesPartialTrue" configurationId="JUnit" />
+    <history-entry file="NameContainsStringTest_testTestExcludesPartialTrue - 2019.09.24 at 07h 54m 14s.xml">
+      <configuration name="NameContainsStringTest.testTestExcludesPartialTrue" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExtensionMatchesStringTest_testTestIncludesPartialTrue - 2019.09.23 at 11h 45m 36s.xml">
-      <configuration name="ExtensionMatchesStringTest.testTestIncludesPartialTrue" configurationId="JUnit" />
+    <history-entry file="NameContainsStringTest_testTestIncludesCompleteEmpty - 2019.09.24 at 07h 56m 20s.xml">
+      <configuration name="NameContainsStringTest.testTestIncludesCompleteEmpty" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ExtensionMatchesStringTest_testTestIncludesPartialTrue - 2019.09.23 at 11h 45m 51s.xml">
-      <configuration name="ExtensionMatchesStringTest.testTestIncludesPartialTrue" configurationId="JUnit" />
+    <history-entry file="NameContainsStringTest_testTestIncludesPartialEmpty - 2019.09.24 at 07h 56m 53s.xml">
+      <configuration name="NameContainsStringTest.testTestIncludesPartialEmpty" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NameContainsExtractorTest_testTestSingleIncComplete - 2019.09.23 at 12h 08m 56s.xml">
-      <configuration name="NameContainsExtractorTest.testTestSingleIncComplete" configurationId="JUnit" />
+    <history-entry file="NameContainsStringTest_testTestExcludesCompleteEmpty - 2019.09.24 at 07h 57m 29s.xml">
+      <configuration name="NameContainsStringTest.testTestExcludesCompleteEmpty" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NameContainsExtractorTest_testTestSingleIncComplete - 2019.09.23 at 12h 10m 33s.xml">
-      <configuration name="NameContainsExtractorTest.testTestSingleIncComplete" configurationId="JUnit" />
+    <history-entry file="NameContainsStringTest - 2019.09.24 at 07h 58m 07s.xml">
+      <configuration name="NameContainsStringTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -680,100 +751,93 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="7" />
-    <editor active="true" />
+    <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18656716" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.24972437" />
-      <window_info id="Nl-Palette" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info id="UI Designer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32902583" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30914512" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39960238" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.3280318" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.3279703" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.17821783" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info id="Designer" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18656716" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32902583" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24972437" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39960238" />
       <window_info anchor="right" id="Maven" order="9" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32971507" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="UI Designer" order="6" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Database" order="10" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2228145" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.24972437" />
-      <window_info id="Nl-Palette" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info id="UI Designer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32902583" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32703778" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Properties" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info anchor="right" id="Maven" order="9" />
+      <window_info id="Designer" order="5" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32703778" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="UI Designer" order="6" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32902583" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2228145" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Database" order="10" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24972437" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/CumulativePathLengthCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/OctreeTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/MathFunc/Indexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-864">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/HoughTransform/Accumulators/Accumulator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -938,8 +1002,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/PointCoordinates.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+        <state relative-caret-position="204">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -948,12 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-265">
           <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-          <folding>
-            <element signature="docComment;class#OctreeCoordinates#0" />
-            <element signature="method#add#0;class#OctreeCoordinates#0" />
-            <element signature="method#contains#0;class#OctreeCoordinates#0" />
-            <element signature="method#remove#0;class#OctreeCoordinates#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -961,15 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding>
-            <element signature="docComment;class#GaussianFitter#0" />
-            <element signature="e#655#701#0" />
-            <element signature="docComment;method#fitGaussian2D#0;class#GaussianFitter#0" />
-            <element signature="method#fitGaussian2D#0;class#GaussianFitter#0" />
-            <element signature="class#Model#0" />
-            <element signature="method#Model#0;class#Model#0" />
-            <element signature="method#value#0;class#Model#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -984,16 +1033,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1972">
           <caret line="122" selection-start-line="122" selection-end-line="122" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="425">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>
@@ -1001,9 +1047,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1011,10 +1054,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1037">
           <caret line="73" column="29" selection-start-line="67" selection-start-column="28" selection-end-line="73" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#MSDCalculatorTest#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1022,93 +1061,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="method#calculateSurface#0;class#CoordinateSet#0" />
-            <element signature="method#calculateProjected#0;class#CoordinateSet#0" />
-            <element signature="method#calculateMeanCentroid#0;class#CoordinateSet#0" />
-            <element signature="e#1085#1207#1" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="351" column="50" selection-start-line="351" selection-start-column="50" selection-end-line="351" selection-end-column="50" />
-          <folding>
-            <element signature="e#840#1208#0" />
-            <element signature="e#1214#1593#0" />
-            <element signature="e#1599#1983#0" />
-            <element signature="e#1989#2329#0" />
-            <element signature="e#2066#2323#0" />
-            <element signature="e#2426#2843#0" />
-            <element signature="e#2849#2933#0" />
-            <element signature="e#3009#3121#0" />
-            <element signature="e#3127#3367#0" />
-            <element signature="e#3185#3335#1" />
-            <element signature="e#3373#4055#0" />
-            <element signature="e#3435#4021#1" />
-            <element signature="e#3602#3843#0" />
-            <element signature="e#4061#4223#0" />
-            <element signature="e#4420#4583#0" />
-            <element signature="e#4887#4946#0" />
-            <element signature="e#5031#5197#0" />
-            <element signature="e#5203#5368#0" />
-            <element signature="e#5374#5540#0" />
-            <element signature="e#5546#5877#0" />
-            <element signature="e#5883#6214#0" />
-            <element signature="e#6220#6460#0" />
-            <element signature="e#6220#6992#0" />
-            <element signature="e#6998#7184#0" />
-            <element signature="e#7190#7376#0" />
-            <element signature="e#7382#7568#0" />
-            <element signature="e#7574#7938#0" />
-            <element signature="e#7944#8307#0" />
-            <element signature="e#8313#8553#0" />
-            <element signature="e#8313#9131#0" />
-            <element signature="e#9137#9795#0" />
-            <element signature="e#9265#9711#0" />
-            <element signature="e#9747#9789#0" />
-            <element signature="e#9801#9965#0" />
-            <element signature="e#9971#10135#0" />
-            <element signature="e#10141#10476#0" />
-            <element signature="e#10482#10954#0" />
-            <element signature="e#10709#10806#1" />
-            <element signature="e#11748#11886#1" />
-            <element signature="e#11775#11876#1" />
-            <element signature="e#11892#12087#1" />
-            <element signature="e#12169#12526#0" />
-            <element signature="e#12447#12485#1" />
-            <element signature="e#12532#12855#0" />
-            <element signature="e#12774#12813#1" />
-            <element signature="e#12861#13332#0" />
-            <element signature="e#13338#13570#0" />
-            <element signature="e#13576#13824#0" />
-            <element signature="e#13830#14021#0" />
-            <element signature="e#13830#14286#0" />
-            <element signature="e#14292#14481#0" />
-            <element signature="e#14292#14664#0" />
-            <element signature="e#14670#15302#0" />
-            <element signature="e#14799#15094#0" />
-            <element signature="e#14842#14960#1" />
-            <element signature="e#14966#15084#1" />
-            <element signature="e#15308#15651#0" />
-            <element signature="e#15409#15507#1" />
-            <element signature="e#15513#15611#1" />
-            <element signature="e#15657#15860#0" />
-            <element signature="e#15744#15793#1" />
-            <element signature="e#15799#15854#1" />
-            <element signature="e#15735#15875#0" />
-            <element signature="e#15866#16152#0" />
-            <element signature="e#16158#16618#0" />
-            <element signature="e#17323#17483#0" />
-            <element signature="e#17599#18724#0" />
-            <element signature="e#17798#18012#0" />
-            <element signature="e#18125#18718#0" />
-            <element signature="e#18372#18474#1" />
-            <element signature="e#18511#18598#1" />
-            <element signature="e#18604#18708#1" />
-          </folding>
+        <state relative-caret-position="138">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
@@ -1130,38 +1089,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="76" column="51" lean-forward="true" selection-end-line="429" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#15931#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="2131" column="19" selection-start-line="2131" selection-start-column="19" selection-end-line="2131" selection-end-column="19" />
-          <folding>
-            <element signature="e#82971#82972#0" expanded="true" />
-            <element signature="e#83020#83021#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/FileCondition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/String.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/TextureCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1176,41 +1107,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/ExtensionMatchesStringTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsExtractorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="38" column="67" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsPattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/ExtensionMatchesString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/ParentContainsString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -1218,12 +1114,228 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/BigBlob2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/FileCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/ExtensionMatchesString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="35" column="35" lean-forward="true" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+          <folding>
+            <element signature="docComment;class#ExtensionMatchesString#0" />
+            <element signature="e#1863#1864#0" expanded="true" />
+            <element signature="e#1890#1891#0" expanded="true" />
+            <element signature="e#1919#1920#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsPattern.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="75" column="33" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
+          <folding>
+            <element signature="docComment;class#NameContainsPattern#0" />
+            <element signature="method#NameContainsPattern#0;class#NameContainsPattern#0" />
+            <element signature="method#NameContainsPattern#1;class#NameContainsPattern#0" />
+            <element signature="method#NameContainsPattern#2;class#NameContainsPattern#0" />
+            <element signature="method#NameContainsPattern#3;class#NameContainsPattern#0" />
+            <element signature="method#test#0;class#NameContainsPattern#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/ExtensionMatchesStringTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="125" selection-start-line="125" selection-end-line="203" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testConstructorSingleNoMode#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testConstructorSingleWithMode#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testConstructorMultiNoMode#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testConstructorMultiWithMode#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testTestIncludesCompleteTrue#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testTestIncludesCompleteFalse#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testTestIncludesPartialTrue#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testTestIncludesPartialFalse#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testTestExcludesCompleteTrue#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testTestExcludesCompleteFalse#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testTestExcludesPartialTrue#0;class#ExtensionMatchesStringTest#0" />
+            <element signature="method#testTestExcludesPartialFalse#0;class#ExtensionMatchesStringTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/FileConditions/NameContainsString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <folding>
+            <element signature="docComment;class#NameContainsString#0" />
+            <element signature="method#NameContainsString#1;class#NameContainsString#0" />
+            <element signature="method#NameContainsString#2;class#NameContainsString#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsStringTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding>
+            <element signature="method#testConstructorSingleNoMode#0;class#NameContainsStringTest#0" />
+            <element signature="method#testConstructorSingleWithMode#0;class#NameContainsStringTest#0" />
+            <element signature="method#testConstructorMultiNoMode#0;class#NameContainsStringTest#0" />
+            <element signature="method#testConstructorMultiWithMode#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestIncludesCompleteTrue#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestIncludesCompleteFalse1#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestIncludesCompleteFalse2#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestIncludesCompleteEmpty#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestIncludesPartialTrue#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestIncludesPartialFalse#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestIncludesPartialEmpty#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestExcludesCompleteTrue#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestExcludesCompleteFalse#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestExcludesCompleteEmpty#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestExcludesPartialTrue#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestExcludesPartialFalse#0;class#NameContainsStringTest#0" />
+            <element signature="method#testTestExcludesPartialEmpty#0;class#NameContainsStringTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/FileConditions/NameContainsPatternTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding>
+            <element signature="docComment;class#NameContainsPatternTest#0" />
+            <element signature="method#testConstructorSingleNoMode#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testConstructorSingleWithMode#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testConstructorMultiNoMode#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testConstructorMultiWithMode#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleIncPartialTrue#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleIncPartialFalse#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleIncPartialEmpty#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleIncCompleteTrue#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleIncCompleteFalse#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleIncCompleteEmpty#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleExcCompleteTrue#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleExcCompleteFalse#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleExcCompleteEmpty#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleExcPartialTrue#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleExcPartialFalse#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestSingleExcPartialEmpty#0;class#NameContainsPatternTest#0" />
+            <element signature="method#testTestMultiIncPartial#0;class#NameContainsPatternTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Common</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

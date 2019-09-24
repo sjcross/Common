@@ -15,6 +15,7 @@ public class ExtensionMatchesString implements FileCondition {
 
     public ExtensionMatchesString(String ext) {
         this.exts = new String[]{ext};
+        this.mode = Mode.INC_PARTIAL;
     }
 
     public ExtensionMatchesString(String ext, Mode mode) {
@@ -24,6 +25,7 @@ public class ExtensionMatchesString implements FileCondition {
 
     public ExtensionMatchesString(String[] exts) {
         this.exts = exts;
+        this.mode = Mode.INC_PARTIAL;
     }
 
     public ExtensionMatchesString(String[] exts, Mode mode) {
@@ -62,5 +64,13 @@ public class ExtensionMatchesString implements FileCondition {
             case EXC_PARTIAL:
                 return true;
         }
+    }
+
+    public String[] getExts() {
+        return exts;
+    }
+
+    public Mode getMode() {
+        return mode;
     }
 }
