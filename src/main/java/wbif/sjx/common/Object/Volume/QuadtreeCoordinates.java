@@ -73,16 +73,26 @@ public class QuadtreeCoordinates extends CoordinateSet {
 
     // Creating coordinate subsets
 
+    protected CoordinateSet calculateProjected() {
+        CoordinateSet projectedCoordinates = new QuadtreeCoordinates();
+
+        for (Point<Integer> point:this) projectedCoordinates.add(point.x,point.y,0);
+
+        return projectedCoordinates;
+
+    }
+
     protected CoordinateSet calculateSurface2D() {
         // Get the sole QuadTree
         QuadTree quadTree = quadTrees.values().iterator().next();
 
         // Set the surface list to the edge points of the QuadTree
         return quadTree.getEdgePoints();
+
     }
 
     protected CoordinateSet calculateSurface3D() {
-        PointCoordinates surface = new PointCoordinates();
+        CoordinateSet surface = new PointCoordinates();
 
         // For each slice
         for (int z:quadTrees.keySet()) {

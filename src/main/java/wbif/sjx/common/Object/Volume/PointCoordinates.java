@@ -54,12 +54,20 @@ public class PointCoordinates extends CoordinateSet {
     @Override
     public void finalise() {}
 
+
     // Creating coordinate subsets
 
+    protected CoordinateSet calculateProjected() {
+        CoordinateSet projectedCoordinates = new PointCoordinates();
 
-    @Override
+        for (Point<Integer> point:this) projectedCoordinates.add(point.x,point.y,0);
+
+        return projectedCoordinates;
+
+    }
+
     protected CoordinateSet calculateSurface2D() {
-        PointCoordinates surface = new PointCoordinates();
+        CoordinateSet surface = new PointCoordinates();
 
         // Iterating over each Point, adding it if it has fewer than 4 neighbours
         for (Point<Integer> point:points) {
@@ -77,9 +85,8 @@ public class PointCoordinates extends CoordinateSet {
         return surface;
     }
 
-    @Override
     protected CoordinateSet calculateSurface3D() {
-        PointCoordinates surface = new PointCoordinates();
+        CoordinateSet surface = new PointCoordinates();
 
         // Iterating over each Point, adding it if it has fewer than 6 neighbours
         for (Point<Integer> point:points) {

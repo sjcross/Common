@@ -113,14 +113,16 @@ public class Volume {
     public Volume getProjected() {
         if (projected == null) {
             VolumeType outputType;
-            // Octree is now best represented by quadtree.  Pointlist can stay as pointlist.
+            // Octree is best represented by quadtree.  Pointlist can stay as pointlist.
             switch (getVolumeType()) {
                 case OCTREE:
                 case QUADTREE:
                     outputType = VolumeType.QUADTREE;
+                    break;
                 case POINTLIST:
                 default:
                     outputType = VolumeType.POINTLIST;
+                    break;
             }
 
             projected = new Volume(outputType,width,height,1,dppXY,dppZ,calibratedUnits);
