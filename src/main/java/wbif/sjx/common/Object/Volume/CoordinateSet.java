@@ -10,20 +10,12 @@ public abstract class CoordinateSet extends AbstractSet<Point<Integer>> {
     public abstract void finalise();
     public abstract long getNumberOfElements();
     public abstract VolumeType getVolumeType();
+    protected abstract CoordinateSet calculateProjected();
     protected abstract CoordinateSet calculateSurface2D();
     protected abstract CoordinateSet calculateSurface3D();
 
     public CoordinateSet calculateSurface(boolean is2D) {
         return is2D ? calculateSurface2D() : calculateSurface3D();
-
-    }
-
-    public CoordinateSet calculateProjected() {
-        PointCoordinates projected = new PointCoordinates();
-
-        for (Point<Integer> point:this) projected.add(point.x,point.y,0);
-
-        return projected;
 
     }
 

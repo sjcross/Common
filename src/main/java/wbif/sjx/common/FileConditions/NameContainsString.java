@@ -61,7 +61,6 @@ public class NameContainsString implements FileCondition {
             case EXC_PARTIAL:
                 return true;
         }
-
     }
 
     public boolean test(File file) {
@@ -70,5 +69,13 @@ public class NameContainsString implements FileCondition {
         String name = file.getName();
         return test(name);
 
+    }
+
+    public String[] getTestStr() {
+        return testStr;
+    }
+
+    public Mode getMode() {
+        return mode;
     }
 }

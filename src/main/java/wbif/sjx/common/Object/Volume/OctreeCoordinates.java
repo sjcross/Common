@@ -64,6 +64,15 @@ public class OctreeCoordinates extends CoordinateSet {
 
     // Creating coordinate subsets
 
+    protected CoordinateSet calculateProjected() {
+        CoordinateSet projectedCoordinates = new QuadtreeCoordinates();
+
+        for (Point<Integer> point:this) projectedCoordinates.add(point.x,point.y,0);
+
+        return projectedCoordinates;
+
+    }
+
     protected CoordinateSet calculateSurface2D() {
         return ocTree.getEdgePoints(true);
     }

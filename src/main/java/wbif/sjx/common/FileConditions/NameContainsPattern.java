@@ -72,4 +72,12 @@ public class NameContainsPattern implements FileCondition {
         }
 
     }
+
+    public Pattern[] getPattern() {
+        return pattern;
+    }
+
+    public Mode getMode() {
+        return mode;
+    }
 }
