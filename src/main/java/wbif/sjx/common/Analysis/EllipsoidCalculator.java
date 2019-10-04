@@ -1,8 +1,11 @@
 package wbif.sjx.common.Analysis;
 
+import ij.IJ;
+import ij.ImageJ;
 import ij.ImageStack;
 import org.bonej.geometry.Ellipsoid;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
+import wbif.sjx.common.Object.Volume.PointOutOfRangeException;
 import wbif.sjx.common.Object.Volume.Volume;
 
 import static org.bonej.geometry.FitEllipsoid.yuryPetrov;
@@ -170,11 +173,7 @@ public class EllipsoidCalculator {
     public Volume getContainedPoints() throws IntegerOverflowException {
         if (ell == null) return null;
 
-        double dppXY = volume.getDppXY();
-        double dppZ = volume.getDppZ();
-        double cal = dppXY/dppZ;
-        String units = volume.getCalibratedUnits();
-        boolean is2D = volume.is2D();
+        double cal = volume.getDppXY()/volume.getDppZ();
 
         Volume insideEllipsoid = new Volume(volume);
 
@@ -187,7 +186,11 @@ public class EllipsoidCalculator {
             for (int y=(int) yRange[0];y<=yRange[1];y++) {
                 for (int z=(int) zRange[0];z<=zRange[1];z++) {
                     if (ell.contains(x,y,z/cal)) {
-                        insideEllipsoid.add(x, y, z);
+                        try {
+                            insideEllipsoid.add(x, y, z);
+                        } catch (PointOutOfRangeException e) {
+                            // If a point is outside the range, we just ignore it
+                        }
                     }
                 }
             }
