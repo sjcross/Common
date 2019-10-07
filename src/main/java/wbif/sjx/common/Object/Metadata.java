@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
  * High-content result structure as an abstract class, which is extended on an experiment-by experiment basis
  * Created by sc13967 on 25/10/2016.
  */
-public class HCMetadata extends LinkedHashMap<String,Object> {
+public class Metadata extends LinkedHashMap<String,Object> {
     public static final String FILENAME = "Filename";
     public static final String WELL = "Well";
     public static final String ROW = "Row";
@@ -41,7 +41,7 @@ public class HCMetadata extends LinkedHashMap<String,Object> {
 
     // CONSTRUCTOR
 
-    public HCMetadata() {
+    public Metadata() {
 
     }
 

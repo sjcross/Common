@@ -1,6 +1,6 @@
 package wbif.sjx.common.MetadataExtractors;
 
-import wbif.sjx.common.Object.HCMetadata;
+import wbif.sjx.common.Object.Metadata;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,7 +27,7 @@ public class GenericExtractor implements NameExtractor {
     }
 
     @Override
-    public boolean extract(HCMetadata result, String str) {
+    public boolean extract(Metadata result, String str) {
         try {
             Pattern fi_pattern = Pattern.compile(pattern);
             Matcher fi_matcher = fi_pattern.matcher(str);

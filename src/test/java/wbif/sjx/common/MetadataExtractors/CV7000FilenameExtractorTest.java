@@ -1,7 +1,7 @@
 package wbif.sjx.common.MetadataExtractors;
 
 import org.junit.jupiter.api.Test;
-import wbif.sjx.common.Object.HCMetadata;
+import wbif.sjx.common.Object.Metadata;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -12,7 +12,7 @@ public class CV7000FilenameExtractorTest {
     public void testExtract() {
         String name = "AssayPlate_Greiner_#655090_C02_T0030F001L03A01Z02C10.tif";
 
-        HCMetadata metadata = new HCMetadata();
+        Metadata metadata = new Metadata();
 
         CV7000FilenameExtractor extractor = new CV7000FilenameExtractor();
         boolean success = extractor.extract(metadata,name);
@@ -35,7 +35,7 @@ public class CV7000FilenameExtractorTest {
 
     @Test
     public void testConstruct() {
-        HCMetadata metadata = new HCMetadata();
+        Metadata metadata = new Metadata();
         metadata.setPlateName("AssayPlate");
         metadata.setPlateManufacturer("Greiner");
         metadata.setPlateModel("655090");

@@ -1,6 +1,6 @@
 package wbif.sjx.common.MetadataExtractors;
 
-import wbif.sjx.common.Object.HCMetadata;
+import wbif.sjx.common.Object.Metadata;
 
 import java.io.File;
 
@@ -9,6 +9,6 @@ import java.io.File;
  */
 public interface FileExtractor {
     String getName();
-    boolean extract(HCMetadata result, File file);
+    boolean extract(Metadata result, File file);
 
 }

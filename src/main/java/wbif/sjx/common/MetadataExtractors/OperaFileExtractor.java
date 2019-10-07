@@ -7,7 +7,7 @@ import loci.formats.tiff.TiffParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import wbif.sjx.common.Object.HCMetadata;
+import wbif.sjx.common.Object.Metadata;
 
 import javax.xml.parsers.*;
 import java.io.File;
@@ -26,7 +26,7 @@ public class OperaFileExtractor implements FileExtractor {
     }
 
     @Override
-    public boolean extract(HCMetadata result, File file) {
+    public boolean extract(Metadata result, File file) {
         try {
             RandomAccessInputStream in = new RandomAccessInputStream(file.getAbsolutePath());
 
