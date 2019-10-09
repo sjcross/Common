@@ -1,6 +1,6 @@
 package wbif.sjx.common.MetadataExtractors;
 
-import wbif.sjx.common.Object.HCMetadata;
+import wbif.sjx.common.Object.Metadata;
 
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
@@ -26,7 +26,7 @@ public class CV7000FilenameExtractor implements NameExtractor {
     }
 
     @Override
-    public boolean extract(HCMetadata result, String str) {
+    public boolean extract(Metadata result, String str) {
         Pattern fi_pattern = Pattern.compile(pattern);
         Matcher fi_matcher = fi_pattern.matcher(str);
 
@@ -55,7 +55,7 @@ public class CV7000FilenameExtractor implements NameExtractor {
         }
     }
 
-    public String construct(HCMetadata metadata) {
+    public String construct(Metadata metadata) {
         DecimalFormat df2 = new DecimalFormat("00");
         DecimalFormat df3 = new DecimalFormat("000");
         DecimalFormat df4 = new DecimalFormat("0000");

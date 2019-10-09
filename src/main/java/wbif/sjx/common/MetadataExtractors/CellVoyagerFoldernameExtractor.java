@@ -1,6 +1,6 @@
 package wbif.sjx.common.MetadataExtractors;
 
-import wbif.sjx.common.Object.HCMetadata;
+import wbif.sjx.common.Object.Metadata;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,7 +22,7 @@ public class CellVoyagerFoldernameExtractor implements NameExtractor {
 
     }
 
-    public boolean extract(HCMetadata result, String str) {
+    public boolean extract(Metadata result, String str) {
         Pattern fo_pattern = Pattern.compile(pattern);
         Matcher fo_matcher = fo_pattern.matcher(str);
 

@@ -2,6 +2,7 @@ package wbif.sjx.common.ExpectedObjects;
 
 import util.opencsv.CSVReader;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
+import wbif.sjx.common.Object.Volume.PointOutOfRangeException;
 import wbif.sjx.common.Object.Volume.Volume;
 import wbif.sjx.common.Object.Volume.VolumeType;
 
@@ -31,7 +32,11 @@ public abstract class ExpectedObjects {
             int y = coordinate[3];
             int z = coordinate[5];
 
-            volume.add(x,y,z);
+            try {
+                volume.add(x,y,z);
+            } catch (PointOutOfRangeException e) {
+                e.printStackTrace();
+            }
 
         }
 
@@ -57,7 +62,11 @@ public abstract class ExpectedObjects {
 
             testObjects.putIfAbsent(ID,new Volume(VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,calibratedUnits));
             Volume testObject = testObjects.get(ID);
-            testObject.add(x,y,z);
+            try {
+                testObject.add(x,y,z);
+            } catch (PointOutOfRangeException e) {
+                e.printStackTrace();
+            }
 
         }
 

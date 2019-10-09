@@ -1,7 +1,7 @@
 package wbif.sjx.common.MetadataExtractors;
 
 
-import wbif.sjx.common.Object.HCMetadata;
+import wbif.sjx.common.Object.Metadata;
 
 /**
  * Created by steph on 30/04/2017.
@@ -9,6 +9,6 @@ import wbif.sjx.common.Object.HCMetadata;
 public interface NameExtractor {
     String getName();
     String getPattern();
-    boolean extract(HCMetadata result, String str);
+    boolean extract(Metadata result, String str);
 
 }

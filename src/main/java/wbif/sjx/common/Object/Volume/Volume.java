@@ -76,16 +76,16 @@ public class Volume {
 
     // ABSTRACT METHODS
 
-    public void add(int x, int y, int z) {
-        if (x < 0 || x >= width)  throw new IndexOutOfBoundsException("Coordinate out of bounds! (x: " + x + ")");
-        if (y < 0 || y >= height) throw new IndexOutOfBoundsException("Coordinate out of bounds! (y: " + y + ")");
-        if (z >= nSlices) throw new IndexOutOfBoundsException("Coordinate out of bounds! (z: " + z + ")");
+    public void add(int x, int y, int z) throws PointOutOfRangeException {
+        if (x < 0 || x >= width)  throw new PointOutOfRangeException("Coordinate out of bounds! (x: " + x + ")");
+        if (y < 0 || y >= height) throw new PointOutOfRangeException("Coordinate out of bounds! (y: " + y + ")");
+        if (z < 0 || z >= nSlices) throw new PointOutOfRangeException("Coordinate out of bounds! (z: " + z + ")");
 
         coordinateSet.add(x,y,z);
 
     }
 
-    public void add(Point<Integer> point) {
+    public void add(Point<Integer> point) throws PointOutOfRangeException {
         add(point.x,point.y,point.z);
 
     }
@@ -140,7 +140,7 @@ public class Volume {
 
     }
 
-    public void setPoints(TreeSet<Point<Integer>> points) {
+    public void setPoints(TreeSet<Point<Integer>> points) throws PointOutOfRangeException {
         for (Point<Integer> point:points) add(point);
     }
 
@@ -295,7 +295,7 @@ public class Volume {
 
             return volume1.getCentroidSeparation(volume2,pixelDistances);
 
-        } catch (IntegerOverflowException e) {
+        } catch (IntegerOverflowException | PointOutOfRangeException e) {
             return Double.NaN;
         }
     }
@@ -468,8 +468,9 @@ public class Volume {
             } else {
                 for (Point<Integer> p2 : volume2.coordinateSet) if (contains(p2)) overlapping.add(p2);
             }
-        } catch (IntegerOverflowException e) {
-            // These points are a subset of the input Volume objects, so if they don't overflow these can't either
+        } catch (IntegerOverflowException | PointOutOfRangeException e) {
+            // These points are a subset of the input Volume objects, so if they don't overflow these can't either.
+            // Similarly, they can't be out of range.
         }
 
         return overlapping;

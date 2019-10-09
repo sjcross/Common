@@ -19,6 +19,7 @@ public class SurfaceSeparationCalculator {
 
         Iterator<Point<Integer>> iterator2 = v2.getSurface().getCoordinateIterator();
 
+
         while (iterator2.hasNext()) {
             Point<Integer> pp2 = iterator2.next();
             boolean isInside = false;
@@ -27,7 +28,10 @@ public class SurfaceSeparationCalculator {
             while (iterator1.hasNext()) {
                 Point<Integer> pp1 = iterator1.next();
 
-                double dist = v1.calculatePointPointSeparation(pp1,pp2,true);
+                double xDist = pp2.x - pp1.x;
+                double yDist = pp2.y - pp1.y;
+                double zDist = pp2.z - pp1.z;
+                double dist = Math.sqrt(xDist * xDist + yDist * yDist + zDist * zDist);
 
                 if (dist < Math.abs(minDist)) {
                     minDist = dist;

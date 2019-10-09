@@ -1,6 +1,6 @@
 package wbif.sjx.common.MetadataExtractors;
 
-import wbif.sjx.common.Object.HCMetadata;
+import wbif.sjx.common.Object.Metadata;
 
 import java.util.StringTokenizer;
 
@@ -31,7 +31,7 @@ public class KeywordExtractor {
      * @param str
      * @return
      */
-    public boolean extract(HCMetadata result, String str) {
+    public boolean extract(Metadata result, String str) {
         int length = Integer.MIN_VALUE;
         String currentKeyword = "";
         for (String keyword:keywordArray) {
@@ -42,11 +42,11 @@ public class KeywordExtractor {
         }
 
         if (currentKeyword.equals("")) {
-            result.put(HCMetadata.KEYWORD,"");
+            result.put(Metadata.KEYWORD,"");
             return false;
         }
 
-        result.put(HCMetadata.KEYWORD,currentKeyword);
+        result.put(Metadata.KEYWORD,currentKeyword);
         return true;
 
     }
