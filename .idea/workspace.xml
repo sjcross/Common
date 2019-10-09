@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9185974d-5e2e-42ae-8262-abe1358b3569" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Common.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java" afterDir="false" />
@@ -40,7 +39,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3060">
+            <state relative-caret-position="616">
               <caret line="188" column="29" selection-start-line="188" selection-start-column="29" selection-end-line="188" selection-end-column="29" />
             </state>
           </provider>
@@ -49,13 +48,86 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="105" column="77" selection-start-line="105" selection-start-column="77" selection-end-line="105" selection-end-column="77" />
+            <state relative-caret-position="565">
+              <caret line="171" column="40" selection-start-line="171" selection-start-column="40" selection-end-line="171" selection-end-column="40" />
               <folding>
                 <element signature="e#840#1208#0" />
                 <element signature="e#1214#1593#0" />
                 <element signature="e#1599#1983#0" />
                 <element signature="e#1989#2329#0" />
+                <element signature="e#2066#2323#0" />
+                <element signature="e#2361#2816#0" />
+                <element signature="e#2822#2938#0" />
+                <element signature="e#3014#3126#0" />
+                <element signature="e#3132#3372#0" />
+                <element signature="e#3190#3340#1" />
+                <element signature="e#3378#4110#0" />
+                <element signature="e#3440#4076#1" />
+                <element signature="e#3603#3898#0" />
+                <element signature="e#4116#4278#0" />
+                <element signature="e#4284#4431#0" />
+                <element signature="e#4437#4600#0" />
+                <element signature="e#4904#4963#0" />
+                <element signature="e#5006#5007#0" expanded="true" />
+                <element signature="e#5041#5042#0" expanded="true" />
+                <element signature="e#5048#5214#0" />
+                <element signature="e#5220#5385#0" />
+                <element signature="e#5391#5557#0" />
+                <element signature="e#5563#5894#0" />
+                <element signature="e#5900#6231#0" />
+                <element signature="e#6237#6477#0" />
+                <element signature="e#6237#7009#0" />
+                <element signature="e#7015#7201#0" />
+                <element signature="e#7207#7393#0" />
+                <element signature="e#7399#7585#0" />
+                <element signature="e#7591#7955#0" />
+                <element signature="e#7961#8324#0" />
+                <element signature="e#8330#8570#0" />
+                <element signature="e#8330#9148#0" />
+                <element signature="e#9154#9839#0" />
+                <element signature="e#9282#9728#0" />
+                <element signature="e#9791#9833#0" />
+                <element signature="e#9845#10009#0" />
+                <element signature="e#10015#10179#0" />
+                <element signature="e#10185#10520#0" />
+                <element signature="e#10526#10998#0" />
+                <element signature="e#10753#10850#1" />
+                <element signature="e#11004#12207#0" />
+                <element signature="e#11464#11733#1" />
+                <element signature="e#11792#11930#1" />
+                <element signature="e#11819#11920#1" />
+                <element signature="e#11936#12131#1" />
+                <element signature="e#12213#12570#0" />
+                <element signature="e#12491#12529#1" />
+                <element signature="e#12576#12899#0" />
+                <element signature="e#12818#12857#1" />
+                <element signature="e#13382#13614#0" />
+                <element signature="e#13620#13868#0" />
+                <element signature="e#13874#14065#0" />
+                <element signature="e#13874#14330#0" />
+                <element signature="e#14336#14525#0" />
+                <element signature="e#14336#14708#0" />
+                <element signature="e#14714#15428#0" />
+                <element signature="e#14843#15138#0" />
+                <element signature="e#14886#15004#1" />
+                <element signature="e#15010#15128#1" />
+                <element signature="e#15215#15318#0" />
+                <element signature="e#15434#15777#0" />
+                <element signature="e#15535#15633#1" />
+                <element signature="e#15639#15737#1" />
+                <element signature="e#15783#15986#0" />
+                <element signature="e#15870#15919#1" />
+                <element signature="e#15925#15980#1" />
+                <element signature="e#15992#16143#0" />
+                <element signature="e#16421#16707#0" />
+                <element signature="e#16713#17173#0" />
+                <element signature="e#17878#18038#0" />
+                <element signature="e#18154#19279#0" />
+                <element signature="e#18353#18567#0" />
+                <element signature="e#18680#19273#0" />
+                <element signature="e#18927#19029#1" />
+                <element signature="e#19066#19153#1" />
+                <element signature="e#19159#19263#1" />
               </folding>
             </state>
           </provider>
@@ -64,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="395">
+              <caret line="32" column="78" selection-start-line="32" selection-start-column="78" selection-end-line="32" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -74,7 +146,7 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -218,8 +290,8 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Metadata.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
@@ -232,9 +304,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="55" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
-    <option name="width" value="1873" />
+    <option name="width" value="1936" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -649,7 +721,7 @@
       <workItem from="1570189562753" duration="3496000" />
       <workItem from="1570195913673" duration="580000" />
       <workItem from="1570524071369" duration="3644000" />
-      <workItem from="1570622356414" duration="2899000" />
+      <workItem from="1570622356414" duration="3528000" />
     </task>
     <servers />
   </component>
@@ -686,7 +758,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86317000" />
+    <option name="totallyTimeSpent" value="86946000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -698,10 +770,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="-8" width="1873" height="1096" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25537783" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2468017" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -1021,13 +1093,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
-          <caret line="188" column="29" selection-start-line="188" selection-start-column="29" selection-end-line="188" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Metadata.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1042,30 +1107,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="105" column="77" selection-start-line="105" selection-start-column="77" selection-end-line="105" selection-end-column="77" />
+        <state relative-caret-position="565">
+          <caret line="171" column="40" selection-start-line="171" selection-start-column="40" selection-end-line="171" selection-end-column="40" />
           <folding>
             <element signature="e#840#1208#0" />
             <element signature="e#1214#1593#0" />
             <element signature="e#1599#1983#0" />
             <element signature="e#1989#2329#0" />
+            <element signature="e#2066#2323#0" />
+            <element signature="e#2361#2816#0" />
+            <element signature="e#2822#2938#0" />
+            <element signature="e#3014#3126#0" />
+            <element signature="e#3132#3372#0" />
+            <element signature="e#3190#3340#1" />
+            <element signature="e#3378#4110#0" />
+            <element signature="e#3440#4076#1" />
+            <element signature="e#3603#3898#0" />
+            <element signature="e#4116#4278#0" />
+            <element signature="e#4284#4431#0" />
+            <element signature="e#4437#4600#0" />
+            <element signature="e#4904#4963#0" />
+            <element signature="e#5006#5007#0" expanded="true" />
+            <element signature="e#5041#5042#0" expanded="true" />
+            <element signature="e#5048#5214#0" />
+            <element signature="e#5220#5385#0" />
+            <element signature="e#5391#5557#0" />
+            <element signature="e#5563#5894#0" />
+            <element signature="e#5900#6231#0" />
+            <element signature="e#6237#6477#0" />
+            <element signature="e#6237#7009#0" />
+            <element signature="e#7015#7201#0" />
+            <element signature="e#7207#7393#0" />
+            <element signature="e#7399#7585#0" />
+            <element signature="e#7591#7955#0" />
+            <element signature="e#7961#8324#0" />
+            <element signature="e#8330#8570#0" />
+            <element signature="e#8330#9148#0" />
+            <element signature="e#9154#9839#0" />
+            <element signature="e#9282#9728#0" />
+            <element signature="e#9791#9833#0" />
+            <element signature="e#9845#10009#0" />
+            <element signature="e#10015#10179#0" />
+            <element signature="e#10185#10520#0" />
+            <element signature="e#10526#10998#0" />
+            <element signature="e#10753#10850#1" />
+            <element signature="e#11004#12207#0" />
+            <element signature="e#11464#11733#1" />
+            <element signature="e#11792#11930#1" />
+            <element signature="e#11819#11920#1" />
+            <element signature="e#11936#12131#1" />
+            <element signature="e#12213#12570#0" />
+            <element signature="e#12491#12529#1" />
+            <element signature="e#12576#12899#0" />
+            <element signature="e#12818#12857#1" />
+            <element signature="e#13382#13614#0" />
+            <element signature="e#13620#13868#0" />
+            <element signature="e#13874#14065#0" />
+            <element signature="e#13874#14330#0" />
+            <element signature="e#14336#14525#0" />
+            <element signature="e#14336#14708#0" />
+            <element signature="e#14714#15428#0" />
+            <element signature="e#14843#15138#0" />
+            <element signature="e#14886#15004#1" />
+            <element signature="e#15010#15128#1" />
+            <element signature="e#15215#15318#0" />
+            <element signature="e#15434#15777#0" />
+            <element signature="e#15535#15633#1" />
+            <element signature="e#15639#15737#1" />
+            <element signature="e#15783#15986#0" />
+            <element signature="e#15870#15919#1" />
+            <element signature="e#15925#15980#1" />
+            <element signature="e#15992#16143#0" />
+            <element signature="e#16421#16707#0" />
+            <element signature="e#16713#17173#0" />
+            <element signature="e#17878#18038#0" />
+            <element signature="e#18154#19279#0" />
+            <element signature="e#18353#18567#0" />
+            <element signature="e#18680#19273#0" />
+            <element signature="e#18927#19029#1" />
+            <element signature="e#19066#19153#1" />
+            <element signature="e#19159#19263#1" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="188" column="29" selection-start-line="188" selection-start-column="29" selection-end-line="188" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="32" column="78" selection-start-line="32" selection-start-column="78" selection-end-line="32" selection-end-column="78" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
         </state>
       </provider>
     </entry>
