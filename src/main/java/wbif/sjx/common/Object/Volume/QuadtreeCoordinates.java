@@ -82,32 +82,6 @@ public class QuadtreeCoordinates extends CoordinateSet {
 
     }
 
-    protected CoordinateSet calculateSurface2D() {
-        // Get the sole QuadTree
-        QuadTree quadTree = quadTrees.values().iterator().next();
-
-        // Set the surface list to the edge points of the QuadTree
-        return quadTree.getEdgePoints();
-
-    }
-
-    protected CoordinateSet calculateSurface3D() {
-        CoordinateSet surface = new PointCoordinates();
-
-        // For each slice
-        for (int z:quadTrees.keySet()) {
-            QuadTree silceQT       = quadTrees.get(z);
-            QuadTree belowSliceQT  = quadTrees.get(z-1);
-            QuadTree aboveSliceQT  = quadTrees.get(z+1);
-
-            // Add all the edge points for the slices QuadTree factoring in the neighbouring slices
-            silceQT.getEdgePoints3D(surface, belowSliceQT, aboveSliceQT, z);
-
-        }
-
-        return surface;
-    }
-
 
     // Volume properties
 
