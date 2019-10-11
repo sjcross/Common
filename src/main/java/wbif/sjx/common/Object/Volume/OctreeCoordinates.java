@@ -73,14 +73,6 @@ public class OctreeCoordinates extends CoordinateSet {
 
     }
 
-    protected CoordinateSet calculateSurface2D() {
-        return ocTree.getEdgePoints(true);
-    }
-
-    protected CoordinateSet calculateSurface3D() {
-        return ocTree.getEdgePoints(false);
-    }
-
 
     // Volume properties
 
