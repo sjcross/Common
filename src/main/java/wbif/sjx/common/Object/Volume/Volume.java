@@ -169,10 +169,6 @@ public class Volume {
 
     }
 
-    public double getXYScaledZ(double z) {
-        return z*dppZ/dppXY;
-    }
-
     @Deprecated
     public ArrayList<Integer> getXCoords() {
         return getPoints().stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
@@ -285,6 +281,27 @@ public class Volume {
 
     }
 
+    public double getCalibratedX(Point<Integer> point) {
+        return point.getX()*dppXY;
+    }
+
+    public double getCalibratedY(Point<Integer> point) {
+        return point.getY()*dppXY;
+    }
+
+    public double getXYScaledZ(double z) {
+        return z*dppZ/dppXY;
+    }
+
+    public double getXYScaledZ(Point<Integer> point) {
+        return point.getZ()*dppZ/dppXY;
+    }
+
+    public double getCalibratedZ(Point<Integer> point, boolean matchXY) {
+        if (matchXY) return point.getZ()*dppZ/dppXY;
+        else return point.getZ()*dppZ;
+    }
+
     public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2, boolean pixelDistances) {
         try {
             Volume volume1 = new Volume(VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,calibratedUnits);
@@ -373,6 +390,11 @@ public class Volume {
             maxY = maxY*dppXY;
             minZ = minZ*dppZ;
             maxZ = maxZ*dppZ;
+        }
+
+        if (is2D()) {
+            minZ = 0;
+            maxZ = 0;
         }
 
         return new double[][]{{minX,maxX},{minY,maxY},{minZ,maxZ}};

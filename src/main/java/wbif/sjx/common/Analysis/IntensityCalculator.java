@@ -25,7 +25,7 @@ public class IntensityCalculator {
 
     public static void calculate(ImageStack image, CumStat cs, Volume volume) {
         // Running through all pixels in the volume, adding them to the CumStat object
-        for (Point<Integer> point:volume.getPoints()) {
+        for (Point<Integer> point:volume.getCoordinateSet()) {
             cs.addMeasure(image.getVoxel(point.getX(),point.getY(),point.getZ()));
         }
     }

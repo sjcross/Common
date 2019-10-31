@@ -34,6 +34,7 @@ public abstract class CoordinateSet extends AbstractSet<Point<Integer>> {
         }
 
         return surface;
+
     }
 
     protected CoordinateSet calculateSurface3D() {
