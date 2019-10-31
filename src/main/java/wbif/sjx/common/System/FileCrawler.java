@@ -19,10 +19,6 @@ public class FileCrawler {
     private HashSet<FileCondition> folderConditions = new HashSet<FileCondition>(); //List of folder conditions
     private boolean includeSubFolders = true;
 
-    public FileCrawler() {
-
-    }
-
     public FileCrawler(File root) {
         folder = new Folder(root,null);
         rootFolder = folder;
@@ -87,6 +83,8 @@ public class FileCrawler {
     }
 
     public File getNextValidFileInFolder() {
+        if (folder == null) return null;
+
         File file = folder.getNextFile();
 
         // While the current file doesn't match the conditions, but isn't null go to the next file
@@ -99,14 +97,18 @@ public class FileCrawler {
     }
 
     public File getNextFileInFolder() {
+        if (folder == null) return null;
+
         return folder.getNextFile();
 
     }
 
     public ArrayList<File> getAllValidFilesInFolder() {
-        // Resetting to the start of the current folder
-        folder.resetCurrentFileNumber();
         ArrayList<File> files = new ArrayList<File>();
+
+        // Resetting to the start of the current folder
+        if (folder == null) return files;
+        folder.resetCurrentFileNumber();
 
         // Adding all valid files to the ArrayList
         File file = getNextValidFileInFolder();
@@ -221,6 +223,8 @@ public class FileCrawler {
      * @return true if there was a next folder and false if the end of the structure has been reached
      */
     public boolean goToNextFolder() {
+        if (folder == null) return false;
+
         // Returns a condition stating if there are more folders to go
         boolean hasmore = true;
 
