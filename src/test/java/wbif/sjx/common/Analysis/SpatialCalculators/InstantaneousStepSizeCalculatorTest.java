@@ -1,4 +1,4 @@
-package wbif.sjx.common.Analysis;
+package wbif.sjx.common.Analysis.SpatialCalculators;
 
 import org.junit.jupiter.api.Test;
 import wbif.sjx.common.Analysis.SpatialCalculators.InstantaneousStepSizeCalculator;
