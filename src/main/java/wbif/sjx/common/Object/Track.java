@@ -6,7 +6,6 @@ import wbif.sjx.common.Analysis.SpatialCalculators.*;
 import wbif.sjx.common.MathFunc.CumStat;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
 /**
  * Created by sc13967 on 03/02/2017.
@@ -104,6 +103,10 @@ public class Track extends TreeMap<Integer,Timepoint<Double>> {
     public TreeMap<Integer, Double> getInstantaneousStepSizes() {
         return new InstantaneousStepSizeCalculator().calculate(this);
 
+    }
+
+    public TreeMap<Integer, Double> getAngularPersistence() {
+        return new AngularPersistenceCalculator().calculate(this);
     }
 
     public double getEuclideanDistance() {
