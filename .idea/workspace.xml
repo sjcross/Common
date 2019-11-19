@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9185974d-5e2e-42ae-8262-abe1358b3569" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2D.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2DTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/CumulativePathLengthCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/CumulativePathLengthCalculatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/DirectionalityRatioCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/DirectionalityRatioCalculatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/EuclideanDistanceCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/EuclideanDistanceCalculatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousSpeedCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/InstantaneousSpeedCalculatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/InstantaneousStepSizeCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/InstantaneousStepSizeCalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2DTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculatorTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,10 +39,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2D.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+            <state relative-caret-position="504">
+              <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculatorTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,12 +63,57 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2DTest.java">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="527">
+              <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="107" column="60" selection-start-line="107" selection-start-column="60" selection-end-line="107" selection-end-column="60" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#Track#0" />
+                <element signature="method#Track#1;class#Track#0" />
+                <element signature="e#615#692#1" />
+                <element signature="method#Track#2;class#Track#0" />
+                <element signature="e#884#976#1" />
+                <element signature="docComment;method#getMeanPosition#0;class#Track#0" />
+                <element signature="method#getMeanPosition#0;class#Track#0" />
+                <element signature="method#getDirectionalPersistence#0;class#Track#0" />
+                <element signature="method#getMSD#0;class#Track#0" />
+                <element signature="method#getMSDLinearFit#0;class#Track#0" />
+                <element signature="e#1874#1994#0" />
+                <element signature="method#getInstantaneousSpeed#0;class#Track#0" />
+                <element signature="method#getInstantaneousXVelocity#0;class#Track#0" />
+                <element signature="method#getInstantaneousYVelocity#0;class#Track#0" />
+                <element signature="method#getInstantaneousZVelocity#0;class#Track#0" />
+                <element signature="method#getInstantaneousStepSizes#0;class#Track#0" />
+                <element signature="method#getAngularPersistence#0;class#Track#0" />
+                <element signature="method#getEuclideanDistance#0;class#Track#0" />
+                <element signature="method#getTotalPathLength#0;class#Track#0" />
+                <element signature="method#getDirectionalityRatio#0;class#Track#0" />
+                <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" />
+                <element signature="method#getRollingEuclideanDistance#0;class#Track#0" />
+                <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" />
+                <element signature="method#getRollingTotalPathLength#0;class#Track#0" />
+                <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" />
+                <element signature="method#getNearestNeighbourDistance#0;class#Track#0" />
+                <element signature="method#getDuration#0;class#Track#0" />
+                <element signature="method#getLimits#0;class#Track#0" />
+                <element signature="e#5022#5112#1" />
+                <element signature="e#5151#5627#1" />
+                <element signature="method#getRollingIntensity#0;class#Track#0" />
+                <element signature="e#5932#6174#1" />
+                <element signature="method#hasFrame#0;class#Track#0" />
+                <element signature="method#getPointAtFrame#0;class#Track#0" />
+                <element signature="method#hashCode#0;class#Track#0" />
+                <element signature="method#equals#0;class#Track#0" />
+                <element signature="e#7946#8143#1" />
               </folding>
             </state>
           </provider>
@@ -138,8 +192,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Energies/PathEnergy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/NodeCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/PhysicalModel/Vertex.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/Minimisers/GreedyMinimiser.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Process/ActiveContour/ActiveContour.java" />
@@ -182,13 +234,15 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/System/FileCrawler.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/DirectionalityRatioCalculator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2D.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2D.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2DTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator.java" />
+        <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculatorTest.java" />
       </list>
     </option>
   </component>
@@ -200,9 +254,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="1896" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
-    <option name="width" value="1872" />
+    <option name="width" value="1936" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -253,17 +307,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
-              <item name="SpatialCalculators" type="462c0819:PsiDirectoryNode" />
+              <item name="Object" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Common" type="b2602c69:ProjectViewProjectNode" />
@@ -385,7 +429,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AngularPersistenceCalculator2DTest.testCalculateXY">
+  <component name="RunManager" selected="Maven.Common [install]">
     <configuration default="true" type="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -400,7 +444,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AngularPersistenceCalculator2DTest.testCalculate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AngularPersistenceCalculatorTest.testCalculate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
@@ -409,7 +453,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis.SpatialCalculators" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.SpatialCalculators.AngularPersistenceCalculator2DTest" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.SpatialCalculators.AngularPersistenceCalculatorTest" />
       <option name="METHOD_NAME" value="testCalculate" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
@@ -418,7 +462,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AngularPersistenceCalculator2DTest.testCalculateXY" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AngularPersistenceCalculatorTest.testCalculateXY" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Common" />
       <extension name="coverage">
         <pattern>
@@ -427,7 +471,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="wbif.sjx.common.Analysis.SpatialCalculators" />
-      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.SpatialCalculators.AngularPersistenceCalculator2DTest" />
+      <option name="MAIN_CLASS_NAME" value="wbif.sjx.common.Analysis.SpatialCalculators.AngularPersistenceCalculatorTest" />
       <option name="METHOD_NAME" value="testCalculateXY" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
@@ -567,13 +611,13 @@
       <item itemvalue="JUnit.NameContainsStringTest.testTestIncludesPartialEmpty" />
       <item itemvalue="Maven.Common [install]" />
       <item itemvalue="Maven.Common [quick install]" />
-      <item itemvalue="JUnit.AngularPersistenceCalculator2DTest.testCalculate" />
-      <item itemvalue="JUnit.AngularPersistenceCalculator2DTest.testCalculateXY" />
+      <item itemvalue="JUnit.AngularPersistenceCalculatorTest.testCalculate" />
+      <item itemvalue="JUnit.AngularPersistenceCalculatorTest.testCalculateXY" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AngularPersistenceCalculator2DTest.testCalculateXY" />
-        <item itemvalue="JUnit.AngularPersistenceCalculator2DTest.testCalculate" />
+        <item itemvalue="JUnit.AngularPersistenceCalculatorTest.testCalculateXY" />
+        <item itemvalue="JUnit.AngularPersistenceCalculatorTest.testCalculate" />
         <item itemvalue="JUnit.NameContainsStringTest.testTestIncludesPartialEmpty" />
         <item itemvalue="JUnit.NameContainsStringTest.testTestIncludesCompleteEmpty" />
         <item itemvalue="JUnit.NameContainsStringTest.testTestExcludesCompleteEmpty" />
@@ -624,7 +668,7 @@
       <workItem from="1572548483957" duration="986000" />
       <workItem from="1572861584630" duration="989000" />
       <workItem from="1573834150947" duration="39000" />
-      <workItem from="1574075733401" duration="12633000" />
+      <workItem from="1574075733401" duration="15869000" />
     </task>
     <servers />
   </component>
@@ -661,7 +705,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115468000" />
+    <option name="totallyTimeSpent" value="118704000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -718,13 +762,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/VolumeType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/PointTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1056,13 +1093,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="164" lean-forward="true" selection-start-line="164" selection-end-line="164" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/DirectionalityRatioCalculatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -1077,23 +1107,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2D.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Track.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+        <state relative-caret-position="663">
+          <caret line="107" column="60" selection-start-line="107" selection-start-column="60" selection-end-line="107" selection-end-column="60" />
+          <folding>
+            <element signature="docComment;class#Track#0" />
+            <element signature="method#Track#1;class#Track#0" />
+            <element signature="e#615#692#1" />
+            <element signature="method#Track#2;class#Track#0" />
+            <element signature="e#884#976#1" />
+            <element signature="docComment;method#getMeanPosition#0;class#Track#0" />
+            <element signature="method#getMeanPosition#0;class#Track#0" />
+            <element signature="method#getDirectionalPersistence#0;class#Track#0" />
+            <element signature="method#getMSD#0;class#Track#0" />
+            <element signature="method#getMSDLinearFit#0;class#Track#0" />
+            <element signature="e#1874#1994#0" />
+            <element signature="method#getInstantaneousSpeed#0;class#Track#0" />
+            <element signature="method#getInstantaneousXVelocity#0;class#Track#0" />
+            <element signature="method#getInstantaneousYVelocity#0;class#Track#0" />
+            <element signature="method#getInstantaneousZVelocity#0;class#Track#0" />
+            <element signature="method#getInstantaneousStepSizes#0;class#Track#0" />
+            <element signature="method#getAngularPersistence#0;class#Track#0" />
+            <element signature="method#getEuclideanDistance#0;class#Track#0" />
+            <element signature="method#getTotalPathLength#0;class#Track#0" />
+            <element signature="method#getDirectionalityRatio#0;class#Track#0" />
+            <element signature="docComment;method#getRollingEuclideanDistance#0;class#Track#0" />
+            <element signature="method#getRollingEuclideanDistance#0;class#Track#0" />
+            <element signature="docComment;method#getRollingTotalPathLength#0;class#Track#0" />
+            <element signature="method#getRollingTotalPathLength#0;class#Track#0" />
+            <element signature="method#getRollingDirectionalityRatio#0;class#Track#0" />
+            <element signature="method#getNearestNeighbourDistance#0;class#Track#0" />
+            <element signature="method#getDuration#0;class#Track#0" />
+            <element signature="method#getLimits#0;class#Track#0" />
+            <element signature="e#5022#5112#1" />
+            <element signature="e#5151#5627#1" />
+            <element signature="method#getRollingIntensity#0;class#Track#0" />
+            <element signature="e#5932#6174#1" />
+            <element signature="method#hasFrame#0;class#Track#0" />
+            <element signature="method#getPointAtFrame#0;class#Track#0" />
+            <element signature="method#hashCode#0;class#Track#0" />
+            <element signature="method#equals#0;class#Track#0" />
+            <element signature="e#7946#8143#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator2DTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="442">
+          <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
         </state>
       </provider>
     </entry>

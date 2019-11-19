@@ -4,7 +4,7 @@ import java.util.TreeMap;
 
 import static java.lang.Math.atan2;
 
-public class AngularPersistenceCalculator2D implements SpatialCalculator {
+public class AngularPersistenceCalculator implements SpatialCalculator {
 
     @Override
     public TreeMap<Integer, Double> calculate(double[] x, double[] y, double[] z, int[] f) {
@@ -32,8 +32,8 @@ public class AngularPersistenceCalculator2D implements SpatialCalculator {
 
             double angle = Math.atan2(cross, dot);
 
-            // Normalising the angle)
-            angle = angle/Math.PI;
+            // Normalising the angle
+            angle = 1-(angle/Math.PI);
 
             angularPersistence.put(ff,angle);
 
