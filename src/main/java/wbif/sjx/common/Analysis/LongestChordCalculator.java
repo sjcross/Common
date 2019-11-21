@@ -1,5 +1,6 @@
 package wbif.sjx.common.Analysis;
 
+import org.apache.commons.math3.exception.MathIllegalArgumentException;
 import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import wbif.sjx.common.MathFunc.CumStat;
@@ -63,7 +64,12 @@ public class LongestChordCalculator {
         // Creating a vector between the two end points of the longest chord
         Vector3D v1 = new Vector3D(LC[0][0],LC[0][1],volume.getXYScaledZ(LC[0][2]));
         Vector3D v2 = new Vector3D(LC[1][0],LC[1][1],volume.getXYScaledZ(LC[1][2]));
-        Line line = new Line(v1,v2,tolerance);
+        Line line;
+        try {
+            line = new Line(v1, v2, tolerance);
+        } catch (MathIllegalArgumentException e) {
+            return null;
+        }
 
         // Iterating over all points on the surface, calculating the closest distance to the longest chord
         double[] x = volume.getSurfaceX(true);
