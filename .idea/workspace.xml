@@ -4,7 +4,7 @@
     <list default="true" id="9185974d-5e2e-42ae-8262-abe1358b3569" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/LongestChordCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/LongestChordCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,23 +48,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="442">
               <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -135,7 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addCoord</find>
       <find>Sys</find>
       <find>direct</find>
       <find>angle</find>
@@ -165,6 +155,7 @@
       <find>IntegerOverflowException</find>
       <find>getPo</find>
       <find>cloooose</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>Float</replace>
@@ -224,7 +215,6 @@
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/ExpectedObjects/ExpectedObjects.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Object/Volume/VolumeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Exceptions/IntegerOverflowException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Metadata.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/Volume/SurfaceSeparationCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/QuadtreeCoordinates.java" />
@@ -245,6 +235,7 @@
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/LongestChordCalculator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
@@ -256,10 +247,10 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="2018" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1872" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -319,6 +310,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
+              <item name="SpatialCalculators" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="Object" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -329,46 +330,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="System" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Common" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
-              <item name="SpatialCalculators" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -681,7 +642,7 @@
       <workItem from="1572861584630" duration="989000" />
       <workItem from="1573834150947" duration="39000" />
       <workItem from="1574075733401" duration="15869000" />
-      <workItem from="1574328105448" duration="1403000" />
+      <workItem from="1574328105448" duration="3349000" />
     </task>
     <servers />
   </component>
@@ -718,7 +679,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120107000" />
+    <option name="totallyTimeSpent" value="122053000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -730,10 +691,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27452025" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27452025" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -743,7 +704,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20377734" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.20377734" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -970,13 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Object/Volume/Volume.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -1075,13 +1029,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2720">
-          <caret line="163" selection-start-line="163" selection-end-line="163" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/SpatialCalculators/SpatialCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1117,16 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1182,10 +1119,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipseCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="176" column="59" selection-start-line="176" selection-start-column="59" selection-end-line="176" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wbif/sjx/common/Analysis/EllipsoidCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="216" column="38" selection-start-line="216" selection-start-column="38" selection-end-line="216" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#12370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/wbif/sjx/common/Analysis/SpatialCalculators/AngularPersistenceCalculatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -174,9 +174,7 @@ public class EllipseCalculator {
                 if ((e2d[0]*x*x + e2d[1]*x*y + e2d[2]*y*y +e2d[3]*x + e2d[4]*y + e2d[5])*mult <= 0) {
                     try {
                         insideEllipse.add(x,y,0);
-                    } catch (PointOutOfRangeException e) {
-                        e.printStackTrace();
-                    }
+                    } catch (PointOutOfRangeException e) { }
                 }
             }
         }
