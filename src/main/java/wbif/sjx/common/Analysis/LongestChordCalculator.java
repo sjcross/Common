@@ -96,4 +96,8 @@ public class LongestChordCalculator {
         return GeneralOps.ppdist(a, b);
 
     }
+
+    public double getXYOrientationRads() {
+        return Math.atan2(LC[0][1]-LC[1][1],LC[0][0]-LC[1][0]);
+    }
 }

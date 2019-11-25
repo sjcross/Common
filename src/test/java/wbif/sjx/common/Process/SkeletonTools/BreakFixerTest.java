@@ -23,7 +23,7 @@ public class BreakFixerTest {
         c.add(new int[]{6,4});
         c.add(new int[]{7,3});
 
-        double actual = Math.toDegrees(BreakFixer.getEndAngle(c));
+        double actual = Math.toDegrees(BreakFixer.getEndAngleRads(c));
         assertEquals(135,actual,tolerance);
 
     }
@@ -37,7 +37,7 @@ public class BreakFixerTest {
         c.add(new int[]{7,4});
         c.add(new int[]{7,3});
 
-        double actual = Math.toDegrees(BreakFixer.getEndAngle(c));
+        double actual = Math.toDegrees(BreakFixer.getEndAngleRads(c));
         assertEquals(90,actual,tolerance);
 
     }
@@ -51,7 +51,7 @@ public class BreakFixerTest {
         c.add(new int[]{4,4});
         c.add(new int[]{3,3});
 
-        double actual = Math.toDegrees(BreakFixer.getEndAngle(c));
+        double actual = Math.toDegrees(BreakFixer.getEndAngleRads(c));
         assertEquals(45,actual,tolerance);
 
     }
@@ -65,7 +65,7 @@ public class BreakFixerTest {
         c.add(new int[]{4,7});
         c.add(new int[]{3,7});
 
-        double actual = Math.toDegrees(BreakFixer.getEndAngle(c));
+        double actual = Math.toDegrees(BreakFixer.getEndAngleRads(c));
         assertEquals(0,actual,tolerance);
 
     }
@@ -79,7 +79,7 @@ public class BreakFixerTest {
         c.add(new int[]{4,6});
         c.add(new int[]{3,7});
 
-        double actual = Math.toDegrees(BreakFixer.getEndAngle(c));
+        double actual = Math.toDegrees(BreakFixer.getEndAngleRads(c));
         assertEquals(-45,actual,tolerance);
 
     }
@@ -93,7 +93,7 @@ public class BreakFixerTest {
         c.add(new int[]{7,6});
         c.add(new int[]{7,7});
 
-        double actual = Math.toDegrees(BreakFixer.getEndAngle(c));
+        double actual = Math.toDegrees(BreakFixer.getEndAngleRads(c));
         assertEquals(-90,actual,tolerance);
 
     }
@@ -107,7 +107,7 @@ public class BreakFixerTest {
         c.add(new int[]{6,6});
         c.add(new int[]{7,7});
 
-        double actual = Math.toDegrees(BreakFixer.getEndAngle(c));
+        double actual = Math.toDegrees(BreakFixer.getEndAngleRads(c));
         assertEquals(-135,actual,tolerance);
 
     }
@@ -121,7 +121,7 @@ public class BreakFixerTest {
         c.add(new int[]{6,7});
         c.add(new int[]{7,7});
 
-        double actual = Math.toDegrees(BreakFixer.getEndAngle(c));
+        double actual = Math.toDegrees(BreakFixer.getEndAngleRads(c));
         assertEquals(-180,actual,tolerance);
 
     }
