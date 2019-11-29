@@ -33,7 +33,7 @@ public class Skeleton extends VertexCollection {
         curvatureCalculator.setLoessIterations(10000);
         curvatureCalculator.setLoessAccuracy(1);
         TreeMap<Double,Double> curvature = curvatureCalculator.getCurvature();
-        curvatureCalculator.showOverlay(ipl,new int[]{1,1,1});
+        curvatureCalculator.showOverlay(ipl,new int[]{1,1,1},2);
 
     }
 

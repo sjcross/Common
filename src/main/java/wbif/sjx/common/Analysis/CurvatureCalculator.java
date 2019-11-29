@@ -105,7 +105,7 @@ public class CurvatureCalculator {
 
     }
 
-    public void showOverlay(ImagePlus ipl, int[] position) {
+    public void showOverlay(ImagePlus ipl, int[] position, int lineWidth) {
         if (curvature == null) calculateCurvature();
 
         // Calculating maximum curvature
@@ -114,11 +114,11 @@ public class CurvatureCalculator {
             maxCurvature = Math.max(currentCurvature,maxCurvature);
         }
 
-        showOverlay(ipl,maxCurvature,position);
+        showOverlay(ipl,maxCurvature,position,lineWidth);
 
     }
 
-    public void showOverlay(ImagePlus ipl, double maxCurvature, int[] position) {
+    public void showOverlay(ImagePlus ipl, double maxCurvature, int[] position, double lineWidth) {
         if (curvature == null) calculateCurvature();
 
         double r = 2;
@@ -133,7 +133,7 @@ public class CurvatureCalculator {
             Color color = Color.getHSBColor((float) b,1f,1f);
 
             OvalRoi ovr = new OvalRoi(x-r/2+0.5,y-r /2+0.5, r, r);
-            ovr.setStrokeWidth(2d);
+            ovr.setStrokeWidth(lineWidth);
             ovr.setPosition(position[2]);
             ovr.setFillColor(color);
             ovl.addElement(ovr);
