@@ -1,6 +1,7 @@
 package wbif.sjx.common.Analysis;
 
 import ij.ImagePlus;
+import ij.gui.Line;
 import ij.gui.OvalRoi;
 import ij.gui.Overlay;
 import ij.process.ImageProcessor;
@@ -9,6 +10,8 @@ import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
 import wbif.sjx.common.Object.Vertex;
 
 import java.awt.*;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.TreeMap;
 
@@ -27,6 +30,7 @@ public class CurvatureCalculator {
     private double loessBandwidth = 0.04;
     private int loessIterations = 10;
     private double loessAccuracy = 100;
+
 
     public CurvatureCalculator(LinkedHashSet< Vertex > path) {
         this.path = path;
@@ -111,7 +115,7 @@ public class CurvatureCalculator {
         // Calculating maximum curvature
         double maxCurvature = Double.MIN_VALUE;
         for (double currentCurvature:curvature.values()) {
-            maxCurvature = Math.max(currentCurvature,maxCurvature);
+            maxCurvature = Math.max(Math.abs(currentCurvature),maxCurvature);
         }
 
         showOverlay(ipl,maxCurvature,position,lineWidth);
@@ -125,20 +129,50 @@ public class CurvatureCalculator {
         Overlay ovl = ipl.getOverlay();
         if (ovl == null) ovl = new Overlay();
 
-        for (Double pos:curvature.keySet()) {
-            double x = splines[0].value(pos);
-            double y = splines[1].value(pos);
+        if (curvature.size() < 2) {
+            ipl.setOverlay(ovl);
+            return;
+        }
 
-            double b = curvature.get(pos)/(maxCurvature*1.5);
+        Iterator<Double> iterator = curvature.keySet().iterator();
+        double p2 = iterator.next();
+
+        while (iterator.hasNext()) {
+            double p1 = p2;
+            p2 = iterator.next();
+
+            double x1 = splines[0].value(p1)+0.5;
+            double y1 = splines[1].value(p1)+0.5;
+            double x2 = splines[0].value(p2)+0.5;
+            double y2 = splines[1].value(p2)+0.5;
+
+            double k1 = Math.abs(curvature.get(p1));
+            double k2 = Math.abs(curvature.get(p2));
+            double k = (k1+k2)/2;
+            double b = k/(maxCurvature*1.5);
             Color color = Color.getHSBColor((float) b,1f,1f);
 
-            OvalRoi ovr = new OvalRoi(x-r/2+0.5,y-r /2+0.5, r, r);
-            ovr.setStrokeWidth(lineWidth);
-            ovr.setPosition(position[2]);
-            ovr.setFillColor(color);
-            ovl.addElement(ovr);
-
+            Line line = new Line(x1,y1,x2,y2);
+            line.setStrokeWidth(0.5d);
+            line.setStrokeColor(color);
+            line.setPosition(position[2]);
+            ovl.addElement(line);
         }
+
+//        for (Double pos:curvature.keySet()) {
+//            double x = splines[0].value(pos);
+//            double y = splines[1].value(pos);
+//
+//            double b = curvature.get(pos)/(maxCurvature*1.5);
+//            Color color = Color.getHSBColor((float) b,1f,1f);
+//
+//            OvalRoi ovr = new OvalRoi(x-r/2+0.5,y-r /2+0.5, r, r);
+//            ovr.setStrokeWidth(1d);
+//            ovr.setPosition(position[2]);
+//            ovr.setFillColor(color);
+//            ovl.addElement(ovr);
+//
+//        }
 
         ipl.setOverlay(ovl);
 
