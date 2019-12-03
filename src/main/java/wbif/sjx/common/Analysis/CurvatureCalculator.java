@@ -4,6 +4,7 @@ import ij.ImagePlus;
 import ij.gui.Line;
 import ij.gui.OvalRoi;
 import ij.gui.Overlay;
+import ij.plugin.CalibrationBar;
 import ij.process.ImageProcessor;
 import org.apache.commons.math3.analysis.interpolation.*;
 import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
@@ -157,7 +158,10 @@ public class CurvatureCalculator {
             line.setStrokeColor(color);
             line.setPosition(position[2]);
             ovl.addElement(line);
+
         }
+
+
 
 //        for (Double pos:curvature.keySet()) {
 //            double x = splines[0].value(pos);
@@ -220,5 +224,22 @@ public class CurvatureCalculator {
 
     public void setFittingMethod(FittingMethod fittingMethod) {
         this.fittingMethod = fittingMethod;
+    }
+
+    public LinkedHashSet<Vertex> getSpline() {
+        if (splines == null) calculateCurvature();
+
+        LinkedHashSet<Vertex> spline = new LinkedHashSet<>();
+
+        for (double t:splines[0].getKnots()) {
+            int x = (int) Math.round(splines[0].value(t));
+            int y = (int) Math.round(splines[1].value(t));
+
+            spline.add(new Vertex(x,y,0));
+
+        }
+
+        return spline;
+
     }
 }
