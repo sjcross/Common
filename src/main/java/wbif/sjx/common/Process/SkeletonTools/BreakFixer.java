@@ -1,7 +1,5 @@
 package wbif.sjx.common.Process.SkeletonTools;
 
-import ij.IJ;
-import ij.ImageJ;
 import ij.ImagePlus;
 import ij.plugin.ImageCalculator;
 import ij.plugin.filter.Convolver;
@@ -98,7 +96,7 @@ public class BreakFixer {
 
     }
 
-    static double getEndAngle(ArrayList<int[]> c) {
+    public static double getEndAngleRads(ArrayList<int[]> c) {
         double[][] dataX = new double[c.size()][2];
         double[][] dataY = new double[c.size()][2];
 
@@ -143,7 +141,7 @@ public class BreakFixer {
 
     static ArrayList<Link> getPotentialLinks(ImageProcessor iprConn, ArrayList<int[]> c, int x, int y, int distLim, double angleLim, boolean endToEndOnly) {
         // Calculating the angle of the line using linear regression
-        double endAngle = Math.toDegrees(getEndAngle(c));
+        double endAngle = Math.toDegrees(getEndAngleRads(c));
         Point<Integer> p1 = new Point<>(x,y,0);
         ArrayList<Link> links = new ArrayList<>();
 

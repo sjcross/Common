@@ -17,25 +17,24 @@ public class Skeleton extends VertexCollection {
     private LinkedHashSet<Vertex> longestPath;
 
 
-    public static void main(String[] args) {
-        new ImageJ();
-
+//    public static void main(String[] args) {
+//        new ImageJ();
+//
 //        ImagePlus ipl = IJ.openImage("C:\\Users\\sc13967\\Downloads\\FakeFish.tif");
-        ImagePlus ipl = IJ.openImage("Y:\\Stephen\\People\\H\\Chrissy Hammond\\2018-01-16 Fish tracking\\FakeSkeleton.tif");
-        ipl.show();
-
-        Skeleton skeleton = new Skeleton(ipl);
-
-        LinkedHashSet<Vertex> longestPath = skeleton.getLongestPath();
-        CurvatureCalculator curvatureCalculator = new CurvatureCalculator(longestPath);
-        curvatureCalculator.setFittingMethod(CurvatureCalculator.FittingMethod.LOESS);
-        curvatureCalculator.setLoessNNeighbours(10);
-        curvatureCalculator.setLoessIterations(10000);
-        curvatureCalculator.setLoessAccuracy(1);
-        TreeMap<Double,Double> curvature = curvatureCalculator.getCurvature();
-        curvatureCalculator.showOverlay(ipl,new int[]{1,1,1});
-
-    }
+//        ipl.show();
+//
+//        Skeleton skeleton = new Skeleton(ipl);
+//
+//        LinkedHashSet<Vertex> longestPath = skeleton.getLongestPath();
+//        CurvatureCalculator curvatureCalculator = new CurvatureCalculator(longestPath);
+//        curvatureCalculator.setFittingMethod(CurvatureCalculator.FittingMethod.LOESS);
+//        curvatureCalculator.setLoessNNeighbours(10);
+//        curvatureCalculator.setLoessIterations(10000);
+//        curvatureCalculator.setLoessAccuracy(1);
+//        TreeMap<Double,Double> curvature = curvatureCalculator.getCurvature();
+//        curvatureCalculator.showOverlay(ipl,new int[]{1,1,1},2);
+//
+//    }
 
     public Skeleton(ImagePlus ipl) {
         for (int x=0;x<ipl.getWidth();x++) {
@@ -102,6 +101,18 @@ public class Skeleton extends VertexCollection {
 
         return branchPoints;
 
+    }
+
+    public void addBreak() {
+        // Iterate over each vertex until we find one that creating a break at will cause an end
+        for (Vertex vertex:this) {
+            for (Vertex neighbour:vertex.getNeighbours()) {
+                if (neighbour.getNumberOfNeighbours() == 2) {
+                    remove(vertex);
+                    return;
+                }
+            }
+        }
     }
 
     public int[] getX() {
@@ -187,4 +198,17 @@ public class Skeleton extends VertexCollection {
         }
     }
 
+    @Override
+    public boolean remove(Object o) {
+        Vertex vertex = (Vertex) o;
+
+        // Removing this as a neighbour of its neighbours
+        for (Vertex neighbour:vertex.getNeighbours()) {
+            neighbour.removeNeighbour(vertex);
+        }
+
+        // Removing from the collection
+        return super.remove(vertex);
+
+    }
 }
