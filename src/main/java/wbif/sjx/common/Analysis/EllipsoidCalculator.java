@@ -383,9 +383,9 @@ public class EllipsoidCalculator {
         for (int x=(int) xRange[0];x<=xRange[1];x++) {
             for (int y=(int) yRange[0];y<=yRange[1];y++) {
                 for (int z=(int) zRange[0];z<=zRange[1];z++) {
-                    if (ell.contains(x,y,z/cal)) {
+                    if (ell.contains(x,y,z)) {
                         try {
-                            insideEllipsoid.add(x, y, z);
+                            insideEllipsoid.add(x, y, (int) Math.round(z*cal));
                         } catch (PointOutOfRangeException e) {
                             // If a point is outside the range, we just ignore it
                         }
@@ -399,3 +399,4 @@ public class EllipsoidCalculator {
     }
 
 }
+

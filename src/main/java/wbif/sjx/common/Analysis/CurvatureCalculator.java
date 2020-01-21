@@ -154,7 +154,7 @@ public class CurvatureCalculator {
             Color color = Color.getHSBColor((float) b,1f,1f);
 
             Line line = new Line(x1,y1,x2,y2);
-            line.setStrokeWidth(0.5d);
+            line.setStrokeWidth(lineWidth);
             line.setStrokeColor(color);
             line.setPosition(position[2]);
             ovl.addElement(line);
