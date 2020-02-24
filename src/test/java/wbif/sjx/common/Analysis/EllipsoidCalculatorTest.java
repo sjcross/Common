@@ -14,7 +14,7 @@ public class EllipsoidCalculatorTest {
 
     @Test
     public void getCentroid() {
-        // Specifying spatial calibration
+        // Specifying spatial cal
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -45,7 +45,7 @@ public class EllipsoidCalculatorTest {
 
     @Test
     public void getRadii() {
-        // Specifying spatial calibration
+        // Specifying spatial cal
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -84,7 +84,7 @@ public class EllipsoidCalculatorTest {
 
     @Test
     public void getSurfaceArea() {
-        // Specifying spatial calibration
+        // Specifying spatial cal
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -115,7 +115,7 @@ public class EllipsoidCalculatorTest {
 
     @Test
     public void getVolume() {
-        // Specifying spatial calibration
+        // Specifying spatial cal
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
@@ -146,7 +146,7 @@ public class EllipsoidCalculatorTest {
 
     @Test
     public void getSphericity() {
-        // Specifying spatial calibration
+        // Specifying spatial cal
         double dppXY = 0.02;
         double dppZ = 0.1;
         String units = "um";
