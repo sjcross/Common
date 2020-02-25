@@ -3,16 +3,16 @@ package wbif.sjx.common.Object.Volume;
 import ij.ImagePlus;
 import ij.measure.Calibration;
 
-public class VolumeCalibration {
-    final double dppXY; //Calibration in xy
-    final double dppZ; //Calibration in z
-    final String units;
+public class SpatCal {
+    public final double dppXY; //Calibration in xy
+    public final double dppZ; //Calibration in z
+    public final String units;
 
-    final int width;
-    final int height;
-    final int nSlices;
+    public final int width;
+    public final int height;
+    public final int nSlices;
 
-    public VolumeCalibration(double dppXY, double dppZ, String units, int width, int height, int nSlices) {
+    public SpatCal(double dppXY, double dppZ, String units, int width, int height, int nSlices) {
         this.dppXY = dppXY;
         this.dppZ = dppZ;
         this.units = units;
@@ -21,11 +21,11 @@ public class VolumeCalibration {
         this.nSlices = nSlices;
     }
 
-    public VolumeCalibration duplicate() {
-        return new VolumeCalibration(dppXY,dppZ, units,width,height,nSlices);
+    public SpatCal duplicate() {
+        return new SpatCal(dppXY,dppZ, units,width,height,nSlices);
     }
 
-    public static VolumeCalibration getFromImage(ImagePlus ipl) {
+    public static SpatCal getFromImage(ImagePlus ipl) {
         Calibration calibration = ipl.getCalibration();
 
         int width = ipl.getWidth();
@@ -35,7 +35,19 @@ public class VolumeCalibration {
         double dppZ = calibration.getZ(1);
         String units = calibration.getUnits();
 
-        return new VolumeCalibration(dppXY,dppZ,units,width,height,nSlices);
+        return new SpatCal(dppXY,dppZ,units,width,height,nSlices);
+
+    }
+
+    public Calibration createImageCalibration() {
+        Calibration calibration = new Calibration();
+
+        calibration.pixelWidth = dppXY;
+        calibration.pixelHeight= dppXY;
+        calibration.pixelDepth = dppZ;
+        calibration.setUnit(units);
+
+        return calibration;
 
     }
 
@@ -62,4 +74,5 @@ public class VolumeCalibration {
     public int getnSlices() {
         return nSlices;
     }
+
 }

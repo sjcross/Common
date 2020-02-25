@@ -373,7 +373,7 @@ public class EllipsoidCalculator {
 
         double cal = volume.getDppXY()/volume.getDppZ();
 
-        Volume insideEllipsoid = new Volume(volume);
+        Volume insideEllipsoid = new Volume(volume.getVolumeType(),volume.getCalibration());
 
         // Testing which points are within the convex hull
         double[] xRange = ell.getXMinAndMax();

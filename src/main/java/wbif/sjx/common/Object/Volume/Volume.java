@@ -11,35 +11,20 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Volume {
-    protected VolumeCalibration cal;
+    protected SpatCal cal;
     protected CoordinateSet coordinateSet;
     protected Volume surface = null;
     protected Volume projected = null;
     protected Point<Double> meanCentroid = null;
 
 
-    public Volume(Volume volume) {
-        this.cal = volume.getCalibration().duplicate();
-        coordinateSet = createCoordinateStore(volume.getVolumeType());
-    }
-
-    public Volume(Volume volume, VolumeCalibration cal) {
-        this.cal = cal;
-        coordinateSet = createCoordinateStore(volume.getVolumeType());
-    }
-
-    public Volume(VolumeType volumeType, Volume volume) {
-        this.cal = volume.getCalibration().duplicate();
-        coordinateSet = createCoordinateStore(volumeType);
-    }
-
-    public Volume(VolumeType volumeType, VolumeCalibration cal) {
+    public Volume(VolumeType volumeType, SpatCal cal) {
         this.cal = cal;
         coordinateSet = createCoordinateStore(volumeType);
     }
 
     public Volume(VolumeType volumeType, int width, int height, int nSlices, double dppXY, double dppZ, String units) {
-        this.cal = new VolumeCalibration(dppXY,dppZ,units,width,height,nSlices);
+        this.cal = new SpatCal(dppXY,dppZ,units,width,height,nSlices);
         coordinateSet = createCoordinateStore(volumeType);
     }
 
@@ -84,7 +69,7 @@ public class Volume {
 
     public Volume getSurface() {
         if (surface == null) {
-            surface = new Volume(VolumeType.POINTLIST,this);
+            surface = new Volume(VolumeType.POINTLIST,getCalibration());
             surface.setCoordinateSet(coordinateSet.calculateSurface(is2D()));
         }
 
@@ -464,7 +449,7 @@ public class Volume {
     }
 
     public Volume getOverlappingPoints(Volume volume2) {
-        Volume overlapping = new Volume(getVolumeType(),this);
+        Volume overlapping = new Volume(getVolumeType(),getCalibration());
 
         try {
             if (size() < volume2.size()) {
@@ -555,7 +540,7 @@ public class Volume {
     // GETTERS AND SETTERS
 
 
-    public VolumeCalibration getCalibration() {
+    public SpatCal getCalibration() {
         return cal;
     }
 
