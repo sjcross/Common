@@ -71,7 +71,7 @@ public class SpatCal {
         return height;
     }
 
-    public int getnSlices() {
+    public int getNSlices() {
         return nSlices;
     }
 

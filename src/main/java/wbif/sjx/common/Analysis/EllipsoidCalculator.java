@@ -198,8 +198,6 @@
 
 package wbif.sjx.common.Analysis;
 
-import ij.IJ;
-import ij.ImageJ;
 import ij.ImageStack;
 import org.bonej.geometry.Ellipsoid;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
@@ -373,7 +371,7 @@ public class EllipsoidCalculator {
 
         double cal = volume.getDppXY()/volume.getDppZ();
 
-        Volume insideEllipsoid = new Volume(volume.getVolumeType(),volume.getCalibration());
+        Volume insideEllipsoid = new Volume(volume.getVolumeType(),volume.getSpatialCalibration());
 
         // Testing which points are within the convex hull
         double[] xRange = ell.getXMinAndMax();
