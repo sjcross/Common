@@ -118,11 +118,21 @@ public class TextureCalculator {
     }
 
     void addValueToConfusionMatrix(ImageStack image, int x, int y, int z) {
+        int v1 = 0;
+        int v2 = 0;
         // Getting current pixel value
-        int v1 = (int) image.getVoxel(x, y, z);
+        try {
+            v1 = (int) image.getVoxel(x, y, z);
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Out of bounds at "+x+","+y+","+z);
+        }
 
         // Getting tested pixel value
-        int v2 = (int) image.getVoxel(x + xOffs, y + yOffs, z + zOffs);
+        try {
+            v2 = (int) image.getVoxel(x + xOffs, y + yOffs, z + zOffs);
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Out of bounds at "+(x+ xOffs)+","+(y+yOffs)+","+(z+zOffs));
+        }
 
         // Storing in the HashMap
         int index1 = indexer.getIndex(new int[]{v1, v2});
