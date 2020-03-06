@@ -19,12 +19,12 @@ public class Objects2D extends ExpectedObjects {
         return getCoordinates5D("/coordinates/Objects2D.csv");
     }
 
-    public Volume getObject(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
-        return super.getObject(58,76,1, dppXY, dppZ, calibratedUnits);
+    public Volume getObject(double dppXY, double dppZ, String units) throws IntegerOverflowException {
+        return super.getObject(58,76,1, dppXY, dppZ, units);
     }
 
-    public HashMap<Integer, Volume> getObjects(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
-        return super.getObjects(58,76,1, dppXY, dppZ, calibratedUnits);
+    public HashMap<Integer, Volume> getObjects(double dppXY, double dppZ, String units) throws IntegerOverflowException {
+        return super.getObjects(58,76,1, dppXY, dppZ, units);
     }
 
     @Override

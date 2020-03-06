@@ -37,7 +37,7 @@ public class ImgPlusTools <T extends RealType<T> & NativeType<T>> {
 
     @Deprecated
     public static <T> void applyCalibrationXYCZT(ImgPlus<T> sourceImg, ImgPlus<T> targetImg) {
-        // Setting calibration from first image
+        // Setting cal from first image
         int axisIdx = sourceImg.dimensionIndex(Axes.X);
         if (axisIdx >= 0) {
             targetImg.setAxis(sourceImg.axis(axisIdx).copy(),0);

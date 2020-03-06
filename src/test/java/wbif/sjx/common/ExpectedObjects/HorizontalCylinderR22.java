@@ -12,8 +12,8 @@ public class HorizontalCylinderR22 extends ExpectedObjects {
         return getCoordinates5D("/coordinates/HorizontalBinaryCylinder3D_R22_whiteBG_8bit.csv");
     }
 
-    public Volume getObject(double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
-        return super.getObject(51,72,10, dppXY, dppZ, calibratedUnits);
+    public Volume getObject(double dppXY, double dppZ, String units) throws IntegerOverflowException {
+        return super.getObject(51,72,10, dppXY, dppZ, units);
     }
 
     @Override

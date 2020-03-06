@@ -160,14 +160,14 @@ public class TextureCalculatorTest {
     public void testGetASMWithVolume1px() throws Exception {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
         // Loading test image
         String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,units);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -194,14 +194,14 @@ public class TextureCalculatorTest {
     public void testGetContrastWithVolume1px() throws Exception {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
         // Loading test image
         String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,units);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -228,14 +228,14 @@ public class TextureCalculatorTest {
     public void testGetCorrelationWithVolume1px() throws Exception {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
         // Loading test image
         String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,units);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -262,14 +262,14 @@ public class TextureCalculatorTest {
     public void testGetEntropyWithVolume1px() throws Exception {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
         // Loading test image
         String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,units);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -296,14 +296,14 @@ public class TextureCalculatorTest {
     public void testGetASMWithVolume3px() throws Exception {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
         // Loading test image
         String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,units);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -330,14 +330,14 @@ public class TextureCalculatorTest {
     public void testGetContrastWithVolume3px() throws Exception {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
         // Loading test image
         String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,units);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -364,14 +364,14 @@ public class TextureCalculatorTest {
     public void testGetCorrelationWithVolume3px() throws Exception {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
         // Loading test image
         String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,units);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
@@ -398,14 +398,14 @@ public class TextureCalculatorTest {
     public void testGetEntropyWithVolume3px() throws Exception {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
         // Loading test image
         String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/NoisyGradient/NoisyGradient2D_8bit.tif").getPath(),"UTF-8");
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,units);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();

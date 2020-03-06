@@ -158,7 +158,7 @@ public class EllipseCalculator {
 
         double cal = volume.getDppXY()/volume.getDppZ();
 
-        Volume insideEllipse = new Volume(volume);
+        Volume insideEllipse = new Volume(volume.getVolumeType(),volume.getSpatialCalibration());
 
         double xCent = getXCentre();
         double yCent = getYCentre();
