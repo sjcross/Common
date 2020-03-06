@@ -13,7 +13,13 @@ import java.util.Iterator;
 public class NodeCollection extends HashSet<Vertex> {
 
     /**
+     *
+     */
+    private static final long serialVersionUID = -4038010312282727225L;
+
+    /**
      * Sets all nodes in NodeCollection to the same fixed_x value
+     * 
      * @param fixed_x
      */
     public void setFixedX(boolean fixed_x) {

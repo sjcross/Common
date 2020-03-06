@@ -1,5 +1,7 @@
 package wbif.sjx.common.Analysis;
 
+import java.util.LinkedHashMap;
+
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
@@ -8,9 +10,6 @@ import wbif.sjx.common.MathFunc.Indexer;
 import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Volume.Volume;
 import wbif.sjx.common.Process.IntensityMinMax;
-
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 
 /**
  * Texture measures, largely from  Robert M. Haralick, K. Shanmugam, and Its'hak Dinstein, "Textural Features for Image
@@ -52,7 +51,7 @@ public class TextureCalculator {
 
         // Running through all specified positions,
         int count = 0;
-        for (Point<Integer> point:volume.getPoints()) {
+        for (Point<Integer> point:volume.getCoordinateSet()) {
             int x = point.getX();
             int y = point.getY();
             int z = point.getZ();

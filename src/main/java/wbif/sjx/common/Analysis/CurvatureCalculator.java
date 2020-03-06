@@ -1,20 +1,18 @@
 package wbif.sjx.common.Analysis;
 
-import ij.ImagePlus;
-import ij.gui.Line;
-import ij.gui.OvalRoi;
-import ij.gui.Overlay;
-import ij.plugin.CalibrationBar;
-import ij.process.ImageProcessor;
-import org.apache.commons.math3.analysis.interpolation.*;
-import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
-import wbif.sjx.common.Object.Vertex;
-
-import java.awt.*;
-import java.util.Arrays;
+import java.awt.Color;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.TreeMap;
+
+import org.apache.commons.math3.analysis.interpolation.LoessInterpolator;
+import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;
+import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
+
+import ij.ImagePlus;
+import ij.gui.Line;
+import ij.gui.Overlay;
+import wbif.sjx.common.Object.Vertex;
 
 /**
  * Created by sc13967 on 26/01/2018.
@@ -126,7 +124,6 @@ public class CurvatureCalculator {
     public void showOverlay(ImagePlus ipl, double maxCurvature, int[] position, double lineWidth) {
         if (curvature == null) calculateCurvature();
 
-        double r = 2;
         Overlay ovl = ipl.getOverlay();
         if (ovl == null) ovl = new Overlay();
 

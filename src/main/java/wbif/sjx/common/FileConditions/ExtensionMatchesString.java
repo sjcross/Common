@@ -1,9 +1,8 @@
 package wbif.sjx.common.FileConditions;
 
-import org.apache.commons.io.FilenameUtils;
-
 import java.io.File;
-import java.util.regex.Matcher;
+
+import org.apache.commons.io.FilenameUtils;
 
 /**
  * Checks the input file against a list of acceptable extensions

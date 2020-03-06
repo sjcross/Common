@@ -1,7 +1,5 @@
 package wbif.sjx.common.Analysis.SpatialCalculators;
 
-import wbif.sjx.common.Object.Track;
-
 import java.util.TreeMap;
 
 /**

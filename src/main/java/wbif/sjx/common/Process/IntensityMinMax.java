@@ -1,12 +1,12 @@
 package wbif.sjx.common.Process;
 
+import java.util.ArrayList;
+import java.util.TreeSet;
+
 import ij.ImagePlus;
 import ij.process.ImageStatistics;
 import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Volume.Volume;
-
-import java.util.ArrayList;
-import java.util.TreeSet;
 
 /**
  * Created by Stephen on 15/04/2017.

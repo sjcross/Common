@@ -1,18 +1,18 @@
 package wbif.sjx.common.Analysis;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import wbif.sjx.common.ExpectedObjects.SingleTrack2D;
-import wbif.sjx.common.ExpectedObjects.Tracks2D;
-import wbif.sjx.common.MathFunc.CumStat;
-import wbif.sjx.common.Object.Track;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import wbif.sjx.common.ExpectedObjects.SingleTrack2D;
+import wbif.sjx.common.ExpectedObjects.Tracks2D;
+import wbif.sjx.common.MathFunc.CumStat;
+import wbif.sjx.common.Object.Track;
 
 
 /**

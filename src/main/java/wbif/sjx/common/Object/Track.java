@@ -11,6 +11,10 @@ import java.util.*;
  * Created by sc13967 on 03/02/2017.
  */
 public class Track extends TreeMap<Integer,Timepoint<Double>> {
+    /**
+     *
+     */
+    private static final long serialVersionUID = -5310406836341487582L;
     private final String units;
 
     // CONSTRUCTORS

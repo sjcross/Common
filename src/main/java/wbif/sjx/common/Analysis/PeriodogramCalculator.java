@@ -1,13 +1,12 @@
 package wbif.sjx.common.Analysis;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.apache.commons.math3.complex.Complex;
 import org.apache.commons.math3.transform.DftNormalization;
 import org.apache.commons.math3.transform.FastFourierTransformer;
 import org.apache.commons.math3.transform.TransformType;
-
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.TreeMap;
 
 /**
  * Created by sc13967 on 21/05/2018.
@@ -97,9 +96,6 @@ public class PeriodogramCalculator {
         psd.put(0.4375,2.740466866844013E-5);
         psd.put(0.5,3.042702786115774E-6);
 
-        int nPeaks = 3;
-
-        double[][] freq = getKeyFrequencies(psd,nPeaks);
     }
 
     public static double[][] getKeyFrequencies(TreeMap<Double,Double> psd, int nPeaks) {

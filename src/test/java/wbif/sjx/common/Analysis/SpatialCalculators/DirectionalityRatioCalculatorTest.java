@@ -1,12 +1,12 @@
 package wbif.sjx.common.Analysis.SpatialCalculators;
 
-import org.junit.jupiter.api.Test;
-import wbif.sjx.common.Analysis.SpatialCalculators.DirectionalityRatioCalculator;
-import wbif.sjx.common.Object.Track;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.TreeMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import wbif.sjx.common.Object.Track;
 
 /**
  * Created by steph on 29/05/2017.

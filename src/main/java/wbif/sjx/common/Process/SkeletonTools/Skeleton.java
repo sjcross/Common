@@ -1,18 +1,21 @@
 package wbif.sjx.common.Process.SkeletonTools;
 
-import ij.IJ;
-import ij.ImageJ;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+
 import ij.ImagePlus;
-import wbif.sjx.common.Analysis.CurvatureCalculator;
 import wbif.sjx.common.Object.Vertex;
 import wbif.sjx.common.Object.VertexCollection;
-
-import java.util.*;
 
 /**
  * Created by sc13967 on 24/01/2018.
  */
 public class Skeleton extends VertexCollection {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 3490921805740347855L;
     private double longestDistance;
     private LinkedHashSet<Vertex> longestPath;
 

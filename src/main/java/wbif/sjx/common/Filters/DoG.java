@@ -1,8 +1,6 @@
 package wbif.sjx.common.Filters;
 
 import ij.ImagePlus;
-import ij.plugin.Duplicator;
-import ij.plugin.ImageCalculator;
 import ij.plugin.filter.GaussianBlur;
 import ij.process.ImageConverter;
 import ij.process.ImageProcessor;
