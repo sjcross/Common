@@ -22,8 +22,8 @@ public abstract class ExpectedObjects {
     public abstract List<Integer[]> getCoordinates5D();
     public abstract boolean is2D();
 
-    public Volume getObject(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
-        Volume volume = new Volume(VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,calibratedUnits);
+    public Volume getObject(int width, int height, int nSlices, double dppXY, double dppZ, String units) throws IntegerOverflowException {
+        Volume volume = new Volume(VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,units);
 
         // Adding all provided coordinates to each object
         List<Integer[]> coordinates = getCoordinates5D();
@@ -44,7 +44,7 @@ public abstract class ExpectedObjects {
 
     }
 
-    public HashMap<Integer,Volume> getObjects(int width, int height, int nSlices, double dppXY, double dppZ, String calibratedUnits) throws IntegerOverflowException {
+    public HashMap<Integer,Volume> getObjects(int width, int height, int nSlices, double dppXY, double dppZ, String units) throws IntegerOverflowException {
         // Initialising object store
         HashMap<Integer,Volume> testObjects = new HashMap<>();
 
@@ -60,7 +60,7 @@ public abstract class ExpectedObjects {
 
             ID = ID+(t*65536);
 
-            testObjects.putIfAbsent(ID,new Volume(VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,calibratedUnits));
+            testObjects.putIfAbsent(ID,new Volume(VolumeType.POINTLIST,width,height,nSlices,dppXY,dppZ,units));
             Volume testObject = testObjects.get(ID);
             try {
                 testObject.add(x,y,z);

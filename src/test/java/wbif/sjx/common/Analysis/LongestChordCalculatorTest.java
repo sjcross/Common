@@ -19,9 +19,9 @@ public class LongestChordCalculatorTest {
     public void calculateAverageDistanceFromLCHorizontalCylinderR22() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
-        Volume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,units);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -40,9 +40,9 @@ public class LongestChordCalculatorTest {
     public void calculateAverageDistanceFromLCVerticalCylinderR5Calibrated() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
-        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,units);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -61,9 +61,9 @@ public class LongestChordCalculatorTest {
     public void calculateAverageDistanceFromLCVerticalCylinderR5Uncalibrated() throws IntegerOverflowException {
         double dppXY = 1;
         double dppZ = 1;
-        String calibratedUnits = "um";
+        String units = "um";
 
-        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,units);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -82,9 +82,9 @@ public class LongestChordCalculatorTest {
     public void testCalculateLCHorizontalCylinderR22() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
-        Volume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,units);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -106,9 +106,9 @@ public class LongestChordCalculatorTest {
     public void testCalculateLCVerticalCylinderR5Calibrated() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
-        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,units);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -130,9 +130,9 @@ public class LongestChordCalculatorTest {
     public void testCalculateLCVerticalCylinderR5Uncalibrated() throws IntegerOverflowException {
         double dppXY = 1;
         double dppZ = 1;
-        String calibratedUnits = "um";
+        String units = "um";
 
-        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,units);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -154,9 +154,9 @@ public class LongestChordCalculatorTest {
     public void testGetLCLengthHorizontalCylinderR22() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
-        Volume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new HorizontalCylinderR22().getObject(dppXY,dppZ,units);
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
         double actual = calculator.getLCLength();
@@ -170,9 +170,9 @@ public class LongestChordCalculatorTest {
     public void testGetLCLengthVerticalCylinderR5Calibrated() throws IntegerOverflowException {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
-        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,units);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
@@ -187,9 +187,9 @@ public class LongestChordCalculatorTest {
     public void testGetLCLengthVerticalCylinderR5Uncalibrated() throws IntegerOverflowException {
         double dppXY = 1;
         double dppZ = 1;
-        String calibratedUnits = "um";
+        String units = "um";
 
-        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,calibratedUnits);
+        Volume volume = new VerticalCylinderR5().getObject(dppXY,dppZ,units);
 
         LongestChordCalculator calculator = new LongestChordCalculator(volume);
 
