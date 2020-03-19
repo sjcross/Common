@@ -33,27 +33,6 @@ public class CurvatureCalculator {
     private int loessIterations = 10;
     private double loessAccuracy = 100;
 
-    public static void main(String[] args) {
-        ArrayList<Vertex> path = new ArrayList<>();
-
-        path.add(new Vertex(3, 2, 0));
-        path.add(new Vertex(4, 3, 0));
-        path.add(new Vertex(5, 4, 0));
-        path.add(new Vertex(5, 5, 0));
-        path.add(new Vertex(5, 6, 0));
-        path.add(new Vertex(4, 7, 0));
-        path.add(new Vertex(3, 7, 0));
-        path.add(new Vertex(2, 6, 0));
-        path.add(new Vertex(1, 5, 0));
-        path.add(new Vertex(1, 4, 0));
-        path.add(new Vertex(2, 3, 0));
-
-        CurvatureCalculator calculator = new CurvatureCalculator(path, true);
-        calculator.setLoessNNeighbours(3);
-        calculator.calculateCurvature();
-
-    }
-
     public CurvatureCalculator(ArrayList<Vertex> path, boolean isLoop) {
         this.path = path;
         this.isLoop = isLoop;
@@ -61,8 +40,14 @@ public class CurvatureCalculator {
     }
 
     public void calculateCurvature() {
+        // Checking there are enough points for fitting
         int nKnots = path.size();
-
+        if (isLoop && nKnots < (2 * loessNNeighbours + 1)) {
+            return;
+        } else if (nKnots < (loessNNeighbours+1)) {
+            return;
+        }
+    
         if (isLoop)
             nKnots = nKnots + 2 * loessNNeighbours;
 
@@ -172,6 +157,10 @@ public class CurvatureCalculator {
     public void showOverlay(ImagePlus ipl, int[] position, int lineWidth) {
         if (curvature == null)
             calculateCurvature();
+
+        // If fitting failed, curvature will still be null
+        if (curvature == null)
+            return;
 
         // Calculating maximum curvature
         double maxCurvature = Double.MIN_VALUE;
