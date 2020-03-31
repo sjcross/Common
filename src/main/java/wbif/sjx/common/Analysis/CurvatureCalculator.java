@@ -42,9 +42,7 @@ public class CurvatureCalculator {
     public void calculateCurvature() {
         // Checking there are enough points for fitting
         int nKnots = path.size();
-        if (isLoop && nKnots < (2 * loessNNeighbours + 1)) {
-            return;
-        } else if (nKnots < (loessNNeighbours+1)) {
+        if (nKnots < (loessNNeighbours + 1)) {
             return;
         }
     
@@ -210,21 +208,6 @@ public class CurvatureCalculator {
             ovl.addElement(line);
 
         }
-
-        // for (Double pos:curvature.keySet()) {
-        // double x = splines[0].value(pos);
-        // double y = splines[1].value(pos);
-        //
-        // double b = curvature.get(pos)/(maxCurvature*1.5);
-        // Color color = Color.getHSBColor((float) b,1f,1f);
-        //
-        // OvalRoi ovr = new OvalRoi(x-r/2+0.5,y-r /2+0.5, r, r);
-        // ovr.setStrokeWidth(1d);
-        // ovr.setPosition(position[2]);
-        // ovr.setFillColor(color);
-        // ovl.addElement(ovr);
-        //
-        // }
 
         ipl.setOverlay(ovl);
 
