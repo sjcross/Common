@@ -7,4 +7,9 @@ import java.util.HashSet;
  */
 public class VertexCollection extends HashSet<Vertex> {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = -1614883182647783545L;
+
 }

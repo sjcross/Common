@@ -1,12 +1,12 @@
 package wbif.sjx.common.Object;
 
-import wbif.sjx.common.Analysis.DirectionalPersistenceCalculator;
-import wbif.sjx.common.Analysis.MSDCalculator;
-import wbif.sjx.common.MathFunc.CumStat;
-
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.TreeMap;
+
+import wbif.sjx.common.Analysis.DirectionalPersistenceCalculator;
+import wbif.sjx.common.Analysis.MSDCalculator;
+import wbif.sjx.common.MathFunc.CumStat;
 
 /**
  * Created by sc13967 on 13/06/2017.
@@ -16,7 +16,14 @@ public class TrackCollection extends LinkedHashMap<Integer,Track> {
     // PUBLIC METHODS
 
     /**
-     * Rolling Euclidean distance.  Values are stored per frame, relative to the start of that track.
+     *
+     */
+    private static final long serialVersionUID = -6015686973069140664L;
+
+    /**
+     * Rolling Euclidean distance. Values are stored per frame, relative to the
+     * start of that track.
+     * 
      * @return
      */
     public double[][] getAverageRollingEuclideanDistance(boolean relativeToTrackStart) {

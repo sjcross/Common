@@ -9,6 +9,10 @@ import java.util.LinkedHashMap;
  * Created by sc13967 on 25/10/2016.
  */
 public class Metadata extends LinkedHashMap<String,Object> {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 8055147730108225349L;
     public static final String FILENAME = "Filename";
     public static final String WELL = "Well";
     public static final String ROW = "Row";

@@ -1,13 +1,10 @@
 package wbif.sjx.common.MathFunc.EdgeCorrection;
 
-import wbif.sjx.common.Object.Point;
-
-import java.util.ArrayList;
-
 /**
- * Created by sc13967 on 17/01/2018.
- * This class calculates the edge correction from "On explicit formulas of edge effect correction for Ripley's
- * K-function" Goreaud, F. and Pelissier, R., Journal of Vegetation Science, 10 (1999) 433-438.
+ * Created by sc13967 on 17/01/2018. This class calculates the edge correction
+ * from "On explicit formulas of edge effect correction for Ripley's K-function"
+ * Goreaud, F. and Pelissier, R., Journal of Vegetation Science, 10 (1999)
+ * 433-438.
  */
 public class GoreaudEdgeCorrection extends EdgeCorrection {
     public GoreaudEdgeCorrection(double minX, double maxX, double minY, double maxY) {

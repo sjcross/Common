@@ -1,13 +1,9 @@
 package wbif.sjx.common.Filters;
 
-import ij.IJ;
 import ij.ImagePlus;
-import ij.plugin.ImageCalculator;
 import ij.process.FloatProcessor;
 import ij.process.ImageProcessor;
 import wbif.sjx.common.MathFunc.Indexer;
-
-import java.util.Arrays;
 
 /**
  * Created by sc13967 on 17/01/2018.

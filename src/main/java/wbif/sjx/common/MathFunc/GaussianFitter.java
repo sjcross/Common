@@ -1,17 +1,20 @@
 package wbif.sjx.common.MathFunc;
 
-import ij.IJ;
-import ij.ImageJ;
-import ij.ImagePlus;
-import ij.process.ImageProcessor;
 import org.apache.commons.math3.exception.TooManyEvaluationsException;
-import org.apache.commons.math3.fitting.leastsquares.*;
+import org.apache.commons.math3.fitting.leastsquares.LeastSquaresBuilder;
+import org.apache.commons.math3.fitting.leastsquares.LeastSquaresOptimizer;
+import org.apache.commons.math3.fitting.leastsquares.LeastSquaresProblem;
+import org.apache.commons.math3.fitting.leastsquares.LevenbergMarquardtOptimizer;
+import org.apache.commons.math3.fitting.leastsquares.MultivariateJacobianFunction;
+import org.apache.commons.math3.fitting.leastsquares.ParameterValidator;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.RealVector;
 import org.apache.commons.math3.util.Pair;
+
+import ij.process.ImageProcessor;
 
 /**
  * Created by sc13967 on 05/06/2017.

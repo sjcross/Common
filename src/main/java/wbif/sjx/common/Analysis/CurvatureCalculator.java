@@ -1,58 +1,96 @@
 package wbif.sjx.common.Analysis;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.TreeMap;
+
+import org.apache.commons.math3.analysis.interpolation.LoessInterpolator;
+import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;
+import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
+
 import ij.ImagePlus;
 import ij.gui.Line;
-import ij.gui.OvalRoi;
 import ij.gui.Overlay;
-import ij.plugin.CalibrationBar;
-import ij.process.ImageProcessor;
-import org.apache.commons.math3.analysis.interpolation.*;
-import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
 import wbif.sjx.common.Object.Vertex;
-
-import java.awt.*;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.TreeMap;
 
 /**
  * Created by sc13967 on 26/01/2018.
  */
 public class CurvatureCalculator {
-    private LinkedHashSet< Vertex > path;
+    private ArrayList<Vertex> path;
     private PolynomialSplineFunction[] splines = null;
-    private TreeMap<Double,Double> curvature = null;
+    private TreeMap<Double, Double> curvature = null;
     private FittingMethod fittingMethod = FittingMethod.STANDARD;
+    private boolean isLoop = false;
 
-    public enum FittingMethod {STANDARD,LOESS}
+    public enum FittingMethod {
+        STANDARD, LOESS
+    }
 
     private int loessNNeighbours = 5;
     private double loessBandwidth = 0.04;
     private int loessIterations = 10;
     private double loessAccuracy = 100;
 
-
-    public CurvatureCalculator(LinkedHashSet< Vertex > path) {
+    public CurvatureCalculator(ArrayList<Vertex> path, boolean isLoop) {
         this.path = path;
+        this.isLoop = isLoop;
 
     }
 
     public void calculateCurvature() {
-        // Preparing line coordinates for spline fitting
-        double[] t = new double[path.size()];
-        double[] x = new double[path.size()];
-        double[] y = new double[path.size()];
+        // Checking there are enough points for fitting
+        int nKnots = path.size();
+        if (nKnots < (loessNNeighbours + 1)) {
+            return;
+        }
+    
+        if (isLoop)
+            nKnots = nKnots + 2 * loessNNeighbours;
 
-        int count=0;
+        // Preparing line coordinates for spline fitting
+        double[] t = new double[nKnots];
+        double[] x = new double[nKnots];
+        double[] y = new double[nKnots];
+
+        int count = 0;
         Vertex prevVertex = null;
-        for (Vertex vertex:path) {
-            t[count] = count==0 ? 0 : t[count-1] + vertex.getEdgeLength(prevVertex);
+
+        // If a loop, starting with the final few points from the opposite end
+        if (isLoop) {
+            int len = path.size();
+            for (int i = loessNNeighbours; i > 0; i--) {
+                Vertex vertex = path.get((len - i));
+                t[count] = count == 0 ? 0 : t[count - 1] + vertex.getEdgeLength(prevVertex);
+                x[count] = vertex.getX();
+                y[count++] = vertex.getY();
+
+                prevVertex = vertex;
+
+            }
+        }
+
+        for (Vertex vertex : path) {
+            t[count] = count == 0 ? 0 : t[count - 1] + vertex.getEdgeLength(prevVertex);
             x[count] = vertex.getX();
             y[count++] = vertex.getY();
 
             prevVertex = vertex;
 
+        }
+        
+        // If a loop, ending with the first few points from the opposite end
+        if (isLoop) {
+            for (int i = 0; i < loessNNeighbours; i++) {
+                Vertex vertex = path.get(i);
+                t[count] = count == 0 ? 0 : t[count - 1] + vertex.getEdgeLength(prevVertex);
+                x[count] = vertex.getX();
+                y[count++] = vertex.getY();
+
+                prevVertex = vertex;
+
+            }
         }
 
         // Storing splines
@@ -61,15 +99,16 @@ public class CurvatureCalculator {
         // Fitting the spline pair
         switch (fittingMethod) {
             case LOESS:
-                LoessInterpolator loessInterpolator = new LoessInterpolator(loessBandwidth,loessIterations,loessAccuracy);
-                splines[0] = loessInterpolator.interpolate(t,x);
-                splines[1] = loessInterpolator.interpolate(t,y);
+                LoessInterpolator loessInterpolator = new LoessInterpolator(loessBandwidth, loessIterations,
+                        loessAccuracy);
+                splines[0] = loessInterpolator.interpolate(t, x);
+                splines[1] = loessInterpolator.interpolate(t, y);
                 break;
 
             case STANDARD:
                 SplineInterpolator splineInterpolator = new SplineInterpolator();
-                splines[0] = splineInterpolator.interpolate(t,x);
-                splines[1] = splineInterpolator.interpolate(t,y);
+                splines[0] = splineInterpolator.interpolate(t, x);
+                splines[1] = splineInterpolator.interpolate(t, y);
                 break;
         }
 
@@ -83,52 +122,61 @@ public class CurvatureCalculator {
         double[] knots = splines[0].getKnots();
 
         curvature = new TreeMap<>();
-        double w = (double) loessNNeighbours/2d;
-        for (int i=0;i<knots.length;i++) {
+        double w = (double) loessNNeighbours / 2d;
+        int startIdx = isLoop ? loessNNeighbours : 0;
+        int endIdx = isLoop ? knots.length - loessNNeighbours : knots.length;
+        for (int i = startIdx; i < endIdx; i++) {
             double pos = knots[i];
 
-            double minPos = Math.max(knots[0],pos-w);
-            double maxPos = Math.min(knots[knots.length-1],pos+w);
-            double width = maxPos-minPos;
+            double minPos = Math.max(knots[0], pos - w);
+            double maxPos = Math.min(knots[knots.length - 1], pos + w);
+            double width = maxPos - minPos;
 
             double dx = (splines[0].value(maxPos) - splines[0].value(minPos)) / width;
             double dy = (splines[1].value(maxPos) - splines[1].value(minPos)) / width;
-            double ddx = (splines[2].value(maxPos) - splines[2].value(minPos)) / (0.5*width);
-            double ddy = (splines[3].value(maxPos) - splines[3].value(minPos)) / (0.5*width);
+            double ddx = (splines[2].value(maxPos) - splines[2].value(minPos)) / (0.5 * width);
+            double ddy = (splines[3].value(maxPos) - splines[3].value(minPos)) / (0.5 * width);
 
             double k = (dx * ddy - dy * ddx) / Math.pow((dx * dx + dy * dy), 3d / 2d);
 
-            curvature.put(knots[i],k);
+            curvature.put(knots[i], k);
 
         }
     }
 
-    public TreeMap<Double,Double> getCurvature() {
-        if (curvature == null) calculateCurvature();
+    public TreeMap<Double, Double> getCurvature() {
+        if (curvature == null)
+            calculateCurvature();
 
-        return  curvature;
+        return curvature;
 
     }
 
     public void showOverlay(ImagePlus ipl, int[] position, int lineWidth) {
-        if (curvature == null) calculateCurvature();
+        if (curvature == null)
+            calculateCurvature();
+
+        // If fitting failed, curvature will still be null
+        if (curvature == null)
+            return;
 
         // Calculating maximum curvature
         double maxCurvature = Double.MIN_VALUE;
-        for (double currentCurvature:curvature.values()) {
-            maxCurvature = Math.max(Math.abs(currentCurvature),maxCurvature);
+        for (double currentCurvature : curvature.values()) {
+            maxCurvature = Math.max(Math.abs(currentCurvature), maxCurvature);
         }
 
-        showOverlay(ipl,maxCurvature,position,lineWidth);
+        showOverlay(ipl, maxCurvature, position, lineWidth);
 
     }
 
     public void showOverlay(ImagePlus ipl, double maxCurvature, int[] position, double lineWidth) {
-        if (curvature == null) calculateCurvature();
+        if (curvature == null)
+            calculateCurvature();
 
-        double r = 2;
         Overlay ovl = ipl.getOverlay();
-        if (ovl == null) ovl = new Overlay();
+        if (ovl == null)
+            ovl = new Overlay();
 
         if (curvature.size() < 2) {
             ipl.setOverlay(ovl);
@@ -142,41 +190,24 @@ public class CurvatureCalculator {
             double p1 = p2;
             p2 = iterator.next();
 
-            double x1 = splines[0].value(p1)+0.5;
-            double y1 = splines[1].value(p1)+0.5;
-            double x2 = splines[0].value(p2)+0.5;
-            double y2 = splines[1].value(p2)+0.5;
+            double x1 = splines[0].value(p1) + 0.5;
+            double y1 = splines[1].value(p1) + 0.5;
+            double x2 = splines[0].value(p2) + 0.5;
+            double y2 = splines[1].value(p2) + 0.5;
 
             double k1 = Math.abs(curvature.get(p1));
             double k2 = Math.abs(curvature.get(p2));
-            double k = (k1+k2)/2;
-            double b = k/(maxCurvature*1.5);
-            Color color = Color.getHSBColor((float) b,1f,1f);
+            double k = (k1 + k2) / 2;
+            double b = k / (maxCurvature * 1.5);
+            Color color = Color.getHSBColor((float) b, 1f, 1f);
 
-            Line line = new Line(x1,y1,x2,y2);
+            Line line = new Line(x1, y1, x2, y2);
             line.setStrokeWidth(lineWidth);
             line.setStrokeColor(color);
             line.setPosition(position[2]);
             ovl.addElement(line);
 
         }
-
-
-
-//        for (Double pos:curvature.keySet()) {
-//            double x = splines[0].value(pos);
-//            double y = splines[1].value(pos);
-//
-//            double b = curvature.get(pos)/(maxCurvature*1.5);
-//            Color color = Color.getHSBColor((float) b,1f,1f);
-//
-//            OvalRoi ovr = new OvalRoi(x-r/2+0.5,y-r /2+0.5, r, r);
-//            ovr.setStrokeWidth(1d);
-//            ovr.setPosition(position[2]);
-//            ovr.setFillColor(color);
-//            ovl.addElement(ovr);
-//
-//        }
 
         ipl.setOverlay(ovl);
 
@@ -190,11 +221,13 @@ public class CurvatureCalculator {
         this.loessNNeighbours = loessNNeighbours;
 
         // Calculating the bandwidth
-        loessBandwidth = (double) loessNNeighbours/(double) path.size();
+        loessBandwidth = (double) loessNNeighbours / (double) path.size();
 
         // Keeping the bandwidth within limits
-        if (loessBandwidth < 0) loessBandwidth = 0;
-        if (loessBandwidth > 1) loessBandwidth = 1;
+        if (loessBandwidth < 0)
+            loessBandwidth = 0;
+        if (loessBandwidth > 1)
+            loessBandwidth = 1;
 
     }
 
@@ -226,16 +259,22 @@ public class CurvatureCalculator {
         this.fittingMethod = fittingMethod;
     }
 
-    public LinkedHashSet<Vertex> getSpline() {
-        if (splines == null) calculateCurvature();
+    public ArrayList<Vertex> getSpline() {
+        if (splines == null)
+            calculateCurvature();
 
-        LinkedHashSet<Vertex> spline = new LinkedHashSet<>();
+        ArrayList<Vertex> spline = new ArrayList<>();
 
-        for (double t:splines[0].getKnots()) {
+        double[] knots = splines[0].getKnots();
+        int startIdx = isLoop ? loessNNeighbours : 0;
+        int endIdx = isLoop ? knots.length - loessNNeighbours : knots.length;
+        for (int i = startIdx; i < endIdx; i++) {
+            double t = knots[i];
+        
             int x = (int) Math.round(splines[0].value(t));
             int y = (int) Math.round(splines[1].value(t));
 
-            spline.add(new Vertex(x,y,0));
+            spline.add(new Vertex(x, y, 0));
 
         }
 

@@ -3,6 +3,10 @@ package wbif.sjx.common.Object;
 import java.io.Serializable;
 
 public class Point<T extends Number> implements Comparable<Point<T>>, Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 391260737545673548L;
     public T x;
     public T y;
     public T z;

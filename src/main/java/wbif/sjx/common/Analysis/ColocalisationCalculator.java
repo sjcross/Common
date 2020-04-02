@@ -15,7 +15,7 @@ public class ColocalisationCalculator {
         double denominator2 = 0;
 
         // Running through all pixels in the volume, adding them to the CumStat object
-        for (Point<Integer> point:volume.getPoints()) {
+        for (Point<Integer> point:volume.getCoordinateSet()) {
             int x = point.getX();
             int y = point.getY();
             int z = point.getZ();

@@ -1,20 +1,22 @@
 package wbif.sjx.common.Process.SkeletonTools;
 
-import ij.IJ;
-import ij.ImageJ;
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import ij.ImagePlus;
-import wbif.sjx.common.Analysis.CurvatureCalculator;
 import wbif.sjx.common.Object.Vertex;
 import wbif.sjx.common.Object.VertexCollection;
-
-import java.util.*;
 
 /**
  * Created by sc13967 on 24/01/2018.
  */
 public class Skeleton extends VertexCollection {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 3490921805740347855L;
     private double longestDistance;
-    private LinkedHashSet<Vertex> longestPath;
+    private ArrayList<Vertex> longestPath;
 
 
 //    public static void main(String[] args) {
@@ -63,15 +65,15 @@ public class Skeleton extends VertexCollection {
 
     }
 
-    public LinkedHashSet<Vertex> getLongestPath() {
+    public ArrayList<Vertex> getLongestPath() {
         longestDistance = 0;
-        longestPath = new LinkedHashSet<>();
+        longestPath = new ArrayList<>();
 
         // Getting the vertices with one neighbour (those at branch ends)
-        HashSet<Vertex> endPoints = getEndPoints();
+        ArrayList<Vertex> endPoints = getEndPoints();
 
         for (Vertex vertex : endPoints) {
-            LinkedHashSet<Vertex> currentPath = new LinkedHashSet<>();
+            ArrayList<Vertex> currentPath = new ArrayList<>();
             addDistanceToNextVertex(vertex, 0, currentPath);
         }
 
@@ -79,8 +81,8 @@ public class Skeleton extends VertexCollection {
 
     }
 
-    public HashSet<Vertex> getEndPoints() {
-        HashSet<Vertex> endPoints = new HashSet<>();
+    public ArrayList<Vertex> getEndPoints() {
+        ArrayList<Vertex> endPoints = new ArrayList<>();
 
         // End points only have one neighbour
         for (Vertex vertex:this) {
@@ -91,8 +93,8 @@ public class Skeleton extends VertexCollection {
 
     }
 
-    public HashSet<Vertex> getBranchPoints() {
-        HashSet<Vertex> branchPoints = new HashSet<>();
+    public ArrayList<Vertex> getBranchPoints() {
+        ArrayList<Vertex> branchPoints = new ArrayList<>();
 
         // Branch points have 3 or more neighbours
         for (Vertex vertex:this) {
@@ -103,16 +105,19 @@ public class Skeleton extends VertexCollection {
 
     }
 
-    public void addBreak() {
+    public Vertex addBreak() {
         // Iterate over each vertex until we find one that creating a break at will cause an end
-        for (Vertex vertex:this) {
-            for (Vertex neighbour:vertex.getNeighbours()) {
+        for (Vertex vertex : this) {
+            for (Vertex neighbour : vertex.getNeighbours()) {
                 if (neighbour.getNumberOfNeighbours() == 2) {
                     remove(vertex);
-                    return;
+                    return vertex;
                 }
             }
         }
+        
+        return null;
+        
     }
 
     public int[] getX() {
@@ -173,9 +178,9 @@ public class Skeleton extends VertexCollection {
         }
     }
 
-    private void addDistanceToNextVertex(Vertex currentVertex, double distance, LinkedHashSet<Vertex> currentPath) {
+    private void addDistanceToNextVertex(Vertex currentVertex, double distance, ArrayList<Vertex> currentPath) {
         // Making a new path for this point onwards
-        LinkedHashSet<Vertex> newCurrentPath = new LinkedHashSet<>();
+        ArrayList<Vertex> newCurrentPath = new ArrayList<>();
         newCurrentPath.addAll(currentPath);
         newCurrentPath.add(currentVertex);
 
