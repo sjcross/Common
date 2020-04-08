@@ -2,6 +2,8 @@ package wbif.sjx.common.FileConditions;
 
 import java.io.File;
 
+import org.apache.commons.io.FilenameUtils;
+
 /**
  * Checks the input file against a list of acceptable extensions
  * Created by sc13967 on 24/10/2016.
@@ -65,8 +67,7 @@ public class NameContainsString implements FileCondition {
 
     public boolean test(File file) {
         if (file == null) return false;
-
-        String name = file.getName();
+        String name = FilenameUtils.removeExtension(file.getName());
         return test(name);
 
     }
