@@ -1,5 +1,6 @@
 package wbif.sjx.common.Analysis;
 
+
 import org.bonej.geometry.FitEllipse;
 
 import wbif.sjx.common.Exceptions.IntegerOverflowException;

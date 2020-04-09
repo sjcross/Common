@@ -3,6 +3,8 @@ package wbif.sjx.common.Object;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * High-content result structure as an abstract class, which is extended on an experiment-by experiment basis
@@ -293,18 +295,38 @@ public class Metadata extends LinkedHashMap<String,Object> {
     public void printParameters() {
         DecimalFormat time_df = new DecimalFormat("00");
 
-        System.out.println("    Primary channel: "+ getFile().getName());
+        System.out.println("    Primary channel: " + getFile().getName());
 
-        System.out.println("        Date: "+getDay()+"/"+getMonth()+"/"+getYear());
-        System.out.println("        Time: "+time_df.format(getHour())+":"+time_df.format(getMin())+":"+time_df.format(getSec()));
-        System.out.println("        Well: "+getWell());
-        System.out.println("        Field: "+getField());
-        System.out.println("        Timepoint: "+getTimepoint());
-        System.out.println("        Z-position: "+getZ());
-        System.out.println("        Channel: "+getChannel());
-        System.out.println("        Magnification: "+getMag());
-        System.out.println("        Cell type: "+getCelltype());
-        System.out.println("        Comment: "+getComment());
+        System.out.println("        Date: " + getDay() + "/" + getMonth() + "/" + getYear());
+        System.out.println("        Time: " + time_df.format(getHour()) + ":" + time_df.format(getMin()) + ":"
+                + time_df.format(getSec()));
+        System.out.println("        Well: " + getWell());
+        System.out.println("        Field: " + getField());
+        System.out.println("        Timepoint: " + getTimepoint());
+        System.out.println("        Z-position: " + getZ());
+        System.out.println("        Channel: " + getChannel());
+        System.out.println("        Magnification: " + getMag());
+        System.out.println("        Cell type: " + getCelltype());
+        System.out.println("        Comment: " + getComment());
     }
 
+    public String insertMetadataValues(String genericFormat) {
+        String outputName = genericFormat;
+
+        // Use regex to find instances of "M{ }" and replace the contents with the
+        // appropriate metadata value
+        Pattern pattern = Pattern.compile("M\\{([^{}]+)}");
+        Matcher matcher = pattern.matcher(genericFormat);
+        while (matcher.find()) {
+            String fullName = matcher.group(0);
+            String metadataName = matcher.group(1);
+            String metadataValue = getAsString(metadataName);
+
+            outputName = outputName.replace(fullName, metadataValue);
+
+        }
+
+        return outputName;
+
+    }
 }
