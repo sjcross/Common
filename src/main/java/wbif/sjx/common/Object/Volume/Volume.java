@@ -14,8 +14,8 @@ public class Volume {
     protected SpatCal spatCal;
     protected CoordinateSet coordinateSet;
     protected Volume surface = null;
-    protected Volume projected = null;
-    protected Point<Double> meanCentroid = null;
+    protected Volume projection = null;
+    protected Point<Double> meanCentroidPx = null;
 
 
     public Volume(VolumeType volumeType, SpatCal spatCal) {
@@ -67,6 +67,10 @@ public class Volume {
 
     }
 
+    public boolean hasCalculatedSurface() {
+        return surface != null;
+    }
+    
     public Volume getSurface() {
         if (surface == null) {
             surface = new Volume(VolumeType.POINTLIST, getSpatialCalibration());
@@ -78,7 +82,7 @@ public class Volume {
     }
 
     public Volume getProjected() {
-        if (projected == null) {
+        if (projection == null) {
             VolumeType outputType;
             // Octree is best represented by quadtree.  Pointlist can stay as pointlist.
             switch (getVolumeType()) {
@@ -92,13 +96,18 @@ public class Volume {
                     break;
             }
 
-            projected = new Volume(outputType, spatCal.width, spatCal.height,1, spatCal.dppXY, spatCal.dppZ, spatCal.units);
-            projected.setCoordinateSet(coordinateSet.calculateProjected());
+            projection = new Volume(outputType, spatCal.width, spatCal.height, 1, spatCal.dppXY, spatCal.dppZ,
+                    spatCal.units);
+            projection.setCoordinateSet(coordinateSet.calculateProjected());
 
         }
 
-        return projected;
+        return projection;
 
+    }
+
+    public boolean hasCalculatedProjection() {
+        return projection != null;
     }
 
     public double getProjectedArea(boolean pixelDistances) {
@@ -108,12 +117,45 @@ public class Volume {
     }
 
     public void setPoints(TreeSet<Point<Integer>> points) throws PointOutOfRangeException {
-        for (Point<Integer> point:points) add(point);
+        for (Point<Integer> point : points)
+            add(point);
+    }
+
+    public boolean hasCalculatedCentroid() {
+        return meanCentroidPx != null;
+    }
+
+    public Point<Double> getMeanCentroid(boolean pixelDistances, boolean matchXY) {
+        if (meanCentroidPx == null)
+            meanCentroidPx = coordinateSet.calculateMeanCentroid();
+        
+        if (pixelDistances) {
+            if (matchXY) {
+                // Keeping X and Y, but changing Z to match
+                double xCent = meanCentroidPx.getX();
+                double yCent = meanCentroidPx.getY();
+                double zCent = getXYScaledZ(meanCentroidPx.getZ());
+
+                return new Point<Double>(xCent, yCent, zCent);
+                
+            } else {
+                // Using raw X,Y,Z units
+                return meanCentroidPx.duplicate();
+            }
+        }
+
+        // Converting to calibrated units
+        double xCent = meanCentroidPx.getX() * spatCal.dppXY;
+        double yCent = meanCentroidPx.getY() * spatCal.dppXY;
+        double zCent = meanCentroidPx.getZ() * spatCal.dppZ;
+
+        return new Point<Double>(xCent,yCent,zCent);        
+
     }
 
     public Point<Double> getMeanCentroid() {
-        if (meanCentroid == null) meanCentroid = coordinateSet.calculateMeanCentroid();
-        return meanCentroid;
+        return getMeanCentroid(true, false);
+        
     }
 
     public int size() {
@@ -285,25 +327,17 @@ public class Volume {
     }
 
     public double getXMean(boolean pixelDistances) {
-        if (pixelDistances) return getMeanCentroid().getX();
-
-        return getMeanCentroid().getX()* spatCal.dppXY;
+        return getMeanCentroid(pixelDistances, true).getX();
 
     }
 
     public double getYMean(boolean pixelDistances) {
-        if (pixelDistances) return getMeanCentroid().getY();
-
-        return getMeanCentroid().getY()* spatCal.dppXY;
+        return getMeanCentroid(pixelDistances, true).getY();
 
     }
 
     public double getZMean(boolean pixelDistances, boolean matchXY) {
-        // matchXY is ignored if using calibrated distances
-        if (pixelDistances && !matchXY) return getMeanCentroid().getZ();
-        if (pixelDistances && matchXY) return getMeanCentroid().getZ()* spatCal.dppZ/ spatCal.dppXY;
-
-        return getMeanCentroid().getZ()* spatCal.dppZ;
+        return getMeanCentroid(pixelDistances, matchXY).getZ();
 
     }
 
@@ -490,8 +524,8 @@ public class Volume {
     public void clearAllCoordinates() {
         coordinateSet.clear();
         surface = null;
-        projected = null;
-        meanCentroid = null;
+        projection = null;
+        meanCentroidPx = null;
     }
 
     public void clearSurface() {
@@ -503,11 +537,11 @@ public class Volume {
     }
 
     public void clearProjected() {
-        projected = null;
+        projection = null;
     }
 
     public void clearCentroid() {
-        meanCentroid = null;
+        meanCentroidPx = null;
     }
 
     @Override
