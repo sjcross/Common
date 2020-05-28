@@ -30,12 +30,12 @@ public abstract class CoordinateSet extends AbstractSet<Point<Integer>> {
     protected CoordinateSet calculateSurface2D(int nThreads) {
         CoordinateSet surface = new PointCoordinates();
 
-        ThreadPoolExecutor pool = new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<>());
+        // ThreadPoolExecutor pool = new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS,
+        //         new LinkedBlockingQueue<>());
 
         // Iterating over each Point, adding it if it has fewer than 4 neighbours
         for (Point<Integer> point : this) {
-            Runnable task = () -> {
+            // Runnable task = () -> {
                 int count = 0;
 
                 if (contains(new Point<>(point.x - 1, point.y, 0)))
@@ -49,16 +49,16 @@ public abstract class CoordinateSet extends AbstractSet<Point<Integer>> {
 
                 if (count < 4)
                     surface.add(point);
-            };
-            pool.submit(task);
+            // };
+            // pool.submit(task);
         }
 
-        pool.shutdown();
-        try {
-            pool.awaitTermination(Integer.MAX_VALUE, TimeUnit.DAYS); // i.e. never terminate early
-        } catch (InterruptedException e) {
-            e.printStackTrace(System.err);
-        }
+        // pool.shutdown();
+        // try {
+        //     pool.awaitTermination(Integer.MAX_VALUE, TimeUnit.DAYS); // i.e. never terminate early
+        // } catch (InterruptedException e) {
+        //     e.printStackTrace(System.err);
+        // }
 
         return surface;
 
