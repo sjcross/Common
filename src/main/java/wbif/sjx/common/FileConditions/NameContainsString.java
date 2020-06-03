@@ -62,6 +62,7 @@ public class NameContainsString implements FileCondition {
             case EXC_COMPLETE:
             case EXC_PARTIAL:
                 return true;
+                
         }
     }
 
