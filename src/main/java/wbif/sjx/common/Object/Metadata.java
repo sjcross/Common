@@ -15,7 +15,9 @@ public class Metadata extends LinkedHashMap<String,Object> {
      *
      */
     private static final long serialVersionUID = 8055147730108225349L;
+
     public static final String FILENAME = "Filename";
+    public static final String FILEPATH = "Filepath";
     public static final String WELL = "Well";
     public static final String ROW = "Row";
     public static final String COL = "Col";
@@ -59,7 +61,15 @@ public class Metadata extends LinkedHashMap<String,Object> {
     }
 
     public void setFilename(String filename) {
-        put(FILENAME,filename);
+        put(FILENAME, filename);
+    }
+    
+    public String getFilepath() {
+        return get(FILEPATH) == null ? null : (String) get(FILEPATH);
+    }
+
+    public void setFilepath(String filepath) {
+        put(FILEPATH,filepath);
     }
 
     public String getExt() {
