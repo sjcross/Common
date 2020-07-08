@@ -10,7 +10,7 @@ import wbif.sjx.common.Object.Volume.Volume;
 
 public class EllipseCalculator {
     private final Volume volume;
-    private double[] e2d;
+    private double[] e2d = null;
     
     public EllipseCalculator(Volume volume) throws RuntimeException {
         this.volume = volume;
@@ -25,7 +25,7 @@ public class EllipseCalculator {
         fitEllipse(maxAxisLength);
     }
     
-    private void fitEllipse(double maxAxisLength) {
+    private void fitEllipse(double maxAxisLength) throws RuntimeException {
         if (volume.size() <= 2) {
             e2d = null;
             return;
@@ -43,7 +43,7 @@ public class EllipseCalculator {
             e2d = FitEllipse.direct(coords);
         } catch (RuntimeException e) {
             e2d = null;
-            return;
+            throw e;
         }
         
         // The following test prevents objects being created for ill-fit ellipses
