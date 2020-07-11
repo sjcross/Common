@@ -43,7 +43,7 @@ public class Volume {
 
     // ABSTRACT METHODS
 
-    synchronized public void add(int x, int y, int z) throws PointOutOfRangeException {
+    public void add(int x, int y, int z) throws PointOutOfRangeException {
         if (x < 0 || x >= spatCal.width)  throw new PointOutOfRangeException("Coordinate out of bounds! (x: " + x + ")");
         if (y < 0 || y >= spatCal.height) throw new PointOutOfRangeException("Coordinate out of bounds! (y: " + y + ")");
         if (z < 0 || z >= spatCal.nSlices) throw new PointOutOfRangeException("Coordinate out of bounds! (z: " + z + ")");
@@ -52,17 +52,17 @@ public class Volume {
 
     }
 
-    synchronized public void add(Point<Integer> point) throws PointOutOfRangeException {
+    public void add(Point<Integer> point) throws PointOutOfRangeException {
         add(point.x,point.y,point.z);
 
     }
 
-    synchronized public void finalise() {
+    public void finalise() {
         coordinateSet.finalise();
     }
 
     @Deprecated
-    synchronized public TreeSet<Point<Integer>> getPoints() {
+    public TreeSet<Point<Integer>> getPoints() {
         return new TreeSet<>(coordinateSet);
 
     }
@@ -81,7 +81,7 @@ public class Volume {
 
     }
 
-    synchronized public Volume getProjected() {
+    public Volume getProjected() {
         if (projection == null) {
             VolumeType outputType;
             // Octree is best represented by quadtree.  Pointlist can stay as pointlist.
@@ -110,13 +110,35 @@ public class Volume {
         return projection != null;
     }
 
-    synchronized public double getProjectedArea(boolean pixelDistances) {
+    public double getProjectedArea(boolean pixelDistances) {
         int size = getProjected().size();
-        return pixelDistances ? size : size* spatCal.dppXY* spatCal.dppXY;
+        return pixelDistances ? size : size * spatCal.dppXY * spatCal.dppXY;
 
     }
 
-    synchronized public void setPoints(TreeSet<Point<Integer>> points) throws PointOutOfRangeException {
+    public Volume getSlice(int slice) {
+        VolumeType outputType;
+        // Octree is best represented by quadtree.  Pointlist can stay as pointlist.
+        switch (getVolumeType()) {
+            case OCTREE:
+            case QUADTREE:
+                outputType = VolumeType.QUADTREE;
+                break;
+            case POINTLIST:
+            default:
+                outputType = VolumeType.POINTLIST;
+                break;
+        }
+
+        Volume sliceVol = new Volume(outputType, spatCal.width, spatCal.height, 1, spatCal.dppXY, spatCal.dppZ,
+                spatCal.units);
+        sliceVol.setCoordinateSet(coordinateSet.getSlice(slice));
+
+        return sliceVol;
+
+    }
+
+    public void setPoints(TreeSet<Point<Integer>> points) throws PointOutOfRangeException {
         for (Point<Integer> point : points)
             add(point);
     }
@@ -125,7 +147,7 @@ public class Volume {
         return meanCentroidPx != null;
     }
 
-    synchronized public Point<Double> getMeanCentroid(boolean pixelDistances, boolean matchXY) {
+    public Point<Double> getMeanCentroid(boolean pixelDistances, boolean matchXY) {
         if (meanCentroidPx == null)
             meanCentroidPx = coordinateSet.calculateMeanCentroid();
         
@@ -153,7 +175,7 @@ public class Volume {
 
     }
 
-    synchronized public Point<Double> getMeanCentroid() {
+    public Point<Double> getMeanCentroid() {
         return getMeanCentroid(true, false);
         
     }
@@ -179,24 +201,24 @@ public class Volume {
     }
 
     @Deprecated
-    synchronized public ArrayList<Integer> getXCoords() {
+    public ArrayList<Integer> getXCoords() {
         return getPoints().stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     @Deprecated
-    synchronized public ArrayList<Integer> getYCoords() {
+    public ArrayList<Integer> getYCoords() {
         return getPoints().stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Deprecated
-    synchronized public ArrayList<Integer> getZCoords() {
+    public ArrayList<Integer> getZCoords() {
         return getPoints().stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     @Deprecated
-    synchronized public double[] getX(boolean pixelDistances) {
+    public double[] getX(boolean pixelDistances) {
         if (pixelDistances)
             return getPoints().stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
         else
@@ -205,7 +227,7 @@ public class Volume {
     }
 
     @Deprecated
-    synchronized public double[] getY(boolean pixelDistances) {
+    public double[] getY(boolean pixelDistances) {
         if (pixelDistances)
             return getPoints().stream().map(Point::getY).mapToDouble(Integer::doubleValue).toArray();
         else
@@ -221,7 +243,7 @@ public class Volume {
      * @return
      */
     @Deprecated
-    synchronized public double[] getZ(boolean pixelDistances, boolean matchXY) {
+    public double[] getZ(boolean pixelDistances, boolean matchXY) {
         if (pixelDistances)
             if (matchXY)
                 return getPoints().stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v -> v* spatCal.dppZ / spatCal.dppXY).toArray();
@@ -235,25 +257,25 @@ public class Volume {
     }
 
     @Deprecated
-    synchronized public ArrayList<Integer> getSurfaceXCoords() {
+    public ArrayList<Integer> getSurfaceXCoords() {
         return getSurface().getPoints().stream().map(Point::getX).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     @Deprecated
-    synchronized public ArrayList<Integer> getSurfaceYCoords() {
+    public ArrayList<Integer> getSurfaceYCoords() {
         return getSurface().getPoints().stream().map(Point::getY).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     @Deprecated
-    synchronized public ArrayList<Integer> getSurfaceZCoords() {
+    public ArrayList<Integer> getSurfaceZCoords() {
         return getSurface().getPoints().stream().map(Point::getZ).collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     @Deprecated
-    synchronized public double[] getSurfaceX(boolean pixelDistances) {
+    public double[] getSurfaceX(boolean pixelDistances) {
         if (pixelDistances)
             return getSurface().getPoints().stream().map(Point::getX).mapToDouble(Integer::doubleValue).toArray();
         else
@@ -262,7 +284,7 @@ public class Volume {
     }
 
     @Deprecated
-    synchronized public double[] getSurfaceY(boolean pixelDistances) {
+    public double[] getSurfaceY(boolean pixelDistances) {
         if (pixelDistances)
             return getSurface().getPoints().stream().map(Point::getY).mapToDouble(Integer::doubleValue).toArray();
         else
@@ -277,7 +299,7 @@ public class Volume {
      * @return
      */
     @Deprecated
-    synchronized public double[] getSurfaceZ(boolean pixelDistances, boolean matchXY) {
+    public double[] getSurfaceZ(boolean pixelDistances, boolean matchXY) {
         if (pixelDistances)
             if (matchXY)
                 return getSurface().getPoints().stream().map(Point::getZ).mapToDouble(Integer::doubleValue).map(v -> v* spatCal.dppZ / spatCal.dppXY).toArray();
@@ -311,7 +333,7 @@ public class Volume {
         else return point.getZ()* spatCal.dppZ;
     }
 
-    synchronized public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2, boolean pixelDistances) {
+    public double calculatePointPointSeparation(Point<Integer> point1, Point<Integer> point2, boolean pixelDistances) {
         try {
             Volume volume1 = new Volume(VolumeType.POINTLIST, spatCal.duplicate());
             volume1.add(point1.getX(),point1.getY(),point1.getZ());
@@ -326,22 +348,22 @@ public class Volume {
         }
     }
 
-    synchronized public double getXMean(boolean pixelDistances) {
+    public double getXMean(boolean pixelDistances) {
         return getMeanCentroid(pixelDistances, true).getX();
 
     }
 
-    synchronized public double getYMean(boolean pixelDistances) {
+    public double getYMean(boolean pixelDistances) {
         return getMeanCentroid(pixelDistances, true).getY();
 
     }
 
-    synchronized public double getZMean(boolean pixelDistances, boolean matchXY) {
+    public double getZMean(boolean pixelDistances, boolean matchXY) {
         return getMeanCentroid(pixelDistances, matchXY).getZ();
 
     }
 
-    synchronized public double getHeight(boolean pixelDistances, boolean matchXY) {
+    public double getHeight(boolean pixelDistances, boolean matchXY) {
         double minZ = Double.MAX_VALUE;
         double maxZ = Double.MIN_VALUE;
 
@@ -358,7 +380,7 @@ public class Volume {
 
     }
 
-    synchronized public double[][] getExtents(boolean pixelDistances, boolean matchXY) {
+    public double[][] getExtents(boolean pixelDistances, boolean matchXY) {
         if (size() == 0) return new double[][]{{0,0},{0,0},{0,0}};
 
         double minX = Double.MAX_VALUE;
@@ -402,7 +424,7 @@ public class Volume {
 
     }
 
-    synchronized public boolean hasVolume() {
+    public boolean hasVolume() {
         //True if all dimension (x,y,z) are > 0
 
         double[][] extents = getExtents(true,false);
@@ -417,7 +439,7 @@ public class Volume {
 
     } // Copied
 
-    synchronized public boolean hasArea() {
+    public boolean hasArea() {
         //True if all dimensions (x,y) are > 0
 
         double[][] extents = getExtents(true,false);
@@ -432,7 +454,7 @@ public class Volume {
 
     } // Copied
 
-    synchronized public double getCentroidSeparation(Volume volume2, boolean pixelDistances) {
+    public double getCentroidSeparation(Volume volume2, boolean pixelDistances) {
         double x1 = getXMean(pixelDistances);
         double y1 = getYMean(pixelDistances);
         double z1 = getZMean(pixelDistances,true);
@@ -445,12 +467,12 @@ public class Volume {
 
     }
 
-    synchronized public double getSurfaceSeparation(Volume volume2, boolean pixelDistances) {
+    public double getSurfaceSeparation(Volume volume2, boolean pixelDistances) {
         SurfaceSeparationCalculator calculator = new SurfaceSeparationCalculator(this,volume2);
         return calculator.getMinDist(pixelDistances);
     }
 
-    synchronized public double getPointSurfaceSeparation(Point<Double> point, boolean pixelDistances) {
+    public double getPointSurfaceSeparation(Point<Double> point, boolean pixelDistances) {
         PointSurfaceSeparatorCalculator calculator = new PointSurfaceSeparatorCalculator(this,point);
         return calculator.getMinDist(pixelDistances);
     }
@@ -461,7 +483,7 @@ public class Volume {
      * @param volume2
      * @return
      */
-    synchronized public double calculateAngle2D(Volume volume2) {
+    public double calculateAngle2D(Volume volume2) {
         Point<Double> p1 = new Point<>(getXMean(true),getYMean(true),0d);
         Point<Double> p2 = new Point<>(volume2.getXMean(true),volume2.getYMean(true),0d);
 
@@ -475,14 +497,14 @@ public class Volume {
      * @param point
      * @return
      */
-    synchronized public double calculateAngle2D(Point<Double> point) {
+    public double calculateAngle2D(Point<Double> point) {
         Point<Double> p1 = new Point<>(getXMean(true),getYMean(true),0d);
 
         return p1.calculateAngle2D(point);
 
     }
 
-    synchronized public Volume getOverlappingPoints(Volume volume2) {
+    public Volume getOverlappingPoints(Volume volume2) {
         Volume overlapping = new Volume(getVolumeType(), getSpatialCalibration());
 
         try {
@@ -500,7 +522,7 @@ public class Volume {
 
     } // Copied
 
-    synchronized public int getOverlap(Volume volume2) {
+    public int getOverlap(Volume volume2) {
         int count = 0;
 
         if (size() < volume2.size()) {
@@ -610,17 +632,17 @@ public class Volume {
         return coordinateSet.getVolumeType();
     }
 
-    synchronized public void setCoordinateSet(CoordinateSet coordinateSet)
+    public void setCoordinateSet(CoordinateSet coordinateSet)
 
     {
         this.coordinateSet = coordinateSet;
     }
 
-    synchronized public Iterator<Point<Double>> getCalibratedIterator(boolean pixelDistances, boolean matchXY) {
+    public Iterator<Point<Double>> getCalibratedIterator(boolean pixelDistances, boolean matchXY) {
         return new VolumeIterator(pixelDistances,matchXY);
     }
 
-    synchronized public Iterator<Point<Integer>> getCoordinateIterator() {
+    public Iterator<Point<Integer>> getCoordinateIterator() {
         return coordinateSet.iterator();
     }
 

@@ -60,13 +60,26 @@ public class PointCoordinates extends CoordinateSet {
     protected CoordinateSet calculateProjected() {
         CoordinateSet projectedCoordinates = new PointCoordinates();
 
-        for (Point<Integer> point:this) projectedCoordinates.add(point.x,point.y,0);
+        for (Point<Integer> point : this)
+            projectedCoordinates.add(point.x, point.y, 0);
 
         return projectedCoordinates;
 
     }
 
+    @Override
+    public CoordinateSet getSlice(int slice) {
+        CoordinateSet sliceCoordinateSet = new PointCoordinates();
 
+        for (Point<Integer> point : points)
+            if (point.getZ() == slice)
+                sliceCoordinateSet.add(point);
+                
+        return sliceCoordinateSet;
+
+    }
+
+    
     // Volume properties
 
     @Override
@@ -84,7 +97,7 @@ public class PointCoordinates extends CoordinateSet {
 
     @Override
     public Iterator<Point<Integer>> iterator() {
-        return points.iterator();
+        return Collections.synchronizedSet(points).iterator();
     }
 
     @Override
