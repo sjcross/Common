@@ -25,17 +25,18 @@ public class PointSurfaceSeparatorCalculator {
             double dy = pp1.y - p2.y;
             double dz = v1.getXYScaledZ(pp1.z - p2.z);
 
-            double dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+            double dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
             if (dist < Math.abs(minDist)) {
                 minDist = dist;
                 p1 = pp1;
 
                 // Checking if the closest point is inside the volume
-                Point<Integer> pp2 = new Point<>((int) Math.floor(p2.x),(int) Math.floor(p2.y),(int) Math.floor(p2.z));
+                Point<Integer> pp2 = new Point<>((int) Math.floor(p2.x), (int) Math.floor(p2.y),
+                        (int) Math.floor(p2.z));
                 isInside = v1.contains(pp2);
             }
         }
-
+        
         // If this point is inside the parent the distance should be negative
         if (isInside) minDist = -minDist;
 
