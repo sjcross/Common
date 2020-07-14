@@ -11,8 +11,7 @@ import java.util.Stack;
 /**
  * Created by JDJFisher on 19/07/2019.
  */
-public class OcTree extends AbstractSet<Point<Integer>>
-{
+public class OcTree extends AbstractSet<Point<Integer>> {
     private OTNode root;
     private int rootSize;
     private int rootMinX;
@@ -22,8 +21,7 @@ public class OcTree extends AbstractSet<Point<Integer>>
     private int nodes;
 
     // default constructor
-    public OcTree()
-    {
+    public OcTree() {
         root = new OTNode();
         rootSize = 1;
         rootMinX = 0;
@@ -34,8 +32,7 @@ public class OcTree extends AbstractSet<Point<Integer>>
     }
 
     // copy constructor
-    public OcTree(OcTree ot)
-    {
+    public OcTree(OcTree ot) {
         root = new OTNode(ot.root);
         rootSize = ot.rootSize;
         rootMinX = ot.rootMinX;
@@ -46,61 +43,43 @@ public class OcTree extends AbstractSet<Point<Integer>>
     }
 
     // determine whether there is a point stored at the specified coordinates
-    public boolean contains(Point<Integer> point)
-    {
+    public boolean contains(Point<Integer> point) {
         return contains(point.getX(), point.getY(), point.getZ());
     }
 
-    public boolean contains(int x, int y, int z)
-    {
+    public boolean contains(int x, int y, int z) {
         // if the coordinates are out of the root nodes span return false
-        if (x < rootMinX || x >= rootMinX + rootSize ||
-            y < rootMinY || y >= rootMinY + rootSize ||
-            z < rootMinZ || z >= rootMinZ + rootSize) return false;
+        if (x < rootMinX || x >= rootMinX + rootSize || y < rootMinY || y >= rootMinY + rootSize || z < rootMinZ
+                || z >= rootMinZ + rootSize)
+            return false;
 
         return contains(root, x, y, z, rootSize, rootMinX, rootMinY, rootMinZ);
     }
 
-    private boolean contains(OTNode node, int x, int y, int z, int size, int minX, int minY, int minZ)
-    {
-        // recursively select the sub-node that contains the coordinates until a leaf node is found
-        if (node.isDivided())
-        {
+    private boolean contains(OTNode node, int x, int y, int z, int size, int minX, int minY, int minZ) {
+        // recursively select the sub-node that contains the coordinates until a leaf
+        // node is found
+        if (node.isDivided()) {
             final int halfSize = size / 2;
             final int midX = minX + halfSize;
             final int midY = minY + halfSize;
             final int midZ = minZ + halfSize;
 
-            if (x < midX && y < midY && z < midZ)
-            {
+            if (x < midX && y < midY && z < midZ) {
                 return contains(node.lnw, x, y, z, halfSize, minX, minY, minZ);
-            }
-            else if (x >= midX && y < midY && z < midZ)
-            {
+            } else if (x >= midX && y < midY && z < midZ) {
                 return contains(node.lne, x, y, z, halfSize, midX, minY, minZ);
-            }
-            else if (x < midX && y >= midY && z < midZ)
-            {
+            } else if (x < midX && y >= midY && z < midZ) {
                 return contains(node.lsw, x, y, z, halfSize, minX, midY, minZ);
-            }
-            else if (x >= midX && y >= midY && z < midZ)
-            {
+            } else if (x >= midX && y >= midY && z < midZ) {
                 return contains(node.lse, x, y, z, halfSize, midX, midY, minZ);
-            }
-            else  if (x < midX && y < midY && z >= midZ)
-            {
+            } else if (x < midX && y < midY && z >= midZ) {
                 return contains(node.unw, x, y, z, halfSize, minX, minY, midZ);
-            }
-            else if (x >= midX && y < midY && z >= midZ)
-            {
+            } else if (x >= midX && y < midY && z >= midZ) {
                 return contains(node.une, x, y, z, halfSize, midX, minY, midZ);
-            }
-            else if (x < midX && y >= midY && z >= midZ)
-            {
+            } else if (x < midX && y >= midY && z >= midZ) {
                 return contains(node.usw, x, y, z, halfSize, minX, midY, midZ);
-            }
-            else
-            {
+            } else {
                 return contains(node.use, x, y, z, halfSize, midX, midY, midZ);
             }
         }
@@ -110,16 +89,14 @@ public class OcTree extends AbstractSet<Point<Integer>>
     }
 
     // add a point to the structure
-    public boolean add(Point<Integer> point)
-    {
+    public boolean add(Point<Integer> point) {
         return add(point.getX(), point.getY(), point.getZ());
     }
 
-    public boolean add(int x, int y, int z)
-    {
-        // while the coordinates are out of the root nodes span, increase the size of the root appropriately
-        while (x < rootMinX || y < rootMinY || z < rootMinZ)
-        {
+    public boolean add(int x, int y, int z) {
+        // while the coordinates are out of the root nodes span, increase the size of
+        // the root appropriately
+        while (x < rootMinX || y < rootMinY || z < rootMinZ) {
             OTNode newRoot = new OTNode();
             newRoot.subDivide();
             newRoot.use = root;
@@ -131,8 +108,7 @@ public class OcTree extends AbstractSet<Point<Integer>>
             root = newRoot;
         }
 
-        while (x >= rootMinX + rootSize || y >= rootMinY + rootSize || z >= rootMinZ + rootSize)
-        {
+        while (x >= rootMinX + rootSize || y >= rootMinY + rootSize || z >= rootMinZ + rootSize) {
             OTNode newRoot = new OTNode();
             newRoot.subDivide();
             newRoot.lnw = root;
@@ -145,35 +121,30 @@ public class OcTree extends AbstractSet<Point<Integer>>
     }
 
     // remove a point from the structure
-    public boolean remove(Point<Integer> point)
-    {
+    public boolean remove(Point<Integer> point) {
         return remove(point.getX(), point.getY(), point.getZ());
     }
 
-    public boolean remove(int x, int y, int z)
-    {
+    public boolean remove(int x, int y, int z) {
         // if the coordinates are out of the root nodes span return false
-        if (x < rootMinX || x >= rootMinX + rootSize ||
-            y < rootMinY || y >= rootMinY + rootSize ||
-            z < rootMinZ || z >= rootMinZ + rootSize) return false;
+        if (x < rootMinX || x >= rootMinX + rootSize || y < rootMinY || y >= rootMinY + rootSize || z < rootMinZ
+                || z >= rootMinZ + rootSize)
+            return false;
 
         return set(x, y, z, false);
     }
 
     // set the point state for a given coordinate pair
-    public boolean set(int x, int y, int z, boolean b)
-    {
+    public boolean set(int x, int y, int z, boolean b) {
         return set(root, x, y, z, b, rootSize, rootMinX, rootMinY, rootMinZ);
     }
 
-    private boolean set(OTNode node, int x, int y, int z, boolean b, int size, int minX, int minY, int minZ)
-    {
-        if (node.isLeaf())
-        {
-            if (node.coloured == b) return false;
+    private boolean set(OTNode node, int x, int y, int z, boolean b, int size, int minX, int minY, int minZ) {
+        if (node.isLeaf()) {
+            if (node.coloured == b)
+                return false;
 
-            if (size == 1)
-            {
+            if (size == 1) {
                 node.coloured = b;
                 points += b ? 1 : -1;
                 return true;
@@ -188,50 +159,32 @@ public class OcTree extends AbstractSet<Point<Integer>>
         final int midY = minY + halfSize;
         final int midZ = minZ + halfSize;
 
-        if (x < midX && y < midY && z < midZ)
-        {
+        if (x < midX && y < midY && z < midZ) {
             return set(node.lnw, x, y, z, b, halfSize, minX, minY, minZ);
-        }
-        else if (x >= midX && y < midY && z < midZ)
-        {
+        } else if (x >= midX && y < midY && z < midZ) {
             return set(node.lne, x, y, z, b, halfSize, midX, minY, minZ);
-        }
-        else if (x < midX && y >= midY && z < midZ)
-        {
+        } else if (x < midX && y >= midY && z < midZ) {
             return set(node.lsw, x, y, z, b, halfSize, minX, midY, minZ);
-        }
-        else if (x >= midX && y >= midY && z < midZ)
-        {
+        } else if (x >= midX && y >= midY && z < midZ) {
             return set(node.lse, x, y, z, b, halfSize, midX, midY, minZ);
-        }
-        else  if (x < midX && y < midY && z >= midZ)
-        {
+        } else if (x < midX && y < midY && z >= midZ) {
             return set(node.unw, x, y, z, b, halfSize, minX, minY, midZ);
-        }
-        else if (x >= midX && y < midY && z >= midZ)
-        {
+        } else if (x >= midX && y < midY && z >= midZ) {
             return set(node.une, x, y, z, b, halfSize, midX, minY, midZ);
-        }
-        else if (x < midX && y >= midY && z >= midZ)
-        {
+        } else if (x < midX && y >= midY && z >= midZ) {
             return set(node.usw, x, y, z, b, halfSize, minX, midY, midZ);
-        }
-        else
-        {
+        } else {
             return set(node.use, x, y, z, b, halfSize, midX, midY, midZ);
         }
     }
 
     // optimise the OcTree by merging sub-nodes encoding a uniform value
-    public void optimise()
-    {
+    public void optimise() {
         optimise(root);
     }
 
-    private void optimise(OTNode node)
-    {
-        if (node.isDivided())
-        {
+    private void optimise(OTNode node) {
+        if (node.isDivided()) {
             // attempt to optimise sub-nodes first
             optimise(node.lnw);
             optimise(node.lne);
@@ -243,11 +196,9 @@ public class OcTree extends AbstractSet<Point<Integer>>
             optimise(node.use);
 
             // if all the sub-nodes are equivalent, dispose of them
-            if (
-                node.lnw.equals(node.lne) && node.lne.equals(node.lsw) && node.lsw.equals(node.lse) && node.lse.equals(node.unw) &&
-                node.unw.equals(node.une) && node.une.equals(node.usw) && node.usw.equals(node.use)
-               )
-            {
+            if (node.lnw.equals(node.lne) && node.lne.equals(node.lsw) && node.lsw.equals(node.lse)
+                    && node.lse.equals(node.unw) && node.unw.equals(node.une) && node.une.equals(node.usw)
+                    && node.usw.equals(node.use)) {
                 node.coloured = node.unw.coloured;
 
                 // destroy the redundant sub-nodes
@@ -257,8 +208,7 @@ public class OcTree extends AbstractSet<Point<Integer>>
         }
     }
 
-    public CoordinateSet getEdgePoints(boolean is2D)
-    {
+    public CoordinateSet getEdgePoints(boolean is2D) {
         CoordinateSet points = new PointCoordinates();
 
         getEdgePoints(root, points, is2D, rootSize, rootMinX, rootMinY, rootMinZ);
@@ -266,10 +216,9 @@ public class OcTree extends AbstractSet<Point<Integer>>
         return points;
     }
 
-    private void getEdgePoints(OTNode node, CoordinateSet points, boolean is2d, int size, int minX, int minY, int minZ)
-    {
-        if (node.isDivided())
-        {
+    private void getEdgePoints(OTNode node, CoordinateSet points, boolean is2d, int size, int minX, int minY,
+            int minZ) {
+        if (node.isDivided()) {
             final int halfSize = size / 2;
             final int midX = minX + halfSize;
             final int midY = minY + halfSize;
@@ -280,102 +229,84 @@ public class OcTree extends AbstractSet<Point<Integer>>
             getEdgePoints(node.lsw, points, is2d, halfSize, minX, midY, minZ);
             getEdgePoints(node.lse, points, is2d, halfSize, midX, midY, minZ);
 
-            if (is2d) return;
+            if (is2d)
+                return;
 
             getEdgePoints(node.unw, points, false, halfSize, minX, minY, midZ);
             getEdgePoints(node.une, points, false, halfSize, midX, minY, midZ);
             getEdgePoints(node.usw, points, false, halfSize, minX, midY, midZ);
             getEdgePoints(node.use, points, false, halfSize, midX, midY, midZ);
-        }
-        else if (node.coloured)
-        {
+        } else if (node.coloured) {
             final int maxX = minX + size - 1;
             final int maxY = minY + size - 1;
             final int maxZ = minZ + size - 1;
 
-            for (int z = minZ; z <= maxZ; z++)
-            {
-                if (!contains(minX - 1, minY, z) || !contains(minX, minY - 1, z))
-                {
+            for (int z = minZ; z <= maxZ; z++) {
+                if (!contains(minX - 1, minY, z) || !contains(minX, minY - 1, z)) {
                     points.add(new Point<>(minX, minY, z));
                 }
 
-                if (!contains(maxX + 1, minY, z) || !contains(maxX, minY - 1, z))
-                {
+                if (!contains(maxX + 1, minY, z) || !contains(maxX, minY - 1, z)) {
                     points.add(new Point<>(maxX, minY, z));
                 }
 
-                if (!contains(minX - 1, maxY, z) || !contains(minX, maxY + 1, z))
-                {
+                if (!contains(minX - 1, maxY, z) || !contains(minX, maxY + 1, z)) {
                     points.add(new Point<>(minX, maxY, z));
                 }
 
-                if (!contains(maxX + 1, maxY, z) || !contains(maxX, maxY + 1, z))
-                {
+                if (!contains(maxX + 1, maxY, z) || !contains(maxX, maxY + 1, z)) {
                     points.add(new Point<>(maxX, maxY, z));
                 }
             }
 
-            if (is2d) return;
+            if (is2d)
+                return;
 
-            for (int x = minX; x <= maxX; x++)
-            {
-                if (!contains(x, minY - 1, minZ) || !contains(x, minY, minZ - 1))
-                {
+            for (int x = minX; x <= maxX; x++) {
+                if (!contains(x, minY - 1, minZ) || !contains(x, minY, minZ - 1)) {
                     points.add(new Point<>(x, minY, minZ));
                 }
 
-                if (!contains(x, maxY + 1, minZ) || !contains(x, maxY, minZ - 1))
-                {
+                if (!contains(x, maxY + 1, minZ) || !contains(x, maxY, minZ - 1)) {
                     points.add(new Point<>(x, maxY, minZ));
                 }
 
-                if (!contains(x, minY - 1, maxZ) || !contains(x, minY, maxZ + 1))
-                {
+                if (!contains(x, minY - 1, maxZ) || !contains(x, minY, maxZ + 1)) {
                     points.add(new Point<>(x, minY, maxZ));
                 }
 
-                if (!contains(x, maxY + 1, maxZ) || !contains(x, maxY, maxZ + 1))
-                {
+                if (!contains(x, maxY + 1, maxZ) || !contains(x, maxY, maxZ + 1)) {
                     points.add(new Point<>(x, maxY, maxZ));
                 }
             }
 
-            for (int y = minY; y <= maxY; y++)
-            {
-                if (!contains(minX - 1, y, minZ) || !contains(minX, y, minZ - 1))
-                {
+            for (int y = minY; y <= maxY; y++) {
+                if (!contains(minX - 1, y, minZ) || !contains(minX, y, minZ - 1)) {
                     points.add(new Point<>(minX, y, minZ));
                 }
 
-                if (!contains(maxX + 1, y, minZ) || !contains(maxX, y, minZ - 1))
-                {
+                if (!contains(maxX + 1, y, minZ) || !contains(maxX, y, minZ - 1)) {
                     points.add(new Point<>(maxX, y, minZ));
                 }
 
-                if (!contains(minX - 1, y, maxZ) || !contains(minX, y, maxZ + 1))
-                {
+                if (!contains(minX - 1, y, maxZ) || !contains(minX, y, maxZ + 1)) {
                     points.add(new Point<>(minX, y, maxZ));
                 }
 
-                if (!contains(maxX + 1, y, maxZ) || !contains(maxX, y, maxZ + 1))
-                {
+                if (!contains(maxX + 1, y, maxZ) || !contains(maxX, y, maxZ + 1)) {
                     points.add(new Point<>(maxX, y, maxZ));
                 }
             }
         }
     }
 
-    private void recountNodes()
-    {
+    private void recountNodes() {
         nodes = 1;
         recountNodes(root);
     }
 
-    private void recountNodes(OTNode node)
-    {
-        if (node.isDivided())
-        {
+    private void recountNodes(OTNode node) {
+        if (node.isDivided()) {
             nodes += 8;
             recountNodes(node.lnw);
             recountNodes(node.lne);
@@ -388,16 +319,13 @@ public class OcTree extends AbstractSet<Point<Integer>>
         }
     }
 
-    private void recountPoints()
-    {
+    private void recountPoints() {
         points = 0;
         recountPoints(root, rootSize);
     }
 
-    private void recountPoints(OTNode node, int size)
-    {
-        if (node.isDivided())
-        {
+    private void recountPoints(OTNode node, int size) {
+        if (node.isDivided()) {
             final int halfSize = size / 2;
 
             recountPoints(node.lnw, halfSize);
@@ -408,22 +336,18 @@ public class OcTree extends AbstractSet<Point<Integer>>
             recountPoints(node.une, halfSize);
             recountPoints(node.usw, halfSize);
             recountPoints(node.use, halfSize);
-        }
-        else if (node.coloured)
-        {
+        } else if (node.coloured) {
             points += size * size * size;
         }
     }
 
     @Override
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return points == 0;
     }
 
     @Override
-    public void clear()
-    {
+    public void clear() {
         root = new OTNode();
         rootSize = 1;
         rootMinX = 0;
@@ -434,55 +358,45 @@ public class OcTree extends AbstractSet<Point<Integer>>
     }
 
     @Override
-    public int size()
-    {
+    public int size() {
         return points;
     }
 
-    public OTNode getRoot()
-    {
+    public OTNode getRoot() {
         return root;
     }
 
-    public int getRootSize()
-    {
+    public int getRootSize() {
         return rootSize;
     }
 
-    public int getRootMinX()
-    {
+    public int getRootMinX() {
         return rootMinX;
     }
 
-    public int getRootMinY()
-    {
+    public int getRootMinY() {
         return rootMinY;
     }
 
-    public int getRootMinZ()
-    {
+    public int getRootMinZ() {
         return rootMinZ;
     }
 
-    public int getPointCount()
-    {
+    public int getPointCount() {
         return points;
     }
 
-    public int getNodeCount()
-    {
+    public int getNodeCount() {
         return nodes;
     }
 
     @Override
-    public Iterator<Point<Integer>> iterator()
-    {
+    public Iterator<Point<Integer>> iterator() {
         return new OcTreeIterator();
     }
 
-    private class OcTreeIterator implements Iterator<Point<Integer>>
-    {
-        private final Stack<OTNode>  nodeStack;
+    private class OcTreeIterator implements Iterator<Point<Integer>> {
+        private final Stack<OTNode> nodeStack;
         private final Stack<Integer> sizeStack;
         private final Stack<Integer> minXStack;
         private final Stack<Integer> minYStack;
@@ -492,8 +406,7 @@ public class OcTree extends AbstractSet<Point<Integer>>
         private int minX, minY, minZ;
         private int maxX, maxY, maxZ;
 
-        public OcTreeIterator()
-        {
+        public OcTreeIterator() {
             nodeStack = new Stack<>();
             sizeStack = new Stack<>();
             minXStack = new Stack<>();
@@ -509,59 +422,52 @@ public class OcTree extends AbstractSet<Point<Integer>>
             maxX = maxY = maxZ = Integer.MIN_VALUE;
 
             findNextColouredLeaf();
+
         }
 
         @Override
-        public boolean hasNext()
-        {
+        public boolean hasNext() {
             return !nodeStack.empty() || z <= maxZ;
         }
 
         @Override
-        public Point<Integer> next()
-        {
+        public Point<Integer> next() {
             Point<Integer> currentPoint = new Point<>(x, y, z);
 
             findNextPoint();
 
             return currentPoint;
+            
         }
 
-        private void findNextPoint()
-        {
+        private void findNextPoint() {
             x++;
 
-            if (x > maxX)
-            {
+            if (x > maxX) {
                 x = minX;
                 y++;
 
-                if (y > maxY)
-                {
+                if (y > maxY) {
                     x = minX;
                     y = minY;
                     z++;
 
-                    if (z > maxZ)
-                    {
+                    if (z > maxZ) {
                         findNextColouredLeaf();
                     }
                 }
             }
         }
 
-        private void findNextColouredLeaf()
-        {
-            while (!nodeStack.empty())
-            {
+        private void findNextColouredLeaf() {
+            while (!nodeStack.empty()) {
                 final OTNode node = nodeStack.pop();
                 final int size = sizeStack.pop();
                 minX = minXStack.pop();
                 minY = minYStack.pop();
                 minZ = minZStack.pop();
 
-                if (node.isDivided())
-                {
+                if (node.isDivided()) {
                     final int halfSize = size / 2;
                     final int midX = minX + halfSize;
                     final int midY = minY + halfSize;
@@ -614,9 +520,7 @@ public class OcTree extends AbstractSet<Point<Integer>>
                     minXStack.push(midX);
                     minYStack.push(midY);
                     minZStack.push(midZ);
-                }
-                else if (node.coloured)
-                {
+                } else if (node.coloured) {
                     maxX = minX + size - 1;
                     maxY = minY + size - 1;
                     maxZ = minZ + size - 1;

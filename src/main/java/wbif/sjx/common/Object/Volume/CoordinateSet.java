@@ -1,12 +1,9 @@
 package wbif.sjx.common.Object.Volume;
 
+import java.util.AbstractSet;
+
 import wbif.sjx.common.MathFunc.CumStat;
 import wbif.sjx.common.Object.Point;
-
-import java.util.AbstractSet;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 public abstract class CoordinateSet extends AbstractSet<Point<Integer>> {
     public abstract boolean add(int x, int y, int z);
@@ -59,41 +56,43 @@ public abstract class CoordinateSet extends AbstractSet<Point<Integer>> {
 
         // Iterating over each Point, adding it if it has fewer than 6 neighbours
         for (Point<Integer> point : this) {
-                if (!contains(new Point<>(point.x - 1, point.y, point.z))) {
-                    surface.add(point);
-                    continue;
-                }
+            if (!contains(new Point<>(point.x - 1, point.y, point.z))) {
+                surface.add(point);
+                continue;
+            }
 
-                if (!contains(new Point<>(point.x + 1, point.y, point.z))) {
-                    surface.add(point);
-                    continue;
-                }
-                 
-                if (!contains(new Point<>(point.x, point.y - 1, point.z))) {
-                    surface.add(point);
-                    continue;
-                }
-                 
-                if (!contains(new Point<>(point.x, point.y + 1, point.z))) {
-                    surface.add(point);
-                    continue;
-                }
-                 
-                if (!contains(new Point<>(point.x, point.y, point.z - 1))) {
-                    surface.add(point);
-                    continue;
-                }
-                 
-                if (!contains(new Point<>(point.x, point.y, point.z + 1))) {
-                    surface.add(point);
-                    continue;
-                }
-                    
+            if (!contains(new Point<>(point.x + 1, point.y, point.z))) {
+                surface.add(point);
+                continue;
+            }
+
+            if (!contains(new Point<>(point.x, point.y - 1, point.z))) {
+                surface.add(point);
+                continue;
+            }
+
+            if (!contains(new Point<>(point.x, point.y + 1, point.z))) {
+                surface.add(point);
+                continue;
+            }
+
+            if (!contains(new Point<>(point.x, point.y, point.z - 1))) {
+                surface.add(point);
+                continue;
+            }
+
+            if (!contains(new Point<>(point.x, point.y, point.z + 1))) {
+                surface.add(point);
+                continue;
+            }
+
         }
 
         return surface;
 
     }
+
+    public abstract CoordinateSet getSlice(int slice);
 
     public Point<Double> calculateMeanCentroid() {
         CumStat csX = new CumStat();
