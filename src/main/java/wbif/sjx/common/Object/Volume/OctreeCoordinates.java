@@ -67,9 +67,22 @@ public class OctreeCoordinates extends CoordinateSet {
     protected CoordinateSet calculateProjected() {
         CoordinateSet projectedCoordinates = new QuadtreeCoordinates();
 
-        for (Point<Integer> point:this) projectedCoordinates.add(point.x,point.y,0);
+        for (Point<Integer> point : this)
+            projectedCoordinates.add(point.x, point.y, 0);
 
         return projectedCoordinates;
+
+    }
+    
+    @Override
+    public CoordinateSet getSlice(int slice) {
+        CoordinateSet sliceCoordinateSet = new QuadtreeCoordinates();
+
+        for (Point<Integer> point : ocTree)
+            if (point.getZ() == slice)
+                sliceCoordinateSet.add(point);
+                
+        return sliceCoordinateSet;
 
     }
 
