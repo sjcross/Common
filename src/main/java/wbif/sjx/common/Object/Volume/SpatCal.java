@@ -4,13 +4,13 @@ import ij.ImagePlus;
 import ij.measure.Calibration;
 
 public class SpatCal {
-    public final double dppXY; //Calibration in xy
-    public final double dppZ; //Calibration in z
-    public final String units;
+    public double dppXY; //Calibration in xy
+    public double dppZ; //Calibration in z
+    public String units;
 
-    public final int width;
-    public final int height;
-    public final int nSlices;
+    public int width;
+    public int height;
+    public int nSlices;
 
     public SpatCal(double dppXY, double dppZ, String units, int width, int height, int nSlices) {
         this.dppXY = dppXY;
@@ -75,4 +75,27 @@ public class SpatCal {
         return nSlices;
     }
 
+    public void setDppXY(double dppXY) {
+        this.dppXY = dppXY;
+    }
+
+    public void setDppZ(double dppZ) {
+        this.dppZ = dppZ;
+    }
+
+    public void setUnits(String units) {
+        this.units = units;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setNSlices(int nSlices) {
+        this.nSlices = nSlices;
+    }
 }
