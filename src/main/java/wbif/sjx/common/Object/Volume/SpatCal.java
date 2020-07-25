@@ -4,8 +4,8 @@ import ij.ImagePlus;
 import ij.measure.Calibration;
 
 public class SpatCal {
-    final public double dppXY; //Calibration in xy
-    final public double dppZ; //Calibration in z
+    final public double dppXY; // Calibration in xy
+    final public double dppZ; // Calibration in z
     final public String units;
 
     final public int width;
@@ -22,7 +22,7 @@ public class SpatCal {
     }
 
     public SpatCal duplicate() {
-        return new SpatCal(dppXY,dppZ, units,width,height,nSlices);
+        return new SpatCal(dppXY, dppZ, units, width, height, nSlices);
     }
 
     public static SpatCal getFromImage(ImagePlus ipl) {
@@ -35,23 +35,23 @@ public class SpatCal {
         double dppZ = calibration.getZ(1);
         String units = calibration.getUnits();
 
-        return new SpatCal(dppXY,dppZ,units,width,height,nSlices);
+        return new SpatCal(dppXY, dppZ, units, width, height, nSlices);
 
     }
 
     public void setImageCalibration(ImagePlus ipl) {
         ipl.getCalibration().pixelWidth = dppXY;
         ipl.getCalibration().pixelHeight = dppXY;
-        ipl.getCalibration().pixelDepth = nSlices == 1? 1 : dppZ;
+        ipl.getCalibration().pixelDepth = nSlices == 1 ? 1 : dppZ;
         ipl.getCalibration().setUnit(units);
-        
-}
+
+    }
 
     public Calibration createImageCalibration() {
         Calibration calibration = new Calibration();
 
         calibration.pixelWidth = dppXY;
-        calibration.pixelHeight= dppXY;
+        calibration.pixelHeight = dppXY;
         calibration.pixelDepth = dppZ;
         calibration.setUnit(units);
 

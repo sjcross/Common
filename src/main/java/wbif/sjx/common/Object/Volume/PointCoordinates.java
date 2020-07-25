@@ -33,7 +33,12 @@ public class PointCoordinates extends CoordinateSet {
 
     @Override
     public boolean add(Point<Integer> point) {
-        return add(point.x,point.y,point.z);
+        return add(point.x, point.y, point.z);
+    }
+    
+    @Override
+    public CoordinateSet createEmptyCoordinateSet() {
+        return new PointCoordinates();        
     }
 
     @Override

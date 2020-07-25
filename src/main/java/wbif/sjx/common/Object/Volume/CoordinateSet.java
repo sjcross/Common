@@ -14,6 +14,8 @@ public abstract class CoordinateSet extends AbstractSet<Point<Integer>> {
 
     public abstract VolumeType getVolumeType();
 
+    public abstract CoordinateSet createEmptyCoordinateSet();
+    
     protected abstract CoordinateSet calculateProjected();
 
     public CoordinateSet calculateSurface(boolean is2D) {

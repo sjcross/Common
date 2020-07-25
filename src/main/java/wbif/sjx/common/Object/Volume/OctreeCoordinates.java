@@ -33,9 +33,14 @@ public class OctreeCoordinates extends CoordinateSet {
 
     @Override
     public boolean add(Point<Integer> point) {
-        return add(point.x,point.y,point.z);
+        return add(point.x, point.y, point.z);
     }
 
+    @Override
+    public CoordinateSet createEmptyCoordinateSet() {
+        return new OctreeCoordinates();
+    }
+    
     @Override
     public boolean contains(Object o) {
         Point<Integer> point = (Point<Integer>) o;
@@ -46,7 +51,7 @@ public class OctreeCoordinates extends CoordinateSet {
     @Override
     public boolean remove(Object o) {
         Point<Integer> point = (Point<Integer>) o;
-        ocTree.remove(point.x,point.y,point.z);
+        ocTree.remove(point.x, point.y, point.z);
 
         return true;
     }
@@ -61,7 +66,6 @@ public class OctreeCoordinates extends CoordinateSet {
         ocTree.optimise();
     }
 
-
     // Creating coordinate subsets
 
     protected CoordinateSet calculateProjected() {
@@ -70,10 +74,12 @@ public class OctreeCoordinates extends CoordinateSet {
         for (Point<Integer> point : this)
             projectedCoordinates.add(point.x, point.y, 0);
 
+        projectedCoordinates.finalise();
+
         return projectedCoordinates;
 
     }
-    
+
     @Override
     public CoordinateSet getSlice(int slice) {
         CoordinateSet sliceCoordinateSet = new QuadtreeCoordinates();
@@ -81,11 +87,12 @@ public class OctreeCoordinates extends CoordinateSet {
         for (Point<Integer> point : ocTree)
             if (point.getZ() == slice)
                 sliceCoordinateSet.add(point);
-                
+
+        sliceCoordinateSet.finalise();
+
         return sliceCoordinateSet;
 
     }
-
 
     // Volume properties
 
@@ -98,7 +105,6 @@ public class OctreeCoordinates extends CoordinateSet {
     public long getNumberOfElements() {
         return ocTree.getNodeCount();
     }
-
 
     // Volume access
 

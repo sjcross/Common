@@ -43,6 +43,11 @@ public class QuadtreeCoordinates extends CoordinateSet {
     }
 
     @Override
+    public CoordinateSet createEmptyCoordinateSet() {
+        return new QuadtreeCoordinates();
+    }
+
+    @Override
     public boolean contains(Object o) {
         Point<Integer> point = (Point<Integer>) o;
 
@@ -82,6 +87,8 @@ public class QuadtreeCoordinates extends CoordinateSet {
         for (Point<Integer> point : this)
             projectedCoordinates.add(point.x, point.y, 0);
 
+        projectedCoordinates.finalise();
+
         return projectedCoordinates;
 
     }
@@ -90,6 +97,9 @@ public class QuadtreeCoordinates extends CoordinateSet {
     public CoordinateSet getSlice(int slice) {
         CoordinateSet sliceCoordinateSet = new QuadtreeCoordinates();
         sliceCoordinateSet.addAll(quadTrees.get(slice));
+
+        sliceCoordinateSet.finalise();
+
         return sliceCoordinateSet;
 
     }
@@ -192,4 +202,5 @@ public class QuadtreeCoordinates extends CoordinateSet {
 
         }
     }
+
 }
