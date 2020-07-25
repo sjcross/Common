@@ -600,6 +600,12 @@ public class Volume {
         return spatCal;
     }
 
+    public void setSpatialCalibration(SpatCal spatCal) {
+        this.spatCal = spatCal;
+        if (surface != null) surface.setSpatialCalibration(spatCal);
+        if (projection != null) projection.setSpatialCalibration(spatCal);
+    }
+
     public double getDppXY() {
         return spatCal.dppXY;
     }

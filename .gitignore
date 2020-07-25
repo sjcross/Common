@@ -1,8 +1,8 @@
-
 *.class
 
 target/
 
+*~
 *.jar
 
 \.idea/workspace\.xml
