@@ -6,12 +6,97 @@ import org.bonej.geometry.FitEllipsoid;
 import wbif.sjx.common.Exceptions.IntegerOverflowException;
 import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.Volume.PointOutOfRangeException;
+import wbif.sjx.common.Object.Volume.SpatCal;
 import wbif.sjx.common.Object.Volume.Volume;
+import wbif.sjx.common.Object.Volume.VolumeType;
 
 public class EllipsoidCalculator {
     private final Volume volume;
     private Ellipsoid ell;
 
+    public static void main(String[] args) {
+        SpatCal spatCal = new SpatCal(1, 1, "px", 200, 200, 20);
+        Volume vol = new Volume(VolumeType.POINTLIST, spatCal);
+
+        try {
+        vol.add(83,81,4);
+        vol.add(84,81,4);
+        vol.add(84,82,4);
+        vol.add(85,82,4);
+        vol.add(84,80,5);
+        vol.add(84,81,5);
+        vol.add(84,82,5);
+        vol.add(85,80,5);
+        vol.add(85,81,5);
+        vol.add(85,82,5);
+        vol.add(85,83,5);
+        vol.add(85,84,5);
+        vol.add(86,80,5);
+        vol.add(86,81,5);
+        vol.add(86,82,5);
+        vol.add(86,83,5);
+        vol.add(86,84,5);
+        vol.add(87,82,5);
+        vol.add(87,83,5);
+        vol.add(87,84,5);
+        vol.add(87,85,5);
+        vol.add(88,83,5);
+        vol.add(88,84,5);
+        vol.add(88,85,5);
+        vol.add(85,83,6);
+        vol.add(86,81,6);
+        vol.add(86,82,6);
+        vol.add(86,83,6);
+        vol.add(86,84,6);
+        vol.add(86,85,6);
+        vol.add(87,82,6);
+        vol.add(87,83,6);
+        vol.add(87,84,6);
+        vol.add(87,85,6);
+        vol.add(88,84,6);
+        vol.add(88,85,6);
+        vol.add(83,83,7);
+        
+        vol.add(84,82,7);
+        vol.add(84,83,7);
+        vol.add(84,84,7);
+        vol.add(85,82,7);
+        vol.add(85,83,7);
+        vol.add(85,84,7);
+        vol.add(85,85,7);
+        vol.add(86,82,7);
+        vol.add(86,83,7);
+        vol.add(86,84,7);
+        vol.add(86,85,7);
+        vol.add(87,82,7);
+        vol.add(87,83,7);
+        vol.add(87,84,7);
+        vol.add(87,85,7);
+        vol.add(88,85,7);
+
+        // vol.add(83,82,4);
+        // vol.add(83,83,4);
+        // vol.add(84,83,4);
+        // vol.add(85,81,4);
+        // vol.add(85,83,4);
+        // vol.add(83,84,7);
+        // vol.add(84,85,7);
+        // vol.add(84,86,7);
+        // vol.add(85,86,7);        
+        // vol.add(89,85,7);
+        // vol.add(89,85,7);
+
+        } catch (PointOutOfRangeException e) {}
+
+        EllipsoidCalculator calculator = new EllipsoidCalculator(vol, 1000);
+        double[] ori = calculator.getOrientationRads();
+        System.out.println("Ori "+ori[0]+"_"+ori[1]);
+
+        double sphericity = calculator.getSphericity();
+        System.out.println("Sphericity "+sphericity);
+        
+    }
+    
     /**
      * This constructor is package-private. As such, it's intended for testing only.
      * 
@@ -29,14 +114,20 @@ public class EllipsoidCalculator {
         double[][] coords = new double[volume.size()][3];
         int i = 0;
 
+        int xCent = (int) Math.round(volume.getXMean(true));
+        int yCent = (int) Math.round(volume.getYMean(true));
+        int zCent = (int) Math.round(volume.getZMean(true,false));       
+
         for (Point<Integer> point : volume.getCoordinateSet()) {
-            coords[i][0] = point.getX();
-            coords[i][1] = point.getY();
-            coords[i++][2] = volume.getXYScaledZ(point.getZ());
+            coords[i][0] = point.getX() - xCent;
+            coords[i][1] = point.getY() - yCent;
+            coords[i++][2] = volume.getXYScaledZ(point.getZ()) - zCent;
         }
 
         try {
-            ell = FitEllipsoid.fitTo(coords);         
+            ell = FitEllipsoid.fitTo(coords);     
+            double[] ellCent = ell.getCentre();
+            ell.setCentroid(ellCent[0] + xCent, ellCent[1] + yCent, ellCent[2] + zCent);
         } catch (RuntimeException e) {
             ell = null;
             throw e;
@@ -161,5 +252,4 @@ public class EllipsoidCalculator {
         return insideEllipsoid;
 
     }
-
 }
