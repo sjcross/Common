@@ -166,7 +166,7 @@ public class EllipsoidCalculator {
         double[][] rot = ell.getRotation();
         double[] orien = new double[2];
 
-        orien[0] = -Math.atan(rot[1][0] / rot[0][0]); // Orientation relative to x axis
+        orien[0] = Math.atan(rot[1][0] / rot[0][0]); // Orientation relative to x axis (positive above, negative below)
         double xy = Math.sqrt(Math.pow(rot[0][0], 2) + Math.pow(rot[1][0], 2));
         orien[1] = Math.atan(rot[2][0] / xy); // Orientation relative to xy plane
 
