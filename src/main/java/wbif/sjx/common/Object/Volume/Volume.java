@@ -481,14 +481,20 @@ public class Volume {
     public double getCentroidSeparation(Volume volume2, boolean pixelDistances) {
         double x1 = getXMean(pixelDistances);
         double y1 = getYMean(pixelDistances);
-        double z1 = getZMean(pixelDistances, true);
-
         double x2 = volume2.getXMean(pixelDistances);
         double y2 = volume2.getYMean(pixelDistances);
-        double z2 = volume2.getZMean(pixelDistances, true);
 
-        return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) + (z2 - z1) * (z2 - z1));
+        // If one or both of the volumes are 2D, only calculate separation in XY
+        if (is2D() || volume2.is2D()) {
+            return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
 
+        } else {
+            double z1 = getZMean(pixelDistances, true);
+            double z2 = volume2.getZMean(pixelDistances, true);
+
+            return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) + (z2 - z1) * (z2 - z1));
+
+        }
     }
 
     public double getSurfaceSeparation(Volume volume2, boolean pixelDistances) {
@@ -497,6 +503,10 @@ public class Volume {
     }
 
     public double getPointSurfaceSeparation(Point<Double> point, boolean pixelDistances) {
+        // If this object is only 2D, ensure the Z-position of the point is also zero
+        if (is2D()) 
+            point = new Point<>(point.x, point.y, 0d);
+        
         PointSurfaceSeparatorCalculator calculator = new PointSurfaceSeparatorCalculator(this, point);
         return calculator.getMinDist(pixelDistances);
     }
