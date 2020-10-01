@@ -59,6 +59,8 @@ public class PointCoordinates extends CoordinateSet {
     @Override
     public void finalise() {}
 
+    @Override
+    public void finalise(int z) {}
 
     // Creating coordinate subsets
 

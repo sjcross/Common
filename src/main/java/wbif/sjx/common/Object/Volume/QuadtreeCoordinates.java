@@ -79,6 +79,12 @@ public class QuadtreeCoordinates extends CoordinateSet {
             quadTree.optimise();
     }
 
+    @Override
+    public void finalise(int z) {
+        quadTrees.get(z).optimise();
+        
+    }
+
     // Creating coordinate subsets
 
     protected CoordinateSet calculateProjected() {

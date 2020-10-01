@@ -72,6 +72,10 @@ public class Volume {
         coordinateSet.finalise();
     }
 
+    public void finalise(int z) {
+        coordinateSet.finalise(z);
+    }
+
     @Deprecated
     public TreeSet<Point<Integer>> getPoints() {
         return new TreeSet<>(coordinateSet);

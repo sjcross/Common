@@ -66,6 +66,11 @@ public class OctreeCoordinates extends CoordinateSet {
         ocTree.optimise();
     }
 
+    @Override
+    public void finalise(int z) {
+        // No need to implement this, as Octree works on all slices simultaneously
+    }
+
     // Creating coordinate subsets
 
     protected CoordinateSet calculateProjected() {
