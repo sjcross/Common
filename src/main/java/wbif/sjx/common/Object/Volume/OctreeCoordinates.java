@@ -67,6 +67,11 @@ public class OctreeCoordinates extends CoordinateSet {
     }
 
     @Override
+    public void finalise(int z) {
+        // No need to implement this, as Octree works on all slices simultaneously
+
+    }
+    
     public CoordinateSet duplicate() {
         OctreeCoordinates newCoordinates = new OctreeCoordinates();
         

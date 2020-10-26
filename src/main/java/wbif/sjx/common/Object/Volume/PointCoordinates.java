@@ -2,10 +2,12 @@
 
 package wbif.sjx.common.Object.Volume;
 
-import wbif.sjx.common.Object.Point;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Spliterator;
 
-import java.util.*;
-import java.util.function.Consumer;
+import wbif.sjx.common.Object.Point;
 
 /**
  * Created by sc13967 on 28/07/2017.
@@ -60,6 +62,8 @@ public class PointCoordinates extends CoordinateSet {
     public void finalise() {}
 
     @Override
+    public void finalise(int z) {}
+
     public CoordinateSet duplicate() {
         PointCoordinates newCoordinates = new PointCoordinates();
 
@@ -116,10 +120,10 @@ public class PointCoordinates extends CoordinateSet {
         return Collections.synchronizedSet(points).iterator();
     }
 
-    @Override
-    public void forEach(Consumer<? super Point<Integer>> action) {
-        points.forEach(action);
-    }
+    // @Override
+    // public void forEach(Consumer<? super Point<Integer>> action) {
+    //     points.forEach(action);
+    // }
 
     @Override
     public Spliterator<Point<Integer>> spliterator() {
