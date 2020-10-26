@@ -2,10 +2,13 @@
 
 package wbif.sjx.common.Object.Volume;
 
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
+
 import wbif.sjx.common.Object.Point;
 import wbif.sjx.common.Object.QuadTree.QuadTree;
-
-import java.util.*;
 
 /**
  * Created by sc13967 on 28/07/2017.
@@ -82,7 +85,19 @@ public class QuadtreeCoordinates extends CoordinateSet {
     @Override
     public void finalise(int z) {
         quadTrees.get(z).optimise();
+    }
         
+    public CoordinateSet duplicate() {
+        QuadtreeCoordinates newCoordinates = new QuadtreeCoordinates();
+        
+        // Adding slice by slice
+        for (Integer slice:quadTrees.keySet()) {
+            QuadTree quadTree = new QuadTree(quadTrees.get(slice));
+            newCoordinates.putQuadTree(slice, quadTree);   
+        }
+
+        return newCoordinates;
+
     }
 
     // Creating coordinate subsets
@@ -137,6 +152,14 @@ public class QuadtreeCoordinates extends CoordinateSet {
     @Override
     public Iterator<Point<Integer>> iterator() {
         return new QuadTreeVolumeIterator();
+    }
+
+    protected void putQuadTree(int slice, QuadTree quadTree) {
+        quadTrees.put(slice, quadTree);
+    }
+
+    protected QuadTree getQuadTree(int slice) {
+        return quadTrees.get(slice);
     }
 
     // Miscellaneous

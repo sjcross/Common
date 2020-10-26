@@ -62,6 +62,17 @@ public class PointCoordinates extends CoordinateSet {
     @Override
     public void finalise(int z) {}
 
+    public CoordinateSet duplicate() {
+        PointCoordinates newCoordinates = new PointCoordinates();
+
+        for (Point<Integer> point:this) 
+            newCoordinates.add(point.getX(),point.getY(),point.getZ());
+
+        return newCoordinates;
+
+    }
+
+
     // Creating coordinate subsets
 
     protected CoordinateSet calculateProjected() {
@@ -107,10 +118,10 @@ public class PointCoordinates extends CoordinateSet {
         return Collections.synchronizedSet(points).iterator();
     }
 
-    @Override
-    public void forEach(Consumer<? super Point<Integer>> action) {
-        points.forEach(action);
-    }
+    // @Override
+    // public void forEach(Consumer<? super Point<Integer>> action) {
+    //     points.forEach(action);
+    // }
 
     @Override
     public Spliterator<Point<Integer>> spliterator() {
