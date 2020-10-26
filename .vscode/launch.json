@@ -9,34 +9,6 @@
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-EllipsoidCalculator<Common>",
-            "request": "launch",
-            "mainClass": "wbif.sjx.common.Analysis.EllipsoidCalculator",
-            "projectName": "Common"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-PeriodogramCalculator<Common>",
-            "request": "launch",
-            "mainClass": "wbif.sjx.common.Analysis.PeriodogramCalculator",
-            "projectName": "Common"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-MunkresAssignment<Common>",
-            "request": "launch",
-            "mainClass": "wbif.sjx.common.MathFunc.MunkresAssignment",
-            "projectName": "Common"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-ActiveContour<Common>",
-            "request": "launch",
-            "mainClass": "wbif.sjx.common.Process.ActiveContour.ActiveContour",
-            "projectName": "Common"
         }
     ]
 }

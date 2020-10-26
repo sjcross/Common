@@ -2,10 +2,12 @@
 
 package wbif.sjx.common.Object.Volume;
 
-import wbif.sjx.common.Object.Point;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Spliterator;
 
-import java.util.*;
-import java.util.function.Consumer;
+import wbif.sjx.common.Object.Point;
 
 /**
  * Created by sc13967 on 28/07/2017.
