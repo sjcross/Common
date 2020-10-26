@@ -1,25 +1,31 @@
 package wbif.sjx.common.Process;
 
-import ij.IJ;
-import ij.ImageJ;
-import ij.gui.PolygonRoi;
-import ij.plugin.frame.PlugInFrame;
-import ij.plugin.frame.RoiManager;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import javax.swing.JFileChooser;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.swing.*;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.*;
+import ij.gui.PolygonRoi;
+import ij.plugin.frame.PlugInFrame;
+import ij.plugin.frame.RoiManager;
 
 /**
  * Created by sc13967 on 03/11/2017.
  */
 public class LoadXLifROIs extends PlugInFrame {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1023989637738977899L;
+
     public LoadXLifROIs() {
         super("LoadXLifROIs");
     }

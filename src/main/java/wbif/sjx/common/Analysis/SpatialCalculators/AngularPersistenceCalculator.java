@@ -2,8 +2,6 @@ package wbif.sjx.common.Analysis.SpatialCalculators;
 
 import java.util.TreeMap;
 
-import static java.lang.Math.atan2;
-
 public class AngularPersistenceCalculator implements SpatialCalculator {
 
     @Override

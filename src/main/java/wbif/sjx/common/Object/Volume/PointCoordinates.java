@@ -33,7 +33,12 @@ public class PointCoordinates extends CoordinateSet {
 
     @Override
     public boolean add(Point<Integer> point) {
-        return add(point.x,point.y,point.z);
+        return add(point.x, point.y, point.z);
+    }
+    
+    @Override
+    public CoordinateSet createEmptyCoordinateSet() {
+        return new PointCoordinates();        
     }
 
     @Override
@@ -54,19 +59,34 @@ public class PointCoordinates extends CoordinateSet {
     @Override
     public void finalise() {}
 
+    @Override
+    public void finalise(int z) {}
 
     // Creating coordinate subsets
 
     protected CoordinateSet calculateProjected() {
         CoordinateSet projectedCoordinates = new PointCoordinates();
 
-        for (Point<Integer> point:this) projectedCoordinates.add(point.x,point.y,0);
+        for (Point<Integer> point : this)
+            projectedCoordinates.add(point.x, point.y, 0);
 
         return projectedCoordinates;
 
     }
 
+    @Override
+    public CoordinateSet getSlice(int slice) {
+        CoordinateSet sliceCoordinateSet = new PointCoordinates();
 
+        for (Point<Integer> point : points)
+            if (point.getZ() == slice)
+                sliceCoordinateSet.add(point);
+                
+        return sliceCoordinateSet;
+
+    }
+
+    
     // Volume properties
 
     @Override
@@ -84,7 +104,7 @@ public class PointCoordinates extends CoordinateSet {
 
     @Override
     public Iterator<Point<Integer>> iterator() {
-        return points.iterator();
+        return Collections.synchronizedSet(points).iterator();
     }
 
     @Override

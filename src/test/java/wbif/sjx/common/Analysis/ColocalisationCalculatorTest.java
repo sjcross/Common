@@ -18,7 +18,7 @@ public class ColocalisationCalculatorTest {
     public void calculatePCCWithVolume2D() throws Exception {
         double dppXY = 0.02;
         double dppZ = 0.1;
-        String calibratedUnits = "um";
+        String units = "um";
 
         // Loading images
         String pathToImage = URLDecoder.decode(this.getClass().getResource("/images/ColocalisationChannel1_2D_8bit.tif").getPath(),"UTF-8");
@@ -28,7 +28,7 @@ public class ColocalisationCalculatorTest {
         ImagePlus ipl2 = IJ.openImage(pathToImage);
 
         // Loading objects
-        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,calibratedUnits);
+        HashMap<Integer,Volume> testObjects = new Objects2D().getObjects(dppXY,dppZ,units);
 
         // Getting expected results
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();

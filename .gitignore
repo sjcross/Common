@@ -1,11 +1,12 @@
-
 *.class
 
 target/
 
+*~
 *.jar
 
 \.idea/workspace\.xml
 \.idea/libraries/
 
 .idea/
+.factorypath

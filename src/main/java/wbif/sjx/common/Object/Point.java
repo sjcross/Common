@@ -3,6 +3,10 @@ package wbif.sjx.common.Object;
 import java.io.Serializable;
 
 public class Point<T extends Number> implements Comparable<Point<T>>, Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 391260737545673548L;
     public T x;
     public T y;
     public T z;
@@ -81,14 +85,19 @@ public class Point<T extends Number> implements Comparable<Point<T>>, Serializab
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (!(obj instanceof Point)) return false;
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Point))
+            return false;
 
         Point point = (Point) obj;
         return x.equals(point.x) && y.equals(point.y) && z.equals(point.z);
 
     }
 
+    public Point<T> duplicate() {
+        return new Point<T>(x, y, z);
+    }
 
     @Override
     public int compareTo(Point<T> point) {

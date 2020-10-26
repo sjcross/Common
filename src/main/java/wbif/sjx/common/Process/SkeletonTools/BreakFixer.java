@@ -298,9 +298,9 @@ class Link {
     }
 
     public double getScore(double angleWeight, double distanceWeight, double endWeight) {
-        System.out.println(angleWeight+"_"+distanceWeight+"_"+endWeight);
         double endVal = isEnd ? -endWeight : 0;
-        return Math.abs(angle)*angleWeight + distance*distanceWeight + endVal;
+        return Math.abs(angle) * angleWeight + distance * distanceWeight + endVal;
+        
     }
 
     public int getX() {

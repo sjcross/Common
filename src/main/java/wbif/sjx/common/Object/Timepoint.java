@@ -1,11 +1,13 @@
 package wbif.sjx.common.Object;
 
-import java.sql.Time;
-
 /**
  * Created by sc13967 on 22/09/2017.
  */
 public class Timepoint<T extends Number> extends Point<T> {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 6896202704428034687L;
     protected int f;
 
     public Timepoint(T x, T y, T z, int f) {

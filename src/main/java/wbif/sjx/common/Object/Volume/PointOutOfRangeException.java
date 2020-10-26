@@ -1,6 +1,11 @@
 package wbif.sjx.common.Object.Volume;
 
 public class PointOutOfRangeException extends Throwable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = -7459366989268348241L;
+
     public PointOutOfRangeException() {
     }
 

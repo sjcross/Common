@@ -1,325 +1,174 @@
-//package wbif.sjx.common.Analysis;
-//
-//import ij.IJ;
-//import ij.ImageJ;
-//import ij.ImageStack;
-//import org.bonej.geometry.Ellipsoid;
-//import wbif.sjx.common.Exceptions.IntegerOverflowException;
-//import wbif.sjx.common.Object.Point;
-//import wbif.sjx.common.Object.Volume.PointOutOfRangeException;
-//import wbif.sjx.common.Object.Volume.Volume;
-//
-//import static org.bonej.geometry.FitEllipsoid.yuryPetrov;
-//
-//public class EllipsoidCalculator {
-//    private final Volume volume;
-//    private final Ellipsoid ell;
-//
-//
-//    /**
-//     * This constructor is package-private.  As such, it's intended for testing only.
-//     * @param ell
-//     * @param volume
-//     */
-//    EllipsoidCalculator(Ellipsoid ell, Volume volume) {
-//        this.ell = ell;
-//        this.volume = volume;
-//    }
-//
-//    public EllipsoidCalculator(Volume volume, double maxAxisLength) {
-//        this.volume = volume;
-//
-//        //Fitting an ellipsoid using method from BoneJ
-//        int i = 0;
-//        double[][] coords = new double[volume.size()][3];
-//        for (Point<Integer> point:volume.getCoordinateSet()) {
-//            coords[i][0] = point.getX();
-//            coords[i][1] = point.getY();
-//            coords[i][2] = volume.getXYScaledZ(point);
-//            i++;
-//        }
-//
-//        Object[] yury = yuryPetrov(coords);
-//        double[] centre = (double[]) yury[0];
-//        double[] radii = (double[]) yury[1];
-//        double[][] eigenVectors = (double[][]) yury[2];
-//
-//        if (radii[0] > maxAxisLength || radii[1] > maxAxisLength || radii[2] > maxAxisLength) {
-//            ell = null;
-//        } else {
-//            ell = new Ellipsoid(radii[0],radii[1],radii[2],centre[0],centre[1],centre[2],eigenVectors);
-//        }
-//    }
-//
-//    /**
-//     * Adds a proportional number of points to each pixel depending on its intensity
-//     * @param volume
-//     * @param imageStack
-//     */
-//    public EllipsoidCalculator(Volume volume, double maxAxisLength, ImageStack imageStack) {
-//        this.volume = volume;
-//
-//        // Determining the number of coordinates to add
-//        int count = 0;
-//        for (Point<Integer> point:volume.getCoordinateSet()) {
-//            count = count + (int) imageStack.getVoxel(point.getX(),point.getY(),point.getZ());
-//        }
-//
-//        double[][] coords = new double[count][3];
-//        int i = 0;
-//        for (Point<Integer> point:volume.getCoordinateSet()) {
-//            int val = (int) imageStack.getVoxel(point.getX(),point.getY(),point.getZ());
-//
-//            for (int j=0; j<val; j++) {
-//                coords[count][0] = point.getX();
-//                coords[count][1] = point.getY();
-//                coords[count++][2] = volume.getXYScaledZ(point);
-//            }
-//        }
-//
-//        Object[] yury = yuryPetrov(coords);
-//        double[] centre = (double[]) yury[0];
-//        double[] radii = (double[]) yury[1];
-//        double[][] eigenVectors = (double[][]) yury[2];
-//
-//        if (radii[0] > maxAxisLength || radii[1] > maxAxisLength || radii[2] > maxAxisLength) {
-//            ell = null;
-//        } else {
-//            ell = new Ellipsoid(radii[0],radii[1],radii[2],centre[0],centre[1],centre[2],eigenVectors);
-//        }
-//    }
-//
-//    public double[] getCentroid() {
-//        if (ell == null) return null;
-//        return ell.getCentre();
-//
-//    }
-//
-//    public double[] getRadii() {
-//        if (ell == null) return null;
-//        return ell.getRadii();
-//
-//    }
-//
-//    public double[][] getRotationMatrix() {
-//        if (ell == null) return null;
-//        return ell.getRotation();
-//
-//    }
-//
-//    public double[] getOrientationRads() {
-//        if (ell == null) return null;
-//        double[][] rot = ell.getRotation();
-//        double[] orien = new double[2];
-//
-//        orien[0] = -Math.atan(rot[1][0]/rot[0][0]); //Orientation relative to x axis
-//        double xy = Math.sqrt(Math.pow(rot[0][0],2)+Math.pow(rot[1][0],2));
-//        orien[1] = Math.atan(rot[2][0]/xy); //Orientation relative to xy plane
-//
-//        if (rot[0][0] <= 0) {
-//            orien[1] = -orien[1];
-//        }
-//
-//        return orien;
-//
-//    }
-//
-//    /**
-//     * Gives an approximation of the surface area, which has a relative error of 1.061% (Knud Thomsen's formula)
-//     * @return
-//     */
-//    public double getSurfaceArea() {
-//        if (ell == null) return Double.NaN;
-//
-//        double p = 1.6075;
-//
-//        double[] r = getRadii();
-//
-//        double t1 = Math.pow(r[0],p)*Math.pow(r[1],p);
-//        double t2 = Math.pow(r[0],p)*Math.pow(r[2],p);
-//        double t3 = Math.pow(r[1],p)*Math.pow(r[2],p);
-//
-//        return 4*Math.PI*Math.pow(((t1+t2+t3)/3d),1d/p);
-//
-//    }
-//
-//    public double getVolume() {
-//        if (ell == null) return Double.NaN;
-//        double[] r = getRadii();
-//        return (4d/3d)*Math.PI*r[0]*r[1]*r[2];
-//
-//    }
-//
-//    public double getSphericity() {
-//        if (ell == null) return Double.NaN;
-//
-//        double SA = getSurfaceArea();
-//        double V = getVolume();
-//
-//        double t1 = Math.pow(Math.PI,1d/3d);
-//        double t2 = Math.pow((6*V),2d/3d);
-//
-//        return (t1*t2)/SA;
-//
-//    }
-//
-//    public Volume getContainedPoints() throws IntegerOverflowException {
-//        if (ell == null) return null;
-//
-//        double cal = volume.getDppXY()/volume.getDppZ();
-//
-//        Volume insideEllipsoid = new Volume(volume);
-//
-//        // Testing which points are within the convex hull
-//        double[] xRange = ell.getXMinAndMax();
-//        double[] yRange = ell.getYMinAndMax();
-//        double[] zRange = ell.getZMinAndMax();
-//
-//        for (int x=(int) xRange[0];x<=xRange[1];x++) {
-//            for (int y=(int) yRange[0];y<=yRange[1];y++) {
-//                for (int z=(int) zRange[0];z<=zRange[1];z++) {
-//                    if (ell.contains(x,y,z/cal)) {
-//                        try {
-//                            insideEllipsoid.add(x, y, z);
-//                        } catch (PointOutOfRangeException e) {
-//                            // If a point is outside the range, we just ignore it
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//        return insideEllipsoid;
-//
-//    }
-//
-//}
-//
-
 package wbif.sjx.common.Analysis;
 
-import ij.IJ;
-import ij.ImageJ;
-import ij.ImageStack;
 import org.bonej.geometry.Ellipsoid;
-import wbif.sjx.common.Exceptions.IntegerOverflowException;
-import wbif.sjx.common.Object.Volume.PointOutOfRangeException;
-import wbif.sjx.common.Object.Volume.Volume;
+import org.bonej.geometry.FitEllipsoid;
 
-import static org.bonej.geometry.FitEllipsoid.yuryPetrov;
+import wbif.sjx.common.Exceptions.IntegerOverflowException;
+import wbif.sjx.common.Object.Point;
+import wbif.sjx.common.Object.Volume.PointOutOfRangeException;
+import wbif.sjx.common.Object.Volume.SpatCal;
+import wbif.sjx.common.Object.Volume.Volume;
+import wbif.sjx.common.Object.Volume.VolumeType;
 
 public class EllipsoidCalculator {
     private final Volume volume;
-    private final Ellipsoid ell;
+    private Ellipsoid ell;
 
+    public static void main(String[] args) {
+        SpatCal spatCal = new SpatCal(1, 1, "px", 200, 200, 20);
+        Volume vol = new Volume(VolumeType.POINTLIST, spatCal);
 
+        try {
+        vol.add(83,81,4);
+        vol.add(84,81,4);
+        vol.add(84,82,4);
+        vol.add(85,82,4);
+        vol.add(84,80,5);
+        vol.add(84,81,5);
+        vol.add(84,82,5);
+        vol.add(85,80,5);
+        vol.add(85,81,5);
+        vol.add(85,82,5);
+        vol.add(85,83,5);
+        vol.add(85,84,5);
+        vol.add(86,80,5);
+        vol.add(86,81,5);
+        vol.add(86,82,5);
+        vol.add(86,83,5);
+        vol.add(86,84,5);
+        vol.add(87,82,5);
+        vol.add(87,83,5);
+        vol.add(87,84,5);
+        vol.add(87,85,5);
+        vol.add(88,83,5);
+        vol.add(88,84,5);
+        vol.add(88,85,5);
+        vol.add(85,83,6);
+        vol.add(86,81,6);
+        vol.add(86,82,6);
+        vol.add(86,83,6);
+        vol.add(86,84,6);
+        vol.add(86,85,6);
+        vol.add(87,82,6);
+        vol.add(87,83,6);
+        vol.add(87,84,6);
+        vol.add(87,85,6);
+        vol.add(88,84,6);
+        vol.add(88,85,6);
+        vol.add(83,83,7);
+        
+        vol.add(84,82,7);
+        vol.add(84,83,7);
+        vol.add(84,84,7);
+        vol.add(85,82,7);
+        vol.add(85,83,7);
+        vol.add(85,84,7);
+        vol.add(85,85,7);
+        vol.add(86,82,7);
+        vol.add(86,83,7);
+        vol.add(86,84,7);
+        vol.add(86,85,7);
+        vol.add(87,82,7);
+        vol.add(87,83,7);
+        vol.add(87,84,7);
+        vol.add(87,85,7);
+        vol.add(88,85,7);
+
+        // vol.add(83,82,4);
+        // vol.add(83,83,4);
+        // vol.add(84,83,4);
+        // vol.add(85,81,4);
+        // vol.add(85,83,4);
+        // vol.add(83,84,7);
+        // vol.add(84,85,7);
+        // vol.add(84,86,7);
+        // vol.add(85,86,7);        
+        // vol.add(89,85,7);
+        // vol.add(89,85,7);
+
+        } catch (PointOutOfRangeException e) {}
+
+        EllipsoidCalculator calculator = new EllipsoidCalculator(vol, 1000);
+        double[] ori = calculator.getOrientationRads();
+        System.out.println("Ori "+ori[0]+"_"+ori[1]);
+
+        double sphericity = calculator.getSphericity();
+        System.out.println("Sphericity "+sphericity);
+        
+    }
+    
     /**
-     * This constructor is package-private.  As such, it's intended for testing only.
+     * This constructor is package-private. As such, it's intended for testing only.
+     * 
      * @param ell
      * @param volume
      */
-    EllipsoidCalculator(Ellipsoid ell, Volume volume) {
+    EllipsoidCalculator(Ellipsoid ell, Volume volume) throws RuntimeException {
         this.ell = ell;
         this.volume = volume;
     }
 
-    public EllipsoidCalculator(Volume volume, double maxAxisLength) {
+    public EllipsoidCalculator(Volume volume, double maxAxisLength) throws RuntimeException {
         this.volume = volume;
+        
+        double[][] coords = new double[volume.size()][3];
+        int i = 0;
 
-        //Fitting an ellipsoid using method from BoneJ
-        double[] x = volume.getX(true);
-        double[] y = volume.getY(true);
-        double[] z = volume.getZ(true,true);
+        int xCent = (int) Math.round(volume.getXMean(true));
+        int yCent = (int) Math.round(volume.getYMean(true));
+        int zCent = (int) Math.round(volume.getZMean(true,false));       
 
-        double[][] coords = new double[x.length][3];
-        for (int i=0;i<x.length;i++) {
-            coords[i][0] = x[i];
-            coords[i][1] = y[i];
-            coords[i][2] = z[i];
+        for (Point<Integer> point : volume.getCoordinateSet()) {
+            coords[i][0] = point.getX() - xCent;
+            coords[i][1] = point.getY() - yCent;
+            coords[i++][2] = volume.getXYScaledZ(point.getZ()) - zCent;
         }
 
-        Object[] yury = yuryPetrov(coords);
-        double[] centre = (double[]) yury[0];
-        double[] radii = (double[]) yury[1];
-        double[][] eigenVectors = (double[][]) yury[2];
-
-        if (radii[0] > maxAxisLength || radii[1] > maxAxisLength || radii[2] > maxAxisLength) {
+        try {
+            ell = FitEllipsoid.fitTo(coords);     
+            double[] ellCent = ell.getCentre();
+            ell.setCentroid(ellCent[0] + xCent, ellCent[1] + yCent, ellCent[2] + zCent);
+        } catch (RuntimeException e) {
             ell = null;
-        } else {
-            ell = new Ellipsoid(radii[0],radii[1],radii[2],centre[0],centre[1],centre[2],eigenVectors);
-        }
-    }
-
-    /**
-     * Adds a proportional number of points to each pixel depending on its intensity
-     * @param volume
-     * @param imageStack
-     */
-    public EllipsoidCalculator(Volume volume, double maxAxisLength, ImageStack imageStack) {
-        this.volume = volume;
-
-        //Fitting an ellipsoid using method from BoneJ
-        double[] x = volume.getX(true);
-        double[] y = volume.getY(true);
-        double[] z = volume.getZ(true,true);
-        double[] zSlice = volume.getZ(true,false);
-
-        // Determining the number of coordinates to add
-        int count = 0;
-        for (int i=0;i<x.length;i++) {
-            count = count + (int) imageStack.getVoxel((int) x[i], (int) y[i], (int) zSlice[i]);
+            throw e;
         }
 
-        double[][] coords = new double[count][3];
-        count = 0;
-        for (int i=0;i<x.length;i++) {
-            int val = (int) imageStack.getVoxel((int) x[i], (int) y[i], (int) zSlice[i]);
-
-            for (int j=0; j<val; j++) {
-                coords[count][0] = x[i];
-                coords[count][1] = y[i];
-                coords[count++][2] = z[i];
-            }
-        }
-
-        Object[] yury = yuryPetrov(coords);
-        double[] centre = (double[]) yury[0];
-        double[] radii = (double[]) yury[1];
-        double[][] eigenVectors = (double[][]) yury[2];
-
-        if (radii[0] > maxAxisLength || radii[1] > maxAxisLength || radii[2] > maxAxisLength) {
+        double[] radii = ell.getRadii();
+        if (radii[0] > maxAxisLength || radii[1] > maxAxisLength || radii[2] > maxAxisLength)
             ell = null;
-        } else {
-            ell = new Ellipsoid(radii[0],radii[1],radii[2],centre[0],centre[1],centre[2],eigenVectors);
-        }
+
     }
 
     public double[] getCentroid() {
-        if (ell == null) return null;
+        if (ell == null)
+            return null;
         return ell.getCentre();
 
     }
 
     public double[] getRadii() {
-        if (ell == null) return null;
+        if (ell == null)
+            return null;
         return ell.getRadii();
 
     }
 
     public double[][] getRotationMatrix() {
-        if (ell == null) return null;
+        if (ell == null)
+            return null;
         return ell.getRotation();
 
     }
 
     public double[] getOrientationRads() {
-        if (ell == null) return null;
+        if (ell == null)
+            return null;
         double[][] rot = ell.getRotation();
         double[] orien = new double[2];
 
-        orien[0] = -Math.atan(rot[1][0]/rot[0][0]); //Orientation relative to x axis
-        double xy = Math.sqrt(Math.pow(rot[0][0],2)+Math.pow(rot[1][0],2));
-        orien[1] = Math.atan(rot[2][0]/xy); //Orientation relative to xy plane
+        orien[0] = Math.atan(rot[1][0] / rot[0][0]); // Orientation relative to x axis (positive above, negative below)
+        double xy = Math.sqrt(Math.pow(rot[0][0], 2) + Math.pow(rot[1][0], 2));
+        orien[1] = Math.atan(rot[2][0] / xy); // Orientation relative to xy plane
 
         if (rot[0][0] <= 0) {
             orien[1] = -orien[1];
@@ -330,62 +179,68 @@ public class EllipsoidCalculator {
     }
 
     /**
-     * Gives an approximation of the surface area, which has a relative error of 1.061% (Knud Thomsen's formula)
+     * Gives an approximation of the surface area, which has a relative error of
+     * 1.061% (Knud Thomsen's formula)
+     * 
      * @return
      */
     public double getSurfaceArea() {
-        if (ell == null) return Double.NaN;
+        if (ell == null)
+            return Double.NaN;
 
         double p = 1.6075;
 
         double[] r = getRadii();
 
-        double t1 = Math.pow(r[0],p)*Math.pow(r[1],p);
-        double t2 = Math.pow(r[0],p)*Math.pow(r[2],p);
-        double t3 = Math.pow(r[1],p)*Math.pow(r[2],p);
+        double t1 = Math.pow(r[0], p) * Math.pow(r[1], p);
+        double t2 = Math.pow(r[0], p) * Math.pow(r[2], p);
+        double t3 = Math.pow(r[1], p) * Math.pow(r[2], p);
 
-        return 4*Math.PI*Math.pow(((t1+t2+t3)/3d),1d/p);
+        return 4 * Math.PI * Math.pow(((t1 + t2 + t3) / 3d), 1d / p);
 
     }
 
     public double getVolume() {
-        if (ell == null) return Double.NaN;
+        if (ell == null)
+            return Double.NaN;
         double[] r = getRadii();
-        return (4d/3d)*Math.PI*r[0]*r[1]*r[2];
+        return (4d / 3d) * Math.PI * r[0] * r[1] * r[2];
 
     }
 
     public double getSphericity() {
-        if (ell == null) return Double.NaN;
+        if (ell == null)
+            return Double.NaN;
 
         double SA = getSurfaceArea();
         double V = getVolume();
 
-        double t1 = Math.pow(Math.PI,1d/3d);
-        double t2 = Math.pow((6*V),2d/3d);
+        double t1 = Math.pow(Math.PI, 1d / 3d);
+        double t2 = Math.pow((6 * V), 2d / 3d);
 
-        return (t1*t2)/SA;
+        return (t1 * t2) / SA;
 
     }
 
     public Volume getContainedPoints() throws IntegerOverflowException {
-        if (ell == null) return null;
+        if (ell == null)
+            return null;
 
-        double cal = volume.getDppXY()/volume.getDppZ();
+        double cal = volume.getDppXY() / volume.getDppZ();
 
-        Volume insideEllipsoid = new Volume(volume);
+        Volume insideEllipsoid = new Volume(volume.getVolumeType(), volume.getSpatialCalibration());
 
         // Testing which points are within the convex hull
         double[] xRange = ell.getXMinAndMax();
         double[] yRange = ell.getYMinAndMax();
         double[] zRange = ell.getZMinAndMax();
 
-        for (int x=(int) xRange[0];x<=xRange[1];x++) {
-            for (int y=(int) yRange[0];y<=yRange[1];y++) {
-                for (int z=(int) zRange[0];z<=zRange[1];z++) {
-                    if (ell.contains(x,y,z)) {
+        for (int x = (int) xRange[0]; x <= xRange[1]; x++) {
+            for (int y = (int) yRange[0]; y <= yRange[1]; y++) {
+                for (int z = (int) zRange[0]; z <= zRange[1]; z++) {
+                    if (ell.contains(x, y, z)) {
                         try {
-                            insideEllipsoid.add(x, y, (int) Math.round(z*cal));
+                            insideEllipsoid.add(x, y, (int) Math.round(z * cal));
                         } catch (PointOutOfRangeException e) {
                             // If a point is outside the range, we just ignore it
                         }
@@ -397,6 +252,4 @@ public class EllipsoidCalculator {
         return insideEllipsoid;
 
     }
-
 }
-

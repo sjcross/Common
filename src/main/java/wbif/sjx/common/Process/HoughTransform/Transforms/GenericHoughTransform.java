@@ -1,7 +1,7 @@
 package wbif.sjx.common.Process.HoughTransform.Transforms;
 
-import ij.IJ;
-import ij.ImageJ;
+import java.util.ArrayList;
+
 import ij.ImagePlus;
 import ij.process.ImageProcessor;
 import wbif.sjx.common.Process.HoughTransform.Accumulators.Accumulator;
@@ -9,8 +9,6 @@ import wbif.sjx.common.Process.HoughTransform.PixelArrays.BytePixelArray;
 import wbif.sjx.common.Process.HoughTransform.PixelArrays.FloatPixelArray;
 import wbif.sjx.common.Process.HoughTransform.PixelArrays.PixelArray;
 import wbif.sjx.common.Process.HoughTransform.PixelArrays.ShortPixelArray;
-
-import java.util.ArrayList;
 
 /**
  * Created by sc13967 on 12/01/2018.

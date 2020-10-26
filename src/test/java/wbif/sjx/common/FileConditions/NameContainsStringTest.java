@@ -48,7 +48,7 @@ class NameContainsStringTest {
     @Test
     public void testTestIncludesCompleteTrue(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
-        String[] exts = new String[]{"test 34.tif","another Test.tiff"};
+        String[] exts = new String[]{"test 34","another Test"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.INC_COMPLETE);
 
         // Initialising temporary files and folders
@@ -68,7 +68,7 @@ class NameContainsStringTest {
     @Test
     public void testTestIncludesCompleteFalse1(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
-        String[] exts = new String[]{"test 34","another Test","tif","tiff"};
+        String[] exts = new String[]{"test 34.tif","another Test.tiff","tif","tiff"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.INC_COMPLETE);
 
         // Initialising temporary files and folders
@@ -218,21 +218,24 @@ class NameContainsStringTest {
         // Initialising temporary files and folders
         File testFile1 = temporaryFolder.resolve("test 34.tif").toFile();
         File testFile2 = temporaryFolder.resolve("another Test.tiff").toFile();
+        File testFile3 = temporaryFolder.resolve("another Test tif.tiff").toFile();
 
         // Obtaining results for the true and false cases
         boolean result1 = nameContainsString.test(testFile1);
         boolean result2 = nameContainsString.test(testFile2);
+        boolean result3 = nameContainsString.test(testFile3);
 
         // Checking results
-        assertTrue(result1);
-        assertTrue(result2);
+        assertFalse(result1);
+        assertFalse(result2);
+        assertTrue(result3);
 
     }
 
     @Test
     public void testTestExcludesCompleteFalse(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
-        String[] exts = new String[]{"test 34.tif","another Test.tiff"};
+        String[] exts = new String[]{"test 34","another Test"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.EXC_COMPLETE);
 
         // Initialising temporary files and folders

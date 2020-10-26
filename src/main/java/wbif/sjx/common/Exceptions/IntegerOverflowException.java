@@ -1,6 +1,11 @@
 package wbif.sjx.common.Exceptions;
 
 public class IntegerOverflowException extends RuntimeException {
+    /**
+     *
+     */
+    private static final long serialVersionUID = -4266675918342929017L;
+
     public IntegerOverflowException() {
     }
 

@@ -1,9 +1,6 @@
 package wbif.sjx.common.Filters;
 
-import ij.IJ;
-import ij.ImageJ;
 import ij.ImagePlus;
-import ij.process.ImageConverter;
 import ij.process.ImageProcessor;
 
 public class CombingCorrector {

@@ -1,7 +1,6 @@
 package wbif.sjx.common.Filters;
 
 import ij.IJ;
-import ij.ImageJ;
 import ij.ImagePlus;
 import ij.plugin.filter.ExtendedPlugInFilter;
 import ij.plugin.filter.PlugInFilterRunner;

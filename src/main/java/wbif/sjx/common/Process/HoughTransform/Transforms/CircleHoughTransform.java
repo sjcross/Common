@@ -1,14 +1,12 @@
 package wbif.sjx.common.Process.HoughTransform.Transforms;
 
-import ij.IJ;
-import ij.ImagePlus;
-import ij.process.ImageProcessor;
-import wbif.sjx.common.MathFunc.MidpointCircle;
-import wbif.sjx.common.Process.HoughTransform.Accumulators.CircleAccumulator;
-
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import ij.process.ImageProcessor;
+import wbif.sjx.common.MathFunc.MidpointCircle;
+import wbif.sjx.common.Process.HoughTransform.Accumulators.CircleAccumulator;
 
 /**
  * Created by sc13967 on 12/01/2018.

@@ -45,7 +45,6 @@ public class KFunctionCalculator {
         int N = points.size();
         double regionSize = calculateRegionSize(points,is2D);
         double areaFactor = regionSize/(N*N);
-        double maxSep = calculateMaximumPointSeparation(points);
 
         EdgeCorrection edgeCorrectionCalculator = null;
 
