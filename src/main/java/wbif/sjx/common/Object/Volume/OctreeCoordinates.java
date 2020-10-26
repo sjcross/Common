@@ -11,7 +11,7 @@ import java.util.*;
  * Created by sc13967 on 28/07/2017.
  */
 public class OctreeCoordinates extends CoordinateSet {
-    private final OcTree ocTree;
+    private OcTree ocTree;
 
     public OctreeCoordinates() {
         ocTree = new OcTree();
@@ -66,6 +66,18 @@ public class OctreeCoordinates extends CoordinateSet {
         ocTree.optimise();
     }
 
+    @Override
+    public CoordinateSet duplicate() {
+        OctreeCoordinates newCoordinates = new OctreeCoordinates();
+        
+        // Adding slice by slice
+        OcTree newOcTree = new OcTree(ocTree);
+        newCoordinates.setOcTree(newOcTree);
+
+        return newCoordinates;
+
+    }
+
     // Creating coordinate subsets
 
     protected CoordinateSet calculateProjected() {
@@ -111,5 +123,13 @@ public class OctreeCoordinates extends CoordinateSet {
     @Override
     public Iterator<Point<Integer>> iterator() {
         return ocTree.iterator();
+    }
+
+    protected OcTree getOcTree() {
+        return ocTree;
+    }
+
+    public void setOcTree(OcTree ocTree) {
+        this.ocTree = ocTree;
     }
 }

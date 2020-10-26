@@ -10,6 +10,8 @@ public abstract class CoordinateSet extends AbstractSet<Point<Integer>> {
 
     public abstract void finalise();
 
+    public abstract CoordinateSet duplicate();
+
     public abstract long getNumberOfElements();
 
     public abstract VolumeType getVolumeType();

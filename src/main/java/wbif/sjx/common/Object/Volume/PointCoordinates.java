@@ -59,6 +59,17 @@ public class PointCoordinates extends CoordinateSet {
     @Override
     public void finalise() {}
 
+    @Override
+    public CoordinateSet duplicate() {
+        PointCoordinates newCoordinates = new PointCoordinates();
+
+        for (Point<Integer> point:this) 
+            newCoordinates.add(point.getX(),point.getY(),point.getZ());
+
+        return newCoordinates;
+
+    }
+
 
     // Creating coordinate subsets
 
