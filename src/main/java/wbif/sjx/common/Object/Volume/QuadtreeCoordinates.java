@@ -84,7 +84,8 @@ public class QuadtreeCoordinates extends CoordinateSet {
 
     @Override
     public void finalise(int z) {
-        quadTrees.get(z).optimise();
+        if (quadTrees.containsKey(z))
+            quadTrees.get(z).optimise();
     }
         
     public CoordinateSet duplicate() {

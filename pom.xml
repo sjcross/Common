@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.scijava</groupId>
         <artifactId>pom-scijava</artifactId>
-        <version>27.0.1</version>
+        <version>29.2.1</version>
         <relativePath />
     </parent>
 
     <groupId>wbif.sjx</groupId>
     <artifactId>Common</artifactId>
-    <version>1.6.19</version>
+    <version>1.6.20</version>
 
     <packaging>jar</packaging>
     <name>Common</name>
@@ -111,14 +111,12 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.5.0</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-            <version>5.5.0</version>
             <scope>test</scope>
         </dependency>
 
