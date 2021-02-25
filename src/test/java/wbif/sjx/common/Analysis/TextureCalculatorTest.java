@@ -25,8 +25,8 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(1,0,0);
-        calculator.calculate(ipl1.getImageStack());
+        TextureCalculator calculator = new TextureCalculator();
+        calculator.calculate(ipl1.getImageStack(),1,0,0);
 
         // Comparing results
         double expected = 0.000195420324691;
@@ -42,8 +42,8 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(1,0,0);
-        calculator.calculate(ipl1.getImageStack());
+        TextureCalculator calculator = new TextureCalculator();
+        calculator.calculate(ipl1.getImageStack(),1,0,0);
 
         // Comparing results
         double expected = 200.149749373;
@@ -59,8 +59,8 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(1,0,0);
-        calculator.calculate(ipl1.getImageStack());
+        TextureCalculator calculator = new TextureCalculator();
+        calculator.calculate(ipl1.getImageStack(),1,0,0);
 
         // Comparing results
         double expected = 0.98111352883;
@@ -77,8 +77,8 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(1,0,0);
-        calculator.calculate(ipl1.getImageStack());
+        TextureCalculator calculator = new TextureCalculator();
+        calculator.calculate(ipl1.getImageStack(),1,0,0);
 
         // Comparing results
         double expected = 12.5183432768;
@@ -94,8 +94,8 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(3,0,0);
-        calculator.calculate(ipl1.getImageStack());
+        TextureCalculator calculator = new TextureCalculator();
+        calculator.calculate(ipl1.getImageStack(),3,0,0);
 
         // Comparing results
         double expected = 0.000175200683997;
@@ -111,8 +111,8 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(3,0,0);
-        calculator.calculate(ipl1.getImageStack());
+        TextureCalculator calculator = new TextureCalculator();
+        calculator.calculate(ipl1.getImageStack(),3,0,0);
 
         // Comparing results
         double expected = 322.0187662;
@@ -128,8 +128,8 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(3,0,0);
-        calculator.calculate(ipl1.getImageStack());
+        TextureCalculator calculator = new TextureCalculator();
+        calculator.calculate(ipl1.getImageStack(),3,0,0);
 
         // Comparing results
         double expected = 0.967977895;
@@ -146,8 +146,8 @@ public class TextureCalculatorTest {
         ImagePlus ipl1 = IJ.openImage(pathToImage);
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(3,0,0);
-        calculator.calculate(ipl1.getImageStack());
+        TextureCalculator calculator = new TextureCalculator();
+        calculator.calculate(ipl1.getImageStack(),3,0,0);
 
         // Comparing results
         double expected = 12.63484218;
@@ -173,14 +173,14 @@ public class TextureCalculatorTest {
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(1,0,0);
+        TextureCalculator calculator = new TextureCalculator();
 
         // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
-            calculator.calculate(ipl1.getImageStack(),testObject);
+            calculator.calculate(ipl1.getImageStack(),testObject,1,0,0);
 
             double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.ASM_1PX.name());
             double actual = calculator.getASM();
@@ -207,14 +207,14 @@ public class TextureCalculatorTest {
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(1,0,0);
+        TextureCalculator calculator = new TextureCalculator();
 
         // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
-            calculator.calculate(ipl1.getImageStack(),testObject);
+            calculator.calculate(ipl1.getImageStack(),testObject,1,0,0);
 
             double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.CONTRAST_1PX.name());
             double actual = calculator.getContrast();
@@ -241,14 +241,14 @@ public class TextureCalculatorTest {
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(1,0,0);
+        TextureCalculator calculator = new TextureCalculator();
 
         // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
-            calculator.calculate(ipl1.getImageStack(),testObject);
+            calculator.calculate(ipl1.getImageStack(),testObject,1,0,0);
 
             double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.CORRELATION_1PX.name());
             double actual = calculator.getCorrelation();
@@ -275,14 +275,14 @@ public class TextureCalculatorTest {
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(1,0,0);
+        TextureCalculator calculator = new TextureCalculator();
 
         // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
-            calculator.calculate(ipl1.getImageStack(),testObject);
+            calculator.calculate(ipl1.getImageStack(),testObject,1,0,0);
 
             double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.ENTROPY_1PX.name());
             double actual = calculator.getEntropy();
@@ -309,14 +309,14 @@ public class TextureCalculatorTest {
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(3,0,0);
+        TextureCalculator calculator = new TextureCalculator();
 
         // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
-            calculator.calculate(ipl1.getImageStack(),testObject);
+            calculator.calculate(ipl1.getImageStack(),testObject,3,0,0);
 
             double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.ASM_3PX.name());
             double actual = calculator.getASM();
@@ -343,14 +343,14 @@ public class TextureCalculatorTest {
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(3,0,0);
+        TextureCalculator calculator = new TextureCalculator();
 
         // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
-            calculator.calculate(ipl1.getImageStack(),testObject);
+            calculator.calculate(ipl1.getImageStack(),testObject,3,0,0);
 
             double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.CONTRAST_3PX.name());
             double actual = calculator.getContrast();
@@ -377,14 +377,14 @@ public class TextureCalculatorTest {
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(3,0,0);
+        TextureCalculator calculator = new TextureCalculator();
 
         // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
-            calculator.calculate(ipl1.getImageStack(),testObject);
+            calculator.calculate(ipl1.getImageStack(),testObject,3,0,0);
 
             double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.CORRELATION_3PX.name());
             double actual = calculator.getCorrelation();
@@ -411,14 +411,14 @@ public class TextureCalculatorTest {
         HashMap<Integer, HashMap<String, Double>> expectedMeasurements = new Objects2D().getMeasurements();
 
         // Initialising texture calculator
-        TextureCalculator calculator = new TextureCalculator(3,0,0);
+        TextureCalculator calculator = new TextureCalculator();
 
         // Iterating over each Volume, testing the PCC value
         for (int ID:testObjects.keySet()) {
             Volume testObject = testObjects.get(ID);
 
             // Running the texture measurement
-            calculator.calculate(ipl1.getImageStack(),testObject);
+            calculator.calculate(ipl1.getImageStack(),testObject,3,0,0);
 
             double expected = expectedMeasurements.get(ID).get(Objects2D.Measures.ENTROPY_3PX.name());
             double actual = calculator.getEntropy();
