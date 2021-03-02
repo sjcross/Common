@@ -57,14 +57,20 @@ public class Volume {
     }
 
     public void translateCoords(int xOffs, int yOffs, int zOffs) {
-        CoordinateSet newCoordinateSet = coordinateSet.createEmptyCoordinateSet();
+        Volume newVol = new Volume(coordinateSet.getVolumeType(), spatCal);
+
+        // CoordinateSet newCoordinateSet = coordinateSet.createEmptyCoordinateSet();
         for (Point<Integer> point : coordinateSet) {
-            newCoordinateSet.add(new Point<>(point.getX() + xOffs, point.getY() + yOffs, point.getZ() + zOffs));
+            try {
+                newVol.add(new Point<>(point.getX() + xOffs, point.getY() + yOffs, point.getZ() + zOffs));
+            } catch (PointOutOfRangeException e) {
+                // Do nothing
+            }
         }
-        newCoordinateSet.finalise();
+        newVol.finalise();
 
         // Replacing old coordinate set with the transposed one
-        this.coordinateSet = newCoordinateSet;
+        this.coordinateSet = newVol.getCoordinateSet();
 
     }
 
