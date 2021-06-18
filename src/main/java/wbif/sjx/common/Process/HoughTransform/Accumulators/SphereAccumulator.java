@@ -1,11 +1,11 @@
 package wbif.sjx.common.Process.HoughTransform.Accumulators;
 
+import java.util.ArrayList;
+
 import ij.IJ;
 import ij.ImagePlus;
-import ij.gui.OvalRoi;
-import ij.gui.Overlay;
-
-import java.util.ArrayList;
+import wbif.sjx.common.MathFunc.MidpointSphere;
+import wbif.sjx.common.MathFunc.VoxelSphere;
 
 /**
  * Created by sc13967 on 13/01/2018.
@@ -65,47 +65,50 @@ public class SphereAccumulator extends Accumulator {
         // Creating an ArrayList to store the points
         ArrayList<double[]> objects = new ArrayList<>();
 
-        // // Getting relative coordinates for exclusion zone
-        // MidpointCircle midpointCircle = new MidpointCircle(exclusionR);
-        // int[] x = midpointCircle.getXCircleFill();
-        // int[] y = midpointCircle.getYCircleFill();
+        // Getting relative coordinates for exclusion zone
+        VoxelSphere voxelSphere = new VoxelSphere(exclusionR);
+        int[] x = voxelSphere.getXSphereFill();
+        int[] y = voxelSphere.getYSphereFill();
+        int[] z = voxelSphere.getZSphereFill();
 
-        // // Identifying the brightest point in the accumulator
-        // int maxIdx = getLargestScorePixelIndex();
-        // double maxVal = accumulator[maxIdx];
+        // Identifying the brightest point in the accumulator
+        int maxIdx = getLargestScorePixelIndex();
+        double maxVal = accumulator[maxIdx];
 
-        // // Extracting all points
-        // while (maxVal >= minScore) {
-        //     // Getting parameters for brightest current spot and adding to ArrayList
-        //     int[] parameters = indexer.getCoord(maxIdx);
-        //     parameters[0] = parameters[0] + parameterRanges[0][0];
-        //     parameters[1] = parameters[1] + parameterRanges[1][0];
-        //     parameters[2] = parameters[2] + parameterRanges[2][0];
+        // Extracting all points
+        while (maxVal >= minScore) {
+            // Getting parameters for brightest current spot and adding to ArrayList
+            int[] parameters = indexer.getCoord(maxIdx);
+            parameters[0] = parameters[0] + parameterRanges[0][0];
+            parameters[1] = parameters[1] + parameterRanges[1][0];
+            parameters[2] = parameters[2] + parameterRanges[2][0];
+            parameters[3] = parameters[3] + parameterRanges[3][0];
 
-        //     objects.add(new double[]{parameters[0],parameters[1],parameters[2],maxVal});
+            objects.add(new double[]{parameters[0],parameters[1],parameters[2],parameters[3],maxVal});
 
-        //     // Setting all pixels within exclusionR to zero.  This is repeated for all slices.
-        //     for (int rr = 0; rr< indexer.getDim()[2]; rr++) {
-        //         for (int i = 0; i < x.length; i++) {
-        //             int xx = parameters[0] + x[i] - parameterRanges[0][0];
-        //             int yy = parameters[1] + y[i] - parameterRanges[1][0];
+            // Setting all pixels within exclusionR to zero.  This is repeated for all slices.
+            for (int rr = 0; rr< indexer.getDim()[2]; rr++) {
+                for (int i = 0; i < x.length; i++) {
+                    int xx = parameters[0] + x[i] - parameterRanges[0][0];
+                    int yy = parameters[1] + y[i] - parameterRanges[1][0];
+                    int zz = parameters[2] + z[i] - parameterRanges[2][0];
 
-        //             int idx = indexer.getIndex(new int[]{xx, yy, rr});
+                    int idx = indexer.getIndex(new int[]{xx, yy, zz, rr});
 
-        //             if (idx == -1) continue;
+                    if (idx == -1) continue;
 
-        //             accumulator[idx] = 0;
-        //         }
-        //     }
+                    accumulator[idx] = 0;
+                }
+            }
 
-        //     // Updating the brightest point
-        //     maxIdx = getLargestScorePixelIndex();
+            // Updating the brightest point
+            maxIdx = getLargestScorePixelIndex();
 
-        //     if (maxIdx == -1) break;
+            if (maxIdx == -1) break;
 
-        //     maxVal = accumulator[maxIdx];
+            maxVal = accumulator[maxIdx];
 
-        // }
+        }
 
         return objects;
 

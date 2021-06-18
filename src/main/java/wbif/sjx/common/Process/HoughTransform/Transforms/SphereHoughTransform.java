@@ -4,7 +4,10 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import ij.process.ImageProcessor;
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
+import ij.ImageStack;
 import wbif.sjx.common.MathFunc.MidpointSphere;
 import wbif.sjx.common.Process.HoughTransform.Accumulators.SphereAccumulator;
 
@@ -14,8 +17,19 @@ import wbif.sjx.common.Process.HoughTransform.Accumulators.SphereAccumulator;
 public class SphereHoughTransform extends GenericHoughTransform {
     private int[][] parameterRanges;
 
-    public SphereHoughTransform(ImageProcessor ipr, int[][] parameterRanges) {
-        super(ipr);
+    public static void main(String[] args) {
+        new ImageJ();
+        ImagePlus ipl = IJ.openImage("C:/Users/steph/Desktop/SphereBinary.tif");
+        ImageStack ist = ipl.getStack();
+        int[][] paramRanges = new int[][] { { 0, ist.getWidth() - 1 }, { 0, ist.getHeight() - 1 },
+                        { 0, ipl.getNSlices() - 1 }, { 15, 25 } };
+        SphereHoughTransform sht = new SphereHoughTransform(ist, paramRanges);
+        sht.run();
+        sht.getAccumulatorAsImage().show();
+    }
+
+    public SphereHoughTransform(ImageStack ist, int[][] parameterRanges) {
+        super(ist);
 
         this.parameterRanges = parameterRanges;
         this.accumulator = new SphereAccumulator(parameterRanges);
@@ -67,7 +81,7 @@ public class SphereHoughTransform extends GenericHoughTransform {
 
                         }
                     }
-                }
+                }                
             };
             pool.submit(task);
         }
