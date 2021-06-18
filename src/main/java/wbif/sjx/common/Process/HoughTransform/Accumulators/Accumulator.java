@@ -55,7 +55,7 @@ public abstract class Accumulator {
 
     public abstract void addDetectedObjectsOverlay(ImagePlus ipl, ArrayList<double[]> objects);
 
-    public abstract void addPoints(int[] parameters, double value, int[] x, int[] y);
+    public abstract void addPoints(int[] parameters, double value, int[][] points);
 
     public abstract ArrayList<double[]> getObjects(double minScore, int exclusionR);
 
