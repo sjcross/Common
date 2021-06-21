@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 import ij.IJ;
 import ij.ImagePlus;
-import wbif.sjx.common.MathFunc.MidpointSphere;
-import wbif.sjx.common.MathFunc.VoxelSphere;
+import wbif.sjx.common.Object.Voxels.SphereSolid;
 
 /**
  * Created by sc13967 on 13/01/2018.
@@ -66,10 +65,10 @@ public class SphereAccumulator extends Accumulator {
         ArrayList<double[]> objects = new ArrayList<>();
 
         // Getting relative coordinates for exclusion zone
-        VoxelSphere voxelSphere = new VoxelSphere(exclusionR);
-        int[] x = voxelSphere.getXSphereFill();
-        int[] y = voxelSphere.getYSphereFill();
-        int[] z = voxelSphere.getZSphereFill();
+        SphereSolid voxelSphere = new SphereSolid(exclusionR);
+        int[] x = voxelSphere.getX();
+        int[] y = voxelSphere.getY();
+        int[] z = voxelSphere.getZ();
 
         // Identifying the brightest point in the accumulator
         int maxIdx = getLargestScorePixelIndex();

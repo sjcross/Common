@@ -1,9 +1,10 @@
-package wbif.sjx.common.Object;
+package wbif.sjx.common.Object.Tracks;
 
 import ij.ImagePlus;
 import wbif.sjx.common.Analysis.*;
 import wbif.sjx.common.Analysis.SpatialCalculators.*;
 import wbif.sjx.common.MathFunc.CumStat;
+import wbif.sjx.common.Object.Point;
 
 import java.util.*;
 

@@ -8,7 +8,8 @@ import ij.IJ;
 import ij.ImageJ;
 import ij.ImagePlus;
 import ij.ImageStack;
-import wbif.sjx.common.MathFunc.MidpointSphere;
+import wbif.sjx.common.Object.Voxels.SphereShell;
+import wbif.sjx.common.Object.Voxels.SphereShell.Connectivity;
 import wbif.sjx.common.Process.HoughTransform.Accumulators.SphereAccumulator;
 
 /**
@@ -22,7 +23,7 @@ public class SphereHoughTransform extends GenericHoughTransform {
         ImagePlus ipl = IJ.openImage("C:/Users/steph/Desktop/SphereBinary.tif");
         ImageStack ist = ipl.getStack();
         int[][] paramRanges = new int[][] { { 0, ist.getWidth() - 1 }, { 0, ist.getHeight() - 1 },
-                        { 0, ipl.getNSlices() - 1 }, { 15, 25 } };
+                { 0, ipl.getNSlices() - 1 }, { 15, 25 } };
         SphereHoughTransform sht = new SphereHoughTransform(ist, paramRanges);
         sht.run();
         sht.getAccumulatorAsImage().show();
@@ -61,8 +62,8 @@ public class SphereHoughTransform extends GenericHoughTransform {
                 int R = minR + finalIR;
 
                 // // Generating coordinates for the points on the midpoint circle
-                MidpointSphere midpointSphere = new MidpointSphere(R);
-                int[][] sph = midpointSphere.getSphere();
+                SphereShell sphereShell = new SphereShell(R,Connectivity.SIX);
+                int[][] sph = sphereShell.getSphere();
 
                 // Iterating over X and Y
                 int nX = maxX - minX + 1;
@@ -81,7 +82,7 @@ public class SphereHoughTransform extends GenericHoughTransform {
 
                         }
                     }
-                }                
+                }
             };
             pool.submit(task);
         }

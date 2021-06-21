@@ -1,4 +1,4 @@
-package wbif.sjx.common.Object;
+package wbif.sjx.common.ImageJ;
 
 import ij.process.LUT;
 

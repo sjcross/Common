@@ -2,8 +2,8 @@ package wbif.sjx.common.Process.ActiveContour.Energies;
 
 import ij.ImagePlus;
 import ij.process.ImageProcessor;
-import wbif.sjx.common.MathFunc.BresenhamLine;
 import wbif.sjx.common.MathFunc.CumStat;
+import wbif.sjx.common.Object.Voxels.BresenhamLine;
 import wbif.sjx.common.Process.ActiveContour.PhysicalModel.Vertex;
 
 /**

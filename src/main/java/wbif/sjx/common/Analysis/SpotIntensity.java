@@ -1,4 +1,4 @@
-package wbif.sjx.common.Object;
+package wbif.sjx.common.Analysis;
 
 //No need to use cumulative statistics, as this doesn't really make sense for a single spot.
 
@@ -11,7 +11,7 @@ import org.apache.commons.math3.stat.descriptive.rank.Min;
 import org.apache.commons.math3.stat.descriptive.summary.Sum;
 
 import ij.process.ImageProcessor;
-import wbif.sjx.common.MathFunc.MidpointCircle;
+import wbif.sjx.common.Object.Voxels.MidpointCircle;
 
 public class SpotIntensity {
     private double[] int_arr;

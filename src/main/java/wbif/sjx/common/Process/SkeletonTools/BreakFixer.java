@@ -5,8 +5,9 @@ import ij.plugin.ImageCalculator;
 import ij.plugin.filter.Convolver;
 import ij.process.ImageProcessor;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
-import wbif.sjx.common.MathFunc.BresenhamLine;
+
 import wbif.sjx.common.Object.Point;
+import wbif.sjx.common.Object.Voxels.BresenhamLine;
 
 import java.util.ArrayList;
 

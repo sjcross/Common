@@ -1,5 +1,5 @@
 
-package wbif.sjx.common.MathFunc;
+package wbif.sjx.common.Object.Voxels;
 
 // Implementation of the midpoint circle algorithm
 // Described at https://en.wikipedia.org/wiki/Midpoint_circle_algorithm

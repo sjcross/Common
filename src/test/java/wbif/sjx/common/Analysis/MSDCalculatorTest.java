@@ -12,7 +12,7 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 import wbif.sjx.common.ExpectedObjects.SingleTrack2D;
 import wbif.sjx.common.ExpectedObjects.Tracks2D;
 import wbif.sjx.common.MathFunc.CumStat;
-import wbif.sjx.common.Object.Track;
+import wbif.sjx.common.Object.Tracks.Track;
 
 
 /**

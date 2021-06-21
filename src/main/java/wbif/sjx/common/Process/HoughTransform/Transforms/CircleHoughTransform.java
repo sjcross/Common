@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import ij.process.ImageProcessor;
-import wbif.sjx.common.MathFunc.MidpointCircle;
+import wbif.sjx.common.Object.Voxels.MidpointCircle;
 import wbif.sjx.common.Process.HoughTransform.Accumulators.CircleAccumulator;
 
 /**

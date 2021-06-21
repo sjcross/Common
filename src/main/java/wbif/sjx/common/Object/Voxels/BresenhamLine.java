@@ -1,4 +1,4 @@
-package wbif.sjx.common.MathFunc;
+package wbif.sjx.common.Object.Voxels;
 
 /**
  * Implements Bresenham's line algorithm to draw a straight line between two points.

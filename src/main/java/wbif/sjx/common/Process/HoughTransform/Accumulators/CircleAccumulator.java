@@ -4,7 +4,7 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.gui.OvalRoi;
 import ij.gui.Overlay;
-import wbif.sjx.common.MathFunc.MidpointCircle;
+import wbif.sjx.common.Object.Voxels.MidpointCircle;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
 package wbif.sjx.common.Analysis;
 
-import wbif.sjx.common.Object.Track;
-import wbif.sjx.common.Object.TrackCollection;
+import wbif.sjx.common.Object.Tracks.Track;
+import wbif.sjx.common.Object.Tracks.TrackCollection;
 
 import java.util.TreeMap;
 

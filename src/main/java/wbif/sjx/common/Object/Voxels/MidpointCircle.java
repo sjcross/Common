@@ -1,9 +1,11 @@
-package wbif.sjx.common.MathFunc;
+package wbif.sjx.common.Object.Voxels;
 
 // Implementation of the midpoint circle algorithm
 // Described at https://en.wikipedia.org/wiki/Midpoint_circle_algorithm (accessed 12-07-2016)
 
 import java.util.ArrayList;
+
+import wbif.sjx.common.MathFunc.ArrayFunc;
 
 public class MidpointCircle {
 	int[] x_oct;
