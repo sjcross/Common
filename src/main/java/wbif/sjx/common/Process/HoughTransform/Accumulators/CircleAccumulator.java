@@ -72,6 +72,9 @@ public class CircleAccumulator extends Accumulator {
 
         // Identifying the brightest point in the accumulator
         int maxIdx = getLargestScorePixelIndex();
+        if (maxIdx == -1)
+            return objects;
+
         double maxVal = accumulator[maxIdx];
 
         // Extracting all points

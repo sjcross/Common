@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch CircleHoughTransform",
+            "request": "launch",
+            "mainClass": "wbif.sjx.common.Process.HoughTransform.Transforms.CircleHoughTransform",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
             "name": "Launch SphereShell",
             "request": "launch",
             "mainClass": "wbif.sjx.common.Object.Voxels.SphereShell",
