@@ -1,7 +1,5 @@
 package wbif.sjx.common.MetadataExtractors;
 
-import wbif.sjx.common.Object.Metadata;
-
 import java.util.StringTokenizer;
 
 /**

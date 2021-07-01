@@ -7,7 +7,6 @@ import loci.formats.tiff.TiffParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import wbif.sjx.common.Object.Metadata;
 
 import javax.xml.parsers.*;
 import java.io.File;

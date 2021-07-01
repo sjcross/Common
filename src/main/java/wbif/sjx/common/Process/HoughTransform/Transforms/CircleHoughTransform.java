@@ -4,8 +4,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
+import ij.ImageStack;
 import ij.process.ImageProcessor;
-import wbif.sjx.common.MathFunc.MidpointCircle;
+import wbif.sjx.common.Object.Voxels.MidpointCircle;
 import wbif.sjx.common.Process.HoughTransform.Accumulators.CircleAccumulator;
 
 /**
@@ -33,11 +37,12 @@ public class CircleHoughTransform extends GenericHoughTransform {
         int maxR = parameterRanges[2][1];
 
         // Setting up the threading system
-        ThreadPoolExecutor pool = new ThreadPoolExecutor(nThreads,nThreads,0L, TimeUnit.MILLISECONDS,new LinkedBlockingQueue<>());
+        ThreadPoolExecutor pool = new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<>());
 
         // Iterating over all radii
-        int nR = maxR-minR+1;
-        for (int iR=0;iR<nR;iR++) {
+        int nR = maxR - minR + 1;
+        for (int iR = 0; iR < nR; iR++) {
             int finalIR = iR;
             Runnable task = () -> {
                 // Getting the current radius value
@@ -45,8 +50,7 @@ public class CircleHoughTransform extends GenericHoughTransform {
 
                 // Generating coordinates for the points on the midpoint circle
                 MidpointCircle midpointCircle = new MidpointCircle(R);
-                int[] xCirc = midpointCircle.getXCircle();
-                int[] yCirc = midpointCircle.getYCircle();
+                int[][] circ = midpointCircle.getCircle();
 
                 // Iterating over X and Y
                 int nX = maxX - minX + 1;
@@ -57,8 +61,8 @@ public class CircleHoughTransform extends GenericHoughTransform {
                         int X = minX + iX;
                         int Y = minY + iY;
 
-                        double value = pixels.getPixelValue(new int[]{X, Y});
-                        accumulator.addPoints(new int[]{X, Y, R}, value, xCirc, yCirc);
+                        double value = pixels.getPixelValue(new int[] { X, Y });
+                        accumulator.addPoints(new int[] { X, Y, R }, value, circ);
 
                     }
                 }

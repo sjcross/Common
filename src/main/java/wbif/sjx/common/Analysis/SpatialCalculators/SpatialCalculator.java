@@ -1,8 +1,8 @@
 package wbif.sjx.common.Analysis.SpatialCalculators;
 
-import wbif.sjx.common.Object.Track;
-
 import java.util.TreeMap;
+
+import wbif.sjx.common.Object.Tracks.Track;
 
 /**
  * Created by sc13967 on 20/01/2018.

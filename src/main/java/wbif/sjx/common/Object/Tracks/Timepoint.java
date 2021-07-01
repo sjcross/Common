@@ -1,4 +1,6 @@
-package wbif.sjx.common.Object;
+package wbif.sjx.common.Object.Tracks;
+
+import wbif.sjx.common.Object.Point;
 
 /**
  * Created by sc13967 on 22/09/2017.

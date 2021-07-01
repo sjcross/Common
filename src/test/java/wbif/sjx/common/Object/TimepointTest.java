@@ -2,6 +2,8 @@ package wbif.sjx.common.Object;
 
 import org.junit.jupiter.api.Test;
 
+import wbif.sjx.common.Object.Tracks.Timepoint;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**

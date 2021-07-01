@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch CircleHoughTransform",
+            "request": "launch",
+            "mainClass": "wbif.sjx.common.Process.HoughTransform.Transforms.CircleHoughTransform",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
+            "name": "Launch SphereShell",
+            "request": "launch",
+            "mainClass": "wbif.sjx.common.Object.Voxels.SphereShell",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
+            "name": "Launch SphereSolid",
+            "request": "launch",
+            "mainClass": "wbif.sjx.common.Object.Voxels.SphereSolid",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
+            "name": "Launch SphereHoughTransform",
+            "request": "launch",
+            "mainClass": "wbif.sjx.common.Process.HoughTransform.Transforms.SphereHoughTransform",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
+            "name": "Launch MidpointSphere",
+            "request": "launch",
+            "mainClass": "wbif.sjx.common.MathFunc.MidpointSphere",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"

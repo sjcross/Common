@@ -1,44 +1,42 @@
 package wbif.sjx.common.Process.HoughTransform.Accumulators;
 
+import java.util.ArrayList;
+
 import ij.IJ;
 import ij.ImagePlus;
-import ij.gui.OvalRoi;
-import ij.gui.Overlay;
-import wbif.sjx.common.Object.Voxels.MidpointCircle;
-
-import java.util.ArrayList;
+import wbif.sjx.common.Object.Voxels.SphereSolid;
 
 /**
  * Created by sc13967 on 13/01/2018.
  */
-public class CircleAccumulator extends Accumulator {
+public class SphereAccumulator extends Accumulator {
     /**
      * Constructor for Accumulator object.
      *
      * @param parameterRanges 2D Integer array containing the dimensions over which the accumulator exists.
      */
-    public CircleAccumulator(int[][] parameterRanges) {
+    public SphereAccumulator(int[][] parameterRanges) {
         super(parameterRanges);
     }
 
 
     @Override
     public void addDetectedObjectsOverlay(ImagePlus ipl, ArrayList<double[]> objects) {
-        // Adding overlay showing detected circles
-        Overlay overlay = ipl.getOverlay();
-        if (overlay == null) overlay = new Overlay();
+        // // Adding overlay showing detected circles
+        // Overlay overlay = ipl.getOverlay();
+        // if (overlay == null) overlay = new Overlay();
 
-        for (int i=0;i<objects.size();i++) {
-            double x = objects.get(i)[0];
-            double y = objects.get(i)[1];
-            double r = objects.get(i)[2];
+        // for (int i=0;i<objects.size();i++) {
+        //     double x = objects.get(i)[0];
+        //     double y = objects.get(i)[1];
+        //     double r = objects.get(i)[2];
 
-            OvalRoi ovalRoi = new OvalRoi(x-r,y-r,2*r,2*r);
-            overlay.add(ovalRoi);
+        //     OvalRoi ovalRoi = new OvalRoi(x-r,y-r,2*r,2*r);
+        //     overlay.add(ovalRoi);
 
-        }
+        // }
 
-        ipl.setOverlay(overlay);
+        // ipl.setOverlay(overlay);
 
     }
 
@@ -47,9 +45,10 @@ public class CircleAccumulator extends Accumulator {
         for (int i = 0; i < points[0].length; i++) {
             int xx = parameters[0]+points[0][i]-parameterRanges[0][0];
             int yy = parameters[1]+points[1][i]-parameterRanges[1][0];
-            int rr = parameters[2]-parameterRanges[2][0];
+            int zz = parameters[2]+points[2][i]-parameterRanges[2][0];
+            int rr = parameters[3]-parameterRanges[3][0];
 
-            int idx = indexer.getIndex(new int[]{xx,yy,rr});
+            int idx = indexer.getIndex(new int[]{xx,yy,zz,rr});
 
             if (idx == -1) continue;
 
@@ -66,15 +65,13 @@ public class CircleAccumulator extends Accumulator {
         ArrayList<double[]> objects = new ArrayList<>();
 
         // Getting relative coordinates for exclusion zone
-        MidpointCircle midpointCircle = new MidpointCircle(exclusionR);
-        int[] x = midpointCircle.getXCircleFill();
-        int[] y = midpointCircle.getYCircleFill();
+        SphereSolid voxelSphere = new SphereSolid(exclusionR);
+        int[] x = voxelSphere.getX();
+        int[] y = voxelSphere.getY();
+        int[] z = voxelSphere.getZ();
 
         // Identifying the brightest point in the accumulator
         int maxIdx = getLargestScorePixelIndex();
-        if (maxIdx == -1)
-            return objects;
-
         double maxVal = accumulator[maxIdx];
 
         // Extracting all points
@@ -84,16 +81,18 @@ public class CircleAccumulator extends Accumulator {
             parameters[0] = parameters[0] + parameterRanges[0][0];
             parameters[1] = parameters[1] + parameterRanges[1][0];
             parameters[2] = parameters[2] + parameterRanges[2][0];
+            parameters[3] = parameters[3] + parameterRanges[3][0];
 
-            objects.add(new double[]{parameters[0],parameters[1],parameters[2],maxVal});
+            objects.add(new double[]{parameters[0],parameters[1],parameters[2],parameters[3],maxVal});
 
             // Setting all pixels within exclusionR to zero.  This is repeated for all slices.
             for (int rr = 0; rr< indexer.getDim()[2]; rr++) {
                 for (int i = 0; i < x.length; i++) {
                     int xx = parameters[0] + x[i] - parameterRanges[0][0];
                     int yy = parameters[1] + y[i] - parameterRanges[1][0];
+                    int zz = parameters[2] + z[i] - parameterRanges[2][0];
 
-                    int idx = indexer.getIndex(new int[]{xx, yy, rr});
+                    int idx = indexer.getIndex(new int[]{xx, yy, zz, rr});
 
                     if (idx == -1) continue;
 
@@ -117,14 +116,14 @@ public class CircleAccumulator extends Accumulator {
     @Override
     public ImagePlus getAccumulatorAsImage() {
         int[] dim = indexer.getDim();
-        ImagePlus ipl = IJ.createImage("Circle_Accumulator",dim[0],dim[1],dim[2],32);
+        ImagePlus ipl = IJ.createHyperStack("Sphere_Accumulator", dim[0],dim[1], 1, dim[2], dim[3], 32);
 
         for (int idx = 0; idx< indexer.getLength(); idx++) {
             int[] coord = indexer.getCoord(idx);
 
             double value = accumulator[idx];
 
-            ipl.setSlice(coord[2]+1);
+            ipl.setPosition(1,coord[2]+1,coord[3]+1);
             ipl.getProcessor().putPixelValue(coord[0],coord[1],value);
 
         }

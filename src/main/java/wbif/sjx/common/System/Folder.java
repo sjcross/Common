@@ -1,6 +1,7 @@
 package wbif.sjx.common.System;
 
 import java.io.File;
+import java.util.Arrays;
 
 /**
  * Created by Stephen on 16/10/2016.
@@ -48,6 +49,10 @@ public class Folder {
         //Resetting the counters
         file_count = 0;
         folder_count = 0;
+
+        // Sorting alphabetically
+        Arrays.sort(files);
+        Arrays.sort(folders);
 
     }
 

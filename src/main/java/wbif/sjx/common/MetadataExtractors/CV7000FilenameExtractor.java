@@ -1,7 +1,5 @@
 package wbif.sjx.common.MetadataExtractors;
 
-import wbif.sjx.common.Object.Metadata;
-
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -1,4 +1,4 @@
-package wbif.sjx.common.Object;
+package wbif.sjx.common.Object.Tracks;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -7,6 +7,7 @@ import java.util.TreeMap;
 import wbif.sjx.common.Analysis.DirectionalPersistenceCalculator;
 import wbif.sjx.common.Analysis.MSDCalculator;
 import wbif.sjx.common.MathFunc.CumStat;
+import wbif.sjx.common.Object.Point;
 
 /**
  * Created by sc13967 on 13/06/2017.

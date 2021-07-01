@@ -6,12 +6,20 @@ import wbif.sjx.common.Object.Volume.Volume;
 import java.util.Iterator;
 
 public class SurfaceSeparationCalculator {
-    private final double dppXY;
-    private final double minDist;
-    private final Point<Integer> p1;
-    private final Point<Integer> p2;
+    private double dppXY;
+    private double minDist;
+    private Point<Integer> p1;
+    private Point<Integer> p2;
 
     public SurfaceSeparationCalculator(Volume v1, Volume v2) {
+        calculate(v1, v2, false);
+    }
+
+    public SurfaceSeparationCalculator(Volume v1, Volume v2, boolean force2D) {
+        calculate(v1, v2, force2D);
+    }
+
+    protected void calculate(Volume v1, Volume v2, boolean force2D) {
         this.dppXY = v1.getDppXY();
         double minDist = Double.MAX_VALUE;
         Point<Integer> p1 = null;
@@ -20,7 +28,7 @@ public class SurfaceSeparationCalculator {
         Iterator<Point<Integer>> iterator2 = v2.getSurface().getCoordinateIterator();
 
         // If one or both of the volumes are 2D, only calculate separation in XY
-        boolean only2D = v1.is2D() || v2.is2D();
+        boolean only2D = v1.is2D() || v2.is2D() || force2D;
 
         while (iterator2.hasNext()) {
             Point<Integer> pp2 = iterator2.next();

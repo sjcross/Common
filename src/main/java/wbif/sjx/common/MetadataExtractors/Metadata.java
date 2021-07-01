@@ -1,4 +1,4 @@
-package wbif.sjx.common.Object;
+package wbif.sjx.common.MetadataExtractors;
 
 import java.io.File;
 import java.text.DecimalFormat;

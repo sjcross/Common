@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 import org.junit.jupiter.api.Test;
 
-import wbif.sjx.common.Object.Track;
+import wbif.sjx.common.Object.Tracks.Track;
 
 /**
  * Created by steph on 29/05/2017.

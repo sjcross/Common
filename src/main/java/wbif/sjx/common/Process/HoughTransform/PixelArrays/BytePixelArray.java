@@ -9,7 +9,6 @@ public class BytePixelArray extends PixelArray {
     public BytePixelArray(byte[] pixels, int[] dim) {
         super(dim);
         this.pixels = pixels;
-
     }
 
     @Override
@@ -18,8 +17,7 @@ public class BytePixelArray extends PixelArray {
     }
 
     @Override
-    public double getPixelValue(int i) {
+    public double getPixelValue(int i) {        
         return (pixels[i] & 0xff);
     }
-
 }
