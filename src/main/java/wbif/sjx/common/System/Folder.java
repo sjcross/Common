@@ -11,10 +11,10 @@ public class Folder {
     private final Folder parent;
     private File[] files;
     private File[] folders;
-    private int file_count = 0; //Current file count
-    private int folder_count = 0; //Current folder count
-    private int n_folders = 0; //Number of children folders
-    private int n_files = 0; //Number of children files
+    private int file_count = 0; // Current file count
+    private int folder_count = 0; // Current folder count
+    private int n_folders = 0; // Number of children folders
+    private int n_files = 0; // Number of children files
 
     public Folder(File folder, Folder parent) {
         this.folder = folder;
@@ -22,7 +22,7 @@ public class Folder {
 
         File[] file_list = folder.listFiles();
 
-        //Counting the number of files and folders
+        // Counting the number of files and folders
         if (file_list != null) {
             for (int i = 0; i < file_list.length; i++) {
                 if (file_list[i].isDirectory()) {
@@ -32,7 +32,7 @@ public class Folder {
                 }
             }
 
-            //Creating arrays for files and folders
+            // Creating arrays for files and folders
             files = new File[n_files];
             folders = new File[n_folders];
             for (int i = 0; i < file_list.length; i++) {
@@ -46,13 +46,16 @@ public class Folder {
             }
         }
 
-        //Resetting the counters
+        // Resetting the counters
         file_count = 0;
         folder_count = 0;
 
         // Sorting alphabetically
-        Arrays.sort(files);
-        Arrays.sort(folders);
+        if (files != null)
+            Arrays.sort(files);
+
+        if (folders != null)
+            Arrays.sort(folders);
 
     }
 
@@ -99,7 +102,7 @@ public class Folder {
 
     public Folder getNextFolder() {
         if (hasMoreFolders()) {
-            return new Folder(folders[folder_count++],this);
+            return new Folder(folders[folder_count++], this);
 
         } else {
             return null;
@@ -122,7 +125,7 @@ public class Folder {
         Folder parent = this.parent;
 
         while (parent != null) {
-            name = parent.getFolderAsFile().getName()+"/"+name;
+            name = parent.getFolderAsFile().getName() + "/" + name;
             parent = parent.getParent();
         }
         System.out.println(name);
@@ -149,7 +152,7 @@ public class Folder {
         Folder parent = this.parent;
 
         while (parent != null) {
-            name = parent.getFolderAsFile().getName()+"/"+name;
+            name = parent.getFolderAsFile().getName() + "/" + name;
             parent = parent.getParent();
         }
         System.out.println(name);
@@ -169,7 +172,7 @@ public class Folder {
         Folder parent = this.parent;
 
         while (parent != null) {
-            name = parent.getFolderAsFile().getName()+"/"+name;
+            name = parent.getFolderAsFile().getName() + "/" + name;
             parent = parent.getParent();
         }
         System.out.println(name);
