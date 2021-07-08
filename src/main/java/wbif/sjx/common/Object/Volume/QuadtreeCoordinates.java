@@ -87,14 +87,14 @@ public class QuadtreeCoordinates extends CoordinateSet {
         if (quadTrees.containsKey(z))
             quadTrees.get(z).optimise();
     }
-        
+
     public CoordinateSet duplicate() {
         QuadtreeCoordinates newCoordinates = new QuadtreeCoordinates();
-        
+
         // Adding slice by slice
-        for (Integer slice:quadTrees.keySet()) {
+        for (Integer slice : quadTrees.keySet()) {
             QuadTree quadTree = new QuadTree(quadTrees.get(slice));
-            newCoordinates.putQuadTree(slice, quadTree);   
+            newCoordinates.putQuadTree(slice, quadTree);
         }
 
         return newCoordinates;
@@ -118,6 +118,9 @@ public class QuadtreeCoordinates extends CoordinateSet {
     @Override
     public CoordinateSet getSlice(int slice) {
         CoordinateSet sliceCoordinateSet = new QuadtreeCoordinates();
+        if (!quadTrees.containsKey(slice))
+            return null;
+
         sliceCoordinateSet.addAll(quadTrees.get(slice));
 
         sliceCoordinateSet.finalise();
