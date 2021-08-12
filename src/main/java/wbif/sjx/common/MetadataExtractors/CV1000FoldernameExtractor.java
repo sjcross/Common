@@ -4,10 +4,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Extractor for the Yokogawa CV1000 format (e.g. 20210806T113905_10x_K01_MySample1)
+ * 
  * Created by steph on 30/04/2017.
+ * 
  */
-public class CellVoyagerFoldernameExtractor implements NameExtractor {
-    private static final String name = "CellVoyager folder name";
+public class CV1000FoldernameExtractor implements NameExtractor {
+    private static final String name = "CV1000 folder name";
     private static final String pattern = "(\\d{4})(\\d{2})(\\d{2})T(\\d{2})(\\d{2})(\\d{2})_([^_]+?)_([^_\\\\]++)_?([.[^\\\\]]++)?";
 
     public String getName() {

@@ -45,6 +45,7 @@ public class Metadata extends LinkedHashMap<String,Object> {
     public static final String PLATE_MODEL = "Plate model";
     public static final String TIMELINE_NUMBER = "Timeline number";
     public static final String ACTION_NUMBER = "Action number";
+    public static final String AREA_NAME = "Area name";
 
 
     // CONSTRUCTOR

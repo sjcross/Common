@@ -4,12 +4,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Extracts names in the format W1F001T0001Z00C1.tif
+ * 
  * Created by stephen on 30/04/2017.
  */
-public class CellVoyagerFilenameExtractor implements NameExtractor {
-    private static final String name = "CellVoyager filename";
+public class CV1000FilenameExtractor implements NameExtractor {
+    private static final String name = "CV1000 filename";
     private static final String pattern = "W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)";
-
+    
     public String getName() {
         return name;
 

@@ -38,7 +38,7 @@ public class OperaFileExtractor implements FileExtractor {
             Document doc = documentBuilder.parse(new InputSource(new StringReader(xml)));
             doc.getDocumentElement().normalize();
 
-            result.setCelltype(doc.getElementsByTagName("AreaName").item(0).getChildNodes().item(0).getNodeValue());
+            result.put(Metadata.AREA_NAME,doc.getElementsByTagName("AreaName").item(0).getChildNodes().item(0).getNodeValue());
 
         } catch (IOException | SAXException | ParserConfigurationException e) {
             e.printStackTrace();
