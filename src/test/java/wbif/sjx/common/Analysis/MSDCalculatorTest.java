@@ -8,7 +8,6 @@ import java.util.TreeMap;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import wbif.sjx.common.ExpectedObjects.SingleTrack2D;
 import wbif.sjx.common.ExpectedObjects.Tracks2D;
 import wbif.sjx.common.MathFunc.CumStat;
@@ -63,7 +62,6 @@ public class MSDCalculatorTest {
 
     @Test
     @Disabled
-    @Ignore
     public void testGetLinearFitSingleTrack() throws Exception {
 //        Track track = SingleTrack2D.getTrack();
 //
