@@ -1,19 +1,17 @@
 name: Test
 
-on: [push]
-
-# on:
-#   push:
-#     branches:
-#       - main
-#       - develop
-#   pull_request:
-#     branches:
-#       - main
-#       - develop
-#   release:
-#     types: 
-#       - created
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+  release:
+    types: 
+      - created
 
 jobs:
   test:
@@ -21,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ 'windows-latest' ] # 'ubuntu-latest'
+        os: [ 'windows-latest' ] # , 'ubuntu-latest'
 
     steps:
       - name: Checkout repository
