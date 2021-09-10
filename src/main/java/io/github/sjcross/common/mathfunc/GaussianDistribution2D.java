@@ -28,7 +28,7 @@ public class GaussianDistribution2D {
         double a = (Math.cos(th) * Math.cos(th)) / (2 * sx * sx) + (Math.sin(th) * Math.sin(th)) / (2 * sy * sy);
         double b = Math.sin(2 * th) / (4 * sy * sy) - Math.sin(2 * th) / (4 * sx * sx);
         double c = (Math.cos(th) * Math.cos(th)) / (2 * sy * sy) + (Math.sin(th) * Math.sin(th)) / (2 * sx * sx);
-        double val = ABG + A0 * Math.exp(-(a * ((x - x0) * (x - x0)) - 2 * b * (x - x0) * (y - y0) + c * ((y - y0) * (y - y0))));
+        double val = ABG + A0 * Math.exp(-(a * ((x - x0) * (x - x0)) + 2 * b * (x - x0) * (y - y0) + c * ((y - y0) * (y - y0))));
 
         return new double[]{val,a,b,c};
 

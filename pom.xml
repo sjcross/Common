@@ -10,7 +10,7 @@
 
     <groupId>io.github.sjcross</groupId>
     <artifactId>Common</artifactId>
-    <version>1.10.0</version>
+    <version>1.10.1</version>
 
     <packaging>jar</packaging>
     <name>Common</name>
