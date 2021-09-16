@@ -28,9 +28,9 @@ public class CurvatureCalculator {
         STANDARD, LOESS
     }
 
-    private int loessNNeighbours = 5;
+    private int NNeighbours = 5;
     private double loessBandwidth = 0.04;
-    private int loessIterations = 10;
+    private int loessIterations = 0;
     private double loessAccuracy = 100;
 
     public CurvatureCalculator(ArrayList<Vertex> path, boolean isLoop) {
@@ -42,12 +42,11 @@ public class CurvatureCalculator {
     public void calculateCurvature() {
         // Checking there are enough points for fitting
         int nKnots = path.size();
-        if (nKnots < (loessNNeighbours + 1)) {
-            return;
-        }
+        if (nKnots < (NNeighbours + 1))
+            return;        
     
         if (isLoop)
-            nKnots = nKnots + 2 * loessNNeighbours;
+            nKnots = nKnots + 2 * NNeighbours;
 
         // Preparing line coordinates for spline fitting
         double[] t = new double[nKnots];
@@ -60,7 +59,7 @@ public class CurvatureCalculator {
         // If a loop, starting with the final few points from the opposite end
         if (isLoop) {
             int len = path.size();
-            for (int i = loessNNeighbours; i > 0; i--) {
+            for (int i = NNeighbours; i > 0; i--) {
                 Vertex vertex = path.get((len - i));
                 t[count] = count == 0 ? 0 : t[count - 1] + vertex.getEdgeLength(prevVertex);
                 x[count] = vertex.getX();
@@ -82,7 +81,7 @@ public class CurvatureCalculator {
         
         // If a loop, ending with the first few points from the opposite end
         if (isLoop) {
-            for (int i = 0; i < loessNNeighbours; i++) {
+            for (int i = 0; i < NNeighbours; i++) {
                 Vertex vertex = path.get(i);
                 t[count] = count == 0 ? 0 : t[count - 1] + vertex.getEdgeLength(prevVertex);
                 x[count] = vertex.getX();
@@ -122,9 +121,9 @@ public class CurvatureCalculator {
         double[] knots = splines[0].getKnots();
 
         curvature = new TreeMap<>();
-        double w = (double) loessNNeighbours / 2d;
-        int startIdx = isLoop ? loessNNeighbours : 0;
-        int endIdx = isLoop ? knots.length - loessNNeighbours : knots.length;
+        double w = (double) NNeighbours / 2d;
+        int startIdx = isLoop ? NNeighbours : 0;
+        int endIdx = isLoop ? knots.length - NNeighbours : knots.length;
         for (int i = startIdx; i < endIdx; i++) {
             double pos = knots[i];
 
@@ -190,10 +189,10 @@ public class CurvatureCalculator {
             double p1 = p2;
             p2 = iterator.next();
 
-            double x1 = splines[0].value(p1) + 0.5;
-            double y1 = splines[1].value(p1) + 0.5;
-            double x2 = splines[0].value(p2) + 0.5;
-            double y2 = splines[1].value(p2) + 0.5;
+            double x1 = splines[0].value(p1);
+            double y1 = splines[1].value(p1);
+            double x2 = splines[0].value(p2);
+            double y2 = splines[1].value(p2);
 
             double k1 = Math.abs(curvature.get(p1));
             double k2 = Math.abs(curvature.get(p2));
@@ -213,15 +212,15 @@ public class CurvatureCalculator {
 
     }
 
-    public int getLoessNNeighbours() {
-        return loessNNeighbours;
+    public int getNNeighbours() {
+        return NNeighbours;
     }
 
-    public void setLoessNNeighbours(int loessNNeighbours) {
-        this.loessNNeighbours = loessNNeighbours;
+    public void setNNeighbours(int NNeighbours) {
+        this.NNeighbours = NNeighbours;
 
         // Calculating the bandwidth
-        loessBandwidth = (double) loessNNeighbours / (double) path.size();
+        loessBandwidth = (double) NNeighbours / (double) path.size();
 
         // Keeping the bandwidth within limits
         if (loessBandwidth < 0)
@@ -266,8 +265,8 @@ public class CurvatureCalculator {
         ArrayList<Vertex> spline = new ArrayList<>();
 
         double[] knots = splines[0].getKnots();
-        int startIdx = isLoop ? loessNNeighbours : 0;
-        int endIdx = isLoop ? knots.length - loessNNeighbours : knots.length;
+        int startIdx = isLoop ? NNeighbours : 0;
+        int endIdx = isLoop ? knots.length - NNeighbours : knots.length;
         for (int i = startIdx; i < endIdx; i++) {
             double t = knots[i];
         
