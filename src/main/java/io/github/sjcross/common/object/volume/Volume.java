@@ -1,14 +1,20 @@
 package io.github.sjcross.common.object.volume;
 
-import io.github.sjcross.common.analysis.volume.PointSurfaceSeparatorCalculator;
-import io.github.sjcross.common.analysis.volume.SurfaceSeparationCalculator;
-import io.github.sjcross.common.exceptions.IntegerOverflowException;
-import io.github.sjcross.common.object.Point;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
+import ij.gui.Roi;
+import ij.plugin.filter.ThresholdToSelection;
+import ij.process.ImageProcessor;
+import io.github.sjcross.common.analysis.volume.PointSurfaceSeparatorCalculator;
+import io.github.sjcross.common.analysis.volume.SurfaceSeparationCalculator;
+import io.github.sjcross.common.exceptions.IntegerOverflowException;
+import io.github.sjcross.common.object.Point;
 
 public class Volume {
     protected SpatCal spatCal;
@@ -527,9 +533,9 @@ public class Volume {
 
     public double getPointSurfaceSeparation(Point<Double> point, boolean pixelDistances, boolean force2D) {
         // If this object is only 2D, ensure the Z-position of the point is also zero
-        if (is2D() || force2D) 
+        if (is2D() || force2D)
             point = new Point<>(point.x, point.y, 0d);
-        
+
         PointSurfaceSeparatorCalculator calculator = new PointSurfaceSeparatorCalculator(this, point);
         return calculator.getMinDist(pixelDistances);
     }
@@ -674,8 +680,10 @@ public class Volume {
 
     public void setSpatialCalibration(SpatCal spatCal) {
         this.spatCal = spatCal;
-        if (surface != null) surface.setSpatialCalibration(spatCal);
-        if (projection != null) projection.setSpatialCalibration(spatCal);
+        if (surface != null)
+            surface.setSpatialCalibration(spatCal);
+        if (projection != null)
+            projection.setSpatialCalibration(spatCal);
     }
 
     public double getDppXY() {
@@ -710,10 +718,27 @@ public class Volume {
         return coordinateSet.getVolumeType();
     }
 
-    public void setCoordinateSet(CoordinateSet coordinateSet)
-
-    {
+    public void setCoordinateSet(CoordinateSet coordinateSet) {
         this.coordinateSet = coordinateSet;
+    }
+
+    public Roi getRoi(int slice) {
+        // Getting the image corresponding to this slice
+        Volume sliceVol = getSlice(slice);
+
+        ImagePlus ipl = IJ.createImage("Slice", spatCal.width, spatCal.height, spatCal.nSlices, 8);
+        ImageProcessor ipr = ipl.getProcessor();
+        for (Point<Integer> point:sliceVol.coordinateSet)
+            ipr.set(point.x,point.y,255);
+        
+        new ImageJ();
+        ipl.show();
+        IJ.runMacro("waitForUser");
+
+        // ipr.setThreshold(0, 0, ImageProcessor.NO_LUT_UPDATE);
+       
+        return new ThresholdToSelection().convert(ipr);
+
     }
 
     public Iterator<Point<Double>> getCalibratedIterator(boolean pixelDistances, boolean matchXY) {
