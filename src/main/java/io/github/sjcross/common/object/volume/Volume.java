@@ -6,8 +6,8 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import ij.IJ;
-import ij.ImageJ;
 import ij.ImagePlus;
+import ij.Prefs;
 import ij.gui.Roi;
 import ij.plugin.filter.ThresholdToSelection;
 import ij.process.ImageProcessor;
@@ -731,12 +731,11 @@ public class Volume {
         for (Point<Integer> point:sliceVol.coordinateSet)
             ipr.set(point.x,point.y,255);
         
-        new ImageJ();
-        ipl.show();
-        IJ.runMacro("waitForUser");
+        ipr.setThreshold(0, 0, ImageProcessor.NO_LUT_UPDATE);
+        ipr.invert();
 
-        // ipr.setThreshold(0, 0, ImageProcessor.NO_LUT_UPDATE);
-       
+        Prefs.blackBackground = true;
+        
         return new ThresholdToSelection().convert(ipr);
 
     }
