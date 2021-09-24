@@ -1,6 +1,5 @@
 package io.github.sjcross.common.expectedobjects;
 
-import util.opencsv.CSVReader;
 import io.github.sjcross.common.object.Point;
 
 import java.io.BufferedReader;
@@ -12,8 +11,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
 
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+
 public class Clusters2D {
-    public static ArrayList<Point<Double>> getCentroids() throws FileNotFoundException {
+    public static ArrayList<Point<Double>> getCentroids() throws FileNotFoundException, CsvValidationException {
         try {
             String path = "/matlab/kfunction/Clusters_2D_centroids.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
@@ -41,7 +43,7 @@ public class Clusters2D {
 
     }
 
-    public static HashMap<Point<Double>,Double> getExpectedCorrections() throws FileNotFoundException {
+    public static HashMap<Point<Double>,Double> getExpectedCorrections() throws FileNotFoundException, CsvValidationException {
         try {
             String path = "/matlab/kfunction/Clusters_2D_corrections.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
@@ -70,7 +72,7 @@ public class Clusters2D {
 
     }
 
-    public static TreeMap<Double,Double> getKFunctionWithoutCorrection() {
+    public static TreeMap<Double,Double> getKFunctionWithoutCorrection() throws CsvValidationException {
         try {
             String path = "/matlab/kfunction/Clusters_2D_Kfn_WithoutCorrection.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
@@ -98,7 +100,7 @@ public class Clusters2D {
 
     }
 
-    public static TreeMap<Double,Double> getKFunctionWithCorrection() {
+    public static TreeMap<Double,Double> getKFunctionWithCorrection() throws CsvValidationException {
         try {
             String path = "/matlab/kfunction/Clusters_2D_Kfn_WithCorrection.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
@@ -126,7 +128,7 @@ public class Clusters2D {
 
     }
 
-    public static TreeMap<Double,Double> getLFunctionWithoutCorrection() {
+    public static TreeMap<Double,Double> getLFunctionWithoutCorrection() throws CsvValidationException {
         try {
             String path = "/matlab/kfunction/Clusters_2D_Lfn_WithoutCorrection.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
@@ -154,7 +156,7 @@ public class Clusters2D {
 
     }
 
-    public static TreeMap<Double,Double> getLFunctionWithCorrection() {
+    public static TreeMap<Double,Double> getLFunctionWithCorrection() throws CsvValidationException {
         try {
             String path = "/matlab/kfunction/Clusters_2D_Lfn_WithCorrection.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");

@@ -1,6 +1,5 @@
 package io.github.sjcross.common.expectedobjects;
 
-import util.opencsv.CSVReader;
 import io.github.sjcross.common.exceptions.IntegerOverflowException;
 import io.github.sjcross.common.object.volume.PointOutOfRangeException;
 import io.github.sjcross.common.object.volume.Volume;
@@ -13,6 +12,9 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
 
 /**
@@ -97,7 +99,7 @@ public abstract class ExpectedObjects {
 
             return coords;
 
-        } catch (IOException e) {
+        } catch (IOException | CsvValidationException e) {
             e.printStackTrace(System.err);
             return null;
         }

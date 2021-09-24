@@ -1,6 +1,5 @@
 package io.github.sjcross.common.expectedobjects;
 
-import util.opencsv.CSVReader;
 import io.github.sjcross.common.object.Point;
 
 import java.io.BufferedReader;
@@ -11,8 +10,11 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+
 public class Clusters3D {
-    public static ArrayList<Point<Double>> getCentroids() throws FileNotFoundException {
+    public static ArrayList<Point<Double>> getCentroids() throws FileNotFoundException, CsvValidationException {
         try {
             String path = "/matlab/kfunction/Clusters_3D_centroids.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
@@ -42,7 +44,7 @@ public class Clusters3D {
 
     }
 
-    public static TreeMap<Double,Double> getKFunctionWithoutCorrection() {
+    public static TreeMap<Double,Double> getKFunctionWithoutCorrection() throws CsvValidationException {
         try {
             String path = "/matlab/kfunction/Clusters_3D_Kfn_WithoutCorrection.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");
@@ -69,7 +71,7 @@ public class Clusters3D {
         return null;
     }
 
-    public static TreeMap<Double,Double> getKFunctionWithCorrection() {
+    public static TreeMap<Double,Double> getKFunctionWithCorrection() throws CsvValidationException {
         try {
             String path = "/matlab/kfunction/Clusters_3D_Kfn_WithCorrection.csv";
             String pathToCoordinates = URLDecoder.decode(ExpectedObjects.class.getResource(path).getPath(),"UTF-8");

@@ -1,6 +1,5 @@
 package io.github.sjcross.common.expectedobjects;
 
-import util.opencsv.CSVReader;
 import io.github.sjcross.common.object.tracks.Track;
 
 import java.io.BufferedReader;
@@ -9,6 +8,9 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.List;
 import java.util.TreeMap;
+
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
 public class SingleTrack2D {
     public static Track getTrack() {
@@ -49,7 +51,7 @@ public class SingleTrack2D {
 
             return msd;
 
-        } catch (IOException e) {
+        } catch (IOException | CsvValidationException e) {
             e.printStackTrace(System.err);
             return null;
         }

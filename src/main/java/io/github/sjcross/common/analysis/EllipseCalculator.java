@@ -1,8 +1,6 @@
 package io.github.sjcross.common.analysis;
 
-
 import org.bonej.geometry.FitEllipse;
-
 import io.github.sjcross.common.exceptions.IntegerOverflowException;
 import io.github.sjcross.common.object.Point;
 import io.github.sjcross.common.object.volume.PointOutOfRangeException;
