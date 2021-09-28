@@ -4,17 +4,17 @@
     <parent>
         <groupId>org.scijava</groupId>
         <artifactId>pom-scijava</artifactId>
-        <version>29.2.1</version>
+        <version>31.1.0</version>
         <relativePath />
     </parent>
 
-    <groupId>wbif.sjx</groupId>
+    <groupId>io.github.sjcross</groupId>
     <artifactId>Common</artifactId>
-    <version>1.7.1</version>
+    <version>1.10.4</version>
 
     <packaging>jar</packaging>
     <name>Common</name>
-    <url>https://github.com/SJCross/Common</url>
+    <url>https://github.com/sjcross/Common</url>
     <inceptionYear>2018</inceptionYear>
     <description>Common library</description>
     <organization>
@@ -118,6 +118,14 @@
         </dependency>
 
         <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.5.2</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
             <groupId>ome</groupId>
             <artifactId>bio-formats_plugins</artifactId>
             <version>6.6.1</version>
@@ -167,9 +175,8 @@
 
         <dependency>
             <groupId>org.bonej</groupId>
-            <artifactId>boneJ-legacy-plugins</artifactId>
+            <artifactId>bonej-legacy-util</artifactId>
             <version>1.0.0</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
