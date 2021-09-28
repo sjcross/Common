@@ -44,9 +44,9 @@ public class CircleAccumulator extends Accumulator {
 
     @Override
     public void addPoints(int[] parameters, double value, int[][] points) {
-        for (int i = 0; i < points[0].length; i++) {
-            int xx = parameters[0]+points[0][i]-parameterRanges[0][0];
-            int yy = parameters[1]+points[1][i]-parameterRanges[1][0];
+        for (int i = 0; i < points.length; i++) {
+            int xx = parameters[0]+points[i][0]-parameterRanges[0][0];
+            int yy = parameters[1]+points[i][1]-parameterRanges[1][0];
             int rr = parameters[2]-parameterRanges[2][0];
 
             int idx = indexer.getIndex(new int[]{xx,yy,rr});

@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch RectangleTransform",
+            "request": "launch",
+            "mainClass": "io.github.sjcross.common.process.houghtransform.transforms.RectangleTransform",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
+            "name": "Launch BresenhamRectangle",
+            "request": "launch",
+            "mainClass": "io.github.sjcross.common.object.voxels.BresenhamRectangle",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
             "name": "Launch CircleHoughTransform",
             "request": "launch",
             "mainClass": "wbif.sjx.common.Process.HoughTransform.Transforms.CircleHoughTransform",
