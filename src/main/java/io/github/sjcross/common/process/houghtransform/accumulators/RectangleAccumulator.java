@@ -1,24 +1,22 @@
 package io.github.sjcross.common.process.houghtransform.accumulators;
 
+import java.util.ArrayList;
+
 import ij.IJ;
 import ij.ImagePlus;
-import ij.gui.OvalRoi;
 import ij.gui.Overlay;
-import ij.gui.Roi;
 import ij.gui.RotatedRectRoi;
 import io.github.sjcross.common.object.voxels.MidpointCircle;
 
-import java.util.ArrayList;
-
-public class RectangleAccumulator extends Accumulator {
+public class RectangleAccumulator extends AbstractAccumulator {
     /**
      * Constructor for Accumulator object.
      *
-     * @param parameterRanges 2D Integer array containing the dimensions over which
-     *                        the accumulator exists.
+     * @param parameters 2D Integer array containing the dimensions over which the
+     *                   accumulator exists.
      */
-    public RectangleAccumulator(int[][] parameterRanges) {
-        super(parameterRanges);
+    public RectangleAccumulator(int[][] parameters) {
+        super(parameters);
     }
 
     @Override
@@ -50,15 +48,12 @@ public class RectangleAccumulator extends Accumulator {
     }
 
     @Override
-    public void addPoints(int[] parameters, double value, int[][] points) {
+    public void addPoints(int[] indices, double value, int[][] points) {
         for (int i = 0; i < points.length; i++) {
-            int xx = parameters[0] + points[i][0] - parameterRanges[0][0];
-            int yy = parameters[1] + points[i][1] - parameterRanges[1][0];
-            int ww = parameters[2] - parameterRanges[2][0];
-            int ll = parameters[3] - parameterRanges[3][0];
-            int tt = parameters[4] - parameterRanges[4][0];
+            int iX = parameters[0][indices[0]] + points[i][0] - parameters[0][0];
+            int iY = parameters[1][indices[1]] + points[i][1] - parameters[1][0];
 
-            int idx = indexer.getIndex(new int[] { xx, yy, ww, ll, tt });
+            int idx = indexer.getIndex(new int[] { iX, iY, indices[2], indices[3], indices[4] });
 
             if (idx == -1)
                 continue;
@@ -75,10 +70,10 @@ public class RectangleAccumulator extends Accumulator {
         // Creating an ArrayList to store the points
         ArrayList<double[]> objects = new ArrayList<>();
 
-        // // Getting relative coordinates for exclusion zone
-        // MidpointCircle midpointCircle = new MidpointCircle(exclusionR);
-        // int[] x = midpointCircle.getXCircleFill();
-        // int[] y = midpointCircle.getYCircleFill();
+        // Getting relative coordinates for exclusion zone
+        MidpointCircle midpointCircle = new MidpointCircle(exclusionR);
+        int[] x = midpointCircle.getXCircleFill();
+        int[] y = midpointCircle.getYCircleFill();
 
         // Identifying the brightest point in the accumulator
         int maxIdx = getLargestScorePixelIndex();
@@ -88,42 +83,45 @@ public class RectangleAccumulator extends Accumulator {
         double maxVal = accumulator[maxIdx];
 
         // Extracting all points
-        // while (maxVal >= minScore) {
-        // Getting parameters for brightest current spot and adding to ArrayList
-        int[] parameters = indexer.getCoord(maxIdx);
-        parameters[0] = parameters[0] + parameterRanges[0][0];
-        parameters[1] = parameters[1] + parameterRanges[1][0];
-        parameters[2] = parameters[2] + parameterRanges[2][0];
-        parameters[3] = parameters[3] + parameterRanges[3][0];
-        parameters[4] = parameters[4] + parameterRanges[4][0];
+        while (maxVal >= minScore) {
+            // Getting parameters for brightest current spot and adding to ArrayList
+            int[] currIndices = indexer.getCoord(maxIdx);
+            int xx = parameters[0][currIndices[0]];
+            int yy = parameters[1][currIndices[1]];
+            int ww = parameters[2][currIndices[2]];
+            int ll = parameters[3][currIndices[3]];
+            int tt = parameters[4][currIndices[4]];
 
-        objects.add(new double[] { parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], maxVal });
+            objects.add(new double[] { xx, yy, ww, ll, tt, maxVal });
 
-        // Setting all pixels within exclusionR to zero. This is repeated for all
-        // slices.
-        // for (int rr = 0; rr < indexer.getDim()[2]; rr++) {
-        // for (int i = 0; i < x.length; i++) {
-        // int xx = parameters[0] + x[i] - parameterRanges[0][0];
-        // int yy = parameters[1] + y[i] - parameterRanges[1][0];
+            // Setting all pixels within exclusionR to zero. This is repeated for all
+            // slices.
+            for (int iW = 0; iW < indexer.getDim()[2]; iW++) {
+                for (int iL = 0; iL < indexer.getDim()[3]; iL++) {
+                    for (int iT = 0; iT < indexer.getDim()[4]; iT++) {
+                        for (int i = 0; i < x.length; i++) {
+                            int iX = xx + x[i] - parameters[0][0];
+                            int iY = yy + y[i] - parameters[1][0];
+                            int idx = indexer.getIndex(new int[] { iX, iY, iW, iL, iT });
 
-        // int idx = indexer.getIndex(new int[] { xx, yy, rr });
+                            if (idx == -1)
+                                continue;
 
-        // if (idx == -1)
-        // continue;
+                            accumulator[idx] = 0;
+                        }
+                    }
+                }
+            }
 
-        // accumulator[idx] = 0;
-        // }
-        // }
+            // Updating the brightest point
+            maxIdx = getLargestScorePixelIndex();
 
-        // Updating the brightest point
-        maxIdx = getLargestScorePixelIndex();
+            if (maxIdx == -1)
+                break;
 
-        // if (maxIdx == -1)
-        // break;
+            maxVal = accumulator[maxIdx];
 
-        maxVal = accumulator[maxIdx];
-
-        // }
+        }
 
         return objects;
 

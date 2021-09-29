@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch CommaSeparatedStringInterpreter",
+            "request": "launch",
+            "mainClass": "io.github.sjcross.common.process.CommaSeparatedStringInterpreter",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
+            "name": "Launch CircleTransform",
+            "request": "launch",
+            "mainClass": "io.github.sjcross.common.process.houghtransform.transforms.CircleTransform",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
             "name": "Launch RectangleTransform",
             "request": "launch",
             "mainClass": "io.github.sjcross.common.process.houghtransform.transforms.RectangleTransform",

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import ij.ImagePlus;
 import ij.ImageStack;
 import ij.process.ImageProcessor;
-import io.github.sjcross.common.process.houghtransform.accumulators.Accumulator;
+import io.github.sjcross.common.process.houghtransform.accumulators.AbstractAccumulator;
 import io.github.sjcross.common.process.houghtransform.pixelarrays.BytePixelArray;
 import io.github.sjcross.common.process.houghtransform.pixelarrays.FloatPixelArray;
 import io.github.sjcross.common.process.houghtransform.pixelarrays.PixelArray;
@@ -14,12 +14,12 @@ import io.github.sjcross.common.process.houghtransform.pixelarrays.ShortPixelArr
 /**
  * Created by sc13967 on 12/01/2018.
  */
-public abstract class GenericTransform {
+public abstract class AbstractTransform {
     protected PixelArray pixels;
-    protected Accumulator accumulator;
+    protected AbstractAccumulator accumulator;
     int nThreads = 1;
 
-    public GenericTransform(ImageProcessor ipr) {
+    public AbstractTransform(ImageProcessor ipr) {
         // Getting dimensions of the input image
         int[] dims = new int[] { ipr.getWidth(), ipr.getHeight() };
 
@@ -39,7 +39,7 @@ public abstract class GenericTransform {
         }
     }
 
-    public GenericTransform(ImageStack ist) {
+    public AbstractTransform(ImageStack ist) {
         // Getting dimensions of the input image
         int[] dims = new int[] { ist.getWidth(), ist.getHeight(), ist.size() };
 

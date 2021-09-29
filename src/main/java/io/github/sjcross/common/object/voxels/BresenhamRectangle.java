@@ -1,28 +1,6 @@
 package io.github.sjcross.common.object.voxels;
 
-import ij.IJ;
-import ij.ImageJ;
-import ij.ImagePlus;
-import ij.process.ImageProcessor;
-
 public class BresenhamRectangle {
-    public static void main(String[] args) {
-        ImagePlus ipl = IJ.createImage("Rect", 200, 200, 360, 8);
-        for (int theta = 0; theta < 360; theta++) {
-            ipl.setSlice(theta+1);
-            ImageProcessor ipr = ipl.getProcessor();
-
-            int[][] rect = BresenhamRectangle.getRectangle(60, 90, theta);
-            for (int i = 0; i < rect.length; i++)
-                ipr.set(100 + rect[i][0], 100 + rect[i][1], 255);
-        }
-
-        new ImageJ();
-        ipl.show();
-        IJ.runMacro("waitForUser");
-
-    }
-
     public static int[][] getRectangle(int width, int length, int thetaDegs) {
         double thetaRads = Math.toRadians((double) thetaDegs);
         int x1 = (int) Math.round((-length / 2) * Math.cos(thetaRads) - (width / 2) * Math.sin(thetaRads));

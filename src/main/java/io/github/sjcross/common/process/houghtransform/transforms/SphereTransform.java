@@ -4,81 +4,78 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import ij.IJ;
-import ij.ImageJ;
-import ij.ImagePlus;
 import ij.ImageStack;
 import io.github.sjcross.common.object.voxels.SphereShell;
 import io.github.sjcross.common.object.voxels.SphereShell.Connectivity;
+import io.github.sjcross.common.process.CommaSeparatedStringInterpreter;
 import io.github.sjcross.common.process.houghtransform.accumulators.SphereAccumulator;
 
 /**
  * Created by sc13967 on 12/01/2018.
  */
-public class SphereTransform extends GenericTransform {
-    private int[][] parameterRanges;
+public class SphereTransform extends AbstractTransform {
 
-    public static void main(String[] args) {
-        new ImageJ();
-        ImagePlus ipl = IJ.openImage("C:/Users/steph/Desktop/SphereBinary.tif");
-        ImageStack ist = ipl.getStack();
-        int[][] paramRanges = new int[][] { { 0, ist.getWidth() - 1 }, { 0, ist.getHeight() - 1 },
-                { 0, ipl.getNSlices() - 1 }, { 15, 25 } };
-        SphereTransform sht = new SphereTransform(ist, paramRanges);
-        sht.run();
-        sht.getAccumulatorAsImage().show();
-    }
+    // public static void main(String[] args) {
+        // new ImageJ();
+        // ImagePlus ipl = IJ.openImage("C:/Users/steph/Desktop/SphereBinary.tif");
+        // ImageStack ist = ipl.getStack();
+        // int[][] paramRanges = new int[][] { { 0, ist.getWidth() - 1 }, { 0, ist.getHeight() - 1 },
+        //         { 0, ipl.getNSlices() - 1 }, { 15, 25 } };
+        // SphereTransform sht = new SphereTransform(ist, paramRanges);
+        // sht.run();
+        // sht.getAccumulatorAsImage().show();
+    // }
 
-    public SphereTransform(ImageStack ist, int[][] parameterRanges) {
+    public SphereTransform(ImageStack ist, String[] parameterRanges) {
         super(ist);
 
-        this.parameterRanges = parameterRanges;
-        this.accumulator = new SphereAccumulator(parameterRanges);
+        String xRange = CommaSeparatedStringInterpreter.removeInterval(parameterRanges[0]);
+        String yRange = CommaSeparatedStringInterpreter.removeInterval(parameterRanges[1]);
+        String zRange = CommaSeparatedStringInterpreter.removeInterval(parameterRanges[2]);
+
+        int[][] parameters = new int[parameterRanges.length][];
+        parameters[0] = CommaSeparatedStringInterpreter.interpretIntegers(xRange, true, ist.getWidth()-2);
+        parameters[1] = CommaSeparatedStringInterpreter.interpretIntegers(yRange, true, ist.getHeight()-2);
+        parameters[2] = CommaSeparatedStringInterpreter.interpretIntegers(zRange, true, ist.size()-2);
+        parameters[3] = CommaSeparatedStringInterpreter.interpretIntegers(parameterRanges[3], true, ist.getWidth() - 1);
+
+        this.accumulator = new SphereAccumulator(parameters);
 
     }
 
     @Override
     public void run() {
-        // Creating local variables for all parameter controls
-        int minX = parameterRanges[0][0];
-        int maxX = parameterRanges[0][1];
-        int minY = parameterRanges[1][0];
-        int maxY = parameterRanges[1][1];
-        int minZ = parameterRanges[2][0];
-        int maxZ = parameterRanges[2][1];
-        int minR = parameterRanges[3][0];
-        int maxR = parameterRanges[3][1];
+        int[][] parameters = accumulator.getParameters();
 
         // Setting up the threading system
         ThreadPoolExecutor pool = new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS,
                 new LinkedBlockingQueue<>());
 
         // Iterating over all radii
-        int nR = maxR - minR + 1;
+        int nX = parameters[0].length;
+        int nY = parameters[1].length;
+        int nZ = parameters[2].length;
+        int nR = parameters[3].length;
+
         for (int iR = 0; iR < nR; iR++) {
             int finalIR = iR;
+            int R = parameters[2][iR];
             Runnable task = () -> {
-                // Getting the current radius value
-                int R = minR + finalIR;
-
                 // // Generating coordinates for the points on the midpoint circle
                 SphereShell sphereShell = new SphereShell(R,Connectivity.SIX);
                 int[][] sph = sphereShell.getSphere();
 
                 // Iterating over X and Y
-                int nX = maxX - minX + 1;
-                int nY = maxY - minY + 1;
-                int nZ = maxZ - minZ + 1;
                 for (int iX = 0; iX < nX; iX++) {
                     for (int iY = 0; iY < nY; iY++) {
                         for (int iZ = 0; iZ < nZ; iZ++) {
-                            // Getting current XY values
-                            int X = minX + iX;
-                            int Y = minY + iY;
-                            int Z = minZ + iZ;
+                            // Getting current XYZ values
+                            int X = parameters[0][iX];
+                            int Y = parameters[1][iY];
+                            int Z = parameters[2][iZ];
 
                             double value = pixels.getPixelValue(new int[] { X, Y, Z });
-                            accumulator.addPoints(new int[] { X, Y, Z, R }, value, sph);
+                            accumulator.addPoints(new int[] { iX, iY, iZ, finalIR }, value, sph);
 
                         }
                     }

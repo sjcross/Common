@@ -9,7 +9,7 @@ import io.github.sjcross.common.object.voxels.SphereSolid;
 /**
  * Created by sc13967 on 13/01/2018.
  */
-public class SphereAccumulator extends Accumulator {
+public class SphereAccumulator extends AbstractAccumulator {
     /**
      * Constructor for Accumulator object.
      *
@@ -41,14 +41,13 @@ public class SphereAccumulator extends Accumulator {
     }
 
     @Override
-    public void addPoints(int[] parameters, double value, int[][] points) {
+    public void addPoints(int[] indices, double value, int[][] points) {
         for (int i = 0; i < points[0].length; i++) {
-            int xx = parameters[0]+points[0][i]-parameterRanges[0][0];
-            int yy = parameters[1]+points[1][i]-parameterRanges[1][0];
-            int zz = parameters[2]+points[2][i]-parameterRanges[2][0];
-            int rr = parameters[3]-parameterRanges[3][0];
+            int iX = parameters[0][indices[0]]+points[i][0]-parameters[0][0];
+            int iY = parameters[1][indices[1]]+points[i][1]-parameters[1][0];
+            int iZ = parameters[2][indices[2]]+points[i][2]-parameters[2][0];
 
-            int idx = indexer.getIndex(new int[]{xx,yy,zz,rr});
+            int idx = indexer.getIndex(new int[]{iX,iY,iZ,indices[3]});
 
             if (idx == -1) continue;
 
@@ -72,27 +71,29 @@ public class SphereAccumulator extends Accumulator {
 
         // Identifying the brightest point in the accumulator
         int maxIdx = getLargestScorePixelIndex();
+        if (maxIdx == -1)
+            return objects;
+
         double maxVal = accumulator[maxIdx];
 
         // Extracting all points
         while (maxVal >= minScore) {
             // Getting parameters for brightest current spot and adding to ArrayList
-            int[] parameters = indexer.getCoord(maxIdx);
-            parameters[0] = parameters[0] + parameterRanges[0][0];
-            parameters[1] = parameters[1] + parameterRanges[1][0];
-            parameters[2] = parameters[2] + parameterRanges[2][0];
-            parameters[3] = parameters[3] + parameterRanges[3][0];
+            int[] currIndices = indexer.getCoord(maxIdx);
+            int xx = parameters[0][currIndices[0]];
+            int yy = parameters[1][currIndices[1]];
+            int zz = parameters[2][currIndices[2]];
+            int rr = parameters[3][currIndices[3]];
 
-            objects.add(new double[]{parameters[0],parameters[1],parameters[2],parameters[3],maxVal});
+            objects.add(new double[]{xx,yy,zz,rr,maxVal});
 
             // Setting all pixels within exclusionR to zero.  This is repeated for all slices.
-            for (int rr = 0; rr< indexer.getDim()[2]; rr++) {
+            for (int iR = 0; iR< indexer.getDim()[2]; iR++) {
                 for (int i = 0; i < x.length; i++) {
-                    int xx = parameters[0] + x[i] - parameterRanges[0][0];
-                    int yy = parameters[1] + y[i] - parameterRanges[1][0];
-                    int zz = parameters[2] + z[i] - parameterRanges[2][0];
-
-                    int idx = indexer.getIndex(new int[]{xx, yy, zz, rr});
+                    int iX = xx+x[i]-parameters[0][0];
+                    int iY = yy+y[i]-parameters[1][0];
+                    int iZ = zz+z[i]-parameters[2][0];
+                    int idx = indexer.getIndex(new int[]{iX, iY, iZ, iR});
 
                     if (idx == -1) continue;
 
@@ -131,26 +132,4 @@ public class SphereAccumulator extends Accumulator {
         return ipl;
 
     }
-
-    /**
-     * Returns the Indexer index for the pixel in the Accumulator with the largest score.
-     * @return
-     */
-    public int getLargestScorePixelIndex() {
-        double maxVal = Double.MIN_VALUE;
-        int maxIdx = -1;
-
-        // Iterating over all pixels in the Accumulator.  Identifying the brightest.
-        for (int i=0;i<accumulator.length;i++) {
-            if (accumulator[i] > maxVal) {
-                maxVal = accumulator[i];
-                maxIdx = i;
-            }
-        }
-
-        return maxIdx;
-
-    }
-
-
 }

@@ -1,24 +1,24 @@
 package io.github.sjcross.common.process.houghtransform.accumulators;
 
+import java.util.ArrayList;
+
 import ij.IJ;
 import ij.ImagePlus;
 import ij.gui.OvalRoi;
 import ij.gui.Overlay;
 import io.github.sjcross.common.object.voxels.MidpointCircle;
 
-import java.util.ArrayList;
-
 /**
  * Created by sc13967 on 13/01/2018.
  */
-public class CircleAccumulator extends Accumulator {
+public class CircleAccumulator extends AbstractAccumulator {
     /**
      * Constructor for Accumulator object.
      *
      * @param parameterRanges 2D Integer array containing the dimensions over which the accumulator exists.
      */
-    public CircleAccumulator(int[][] parameterRanges) {
-        super(parameterRanges);
+    public CircleAccumulator(int[][] parameters) {
+        super(parameters);
     }
 
 
@@ -43,13 +43,12 @@ public class CircleAccumulator extends Accumulator {
     }
 
     @Override
-    public void addPoints(int[] parameters, double value, int[][] points) {
+    public void addPoints(int[] indices, double value, int[][] points) {
         for (int i = 0; i < points.length; i++) {
-            int xx = parameters[0]+points[i][0]-parameterRanges[0][0];
-            int yy = parameters[1]+points[i][1]-parameterRanges[1][0];
-            int rr = parameters[2]-parameterRanges[2][0];
-
-            int idx = indexer.getIndex(new int[]{xx,yy,rr});
+            int iX = parameters[0][indices[0]]+points[i][0]-parameters[0][0];
+            int iY = parameters[1][indices[1]]+points[i][1]-parameters[1][0];
+            
+            int idx = indexer.getIndex(new int[]{iX,iY,indices[2]});
 
             if (idx == -1) continue;
 
@@ -80,20 +79,19 @@ public class CircleAccumulator extends Accumulator {
         // Extracting all points
         while (maxVal >= minScore) {
             // Getting parameters for brightest current spot and adding to ArrayList
-            int[] parameters = indexer.getCoord(maxIdx);
-            parameters[0] = parameters[0] + parameterRanges[0][0];
-            parameters[1] = parameters[1] + parameterRanges[1][0];
-            parameters[2] = parameters[2] + parameterRanges[2][0];
+            int[] currIndices = indexer.getCoord(maxIdx);
+            int xx = parameters[0][currIndices[0]];
+            int yy = parameters[1][currIndices[1]];
+            int rr = parameters[2][currIndices[2]];
 
-            objects.add(new double[]{parameters[0],parameters[1],parameters[2],maxVal});
+            objects.add(new double[]{xx,yy,rr,maxVal});
 
             // Setting all pixels within exclusionR to zero.  This is repeated for all slices.
-            for (int rr = 0; rr< indexer.getDim()[2]; rr++) {
+            for (int iR = 0; iR < indexer.getDim()[2]; iR++) {
                 for (int i = 0; i < x.length; i++) {
-                    int xx = parameters[0] + x[i] - parameterRanges[0][0];
-                    int yy = parameters[1] + y[i] - parameterRanges[1][0];
-
-                    int idx = indexer.getIndex(new int[]{xx, yy, rr});
+                    int iX = xx+x[i]-parameters[0][0];
+                    int iY = yy+y[i]-parameters[1][0];
+                    int idx = indexer.getIndex(new int[]{iX, iY, iR});
 
                     if (idx == -1) continue;
 
@@ -132,26 +130,4 @@ public class CircleAccumulator extends Accumulator {
         return ipl;
 
     }
-
-    /**
-     * Returns the Indexer index for the pixel in the Accumulator with the largest score.
-     * @return
-     */
-    public int getLargestScorePixelIndex() {
-        double maxVal = Double.MIN_VALUE;
-        int maxIdx = -1;
-
-        // Iterating over all pixels in the Accumulator.  Identifying the brightest.
-        for (int i=0;i<accumulator.length;i++) {
-            if (accumulator[i] > maxVal) {
-                maxVal = accumulator[i];
-                maxIdx = i;
-            }
-        }
-
-        return maxIdx;
-
-    }
-
-
 }
