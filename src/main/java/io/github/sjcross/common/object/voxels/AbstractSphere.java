@@ -46,11 +46,11 @@ public abstract class AbstractSphere {
         int[] y_sph = getY();
         int[] z_sph = getZ();
 
-        int[][] sph = new int[3][x_sph.length];
+        int[][] sph = new int[x_sph.length][3];
         for (int i = 0; i < x_sph.length; i++) {
-            sph[0][i] = x_sph[i];
-            sph[1][i] = y_sph[i];
-            sph[2][i] = z_sph[i];
+            sph[i][0] = x_sph[i];
+            sph[i][1] = y_sph[i];
+            sph[i][2] = z_sph[i];
         }
 
         return sph;

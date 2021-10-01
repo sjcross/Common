@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch SphereTransform",
+            "request": "launch",
+            "mainClass": "io.github.sjcross.common.process.houghtransform.transforms.SphereTransform",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
             "name": "Launch CommaSeparatedStringInterpreter",
             "request": "launch",
             "mainClass": "io.github.sjcross.common.process.CommaSeparatedStringInterpreter",

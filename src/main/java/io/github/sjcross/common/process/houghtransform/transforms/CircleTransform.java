@@ -1,9 +1,13 @@
 package io.github.sjcross.common.process.houghtransform.transforms;
 
+import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
 import ij.process.ImageProcessor;
 import io.github.sjcross.common.object.voxels.MidpointCircle;
 import io.github.sjcross.common.process.CommaSeparatedStringInterpreter;
@@ -13,22 +17,22 @@ import io.github.sjcross.common.process.houghtransform.accumulators.CircleAccumu
  * Created by sc13967 on 12/01/2018.
  */
 public class CircleTransform extends AbstractTransform {
-    // public static void main(String[] args) {
-    //     new ImageJ();
-    //     ImagePlus ipl = IJ.openImage("C:/Users/steph/Desktop/TEST_HoughCircle.tif");
-    //     ImageProcessor ipr = ipl.getProcessor();
+    public static void main(String[] args) {
+        new ImageJ();
+        ImagePlus ipl = IJ.openImage("C:/Users/steph/Desktop/TEST_HoughCircle.tif");
+        ImageProcessor ipr = ipl.getProcessor();
 
-    //     CircleTransform transform = new CircleTransform(ipr, new String[]{"150-300-5","100-200","60-70-5"});
-    //     transform.setnThreads(4);
-    //     transform.run();
+        CircleTransform transform = new CircleTransform(ipr, new String[]{"150-300-5","100-200","60-70-5"});
+        transform.setnThreads(4);
+        transform.run();
 
-    //     ArrayList<double[]> objects = transform.getObjects(10000, 100);
-    //     transform.addDetectedObjectsOverlay(ipl, objects);
+        ArrayList<double[]> objects = transform.getObjects(10000, 100);
+        transform.addDetectedObjectsOverlay(ipl, objects);
 
-    //     ipl.show();
-    //     IJ.runMacro("waitForUser");
+        ipl.show();
+        IJ.runMacro("waitForUser");
 
-    // }
+    }
 
     public CircleTransform(ImageProcessor ipr, String[] parameterRanges) {
         super(ipr);
@@ -37,8 +41,8 @@ public class CircleTransform extends AbstractTransform {
         String yRange = CommaSeparatedStringInterpreter.removeInterval(parameterRanges[1]);
 
         int[][] parameters = new int[parameterRanges.length][];
-        parameters[0] = CommaSeparatedStringInterpreter.interpretIntegers(xRange, true, ipr.getWidth()-2);
-        parameters[1] = CommaSeparatedStringInterpreter.interpretIntegers(yRange, true, ipr.getHeight()-2);
+        parameters[0] = CommaSeparatedStringInterpreter.interpretIntegers(xRange, true, ipr.getWidth()-1);
+        parameters[1] = CommaSeparatedStringInterpreter.interpretIntegers(yRange, true, ipr.getHeight()-1);
         parameters[2] = CommaSeparatedStringInterpreter.interpretIntegers(parameterRanges[2], true, ipr.getWidth() - 1);
         
         this.accumulator = new CircleAccumulator(parameters);

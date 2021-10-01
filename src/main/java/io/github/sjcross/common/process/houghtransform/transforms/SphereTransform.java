@@ -16,14 +16,15 @@ import io.github.sjcross.common.process.houghtransform.accumulators.SphereAccumu
 public class SphereTransform extends AbstractTransform {
 
     // public static void main(String[] args) {
-        // new ImageJ();
-        // ImagePlus ipl = IJ.openImage("C:/Users/steph/Desktop/SphereBinary.tif");
-        // ImageStack ist = ipl.getStack();
-        // int[][] paramRanges = new int[][] { { 0, ist.getWidth() - 1 }, { 0, ist.getHeight() - 1 },
-        //         { 0, ipl.getNSlices() - 1 }, { 15, 25 } };
-        // SphereTransform sht = new SphereTransform(ist, paramRanges);
-        // sht.run();
-        // sht.getAccumulatorAsImage().show();
+    //     new ImageJ();
+    //     ImagePlus ipl = IJ.openImage("C:/Users/steph/Desktop/TEST_HoughSphere.tif");
+    //     ImageStack ist = ipl.getStack();
+    //     String[] paramRanges = new String[] { "0-end", "0-end", "0-end", "15-25-1" };
+    //     SphereTransform sht = new SphereTransform(ist, paramRanges);
+    //     sht.run();
+    //     sht.getAccumulatorAsImage().show();
+    //     sht.addDetectedObjectsOverlay(ipl, sht.getObjects(10, 100));
+    //     ipl.show();
     // }
 
     public SphereTransform(ImageStack ist, String[] parameterRanges) {
@@ -34,9 +35,9 @@ public class SphereTransform extends AbstractTransform {
         String zRange = CommaSeparatedStringInterpreter.removeInterval(parameterRanges[2]);
 
         int[][] parameters = new int[parameterRanges.length][];
-        parameters[0] = CommaSeparatedStringInterpreter.interpretIntegers(xRange, true, ist.getWidth()-2);
-        parameters[1] = CommaSeparatedStringInterpreter.interpretIntegers(yRange, true, ist.getHeight()-2);
-        parameters[2] = CommaSeparatedStringInterpreter.interpretIntegers(zRange, true, ist.size()-2);
+        parameters[0] = CommaSeparatedStringInterpreter.interpretIntegers(xRange, true, ist.getWidth()-1);
+        parameters[1] = CommaSeparatedStringInterpreter.interpretIntegers(yRange, true, ist.getHeight()-1);
+        parameters[2] = CommaSeparatedStringInterpreter.interpretIntegers(zRange, true, ist.size()-1);
         parameters[3] = CommaSeparatedStringInterpreter.interpretIntegers(parameterRanges[3], true, ist.getWidth() - 1);
 
         this.accumulator = new SphereAccumulator(parameters);
@@ -59,16 +60,16 @@ public class SphereTransform extends AbstractTransform {
 
         for (int iR = 0; iR < nR; iR++) {
             int finalIR = iR;
-            int R = parameters[2][iR];
+            int R = parameters[3][iR];
             Runnable task = () -> {
-                // // Generating coordinates for the points on the midpoint circle
+                // Generating coordinates for the points on the midpoint circle
                 SphereShell sphereShell = new SphereShell(R,Connectivity.SIX);
                 int[][] sph = sphereShell.getSphere();
 
                 // Iterating over X and Y
-                for (int iX = 0; iX < nX; iX++) {
+                for (int iX = 0; iX < nX; iX++) {                    
                     for (int iY = 0; iY < nY; iY++) {
-                        for (int iZ = 0; iZ < nZ; iZ++) {
+                        for (int iZ = 0; iZ < nZ; iZ++) {    
                             // Getting current XYZ values
                             int X = parameters[0][iX];
                             int Y = parameters[1][iY];
@@ -87,7 +88,7 @@ public class SphereTransform extends AbstractTransform {
         pool.shutdown();
         try {
             pool.awaitTermination(Integer.MAX_VALUE, TimeUnit.DAYS); // i.e. never terminate early
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

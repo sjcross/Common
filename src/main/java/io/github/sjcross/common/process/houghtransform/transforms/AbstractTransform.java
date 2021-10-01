@@ -106,6 +106,10 @@ public abstract class AbstractTransform {
         return accumulator.getObjects(minScore, exclusionR);
     }
 
+    public ArrayList<double[]> getNObjects(int nObjects, int exclusionR) {
+        return accumulator.getNObjects(nObjects, exclusionR);
+    }
+
     public ImagePlus getAccumulatorAsImage() {
         return accumulator.getAccumulatorAsImage();
 

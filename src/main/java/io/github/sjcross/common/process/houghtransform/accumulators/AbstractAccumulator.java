@@ -79,6 +79,8 @@ public abstract class AbstractAccumulator {
 
     public abstract ArrayList<double[]> getObjects(double minScore, int exclusionR);
 
+    public abstract ArrayList<double[]> getNObjects(int nObjects, int exclusionR);
+
     public abstract ImagePlus getAccumulatorAsImage();
 
 }
