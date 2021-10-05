@@ -47,9 +47,9 @@ public class RectangleTransform extends AbstractTransform {
         parameters[0] = CommaSeparatedStringInterpreter.interpretIntegers(xRange, true, ipr.getWidth()-2);
         parameters[1] = CommaSeparatedStringInterpreter.interpretIntegers(yRange, true, ipr.getHeight()-2);
         
-        parameters[2] = CommaSeparatedStringInterpreter.interpretIntegers(parameterRanges[2], true);
-        parameters[3] = CommaSeparatedStringInterpreter.interpretIntegers(parameterRanges[3], true);
-        parameters[4] = CommaSeparatedStringInterpreter.interpretIntegers(parameterRanges[4], true);        
+        parameters[2] = CommaSeparatedStringInterpreter.interpretIntegers(parameterRanges[2], true, 0);
+        parameters[3] = CommaSeparatedStringInterpreter.interpretIntegers(parameterRanges[3], true, 0);
+        parameters[4] = CommaSeparatedStringInterpreter.interpretIntegers(parameterRanges[4], true, 0);        
 
         this.accumulator = new RectangleAccumulator(parameters);
 

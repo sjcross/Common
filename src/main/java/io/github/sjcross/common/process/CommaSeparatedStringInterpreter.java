@@ -7,6 +7,46 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommaSeparatedStringInterpreter {
+    public static void main(String[] args) {
+        firstValue("7-(end-3)");
+        // for (int i:interpretIntegers("20-(end-3)", true, 12)) {
+        // System.out.println(i);
+        // }
+    }
+
+    public static int firstValue(String range) {
+        Matcher matcher = Pattern.compile("[0-9]+").matcher(range);
+
+        if (matcher.find())
+            return Integer.valueOf(matcher.group(0));
+        else
+            return Integer.MAX_VALUE;
+    }
+
+    public static String removeEndRanges(String range, int endValue) {
+        // Setting patterns for ranges and values
+        String num = "\\d(?:\\.\\d+)";
+
+        // Replacing any pre-end ranges (e.g. (end-4) which must be enclosed in
+        // brackets)
+        Pattern preEndRange = Pattern.compile("(\\(end-[" + num + "]+\\))");
+        Matcher preEndRangeMatcher = preEndRange.matcher(range);
+        StringBuffer out = new StringBuffer();
+        while (preEndRangeMatcher.find()) {
+            String oldValue = preEndRangeMatcher.group();
+            int newValue = endValue - Integer.parseInt(oldValue.substring(5, oldValue.length() - 1));
+            preEndRangeMatcher.appendReplacement(out, String.valueOf(newValue));
+        }
+        preEndRangeMatcher.appendTail(out);
+        range = out.toString();
+
+        // Replacing any simple "end" values
+        range = range.replaceAll("end", String.valueOf(endValue));
+
+        return range;
+
+    }
+
     public static String removeInterval(String range) {
         // Removes anything after a potential second hyphen
         Pattern pattern = Pattern.compile("-");
@@ -14,113 +54,98 @@ public class CommaSeparatedStringInterpreter {
         int count = 0;
         while (matcher.find())
             if (count++ > 0)
-                return range.substring(0,matcher.start());
-        
+                return range.substring(0, matcher.start());
+
         return range;
 
     }
 
-    public static int[] interpretIntegers(String range, boolean ascendingOrder) {
-        // Creating a TreeSet to store the indices we've collected.  This will order numerically and remove duplicates.
+    public static int[] interpretIntegers(String range, boolean ascendingOrder, int endValue) {
+        // Creating a TreeSet to store the indices we've collected. This will order
+        // numerically and remove duplicates.
         LinkedHashSet<Integer> values = new LinkedHashSet<>();
 
         // Removing white space
-        range = range.replaceAll("\\s","");
+        range = range.replaceAll("\\s", "");
+
+        // Removing sections involving "end"
+        range = removeEndRanges(range, endValue);
 
         // Setting patterns for ranges and values
         String num = "\\d(?:\\.\\d+)";
-        Pattern singleRangePattern = Pattern.compile("^([-]?["+num+"]+)-([-]?["+num+"]+)$");
-        Pattern singleRangeEndPattern = Pattern.compile("^([-]?["+num+"]+)-end$");
-        Pattern intervalRangePattern = Pattern.compile("^([-]?["+num+"]+)-([-]?["+num+"]+)-([-]?["+num+"]+)$");
-        Pattern intervalRangeEndPattern = Pattern.compile("^([-]?["+num+"]+)-end-([-]?["+num+"]+)$");
-        Pattern singleValuePattern = Pattern.compile("^[-]?["+num+"]+$");
-        Pattern endOnlyPattern = Pattern.compile("end");
+
+        Pattern singleRangePattern = Pattern.compile("^([-]?[" + num + "]+)-([-]?[" + num + "]+)$");
+        Pattern intervalRangePattern = Pattern
+                .compile("^([-]?[" + num + "]+)-([-]?[" + num + "]+)-([-]?[" + num + "]+)$");
+        Pattern singleValuePattern = Pattern.compile("^[-]?[" + num + "]+$");
 
         // First, splitting comma-delimited sections
-        StringTokenizer stringTokenizer = new StringTokenizer(range,",");
+        StringTokenizer stringTokenizer = new StringTokenizer(range, ",");
         while (stringTokenizer.hasMoreTokens()) {
             String token = stringTokenizer.nextToken();
 
-            // If it matches the single range pattern processAutomatic as a range, otherwise, check if it's a single value.
+            // If it matches the single range pattern processAutomatic as a range,
+            // otherwise, check if it's a single value.
             Matcher singleRangeMatcher = singleRangePattern.matcher(token);
-            Matcher singleRangeEndMatcher = singleRangeEndPattern.matcher(token);
             Matcher intervalRangeMatcher = intervalRangePattern.matcher(token);
-            Matcher intervalRangeEndMatcher = intervalRangeEndPattern.matcher(token);
             Matcher singleValueMatcher = singleValuePattern.matcher(token);
-            Matcher endOnlyMatcher = endOnlyPattern.matcher(token);
 
             if (singleRangeMatcher.matches()) {
                 int start = (int) Double.parseDouble(singleRangeMatcher.group(1));
                 int end = (int) Double.parseDouble(singleRangeMatcher.group(2));
                 int interval = (end >= start) ? 1 : -1;
-                int nValues = (end-start)/interval + 1;
+                int nValues = (end - start) / interval + 1;
 
-                for (int i=0;i<nValues;i++) {
+                for (int i = 0; i < nValues; i++) {
                     values.add(start);
                     start = start + interval;
                 }
-
-            } else if (singleRangeEndMatcher.matches()) {
-                // If the numbers should proceed to the end, the last three added are the starting number, the starting
-                // number plus one and the maximum value
-                int start = (int) Double.parseDouble(singleRangeEndMatcher.group(1));
-
-                values.add(start);
-                values.add(start+1);
-                values.add(Integer.MAX_VALUE);
 
             } else if (intervalRangeMatcher.matches()) {
                 int start = (int) Double.parseDouble(intervalRangeMatcher.group(1));
                 int end = (int) Double.parseDouble(intervalRangeMatcher.group(2));
                 int interval = (int) Double.parseDouble(intervalRangeMatcher.group(3));
-                int nValues = (end-start)/interval + 1;
+                int nValues = (end - start) / interval + 1;
 
-                for (int i=0;i<nValues;i++) {
+                for (int i = 0; i < nValues; i++) {
                     values.add(start);
                     start = start + interval;
                 }
 
-            } else if (intervalRangeEndMatcher.matches()) {
-                // If the numbers should proceed to the end, the last three added are the starting number, the starting
-                // number plus the interval and the maximum value
-                int start = (int) Double.parseDouble(intervalRangeEndMatcher.group(1));
-                int interval = (int) Double.parseDouble(intervalRangeEndMatcher.group(2));
-
-                values.add(start);
-                values.add(start+interval);
-                values.add(Integer.MAX_VALUE);
-
             } else if (singleValueMatcher.matches()) {
                 values.add((int) Double.parseDouble(token));
-
-            } else if (endOnlyMatcher.matches()) {
-                values.add(Integer.MAX_VALUE);
 
             }
         }
 
-        // Returning an array of the indices.  If they should be in ascending order, put them in a TreeSet first
-        if (ascendingOrder) return new TreeSet<>(values).stream().mapToInt(Integer::intValue).toArray();
-        else return values.stream().mapToInt(Integer::intValue).toArray();
+        // Returning an array of the indices. If they should be in ascending order,
+        // put them in a TreeSet first
+        if (ascendingOrder)
+            return new TreeSet<>(values).stream().mapToInt(Integer::intValue).toArray();
+        else
+            return values.stream().mapToInt(Integer::intValue).toArray();
 
     }
 
-    public static int[] interpretIntegers(String range, boolean ascendingOrder, int end) {
-        // Getting the list of values
-        int[] values = interpretIntegers(range, ascendingOrder);
+    // public static int[] interpretIntegers(String range, boolean ascendingOrder,
+    // int end) {
+    // // Getting the list of values
+    // int[] values = interpretIntegers(range, ascendingOrder);
 
-        // If the final value is Integer.MAX_VALUE extending to the specified end
-        if (values[values.length-1] == Integer.MAX_VALUE) values = extendRangeToEnd(values,end);
+    // // If the final value is Integer.MAX_VALUE extending to the specified end
+    // if (values[values.length-1] == Integer.MAX_VALUE) values =
+    // extendRangeToEnd(values,end);
 
-        return values;
+    // return values;
 
-    }
+    // }
 
     public static int[] extendRangeToEnd(int[] inputRange, int end) {
         // Adding the numbers to a TreeSet, then returning as an array
         TreeSet<Integer> values = new TreeSet<>();
 
-        // Checking for the special case where the only value is Integer.MAX_VALUE (i.e. the range was only "end")
+        // Checking for the special case where the only value is Integer.MAX_VALUE (i.e.
+        // the range was only "end")
         if (inputRange.length == 1 && inputRange[0] == Integer.MAX_VALUE) {
             values.add(end);
         } else if (inputRange.length == 1) {
