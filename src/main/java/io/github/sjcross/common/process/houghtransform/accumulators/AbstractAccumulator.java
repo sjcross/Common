@@ -1,18 +1,18 @@
 package io.github.sjcross.common.process.houghtransform.accumulators;
 
+import java.util.ArrayList;
+
 import ij.ImagePlus;
 import io.github.sjcross.common.mathfunc.Indexer;
-
-import java.util.ArrayList;
 
 /**
  * Created by sc13967 on 12/01/2018.
  */
-public abstract class Accumulator {
+public abstract class AbstractAccumulator {
     protected Indexer indexer;
     protected double[] accumulator;
     protected int[] counts;
-    protected int[][] parameterRanges;
+    protected int[][] parameters;
 
 
     // CONSTRUCTOR
@@ -21,19 +21,15 @@ public abstract class Accumulator {
      * Constructor for Accumulator object.
      * @param parameterRanges 2D Integer array containing the dimensions over which the accumulator exists.
      */
-    public Accumulator(int[][] parameterRanges) {
+    public AbstractAccumulator(int[][] parameters) {
         // Keeping track of the parameter ranges.  These will be needed to access the correct index
-        this.parameterRanges = parameterRanges;
+        this.parameters = parameters;
 
         // Calculating the number of elements in each dimension
-        int[] dims = new int[parameterRanges.length];
-        int i = 0;
-        for (int[] range:parameterRanges) {
-            int n = range[1]-range[0]+1;
-            dims[i++] = n;
-
-        }
-
+        int[] dims = new int[parameters.length];
+        for (int i=0;i<parameters.length;i++)
+            dims[i] = parameters[i].length;
+        
         // Initialising the indexer
         indexer = new Indexer(dims);
 
@@ -50,6 +46,30 @@ public abstract class Accumulator {
         }
     }
 
+    /**
+     * Returns the Indexer index for the pixel in the Accumulator with the largest score.
+     * @return
+     */
+    public int getLargestScorePixelIndex() {
+        double maxVal = Double.MIN_VALUE;
+        int maxIdx = -1;
+
+        // Iterating over all pixels in the Accumulator.  Identifying the brightest.
+        for (int i=0;i<accumulator.length;i++) {
+            if (accumulator[i] > maxVal) {
+                maxVal = accumulator[i];
+                maxIdx = i;
+            }
+        }
+
+        return maxIdx;
+
+    }
+
+    public int[][] getParameters() {
+        return parameters;
+    }
+
 
     // ABSTRACT METHODS
 
@@ -58,6 +78,8 @@ public abstract class Accumulator {
     public abstract void addPoints(int[] parameters, double value, int[][] points);
 
     public abstract ArrayList<double[]> getObjects(double minScore, int exclusionR);
+
+    public abstract ArrayList<double[]> getNObjects(int nObjects, int exclusionR);
 
     public abstract ImagePlus getAccumulatorAsImage();
 

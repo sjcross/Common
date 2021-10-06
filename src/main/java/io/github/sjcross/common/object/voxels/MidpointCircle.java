@@ -221,10 +221,10 @@ public class MidpointCircle {
 		int[] x_circ = getXCircle();
 		int[] y_circ = getYCircle();
 
-		int[][] circ = new int[2][x_circ.length];
+		int[][] circ = new int[x_circ.length][2];
 		for (int i=0;i<x_circ.length;i++) {
-			circ[0][i] = x_circ[i];
-			circ[1][i] = y_circ[i];
+			circ[i][0] = x_circ[i];
+			circ[i][1] = y_circ[i];
 		}
 
 		return circ;

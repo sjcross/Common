@@ -66,10 +66,6 @@ public class FileCrawler {
 
             }
         }
-
-        System.out.println("End of file structure");
-        System.out.println(" ");
-
     }
 
     public boolean hasMoreFilesInFolder() {

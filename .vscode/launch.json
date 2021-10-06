@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch SphereTransform",
+            "request": "launch",
+            "mainClass": "io.github.sjcross.common.process.houghtransform.transforms.SphereTransform",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
+            "name": "Launch CommaSeparatedStringInterpreter",
+            "request": "launch",
+            "mainClass": "io.github.sjcross.common.process.CommaSeparatedStringInterpreter",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
+            "name": "Launch CircleTransform",
+            "request": "launch",
+            "mainClass": "io.github.sjcross.common.process.houghtransform.transforms.CircleTransform",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
+            "name": "Launch RectangleTransform",
+            "request": "launch",
+            "mainClass": "io.github.sjcross.common.process.houghtransform.transforms.RectangleTransform",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
+            "name": "Launch BresenhamRectangle",
+            "request": "launch",
+            "mainClass": "io.github.sjcross.common.object.voxels.BresenhamRectangle",
+            "projectName": "Common"
+        },
+        {
+            "type": "java",
             "name": "Launch CircleHoughTransform",
             "request": "launch",
             "mainClass": "io.github.sjcross.common.Process.HoughTransform.Transforms.CircleHoughTransform",
