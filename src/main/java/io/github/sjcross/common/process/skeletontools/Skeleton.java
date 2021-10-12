@@ -136,7 +136,7 @@ public class Skeleton extends VertexCollection {
         for (Vertex vertex1:this) {
             for (Vertex vertex2:this) {
                 if (vertex1 == vertex2) continue;
-                double distance = vertex1.getEdgeLength(vertex2);
+                double distance = vertex1.calculateDistanceToPoint(vertex2);
 
                 // The longest distance for 26-way connectivity is 1.73
                 if (distance<1.75) vertex1.addNeighbour(vertex2);
@@ -154,9 +154,9 @@ public class Skeleton extends VertexCollection {
                     for (Vertex vertex3:vertex2.getNeighbours()) {
                         // Removing the longest link
                         if (vertex1.getNeighbours().contains(vertex3)) {
-                            double v1v3 = vertex1.getEdgeLength(vertex3);
-                            double v1v2 = vertex1.getEdgeLength(vertex2);
-                            double v2v3 = vertex2.getEdgeLength(vertex3);
+                            double v1v3 = vertex1.calculateDistanceToPoint(vertex3);
+                            double v1v2 = vertex1.calculateDistanceToPoint(vertex2);
+                            double v2v3 = vertex2.calculateDistanceToPoint(vertex3);
 
                             if (v1v2 > v1v3 && v1v2 > v2v3) {
                                 linksToRemove.add(new Vertex[]{vertex1,vertex2});
@@ -188,7 +188,7 @@ public class Skeleton extends VertexCollection {
             if (newCurrentPath.contains(neighbourVertex)) continue;
 
             // Calculating the distance to the new Vertex
-            distance = distance + currentVertex.getEdgeLength(neighbourVertex);
+            distance = distance + currentVertex.calculateDistanceToPoint(neighbourVertex);
 
             addDistanceToNextVertex(neighbourVertex,distance,newCurrentPath);
 

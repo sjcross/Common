@@ -12,13 +12,13 @@ import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
 import ij.ImagePlus;
 import ij.gui.Line;
 import ij.gui.Overlay;
-import io.github.sjcross.common.object.Vertex;
+import io.github.sjcross.common.object.Point;
 
 /**
  * Created by sc13967 on 26/01/2018.
  */
 public class CurvatureCalculator {
-    private ArrayList<Vertex> path;
+    private ArrayList<Point<Integer>> path;
     private PolynomialSplineFunction[] splines = null;
     private TreeMap<Double, Double> curvature = null;
     private FittingMethod fittingMethod = FittingMethod.STANDARD;
@@ -33,7 +33,7 @@ public class CurvatureCalculator {
     private int loessIterations = 0;
     private double loessAccuracy = 100;
 
-    public CurvatureCalculator(ArrayList<Vertex> path, boolean isLoop) {
+    public CurvatureCalculator(ArrayList<Point<Integer>> path, boolean isLoop) {
         this.path = path;
         this.isLoop = isLoop;
 
@@ -54,14 +54,14 @@ public class CurvatureCalculator {
         double[] y = new double[nKnots];
 
         int count = 0;
-        Vertex prevVertex = null;
+        Point<Integer> prevVertex = null;
 
         // If a loop, starting with the final few points from the opposite end
         if (isLoop) {
             int len = path.size();
             for (int i = NNeighbours; i > 0; i--) {
-                Vertex vertex = path.get((len - i));
-                t[count] = count == 0 ? 0 : t[count - 1] + vertex.getEdgeLength(prevVertex);
+                Point<Integer> vertex = path.get((len - i));
+                t[count] = count == 0 ? 0 : t[count - 1] + vertex.calculateDistanceToPoint(prevVertex);
                 x[count] = vertex.getX();
                 y[count++] = vertex.getY();
 
@@ -70,8 +70,8 @@ public class CurvatureCalculator {
             }
         }
 
-        for (Vertex vertex : path) {
-            t[count] = count == 0 ? 0 : t[count - 1] + vertex.getEdgeLength(prevVertex);
+        for (Point<Integer> vertex : path) {
+            t[count] = count == 0 ? 0 : t[count - 1] + vertex.calculateDistanceToPoint(prevVertex);
             x[count] = vertex.getX();
             y[count++] = vertex.getY();
 
@@ -82,8 +82,8 @@ public class CurvatureCalculator {
         // If a loop, ending with the first few points from the opposite end
         if (isLoop) {
             for (int i = 0; i < NNeighbours; i++) {
-                Vertex vertex = path.get(i);
-                t[count] = count == 0 ? 0 : t[count - 1] + vertex.getEdgeLength(prevVertex);
+                Point<Integer> vertex = path.get(i);
+                t[count] = count == 0 ? 0 : t[count - 1] + vertex.calculateDistanceToPoint(prevVertex);
                 x[count] = vertex.getX();
                 y[count++] = vertex.getY();
 
@@ -258,11 +258,11 @@ public class CurvatureCalculator {
         this.fittingMethod = fittingMethod;
     }
 
-    public ArrayList<Vertex> getSpline() {
+    public ArrayList<Point<Integer>> getSpline() {
         if (splines == null)
             calculateCurvature();
 
-        ArrayList<Vertex> spline = new ArrayList<>();
+        ArrayList<Point<Integer>> spline = new ArrayList<>();
 
         double[] knots = splines[0].getKnots();
         int startIdx = isLoop ? NNeighbours : 0;
@@ -273,7 +273,7 @@ public class CurvatureCalculator {
             int x = (int) Math.round(splines[0].value(t));
             int y = (int) Math.round(splines[1].value(t));
 
-            spline.add(new Vertex(x, y, 0));
+            spline.add(new Point<Integer>(x, y, 0));
 
         }
 
