@@ -26,8 +26,12 @@ public class GenericExtractor implements NameExtractor {
 
     @Override
     public boolean extract(Metadata result, String str) {
+        return extract(result, str, false);
+    }
+
+    public boolean extract(Metadata result, String str, boolean caseInsensitive) {
         try {
-            Pattern fi_pattern = Pattern.compile(pattern);
+            Pattern fi_pattern = caseInsensitive ? Pattern.compile(pattern, Pattern.CASE_INSENSITIVE) : Pattern.compile(pattern);
             Matcher fi_matcher = fi_pattern.matcher(str);
 
             if (fi_matcher.find()) {
