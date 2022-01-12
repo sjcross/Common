@@ -720,6 +720,12 @@ public class Volume {
 
     public void setCoordinateSet(CoordinateSet coordinateSet) {
         this.coordinateSet = coordinateSet;
+
+        // Calculated properties are now invalid
+        clearSurface();
+        clearProjected();
+        clearCentroid();
+        
     }
 
     public Roi getRoi(int slice) {
