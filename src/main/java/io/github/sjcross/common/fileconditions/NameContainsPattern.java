@@ -1,6 +1,7 @@
 package io.github.sjcross.common.fileconditions;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.PatternLayout;
 
 import java.io.File;
 import java.util.regex.Matcher;
@@ -10,52 +11,59 @@ import java.util.regex.Pattern;
  * Created by sc13967 on 24/10/2016.
  */
 public class NameContainsPattern implements FileCondition {
-    private Pattern[] pattern;
+    private Pattern[] patterns;
     private Mode mode;
 
     public NameContainsPattern(Pattern pattern) {
-        this.pattern = new Pattern[]{pattern};
+        this.patterns = new Pattern[] { pattern };
         this.mode = Mode.INC_PARTIAL;
 
     }
 
     public NameContainsPattern(Pattern pattern, Mode mode) {
-        this.pattern = new Pattern[]{pattern};
+        this.patterns = new Pattern[] { pattern };
         this.mode = mode;
 
     }
 
     public NameContainsPattern(Pattern[] pattern) {
-        this.pattern = pattern;
+        this.patterns = pattern;
         this.mode = Mode.INC_PARTIAL;
 
     }
 
     public NameContainsPattern(Pattern[] pattern, Mode mode) {
-        this.pattern = pattern;
+        this.patterns = pattern;
         this.mode = mode;
 
     }
 
-    public boolean test(File file) {
+    public boolean test(File file, boolean ignoreCase) {
         if (file != null) {
             String name = FilenameUtils.removeExtension(file.getName());
+            
+            for (Pattern pattern : patterns) {
+                if (ignoreCase)
+                    pattern = Pattern.compile(pattern.toString(),Pattern.CASE_INSENSITIVE);
 
-            for (Pattern value : pattern) {
-                Matcher matcher = value.matcher(name);
+                Matcher matcher = pattern.matcher(name);
 
                 switch (mode) {
                     case INC_COMPLETE:
-                        if (matcher.matches()) return true;
+                        if (matcher.matches())
+                            return true;
                         break;
                     case INC_PARTIAL:
-                        if (matcher.find()) return true;
+                        if (matcher.find())
+                            return true;
                         break;
                     case EXC_COMPLETE:
-                        if (matcher.matches()) return false;
+                        if (matcher.matches())
+                            return false;
                         break;
                     case EXC_PARTIAL:
-                        if (matcher.find()) return false;
+                        if (matcher.find())
+                            return false;
                         break;
                 }
             }
@@ -74,7 +82,7 @@ public class NameContainsPattern implements FileCondition {
     }
 
     public Pattern[] getPattern() {
-        return pattern;
+        return patterns;
     }
 
     public Mode getMode() {
