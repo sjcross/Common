@@ -18,6 +18,7 @@ public class FileCrawler {
     private HashSet<FileCondition> fileConditions = new HashSet<FileCondition>(); //List of file conditions
     private HashSet<FileCondition> folderConditions = new HashSet<FileCondition>(); //List of folder conditions
     private boolean includeSubFolders = true;
+    private boolean ignoreCase = false;
 
     public FileCrawler(File root) {
         folder = new Folder(root,null);
@@ -270,7 +271,7 @@ public class FileCrawler {
             Iterator<FileCondition> iterator = fileConditions.iterator();
             while(iterator.hasNext()) {
                 //If any condition fails, the output is false
-                if (!iterator.next().test(test_file)) cnd = false;
+                if (!iterator.next().test(test_file,ignoreCase)) cnd = false;
 
             }
         }
@@ -290,7 +291,7 @@ public class FileCrawler {
             Iterator<FileCondition> iterator = folderConditions.iterator();
             while (iterator.hasNext()) {
                 //If any condition fails, the output is false
-                if (!iterator.next().test(test_folder)) cnd = false;
+                if (!iterator.next().test(test_folder,ignoreCase)) cnd = false;
 
             }
         }
@@ -329,5 +330,13 @@ public class FileCrawler {
 
     public boolean getIncludeSubFolders() {
         return includeSubFolders;
+    }
+
+    public void setIgnoreCase(boolean ignoreCase) {
+        this.ignoreCase = ignoreCase;
+    }
+
+    public boolean getIgnoreCase() {
+        return ignoreCase;
     }
 }

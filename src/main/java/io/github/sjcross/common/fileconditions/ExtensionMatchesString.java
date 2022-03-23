@@ -13,12 +13,12 @@ public class ExtensionMatchesString implements FileCondition {
     private Mode mode;
 
     public ExtensionMatchesString(String ext) {
-        this.exts = new String[]{ext};
+        this.exts = new String[] { ext };
         this.mode = Mode.INC_PARTIAL;
     }
 
     public ExtensionMatchesString(String ext, Mode mode) {
-        this.exts = new String[]{ext};
+        this.exts = new String[] { ext };
         this.mode = mode;
     }
 
@@ -32,23 +32,32 @@ public class ExtensionMatchesString implements FileCondition {
         this.mode = mode;
     }
 
-    public boolean test(File file) {
+    public boolean test(File file, boolean ignoreCase) {
         if (file != null) {
             String extension = FilenameUtils.getExtension(file.getName());
+            if (ignoreCase)
+                extension = extension.toLowerCase();
 
             for (String ext : exts) {
+                if (ignoreCase)
+                    ext = ext.toLowerCase();
+
                 switch (mode) {
                     case INC_COMPLETE:
-                        if (extension.matches(ext)) return true;
+                        if (extension.matches(ext))
+                            return true;
                         break;
                     case INC_PARTIAL:
-                        if (extension.contains(ext)) return true;
+                        if (extension.contains(ext))
+                            return true;
                         break;
                     case EXC_COMPLETE:
-                        if (extension.matches(ext)) return false;
+                        if (extension.matches(ext))
+                            return false;
                         break;
                     case EXC_PARTIAL:
-                        if (extension.contains(ext)) return false;
+                        if (extension.contains(ext))
+                            return false;
                         break;
                 }
             }

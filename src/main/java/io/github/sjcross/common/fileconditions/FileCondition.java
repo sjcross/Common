@@ -12,6 +12,10 @@ public interface FileCondition {
      EXC_COMPLETE,  //Excluding complete match for test string
      EXC_PARTIAL;   //Excluding partial match for test string
  }
-    boolean test(File file);
 
+    boolean test(File file, boolean ignoreCase);
+
+    // default boolean test(File file) {
+    //     return test(file, false);
+    // }
 }

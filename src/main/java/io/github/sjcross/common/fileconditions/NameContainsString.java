@@ -13,13 +13,13 @@ public class NameContainsString implements FileCondition {
     private Mode mode;
 
     public NameContainsString(String testStr) {
-        this.testStr = new String[]{testStr};
+        this.testStr = new String[] { testStr };
         this.mode = Mode.INC_PARTIAL;
 
     }
 
     public NameContainsString(String testStr, Mode mode) {
-        this.testStr = new String[]{testStr};
+        this.testStr = new String[] { testStr };
         this.mode = mode;
 
     }
@@ -36,20 +36,30 @@ public class NameContainsString implements FileCondition {
 
     }
 
-    public boolean test(String string) {
+    public boolean test(String string, boolean ignoreCase) {
+        if (ignoreCase)
+            string = string.toLowerCase();
+
         for (String s : testStr) {
+            if (ignoreCase)
+                s = s.toLowerCase();
+
             switch (mode) {
                 case INC_COMPLETE:
-                    if (string.equals(s)) return true;
+                    if (string.equals(s))
+                        return true;
                     break;
                 case INC_PARTIAL:
-                    if (string.contains(s)) return true;
+                    if (string.contains(s))
+                        return true;
                     break;
                 case EXC_COMPLETE:
-                    if (string.equals(s)) return false;
+                    if (string.equals(s))
+                        return false;
                     break;
                 case EXC_PARTIAL:
-                    if (string.contains(s)) return false;
+                    if (string.contains(s))
+                        return false;
                     break;
             }
         }
@@ -62,14 +72,15 @@ public class NameContainsString implements FileCondition {
             case EXC_COMPLETE:
             case EXC_PARTIAL:
                 return true;
-                
+
         }
     }
 
-    public boolean test(File file) {
-        if (file == null) return false;
+    public boolean test(File file, boolean ignoreCase) {
+        if (file == null)
+            return false;
         String name = FilenameUtils.removeExtension(file.getName());
-        return test(name);
+        return test(name, ignoreCase);
 
     }
 

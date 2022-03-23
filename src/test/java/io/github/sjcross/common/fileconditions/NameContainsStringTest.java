@@ -46,7 +46,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestIncludesCompleteTrue(@TempDir Path temporaryFolder) {
+    public void testTestIncludesCompleteTrueIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[]{"test 34","another Test"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.INC_COMPLETE);
@@ -56,8 +56,8 @@ class NameContainsStringTest {
         File testFile2 = temporaryFolder.resolve("another Test.tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
 
         // Checking results
         assertTrue(result1);
@@ -66,7 +66,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestIncludesCompleteFalse1(@TempDir Path temporaryFolder) {
+    public void testTestIncludesCompleteFalse1IgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[]{"test 34.tif","another Test.tiff","tif","tiff"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.INC_COMPLETE);
@@ -76,8 +76,8 @@ class NameContainsStringTest {
         File testFile2 = temporaryFolder.resolve("another Test.tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
 
         // Checking results
         assertFalse(result1);
@@ -86,7 +86,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestIncludesCompleteFalse2(@TempDir Path temporaryFolder) {
+    public void testTestIncludesCompleteFalse2IgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[]{"test 34.tif","another Test.tiff"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.INC_COMPLETE);
@@ -98,10 +98,10 @@ class NameContainsStringTest {
         File testFile4 = temporaryFolder.resolve("tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
-        boolean result3 = nameContainsString.test(testFile3);
-        boolean result4 = nameContainsString.test(testFile4);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
+        boolean result3 = nameContainsString.test(testFile3,false);
+        boolean result4 = nameContainsString.test(testFile4,false);
 
         // Checking results
         assertFalse(result1);
@@ -112,7 +112,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestIncludesCompleteEmpty(@TempDir Path temporaryFolder) {
+    public void testTestIncludesCompleteEmptyIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[0];
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.INC_COMPLETE);
@@ -124,10 +124,10 @@ class NameContainsStringTest {
         File testFile4 = temporaryFolder.resolve("tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
-        boolean result3 = nameContainsString.test(testFile3);
-        boolean result4 = nameContainsString.test(testFile4);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
+        boolean result3 = nameContainsString.test(testFile3,false);
+        boolean result4 = nameContainsString.test(testFile4,false);
 
         // Checking results
         assertFalse(result1);
@@ -138,7 +138,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestIncludesPartialTrue(@TempDir Path temporaryFolder) {
+    public void testTestIncludesPartialTrueIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[]{"test 34","another Test","tif","tiff"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.INC_PARTIAL);
@@ -148,8 +148,8 @@ class NameContainsStringTest {
         File testFile2 = temporaryFolder.resolve("another Test.tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
 
         // Checking results
         assertTrue(result1);
@@ -158,7 +158,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestIncludesPartialFalse(@TempDir Path temporaryFolder) {
+    public void testTestIncludesPartialFalseIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[]{"test 34.tif","another Test.tiff"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.INC_PARTIAL);
@@ -167,13 +167,13 @@ class NameContainsStringTest {
         File testFile1 = temporaryFolder.resolve("test 34").toFile();
         File testFile2 = temporaryFolder.resolve("another Test").toFile();
         File testFile3 = temporaryFolder.resolve("tif").toFile();
-        File testFil4 = temporaryFolder.resolve("tiff").toFile();
+        File testFile4 = temporaryFolder.resolve("tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
-        boolean result3 = nameContainsString.test(testFile3);
-        boolean result4 = nameContainsString.test(testFil4);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
+        boolean result3 = nameContainsString.test(testFile3,false);
+        boolean result4 = nameContainsString.test(testFile4,false);
 
         // Checking results
         assertFalse(result1);
@@ -184,7 +184,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestIncludesPartialEmpty(@TempDir Path temporaryFolder) {
+    public void testTestIncludesPartialEmptyIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[0];
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.INC_PARTIAL);
@@ -193,13 +193,13 @@ class NameContainsStringTest {
         File testFile1 = temporaryFolder.resolve("test 34").toFile();
         File testFile2 = temporaryFolder.resolve("another Test").toFile();
         File testFile3 = temporaryFolder.resolve("tif").toFile();
-        File testFil4 = temporaryFolder.resolve("tiff").toFile();
+        File testFile4 = temporaryFolder.resolve("tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
-        boolean result3 = nameContainsString.test(testFile3);
-        boolean result4 = nameContainsString.test(testFil4);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
+        boolean result3 = nameContainsString.test(testFile3,false);
+        boolean result4 = nameContainsString.test(testFile4,false);
 
         // Checking results
         assertFalse(result1);
@@ -210,7 +210,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestExcludesCompleteTrue(@TempDir Path temporaryFolder) {
+    public void testTestExcludesCompleteTrueIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[]{"test 34","another Test","tif","tiff"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.EXC_COMPLETE);
@@ -221,9 +221,9 @@ class NameContainsStringTest {
         File testFile3 = temporaryFolder.resolve("another Test tif.tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
-        boolean result3 = nameContainsString.test(testFile3);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
+        boolean result3 = nameContainsString.test(testFile3,false);
 
         // Checking results
         assertFalse(result1);
@@ -233,7 +233,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestExcludesCompleteFalse(@TempDir Path temporaryFolder) {
+    public void testTestExcludesCompleteFalseIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[]{"test 34","another Test"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.EXC_COMPLETE);
@@ -243,8 +243,8 @@ class NameContainsStringTest {
         File testFile2 = temporaryFolder.resolve("another Test.tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
 
         // Checking results
         assertFalse(result1);
@@ -253,7 +253,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestExcludesCompleteEmpty(@TempDir Path temporaryFolder) {
+    public void testTestExcludesCompleteEmptyIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[0];
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.EXC_COMPLETE);
@@ -263,8 +263,8 @@ class NameContainsStringTest {
         File testFile2 = temporaryFolder.resolve("another Test.tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
 
         // Checking results
         assertTrue(result1);
@@ -273,7 +273,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestExcludesPartialTrue(@TempDir Path temporaryFolder) {
+    public void testTestExcludesPartialTrueIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[]{"tet 34","aother Test"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.EXC_PARTIAL);
@@ -283,8 +283,8 @@ class NameContainsStringTest {
         File testFile2 = temporaryFolder.resolve("another Test.tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
 
         // Checking results
         assertTrue(result1);
@@ -293,7 +293,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestExcludesPartialFalse(@TempDir Path temporaryFolder) {
+    public void testTestExcludesPartialFalseIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[]{"test 34","another Test","tif","tiff"};
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.EXC_PARTIAL);
@@ -303,8 +303,8 @@ class NameContainsStringTest {
         File testFile2 = temporaryFolder.resolve("another Test.tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
 
         // Checking results
         assertFalse(result1);
@@ -313,7 +313,7 @@ class NameContainsStringTest {
     }
 
     @Test
-    public void testTestExcludesPartialEmpty(@TempDir Path temporaryFolder) {
+    public void testTestExcludesPartialEmptyIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising the class to be tested
         String[] exts = new String[0];
         NameContainsString nameContainsString = new NameContainsString(exts,FileCondition.Mode.EXC_PARTIAL);
@@ -323,8 +323,8 @@ class NameContainsStringTest {
         File testFile2 = temporaryFolder.resolve("another Test.tiff").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result1 = nameContainsString.test(testFile1);
-        boolean result2 = nameContainsString.test(testFile2);
+        boolean result1 = nameContainsString.test(testFile1,false);
+        boolean result2 = nameContainsString.test(testFile2,false);
 
         // Checking results
         assertTrue(result1);

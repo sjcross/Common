@@ -59,7 +59,7 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleIncPartialTrue(@TempDir Path temporaryFolder) {
+    public void testTestSingleIncPartialTrueIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         Pattern pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
         NameContainsPattern nameContainsPattern = new NameContainsPattern(pattern,FileCondition.Mode.INC_PARTIAL);
@@ -67,7 +67,7 @@ public class NameContainsPatternTest {
         File testFile = temporaryFolder.resolve("Test_file-W1F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertTrue(result);
@@ -75,7 +75,7 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleIncPartialFalse(@TempDir Path temporaryFolder) {
+    public void testTestSingleIncPartialFalseIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         Pattern pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
         NameContainsPattern nameContainsPattern = new NameContainsPattern(pattern,FileCondition.Mode.INC_PARTIAL);
@@ -83,7 +83,7 @@ public class NameContainsPatternTest {
         File testFile = temporaryFolder.resolve("Test_file-W1A002F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertFalse(result);
@@ -91,14 +91,14 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleIncPartialEmpty(@TempDir Path temporaryFolder) {
+    public void testTestSingleIncPartialEmptyIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         NameContainsPattern nameContainsPattern = new NameContainsPattern(new Pattern[0],FileCondition.Mode.INC_PARTIAL);
 
         File testFile = temporaryFolder.resolve("Test_file-W1F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertFalse(result);
@@ -106,7 +106,7 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleIncCompleteTrue(@TempDir Path temporaryFolder) {
+    public void testTestSingleIncCompleteTrueIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         Pattern pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
         NameContainsPattern nameContainsPattern = new NameContainsPattern(pattern,FileCondition.Mode.INC_COMPLETE);
@@ -114,7 +114,7 @@ public class NameContainsPatternTest {
         File testFile = temporaryFolder.resolve("W1F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertTrue(result);
@@ -122,7 +122,7 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleIncCompleteFalse(@TempDir Path temporaryFolder) {
+    public void testTestSingleIncCompleteFalseIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         Pattern pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
         NameContainsPattern nameContainsPattern = new NameContainsPattern(pattern,FileCondition.Mode.INC_COMPLETE);
@@ -130,7 +130,7 @@ public class NameContainsPatternTest {
         File testFile = temporaryFolder.resolve("Test_file-W1F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertFalse(result);
@@ -138,14 +138,14 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleIncCompleteEmpty(@TempDir Path temporaryFolder) {
+    public void testTestSingleIncCompleteEmptyIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         NameContainsPattern nameContainsPattern = new NameContainsPattern(new Pattern[0],FileCondition.Mode.INC_COMPLETE);
 
         File testFile = temporaryFolder.resolve("Test_file-W1F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertFalse(result);
@@ -153,7 +153,7 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleExcCompleteTrue(@TempDir Path temporaryFolder) {
+    public void testTestSingleExcCompleteTrueIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         Pattern pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
         NameContainsPattern nameContainsPattern = new NameContainsPattern(pattern,FileCondition.Mode.EXC_COMPLETE);
@@ -161,7 +161,7 @@ public class NameContainsPatternTest {
         File testFile = temporaryFolder.resolve("Test_file-W1F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertTrue(result);
@@ -169,7 +169,7 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleExcCompleteFalse(@TempDir Path temporaryFolder) {
+    public void testTestSingleExcCompleteFalseIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         Pattern pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
         NameContainsPattern nameContainsPattern = new NameContainsPattern(pattern,FileCondition.Mode.EXC_COMPLETE);
@@ -177,7 +177,7 @@ public class NameContainsPatternTest {
         File testFile = temporaryFolder.resolve("W1F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertFalse(result);
@@ -185,14 +185,14 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleExcCompleteEmpty(@TempDir Path temporaryFolder) {
+    public void testTestSingleExcCompleteEmptyIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         NameContainsPattern nameContainsPattern = new NameContainsPattern(new Pattern[0],FileCondition.Mode.EXC_COMPLETE);
 
         File testFile = temporaryFolder.resolve("Test_file-W1F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertTrue(result);
@@ -200,7 +200,7 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleExcPartialTrue(@TempDir Path temporaryFolder) {
+    public void testTestSingleExcPartialTrueIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         Pattern pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
         NameContainsPattern nameContainsPattern = new NameContainsPattern(pattern,FileCondition.Mode.EXC_PARTIAL);
@@ -208,7 +208,7 @@ public class NameContainsPatternTest {
         File testFile = temporaryFolder.resolve("Test_file-W1A002F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertTrue(result);
@@ -216,7 +216,7 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleExcPartialFalse(@TempDir Path temporaryFolder) {
+    public void testTestSingleExcPartialFalseIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         Pattern pattern = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
         NameContainsPattern nameContainsPattern = new NameContainsPattern(pattern,FileCondition.Mode.EXC_PARTIAL);
@@ -224,7 +224,7 @@ public class NameContainsPatternTest {
         File testFile = temporaryFolder.resolve("Test_file-W1F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertFalse(result);
@@ -232,14 +232,14 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestSingleExcPartialEmpty(@TempDir Path temporaryFolder) {
+    public void testTestSingleExcPartialEmptyIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         NameContainsPattern nameContainsPattern = new NameContainsPattern(new Pattern[0],FileCondition.Mode.EXC_PARTIAL);
 
         File testFile = temporaryFolder.resolve("Test_file-W1A002F001T0001Z01C1.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean result = nameContainsPattern.test(testFile);
+        boolean result = nameContainsPattern.test(testFile,false);
 
         // Checking results
         assertTrue(result);
@@ -247,7 +247,7 @@ public class NameContainsPatternTest {
     }
 
     @Test
-    public void testTestMultiIncPartial(@TempDir Path temporaryFolder) {
+    public void testTestMultiIncPartialIgnoreCase(@TempDir Path temporaryFolder) {
         // Initialising pattern to match and class to be tested
         Pattern[] patterns = new Pattern[2];
         patterns[0] = Pattern.compile("W(\\d+?)F(\\d+?)T(\\d+?)Z(\\d+?)C(\\d+?)");
@@ -260,10 +260,10 @@ public class NameContainsPatternTest {
         File testFileFalse2 = temporaryFolder.resolve("Test_file_B2_A2.tif").toFile();
 
         // Obtaining results for the true and false cases
-        boolean resultTrue1 = nameContainsPattern.test(testFileTrue1);
-        boolean resultTrue2 = nameContainsPattern.test(testFileTrue2);
-        boolean resultFalse1 = nameContainsPattern.test(testFileFalse1);
-        boolean resultFalse2 = nameContainsPattern.test(testFileFalse2);
+        boolean resultTrue1 = nameContainsPattern.test(testFileTrue1,false);
+        boolean resultTrue2 = nameContainsPattern.test(testFileTrue2,false);
+        boolean resultFalse1 = nameContainsPattern.test(testFileFalse1,false);
+        boolean resultFalse2 = nameContainsPattern.test(testFileFalse2,false);
 
         // Checking results
         assertTrue(resultTrue1);
