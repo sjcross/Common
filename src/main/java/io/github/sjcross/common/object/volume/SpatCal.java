@@ -2,6 +2,10 @@ package io.github.sjcross.common.object.volume;
 
 import ij.ImagePlus;
 import ij.measure.Calibration;
+import net.imagej.ImgPlus;
+import net.imagej.axis.Axes;
+import net.imglib2.type.NativeType;
+import net.imglib2.type.numeric.RealType;
 
 public class SpatCal {
     final public double dppXY; // Calibration in xy
@@ -28,14 +32,31 @@ public class SpatCal {
     public static SpatCal getFromImage(ImagePlus ipl) {
         Calibration calibration = ipl.getCalibration();
 
-        int width = ipl.getWidth();
-        int height = ipl.getHeight();
+        int w = ipl.getWidth();
+        int h = ipl.getHeight();
         int nSlices = ipl.getNSlices();
         double dppXY = calibration.getX(1);
         double dppZ = calibration.getZ(1);
         String units = calibration.getUnits();
 
-        return new SpatCal(dppXY, dppZ, units, width, height, nSlices);
+        return new SpatCal(dppXY, dppZ, units, w, h, nSlices);
+
+    }
+
+    public static <T extends RealType<T> & NativeType<T>> SpatCal getFromImage(ImgPlus<T> img) {
+        int xIdx = img.dimensionIndex(Axes.X);
+        int yIdx = img.dimensionIndex(Axes.Y);
+        int zIdx = img.dimensionIndex(Axes.Z);
+
+        double dppXY = xIdx == -1 ? 1 : img.axis(xIdx).calibratedValue(1);
+        double dppZ = zIdx == -1 ? 1 : img.axis(zIdx).calibratedValue(1);
+        String units = xIdx == -1 ? "px" : img.axis(xIdx).unit();
+
+        int w = (int) (xIdx == -1 ? 1 : img.dimension(xIdx));
+        int h = (int) (yIdx == -1 ? 1 : img.dimension(yIdx));
+        int nSlices = (int) (zIdx == -1 ? 1 : img.dimension(zIdx));
+
+        return new SpatCal(dppXY, dppZ, units, w, h, nSlices);
 
     }
 
