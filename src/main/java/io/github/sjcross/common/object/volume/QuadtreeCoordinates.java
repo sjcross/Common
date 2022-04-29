@@ -119,7 +119,7 @@ public class QuadtreeCoordinates extends CoordinateSet {
     public CoordinateSet getSlice(int slice) {
         CoordinateSet sliceCoordinateSet = new QuadtreeCoordinates();
         if (!quadTrees.containsKey(slice))
-            return null;
+            return sliceCoordinateSet;
 
         sliceCoordinateSet.addAll(quadTrees.get(slice));
 
