@@ -68,6 +68,13 @@
         <url>https://github.com/SJCross/common/issues</url>
     </issueManagement>
 
+    <mailingLists>
+		<mailingList>
+			<name>ImageSc Forum</name>
+			<archive>http://forum.image.sc/</archive>
+		</mailingList>
+	</mailingLists>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <dependency.locations.enabled>false</dependency.locations.enabled>
