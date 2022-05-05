@@ -9,12 +9,12 @@
     </parent>
 
     <groupId>io.github.sjcross</groupId>
-    <artifactId>common</artifactId>
-    <version>1.12.1</version>
+    <artifactId>sjcommon</artifactId>
+    <version>1.12.2</version>
 
     <packaging>jar</packaging>
-    <name>Common</name>
-    <url>https://github.com/sjcross/common</url>
+    <name>sjcommon</name>
+    <url>https://github.com/sjcross/sjcommon</url>
     <inceptionYear>2018</inceptionYear>
     <description>Common library</description>
     <organization>
@@ -65,7 +65,7 @@
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/SJCross/common/issues</url>
+        <url>https://github.com/SJCross/sjcommon/issues</url>
     </issueManagement>
 
     <mailingLists>
@@ -86,10 +86,10 @@
     </properties>
 
     <scm>
-        <connection>scm:git:git://github.com/sjcross/common</connection>
-        <developerConnection>scm:git:git@github.com:sjcross/common</developerConnection>
+        <connection>scm:git:git://github.com/sjcross/sjcommon</connection>
+        <developerConnection>scm:git:git@github.com:sjcross/sjcommon</developerConnection>
         <tag>HEAD</tag>
-        <url>https://github.com/sjcross/common</url>
+        <url>https://github.com/sjcross/sjcommon</url>
     </scm>
 
     <ciManagement>
