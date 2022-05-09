@@ -9,12 +9,12 @@
     </parent>
 
     <groupId>io.github.sjcross</groupId>
-    <artifactId>Common</artifactId>
-    <version>1.12.0</version>
+    <artifactId>sjcommon</artifactId>
+    <version>1.12.2</version>
 
     <packaging>jar</packaging>
-    <name>Common</name>
-    <url>https://github.com/sjcross/Common</url>
+    <name>sjcommon</name>
+    <url>https://github.com/sjcross/sjcommon</url>
     <inceptionYear>2018</inceptionYear>
     <description>Common library</description>
     <organization>
@@ -65,8 +65,15 @@
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/SJCross/Common/issues</url>
+        <url>https://github.com/SJCross/sjcommon/issues</url>
     </issueManagement>
+
+    <mailingLists>
+		<mailingList>
+			<name>ImageSc Forum</name>
+			<archive>http://forum.image.sc/</archive>
+		</mailingList>
+	</mailingLists>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -78,18 +85,11 @@
         <license.copyrightOwners>Stephen Cross</license.copyrightOwners>
     </properties>
 
-    <mailingLists>
-        <mailingList>
-            <name>ImageJ Forum</name>
-            <archive>http://forum.imagej.net/</archive>
-        </mailingList>
-    </mailingLists>
-
     <scm>
-        <connection>scm:git:git://github.com/SJCross/Common</connection>
-        <developerConnection>scm:git:git@github.com:SJCross/Common</developerConnection>
+        <connection>scm:git:git://github.com/sjcross/sjcommon</connection>
+        <developerConnection>scm:git:git@github.com:sjcross/sjcommon</developerConnection>
         <tag>HEAD</tag>
-        <url>https://github.com/SJCross/Common</url>
+        <url>https://github.com/sjcross/sjcommon</url>
     </scm>
 
     <ciManagement>
