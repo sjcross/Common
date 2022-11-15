@@ -12,6 +12,8 @@ import java.util.Random;
 // Convert uint8 to byte with y = ((x+128) % 256) - 128
 
 public class LUTs {
+        public static LUT random = null;
+
         public static LUT Ice() {
                 byte[] reds = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 5, 8, 11, 14, 17, 19, 20, 22, 23, 24,
@@ -545,7 +547,7 @@ public class LUTs {
                                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
                 return new LUT(reds, greens, blues);
-                
+
         }
 
         public static LUT Random(boolean blackBackground) {
@@ -571,4 +573,11 @@ public class LUTs {
 
         }
 
+        public static LUT Random(boolean blackBackground, boolean regenerate) {
+                if (random == null || regenerate)
+                        random = Random(blackBackground);
+
+                return random;
+
+        }
 }
