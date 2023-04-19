@@ -1,6 +1,6 @@
 package io.github.sjcross.sjcommon.object.volume;
 
-public class PointOutOfRangeException extends Throwable {
+public class PointOutOfRangeException extends Exception {
     /**
      *
      */
