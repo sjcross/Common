@@ -1,5 +1,6 @@
 package io.github.sjcross.sjcommon.imagej;
 
+import java.awt.Color;
 import ij.process.LUT;
 
 import java.util.Random;
@@ -13,6 +14,7 @@ import java.util.Random;
 
 public class LUTs {
         public static LUT random = null;
+        public static LUT randomVibrant = null;
 
         public static LUT Ice() {
                 byte[] reds = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -561,13 +563,10 @@ public class LUTs {
                 random.nextBytes(g);
                 random.nextBytes(b);
 
-                if (blackBackground) {
+                if (blackBackground)
                         r[0] = g[0] = b[0] = 0;
-
-                } else {
+                else
                         r[0] = g[0] = b[0] = 127;
-
-                }
 
                 return new LUT(8, 256, r, g, b);
 
@@ -578,6 +577,40 @@ public class LUTs {
                         random = Random(blackBackground);
 
                 return random;
+
+        }
+
+        public static LUT RandomVibrant(boolean blackBackground) {
+                Random random = new Random(System.currentTimeMillis());
+
+                byte[] r = new byte[256];
+                byte[] g = new byte[256];
+                byte[] b = new byte[256];
+                byte[] h = new byte[256];
+
+                random.nextBytes(h);
+
+                for (int i=0;i<256;i++) {
+                        Color colour = Color.getHSBColor(h[i], 1, 1);
+                        r[i] = (byte) colour.getRed();
+                        g[i] = (byte) colour.getGreen();
+                        b[i] = (byte) colour.getBlue();
+                }
+                
+                if (blackBackground)
+                        r[0] = g[0] = b[0] = 0;
+                else
+                        r[0] = g[0] = b[0] = 127;
+                
+                return new LUT(8, 256, r, g, b);
+
+        }
+
+        public static LUT RandomVibrant(boolean blackBackground, boolean regenerate) {
+                if (randomVibrant == null || regenerate)
+                        randomVibrant = RandomVibrant(blackBackground);
+
+                return randomVibrant;
 
         }
 }
