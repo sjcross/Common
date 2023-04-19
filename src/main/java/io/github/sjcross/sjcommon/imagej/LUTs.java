@@ -586,12 +586,9 @@ public class LUTs {
                 byte[] r = new byte[256];
                 byte[] g = new byte[256];
                 byte[] b = new byte[256];
-                byte[] h = new byte[256];
-
-                random.nextBytes(h);
 
                 for (int i=0;i<256;i++) {
-                        Color colour = Color.getHSBColor(h[i], 1, 1);
+                        Color colour = Color.getHSBColor(random.nextFloat(), 1, 1);
                         r[i] = (byte) colour.getRed();
                         g[i] = (byte) colour.getGreen();
                         b[i] = (byte) colour.getBlue();
